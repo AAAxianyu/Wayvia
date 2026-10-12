@@ -8,6 +8,8 @@
 | --- | --- |
 | [产品介绍](docs/product-overview.md) | 产品功能、使用方式与适用场景 |
 | [设计方案](docs/design.md) | 系统架构、分流策略、组件职责与验收标准 |
+| [产品开发文档](docs/development.md) | 工程结构、模块契约、里程碑与完成标准 |
+| [开发 Goal 指令](docs/development-goal.md) | 可复制到 Codex 的持续开发目标 |
 
 ## 连接路径
 
