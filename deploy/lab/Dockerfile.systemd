@@ -1,0 +1,7 @@
+FROM wayvia-lab:locked
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends systemd=255.4-1ubuntu8.17 systemd-sysv=255.4-1ubuntu8.17 && rm -rf /var/lib/apt/lists/*
+RUN /opt/wayvia-lab-python/bin/python -c "import site,pathlib; pathlib.Path(site.getsitepackages()[0], 'wayvia-lab.pth').write_text('/workspace/src\n')"
+ENV PYTHONPATH=/workspace/src
+STOPSIGNAL SIGRTMIN+3
+ENTRYPOINT ["/sbin/init"]

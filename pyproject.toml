@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wayvia"
+version = "0.1.0"
+description = "Wayvia control plane for split routing and VPN-over-proxy gateways"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "pydantic==2.12.3",
+  "PyYAML==6.0.3",
+  "typer==0.20.0",
+  "fastapi==0.120.0",
+  "uvicorn==0.38.0",
+  "httpx==0.28.1",
+]
+
+[project.scripts]
+wayvia = "wayvia.cli:app"
+
+[dependency-groups]
+dev = ["ruff==0.14.2", "pytest==8.4.2", "pytest-cov==7.0.0", "build==1.3.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/wayvia"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit", "tests/contract", "tests/integration"]
+addopts = "-ra"

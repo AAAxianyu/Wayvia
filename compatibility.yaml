@@ -1,0 +1,110 @@
+schema_version: 1
+resolved_at: '2026-10-12'
+systems:
+  production:
+    name: Ubuntu
+    version: '24.04'
+    status: isolated_lab_verified_arm64
+  development:
+    name: macOS
+    python: 3.12.12
+    status: nonprivileged_only
+  lab:
+    docker: 29.5.2
+    architecture: arm64
+    kernel: 6.8.0-117-generic
+    base_image: ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+    isolation: disposable_container_plus_network_namespaces
+    os: Ubuntu 24.04.5 LTS
+    python: 3.12.3
+    status: passed
+    evidence:
+    - docs/validation/latest-lab/lab-result.json
+    - docs/validation/latest-lab/executor-result.json
+    - docs/validation/latest-lab/recovery-result.json
+components:
+  sing-box:
+    version: 1.14.3
+    lock: deploy/lab/components.lock.json
+    source: https://github.com/SagerNet/sing-box/releases/tag/v1.14.3
+    status: isolated_configuration_and_datapath_verified
+    evidence: docs/validation/latest-lab/lab-result.json
+  mihomo:
+    version: 1.19.32
+    lock: deploy/lab/components.lock.json
+    source: https://github.com/MetaCubeX/mihomo/releases/tag/v1.19.32
+    status: real_profile_parser_verified
+    evidence: docs/validation/latest-configs/config-result.json
+  v2raya:
+    version: 2.5.10
+    lock: deploy/lab/components.lock.json
+    source: https://github.com/v2rayA/v2rayA/releases/tag/v2.5.10
+    required_core: v2raya_core==2.5.10
+    status: isolated_configuration_and_datapath_verified
+    evidence: docs/validation/latest-lab/lab-result.json
+  v2raya_core:
+    version: 2.5.10
+    based_on: xray-core 26.7.28
+    lock: deploy/lab/components.lock.json
+    source: https://github.com/v2rayA/v2rayA/releases/tag/v2.5.10
+    status: isolated_configuration_and_datapath_verified
+    evidence: docs/validation/latest-lab/lab-result.json
+  v2ray:
+    version: 5.53.0
+    lock: deploy/lab/components.lock.json
+    source: https://github.com/v2fly/v2ray-core/releases/tag/v5.53.0
+    purpose: locked_geoip_and_geosite_assets_and_optional_config_parser
+    status: not_the_v2raya_2_5_10_runtime_core
+  openvpn:
+    version: 2.6.19
+    package_version: 2.6.19-0ubuntu0.24.04.4
+    source: http://ports.ubuntu.com/ubuntu-ports/pool/main/o/openvpn/openvpn_2.6.19-0ubuntu0.24.04.4_arm64.deb
+    sha256: 7c641f0198d7c3a32bd0b76e9ae9d6940e3591bea7bc7ea083a77d2e337b6f6c
+    source_checksum: authenticated_ubuntu_apt_release_metadata
+    status: isolated_configuration_and_datapath_verified
+    evidence: docs/validation/latest-lab/lab-result.json
+  iproute2:
+    version: 6.1.0
+    package_version: 6.1.0-1ubuntu6.4
+    source: Ubuntu 24.04 authenticated APT repository
+    status: real_kernel_resources_and_rollback_verified
+    pinning: measured_version; helper package not independently pinned
+  nftables:
+    version: 1.0.9
+    package_version: 1.0.9-1ubuntu0.1
+    source: Ubuntu 24.04 authenticated APT repository
+    status: real_guard_and_nat_datapath_verified
+    pinning: measured_version; helper package not independently pinned
+  systemd:
+    version: '255.4'
+    package_version: 255.4-1ubuntu8.17
+    source: Ubuntu 24.04 authenticated APT repository
+    pinning: exact_package_version_in_Dockerfile.systemd
+    status: private_cgroup_pid1_timer_and_recovery_verified
+    evidence:
+    - docs/validation/latest-lab/recovery-environment.json
+    - docs/validation/latest-lab/recovery-result.json
+    scope: independent timer and recovery processes in disposable container; complete
+      target-host reboot remains M6
+client_formats:
+  sing-box:
+    version: 1.14.3
+    parser: sing-box check
+    status: real_profile_parser_verified
+    evidence: docs/validation/latest-configs/config-result.json
+  mihomo:
+    version: 1.19.32
+    parser: mihomo -t
+    status: real_profile_parser_verified
+    evidence: docs/validation/latest-configs/config-result.json
+  ios:
+    status: device_acceptance_requires_selected_client_and_version
+  android:
+    status: device_acceptance_requires_selected_client_and_version
+transport:
+  vpn_underlay: openvpn_tcp_over_socks5_over_trojan_tls
+  business: tcp_and_udp
+  proxy_ipv6: blocked_until_supported
+  performance: no_production_sla_claim
+  status: controlled_dual_layer_datapath_verified
+  device_acceptance: requires_M6_inputs_and_authorization

@@ -1,0 +1,9 @@
+**
+!deploy/
+!deploy/lab/
+!deploy/lab/**
+!.cache/
+!.cache/components/
+!.cache/components/**
+!.cache/lab-python/
+!.cache/lab-python/**

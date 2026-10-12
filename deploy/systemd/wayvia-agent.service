@@ -1,0 +1,19 @@
+[Unit]
+Description=Wayvia privileged local action agent
+After=wayvia-recover.service
+Requires=wayvia-recover.service
+
+[Service]
+Type=simple
+User=root
+Group=wayvia
+EnvironmentFile=/etc/wayvia/agent.env
+ExecStart=/opt/wayvia/.venv/bin/wayvia agent --allowed-uid ${WAYVIA_API_UID}
+RuntimeDirectory=wayvia
+RuntimeDirectoryMode=0750
+UMask=0077
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

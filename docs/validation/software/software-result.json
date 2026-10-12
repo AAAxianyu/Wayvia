@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "verified_at": "2026-10-12T11:08:07.194904+00:00",
+  "date_timezone": "America/Los_Angeles",
+  "branch": "codex/m0-m5-delivery",
+  "environment": {
+    "platform": "Darwin",
+    "architecture": "arm64",
+    "python": "3.12.12",
+    "uv": "0.9.7"
+  },
+  "gates": {
+    "make check": {
+      "exit_code": 0,
+      "tests_passed": 150,
+      "warnings": 3,
+      "evidence": "make-check.txt",
+      "checks": [
+        "ruff format",
+        "ruff check",
+        "pytest",
+        "wheel/sdist build",
+        "CLI help"
+      ]
+    },
+    "make demo": {
+      "exit_code": 0,
+      "mode": "simulated",
+      "evidence": "make-demo.txt"
+    },
+    "make test-configs": {
+      "exit_code": 0,
+      "cases": 10,
+      "evidence": "../latest-configs/config-result.json"
+    },
+    "make test-lab": {
+      "exit_code": 0,
+      "path_cases": 22,
+      "kernel_actions_recovered": 4,
+      "systemd_recovery_cases": 2,
+      "evidence": "../latest-lab/lab-result.json"
+    },
+    "make clean-lab": {
+      "exit_code": 0,
+      "evidence": "../commands.json"
+    }
+  },
+  "packaging": {
+    "version": "0.1.0",
+    "clean_venv_install": "passed",
+    "wheel_rule_cidrs": 7511,
+    "wheel_rule_domain_suffixes": 110185,
+    "wheel_sha256": "5ce3da9d8cd3f043d2bff1cdd711b9b1fe43b64a6094d088bafa23119875e840"
+  },
+  "conclusions": {
+    "software": "complete",
+    "isolated_dual_layer": "verified_arm64",
+    "real_cloud_and_mobile": "not_executed_M6"
+  },
+  "known_limits": [
+    "amd64 datapath not run",
+    "proxy IPv6 and UDP VPN underlay unsupported",
+    "mobile import/network-switch/performance not accepted",
+    "full target-host reboot not tested",
+    "system installer stage verified; no production installation authorization"
+  ],
+  "text_evidence_normalization": "Trailing spaces and final blank lines removed for Git whitespace checks; command content unchanged.",
+  "installation_stage": {
+    "status": "prepared",
+    "official_archive_checksums": "verified",
+    "network_changed": false,
+    "services_started": false,
+    "upgrade_backup": "verified",
+    "scope": "nonprivileged staged filesystem"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "resolved_at": "2026-10-12",
+  "components": {
+    "sing-box": {
+      "version": "1.14.3",
+      "source": "https://github.com/SagerNet/sing-box/releases/tag/v1.14.3",
+      "assets": {
+        "arm64": {
+          "name": "sing-box-1.14.3-linux-arm64.tar.gz",
+          "url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/sing-box-1.14.3-linux-arm64.tar.gz",
+          "sha256": "29dae24d76bea3bc62d07dd3e60cfc12003de7debbd6b768df9be9c68360174e"
+        },
+        "amd64": {
+          "name": "sing-box-1.14.3-linux-amd64.tar.gz",
+          "url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/sing-box-1.14.3-linux-amd64.tar.gz",
+          "sha256": "e2bdf179c15a3652955dc44867e33ca0965c9c9b91b34267dcc5a5d639a5feee"
+        }
+      }
+    },
+    "mihomo": {
+      "version": "1.19.32",
+      "source": "https://github.com/MetaCubeX/mihomo/releases/tag/v1.19.32",
+      "assets": {
+        "arm64": {
+          "name": "mihomo-linux-arm64-v1.19.32.gz",
+          "url": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-arm64-v1.19.32.gz",
+          "sha256": "9dd862e28b46ff7d775f169cceebc28deccaa0a9e804237d421cd2571e0caba0"
+        },
+        "amd64": {
+          "name": "mihomo-linux-amd64-compatible-v1.19.32.gz",
+          "url": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-compatible-v1.19.32.gz",
+          "sha256": "ba3ce607747a07f948fc35780e108a4a7c7f552a38b9bd4d115f313ebcb89c20"
+        }
+      }
+    },
+    "v2raya": {
+      "version": "2.5.10",
+      "source": "https://github.com/v2rayA/v2rayA/releases/tag/v2.5.10",
+      "assets": {
+        "arm64": {
+          "name": "v2raya_linux_arm64_2.5.10",
+          "url": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_linux_arm64_2.5.10",
+          "sha256": "9ba45cf9ac3d145155f55191fb2cd91cd9368147314cd2d79b48f2f6a2c8ac29"
+        },
+        "amd64": {
+          "name": "v2raya_linux_x64_2.5.10",
+          "url": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_linux_x64_2.5.10",
+          "sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d"
+        }
+      }
+    },
+    "v2ray": {
+      "version": "5.53.0",
+      "source": "https://github.com/v2fly/v2ray-core/releases/tag/v5.53.0",
+      "assets": {
+        "arm64": {
+          "name": "v2ray-linux-arm64-v8a.zip",
+          "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-linux-arm64-v8a.zip",
+          "sha256": "2bda03a3d6b93122cb418504dc1c9ada10f99ae6be58a1fcc4a5ca1a01e12a30"
+        },
+        "amd64": {
+          "name": "v2ray-linux-64.zip",
+          "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-linux-64.zip",
+          "sha256": "6bbb8aee65a57d0b12599b4b7c842b3ad0daca4436e661d94015c447cb31b4fa"
+        }
+      }
+    },
+    "v2raya_core": {
+      "version": "2.5.10",
+      "source": "https://github.com/v2rayA/v2rayA/releases/tag/v2.5.10",
+      "assets": {
+        "arm64": {
+          "name": "v2raya_core_linux_arm64_2.5.10",
+          "url": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_core_linux_arm64_2.5.10",
+          "sha256": "dd14a7f2e27b546089e94bd64fd34c6971df5157ab15b3c16e4485909d5d3e3b"
+        },
+        "amd64": {
+          "name": "v2raya_core_linux_x64_2.5.10",
+          "url": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_core_linux_x64_2.5.10",
+          "sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73"
+        }
+      }
+    }
+  }
+}

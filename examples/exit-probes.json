@@ -1,0 +1,9 @@
+[
+  {"layer":"access","kind":"tcp","target":"127.0.0.1","port":443},
+  {"layer":"carrier","kind":"tcp","target":"127.0.0.1","port":1194},
+  {"layer":"vpn","kind":"route","target":"10.77.0.2","expected":"tun0"},
+  {"layer":"egress","kind":"http","target":"https://YOUR-OWNED-PROBE.example/ip","expected":"203.0.113.20"},
+  {"layer":"dns","kind":"dns","target":"1.1.1.1","port":53,"expected":"example.com"},
+  {"layer":"ipv6","kind":"ipv6_guard"},
+  {"layer":"return","kind":"route","target":"198.51.100.10","expected":"eth0"}
+]

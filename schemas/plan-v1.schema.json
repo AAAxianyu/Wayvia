@@ -1,0 +1,236 @@
+{
+  "$defs": {
+    "Action": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "install_config",
+            "namespace",
+            "veth",
+            "guard",
+            "service",
+            "exit_nat"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "resource": {
+          "title": "Resource",
+          "type": "string"
+        },
+        "content": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Content"
+        },
+        "operation": {
+          "default": "ensure",
+          "enum": [
+            "ensure",
+            "restart",
+            "stop"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "namespace": {
+          "anyOf": [
+            {
+              "const": "wayvia-egress",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Namespace"
+        },
+        "interface": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Interface"
+        },
+        "subnet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Subnet"
+        }
+      },
+      "required": [
+        "kind",
+        "resource"
+      ],
+      "title": "Action",
+      "type": "object"
+    },
+    "Probe": {
+      "additionalProperties": false,
+      "properties": {
+        "layer": {
+          "enum": [
+            "access",
+            "carrier",
+            "vpn",
+            "egress",
+            "dns",
+            "ipv6",
+            "return"
+          ],
+          "title": "Layer",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "service",
+            "tcp",
+            "route",
+            "http",
+            "dns",
+            "ipv6_guard",
+            "unsupported"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "target": {
+          "default": "",
+          "title": "Target",
+          "type": "string"
+        },
+        "port": {
+          "default": 0,
+          "maximum": 65535,
+          "minimum": 0,
+          "title": "Port",
+          "type": "integer"
+        },
+        "expected": {
+          "default": "",
+          "title": "Expected",
+          "type": "string"
+        },
+        "namespace": {
+          "anyOf": [
+            {
+              "const": "wayvia-egress",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Namespace"
+        },
+        "timeout": {
+          "default": 5,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Timeout",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "layer",
+        "kind"
+      ],
+      "title": "Probe",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "role": {
+      "enum": [
+        "ingress",
+        "exit"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "revision": {
+      "title": "Revision",
+      "type": "string"
+    },
+    "baseline": {
+      "title": "Baseline",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "expires_at": {
+      "format": "date-time",
+      "title": "Expires At",
+      "type": "string"
+    },
+    "confirm_seconds": {
+      "default": 120,
+      "maximum": 600,
+      "minimum": 10,
+      "title": "Confirm Seconds",
+      "type": "integer"
+    },
+    "actions": {
+      "items": {
+        "$ref": "#/$defs/Action"
+      },
+      "title": "Actions",
+      "type": "array"
+    },
+    "probes": {
+      "items": {
+        "$ref": "#/$defs/Probe"
+      },
+      "title": "Probes",
+      "type": "array"
+    },
+    "digest": {
+      "default": "",
+      "title": "Digest",
+      "type": "string"
+    }
+  },
+  "required": [
+    "role",
+    "revision",
+    "baseline",
+    "created_at",
+    "expires_at",
+    "actions",
+    "probes"
+  ],
+  "title": "Plan",
+  "type": "object"
+}

@@ -1,0 +1,8 @@
+[Unit]
+Description=Check Wayvia path probes and block degraded ingress
+After=wayvia-recover.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/wayvia/.venv/bin/python -m wayvia.agent.recovery --monitor
+UMask=0077

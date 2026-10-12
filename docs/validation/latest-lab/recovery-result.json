@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "disposable Linux systemd container",
+  "timer": "production SystemdTimer and systemd-run",
+  "recovery": "independent production wayvia.agent.recovery processes",
+  "cases": [
+    {
+      "case": "timer",
+      "state_before": "APPLYING",
+      "state_after": "ROLLED_BACK",
+      "actions_recovered": 4,
+      "kernel_resources_removed": true,
+      "host_default_route_unchanged": true,
+      "systemd_timer_listed": true,
+      "recovery_service": "Result=success\nExecMainStatus=0",
+      "controller_exited_before_rollback": true
+    },
+    {
+      "case": "restart",
+      "state_before": "APPLYING",
+      "state_after": "ROLLED_BACK",
+      "actions_recovered": 4,
+      "kernel_resources_removed": true,
+      "host_default_route_unchanged": true,
+      "independent_new_process_exit": 0,
+      "recovery_stdout": [
+        {
+          "id": "d5fb4a189b9249c6a3d0281858c0ab85",
+          "role": "ingress",
+          "revision": "recovery-lab",
+          "state": "ROLLED_BACK",
+          "deadline": "2026-10-12T11:01:23.979463+00:00",
+          "updated_at": "2026-10-12T11:01:14.071640+00:00",
+          "evidence": null,
+          "error": null
+        }
+      ],
+      "controller_exited_before_recovery": true
+    }
+  ]
+}
