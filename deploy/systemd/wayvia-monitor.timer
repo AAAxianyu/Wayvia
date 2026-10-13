@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically check the confirmed Wayvia path
+
+[Timer]
+OnBootSec=30
+OnUnitActiveSec=15
+AccuracySec=1
+Unit=wayvia-monitor.service
+
+[Install]
+WantedBy=timers.target

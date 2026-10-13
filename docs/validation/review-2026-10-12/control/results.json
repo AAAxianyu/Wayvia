@@ -1,0 +1,69 @@
+{
+  "recorded_at_utc": "2026-10-13T03:16:00.809372+00:00",
+  "repository": "/Users/dev2/Documents/project/Wayvia",
+  "scope": "Read-only product-source audit with disposable local metadata; no product source modifications, no host network changes, no ICT access",
+  "all_expected_reproductions_observed": true,
+  "cases": {
+    "dns_priority": {
+      "reproduced": true,
+      "input": {
+        "domain": "sso.campus.example",
+        "local_suffix": "campus.example",
+        "domestic_suffix": "campus.example"
+      },
+      "config_validation": "accepted",
+      "policy_explainer_dns": "internal",
+      "expected_mihomo_dns": [
+        "192.168.1.1:53#DIRECT"
+      ],
+      "actual_mihomo_dns": [
+        "223.5.5.5:53#DIRECT"
+      ],
+      "evidence_kind": "real configuration compiler and renderer; no networking",
+      "source": "src/wayvia/render/__init__.py:236-243"
+    },
+    "rotation_crash": {
+      "reproduced": true,
+      "failure_point": "after SecretStore.write fsync returns, before devices UPDATE",
+      "credential_version": 1,
+      "post_restart_reconcile_status": "active",
+      "retry_result": "FileExistsError",
+      "orphan_v2_present": true,
+      "evidence_kind": "real SQLite and SecretStore; explicitly simulated dataplane; injected process interruption",
+      "source": "src/wayvia/services/control.py:223-231; src/wayvia/secrets/__init__.py:54-61"
+    },
+    "publication_revision": {
+      "reproduced": true,
+      "scenario": "existing active credential/database and old accepted config; operator loads new entry settings before or after a failed new network apply",
+      "old_entry": "entry.wayvia.example:443",
+      "old_configuration_revision": "0a2de5392fff6d9ed817cae030e7792414d86cafa085d70750b115deda0771c7",
+      "old_server_artifact_listen_port": 443,
+      "new_configuration_revision": "348033cfc5f7a22024cf12ff1fb741aaad77e65e729fc36b5f0d86498a03351b",
+      "new_config_apply_called": false,
+      "production_mode": "production",
+      "production_dataplane_type": "AgentDataplane",
+      "agent_socket_exists": false,
+      "device_status": "active",
+      "published_entry": "unapplied-new-entry.example",
+      "published_port": 8443,
+      "subscription_issue_and_fetch_succeeded": true,
+      "evidence_kind": "real production export/issue/fetch + real SQLite; absent real agent; initial active row from explicit simulated fixture; old artifact is rendered snapshot, not live server",
+      "limit": "No real deployment or traffic was started. This proves the software publication gate is absent; operational impact follows when the live server still uses the old confirmed configuration.",
+      "source": "src/wayvia/services/control.py:259-306; src/wayvia/adapters/linux/__init__.py:532-555"
+    },
+    "cli_status_exit_convention": {
+      "reproduced": true,
+      "classification": "interface contract tradeoff; caller must inspect returned status; not classified as a must-fix in the parent audit",
+      "add_exit": 0,
+      "add_state": "pending",
+      "revoke_exit": 0,
+      "revoke_state": "degraded",
+      "protection": {
+        "status": "unknown",
+        "code": "ingress_block_unconfirmed"
+      },
+      "evidence_kind": "real CLI production mode + absent Unix agent socket; temporary SQLite; no host network mutation",
+      "source": "src/wayvia/cli.py:164-185"
+    }
+  }
+}

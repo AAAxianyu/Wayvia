@@ -1,0 +1,19 @@
+[Unit]
+Description=Restore Wayvia transaction state and fail-closed protection after boot
+After=local-fs.target network-online.target
+Wants=network-online.target
+Before=wayvia-agent.service
+
+[Service]
+Type=oneshot
+User=root
+Group=wayvia
+RuntimeDirectory=wayvia
+RuntimeDirectoryMode=0750
+RuntimeDirectoryPreserve=yes
+ExecStart=/opt/wayvia/.venv/bin/python -m wayvia.agent.recovery --rebuild-active
+RemainAfterExit=yes
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+{
+  "source": "git archive HEAD (committed files only)",
+  "head": "d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2",
+  "command": "uv build --offline",
+  "exit_code": 0
+}

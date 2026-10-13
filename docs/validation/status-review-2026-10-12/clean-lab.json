@@ -1,0 +1,10 @@
+{
+  "command": "make clean-lab UV=/tmp/wayvia-bootstrap/bin/uv",
+  "cwd": "/Users/dev2/Documents/project/Wayvia/.cache/status-review-m2dongsl",
+  "started_at_utc": "2026-10-13T06:16:44.880948+00:00",
+  "completed_at_utc": "2026-10-13T06:16:46.444770+00:00",
+  "duration_seconds": 1.564,
+  "exit_code": 0,
+  "log": "clean-lab.txt",
+  "log_sha256": "6ee1f7bc79798aa92ab172cf6d04b58936e161da1f43e6f643181f8a3605ba9e"
+}

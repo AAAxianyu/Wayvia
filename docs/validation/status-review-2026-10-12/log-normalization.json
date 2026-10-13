@@ -1,0 +1,25 @@
+{
+  "scope": "Remove ANSI escapes and trailing whitespace from logs only; command outcomes and failure contents retained. Log references updated to normalized byte hashes. Archived diff contents preserved exactly in preexisting-wayvia-diff.json.",
+  "changed_logs": [
+    {
+      "path": "check.txt",
+      "original_sha256": "d806c8e8036045293ce640cd63c6bd55dae33c027871da7aa7d95dcda9a9ecec",
+      "normalized_sha256": "9b82a29d1e8f9578d5d571fef4d993947de264a02e4cd7c61792bbfd6cfc52f2"
+    },
+    {
+      "path": "ci-failed.txt",
+      "original_sha256": "577e720a6e492eb0be5423aaeb465f8ceb28584950299624538a3245d2ecd5d4",
+      "normalized_sha256": "e0ff3282d0f401e697a88065b43259ca875bd31c0a437f3fcaf064e99e429419"
+    },
+    {
+      "path": "continuation/trace.txt",
+      "original_sha256": "4991770cac97e631cec05b87b562a996480b1b84aa602249309fc16ee85a3219",
+      "normalized_sha256": "0c77c6dc04f53474dcd077370a0db2c0e024476da2c7d7086370d44b5a365830"
+    },
+    {
+      "path": "test-lab.txt",
+      "original_sha256": "1ee5aa05b69ccf19d22bbecefa850405bc962a52d4911323ce50a2a42eca8484",
+      "normalized_sha256": "f93e22dabe28b0a7d01dd558df2442d5039e231d0490e71f90503f8026fa65a8"
+    }
+  ]
+}

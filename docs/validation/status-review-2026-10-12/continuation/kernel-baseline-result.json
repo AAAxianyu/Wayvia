@@ -1,0 +1,16 @@
+{
+  "status": "confirmed",
+  "scope": "disposable Linux actual kernel with unmodified production LinuxExecutor and Plan.check",
+  "unauthorized_connection_blocked": true,
+  "rules_structurally_identical": true,
+  "baseline_changed_by_real_counter_increment": true,
+  "rejection": "BASELINE_CHANGED",
+  "baseline_before": "1261ad9269f5ecd70c789c711122d7f3f82dafc75d799fa8a11dbf80cbb68be8",
+  "baseline_after": "3a7a9c6cf80d3cce01df45021a785af799e66d7a568cea38a49c694894c12618",
+  "rules_before": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter packets 0 bytes 0 drop\n\t}\n}\n",
+  "rules_after": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter packets 1 bytes 60 drop\n\t}\n}\n",
+  "cleanup": {
+    "owned_resources_removed": true,
+    "container_default_route_unchanged": true
+  }
+}

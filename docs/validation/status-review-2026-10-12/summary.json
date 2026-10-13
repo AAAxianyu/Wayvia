@@ -1,0 +1,156 @@
+{
+  "recorded_at_utc": "2026-10-13T06:18:36.783370+00:00",
+  "local_date": "2026-10-12",
+  "timezone": "America/Los_Angeles",
+  "source_commit": "739eef73d6185e6cad7b436b23a09a4be8d3dc60",
+  "source_scope": "739eef7 plus preexisting Wayvia working tree changes, unchanged throughout inspection",
+  "implementation_modified_by_inspection": false,
+  "source_changes_since_snapshot": [],
+  "software_implementation": "M0-M5 major modules implemented; delivery acceptance reopened because full lab gate failed",
+  "nonprivileged_checks": "passed_298_tests_3_dependency_warnings",
+  "configuration_validation": "passed_10_real_component_cases",
+  "isolated_validation": "partial_pass_full_gate_failed",
+  "real_deployment_acceptance": "M6_not_executed_no_verified_real_server_deployment",
+  "OpenWrt": "M7_not_implemented_or_accepted",
+  "commands": [
+    {
+      "command": "make check UV=/tmp/wayvia-bootstrap/bin/uv",
+      "cwd": "/private/tmp/wayvia-status-20261012-m2dongsl",
+      "started_at_utc": "2026-10-13T06:02:48.508905+00:00",
+      "completed_at_utc": "2026-10-13T06:05:28.486833+00:00",
+      "duration_seconds": 159.977,
+      "exit_code": 0,
+      "log": "check.txt",
+      "log_sha256": "9b82a29d1e8f9578d5d571fef4d993947de264a02e4cd7c61792bbfd6cfc52f2"
+    },
+    {
+      "command": "make demo UV=/tmp/wayvia-bootstrap/bin/uv",
+      "cwd": "/private/tmp/wayvia-status-20261012-m2dongsl",
+      "started_at_utc": "2026-10-13T06:05:39.062711+00:00",
+      "completed_at_utc": "2026-10-13T06:05:43.932582+00:00",
+      "duration_seconds": 4.87,
+      "exit_code": 0,
+      "log": "demo.txt",
+      "log_sha256": "18ead011eb2259d8f642b9e657b25c4e5108ce5fb50316015a671b1b7fab81b4"
+    },
+    {
+      "command": "make test-configs UV=/tmp/wayvia-bootstrap/bin/uv",
+      "cwd": "/Users/dev2/Documents/project/Wayvia/.cache/status-review-m2dongsl",
+      "started_at_utc": "2026-10-13T06:10:35.667798+00:00",
+      "completed_at_utc": "2026-10-13T06:11:19.272512+00:00",
+      "duration_seconds": 43.604,
+      "exit_code": 0,
+      "log": "test-configs.txt",
+      "log_sha256": "9d5f721631f2c01812c8f84ea280759b76f1dc9baa221a5080f92aa712757450"
+    },
+    {
+      "command": "make test-lab UV=/tmp/wayvia-bootstrap/bin/uv",
+      "cwd": "/Users/dev2/Documents/project/Wayvia/.cache/status-review-m2dongsl",
+      "started_at_utc": "2026-10-13T06:11:31.842559+00:00",
+      "completed_at_utc": "2026-10-13T06:14:30.488528+00:00",
+      "duration_seconds": 178.645,
+      "exit_code": 2,
+      "log": "test-lab.txt",
+      "log_sha256": "f93e22dabe28b0a7d01dd558df2442d5039e231d0490e71f90503f8026fa65a8"
+    },
+    {
+      "command": "make clean-lab UV=/tmp/wayvia-bootstrap/bin/uv",
+      "cwd": "/Users/dev2/Documents/project/Wayvia/.cache/status-review-m2dongsl",
+      "started_at_utc": "2026-10-13T06:16:44.880948+00:00",
+      "completed_at_utc": "2026-10-13T06:16:46.444770+00:00",
+      "duration_seconds": 1.564,
+      "exit_code": 0,
+      "log": "clean-lab.txt",
+      "log_sha256": "6ee1f7bc79798aa92ab172cf6d04b58936e161da1f43e6f643181f8a3605ba9e"
+    }
+  ],
+  "lab_modules": {
+    "dual_layer_path": {
+      "status": "passed",
+      "cases": 23
+    },
+    "executor": {
+      "status": "passed"
+    },
+    "protocol": {
+      "status": "passed",
+      "cases": 7
+    },
+    "tun_readiness": {
+      "status": "passed"
+    },
+    "kernel_conflicts": {
+      "status": "passed",
+      "cases": 12
+    },
+    "mihomo_dns": {
+      "status": "passed",
+      "cases": 6
+    },
+    "systemd_recovery": {
+      "status": "passed",
+      "cases": 2
+    },
+    "installed_transactions": {
+      "status": "failed",
+      "completed_cases": 8,
+      "failure_stage": "ingress_successive_generation_upgrade",
+      "error": "BASELINE_CHANGED"
+    }
+  },
+  "findings": [
+    {
+      "priority": "P2",
+      "title": "Volatile nftables counters invalidate deployment baselines",
+      "code": "src/wayvia/adapters/linux/__init__.py:173-215",
+      "evidence": "baseline-counter-reproduction.json",
+      "confirmed": "Counter-only increments change baseline digest despite structurally identical rules",
+      "causal_limit": "Original failure snapshots were absent; continuation instrumented installed reproduction confirms counters-only changes cause the rejection.",
+      "next_action": "Normalize only the optimistic baseline structural state; retain complete rollback snapshots and real host-conflict detection, then rerun installed transactions and full lab"
+    },
+    {
+      "priority": "P2",
+      "title": "Current committed CI isolated Linux gate failed",
+      "evidence": "ci-run.json",
+      "ci_url": "https://github.com/AAAxianyu/Wayvia/actions/runs/38347888025",
+      "failure": "Static --ip rejected on automatically allocated Docker subnet",
+      "working_tree_fix": "Use Docker-assigned addresses, inspect ownership/network before config generation; not committed or verified by a new amd64 CI run"
+    },
+    {
+      "priority": "P2",
+      "title": "Implementation status claimed all current gates passed",
+      "resolution": "Update docs/implementation-status.md and compatibility.yaml; preserve older passed records as history"
+    }
+  ],
+  "experiment_scope": "Temporary current-source snapshot with only Docker container/network/image names isolated; see lab-namespace.json and snapshot-relocation.json; production source and assertions unchanged",
+  "versions_evidence": "software-versions.json and configs/config-result.json",
+  "retained_environment_errors": [
+    "check-sandbox-blocked.json",
+    "test-configs-mount-unavailable.json"
+  ],
+  "prior_failure_evidence": "../fixes-2026-10-12/ci-follow-up/before-carrier-diagnostics/transaction-result.json",
+  "cleanup": {
+    "gate": "clean-lab.json",
+    "exit_code": 0,
+    "audit_named_containers_remaining": [],
+    "audit_named_networks_remaining": []
+  },
+  "boundaries": {
+    "development_host_network_changed": false,
+    "preexisting_experiments_modified": false,
+    "production_servers_accessed": false,
+    "mobile_import_verified": false,
+    "full_machine_reboot_verified": false,
+    "proxy_ipv6_supported": false,
+    "vpn_underlay_udp_supported": false,
+    "tunnel_business_tcp_udp_verified": true
+  },
+  "continuation": {
+    "evidence": "continuation/summary.json",
+    "root_cause": "confirmed_real_kernel_and_installed_transaction_counters_only",
+    "candidate_transactions_passed": 23,
+    "candidate_applied_to_production_source": false,
+    "current_production_gate": "still_failed"
+  },
+  "updated_at_utc": "2026-10-13T06:36:14.007567+00:00"
+}

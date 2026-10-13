@@ -1,0 +1,20 @@
+{
+  "scope": "Audit instrumentation only in temporary source snapshot; baseline digest computation, plan.check, production acceptance and lab assertions unchanged; config and unit content recorded only as digests",
+  "files": [
+    {
+      "path": "src/wayvia/adapters/linux/__init__.py",
+      "before_sha256": "5ccd6dbbebf4cde4a49c1fcdfb878f2d0e1464ea5ba6fadbfc9339a07b90d6e2",
+      "after_sha256": "1285e99494420e49cfb709aa0b6b26f85638519aec7291235df65f79c2d398b1"
+    },
+    {
+      "path": "tests/lab/transaction_probe.py",
+      "before_sha256": "5293dd7e32d705b1e5e1b35df938a60deaea57505d1a57d41da3309f15aad714",
+      "after_sha256": "839ded0b27868a5463bab843a3edd301d2de0ab1908d6b94779a7c7076c7c332"
+    },
+    {
+      "path": "scripts/transaction_lab.py",
+      "before_sha256": "0bebd39f303e02b54e52c32ca432962be5df70cbd840529e5def10511f2fb40a",
+      "after_sha256": "b566dc38673a697f5a1cf210a0305e3af52acaabcbbcc24a52f4891b3f70fcc2"
+    }
+  ]
+}

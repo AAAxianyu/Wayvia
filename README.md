@@ -17,3 +17,23 @@
 - 海外服务：通过阿里云入口接入，经代理承载的 OpenVPN 链路连接自有日本出口。
 
 日本服务器同时运行代理服务端与 OpenVPN 服务端，终端使用兼容客户端或支持的路由器接入。
+
+## 软件运行
+
+Python 3.12，使用 `uv==0.9.7` 安装锁定依赖：
+
+```sh
+uv sync --locked
+uv run wayvia --help
+uv run wayvia init
+uv run wayvia validate .wayvia/config.yaml
+uv run wayvia policy explain baidu.com
+make check
+make demo
+make test-configs
+make test-lab
+```
+
+`make demo` 在临时 SQLite 中运行明确标记为 simulated 的控制面闭环；`make demo-live` 启动可交互的本地演示 API。生产模式默认通过受限 Unix socket 请求真实入口变更，缺少 agent 时设备保持 pending，不签发可用订阅。
+
+真实组件校验与链路实验使用专属 Docker 容器，不接管开发机网络。安装、证书、代理与 VPN 运维见 [操作手册](docs/operations.md)，[实现状态](docs/implementation-status.md) 和 [兼容清单](docs/compatibility.md) 分别记录软件、隔离链路与实网验收。

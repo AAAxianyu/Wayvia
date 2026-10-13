@@ -1,0 +1,7 @@
+{
+  "recorded_at_utc": "2026-10-13T06:10:17.637110+00:00",
+  "previous_snapshot": "/private/tmp/wayvia-status-20261012-m2dongsl",
+  "snapshot": "/Users/dev2/Documents/project/Wayvia/.cache/status-review-m2dongsl",
+  "reason": "Colima Docker does not share /private/tmp; bind mount was empty. Moved unchanged snapshot under repository .cache, in /Users shared volume; environment recreated.",
+  "source_changed": false
+}

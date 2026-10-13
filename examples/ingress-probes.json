@@ -1,0 +1,50 @@
+[
+  {
+    "layer": "access",
+    "kind": "trojan_http",
+    "target": "127.0.0.1",
+    "port": 443,
+    "url": "https://YOUR-OWNED-PROBE.example/ip",
+    "expected": "203.0.113.20"
+  },
+  {
+    "layer": "carrier",
+    "kind": "vpn_handshake",
+    "target": "10.89.0.1",
+    "port": 1080,
+    "namespace": "wayvia-egress"
+  },
+  {
+    "layer": "vpn",
+    "kind": "vpn_session",
+    "target": "1.1.1.1",
+    "expected": "tun0",
+    "namespace": "wayvia-egress"
+  },
+  {
+    "layer": "egress",
+    "kind": "http",
+    "target": "https://YOUR-OWNED-PROBE.example/ip",
+    "expected": "203.0.113.20",
+    "namespace": "wayvia-egress"
+  },
+  {
+    "layer": "dns",
+    "kind": "dns",
+    "target": "1.1.1.1",
+    "port": 53,
+    "expected": "example.com",
+    "namespace": "wayvia-egress"
+  },
+  {
+    "layer": "ipv6",
+    "kind": "ipv6_guard",
+    "namespace": "wayvia-egress"
+  },
+  {
+    "layer": "return",
+    "kind": "route",
+    "target": "198.51.100.30",
+    "expected": "eth0"
+  }
+]

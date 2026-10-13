@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "container": "wayvia-status-recovery-m2dongsl",
+  "cgroup_mode": "private",
+  "host_cgroup_bind": false,
+  "pid1": "systemd",
+  "cgroup": "0::/init.scope",
+  "mount": "TARGET         SOURCE FSTYPE  OPTIONS\n/sys/fs/cgroup cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot",
+  "version": "systemd 255 (255.4-1ubuntu8.17)"
+}

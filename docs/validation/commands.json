@@ -1,0 +1,26 @@
+{
+  "timezone": "UTC",
+  "commands": [
+    {
+      "command": "make test-configs",
+      "runner": "make UV=/tmp/wayvia-bootstrap/bin/uv test-configs",
+      "executed_at": "2026-10-12T11:00:23.062118+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 27.004
+    },
+    {
+      "command": "make test-lab",
+      "runner": "make UV=/tmp/wayvia-bootstrap/bin/uv test-lab",
+      "executed_at": "2026-10-12T11:01:14.396759+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 51.332
+    },
+    {
+      "command": "make clean-lab",
+      "runner": "make UV=/tmp/wayvia-bootstrap/bin/uv clean-lab",
+      "executed_at": "2026-10-12T11:01:14.692732+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 0.295
+    }
+  ]
+}

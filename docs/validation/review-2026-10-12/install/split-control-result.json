@@ -1,0 +1,1 @@
+{"case": "cli_and_system_api_use_different_state_directories", "mode": "explicit_test_simulated_network_executor", "cli_device_status": "active", "api_device_status": "pending", "rejected_revision_code": "REVISION_STALE", "ingress_block_requests": 1, "cli_list_count": 1, "api_list_count": 1}

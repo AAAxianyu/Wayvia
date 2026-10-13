@@ -1,0 +1,1422 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "run": "ready-01",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 31,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::b6aa:c138:795:5b96",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 31,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 132,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864709.0258245,
+              "local": [
+                "172.28.0.1",
+                38080
+              ],
+              "finished_at": 1791864709.0262508
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 57,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-02",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 30,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::f049:58ba:358b:f4d6",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 30,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 120,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864714.3841362,
+              "local": [
+                "172.28.0.1",
+                35038
+              ],
+              "finished_at": 1791864714.384596
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 82,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-03",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 20,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::fb3b:3b89:7bb7:cd3e",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 20,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 114,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864720.57529,
+              "local": [
+                "172.28.0.1",
+                35054
+              ],
+              "finished_at": 1791864720.5756443
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 82,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-04",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 24,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::6bfb:3a21:7cfd:a1a8",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 24,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 109,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864725.405253,
+              "local": [
+                "172.28.0.1",
+                39232
+              ],
+              "finished_at": 1791864725.4055574
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 83,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-05",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 21,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::779c:3614:adf9:c65e",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 21,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 109,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864729.9850755,
+              "local": [
+                "172.28.0.1",
+                39238
+              ],
+              "finished_at": 1791864729.9853776
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 84,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-06",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 18,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::f59f:cfed:7fbd:9bca",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 18,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 110,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864734.866643,
+              "local": [
+                "172.28.0.1",
+                53144
+              ],
+              "finished_at": 1791864734.866935
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 82,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-07",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 20,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::3715:68ec:1ff1:a665",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 20,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 110,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864739.2836914,
+              "local": [
+                "172.28.0.1",
+                53152
+              ],
+              "finished_at": 1791864739.28401
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 83,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-08",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 19,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::5357:e4a6:d32d:f6aa",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 19,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 106,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864743.8013933,
+              "local": [
+                "172.28.0.1",
+                52720
+              ],
+              "finished_at": 1791864743.8016498
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 84,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-09",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 20,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::559:d5cf:42c2:114a",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 20,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 107,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864748.324415,
+              "local": [
+                "172.28.0.1",
+                52722
+              ],
+              "finished_at": 1791864748.324712
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 83,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-10",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 19,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::eaa3:af03:63e0:5cb0",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 19,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 113,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864752.650258,
+              "local": [
+                "172.28.0.1",
+                56462
+              ],
+              "finished_at": 1791864752.6506178
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 84,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-11",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 22,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::2767:fab0:3848:a1a",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 22,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 110,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864757.276871,
+              "local": [
+                "172.28.0.1",
+                56466
+              ],
+              "finished_at": 1791864757.2771933
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 82,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    },
+    {
+      "run": "ready-12",
+      "status": "passed",
+      "tests": {
+        "terminal_tun_kernel_ready": {
+          "name": "terminal_tun_kernel_ready",
+          "status": "passed",
+          "elapsed_ms": 21,
+          "evidence": {
+            "ready": true,
+            "interface": [
+              {
+                "ifindex": 2,
+                "ifname": "wayvia-tun",
+                "flags": [
+                  "POINTOPOINT",
+                  "MULTICAST",
+                  "NOARP",
+                  "UP",
+                  "LOWER_UP"
+                ],
+                "mtu": 1400,
+                "qdisc": "fq_codel",
+                "operstate": "UNKNOWN",
+                "group": "default",
+                "txqlen": 500,
+                "link_type": "none",
+                "addr_info": [
+                  {
+                    "family": "inet",
+                    "local": "172.28.0.1",
+                    "prefixlen": 30,
+                    "broadcast": "172.28.0.3",
+                    "scope": "global",
+                    "label": "wayvia-tun",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fd77:7761:7976::1",
+                    "prefixlen": 126,
+                    "scope": "global",
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  },
+                  {
+                    "family": "inet6",
+                    "local": "fe80::ef12:c1d:648e:6afc",
+                    "prefixlen": 64,
+                    "scope": "link",
+                    "stable-privacy": true,
+                    "valid_life_time": 4294967295,
+                    "preferred_life_time": 4294967295
+                  }
+                ]
+              }
+            ],
+            "route": [
+              {
+                "dst": "10.74.0.2",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "prefsrc": "172.28.0.1",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "bound_route": [
+              {
+                "dst": "10.74.0.2",
+                "from": "172.28.0.1",
+                "gateway": "172.28.0.2",
+                "dev": "wayvia-tun",
+                "table": "2022",
+                "flags": [],
+                "uid": 0,
+                "cache": []
+              }
+            ],
+            "selected_source": "172.28.0.1",
+            "elapsed_ms": 21,
+            "observations": 1
+          }
+        },
+        "foreign_native_tcp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 113,
+          "evidence": {
+            "target": "foreign",
+            "peer": "10.74.0.1",
+            "connection": {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1791864761.8739715,
+              "local": [
+                "172.28.0.1",
+                33066
+              ],
+              "finished_at": 1791864761.8743057
+            }
+          }
+        },
+        "foreign_native_udp_intercepted_by_rendered_tun": {
+          "name": "foreign_native_udp_intercepted_by_rendered_tun",
+          "status": "passed",
+          "elapsed_ms": 85,
+          "evidence": {
+            "payload": "foreign:wayvia-native-udp"
+          }
+        }
+      }
+    }
+  ],
+  "scope": "12 independent container cold starts; exact first native TCP/UDP assertions, each once after explicit kernel readiness. Remaining fault cases are covered separately by full lab."
+}

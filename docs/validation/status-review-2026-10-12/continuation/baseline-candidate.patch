@@ -1,0 +1,16 @@
+--- a/src/wayvia/adapters/linux/__init__.py
++++ b/src/wayvia/adapters/linux/__init__.py
+@@ -208,6 +208,13 @@
+                 snapshot = {"exists": False}
+             else:
+                 snapshot = self.inspect_action(action)
++            # Counters are runtime statistics. Keep full capture/rollback state,
++            # but compare structural rules when validating a deployment baseline.
++            if action.kind in {"guard", "exit_nat"} and isinstance(snapshot.get("rules"), str):
++                snapshot = {
++                    **snapshot,
++                    "rules": re.sub(r"counter packets \d+ bytes \d+", "counter", snapshot["rules"]),
++                }
+             state.append({"key": self._key(action), "snapshot": snapshot})
+         host = self._cmd(["ip", "-j", "route", "show", "table", "main"]).stdout
+         return hashlib.sha256(

@@ -1,0 +1,74 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked python scripts/test_configs.py
+sing-box 1.14.3: SHA256 verified
+mihomo 1.19.32: SHA256 verified
+v2raya 2.5.10: SHA256 verified
+v2ray 5.53.0: SHA256 verified
+v2raya_core 2.5.10: SHA256 verified
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.10kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 175B done
+#3 DONE 0.0s
+
+#4 [1/7] FROM docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#4 resolve docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 257.93MB 2.4s done
+#5 DONE 2.4s
+
+#6 [3/7] COPY .cache/components/arm64/sing-box .cache/components/arm64/mihomo .cache/components/arm64/v2raya .cache/components/arm64/v2raya_core .cache/components/arm64/v2ray /usr/local/bin/
+#6 CACHED
+
+#7 [4/7] COPY .cache/components/arm64/geoip.dat .cache/components/arm64/geosite.dat /usr/local/share/v2raya/
+#7 CACHED
+
+#8 [5/7] COPY .cache/lab-python/arm64/ /opt/wayvia-lab-wheels/
+#8 CACHED
+
+#9 [2/7] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping && rm -rf /var/lib/apt/lists/*
+#9 CACHED
+
+#10 [6/7] RUN python3 -m venv /opt/wayvia-lab-python && /opt/wayvia-lab-python/bin/pip install --no-index --require-hashes --find-links /opt/wayvia-lab-wheels -r /opt/wayvia-lab-wheels/requirements.txt
+#10 CACHED
+
+#11 [7/7] COPY deploy/lab/ /opt/wayvia-lab/
+#11 DONE 0.2s
+
+#12 exporting to image
+#12 exporting layers 0.1s done
+#12 exporting manifest sha256:5f35de41617d459f8a83086c43e6baf7a5e843cbe574a0cd6d5229156c30b456 done
+#12 exporting config sha256:3c091e77fe64a8a8b465e774c86ede77076c72b449d8d6200b09457a3986a864 done
+#12 exporting attestation manifest sha256:6432b42be112e12765e79e16ff6fadbb3b913902a427aab6d7de76ca219691da 0.0s done
+#12 exporting manifest list sha256:ca3b06cd9e26792f40f2df6e43bf862a22e10f3adda84eb74cc52b7de3aee6d7
+#12 exporting manifest list sha256:ca3b06cd9e26792f40f2df6e43bf862a22e10f3adda84eb74cc52b7de3aee6d7 0.0s done
+#12 naming to docker.io/library/wayvia-lab:locked done
+#12 unpacking to docker.io/library/wayvia-lab:locked 0.0s done
+#12 DONE 0.2s
+sing-box version 1.14.3
+
+Environment: go1.26.8 linux/arm64
+Tags: with_gvisor,with_quic,with_dhcp,with_wireguard,with_utls,with_acme,with_clash_api,with_tailscale,with_ccm,with_ocm,with_cloudflared,with_naive_outbound,with_usbip,with_openvpn,with_openconnect,badlinkname,tfogo_checklinkname0,with_purego
+Revision: 7054cac5124465ffdb145870d7c01885566711b1
+CGO: disabled
+Mihomo Meta v1.19.32 linux arm64 with go1.26.8 Wed Sep 30 16:55:22 UTC 2026
+Use tags: with_gvisor
+2.5.10
+V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)
+OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]
+library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10
+DCO version: N/A
+Originally developed by James Yonan
+Copyright (C) 2002-2024 OpenVPN Inc <sales@openvpn.net>
+Compile time defines: enable_async_push=no enable_comp_stub=no enable_crypto_ofb_cfb=yes enable_dco=yes enable_dco_arg=yes enable_debug=yes enable_dependency_tracking=no enable_dlopen=unknown enable_dlopen_self=unknown enable_dlopen_self_static=unknown enable_fast_install=needless enable_fragment=yes enable_iproute2=no enable_libtool_lock=yes enable_lz4=yes enable_lzo=yes enable_maintainer_mode=no enable_management=yes enable_option_checking=no enable_pam_dlopen=no enable_pedantic=no enable_pkcs11=yes enable_plugin_auth_pam=yes enable_plugin_down_root=yes enable_plugins=yes enable_port_share=yes enable_selinux=no enable_shared=yes enable_shared_with_static_runtimes=no enable_silent_rules=no enable_small=no enable_static=yes enable_strict=no enable_strict_options=no enable_systemd=yes enable_unit_tests=no enable_werror=no enable_win32_dll=yes enable_wolfssl_options_h=yes enable_x509_alt_username=yes with_aix_soname=aix with_crypto_library=openssl with_gnu_ld=yes with_mem_check=no with_openssl_engine=auto with_sysroot=no
+{"name": "namespace_capability", "status": "passed", "elapsed_ms": 1869, "evidence": {"namespaces": ["terminal", "domestic", "ali", "wayvia-egress", "jp", "foreign"], "development_host_routes_modified": false, "egress_default_physical_route": true, "unprotected_physical_baseline": {"target": "foreign", "peer": "10.73.0.1"}, "production_guard_blocks_same_path": true}}
+{"namespaces": ["terminal", "domestic", "ali", "wayvia-egress", "jp", "foreign"], "development_host_routes_modified": false, "egress_default_physical_route": true, "unprotected_physical_baseline": {"target": "foreign", "peer": "10.73.0.1"}, "production_guard_blocks_same_path": true}
+{"status": "passed", "artifacts_validated": 10}

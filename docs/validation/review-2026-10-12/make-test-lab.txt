@@ -1,0 +1,66 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked python scripts/lab.py
+sing-box 1.14.3: SHA256 verified
+mihomo 1.19.32: SHA256 verified
+v2raya 2.5.10: SHA256 verified
+v2ray 5.53.0: SHA256 verified
+v2raya_core 2.5.10: SHA256 verified
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.10kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 175B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 ...
+
+#5 [1/7] FROM docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#5 resolve docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 0.0s done
+#5 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 257.89MB 1.6s done
+#4 DONE 1.6s
+
+#6 [5/7] COPY .cache/lab-python/arm64/ /opt/wayvia-lab-wheels/
+#6 CACHED
+
+#7 [3/7] COPY .cache/components/arm64/sing-box .cache/components/arm64/mihomo .cache/components/arm64/v2raya .cache/components/arm64/v2raya_core .cache/components/arm64/v2ray /usr/local/bin/
+#7 CACHED
+
+#8 [6/7] RUN python3 -m venv /opt/wayvia-lab-python && /opt/wayvia-lab-python/bin/pip install --no-index --require-hashes --find-links /opt/wayvia-lab-wheels -r /opt/wayvia-lab-wheels/requirements.txt
+#8 CACHED
+
+#9 [2/7] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping && rm -rf /var/lib/apt/lists/*
+#9 CACHED
+
+#10 [4/7] COPY .cache/components/arm64/geoip.dat .cache/components/arm64/geosite.dat /usr/local/share/v2raya/
+#10 CACHED
+
+#11 [7/7] COPY deploy/lab/ /opt/wayvia-lab/
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:6b8374fd24ef616719e75f1fed8baba48d96cebfa8cf0bc05db85ef6446bfcc4 done
+#12 exporting config sha256:75b7b90d8e0c3132c1842e4836535d680c862aa61a7f5ddf784d467f7138ed7f done
+#12 exporting attestation manifest sha256:d098267d44a02f738fd8fb9b442f61c34808912fb3b4d54c50cdc41a55846ee4 0.0s done
+#12 exporting manifest list sha256:d0548eac2c355f745a4b17f4d3e9ffcc1843ed7aaa83f9855bf238e3004eee43 done
+#12 naming to docker.io/library/wayvia-lab:locked done
+#12 unpacking to docker.io/library/wayvia-lab:locked done
+#12 DONE 0.1s
+{"name": "isolated_topology", "status": "passed", "elapsed_ms": 1657, "evidence": {"namespaces": ["terminal", "domestic", "ali", "wayvia-egress", "jp", "foreign"], "development_host_routes_modified": false, "egress_default_physical_route": true, "unprotected_physical_baseline": {"target": "foreign", "peer": "10.73.0.1"}, "production_guard_blocks_same_path": true}}
+{"name": "temporary_ca_and_identity", "status": "passed", "elapsed_ms": 975, "evidence": {"temporary_ca": true, "server_identity_checked": true, "keys_exported": false}}
+{"name": "v2raya_manages_matching_core", "status": "passed", "elapsed_ms": 963, "evidence": {"version": {"version": "2.5.10", "coreVersion": "2.5.10", "coreVersionValid": true, "serviceValid": true, "variant": "V2rayaCore"}, "configured": true, "production_adapter": true, "explicit_bootstrap_resolver": "10.73.0.1", "resolved_carrier": "10.73.0.2", "tls_server_name": "carrier.lab", "imported_server": true, "core_managed_by_v2raya": true}}
+{"name": "foreign_tcp_dual_layer_japan_nat", "status": "passed", "elapsed_ms": 976, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "domestic_tcp_terminal_direct", "status": "passed", "elapsed_ms": 67, "evidence": {"target": "domestic", "peer": "10.71.0.2"}}
+{"name": "foreign_native_tcp_intercepted_by_rendered_tun", "status": "failed", "elapsed_ms": 4034, "error": "native-tcp 10.74.0.2 expected success=True: {\"error\": \"timed out\"}\n"}
+LAB FAILED: native-tcp 10.74.0.2 expected success=True: {"error": "timed out"}
+
+make: *** [test-lab] Error 1

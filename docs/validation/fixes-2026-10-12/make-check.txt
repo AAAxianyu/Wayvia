@@ -1,0 +1,92 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked ruff format --check src tests scripts deploy
+66 files already formatted
+/tmp/wayvia-bootstrap/bin/uv run --locked ruff check src tests scripts deploy
+All checks passed!
+/tmp/wayvia-bootstrap/bin/uv run --locked pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/dev2/Documents/project/Wayvia
+configfile: pyproject.toml
+testpaths: tests/unit, tests/contract, tests/integration
+plugins: anyio-4.15.1, cov-7.0.0
+collected 291 items
+
+tests/unit/test_policy_config.py ....................................... [ 13%]
+...                                                                      [ 14%]
+tests/unit/test_render_profiles.py .................                     [ 20%]
+tests/unit/test_transaction_revisions.py ........................        [ 28%]
+tests/unit/test_transactions.py ........................                 [ 36%]
+tests/contract/test_adapters.py ...................                      [ 43%]
+tests/contract/test_command_process_tree.py ...                          [ 44%]
+tests/contract/test_diagnostics.py ..................................    [ 56%]
+tests/contract/test_preflight_certificates.py ..                         [ 56%]
+tests/contract/test_protocol_probe_security.py ............              [ 60%]
+tests/contract/test_protocol_probes.py ...............                   [ 65%]
+tests/contract/test_resource_conflicts.py .......................        [ 73%]
+tests/contract/test_topology.py ......                                   [ 75%]
+tests/integration/test_cli.py ......                                     [ 78%]
+tests/integration/test_control.py ...........                            [ 81%]
+tests/integration/test_install.py ........................               [ 90%]
+tests/integration/test_packaging.py .                                    [ 90%]
+tests/integration/test_publication_recovery.py ...............           [ 95%]
+tests/integration/test_transaction_lab.py .............                  [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/typer/__init__.py:24
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:24: DeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_binary_stream as get_binary_stream
+
+.venv/lib/python3.12/site-packages/typer/__init__.py:25
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:25: DeprecationWarning: 'click.utils.get_text_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_text_stream as get_text_stream
+
+.venv/lib/python3.12/site-packages/starlette/testclient.py:51
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/starlette/testclient.py:51: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================== 291 passed, 3 warnings in 82.64s (0:01:22) ==================
+/tmp/wayvia-bootstrap/bin/uv build
+Building source distribution...
+Building wheel from source distribution...
+Successfully built dist/wayvia-0.1.0.tar.gz
+Successfully built dist/wayvia-0.1.0-py3-none-any.whl
+/tmp/wayvia-bootstrap/bin/uv run --locked wayvia --help
+
+ Usage: wayvia [OPTIONS] [COMMAND] [ARGS]...
+
+ Wayvia split-routing gateway control plane
+
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --data-dir                  PATH                                             │
+│ --config                    PATH                                             │
+│ --mode                      TEXT  [default: production]                      │
+│ --agent-socket              PATH                                             │
+│ --system                          Use the installed wayvia service identity  │
+│                                   and control directory                      │
+│ --version                                                                    │
+│ --install-completion              Install completion for the current shell.  │
+│ --show-completion                 Show completion for the current shell, to  │
+│                                   copy it or customize the installation.     │
+│ --help                            Show this message and exit.                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────╮
+│ init                                                                         │
+│ validate                                                                     │
+│ render                                                                       │
+│ plan                                                                         │
+│ apply                                                                        │
+│ confirm                                                                      │
+│ rollback                                                                     │
+│ status                                                                       │
+│ doctor                                                                       │
+│ serve                                                                        │
+│ agent                                                                        │
+│ device                                                                       │
+│ subscription                                                                 │
+│ policy                                                                       │
+│ profile                                                                      │
+│ secret                                                                       │
+│ rules                                                                        │
+│ config                                                                       │
+╰──────────────────────────────────────────────────────────────────────────────╯

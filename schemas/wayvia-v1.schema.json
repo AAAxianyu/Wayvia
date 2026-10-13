@@ -1,0 +1,505 @@
+{
+  "$defs": {
+    "Carrier": {
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "protocol": {
+          "const": "trojan",
+          "default": "trojan",
+          "title": "Protocol",
+          "type": "string"
+        },
+        "tls_certificate_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Tls Certificate Ref",
+          "type": "string"
+        },
+        "server_name": {
+          "title": "Server Name",
+          "type": "string"
+        },
+        "listen": {
+          "default": "0.0.0.0",
+          "title": "Listen",
+          "type": "string"
+        },
+        "credential_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Credential Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endpoint",
+        "tls_certificate_ref",
+        "server_name",
+        "credential_ref"
+      ],
+      "title": "Carrier",
+      "type": "object"
+    },
+    "DNS": {
+      "additionalProperties": false,
+      "properties": {
+        "domestic_resolver_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Domestic Resolver Ref",
+          "type": "string"
+        },
+        "internal_resolver_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Internal Resolver Ref",
+          "type": "string"
+        },
+        "proxy_resolver_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Proxy Resolver Ref",
+          "type": "string"
+        },
+        "bootstrap_resolver_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Bootstrap Resolver Ref",
+          "type": "string"
+        },
+        "resolvers": {
+          "patternProperties": {
+            "^[a-z][a-z0-9-]{0,63}$": {
+              "$ref": "#/$defs/Resolver"
+            }
+          },
+          "title": "Resolvers",
+          "type": "object"
+        }
+      },
+      "required": [
+        "domestic_resolver_ref",
+        "internal_resolver_ref",
+        "proxy_resolver_ref",
+        "bootstrap_resolver_ref",
+        "resolvers"
+      ],
+      "title": "DNS",
+      "type": "object"
+    },
+    "Deployment": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "mode": {
+          "default": "production",
+          "enum": [
+            "production",
+            "lab"
+          ],
+          "title": "Mode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "Deployment",
+      "type": "object"
+    },
+    "Entry": {
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "protocol": {
+          "const": "trojan",
+          "default": "trojan",
+          "title": "Protocol",
+          "type": "string"
+        },
+        "tls_certificate_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Tls Certificate Ref",
+          "type": "string"
+        },
+        "server_name": {
+          "title": "Server Name",
+          "type": "string"
+        },
+        "listen": {
+          "default": "0.0.0.0",
+          "title": "Listen",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endpoint",
+        "tls_certificate_ref",
+        "server_name"
+      ],
+      "title": "Entry",
+      "type": "object"
+    },
+    "ExplicitRule": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Domain"
+        },
+        "cidr": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cidr"
+        },
+        "action": {
+          "enum": [
+            "direct",
+            "block"
+          ],
+          "title": "Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "action"
+      ],
+      "title": "ExplicitRule",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "domestic_rules_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Domestic Rules Ref",
+          "type": "string"
+        },
+        "domestic_domain_rules_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Domestic Domain Rules Ref"
+        },
+        "local_rules_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Local Rules Ref",
+          "type": "string"
+        },
+        "default_action": {
+          "const": "proxy",
+          "default": "proxy",
+          "title": "Default Action",
+          "type": "string"
+        },
+        "proxy_ipv6": {
+          "const": "block_until_supported",
+          "default": "block_until_supported",
+          "title": "Proxy Ipv6",
+          "type": "string"
+        },
+        "udp": {
+          "default": "allow",
+          "enum": [
+            "allow",
+            "block"
+          ],
+          "title": "Udp",
+          "type": "string"
+        },
+        "explicit_rules": {
+          "items": {
+            "$ref": "#/$defs/ExplicitRule"
+          },
+          "title": "Explicit Rules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "domestic_rules_ref",
+        "local_rules_ref"
+      ],
+      "title": "Policy",
+      "type": "object"
+    },
+    "Resolver": {
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "title": "Address",
+          "type": "string"
+        },
+        "port": {
+          "default": 53,
+          "maximum": 65535,
+          "minimum": 1,
+          "title": "Port",
+          "type": "integer"
+        },
+        "protocol": {
+          "default": "udp",
+          "enum": [
+            "udp",
+            "tcp",
+            "tls",
+            "https"
+          ],
+          "title": "Protocol",
+          "type": "string"
+        },
+        "server_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Server Name"
+        },
+        "path": {
+          "default": "/dns-query",
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "address"
+      ],
+      "title": "Resolver",
+      "type": "object"
+    },
+    "RuleSet": {
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "maxLength": 512,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "domains": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Domains",
+          "type": "array"
+        },
+        "cidrs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Cidrs",
+          "type": "array"
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sha256"
+        },
+        "source_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Sha256"
+        }
+      },
+      "required": [
+        "source",
+        "version"
+      ],
+      "title": "RuleSet",
+      "type": "object"
+    },
+    "VPN": {
+      "additionalProperties": false,
+      "properties": {
+        "transport": {
+          "const": "tcp",
+          "default": "tcp",
+          "title": "Transport",
+          "type": "string"
+        },
+        "remote_on_exit": {
+          "default": "127.0.0.1:1194",
+          "title": "Remote On Exit",
+          "type": "string"
+        },
+        "client_certificate_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Client Certificate Ref",
+          "type": "string"
+        },
+        "server_certificate_ref": {
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Server Certificate Ref",
+          "type": "string"
+        },
+        "ca_ref": {
+          "default": "vpn-ca",
+          "pattern": "^[a-z][a-z0-9-]{0,63}$",
+          "title": "Ca Ref",
+          "type": "string"
+        },
+        "server_name": {
+          "default": "wayvia-vpn-server",
+          "pattern": "^[a-zA-Z0-9_.-]{1,64}$",
+          "title": "Server Name",
+          "type": "string"
+        },
+        "tls_crypt_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[a-z][a-z0-9-]{0,63}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tls Crypt Ref"
+        },
+        "subnet": {
+          "default": "10.77.0.0/24",
+          "title": "Subnet",
+          "type": "string"
+        },
+        "interface": {
+          "const": "tun0",
+          "default": "tun0",
+          "title": "Interface",
+          "type": "string"
+        },
+        "mtu": {
+          "default": 1400,
+          "maximum": 1500,
+          "minimum": 1200,
+          "title": "Mtu",
+          "type": "integer"
+        },
+        "expected_exit_ip": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Exit Ip"
+        }
+      },
+      "required": [
+        "client_certificate_ref",
+        "server_certificate_ref"
+      ],
+      "title": "VPN",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "deployment": {
+      "$ref": "#/$defs/Deployment"
+    },
+    "entry": {
+      "$ref": "#/$defs/Entry"
+    },
+    "carrier": {
+      "$ref": "#/$defs/Carrier"
+    },
+    "vpn": {
+      "$ref": "#/$defs/VPN"
+    },
+    "policy": {
+      "$ref": "#/$defs/Policy"
+    },
+    "dns": {
+      "$ref": "#/$defs/DNS"
+    },
+    "rulesets": {
+      "patternProperties": {
+        "^[a-z][a-z0-9-]{0,63}$": {
+          "$ref": "#/$defs/RuleSet"
+        }
+      },
+      "title": "Rulesets",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "deployment",
+    "entry",
+    "carrier",
+    "vpn",
+    "policy",
+    "dns",
+    "rulesets"
+  ],
+  "title": "WayviaConfig",
+  "type": "object"
+}

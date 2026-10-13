@@ -1,0 +1,10 @@
+{
+  "command": "make test-configs UV=/tmp/wayvia-bootstrap/bin/uv",
+  "cwd": "/Users/dev2/Documents/project/Wayvia/.cache/status-review-m2dongsl",
+  "started_at_utc": "2026-10-13T06:10:35.667798+00:00",
+  "completed_at_utc": "2026-10-13T06:11:19.272512+00:00",
+  "duration_seconds": 43.604,
+  "exit_code": 0,
+  "log": "test-configs.txt",
+  "log_sha256": "9d5f721631f2c01812c8f84ea280759b76f1dc9baa221a5080f92aa712757450"
+}

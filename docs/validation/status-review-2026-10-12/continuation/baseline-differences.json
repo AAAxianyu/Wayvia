@@ -1,0 +1,301 @@
+{
+  "scope": "unmodified baseline algorithm with audit-only observations in disposable installed transactions",
+  "roles": {
+    "exit": {
+      "observations": 6,
+      "different_consecutive_pairs": [
+        {
+          "observation_before": 1,
+          "observation_after": 2,
+          "digest_before": "a2f9f540b929e59f487256a67b8eb695b09483b5d7a028a12a465cfa0386ad57",
+          "digest_after": "85730267d53bc276b5b4467bd2ad110462d1e33e7f59fc577b411c41f239ac49",
+          "changed_resources": [
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "fields": [
+                "exists",
+                "rules",
+                "snapshot_digest"
+              ],
+              "only_nft_counters_changed": false,
+              "counters_before": [],
+              "counters_after": [
+                "counter packets 13 bytes 860"
+              ]
+            },
+            {
+              "key": "install_config:host:exit.json",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "fields": [
+                "active",
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "fields": [
+                "active",
+                "exists",
+                "snapshot_digest"
+              ]
+            }
+          ],
+          "routes_changed": true
+        },
+        {
+          "observation_before": 3,
+          "observation_after": 4,
+          "digest_before": "85730267d53bc276b5b4467bd2ad110462d1e33e7f59fc577b411c41f239ac49",
+          "digest_after": "ec5a7c56c38df6ac1d8e06b93a5847e8e76e1e42a641545caad1bbaf3ca961b1",
+          "changed_resources": [
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "fields": [
+                "rules",
+                "snapshot_digest"
+              ],
+              "only_nft_counters_changed": true,
+              "counters_before": [
+                "counter packets 13 bytes 860"
+              ],
+              "counters_after": [
+                "counter packets 0 bytes 0"
+              ]
+            }
+          ],
+          "routes_changed": false
+        }
+      ],
+      "current_generations": [
+        {
+          "id": "42d3e8c61bf14da7aa9faa0fe0539a22",
+          "state": "ROLLED_BACK",
+          "current": false
+        },
+        {
+          "id": "a42edcbec39949ad845e0b427a299ec7",
+          "state": "ACTIVE",
+          "current": true
+        },
+        {
+          "id": "e032f93d2fa3491b8d6b26ed7b888c0d",
+          "state": "ROLLED_BACK",
+          "current": false
+        }
+      ]
+    },
+    "ingress": {
+      "observations": 6,
+      "different_consecutive_pairs": [
+        {
+          "observation_before": 1,
+          "observation_after": 2,
+          "digest_before": "1f6bac82daca4c62ffd9bfa268d4b0f0c455a65c5453c377a2fcea15a6f22bd5",
+          "digest_after": "fbce5a1a243aa6945d4b2f0879e04b0fd9ce2aac947a7c7423c265741aa5776d",
+          "changed_resources": [
+            {
+              "key": "guard:host:wayvia_guard",
+              "fields": [
+                "exists",
+                "rules",
+                "snapshot_digest"
+              ],
+              "only_nft_counters_changed": false,
+              "counters_before": [],
+              "counters_after": [
+                "counter packets 0 bytes 0"
+              ]
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "fields": [
+                "exists",
+                "rules",
+                "snapshot_digest"
+              ],
+              "only_nft_counters_changed": false,
+              "counters_before": [],
+              "counters_after": [
+                "counter packets 11 bytes 688"
+              ]
+            },
+            {
+              "key": "install_config:host:bridge.json",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "fields": [
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "fields": [
+                "active",
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "fields": [
+                "active",
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "fields": [
+                "active",
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "fields": [
+                "active",
+                "exists",
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "fields": [
+                "exists",
+                "snapshot_digest",
+                "state"
+              ]
+            }
+          ],
+          "routes_changed": true
+        },
+        {
+          "observation_before": 3,
+          "observation_after": 4,
+          "digest_before": "fbce5a1a243aa6945d4b2f0879e04b0fd9ce2aac947a7c7423c265741aa5776d",
+          "digest_after": "a441c78085647f832bb6d0c8854f01fecbd6bea4ed71d6db47f93a40ad85a024",
+          "changed_resources": [
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "fields": [
+                "rules",
+                "snapshot_digest"
+              ],
+              "only_nft_counters_changed": true,
+              "counters_before": [
+                "counter packets 11 bytes 688"
+              ],
+              "counters_after": [
+                "counter packets 1 bytes 48"
+              ]
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "fields": [
+                "snapshot_digest"
+              ]
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "fields": [
+                "snapshot_digest"
+              ]
+            }
+          ],
+          "routes_changed": false
+        },
+        {
+          "observation_before": 4,
+          "observation_after": 5,
+          "digest_before": "a441c78085647f832bb6d0c8854f01fecbd6bea4ed71d6db47f93a40ad85a024",
+          "digest_after": "18396ac47e7f1c0032801ea6b99fa051bfac1b32e40da7e75dca6f543e6d7fd0",
+          "changed_resources": [
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "fields": [
+                "rules",
+                "snapshot_digest"
+              ],
+              "only_nft_counters_changed": true,
+              "counters_before": [
+                "counter packets 1 bytes 48"
+              ],
+              "counters_after": [
+                "counter packets 2 bytes 96"
+              ]
+            }
+          ],
+          "routes_changed": false
+        }
+      ],
+      "current_generations": [
+        {
+          "id": "477c900971b54330a5e98947db3a18bb",
+          "state": "ACTIVE",
+          "current": true
+        },
+        {
+          "id": "9d9754b160264fca958892e95e865cb3",
+          "state": "SUPERSEDED",
+          "current": false
+        }
+      ]
+    }
+  }
+}

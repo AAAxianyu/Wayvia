@@ -1,0 +1,54 @@
+{
+  "scope": "production TransactionManager with explicitly simulated test executor; read-only preflight stub",
+  "rollback_confirmed_successor": {
+    "predecessor_state": "SUPERSEDED",
+    "successor_state": "ROLLED_BACK",
+    "rebuild_result": [],
+    "rebuild_actions": []
+  },
+  "degraded_recovery_dead_end": {
+    "initial_fault": "DEGRADED",
+    "healthy_again": "DEGRADED",
+    "explicit_recover": [],
+    "fresh_apply_error": "TRANSACTION_PENDING"
+  },
+  "monitor_old_active_during_pending_successor": {
+    "old_state": "DEGRADED",
+    "new_state": "AWAITING_CONFIRM",
+    "events": [
+      [
+        "protect",
+        "ingress"
+      ]
+    ]
+  },
+  "exit_unowned_tun0_and_subnet_overlap": {
+    "preflight_result": "accepted",
+    "commands_queried": [
+      [
+        "ip",
+        "-j",
+        "address",
+        "show"
+      ],
+      [
+        "ss",
+        "-H",
+        "-ltnp"
+      ]
+    ]
+  },
+  "apply_does_not_enforce_latest_device_checkpoint": {
+    "real_render_and_topology_validation": "passed",
+    "checkpoint_devices": [],
+    "installed_device_names": [
+      "revoked-device"
+    ],
+    "transaction_state": "AWAITING_CONFIRM",
+    "note": "A real race can render old users, revoke, then capture the new baseline; normal apply does not overlay the checkpoint as recovery does."
+  },
+  "confirmation_passes_deadline_during_probes": {
+    "state": "ACTIVE",
+    "confirmed_after_deadline": true
+  }
+}
