@@ -64,6 +64,19 @@ def require_absent():
             )
 
 
+def container_address(role):
+    data = json.loads(command(["docker", "inspect", NAMES[role]]).stdout)[0]
+    if (data["Config"].get("Labels") or {}).get("org.wayvia.disposable") != "transaction":
+        raise RuntimeError("refusing an unowned transaction container address: " + role)
+    endpoint = data["NetworkSettings"]["Networks"].get(NETWORK)
+    if not endpoint:
+        raise RuntimeError("transaction container is not on the owned network: " + role)
+    address = ipaddress.ip_address(endpoint["IPAddress"])
+    if address.version != 4 or address.is_unspecified or address.is_loopback:
+        raise RuntimeError("transaction container has no usable IPv4 address: " + role)
+    return str(address)
+
+
 def build():
     architecture = command(["docker", "info", "--format", "{{.Architecture}}"]).stdout.strip()
     architecture = {"aarch64": "arm64", "x86_64": "amd64"}.get(architecture, architecture)
@@ -304,13 +317,7 @@ def run(output):
             require_absent()
             started = True
             command(["docker", "network", "create", "--internal", "--label", LABEL, NETWORK])
-            network = json.loads(command(["docker", "network", "inspect", NETWORK]).stdout)[0]
-            subnet = ipaddress.ip_network(network["IPAM"]["Config"][0]["Subnet"])
-            addresses = {
-                role: str(subnet.network_address + index)
-                for index, role in enumerate(NAMES, start=2)
-            }
-            inputs(directory, addresses)
+            addresses = {}
             for role in ("ingress", "exit"):
                 command(
                     [
@@ -325,8 +332,6 @@ def run(output):
                         "--privileged",
                         "--network",
                         NETWORK,
-                        "--ip",
-                        addresses[role],
                         "--cgroupns",
                         "private",
                         "--tmpfs",
@@ -342,6 +347,7 @@ def run(output):
                         IMAGE,
                     ]
                 )
+                addresses[role] = container_address(role)
                 for _ in range(100):
                     state = command(
                         ["docker", "exec", NAMES[role], "systemctl", "is-system-running"],
@@ -368,17 +374,19 @@ def run(output):
                     LABEL,
                     "--network",
                     NETWORK,
-                    "--ip",
-                    addresses["target"],
                     "--entrypoint",
                     "python3",
                     "wayvia-lab:locked",
-                    "/opt/wayvia-lab/target.py",
-                    "foreign",
-                    addresses["target"],
-                    "/tmp/requests.jsonl",
+                    "-c",
+                    "import os,socket; "
+                    "address=socket.gethostbyname(socket.gethostname()); "
+                    "os.execvp('python3', ['python3', '/opt/wayvia-lab/target.py', "
+                    "'foreign', address, '/tmp/requests.jsonl'])",
                 ]
             )
+            addresses["target"] = container_address("target")
+            inputs(directory, addresses)
+            report["address_allocation"] = "docker_assigned_and_inspected_owned_network"
             for role in ("exit", "ingress"):
                 report["cases"].append(
                     {"name": role + "_system_install", "result": action(role, "install")}

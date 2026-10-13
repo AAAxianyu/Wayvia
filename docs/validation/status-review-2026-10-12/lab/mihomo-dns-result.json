@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "version": "Mihomo Meta v1.19.32 linux arm64 with go1.26.8 Wed Sep 30 16:55:22 UTC 2026\nUse tags: with_gvisor",
+  "scope": "production mihomo DNS policy with real local UDP resolvers; TUN disabled for DNS-only test",
+  "cases": [
+    {
+      "case": "same_suffix",
+      "domain": "sso.overlap.example",
+      "answer": "192.0.2.10",
+      "resolvers_contacted": [
+        "internal"
+      ],
+      "status": "passed"
+    },
+    {
+      "case": "earlier_parent",
+      "domain": "sso.child.campus.example",
+      "answer": "192.0.2.10",
+      "resolvers_contacted": [
+        "internal"
+      ],
+      "status": "passed"
+    },
+    {
+      "case": "earlier_child",
+      "domain": "sso.child.priority.example",
+      "answer": "192.0.2.10",
+      "resolvers_contacted": [
+        "internal"
+      ],
+      "status": "passed"
+    },
+    {
+      "case": "later_parent_uncovered_child",
+      "domain": "other.priority.example",
+      "answer": "192.0.2.20",
+      "resolvers_contacted": [
+        "domestic"
+      ],
+      "status": "passed"
+    },
+    {
+      "case": "bootstrap_exact_survives_suffix",
+      "domain": "entry.wayvia.example",
+      "answer": "192.0.2.30",
+      "resolvers_contacted": [
+        "bootstrap"
+      ],
+      "status": "passed"
+    },
+    {
+      "case": "bootstrap_does_not_cover_children",
+      "domain": "child.entry.wayvia.example",
+      "answer": "192.0.2.20",
+      "resolvers_contacted": [
+        "domestic"
+      ],
+      "status": "passed"
+    }
+  ]
+}

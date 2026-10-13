@@ -1,0 +1,19 @@
+{
+  "status": "root_cause_confirmed_in_instrumented_reproduction",
+  "failed_generation": "third_ingress_plan_after_second_generation_confirmed",
+  "observations": [
+    4,
+    5
+  ],
+  "changed_resources": [
+    "guard:wayvia-egress:wayvia_guard"
+  ],
+  "configuration_services_and_routes_unchanged": true,
+  "counter_before": "packets 1 bytes 48",
+  "counter_after": "packets 2 bytes 96",
+  "failure": "BASELINE_CHANGED",
+  "failure_before_transaction_creation": true,
+  "previous_generation_remained_active": true,
+  "scope": "audit-only snapshot instrumentation; all original transaction assertions and checks retained",
+  "evidence": "trace/transaction-result.json"
+}

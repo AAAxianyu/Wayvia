@@ -1,0 +1,89 @@
+{
+  "recorded_at_utc": "2026-10-13T06:36:14.007567+00:00",
+  "local_date": "2026-10-12",
+  "timezone": "America/Los_Angeles",
+  "source_commit": "739eef73d6185e6cad7b436b23a09a4be8d3dc60",
+  "source_scope": "current working tree plus preexisting changes; production source unchanged by inspection",
+  "production_code_changed": false,
+  "production_source_changes_since_original_snapshot": [],
+  "root_cause": "nft live packet/byte counters are included in optimistic deployment baseline",
+  "root_cause_evidence": "root-cause.json",
+  "actual_kernel_evidence": "kernel-baseline-result.json",
+  "formal_reproduction": {
+    "status": "failed_as_expected_existing_defect",
+    "exit_code": 1,
+    "completed_cases": 8,
+    "failed_generation": "third_ingress_plan_after_second_generation_confirmed",
+    "counter_before": "packets 1 bytes 48",
+    "counter_after": "packets 2 bytes 96",
+    "configuration_services_and_routes_unchanged": true,
+    "previous_generation_remained_active": true,
+    "evidence": "trace/transaction-result.json"
+  },
+  "candidate": {
+    "status": "validated_in_temporary_snapshot_only",
+    "production_source_modified": false,
+    "change": "exclude only nft packet/byte statistics from baseline hashing; retain capture/rollback and all structural checks",
+    "real_kernel_structural_conflict_rejected": true,
+    "formal_installed_transactions_passed": 23,
+    "evidence": "candidate-transactions/transaction-result.json",
+    "patch": "baseline-candidate.patch",
+    "acceptance_limit": "candidate success does not change current production-code gate failure; no full four-gate run performed on candidate"
+  },
+  "commands": [
+    {
+      "name": "kernel-baseline",
+      "exit_code": 0,
+      "scope": "original production LinuxExecutor actual kernel",
+      "log": "kernel-baseline.txt",
+      "log_sha256": "054600b208320afda32fbcd5ae56a5f0131821096a20b6d6cc560b465f28432f"
+    },
+    {
+      "name": "trace",
+      "exit_code": 1,
+      "scope": "baseline algorithm unchanged with audit-only observations",
+      "log": "trace.txt",
+      "log_sha256": "0c77c6dc04f53474dcd077370a0db2c0e024476da2c7d7086370d44b5a365830"
+    },
+    {
+      "name": "candidate-kernel",
+      "exit_code": 0,
+      "scope": "temporary candidate allows counters but rejects structural rule changes",
+      "log": "candidate-kernel.txt",
+      "log_sha256": "f4a4c01636cd43a1d3359d70ba945b280a5f5fe9d5bcd781e38a6c6e6b0c999b"
+    },
+    {
+      "name": "candidate-transactions",
+      "exit_code": 0,
+      "scope": "temporary candidate all 23 installed transactions",
+      "log": "candidate-transactions.txt",
+      "log_sha256": "70815791a176813f32bd0d8438c66a4081010a52fdec43def68cd81715990487"
+    },
+    {
+      "name": "cleanup",
+      "exit_code": 0,
+      "scope": "only audit-named disposable resources",
+      "log": "cleanup.txt",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "software_versions_evidence": "../software-versions.json",
+  "component_versions_evidence": "../configs/config-result.json",
+  "cleanup": {
+    "audit_named_containers_remaining": [],
+    "audit_named_networks_remaining": [],
+    "preexisting_experiments_modified": false
+  },
+  "remaining_work": [
+    "apply a formal baseline structural-state fix with meaningful regression tests",
+    "rerun make check, make demo, make test-configs, make test-lab against fixed production source",
+    "commit existing Docker address compatibility fix and verify new amd64 CI",
+    "M6 real authorized cloud/mobile acceptance; M7 OpenWrt implementation and acceptance"
+  ],
+  "boundaries": {
+    "development_host_network_changed": false,
+    "production_servers_accessed": false,
+    "real_server_deployment_verified": false,
+    "M6_executed": false
+  }
+}

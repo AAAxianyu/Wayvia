@@ -1,0 +1,15 @@
+{
+  "python": "3.12.12",
+  "uv": "uv 0.9.7 (0adb44480 2025-10-30)",
+  "python_dependencies": {
+    "pydantic": "2.12.3",
+    "PyYAML": "6.0.3",
+    "typer": "0.20.0",
+    "fastapi": "0.120.0",
+    "uvicorn": "0.38.0",
+    "httpx": "0.28.1",
+    "ruff": "0.14.2",
+    "pytest": "8.4.2",
+    "hatchling": "1.27.0"
+  }
+}

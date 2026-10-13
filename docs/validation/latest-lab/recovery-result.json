@@ -25,12 +25,12 @@
       "independent_new_process_exit": 0,
       "recovery_stdout": [
         {
-          "id": "ac36733450214473b68f0f86b65daf13",
+          "id": "d6ea65095a194065b4997bfd99b9cbe3",
           "role": "ingress",
           "revision": "recovery-lab",
           "state": "ROLLED_BACK",
-          "deadline": "2026-10-13T04:37:06.748806+00:00",
-          "updated_at": "2026-10-13T04:36:57.243161+00:00",
+          "deadline": "2026-10-13T05:44:19.548239+00:00",
+          "updated_at": "2026-10-13T05:44:09.824383+00:00",
           "evidence": null,
           "error": null,
           "predecessor_id": null,
@@ -40,7 +40,7 @@
           "submitted_digest": null,
           "effective_digest": null,
           "current": false,
-          "generation": "ac36733450214473b68f0f86b65daf13",
+          "generation": "d6ea65095a194065b4997bfd99b9cbe3",
           "verification_scope": "datapath",
           "blocked_reason": null
         }

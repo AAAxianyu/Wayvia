@@ -1,0 +1,2 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked python -m wayvia.demo
+{"mode": "simulated", "storage": "temporary SQLite", "device": "29705b37201e485b8e3d6148b06ac0f0", "profile": "sing-box complete", "subscription_revoke": "verified", "device_permission": "active", "dataplane": "simulated, no network changes"}

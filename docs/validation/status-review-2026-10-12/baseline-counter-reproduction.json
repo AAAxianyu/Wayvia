@@ -1,0 +1,10 @@
+{
+  "scope": "deterministic nonprivileged software reproduction with real lab guard snapshot and an injected counter increment; not network acceptance",
+  "rules_structurally_identical": true,
+  "baseline_before": "da8a4c874faff1a3ab76d4226974e8d59f72f98d6b03a577ff36b1b1b89624d3",
+  "baseline_after": "f2254ee2ed85c5e849488d13ab34002cbfe828f57f97ee9e01428adbf970b04b",
+  "baseline_changed_by_counters_alone": true,
+  "source": "src/wayvia/adapters/linux/__init__.py:174-218",
+  "runtime_failure": "second ingress generation rejected with BASELINE_CHANGED",
+  "causal_limit": "The failed run did not retain both baseline snapshots. Counter sensitivity is confirmed; the exact changing field in that run is not established."
+}

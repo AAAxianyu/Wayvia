@@ -1,0 +1,6 @@
+{
+  "scope": "Proposed fix tested only in temporary snapshot; repository production code unchanged. Only anonymous nft packet/byte counters excluded from baseline hash; capture/rollback and topology checks unchanged.",
+  "file": "src/wayvia/adapters/linux/__init__.py",
+  "before_sha256": "1285e99494420e49cfb709aa0b6b26f85638519aec7291235df65f79c2d398b1",
+  "after_sha256": "73e24ce0ec8ad51f6e4973040aeac1ad9898fa4a84a02091942213f4bbd2260a"
+}

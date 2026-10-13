@@ -19,6 +19,8 @@ make clean-lab
 
 路径实验使用 Ubuntu 24.04 容器中的六个 network namespace 模拟终端、国内目标、阿里云入口、阿里云出口、日本与国外目标，容器以 `--network none` 运行。executor、内核冲突、协议、DNS、TUN 就绪和独立恢复辅助容器也使用 `--network none`。正式安装事务实验需要容器间通信，使用带所有权标签的 `--internal` Docker 网络 `wayvia-transaction-disposable`；入口、出口与目标各自独立，两个服务器容器以 systemd 为 PID 1，使用私有 cgroup namespace。
 
+正式事务容器使用 Docker 实际分配的 IPv4 地址；启动后核验容器所有权标签和专属网络，再用观测地址生成双角色配置及预期出口来源。受控目标也绑定自己的实际地址。自动 IPAM 网络不传 `--ip`，避免依赖某个 Docker 版本对自动子网静态端点的特殊许可。
+
 需要网络能力的实验只在明确创建的一次性 privileged Linux 容器内执行；mihomo DNS 辅助容器不需要 privileged。实验不使用 host network，不挂载宿主 `/proc`、`/sys`、cgroup 或 Docker socket，也不操作开发机路由、防火墙、已有 VPN 或未指定服务器。
 
 `make clean-lab` 先核对名称与 `org.wayvia.disposable` 标签，只清理 `wayvia-m4-disposable`、`wayvia-recovery-disposable`、`wayvia-transaction-{ingress,exit,target}` 及上述专属 transaction 网络。临时辅助容器使用 `--rm`。名称相同而标签不同的资源会被拒绝删除。

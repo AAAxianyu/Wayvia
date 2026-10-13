@@ -296,6 +296,14 @@ class TransactionManager:
                 self._save(tx)
             except Exception as exc:
                 tx["error"] = getattr(exc, "code", "APPLY_FAILED")
+                tx["apply_error"] = tx["error"]
+                details = getattr(exc, "details", {})
+                if isinstance(details, dict):
+                    tx["apply_error_details"] = {
+                        key: details[key]
+                        for key in ("operation", "status", "errorCode")
+                        if key in details and type(details[key]) in {str, int, bool}
+                    }
                 self._rollback(tx)
             return self.public(tx)
 
@@ -384,6 +392,7 @@ class TransactionManager:
             except Exception as exc:
                 failures.append(getattr(exc, "code", "RESTORE_FAILED"))
         tx["state"] = State.RECOVERY_REQUIRED if failures else State.ROLLED_BACK
+        tx["recovery_failures"] = failures
         if failures:
             tx["error"] = "RECOVERY_REQUIRED"
             self._set_current(tx["role"], tx["id"])

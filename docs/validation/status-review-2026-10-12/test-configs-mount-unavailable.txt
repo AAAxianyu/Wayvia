@@ -1,0 +1,60 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked python scripts/test_configs.py
+sing-box 1.14.3: SHA256 verified
+mihomo 1.19.32: SHA256 verified
+v2raya 2.5.10: SHA256 verified
+v2ray 5.53.0: SHA256 verified
+v2raya_core 2.5.10: SHA256 verified
+#0 building with "colima" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 1.10kB 0.0s done
+#1 DONE 0.2s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 175B done
+#3 DONE 0.0s
+
+#4 [1/7] FROM docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#4 resolve docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 261.74MB 4.0s done
+#5 DONE 4.1s
+
+#6 [2/7] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [3/7] COPY .cache/components/arm64/sing-box .cache/components/arm64/mihomo .cache/components/arm64/v2raya .cache/components/arm64/v2raya_core .cache/components/arm64/v2ray /usr/local/bin/
+#7 CACHED
+
+#8 [4/7] COPY .cache/components/arm64/geoip.dat .cache/components/arm64/geosite.dat /usr/local/share/v2raya/
+#8 CACHED
+
+#9 [5/7] COPY .cache/lab-python/arm64/ /opt/wayvia-lab-wheels/
+#9 CACHED
+
+#10 [6/7] RUN python3 -m venv /opt/wayvia-lab-python && /opt/wayvia-lab-python/bin/pip install --no-index --require-hashes --find-links /opt/wayvia-lab-wheels -r /opt/wayvia-lab-wheels/requirements.txt
+#10 CACHED
+
+#11 [7/7] COPY deploy/lab/ /opt/wayvia-lab/
+#11 DONE 0.2s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 exporting manifest sha256:cece6716c36f2e394cf2d195f70be28a0530149214dfc27896ce7cc4ea7635a2
+#12 exporting manifest sha256:cece6716c36f2e394cf2d195f70be28a0530149214dfc27896ce7cc4ea7635a2 0.0s done
+#12 exporting config sha256:42348a68461c29a3af2c15b8afb7b09c4c23c16e03ec2c87ffb91a35147d1fd3 0.0s done
+#12 exporting attestation manifest sha256:520a14f73be2a3e444fb0262cc9a3532eb411c5edffcd3c862cdc6bb85e65f7b 0.0s done
+#12 exporting manifest list sha256:63822cefff990b395139255d2893cbe2c1733ce7703c22d063f2002bfccf1b4a done
+#12 naming to docker.io/library/wayvia-status-lab:m2dongsl done
+#12 unpacking to docker.io/library/wayvia-status-lab:m2dongsl 0.0s done
+#12 DONE 0.4s
+python3: can't open file '/opt/wayvia-lab/run.py': [Errno 2] No such file or directory
+CONFIG ENVIRONMENT UNAVAILABLE: Command '['/private/tmp/wayvia-status-20261012-m2dongsl/.venv/bin/python3', '/private/tmp/wayvia-status-20261012-m2dongsl/scripts/lab.py', '--preflight']' returned non-zero exit status 2.
+make: *** [test-configs] Error 4

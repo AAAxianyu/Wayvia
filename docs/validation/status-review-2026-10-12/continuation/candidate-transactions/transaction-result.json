@@ -1,0 +1,2393 @@
+{
+  "status": "passed",
+  "simulated": false,
+  "isolation": "owned_internal_docker_network_private_cgroups",
+  "cases": [
+    {
+      "name": "exit_system_install",
+      "result": {
+        "status": "installed_and_started",
+        "role": "exit",
+        "simulated": false
+      }
+    },
+    {
+      "name": "ingress_system_install",
+      "result": {
+        "status": "installed_and_started",
+        "role": "ingress",
+        "simulated": false
+      }
+    },
+    {
+      "name": "api_pending_device",
+      "result": {
+        "id": "c3edcb949dd040c5b9563e8b0dccac8f",
+        "status": "pending",
+        "api_cli_same_store": true
+      }
+    },
+    {
+      "name": "exit_apply_confirm",
+      "result": {
+        "id": "9391421c04e14114981e91c54b648aff",
+        "state": "ACTIVE",
+        "role": "exit",
+        "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7"
+      }
+    },
+    {
+      "name": "ingress_apply_confirm",
+      "result": {
+        "id": "c454df90e1db4a0ea1cfea3e6f316779",
+        "state": "ACTIVE",
+        "role": "ingress",
+        "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7"
+      }
+    },
+    {
+      "name": "confirmed_publication",
+      "result": {
+        "status": "published_and_fetched",
+        "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+        "no_store": true
+      }
+    },
+    {
+      "name": "subscribed_entry_to_exit",
+      "result": {
+        "target": "foreign",
+        "peer": "172.31.0.3"
+      }
+    },
+    {
+      "name": "exit_successive_generation_rollback",
+      "result": {
+        "predecessor": "9391421c04e14114981e91c54b648aff",
+        "successor": "55f4a1148a4843c18dd6bf68c4429cc5",
+        "third": "daf2e7092d654ce38812f4960f72b79f",
+        "both_predecessors_restored_active": true
+      }
+    },
+    {
+      "name": "ingress_successive_generation_rollback",
+      "result": {
+        "predecessor": "c454df90e1db4a0ea1cfea3e6f316779",
+        "successor": "5491b4d8101b47bbbe1f078834298261",
+        "third": "e2cd4252f7384021b4cd67bc089a005e",
+        "listener_sequence": [
+          443,
+          8443,
+          9443,
+          8443,
+          443
+        ],
+        "stale_monitor_preserved_unconfirmed_listener": true,
+        "both_predecessors_restored_authenticated_path": true,
+        "replaced_listeners_closed": true
+      }
+    },
+    {
+      "name": "restored_generation_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.31.0.3"
+      }
+    },
+    {
+      "name": "vpn_failure_closed",
+      "result": {
+        "status": "DEGRADED",
+        "protected_request_blocked": true
+      }
+    },
+    {
+      "name": "vpn_authenticated_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "target": {
+          "target": "foreign",
+          "peer": "172.31.0.3"
+        }
+      }
+    },
+    {
+      "name": "carrier_failure_closed",
+      "result": {
+        "status": "DEGRADED",
+        "protected_request_blocked": true
+      }
+    },
+    {
+      "name": "carrier_authenticated_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "target": {
+          "target": "foreign",
+          "peer": "172.31.0.3"
+        }
+      }
+    },
+    {
+      "name": "exit_independent_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "same_generation": true,
+        "independent_systemd_recovery": true
+      }
+    },
+    {
+      "name": "ingress_independent_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "same_generation": true,
+        "independent_systemd_recovery": true
+      }
+    },
+    {
+      "name": "recovered_generation_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.31.0.3"
+      }
+    },
+    {
+      "name": "exit_system_software_reinstall",
+      "result": {
+        "same_generation": true,
+        "control_data_preserved": true,
+        "locked_runtime_reinstalled": true
+      }
+    },
+    {
+      "name": "ingress_system_software_reinstall",
+      "result": {
+        "same_generation": true,
+        "control_data_preserved": true,
+        "locked_runtime_reinstalled": true
+      }
+    },
+    {
+      "name": "reinstalled_software_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.31.0.3"
+      }
+    },
+    {
+      "name": "device_subscription_revocation",
+      "result": {
+        "rotation_rejected_old_password": true,
+        "new_password_accepted": true,
+        "link_revoke_preserved_device": true,
+        "device_revoke_rejected_access": true,
+        "pre_revocation_plan_cannot_restore_access": true,
+        "rollback_cannot_restore_revoked_access": true
+      }
+    },
+    {
+      "name": "ingress_uninstall",
+      "result": {
+        "status": "uninstalled",
+        "control_data_retained": true,
+        "default_route_preserved": true,
+        "unrelated_network_resources_preserved": true,
+        "owned_network_resources_removed": true
+      }
+    },
+    {
+      "name": "exit_uninstall",
+      "result": {
+        "status": "uninstalled",
+        "control_data_retained": true,
+        "default_route_preserved": true,
+        "unrelated_network_resources_preserved": true,
+        "owned_network_resources_removed": true
+      }
+    }
+  ],
+  "address_allocation": "docker_assigned_and_inspected_owned_network",
+  "diagnostics": {
+    "exit": {
+      "status": {
+        "version": "0.1.0",
+        "mode": "production",
+        "devices": [],
+        "agent": [
+          {
+            "id": "55f4a1148a4843c18dd6bf68c4429cc5",
+            "role": "exit",
+            "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+            "state": "ROLLED_BACK",
+            "deadline": "2026-10-13T06:33:16.132170+00:00",
+            "updated_at": "2026-10-13T06:31:22.500853+00:00",
+            "evidence": [
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 164,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "trojan_vpn",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:31:21.106963+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.106963+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 117,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:31:21.270590+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.270590+00:00"
+              },
+              {
+                "check": "vpn_server_initialized",
+                "duration_ms": 101,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:31:21.387133+00:00",
+                "peer_count": 1,
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.387133+00:00"
+              },
+              {
+                "duration_ms": 5,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:31:21.488633+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.488633+00:00"
+              },
+              {
+                "duration_ms": 18,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:31:21.493650+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.493650+00:00"
+              },
+              {
+                "duration_ms": 0,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:31:21.512027+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.512027+00:00"
+              },
+              {
+                "duration_ms": 1,
+                "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:31:21.512179+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:51.512179+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": "9391421c04e14114981e91c54b648aff",
+            "device_revision": null,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "e399375a7344b7a9671b7ae8fe030079081f713a014336523072f6fd60150039",
+            "effective_digest": "e399375a7344b7a9671b7ae8fe030079081f713a014336523072f6fd60150039",
+            "current": false,
+            "generation": "55f4a1148a4843c18dd6bf68c4429cc5",
+            "verification_scope": "component_readiness",
+            "blocked_reason": null
+          },
+          {
+            "id": "9391421c04e14114981e91c54b648aff",
+            "role": "exit",
+            "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+            "state": "ACTIVE",
+            "deadline": "2026-10-13T06:33:05.596336+00:00",
+            "updated_at": "2026-10-13T06:32:32.771925+00:00",
+            "evidence": [
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 198,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "trojan_vpn",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:32:32.301428+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.301428+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 133,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:32:32.498947+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.498947+00:00"
+              },
+              {
+                "check": "vpn_server_initialized",
+                "duration_ms": 110,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:32:32.631925+00:00",
+                "peer_count": 2,
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.631925+00:00"
+              },
+              {
+                "duration_ms": 9,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:32:32.741673+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.741673+00:00"
+              },
+              {
+                "duration_ms": 20,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:32:32.750335+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.750335+00:00"
+              },
+              {
+                "duration_ms": 0,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:32:32.769893+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.769893+00:00"
+              },
+              {
+                "duration_ms": 2,
+                "generation": "9391421c04e14114981e91c54b648aff",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:32:32.770043+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:02.770043+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": null,
+            "device_revision": null,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "5d6ce290bb485b543cfbb7c59c1f2d727053b1ea44e9eed13af114f8e8e49457",
+            "effective_digest": "5d6ce290bb485b543cfbb7c59c1f2d727053b1ea44e9eed13af114f8e8e49457",
+            "current": true,
+            "generation": "9391421c04e14114981e91c54b648aff",
+            "verification_scope": "component_readiness",
+            "blocked_reason": null
+          },
+          {
+            "id": "daf2e7092d654ce38812f4960f72b79f",
+            "role": "exit",
+            "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+            "state": "ROLLED_BACK",
+            "deadline": "2026-10-13T06:33:18.142715+00:00",
+            "updated_at": "2026-10-13T06:31:21.517861+00:00",
+            "evidence": [
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 202,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "trojan_vpn",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:31:20.123408+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.123408+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 210,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:31:20.325073+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.325073+00:00"
+              },
+              {
+                "check": "vpn_server_initialized",
+                "duration_ms": 125,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:31:20.535522+00:00",
+                "peer_count": 2,
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.535522+00:00"
+              },
+              {
+                "duration_ms": 6,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:31:20.660699+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.660699+00:00"
+              },
+              {
+                "duration_ms": 8,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:31:20.667161+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.667161+00:00"
+              },
+              {
+                "duration_ms": 0,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:31:20.675031+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.675031+00:00"
+              },
+              {
+                "duration_ms": 2,
+                "generation": "daf2e7092d654ce38812f4960f72b79f",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:31:20.675191+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "component_readiness",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:32:50.675191+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": "55f4a1148a4843c18dd6bf68c4429cc5",
+            "device_revision": null,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "305ad2c79fb9a229b1b146b932fc31681ad9f83442df28b0eb70ecf2098090e5",
+            "effective_digest": "305ad2c79fb9a229b1b146b932fc31681ad9f83442df28b0eb70ecf2098090e5",
+            "current": false,
+            "generation": "daf2e7092d654ce38812f4960f72b79f",
+            "verification_scope": "component_readiness",
+            "blocked_reason": null
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "55f4a1148a4843c18dd6bf68c4429cc5",
+          "state": "ROLLED_BACK",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "exit.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-server.conf",
+              "restored": true
+            },
+            {
+              "kind": "exit_nat",
+              "resource": "wayvia_exit",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-server.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-exit.service",
+              "restored": true
+            }
+          ]
+        },
+        {
+          "id": "9391421c04e14114981e91c54b648aff",
+          "state": "ACTIVE",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "exit.json",
+              "restored": false
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": false
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-server.conf",
+              "restored": false
+            },
+            {
+              "kind": "exit_nat",
+              "resource": "wayvia_exit",
+              "restored": false
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-server.service",
+              "restored": false
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-exit.service",
+              "restored": false
+            }
+          ]
+        },
+        {
+          "id": "daf2e7092d654ce38812f4960f72b79f",
+          "state": "ROLLED_BACK",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "exit.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-server.conf",
+              "restored": true
+            },
+            {
+              "kind": "exit_nat",
+              "resource": "wayvia_exit",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-server.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-exit.service",
+              "restored": true
+            }
+          ]
+        }
+      ],
+      "service_log": "Oct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 127.0.0.1:50216 Connection reset, restarting [0]\nOct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 127.0.0.1:50216 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 MANAGEMENT: Client connected from /run/wayvia/vpn-server.sock\nOct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 MANAGEMENT: CMD 'state 1'\nOct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 MANAGEMENT: CMD 'status 3'\nOct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 MANAGEMENT: CMD 'quit'\nOct 13 06:32:32 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:32 MANAGEMENT: Client disconnected\nOct 13 06:32:32 b48ef9703c21 python[1898]: [{\"id\": \"9391421c04e14114981e91c54b648aff\", \"role\": \"exit\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"state\": \"ACTIVE\", \"deadline\": \"2026-10-13T06:33:05.596336+00:00\", \"updated_at\": \"2026-10-13T06:32:32.771925+00:00\", \"evidence\": [{\"layer\": \"access\", \"status\": \"healthy\", \"kind\": \"trojan_vpn\", \"check\": \"vpn_server_identity\", \"client_authenticated\": false, \"observed_at\": \"2026-10-13T06:32:32.301428+00:00\", \"duration_ms\": 198, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.301428+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}, {\"layer\": \"carrier\", \"status\": \"healthy\", \"kind\": \"vpn_handshake\", \"check\": \"vpn_server_identity\", \"client_authenticated\": false, \"observed_at\": \"2026-10-13T06:32:32.498947+00:00\", \"duration_ms\": 133, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.498947+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}, {\"layer\": \"vpn\", \"status\": \"healthy\", \"kind\": \"vpn_session\", \"check\": \"vpn_server_initialized\", \"peer_count\": 2, \"observed_at\": \"2026-10-13T06:32:32.631925+00:00\", \"duration_ms\": 110, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.631925+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}, {\"layer\": \"egress\", \"status\": \"healthy\", \"kind\": \"http\", \"observed_at\": \"2026-10-13T06:32:32.741673+00:00\", \"duration_ms\": 9, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.741673+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}, {\"layer\": \"dns\", \"status\": \"healthy\", \"kind\": \"dns\", \"observed_at\": \"2026-10-13T06:32:32.750335+00:00\", \"duration_ms\": 20, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.750335+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}, {\"layer\": \"ipv6\", \"status\": \"healthy\", \"kind\": \"ipv6_guard\", \"observed_at\": \"2026-10-13T06:32:32.769893+00:00\", \"duration_ms\": 0, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.769893+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}, {\"layer\": \"return\", \"status\": \"healthy\", \"kind\": \"route\", \"observed_at\": \"2026-10-13T06:32:32.770043+00:00\", \"duration_ms\": 2, \"scope\": \"component_readiness\", \"valid_until\": \"2026-10-13T06:34:02.770043+00:00\", \"revision\": \"2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7\", \"generation\": \"9391421c04e14114981e91c54b648aff\"}], \"error\": null, \"predecessor_id\": null, \"device_revision\": null, \"monitored_at\": null, \"monitor_valid_until\": null, \"submitted_digest\": \"5d6ce290bb485b543cfbb7c59c1f2d727053b1ea44e9eed13af114f8e8e49457\", \"effective_digest\": \"5d6ce290bb485b543cfbb7c59c1f2d727053b1ea44e9eed13af114f8e8e49457\", \"current\": true, \"generation\": \"9391421c04e14114981e91c54b648aff\", \"verification_scope\": \"component_readiness\", \"blocked_reason\": null}]\nOct 13 06:32:32 b48ef9703c21 systemd[1]: Finished wayvia-recover.service - Restore Wayvia transaction state and fail-closed protection after boot.\nOct 13 06:32:32 b48ef9703c21 systemd[1]: Started wayvia-agent.service - Wayvia privileged local action agent.\nOct 13 06:32:33 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:33 vpn-client.lab/127.0.0.1:50196 Data Channel: cipher 'AES-256-GCM', peer-id: 0\nOct 13 06:32:33 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:33 vpn-client.lab/127.0.0.1:50196 Timers: ping 10, ping-restart 120\nOct 13 06:32:33 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:33 vpn-client.lab/127.0.0.1:50196 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\nOct 13 06:32:34 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:34 vpn-client.lab/127.0.0.1:50196 Connection reset, restarting [0]\nOct 13 06:32:34 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:34 vpn-client.lab/127.0.0.1:50196 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 TCP connection established with [AF_INET]127.0.0.1:38456\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 TLS: Initial packet from [AF_INET]127.0.0.1:38456, sid=1e5b153e a1e7f52d\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 VERIFY OK: depth=1, CN=Wayvia transaction lab CA\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 VERIFY KU OK\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 Validating certificate extended key usage\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 VERIFY EKU OK\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 VERIFY OK: depth=0, CN=vpn-client.lab\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_VER=2.6.19\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_PLAT=linux\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_TCPNL=1\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_MTU=1600\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_NCP=2\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_PROTO=990\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_LZO_STUB=1\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_COMP_STUB=1\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 peer info: IV_COMP_STUBv2=1\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 TLS: tls_multi_process: initial untrusted session promoted to trusted\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 127.0.0.1:38456 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:38456\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 vpn-client.lab/127.0.0.1:38456 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 vpn-client.lab/127.0.0.1:38456 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:38456\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 vpn-client.lab/127.0.0.1:38456 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:38456: 10.77.0.2\nOct 13 06:32:43 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:43 vpn-client.lab/127.0.0.1:38456 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\nOct 13 06:32:44 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:44 vpn-client.lab/127.0.0.1:38456 Data Channel: cipher 'AES-256-GCM', peer-id: 0\nOct 13 06:32:44 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:44 vpn-client.lab/127.0.0.1:38456 Timers: ping 10, ping-restart 120\nOct 13 06:32:44 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:44 vpn-client.lab/127.0.0.1:38456 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\nOct 13 06:32:44 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:44 TCP connection established with [AF_INET]127.0.0.1:38468\nOct 13 06:32:44 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:44 127.0.0.1:38468 TLS: Initial packet from [AF_INET]127.0.0.1:38468, sid=f880f48c d7f271a7\nOct 13 06:32:45 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:45 127.0.0.1:38468 Connection reset, restarting [0]\nOct 13 06:32:45 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:45 127.0.0.1:38468 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:48 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:48 vpn-client.lab/127.0.0.1:38456 Connection reset, restarting [0]\nOct 13 06:32:48 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:48 vpn-client.lab/127.0.0.1:38456 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 TCP connection established with [AF_INET]127.0.0.1:40026\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 TLS: Initial packet from [AF_INET]127.0.0.1:40026, sid=bb660d18 a3acf6d0\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 VERIFY OK: depth=1, CN=Wayvia transaction lab CA\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 VERIFY KU OK\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 Validating certificate extended key usage\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 VERIFY EKU OK\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 VERIFY OK: depth=0, CN=vpn-client.lab\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_VER=2.6.19\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_PLAT=linux\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_TCPNL=1\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_MTU=1600\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_NCP=2\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_PROTO=990\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_LZO_STUB=1\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_COMP_STUB=1\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 peer info: IV_COMP_STUBv2=1\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 TLS: tls_multi_process: initial untrusted session promoted to trusted\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40026 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:40026\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 vpn-client.lab/127.0.0.1:40026 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 vpn-client.lab/127.0.0.1:40026 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:40026\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 vpn-client.lab/127.0.0.1:40026 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:40026: 10.77.0.2\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 vpn-client.lab/127.0.0.1:40026 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 TCP connection established with [AF_INET]127.0.0.1:40042\nOct 13 06:32:51 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:51 127.0.0.1:40042 TLS: Initial packet from [AF_INET]127.0.0.1:40042, sid=f95b9a1e a9e0ec44\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 vpn-client.lab/127.0.0.1:40026 Data Channel: cipher 'AES-256-GCM', peer-id: 0\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 vpn-client.lab/127.0.0.1:40026 Timers: ping 10, ping-restart 120\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 vpn-client.lab/127.0.0.1:40026 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 127.0.0.1:40042 Connection reset, restarting [0]\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 127.0.0.1:40042 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 TCP connection established with [AF_INET]127.0.0.1:40056\nOct 13 06:32:52 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:52 127.0.0.1:40056 TLS: Initial packet from [AF_INET]127.0.0.1:40056, sid=0f2dede2 b9db4e98\nOct 13 06:32:53 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:53 vpn-client.lab/127.0.0.1:40026 Connection reset, restarting [0]\nOct 13 06:32:53 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:53 vpn-client.lab/127.0.0.1:40026 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:53 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:53 127.0.0.1:40056 Connection reset, restarting [0]\nOct 13 06:32:53 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:53 127.0.0.1:40056 SIGUSR1[soft,connection-reset] received, client-instance restarting\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 TCP connection established with [AF_INET]127.0.0.1:40072\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 TLS: Initial packet from [AF_INET]127.0.0.1:40072, sid=26009465 5e1beb2b\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 VERIFY OK: depth=1, CN=Wayvia transaction lab CA\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 VERIFY KU OK\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 Validating certificate extended key usage\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 VERIFY EKU OK\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 VERIFY OK: depth=0, CN=vpn-client.lab\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_VER=2.6.19\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_PLAT=linux\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_TCPNL=1\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_MTU=1600\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_NCP=2\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_PROTO=990\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_LZO_STUB=1\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_COMP_STUB=1\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 peer info: IV_COMP_STUBv2=1\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 TLS: tls_multi_process: initial untrusted session promoted to trusted\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 127.0.0.1:40072 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:40072\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 vpn-client.lab/127.0.0.1:40072 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 vpn-client.lab/127.0.0.1:40072 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:40072\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 vpn-client.lab/127.0.0.1:40072 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:40072: 10.77.0.2\nOct 13 06:32:56 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:56 vpn-client.lab/127.0.0.1:40072 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\nOct 13 06:32:57 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:57 vpn-client.lab/127.0.0.1:40072 Data Channel: cipher 'AES-256-GCM', peer-id: 0\nOct 13 06:32:57 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:57 vpn-client.lab/127.0.0.1:40072 Timers: ping 10, ping-restart 120\nOct 13 06:32:57 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:57 vpn-client.lab/127.0.0.1:40072 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\nOct 13 06:32:57 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:57 TCP connection established with [AF_INET]127.0.0.1:40084\nOct 13 06:32:57 b48ef9703c21 openvpn[1938]: 2026-10-13 06:32:57 127.0.0.1:40084 TLS: Initial packet from [AF_INET]127.0.0.1:40084, sid=b784f8a6 553fc997\n",
+      "baseline_observations": [
+        {
+          "digest": "a2f9f540b929e59f487256a67b8eb695b09483b5d7a028a12a465cfa0386ad57",
+          "resources": [
+            {
+              "key": "install_config:host:exit.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "snapshot_digest": "3eb99267ebf976fc9f8678cb628ea1a48d0580f4d098ce4698edc0713228a676",
+              "exists": false,
+              "rules": null
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            }
+          ],
+          "routes": "[{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.3\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "a2f9f540b929e59f487256a67b8eb695b09483b5d7a028a12a465cfa0386ad57",
+          "resources": [
+            {
+              "key": "install_config:host:exit.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "snapshot_digest": "3eb99267ebf976fc9f8678cb628ea1a48d0580f4d098ce4698edc0713228a676",
+              "exists": false,
+              "rules": null
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            }
+          ],
+          "routes": "[{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.3\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "d8718a8e82f61c362f851622153b5f09dff2108d1dada9f17564aa3030d83c0e",
+          "resources": [
+            {
+              "key": "install_config:host:exit.json",
+              "snapshot_digest": "59b598c13ff2e1970c8848e49c0d22b73e99171d55c41c0e3ee00b330e667d50",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "4f70a310761a7c286b865e3a541c9b66938d852d2d91b30d1fdbb67be9e4a3b0",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "snapshot_digest": "0129527705e671f2397f08728a729a5ab7c8cbb1b2c9102f7c7d374cbda2f3f2",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "snapshot_digest": "552024187287d63099eb1d50ff6e2ab81adbf5f1f97e025413dcfabfa43b61a9",
+              "exists": true,
+              "rules": "table inet wayvia_exit {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.77.0.0/24 oifname \"eth0\" counter masquerade\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "snapshot_digest": "350c3f10880e0d079b54723c51a0b86fa17f5256ea7d4eedabf3aac2ae89d25c",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "snapshot_digest": "b20ec89caa8971b3c8390547d0378dc90bb535111c13ed8f692dbc52f07abcf8",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.77.0.0/24\",\"dev\":\"tun0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.77.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.3\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "d8718a8e82f61c362f851622153b5f09dff2108d1dada9f17564aa3030d83c0e",
+          "resources": [
+            {
+              "key": "install_config:host:exit.json",
+              "snapshot_digest": "59b598c13ff2e1970c8848e49c0d22b73e99171d55c41c0e3ee00b330e667d50",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "4f70a310761a7c286b865e3a541c9b66938d852d2d91b30d1fdbb67be9e4a3b0",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "snapshot_digest": "0129527705e671f2397f08728a729a5ab7c8cbb1b2c9102f7c7d374cbda2f3f2",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "snapshot_digest": "552024187287d63099eb1d50ff6e2ab81adbf5f1f97e025413dcfabfa43b61a9",
+              "exists": true,
+              "rules": "table inet wayvia_exit {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.77.0.0/24 oifname \"eth0\" counter masquerade\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "snapshot_digest": "350c3f10880e0d079b54723c51a0b86fa17f5256ea7d4eedabf3aac2ae89d25c",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "snapshot_digest": "b20ec89caa8971b3c8390547d0378dc90bb535111c13ed8f692dbc52f07abcf8",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.77.0.0/24\",\"dev\":\"tun0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.77.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.3\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "d8718a8e82f61c362f851622153b5f09dff2108d1dada9f17564aa3030d83c0e",
+          "resources": [
+            {
+              "key": "install_config:host:exit.json",
+              "snapshot_digest": "59b598c13ff2e1970c8848e49c0d22b73e99171d55c41c0e3ee00b330e667d50",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "4f70a310761a7c286b865e3a541c9b66938d852d2d91b30d1fdbb67be9e4a3b0",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "snapshot_digest": "0129527705e671f2397f08728a729a5ab7c8cbb1b2c9102f7c7d374cbda2f3f2",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "snapshot_digest": "552024187287d63099eb1d50ff6e2ab81adbf5f1f97e025413dcfabfa43b61a9",
+              "exists": true,
+              "rules": "table inet wayvia_exit {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.77.0.0/24 oifname \"eth0\" counter masquerade\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "snapshot_digest": "350c3f10880e0d079b54723c51a0b86fa17f5256ea7d4eedabf3aac2ae89d25c",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "snapshot_digest": "b20ec89caa8971b3c8390547d0378dc90bb535111c13ed8f692dbc52f07abcf8",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.77.0.0/24\",\"dev\":\"tun0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.77.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.3\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "d8718a8e82f61c362f851622153b5f09dff2108d1dada9f17564aa3030d83c0e",
+          "resources": [
+            {
+              "key": "install_config:host:exit.json",
+              "snapshot_digest": "59b598c13ff2e1970c8848e49c0d22b73e99171d55c41c0e3ee00b330e667d50",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "4f70a310761a7c286b865e3a541c9b66938d852d2d91b30d1fdbb67be9e4a3b0",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-server.conf",
+              "snapshot_digest": "0129527705e671f2397f08728a729a5ab7c8cbb1b2c9102f7c7d374cbda2f3f2",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "exit_nat:host:wayvia_exit",
+              "snapshot_digest": "552024187287d63099eb1d50ff6e2ab81adbf5f1f97e025413dcfabfa43b61a9",
+              "exists": true,
+              "rules": "table inet wayvia_exit {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.77.0.0/24 oifname \"eth0\" counter masquerade\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-vpn-server.service",
+              "snapshot_digest": "350c3f10880e0d079b54723c51a0b86fa17f5256ea7d4eedabf3aac2ae89d25c",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-exit.service",
+              "snapshot_digest": "b20ec89caa8971b3c8390547d0378dc90bb535111c13ed8f692dbc52f07abcf8",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.77.0.0/24\",\"dev\":\"tun0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.77.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.3\",\"flags\":[]}]\n"
+        }
+      ]
+    },
+    "ingress": {
+      "status": {
+        "version": "0.1.0",
+        "mode": "production",
+        "devices": [
+          {
+            "id": "c3edcb949dd040c5b9563e8b0dccac8f",
+            "name": "lab-phone",
+            "platform": "android",
+            "status": "revoked",
+            "credential_version": 2,
+            "revision": 3,
+            "created_at": 1791873064.349215,
+            "updated_at": 1791873166.99755,
+            "desired_action": null,
+            "evidence": {
+              "revision": 3,
+              "status": "active",
+              "simulated": false,
+              "sessions": "all_previous_sessions_closed"
+            },
+            "simulated": false
+          }
+        ],
+        "agent": [
+          {
+            "id": "5491b4d8101b47bbbe1f078834298261",
+            "role": "ingress",
+            "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+            "state": "ROLLED_BACK",
+            "deadline": "2026-10-13T06:33:23.626688+00:00",
+            "updated_at": "2026-10-13T06:31:44.716256+00:00",
+            "evidence": [
+              {
+                "check": "authenticated_ingress_business_path",
+                "duration_ms": 939,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "trojan_http",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:31:37.397171+00:00",
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:07.397171+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 519,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:31:38.336393+00:00",
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:08.336393+00:00"
+              },
+              {
+                "check": "authenticated_vpn_session",
+                "duration_ms": 340,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:31:38.855081+00:00",
+                "peer_count": 0,
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:08.855081+00:00"
+              },
+              {
+                "duration_ms": 130,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:31:39.195351+00:00",
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:09.195351+00:00"
+              },
+              {
+                "duration_ms": 83,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:31:39.325759+00:00",
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:09.325759+00:00"
+              },
+              {
+                "duration_ms": 5,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:31:39.408541+00:00",
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:09.408541+00:00"
+              },
+              {
+                "duration_ms": 2,
+                "generation": "5491b4d8101b47bbbe1f078834298261",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:31:39.413508+00:00",
+                "revision": "a8db74c8e5d3a6579a8d8d32042d3ca0b75dce16d5d5500db5115fac8a6fd475",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:09.413508+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": "c454df90e1db4a0ea1cfea3e6f316779",
+            "device_revision": 1,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "37c51ccdf23b76c6a49c7289ed0b0dc0c2e8d67d12a543f29896742590dc71a0",
+            "effective_digest": "8f180aa5c0aa9b5bb3cdef117a8ea4b59538fda3deccfa4f359b7fc86f29736a",
+            "current": false,
+            "generation": "5491b4d8101b47bbbe1f078834298261",
+            "verification_scope": "datapath",
+            "blocked_reason": null
+          },
+          {
+            "id": "c2ca52e6fe0543a8b14a849efbceff4e",
+            "role": "ingress",
+            "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+            "state": "ROLLED_BACK",
+            "deadline": "2026-10-13T06:34:47.622888+00:00",
+            "updated_at": "2026-10-13T06:32:57.697938+00:00",
+            "evidence": [
+              {
+                "check": "authenticated_ingress_business_path",
+                "duration_ms": 248,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "trojan_http",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:32:52.183594+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:22.183594+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 359,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:32:52.431285+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:22.431285+00:00"
+              },
+              {
+                "check": "authenticated_vpn_session",
+                "duration_ms": 128,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:32:52.790212+00:00",
+                "peer_count": 0,
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:22.790212+00:00"
+              },
+              {
+                "duration_ms": 90,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:32:52.918109+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:22.918109+00:00"
+              },
+              {
+                "duration_ms": 95,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:32:53.008569+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:23.008569+00:00"
+              },
+              {
+                "duration_ms": 3,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:32:53.103479+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:23.103479+00:00"
+              },
+              {
+                "duration_ms": 1,
+                "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:32:53.106305+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:23.106305+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": "c454df90e1db4a0ea1cfea3e6f316779",
+            "device_revision": 3,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "72082131291fc50c8111dc5a3c66c97b2efecf62101be95ff4e20f0cf4261926",
+            "effective_digest": "1a42aa956b1abda285dda205779aa8714ed23550e200c83c90bca8038d2a7bf5",
+            "current": false,
+            "generation": "c2ca52e6fe0543a8b14a849efbceff4e",
+            "verification_scope": "datapath",
+            "blocked_reason": null
+          },
+          {
+            "id": "c454df90e1db4a0ea1cfea3e6f316779",
+            "role": "ingress",
+            "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+            "state": "ACTIVE",
+            "deadline": "2026-10-13T06:33:07.759282+00:00",
+            "updated_at": "2026-10-13T06:32:57.692909+00:00",
+            "evidence": [
+              {
+                "check": "authenticated_ingress_business_path",
+                "duration_ms": 357,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "trojan_http",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:32:56.645785+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:26.645785+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 357,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:32:57.003052+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:27.003052+00:00"
+              },
+              {
+                "check": "authenticated_vpn_session",
+                "duration_ms": 141,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:32:57.360248+00:00",
+                "peer_count": 0,
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:27.360248+00:00"
+              },
+              {
+                "duration_ms": 93,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:32:57.501195+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:27.501195+00:00"
+              },
+              {
+                "duration_ms": 93,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:32:57.594479+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:27.594479+00:00"
+              },
+              {
+                "duration_ms": 4,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:32:57.687184+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:27.687184+00:00"
+              },
+              {
+                "duration_ms": 1,
+                "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:32:57.691199+00:00",
+                "revision": "2dca30ab3cebf1921d204c330cd691a72eef117ea63c5dd3ff0b3382305e38d7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:34:27.691199+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": null,
+            "device_revision": 3,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "68837c130d4b3983436b54c05ce94017999452236a5eef95ab1d9da6401a6905",
+            "effective_digest": "9021052a32e65117be9436719a97cb985ab292d1292e27c10e89c29b9d4d1933",
+            "current": true,
+            "generation": "c454df90e1db4a0ea1cfea3e6f316779",
+            "verification_scope": "datapath",
+            "blocked_reason": null
+          },
+          {
+            "id": "e2cd4252f7384021b4cd67bc089a005e",
+            "role": "ingress",
+            "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+            "state": "ROLLED_BACK",
+            "deadline": "2026-10-13T06:33:29.630664+00:00",
+            "updated_at": "2026-10-13T06:31:39.423070+00:00",
+            "evidence": [
+              {
+                "check": "authenticated_ingress_business_path",
+                "duration_ms": 258,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "trojan_http",
+                "layer": "access",
+                "observed_at": "2026-10-13T06:31:33.924148+00:00",
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:03.924148+00:00"
+              },
+              {
+                "check": "vpn_server_identity",
+                "client_authenticated": false,
+                "duration_ms": 337,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "vpn_handshake",
+                "layer": "carrier",
+                "observed_at": "2026-10-13T06:31:34.182256+00:00",
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:04.182256+00:00"
+              },
+              {
+                "check": "authenticated_vpn_session",
+                "duration_ms": 111,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "vpn_session",
+                "layer": "vpn",
+                "observed_at": "2026-10-13T06:31:34.319797+00:00",
+                "peer_count": 0,
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:04.319797+00:00"
+              },
+              {
+                "duration_ms": 89,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "http",
+                "layer": "egress",
+                "observed_at": "2026-10-13T06:31:34.431110+00:00",
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:04.431110+00:00"
+              },
+              {
+                "duration_ms": 95,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "dns",
+                "layer": "dns",
+                "observed_at": "2026-10-13T06:31:34.519845+00:00",
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:04.519845+00:00"
+              },
+              {
+                "duration_ms": 3,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "ipv6_guard",
+                "layer": "ipv6",
+                "observed_at": "2026-10-13T06:31:34.614398+00:00",
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:04.614398+00:00"
+              },
+              {
+                "duration_ms": 1,
+                "generation": "e2cd4252f7384021b4cd67bc089a005e",
+                "kind": "route",
+                "layer": "return",
+                "observed_at": "2026-10-13T06:31:34.617348+00:00",
+                "revision": "cba7e25b254e535949e0234b5a1f17179cd8536bad9e8d7b698a9a29e966a0e7",
+                "scope": "datapath",
+                "status": "healthy",
+                "valid_until": "2026-10-13T06:33:04.617348+00:00"
+              }
+            ],
+            "error": null,
+            "predecessor_id": "5491b4d8101b47bbbe1f078834298261",
+            "device_revision": 1,
+            "monitored_at": null,
+            "monitor_valid_until": null,
+            "submitted_digest": "c6118bafeca61a310433ba6559673191cd1a2256148f61eb7c92aca53fdfcf99",
+            "effective_digest": "6326e2a0c003e44d5b48e1ee3a4591e4de668e5fdeeea7e19c9c5ceed22af51e",
+            "current": false,
+            "generation": "e2cd4252f7384021b4cd67bc089a005e",
+            "verification_scope": "datapath",
+            "blocked_reason": null
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "c2ca52e6fe0543a8b14a849efbceff4e",
+          "state": "ROLLED_BACK",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "bridge.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "carrier.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "ingress.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-client.conf",
+              "restored": true
+            },
+            {
+              "kind": "namespace",
+              "resource": "wayvia-egress",
+              "restored": true
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": true
+            },
+            {
+              "kind": "veth",
+              "resource": "wayvia-host",
+              "restored": true
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-carrier.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-client.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-bridge.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-ingress.service",
+              "restored": true
+            }
+          ]
+        },
+        {
+          "id": "e2cd4252f7384021b4cd67bc089a005e",
+          "state": "ROLLED_BACK",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "bridge.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "carrier.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "ingress.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-client.conf",
+              "restored": true
+            },
+            {
+              "kind": "namespace",
+              "resource": "wayvia-egress",
+              "restored": true
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": true
+            },
+            {
+              "kind": "veth",
+              "resource": "wayvia-host",
+              "restored": true
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-carrier.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-client.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-bridge.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-ingress.service",
+              "restored": true
+            }
+          ]
+        },
+        {
+          "id": "5491b4d8101b47bbbe1f078834298261",
+          "state": "ROLLED_BACK",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "bridge.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "carrier.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "ingress.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": true
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-client.conf",
+              "restored": true
+            },
+            {
+              "kind": "namespace",
+              "resource": "wayvia-egress",
+              "restored": true
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": true
+            },
+            {
+              "kind": "veth",
+              "resource": "wayvia-host",
+              "restored": true
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-carrier.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-client.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-bridge.service",
+              "restored": true
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-ingress.service",
+              "restored": true
+            }
+          ]
+        },
+        {
+          "id": "c454df90e1db4a0ea1cfea3e6f316779",
+          "state": "ACTIVE",
+          "apply_error": null,
+          "apply_error_details": {},
+          "recovery_failures": [],
+          "steps": [
+            {
+              "kind": "install_config",
+              "resource": "bridge.json",
+              "restored": false
+            },
+            {
+              "kind": "install_config",
+              "resource": "carrier.json",
+              "restored": false
+            },
+            {
+              "kind": "install_config",
+              "resource": "ingress.json",
+              "restored": false
+            },
+            {
+              "kind": "install_config",
+              "resource": "manifest.json",
+              "restored": false
+            },
+            {
+              "kind": "install_config",
+              "resource": "vpn-client.conf",
+              "restored": false
+            },
+            {
+              "kind": "namespace",
+              "resource": "wayvia-egress",
+              "restored": false
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": false
+            },
+            {
+              "kind": "veth",
+              "resource": "wayvia-host",
+              "restored": false
+            },
+            {
+              "kind": "guard",
+              "resource": "wayvia_guard",
+              "restored": false
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-carrier.service",
+              "restored": false
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-vpn-client.service",
+              "restored": false
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-bridge.service",
+              "restored": false
+            },
+            {
+              "kind": "service",
+              "resource": "wayvia-ingress.service",
+              "restored": false
+            }
+          ]
+        }
+      ],
+      "service_log": "Oct 13 06:32:53 89374c4b0039 openvpn[4374]: 2026-10-13 06:32:53 Closing TUN/TAP interface\nOct 13 06:32:53 89374c4b0039 openvpn[4374]: 2026-10-13 06:32:53 net_addr_v4_del: 10.77.0.2 dev tun0\nOct 13 06:32:53 89374c4b0039 openvpn[4374]: 2026-10-13 06:32:53 SIGTERM[hard,] received, process exiting\nOct 13 06:32:53 89374c4b0039 systemd[1]: wayvia-vpn-client.service: Deactivated successfully.\nOct 13 06:32:53 89374c4b0039 systemd[1]: Stopped wayvia-vpn-client.service - Wayvia vpn-client.\nOct 13 06:32:53 89374c4b0039 v2raya[4256]: Quitting...\nOct 13 06:32:53 89374c4b0039 systemd[1]: Stopping wayvia-carrier.service - Wayvia carrier...\nOct 13 06:32:53 89374c4b0039 systemd[1]: wayvia-carrier.service: Deactivated successfully.\nOct 13 06:32:53 89374c4b0039 systemd[1]: Stopped wayvia-carrier.service - Wayvia carrier.\nOct 13 06:32:53 89374c4b0039 systemd[1]: wayvia-carrier.service: Consumed 2.221s CPU time, 34.6M memory peak, 0B memory swap peak.\nOct 13 06:32:53 89374c4b0039 systemd[1]: Started wayvia-carrier.service - Wayvia carrier.\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.010 [I] [sqlite.go:96]  Initializing database schema\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.010 [I] [sqlite.go:96]  Database schema initialized successfully\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  V2Ray binary is /usr/local/bin/v2raya_core\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  V2Ray asset directory is /usr/local/share/v2raya\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  v2rayA working directory is /\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  v2rayA configuration directory is /var/lib/wayvia/v2raya\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  Golang: go1.26.8\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  OS: linux\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  Arch: arm64\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  Lite: true\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  Version: 2.5.10\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [A] [main.go:24]  Starting...\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.011 [I] [main.go:25]  v2ray-core was running when v2rayA last exited; attempting to restore\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.049 [I] [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.062 [I] [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.062 [I] [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/var/lib/wayvia/v2raya/config.json Format:json}\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.077 [I] [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.262 [I] [io.go:431]  [dns module] no dns_module config found, skipping\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.354 [I] [io.go:431]  from 127.0.0.1:53612 accepted tcp:127.0.0.1:33585 [api-in_ipv4 -> api-out]\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.360 [A] [index.go:225]  v2rayA is listening at http://127.0.0.1:2017\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.789 [I] [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.810 [I] [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.810 [I] [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/var/lib/wayvia/v2raya/config.json Format:json}\nOct 13 06:32:54 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:54.829 [I] [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.045 [I] [io.go:431]  [dns module] no dns_module config found, skipping\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.093 [I] [io.go:431]  from 127.0.0.1:55618 accepted tcp:127.0.0.1:33913 [api-in_ipv4 -> api-out]\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.111 [I] [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.134 [I] [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.139 [I] [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/var/lib/wayvia/v2raya/config.json Format:json}\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.170 [I] [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.528 [I] [io.go:431]  [dns module] no dns_module config found, skipping\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.620 [I] [io.go:431]  from 127.0.0.1:48288 accepted tcp:127.0.0.1:45401 [api-in_ipv4 -> api-out]\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.622 [I] [import.go:44]  Import: modifying server. ind=0, which.ID=1, which.TYPE=server\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.623 [I] [import.go:44]  Import: modified server 1\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.623 [I] [import.go:44]  Import: updating connected v2ray config\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.630 [I] [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.657 [I] [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.657 [I] [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/var/lib/wayvia/v2raya/config.json Format:json}\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.671 [I] [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.888 [I] [io.go:431]  [dns module] no dns_module config found, skipping\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.934 [I] [io.go:431]  from 127.0.0.1:52982 accepted tcp:127.0.0.1:46579 [api-in_ipv4 -> api-out]\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.953 [I] [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.970 [I] [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.971 [I] [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/var/lib/wayvia/v2raya/config.json Format:json}\nOct 13 06:32:55 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:55.988 [I] [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.177 [I] [io.go:431]  [dns module] no dns_module config found, skipping\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.258 [I] [io.go:431]  from 127.0.0.1:55636 accepted tcp:127.0.0.1:42899 [api-in_ipv4 -> api-out]\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.267 [I] [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.283 [I] [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.285 [I] [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/var/lib/wayvia/v2raya/config.json Format:json}\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.314 [I] [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.511 [I] [io.go:431]  [dns module] no dns_module config found, skipping\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.572 [I] [io.go:431]  from 127.0.0.1:56606 accepted tcp:127.0.0.1:41755 [api-in_ipv4 -> api-out]\nOct 13 06:32:56 89374c4b0039 systemd[1]: Started wayvia-vpn-client.service - Wayvia vpn-client.\nOct 13 06:32:56 89374c4b0039 systemd[1]: Started wayvia-bridge.service - Wayvia bridge.\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Note: --socks-proxy disables data channel offload.\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 DCO version: N/A\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 MANAGEMENT: unix domain socket listening on /run/wayvia/vpn-client.sock\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TCP/UDP: Preserving recently used remote address: [AF_INET]10.89.0.1:1080\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Socket Buffers: R=[131072->131072] S=[16384->16384]\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Attempting to establish TCP connection with [AF_INET]10.89.0.1:1080\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TCP connection established with [AF_INET]10.89.0.1:1080\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TCPv4_CLIENT link local: (not bound)\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TCPv4_CLIENT link remote: [AF_INET]10.89.0.1:1080\nOct 13 06:32:56 89374c4b0039 systemd[1]: Started wayvia-ingress.service - Wayvia ingress.\nOct 13 06:32:56 89374c4b0039 sing-box[4685]: ERROR[0000] network: missing default interface\nOct 13 06:32:56 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:56.825 [I] [io.go:431]  from tcp:10.89.0.2:51020 accepted tcp:127.0.0.1:1194 [socks -> proxy]\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TLS: Initial packet from [AF_INET]10.89.0.1:1080, sid=d6ff1bbb efeea294\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 VERIFY OK: depth=1, CN=Wayvia transaction lab CA\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 VERIFY KU OK\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Validating certificate extended key usage\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 VERIFY EKU OK\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 VERIFY X509NAME OK: CN=vpn-server.lab\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 VERIFY OK: depth=0, CN=vpn-server.lab\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 [vpn-server.lab] Peer Connection Initiated with [AF_INET]10.89.0.1:1080\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TLS: tls_multi_process: initial untrusted session promoted to trusted\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 PUSH: Received control message: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400'\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 OPTIONS IMPORT: --ifconfig/up options modified\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 OPTIONS IMPORT: route-related options modified\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 OPTIONS IMPORT: tun-mtu set to 1400\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_route_v4_best_gw query: dst 0.0.0.0\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_route_v4_best_gw result: via 10.89.0.1 dev wayvia-ns\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 ROUTE_GATEWAY 10.89.0.1/255.255.255.252 IFACE=wayvia-ns HWADDR=ae:05:19:f1:d6:9d\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 TUN/TAP device tun0 opened\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_iface_mtu_set: mtu 1400 for tun0\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_iface_up: set tun0 up\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_addr_v4_add: 10.77.0.2/24 dev tun0\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_route_v4_add: 10.89.0.1/32 via 10.89.0.1 dev wayvia-ns table 0 metric -1\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_route_v4_add: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_route_v4_add: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 net_route_v4_add: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Initialization Sequence Completed\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Data Channel: cipher 'AES-256-GCM', peer-id: 0\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Timers: ping 10, ping-restart 60\nOct 13 06:32:56 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:56 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\nOct 13 06:32:57 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:57.264 [I] [io.go:431]  from 127.0.0.1:56620 accepted tcp:127.0.0.1:41755 [api-in_ipv4 -> api-out]\nOct 13 06:32:57 89374c4b0039 v2raya[4592]: 2026/10/13 06:32:57.331 [I] [io.go:431]  from tcp:10.89.0.2:51036 accepted tcp:127.0.0.1:1194 [socks -> proxy]\nOct 13 06:32:57 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:57 MANAGEMENT: Client connected from /run/wayvia/vpn-client.sock\nOct 13 06:32:57 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:57 MANAGEMENT: CMD 'state 1'\nOct 13 06:32:57 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:57 MANAGEMENT: CMD 'status 3'\nOct 13 06:32:57 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:57 MANAGEMENT: CMD 'quit'\nOct 13 06:32:57 89374c4b0039 openvpn[4681]: 2026-10-13 06:32:57 MANAGEMENT: Client disconnected\nOct 13 06:32:57 89374c4b0039 sing-box[4685]: ERROR[0001] [1369692070 43ms] inbound/trojan[entry]: process connection from 172.31.0.2:34232: bad request: fallback disabled\n",
+      "baseline_observations": [
+        {
+          "digest": "1f6bac82daca4c62ffd9bfa268d4b0f0c455a65c5453c377a2fcea15a6f22bd5",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "4ae057f5106130da09fb7534162cbeb5e0bf9c789c81c44daed277462453c459",
+              "exists": false
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "4ae057f5106130da09fb7534162cbeb5e0bf9c789c81c44daed277462453c459",
+              "exists": false
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "804b91d845542095fa21dbb0a1d7f8fd50cd1840a0efb85e1a76822ceb8be70b",
+              "exists": false,
+              "state": ""
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "3eb99267ebf976fc9f8678cb628ea1a48d0580f4d098ce4698edc0713228a676",
+              "exists": false,
+              "rules": null
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            }
+          ],
+          "routes": "[{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "1f6bac82daca4c62ffd9bfa268d4b0f0c455a65c5453c377a2fcea15a6f22bd5",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "a01519890f83137510efb756de5c937af64116642b2517d4ebd2dff7e0250c7b",
+              "exists": false,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "4ae057f5106130da09fb7534162cbeb5e0bf9c789c81c44daed277462453c459",
+              "exists": false
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "4ae057f5106130da09fb7534162cbeb5e0bf9c789c81c44daed277462453c459",
+              "exists": false
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "804b91d845542095fa21dbb0a1d7f8fd50cd1840a0efb85e1a76822ceb8be70b",
+              "exists": false,
+              "state": ""
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "3eb99267ebf976fc9f8678cb628ea1a48d0580f4d098ce4698edc0713228a676",
+              "exists": false,
+              "rules": null
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "c8cc10da5f0bed4f99a4d61b4c1c32ef73fa4b222fa59d23b8256122174758b8",
+              "exists": false,
+              "active": false
+            }
+          ],
+          "routes": "[{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "075419152e908c31d23699c26e8ba17a5c3c29a56ef7dfc81e78c220c0b3152c",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "931875bc953dea7e2e730f71f6ca3f9b2dac5d824663a6fd6f5fdc5bd5d50b08",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a78dea704b5874eead84baca9eeaf0d891c25db18ea0fb691866cda8d7bc7b38",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "075419152e908c31d23699c26e8ba17a5c3c29a56ef7dfc81e78c220c0b3152c",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "931875bc953dea7e2e730f71f6ca3f9b2dac5d824663a6fd6f5fdc5bd5d50b08",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a78dea704b5874eead84baca9eeaf0d891c25db18ea0fb691866cda8d7bc7b38",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "5bf74f58879561f2cd104eb2fe38a58296ce1c83221185bcd41d242bbe7ffc35",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "dbb331b7f6ad66db58fb178de32d355b77eca8fd9676760360e83d8e96e5ecb9",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "e6d6fa86a91f4a7dba359727f8345c60b0198b18c92d4e21ae0383c0908ee16b",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "5bf74f58879561f2cd104eb2fe38a58296ce1c83221185bcd41d242bbe7ffc35",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "dbb331b7f6ad66db58fb178de32d355b77eca8fd9676760360e83d8e96e5ecb9",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "e6d6fa86a91f4a7dba359727f8345c60b0198b18c92d4e21ae0383c0908ee16b",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "6bdeeb8e81463242c62cc3b549874829676defa417c1b14b45b25c5b0e9929f5",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "29554a83ef20ad0ad161c37e7a745b11f90c6951a612d90826db3a5f8d954371",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a78dea704b5874eead84baca9eeaf0d891c25db18ea0fb691866cda8d7bc7b38",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "774db74e3032324c395145e24153ce9d158604e718f5d3d82c46e48fd5e640be",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "eacc4a94cdc6a5048f8e6abebb4697edfd2aa4fcc37bcf0afe38abcfefe816dc",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a78dea704b5874eead84baca9eeaf0d891c25db18ea0fb691866cda8d7bc7b38",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        },
+        {
+          "digest": "774db74e3032324c395145e24153ce9d158604e718f5d3d82c46e48fd5e640be",
+          "resources": [
+            {
+              "key": "install_config:host:bridge.json",
+              "snapshot_digest": "94f2ba11f0defe15b853e9b18afa3ad3107fa9fa9a04f42a1900c0b20a624f39",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:carrier.json",
+              "snapshot_digest": "bfb26800a5e43dc6d7cddaecc3d325a95c2dd8864d625bae5cf05a6dfd49d4bf",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:ingress.json",
+              "snapshot_digest": "eacc4a94cdc6a5048f8e6abebb4697edfd2aa4fcc37bcf0afe38abcfefe816dc",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:manifest.json",
+              "snapshot_digest": "a78dea704b5874eead84baca9eeaf0d891c25db18ea0fb691866cda8d7bc7b38",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "install_config:host:vpn-client.conf",
+              "snapshot_digest": "d73bac2087b0b2025e8fa7270d86a2cb3d3606b9fbe7dbf7f76f1b6cf83f23ba",
+              "exists": true,
+              "mode": 384
+            },
+            {
+              "key": "namespace:host:wayvia-egress",
+              "snapshot_digest": "9caa40b8dea250003f3e5737b032fb728d63450d5da0d0d10d5f5e6aa6bb922b",
+              "exists": true
+            },
+            {
+              "key": "guard:wayvia-egress:wayvia_guard",
+              "snapshot_digest": "7e6c35ed1bc502b680550132a216e46ee074227b5696b786a02096b2140dba53",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n"
+            },
+            {
+              "key": "veth:host:wayvia-host",
+              "snapshot_digest": "b8f3280661527770c26d6fabbdb7a00abee0c0ed99bb3f2d4b835d42c880d73b",
+              "exists": true,
+              "state": "[{\"ifindex\":4,\"link_index\":3,\"ifname\":\"wayvia-host\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"26:21:00:60:a2:2c\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"link_netnsid\":1}]"
+            },
+            {
+              "key": "guard:host:wayvia_guard",
+              "snapshot_digest": "b3df9fbb44ee06f43b7040abfb5b16482cb04604a5016c3e6d2bb190a5e3ce3f",
+              "exists": true,
+              "rules": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter drop\n\t}\n}\n"
+            },
+            {
+              "key": "service:host:wayvia-carrier.service",
+              "snapshot_digest": "d036b6285db69a16c9c24e4b5df8252c11ec444bb6f5e19553e9ffa14b444025",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-vpn-client.service",
+              "snapshot_digest": "f8ed9a0a62b6c59993fc14ba5fac4fdd5f1a46a33ef2ccf86c137a6cde7a070a",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-bridge.service",
+              "snapshot_digest": "69cd4fbd4a686eb380c8d890bdadd9178df04f39e40e6654f2c176e776d08e59",
+              "exists": true,
+              "active": true
+            },
+            {
+              "key": "service:host:wayvia-ingress.service",
+              "snapshot_digest": "90a0f85dfcb06db5c01a6e2e12c229b973c875f090acdb6a49ee6c5c8a958637",
+              "exists": true,
+              "active": true
+            }
+          ],
+          "routes": "[{\"dst\":\"10.89.0.0/30\",\"dev\":\"wayvia-host\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"10.89.0.1\",\"flags\":[]},{\"dst\":\"172.31.0.0/16\",\"dev\":\"eth0\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"172.31.0.2\",\"flags\":[]}]\n"
+        }
+      ]
+    }
+  }
+}

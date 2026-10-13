@@ -157,3 +157,64 @@ def test_collision_preflight_does_not_mutate_docker_resources(monkeypatch):
     with pytest.raises(RuntimeError, match="already exists"):
         lab.require_absent()
     assert calls and all(argv[2] == "inspect" for argv in calls)
+
+
+def test_transaction_lab_uses_daemon_addresses_on_automatic_subnets(monkeypatch, tmp_path):
+    calls = []
+    addresses = {"ingress": "172.30.0.25", "exit": "172.30.0.17", "target": "172.30.0.9"}
+    received = []
+
+    def command(argv, **kwargs):
+        calls.append(argv)
+        if argv[1] == "run":
+            # Docker releases which reject static endpoints on automatic IPAM must work.
+            assert "--ip" not in argv
+        if argv[1] == "inspect":
+            role = next(role for role, name in lab.NAMES.items() if name == argv[-1])
+            return SimpleNamespace(
+                returncode=0,
+                stdout=json.dumps(
+                    [
+                        {
+                            "Config": {"Labels": {"org.wayvia.disposable": "transaction"}},
+                            "NetworkSettings": {
+                                "Networks": {lab.NETWORK: {"IPAddress": addresses[role]}}
+                            },
+                        }
+                    ]
+                ),
+            )
+        if argv[-1] == "is-system-running":
+            return SimpleNamespace(returncode=0, stdout="running\n")
+        if argv[-1] == "/proc/1/comm":
+            return SimpleNamespace(returncode=0, stdout="systemd\n")
+        return SimpleNamespace(returncode=0, stdout="")
+
+    monkeypatch.setattr(lab, "command", command)
+    monkeypatch.setattr(lab, "require_absent", lambda: None)
+    monkeypatch.setattr(lab, "clean", lambda: None)
+    monkeypatch.setattr(lab, "inputs", lambda directory, actual: received.append(actual.copy()))
+    monkeypatch.setattr(lab, "action", lambda *args: {})
+    assert lab.run(tmp_path) == 0
+    assert received == [addresses]
+    assert len([argv for argv in calls if argv[1] == "run"]) == 3
+
+
+@pytest.mark.parametrize("address", ["", "::1", "0.0.0.0", "127.0.0.1"])
+def test_transaction_container_address_rejects_unusable_endpoints(monkeypatch, address):
+    data = [
+        {
+            "Config": {"Labels": {"org.wayvia.disposable": "transaction"}},
+            "NetworkSettings": {"Networks": {lab.NETWORK: {"IPAddress": address}}},
+        }
+    ]
+    monkeypatch.setattr(lab, "command", lambda *args: SimpleNamespace(stdout=json.dumps(data)))
+    with pytest.raises((ValueError, RuntimeError)):
+        lab.container_address("ingress")
+
+
+def test_transaction_container_address_rejects_unowned_container(monkeypatch):
+    data = [{"Config": {"Labels": {"org.wayvia.disposable": "other"}}}]
+    monkeypatch.setattr(lab, "command", lambda *args: SimpleNamespace(stdout=json.dumps(data)))
+    with pytest.raises(RuntimeError, match="unowned transaction container"):
+        lab.container_address("ingress")

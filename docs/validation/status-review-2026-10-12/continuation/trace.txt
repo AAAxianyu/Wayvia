@@ -1,0 +1,14 @@
+transaction lab: exit install
+transaction lab: ingress install
+transaction lab: ingress device
+transaction lab: exit apply
+transaction lab: ingress apply
+transaction lab: exit monitor
+transaction lab: ingress monitor
+transaction lab: ingress publication
+transaction lab: ingress entry
+transaction lab: exit upgrade
+transaction lab: ingress upgrade
+transaction lab: exit diagnostics
+transaction lab: ingress diagnostics
+TRANSACTION LAB FAILED: docker failed (1): {"status": "failed", "error": "runuser failed: exit=5, code=BASELINE_CHANGED, {\"code\": \"BASELINE_CHANGED\", \"message\": \"Host resources changed after planning\", \"request_id\": null, \"details\": {}}"}

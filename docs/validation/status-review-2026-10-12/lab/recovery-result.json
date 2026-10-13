@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "scope": "disposable Linux systemd container",
+  "timer": "production SystemdTimer and systemd-run",
+  "recovery": "independent production wayvia.agent.recovery processes",
+  "cases": [
+    {
+      "case": "timer",
+      "state_before": "APPLYING",
+      "state_after": "ROLLED_BACK",
+      "actions_recovered": 4,
+      "kernel_resources_removed": true,
+      "host_default_route_unchanged": true,
+      "systemd_timer_listed": true,
+      "recovery_service": "Result=success\nExecMainStatus=0",
+      "controller_exited_before_rollback": true
+    },
+    {
+      "case": "restart",
+      "state_before": "APPLYING",
+      "state_after": "ROLLED_BACK",
+      "actions_recovered": 4,
+      "kernel_resources_removed": true,
+      "host_default_route_unchanged": true,
+      "independent_new_process_exit": 0,
+      "recovery_stdout": [
+        {
+          "id": "ff781e9099ba45a182c683a4d260ee99",
+          "role": "ingress",
+          "revision": "recovery-lab",
+          "state": "ROLLED_BACK",
+          "deadline": "2026-10-13T06:12:56.642112+00:00",
+          "updated_at": "2026-10-13T06:12:47.276261+00:00",
+          "evidence": null,
+          "error": null,
+          "predecessor_id": null,
+          "device_revision": null,
+          "monitored_at": null,
+          "monitor_valid_until": null,
+          "submitted_digest": null,
+          "effective_digest": null,
+          "current": false,
+          "generation": "ff781e9099ba45a182c683a4d260ee99",
+          "verification_scope": "datapath",
+          "blocked_reason": null
+        }
+      ],
+      "controller_exited_before_recovery": true
+    }
+  ]
+}

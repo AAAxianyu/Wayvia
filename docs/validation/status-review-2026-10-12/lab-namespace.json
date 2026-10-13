@@ -1,0 +1,44 @@
+{
+  "scope": "Temporary snapshot only; Docker resource names and image tags changed to avoid concurrent existing lab; production src and test expectations unchanged",
+  "replacements": {
+    "wayvia-m4-disposable": "wayvia-status-m4-m2dongsl",
+    "wayvia-recovery-disposable": "wayvia-status-recovery-m2dongsl",
+    "wayvia-transaction-disposable": "wayvia-status-transaction-m2dongsl",
+    "\"wayvia-transaction-\" + role": "\"wayvia-status-transaction-m2dongsl-\" + role",
+    "wayvia-lab-systemd:locked": "wayvia-status-lab-systemd:m2dongsl",
+    "wayvia-lab:locked": "wayvia-status-lab:m2dongsl",
+    "wayvia-transaction:locked": "wayvia-status-transaction:m2dongsl"
+  },
+  "files": [
+    {
+      "path": "scripts/lab.py",
+      "before_sha256": "210e5779cc9835f7425a54d97bb40b6c20f4804a8db23d7c538bf1e31a8c5ae7",
+      "after_sha256": "6b7ea380a955060a2a805c405c87f55843e4bdf5129e3c5b39182db1d17abaf1"
+    },
+    {
+      "path": "scripts/test_configs.py",
+      "before_sha256": "f2b92643f8ad8adbd61697a8b27605fb7af072b1d53fb66935871f7b1b961b00",
+      "after_sha256": "e825d16122d8e5cc04bcd41735797afc149d2f760e720b56d390bd5b4ec4fc55"
+    },
+    {
+      "path": "scripts/recovery_lab.py",
+      "before_sha256": "f5c8332d8a7ba9af28a975d9528666b3e61ec543198b891c6c05b80f79394478",
+      "after_sha256": "b733d0242e6a99012d241f0d87d509967220afcb3e17b60ef7e167af3ed25b68"
+    },
+    {
+      "path": "scripts/transaction_lab.py",
+      "before_sha256": "6d9a95831f06584bf13d5ccd6fd5989a3b2037e28dde23fdfd2d8c72f408516f",
+      "after_sha256": "0bebd39f303e02b54e52c32ca432962be5df70cbd840529e5def10511f2fb40a"
+    },
+    {
+      "path": "deploy/lab/Dockerfile.systemd",
+      "before_sha256": "d33862c1b576d2510b468251dc5ff9157a541ff006e94f8a107f68b4f378639a",
+      "after_sha256": "51d4b1780b4d713774a331ae3211ad81a8b71f0bb43ba16678127bbca2f0929b"
+    },
+    {
+      "path": "deploy/lab/Dockerfile.transaction",
+      "before_sha256": "65fe87fd2f2332d9a1bcb4f91f0cf7127a5b7a302af8aab9849dd706338b7bdb",
+      "after_sha256": "dab25e4ca69ba23ba67ad1a14b4ba382dd1f32cafdc3e3fb08123ad3d5711c57"
+    }
+  ]
+}

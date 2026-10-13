@@ -601,6 +601,9 @@ def diagnostics():
                 {
                     "id": data["id"],
                     "state": data["state"],
+                    "apply_error": data.get("apply_error"),
+                    "apply_error_details": data.get("apply_error_details", {}),
+                    "recovery_failures": data.get("recovery_failures", []),
                     "steps": [
                         {
                             "kind": item["action"]["kind"],
@@ -616,7 +619,7 @@ def diagnostics():
             "journalctl",
             "--no-pager",
             "-n",
-            "50",
+            "120",
             "-u",
             "wayvia-agent.service",
             "-u",
@@ -625,6 +628,14 @@ def diagnostics():
             "wayvia-exit.service",
             "-u",
             "wayvia-recover.service",
+            "-u",
+            "wayvia-carrier.service",
+            "-u",
+            "wayvia-vpn-client.service",
+            "-u",
+            "wayvia-ingress.service",
+            "-u",
+            "wayvia-bridge.service",
         ],
         accepted=(0, 1),
     ).stdout

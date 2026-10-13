@@ -129,8 +129,40 @@ def test_timer_failure_prevents_all_network_mutation(tmp_path):
 def test_failed_probe_and_failed_rollback_are_never_active(tmp_path):
     e = Executor(rollback_fail=True)
     m = manager(tmp_path, e, verifier=lambda e, p: [{"status": "unknown"}])
-    assert m.apply(plan())["state"] == State.RECOVERY_REQUIRED
+    tx = m.apply(plan())
+    assert tx["state"] == State.RECOVERY_REQUIRED
     assert ("protect", "ingress") in e.events
+    saved = m._read(tx["id"])
+    assert saved["apply_error"] == "PROBE_FAILED"
+    assert saved["recovery_failures"] == ["RESTORE_FAILED"] * len(saved["steps"])
+    assert "apply_error" not in tx and "recovery_failures" not in tx
+
+
+def test_transaction_error_diagnostics_keep_safe_metadata_only(tmp_path):
+    class RejectedExecutor(Executor):
+        def apply(self, action):
+            raise AdapterError(
+                "V2RAYA_REQUEST_FAILED",
+                "rejected",
+                details={
+                    "operation": "ports",
+                    "status": 500,
+                    "errorCode": "CORE_FAILED",
+                    "password": "never-record-this",
+                    "response": {"token": "private"},
+                },
+            )
+
+    m = manager(tmp_path, RejectedExecutor())
+    tx = m.apply(plan())
+    saved = m._read(tx["id"])
+    assert saved["apply_error_details"] == {
+        "operation": "ports",
+        "status": 500,
+        "errorCode": "CORE_FAILED",
+    }
+    assert "apply_error_details" not in tx
+    assert "never-record-this" not in (tmp_path / (tx["id"] + ".json")).read_text()
 
 
 def test_expired_confirmation_rolls_back(tmp_path):

@@ -1,0 +1,10 @@
+{
+  "command": "make demo UV=/tmp/wayvia-bootstrap/bin/uv",
+  "cwd": "/private/tmp/wayvia-status-20261012-m2dongsl",
+  "started_at_utc": "2026-10-13T06:05:39.062711+00:00",
+  "completed_at_utc": "2026-10-13T06:05:43.932582+00:00",
+  "duration_seconds": 4.87,
+  "exit_code": 0,
+  "log": "demo.txt",
+  "log_sha256": "18ead011eb2259d8f642b9e657b25c4e5108ce5fb50316015a671b1b7fab81b4"
+}

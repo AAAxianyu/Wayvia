@@ -1,0 +1,10 @@
+{
+  "command": "make check UV=/tmp/wayvia-bootstrap/bin/uv",
+  "cwd": "/private/tmp/wayvia-status-20261012-m2dongsl",
+  "started_at_utc": "2026-10-13T06:02:30.505673+00:00",
+  "completed_at_utc": "2026-10-13T06:02:30.820734+00:00",
+  "duration_seconds": 0.315,
+  "exit_code": 2,
+  "log": "check-sandbox-blocked.txt",
+  "log_sha256": "94a5feeeb369a4a94433010276e4bb0cb13bdbb5f6985a8c840df1685901df10"
+}

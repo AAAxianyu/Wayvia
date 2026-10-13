@@ -18,9 +18,11 @@ systems:
     isolation: disposable_none_network_namespaces_and_internal_dual_role_private_cgroups
     os: Ubuntu 24.04.5 LTS
     python: 3.12.3
-    status: passed
-    scope: current_fix_unified_isolated_gate_verified_arm64; no_real_deployment_acceptance
+    status: partial_pass_full_gate_failed
+    scope: current_working_tree_arm64_review; installed_ingress_update_BASELINE_CHANGED; no_real_deployment_acceptance
     evidence:
+    - docs/validation/status-review-2026-10-12/summary.json
+    - docs/validation/status-review-2026-10-12/lab/transaction-result.json
     - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
     - docs/validation/fixes-2026-10-12/final-lab/protocol-result.json
     - docs/validation/fixes-2026-10-12/final-lab/mihomo-dns-result.json
@@ -230,7 +232,7 @@ fixes:
       cold_start_runs: 12
       cold_start_evidence: docs/validation/fixes-2026-10-12/tun/cold-starts-after.json
       report: docs/validation/fixes-2026-10-12/tun/README.md
-  current_remote_ci: not_yet_verified_for_current_fixes
+  current_remote_ci: pre_delivery_739eef7_failed; Docker_address_fix_in_this_delivery_new_CI_pending
   M6: not_executed_real_cloud_mobile_reboot_performance_and_cost
   M7: not_implemented_or_accepted_OpenWrt
   software_checks:
@@ -240,3 +242,41 @@ fixes:
     ruff_check: passed
     wheel_sdist_build: passed
     cli_help: passed
+current_inspection:
+  date: '2026-10-12'
+  source_commit: 739eef73d6185e6cad7b436b23a09a4be8d3dc60
+  source_scope: current_working_tree_with_preexisting_Wayvia_changes; production_source_unchanged_by_inspection
+  software_implementation: major_M0_M5_modules_implemented_delivery_acceptance_reopened
+  software_versions: docs/validation/status-review-2026-10-12/software-versions.json
+  gates:
+    check: passed_298_tests_3_dependency_warnings
+    demo: passed_explicit_simulation
+    test_configs: passed_10_real_component_cases
+    test_lab: failed_make_exit_2_installed_ingress_update_BASELINE_CHANGED
+    clean_lab: passed_audit_named_resources_removed_existing_experiments_preserved
+  isolated_validation: path_protocol_DNS_TUN_conflicts_executor_and_recovery_passed; full_gate_failed
+  baseline_counter_sensitivity:
+    status: confirmed_by_real_kernel_and_instrumented_installed_transaction_reproduction
+    evidence: docs/validation/status-review-2026-10-12/baseline-counter-reproduction.json
+    kernel_evidence: docs/validation/status-review-2026-10-12/continuation/kernel-baseline-result.json
+    transaction_evidence: docs/validation/status-review-2026-10-12/continuation/root-cause.json
+    scope: third_ingress_plan_rejected_only_due_to_guard_counter_1_48_to_2_96; previous_generation_ACTIVE
+  baseline_fix_candidate:
+    status: real_kernel_structural_conflict_detection_and_23_installed_transaction_cases_passed
+    applied_to_repository_production_source: false
+    current_production_gate: remains_failed_until_fix_applied_and_gates_rerun
+    evidence: docs/validation/status-review-2026-10-12/continuation/summary.json
+    patch: docs/validation/status-review-2026-10-12/continuation/baseline-candidate.patch
+  remote_ci:
+    commit: 739eef73d6185e6cad7b436b23a09a4be8d3dc60
+    run: https://github.com/AAAxianyu/Wayvia/actions/runs/38347888025
+    software: success
+    isolated_linux: failure_Docker_static_IP_on_automatic_subnet
+    working_tree_fix: Docker_assigned_addresses_in_this_delivery; new_amd64_CI_pending
+    scope: historical_pre_delivery_run_at_inspection_baseline
+    evidence: docs/validation/status-review-2026-10-12/ci-run.json
+  experiment_scope: current_source_snapshot_with_Docker_names_and_image_tags_isolated_only
+  namespace_evidence: docs/validation/status-review-2026-10-12/lab-namespace.json
+  evidence: docs/validation/status-review-2026-10-12/summary.json
+  M6: not_executed_no_verified_real_cloud_server_deployment_or_mobile_acceptance
+  M7: not_implemented_or_accepted_OpenWrt
