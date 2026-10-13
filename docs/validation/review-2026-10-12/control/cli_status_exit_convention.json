@@ -1,0 +1,14 @@
+{
+  "reproduced": true,
+  "classification": "interface contract tradeoff; caller must inspect returned status; not classified as a must-fix in the parent audit",
+  "add_exit": 0,
+  "add_state": "pending",
+  "revoke_exit": 0,
+  "revoke_state": "degraded",
+  "protection": {
+    "status": "unknown",
+    "code": "ingress_block_unconfirmed"
+  },
+  "evidence_kind": "real CLI production mode + absent Unix agent socket; temporary SQLite; no host network mutation",
+  "source": "src/wayvia/cli.py:164-185"
+}

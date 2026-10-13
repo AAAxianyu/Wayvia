@@ -200,3 +200,46 @@ def test_server_render_rejects_ipv6_dns_when_vpn_ipv6_is_blocked():
     with pytest.raises(WayviaError) as failure:
         renderer.render("ingress", [], {"carrier-credential": "carrier-password"})
     assert failure.value.code == "unsupported_exit_dns"
+
+
+@pytest.mark.parametrize(
+    "local,domestic,expected",
+    [
+        (["campus.example"], ["campus.example"], {"+.campus.example": "internal"}),
+        (["campus.example"], ["api.campus.example"], {"+.campus.example": "internal"}),
+        (
+            ["api.campus.example"],
+            ["campus.example"],
+            {"+.api.campus.example": "internal", "+.campus.example": "domestic"},
+        ),
+    ],
+)
+def test_mihomo_dns_preserves_first_match_across_identical_parent_and_child_suffixes(
+    local, domestic, expected
+):
+    data = example_config()
+    data["rulesets"]["local-rules"] = {"source": "operator", "version": "1", "domains": local}
+    data["rulesets"]["domestic-rules"] = {"source": "operator", "version": "1", "domains": domestic}
+    data["policy"]["domestic_domain_rules_ref"] = None
+    renderer = ProfileRenderer(WayviaConfig.model_validate(data))
+    policy = renderer._mihomo("test-password")["dns"]["nameserver-policy"]
+    policy.pop("entry.wayvia.example")
+    addresses = {"internal": ["192.168.1.1:53#DIRECT"], "domestic": ["223.5.5.5:53#DIRECT"]}
+    assert policy == {key: addresses[value] for key, value in expected.items()}
+
+
+def test_mihomo_bootstrap_exact_rule_does_not_get_overwritten_by_suffix_node():
+    data = example_config()
+    data["dns"]["resolvers"]["bootstrap-dns"]["address"] = "9.9.9.9"
+    data["rulesets"]["domestic-rules"] = {
+        "source": "operator",
+        "version": "1",
+        "domains": ["entry.wayvia.example"],
+    }
+    data["policy"]["domestic_domain_rules_ref"] = None
+    policy = ProfileRenderer(WayviaConfig.model_validate(data))._mihomo("password")["dns"][
+        "nameserver-policy"
+    ]
+    assert policy["entry.wayvia.example"] == ["9.9.9.9:53#DIRECT"]
+    assert policy[".entry.wayvia.example"] == ["223.5.5.5:53#DIRECT"]
+    assert "+.entry.wayvia.example" not in policy

@@ -1,0 +1,1 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked python scripts/lab.py --clean

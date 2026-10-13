@@ -1,0 +1,35 @@
+{
+  "status": "failed",
+  "source": "docs/validation/review-2026-10-12/latest-lab/lab-result.json",
+  "scope": "Disposable Linux lab, selected startup evidence only",
+  "error": "native-tcp 10.74.0.2 expected success=True: {\"error\": \"timed out\"}\n",
+  "tests": [
+    {
+      "name": "foreign_tcp_dual_layer_japan_nat",
+      "status": "passed",
+      "elapsed_ms": 976,
+      "evidence": {
+        "target": "foreign",
+        "peer": "10.74.0.1"
+      }
+    },
+    {
+      "name": "domestic_tcp_terminal_direct",
+      "status": "passed",
+      "elapsed_ms": 67,
+      "evidence": {
+        "target": "domestic",
+        "peer": "10.71.0.2"
+      }
+    },
+    {
+      "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+      "status": "failed",
+      "elapsed_ms": 4034,
+      "error": "native-tcp 10.74.0.2 expected success=True: {\"error\": \"timed out\"}\n"
+    }
+  ],
+  "logs": {
+    "terminal.log": "\u001b[33mWARN\u001b[0m[0000] `independent_cache` DNS option is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, checkout documentation for migration: https://sing-box.sagernet.org/migration/#migrate-independent-dns-cache\n"
+  }
+}

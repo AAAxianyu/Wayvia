@@ -8,6 +8,8 @@ Stage output is a reviewable filesystem layout, not a claim that Linux is runnin
 from __future__ import annotations
 
 import argparse
+import fcntl
+import grp
 import gzip
 import hashlib
 import json
@@ -22,11 +24,13 @@ import tarfile
 import tempfile
 import uuid
 import zipfile
+from contextlib import contextmanager, nullcontext
 from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = "var/lib/wayvia/install-manifest.json"
+JOURNAL = "var/lib/wayvia/install-transaction.json"
 UNITS = (
     "wayvia-api.service",
     "wayvia-agent.service",
@@ -197,7 +201,7 @@ Type=simple
 User=wayvia
 Group=wayvia
 ExecStart=/opt/wayvia/.venv/bin/wayvia \
-  --data-dir /var/lib/wayvia/control --mode production serve --host 127.0.0.1 --port 8787
+  --system --mode production serve --host 127.0.0.1 --port 8787
 UMask=0077
 NoNewPrivileges=yes
 PrivateTmp=yes
@@ -218,11 +222,103 @@ def existing_manifest(root: Path) -> dict | None:
         manifest = json.loads(path.read_text())
         if manifest["schema_version"] != 1 or not isinstance(manifest["files"], dict):
             raise ValueError
+        for relative, metadata in manifest["files"].items():
+            if not owned_file(relative):
+                raise InstallError(
+                    "manifest_path_forbidden", "Manifest contains a nonowned file path"
+                )
+            checked_path(root, relative)
+            if not isinstance(metadata.get("sha256"), str):
+                raise ValueError
         return manifest
     except (ValueError, KeyError, OSError):
         raise InstallError(
             "manifest_invalid", "Previous installation manifest is invalid"
         ) from None
+
+
+@contextmanager
+def layout_lock(root: Path, *, operation=False):
+    name = "system-operation.lock" if operation else "install.lock"
+    path = checked_path(root, "var/lib/wayvia/" + name)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor = os.open(path, os.O_CREAT | os.O_RDWR | os.O_NOFOLLOW, 0o600)
+    try:
+        fcntl.flock(descriptor, fcntl.LOCK_EX)
+        yield
+    finally:
+        os.close(descriptor)
+
+
+def remove_file(path: Path):
+    path.unlink(missing_ok=True)
+    descriptor = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
+def recover_pending(root: Path) -> dict:
+    """Undo an interrupted layout write, without trusting names as ownership.
+
+    The journal is durable before the first payload write. An atomic manifest
+    carrying its transaction ID is the commit point. Recovery itself is
+    idempotent: every file can still contain either its before or after image.
+    """
+    path = checked_path(root, JOURNAL)
+    if not path.exists():
+        return {"status": "no_pending_installation"}
+    try:
+        journal = json.loads(path.read_text())
+        if journal["schema_version"] != 1 or not isinstance(journal["files"], dict):
+            raise ValueError
+        manifest = existing_manifest(root)
+        if manifest and manifest.get("transaction_id") == journal["id"]:
+            remove_file(path)
+            return {"status": "installation_already_committed"}
+        restore = []
+        for relative, change in journal["files"].items():
+            if not owned_file(relative):
+                raise ValueError
+            target = checked_path(root, relative)
+            before, after = change["before"], change["after_sha256"]
+            current = digest(target.read_bytes()) if target.exists() else None
+            expected = {None, after, before["sha256"] if before else None}
+            if current not in expected:
+                raise InstallError(
+                    "recovery_file_modified",
+                    "A pending installation file was modified; review it before recovery",
+                    5,
+                )
+            data = None
+            if before:
+                saved = before["backup"]
+                if not saved.startswith("var/backups/wayvia/"):
+                    raise ValueError
+                data = checked_path(root, saved).read_bytes()
+                if digest(data) != before["sha256"]:
+                    raise ValueError
+            restore.append((target, before, data))
+        # Validate all targets and backup hashes before mutating any of them.
+        for target, before, data in reversed(restore):
+            if before:
+                write(target, data, before["mode"])
+            elif target.exists():
+                remove_file(target)
+        remove_file(path)
+        return {"status": "interrupted_installation_rolled_back", "files": len(restore)}
+    except (ValueError, KeyError, TypeError, OSError):
+        raise InstallError(
+            "installation_recovery_required", "Pending installation journal or backup is invalid", 5
+        ) from None
+
+
+def recover_layout(root: Path, *, system=False) -> dict:
+    if root == Path("/") and not system:
+        raise InstallError("system_required", "Real filesystem recovery requires --system")
+    with layout_lock(root):
+        return recover_pending(root)
 
 
 def backup(root: Path, previous: dict) -> str:
@@ -312,6 +408,12 @@ def install_layout(
         b"d /run/wayvia 0750 root wayvia -\nd /var/lib/wayvia 0750 root wayvia -\n",
         0o644,
     )
+    with layout_lock(root):
+        recover_pending(root)
+        return write_layout(root, payloads, components, version, arch, api_uid, system)
+
+
+def write_layout(root, payloads, components, version, arch, api_uid, system):
     previous = existing_manifest(root)
     # A matching unowned filename is still a conflict; never infer ownership from names.
     for relative in payloads:
@@ -322,6 +424,18 @@ def install_layout(
             raise InstallError(
                 "owned_file_modified", "An owned file changed; review it before upgrade"
             )
+    obsolete = set(previous["files"] if previous else ()) - set(payloads)
+    retained, removed = {}, []
+    for relative in sorted(obsolete):
+        target = checked_path(root, relative)
+        if not target.exists():
+            continue
+        if digest(target.read_bytes()) == previous["files"][relative]["sha256"]:
+            removed.append(relative)
+        else:
+            # Keep the original hash: uninstall must still recognize this as an
+            # operator modification instead of silently taking ownership of it.
+            retained[relative] = previous["files"][relative]
     backup_path = backup(root, previous) if previous else None
     for relative, mode in {
         "etc/wayvia": 0o700,
@@ -334,10 +448,29 @@ def install_layout(
         directory = checked_path(root, relative)
         directory.mkdir(parents=True, exist_ok=True)
         directory.chmod(mode)
+    changes = {}
+    for relative in [*payloads, *removed]:
+        target = checked_path(root, relative)
+        changes[relative] = {
+            "before": {
+                "sha256": digest(target.read_bytes()),
+                "mode": target.stat().st_mode & 0o777,
+                "backup": backup_path + "/" + relative,
+            }
+            if target.exists()
+            else None,
+            "after_sha256": digest(payloads[relative][0]) if relative in payloads else None,
+        }
+    transaction_id = uuid.uuid4().hex
+    journal = {"schema_version": 1, "id": transaction_id, "files": changes}
+    write(checked_path(root, JOURNAL), (json.dumps(journal, indent=2) + "\n").encode(), 0o600)
     for relative, (data, mode) in payloads.items():
         write(checked_path(root, relative), data, mode)
+    for relative in removed:
+        remove_file(checked_path(root, relative))
     manifest = {
         "schema_version": 1,
+        "transaction_id": transaction_id,
         "version": version,
         "architecture": arch,
         "created_at": datetime.now(UTC).isoformat(),
@@ -349,18 +482,26 @@ def install_layout(
         "components": components,
         "services_started": False,
         "network_changed": False,
+        "obsolete_files_removed": removed,
+        "modified_obsolete_files_retained": sorted(retained),
         "files": {
-            relative: {"sha256": digest(data), "mode": mode}
-            for relative, (data, mode) in payloads.items()
+            **retained,
+            **{
+                relative: {"sha256": digest(data), "mode": mode}
+                for relative, (data, mode) in payloads.items()
+            },
         },
     }
     write(checked_path(root, MANIFEST), (json.dumps(manifest, indent=2) + "\n").encode(), 0o600)
+    remove_file(checked_path(root, JOURNAL))
     return {
         "status": manifest["status"],
         "version": version,
         "root": str(root),
         "manifest": str(root / MANIFEST),
         "backup": backup_path,
+        "obsolete_files_removed": removed,
+        "modified_obsolete_files_retained": sorted(retained),
         "components": "locked_archive_checksums_verified",
         "services_started": False,
         "network_changed": False,
@@ -405,22 +546,62 @@ def system_preflight(uv: str, *, install_runtime=True):
             )
 
 
-def system_install(args) -> dict:
-    system_preflight(args.uv)
-    actual_arch = {"aarch64": "arm64", "x86_64": "amd64"}.get(platform.machine())
-    if args.arch != actual_arch:
-        raise InstallError(
-            "architecture_mismatch", "Component architecture differs from this host", 4
-        )
-    # Validate payloads before changing accounts or installation files.
-    wheel_input(ROOT, args.wheel)
-    component_payloads(ROOT, args.components, args.arch)
-    try:
-        user = pwd.getpwnam("wayvia")
-        if user.pw_uid == 0 or user.pw_dir != "/var/lib/wayvia/control":
-            raise InstallError("user_conflict", "Existing wayvia account has unexpected identity")
-    except KeyError:
-        run(["groupadd", "--system", "wayvia"])
+def service_account(root: Path = Path("/")):
+    """Persist a reserved group identity before account commands may be interrupted."""
+    with layout_lock(root):
+        intent_path = checked_path(root, "var/lib/wayvia/account-intent.json")
+        intent = json.loads(intent_path.read_text()) if intent_path.exists() else None
+        if intent is not None and (
+            intent.get("schema_version") != 1
+            or not isinstance(intent.get("gid"), int)
+            or not 100 <= intent["gid"] < 1000
+        ):
+            raise InstallError("account_recovery_required", "Account creation record is invalid")
+        try:
+            group = grp.getgrnam("wayvia")
+        except KeyError:
+            group = None
+        try:
+            user = pwd.getpwnam("wayvia")
+        except KeyError:
+            user = None
+        if user is not None:
+            if (
+                user.pw_uid == 0
+                or user.pw_dir != "/var/lib/wayvia/control"
+                or user.pw_shell != "/usr/sbin/nologin"
+                or group is None
+                or group.gr_gid == 0
+                or user.pw_gid != group.gr_gid
+                or (intent is not None and group.gr_gid != intent["gid"])
+            ):
+                raise InstallError(
+                    "user_conflict", "Existing wayvia account has unexpected identity"
+                )
+            return user
+        if group is not None and (intent is None or group.gr_gid != intent["gid"] or group.gr_mem):
+            raise InstallError(
+                "group_conflict", "Existing wayvia group is not owned by this installation"
+            )
+        if intent is None:
+            used = {item.gr_gid for item in grp.getgrall()}
+            gid = next((value for value in range(999, 99, -1) if value not in used), None)
+            if gid is None:
+                raise InstallError(
+                    "group_unavailable", "No unused system group identifier is available"
+                )
+            intent = {"schema_version": 1, "gid": gid}
+            write(intent_path, (json.dumps(intent) + "\n").encode(), 0o600)
+        if group is None:
+            try:
+                grp.getgrgid(intent["gid"])
+            except KeyError:
+                pass
+            else:
+                raise InstallError(
+                    "group_conflict", "Reserved group identity belongs to another group"
+                )
+            run(["groupadd", "--system", "--gid", str(intent["gid"]), "wayvia"])
         run(
             [
                 "useradd",
@@ -435,6 +616,22 @@ def system_install(args) -> dict:
             ]
         )
         user = pwd.getpwnam("wayvia")
+        if user.pw_gid != intent["gid"] or user.pw_uid == 0:
+            raise InstallError("user_conflict", "Created account does not match its reserved group")
+        return user
+
+
+def system_install(args) -> dict:
+    system_preflight(args.uv)
+    actual_arch = {"aarch64": "arm64", "x86_64": "amd64"}.get(platform.machine())
+    if args.arch != actual_arch:
+        raise InstallError(
+            "architecture_mismatch", "Component architecture differs from this host", 4
+        )
+    # Validate payloads before changing accounts or installation files.
+    wheel_input(ROOT, args.wheel)
+    component_payloads(ROOT, args.components, args.arch)
+    user = service_account()
     result = install_layout(
         Path("/"),
         component_dir=args.components,
@@ -515,6 +712,18 @@ def owned_file(relative: str) -> bool:
 def uninstall(root: Path, *, system=False) -> dict:
     if root == Path("/") and not system:
         raise InstallError("system_required", "Real filesystem uninstall requires --system")
+    with layout_lock(root):
+        recovered = recover_pending(root)
+        if existing_manifest(root) is None and recovered["status"] != "no_pending_installation":
+            return {
+                **recovered,
+                "status": "uninstalled_interrupted_layout",
+                "network_changed": False,
+            }
+        return uninstall_layout(root, system=system)
+
+
+def uninstall_layout(root: Path, *, system=False) -> dict:
     manifest = existing_manifest(root)
     if manifest is None:
         raise InstallError("not_installed", "No owned installation manifest was found")
@@ -561,10 +770,14 @@ def main(argv=None):
     destination.add_argument(
         "--system", action="store_true", help="explicit authorized Ubuntu root installation"
     )
-    parser.add_argument(
+    operation = parser.add_mutually_exclusive_group()
+    operation.add_argument(
         "--uninstall",
         action="store_true",
         help="remove unchanged owned files; keep all runtime data",
+    )
+    operation.add_argument(
+        "--recover", action="store_true", help="roll back an interrupted installation layout"
     )
     parser.add_argument(
         "--arch",
@@ -585,22 +798,34 @@ def main(argv=None):
     try:
         if args.api_uid < 0:
             raise InstallError("uid_invalid", "API UID must be nonnegative")
-        if args.uninstall:
-            if args.system:
-                system_preflight(args.uv, install_runtime=False)
-            result = uninstall(
-                Path("/") if args.system else args.stage.absolute(), system=args.system
-            )
-        elif args.system:
-            result = system_install(args)
-        else:
-            result = prepare(
-                args.stage.absolute(),
-                component_dir=args.components,
-                arch=args.arch,
-                wheel=args.wheel,
-                api_uid=args.api_uid,
-            )
+        if args.system and (platform.system() != "Linux" or os.geteuid() != 0):
+            raise InstallError("system_environment", "System installation requires Linux root", 4)
+        # Serialize the whole public system lifecycle, including account commands,
+        # dependency installation and manifest completion; layout operations nest
+        # on a different lock so they remain reusable for unprivileged staging.
+        with layout_lock(Path("/"), operation=True) if args.system else nullcontext():
+            if args.recover:
+                if args.system:
+                    system_preflight(args.uv, install_runtime=False)
+                result = recover_layout(
+                    Path("/") if args.system else args.stage.absolute(), system=args.system
+                )
+            elif args.uninstall:
+                if args.system:
+                    system_preflight(args.uv, install_runtime=False)
+                result = uninstall(
+                    Path("/") if args.system else args.stage.absolute(), system=args.system
+                )
+            elif args.system:
+                result = system_install(args)
+            else:
+                result = prepare(
+                    args.stage.absolute(),
+                    component_dir=args.components,
+                    arch=args.arch,
+                    wheel=args.wheel,
+                    api_uid=args.api_uid,
+                )
         print(json.dumps(result, ensure_ascii=False))
         return 0
     except InstallError as error:

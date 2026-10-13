@@ -1,4 +1,8 @@
 import json
+import os
+import platform
+import pwd
+from types import SimpleNamespace
 
 from typer.testing import CliRunner
 
@@ -53,3 +57,72 @@ def test_version_without_subcommand():
     result = CliRunner().invoke(app, ["--version"])
     assert result.exit_code == 0
     assert result.stdout.strip() == "0.1.0"
+
+
+def test_system_mode_uses_the_same_control_state_and_identity_as_api(monkeypatch):
+    import wayvia.cli as module
+
+    monkeypatch.setattr(platform, "system", lambda: "Linux")
+    monkeypatch.setattr(pwd, "getpwnam", lambda name: SimpleNamespace(pw_uid=1234))
+    monkeypatch.setattr(os, "geteuid", lambda: 1234)
+    observed = {}
+
+    def service(ctx):
+        observed.update(ctx.obj)
+        return SimpleNamespace(publication=lambda: {"status": "unpublished"})
+
+    monkeypatch.setattr(module, "service", service)
+    result = CliRunner().invoke(app, ["--system", "config", "publication"])
+    assert result.exit_code == 0, result.output
+    assert str(observed["root"]) == "/var/lib/wayvia/control"
+    assert str(observed["config"]) == "/var/lib/wayvia/control/config.yaml"
+    assert str(observed["socket"]) == "/run/wayvia/agent.sock"
+    assert observed["mode"] == "production"
+
+
+def test_system_mode_rejects_different_identity_and_split_state_options(monkeypatch, tmp_path):
+    monkeypatch.setattr(platform, "system", lambda: "Linux")
+    monkeypatch.setattr(pwd, "getpwnam", lambda name: SimpleNamespace(pw_uid=1234))
+    monkeypatch.setattr(os, "geteuid", lambda: 5678)
+    result = CliRunner().invoke(app, ["--system", "config", "publication"])
+    assert result.exit_code == 3
+    assert json.loads(result.stdout)["code"] == "system_identity_required"
+    result = CliRunner().invoke(app, ["--system", "--data-dir", str(tmp_path), "status"])
+    assert result.exit_code == 2
+    assert json.loads(result.stdout)["code"] == "system_options_conflict"
+
+
+def test_render_and_plan_accept_documented_role_and_output_options(monkeypatch, tmp_path):
+    import wayvia.agent.planner as planner
+    import wayvia.cli as module
+    import wayvia.config as config_module
+
+    monkeypatch.setattr(module, "artifacts", lambda ctx, config, role: {"manifest.json": "{}"})
+    monkeypatch.setattr(config_module, "load_config", lambda path: SimpleNamespace(revision="r1"))
+    monkeypatch.setattr(
+        planner,
+        "build_plan",
+        lambda **kwargs: SimpleNamespace(digest="plan-id", model_dump_json=lambda **ignored: "{}"),
+    )
+    rendered = tmp_path / "rendered"
+    result = CliRunner().invoke(
+        app, ["render", "input.yaml", "--role", "ingress", "--output", str(rendered)]
+    )
+    assert result.exit_code == 0, result.output
+    assert (rendered / "manifest.json").read_text() == "{}"
+    plan = tmp_path / "plan.json"
+    result = CliRunner().invoke(
+        app,
+        [
+            "plan",
+            "input.yaml",
+            "--role",
+            "ingress",
+            "--output-file",
+            str(plan),
+            "--baseline",
+            "explicit",
+        ],
+    )
+    assert result.exit_code == 0, result.output
+    assert plan.read_text() == "{}"

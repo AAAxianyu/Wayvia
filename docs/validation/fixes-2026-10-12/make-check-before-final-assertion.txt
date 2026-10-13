@@ -1,0 +1,109 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked ruff format --check src tests scripts deploy
+66 files already formatted
+/tmp/wayvia-bootstrap/bin/uv run --locked ruff check src tests scripts deploy
+All checks passed!
+/tmp/wayvia-bootstrap/bin/uv run --locked pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/dev2/Documents/project/Wayvia
+configfile: pyproject.toml
+testpaths: tests/unit, tests/contract, tests/integration
+plugins: anyio-4.15.1, cov-7.0.0
+collected 280 items
+
+tests/unit/test_policy_config.py ....................................... [ 13%]
+...                                                                      [ 15%]
+tests/unit/test_render_profiles.py .................                     [ 21%]
+tests/unit/test_transaction_revisions.py ........................        [ 29%]
+tests/unit/test_transactions.py ........................                 [ 38%]
+tests/contract/test_adapters.py ...................                      [ 45%]
+tests/contract/test_command_process_tree.py ...                          [ 46%]
+tests/contract/test_diagnostics.py ..................................    [ 58%]
+tests/contract/test_preflight_certificates.py ..                         [ 58%]
+tests/contract/test_protocol_probe_security.py ............              [ 63%]
+tests/contract/test_protocol_probes.py ...............                   [ 68%]
+tests/contract/test_resource_conflicts.py .......................        [ 76%]
+tests/contract/test_topology.py ......                                   [ 78%]
+tests/integration/test_cli.py ......                                     [ 81%]
+tests/integration/test_control.py ..........F                            [ 85%]
+tests/integration/test_install.py ........................               [ 93%]
+tests/integration/test_packaging.py .                                    [ 93%]
+tests/integration/test_publication_recovery.py ...............           [ 99%]
+tests/integration/test_transaction_lab.py ..                             [100%]
+
+=================================== FAILURES ===================================
+__ test_first_device_checkpoint_does_not_explicitly_block_initial_deployment ___
+
+tmp_path = PosixPath('/private/var/folders/lt/9m3d4mfx15j6gj72z9szm_qc0000gn/T/pytest-of-dev2/pytest-172/test_first_device_checkpoint_d0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10e2333e0>
+
+    def test_first_device_checkpoint_does_not_explicitly_block_initial_deployment(
+        tmp_path, monkeypatch
+    ):
+        from wayvia.adapters.linux import LinuxExecutor
+        from wayvia.agent.client import AgentClient
+        from wayvia.agent.transactions import TransactionManager
+        from wayvia.services.control import AgentDataplane
+
+        class NoHostCommands:
+            def run(self, *args, **kwargs):
+                raise AssertionError("No host command is allowed before the initial deployment")
+
+        executor = LinuxExecutor(
+            runner=NoHostCommands(),
+            config_dir=tmp_path / "uninstalled-config",
+            state_dir=tmp_path / "agent",
+            unit_dir=tmp_path / "units",
+            enforce_environment=False,
+        )
+        manager = TransactionManager(executor, tmp_path / "journals")
+        operations = []
+
+        def transport(_client, request):
+            operations.append(request["operation"])
+            if request["operation"] == "sync_devices":
+                return manager.sync_devices(request["devices"], request["revision"])
+            if request["operation"] == "block_ingress":
+                return manager.block_ingress()
+            raise AssertionError(request)
+
+        monkeypatch.setattr(AgentClient, "request", transport)
+        control = ControlService(
+            tmp_path / "control",
+            WayviaConfig.model_validate(example_config()),
+            dataplane=AgentDataplane(tmp_path / "unused.sock"),
+        )
+        device = control.add("first phone", "android")
+        assert device["status"] == "pending"
+        assert device["evidence"]["code"] == "INGRESS_NOT_DEPLOYED"
+        assert device["evidence"]["protection"]["status"] == "not_deployed"
+        assert operations == ["sync_devices"]
+        checkpoint = json.loads((manager.root / "device-state.json").read_text())
+        assert checkpoint["revision"] == 1
+        assert checkpoint["devices"][0]["id"] == device["id"]
+        assert checkpoint["devices"][0]["password"]
+>       assert not (manager.root / "ingress-runtime.json").exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = (PosixPath('/private/var/folders/lt/9m3d4mfx15j6gj72z9szm_qc0000gn/T/pytest-of-dev2/pytest-172/test_first_device_checkpoint_d0/journals') / 'ingress-runtime.json').exists
+E        +      where PosixPath('/private/var/folders/lt/9m3d4mfx15j6gj72z9szm_qc0000gn/T/pytest-of-dev2/pytest-172/test_first_device_checkpoint_d0/journals') = <wayvia.agent.transactions.TransactionManager object at 0x10e230aa0>.root
+
+tests/integration/test_control.py:214: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/typer/__init__.py:24
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:24: DeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_binary_stream as get_binary_stream
+
+.venv/lib/python3.12/site-packages/typer/__init__.py:25
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:25: DeprecationWarning: 'click.utils.get_text_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_text_stream as get_text_stream
+
+.venv/lib/python3.12/site-packages/starlette/testclient.py:51
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/starlette/testclient.py:51: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_control.py::test_first_device_checkpoint_does_not_explicitly_block_initial_deployment
+============= 1 failed, 279 passed, 3 warnings in 73.59s (0:01:13) =============
+make: *** [check] Error 1

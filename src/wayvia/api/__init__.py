@@ -28,6 +28,11 @@ class SubscriptionInput(BaseModel):
     lifetime: int = 86400 * 30
 
 
+class PublicationInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    exit_status: list[dict] | dict
+
+
 def create_app(service, admin_token: str, *, subscriptions_only=False):
     if len(admin_token) < 32:
         raise WayviaError(
@@ -162,6 +167,21 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
         return app
 
     admin = [Depends(authenticated)]
+
+    @app.get("/api/v1/config/publication", dependencies=admin)
+    def publication():
+        return service.publication()
+
+    @app.post("/api/v1/config/publication", dependencies=admin)
+    def publish_configuration(
+        data: PublicationInput, idempotency_key: str | None = Header(default=None)
+    ):
+        return idempotent(
+            "configuration.publish",
+            idempotency_key,
+            data.model_dump(),
+            lambda: service.publish(data.exit_status),
+        )
 
     @app.get("/api/v1/status", dependencies=admin)
     def status():

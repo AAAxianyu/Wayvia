@@ -1,0 +1,30 @@
+{
+  "commit": "d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2",
+  "results": [
+    {
+      "command": "make check",
+      "exit_code": 2,
+      "seconds": 78.55
+    },
+    {
+      "command": "make demo",
+      "exit_code": 0,
+      "seconds": 1.19
+    },
+    {
+      "command": "make test-configs",
+      "exit_code": 0,
+      "seconds": 22.61
+    },
+    {
+      "command": "make test-lab",
+      "exit_code": 2,
+      "seconds": 12.44
+    },
+    {
+      "command": "make clean-lab",
+      "exit_code": 0,
+      "seconds": 0.52
+    }
+  ]
+}

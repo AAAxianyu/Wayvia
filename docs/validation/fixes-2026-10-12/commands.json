@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-13T04:42:26.596691+00:00",
+  "local_date": "2026-10-12",
+  "timezone": "America/Los_Angeles",
+  "source": {
+    "base_commit": "d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2",
+    "branch": "codex/m0-m5-delivery",
+    "revision_scope": "working tree changes delivered with this evidence; unrelated ICT excluded"
+  },
+  "software_delivery": "passed",
+  "isolated_validation": "passed",
+  "real_deployment_acceptance": "not_executed",
+  "commands": [
+    {
+      "command": "make check UV=/tmp/wayvia-bootstrap/bin/uv",
+      "exit_code": 0,
+      "completed_at_utc": "2026-10-13T04:37:12.344105+00:00",
+      "log": "make-check.txt",
+      "log_sha256": "50f9e9c20ca1ab71fb58abdf80ed2ee748c9158cc03fefd6f40cacb7cb1e1c50"
+    },
+    {
+      "command": "make demo UV=/tmp/wayvia-bootstrap/bin/uv",
+      "exit_code": 0,
+      "completed_at_utc": "2026-10-13T04:27:32.953419+00:00",
+      "log": "make-demo.txt",
+      "log_sha256": "30a0c94c821f7b3337438a37145818658f9f302623d14b8652bc2de8e70e1367"
+    },
+    {
+      "command": "make test-configs UV=/tmp/wayvia-bootstrap/bin/uv",
+      "exit_code": 0,
+      "completed_at_utc": "2026-10-13T04:25:02.986833+00:00",
+      "log": "make-test-configs.txt",
+      "log_sha256": "db8772fb5ce8aba2e73a24cec847d692a81ee88e85db2aa4543324e8944b7de2"
+    },
+    {
+      "command": "make test-lab UV=/tmp/wayvia-bootstrap/bin/uv",
+      "exit_code": 0,
+      "completed_at_utc": "2026-10-13T04:39:48.373959+00:00",
+      "log": "make-test-lab.txt",
+      "log_sha256": "da0ccea58d386ebebe63bdf39eee0d546f116ad92d549b0a0544c2ba8fb2fa28"
+    },
+    {
+      "command": "make clean-lab UV=/tmp/wayvia-bootstrap/bin/uv",
+      "exit_code": 0,
+      "completed_at_utc": "2026-10-13T04:40:22.900866+00:00",
+      "log": "make-clean-lab.txt",
+      "log_sha256": "6ee1f7bc79798aa92ab172cf6d04b58936e161da1f43e6f643181f8a3605ba9e"
+    }
+  ],
+  "check": {
+    "tests_passed": 291,
+    "warnings": 3,
+    "warnings_scope": "dependency deprecations in Typer/Click and Starlette/AnyIO",
+    "ruff_format": "passed",
+    "ruff_check": "passed",
+    "sdist_and_wheel": "passed",
+    "cli_help": "passed"
+  },
+  "demo": {
+    "status": "passed",
+    "scope": "explicit_simulation"
+  },
+  "configuration_validation": {
+    "status": "passed",
+    "cases": 10,
+    "evidence": "final-configs/config-result.json"
+  },
+  "lab": {
+    "status": "passed",
+    "architecture": "arm64",
+    "evidence_directory": "final-lab",
+    "modules": [
+      {
+        "name": "dual_layer_datapath",
+        "cases": 23,
+        "evidence": "final-lab/lab-result.json"
+      },
+      {
+        "name": "production_linux_executor_apply_rollback",
+        "evidence": "final-lab/executor-result.json"
+      },
+      {
+        "name": "authenticated_protocol_positive_negative",
+        "cases": 7,
+        "evidence": "final-lab/protocol-result.json"
+      },
+      {
+        "name": "tun_kernel_readiness_incomplete_policy_rejection",
+        "evidence": "final-lab/tun-ready-result.json"
+      },
+      {
+        "name": "real_kernel_host_resource_conflicts",
+        "cases": 12,
+        "evidence": "final-lab/preflight-conflicts-result.json"
+      },
+      {
+        "name": "mihomo_overlapping_dns_first_match",
+        "cases": 6,
+        "evidence": "final-lab/mihomo-dns-result.json"
+      },
+      {
+        "name": "independent_systemd_timer_and_recovery",
+        "cases": 2,
+        "evidence": "final-lab/recovery-result.json"
+      },
+      {
+        "name": "formal_installed_transactions",
+        "cases": 23,
+        "evidence": "final-lab/transaction-result.json"
+      }
+    ]
+  },
+  "tun_root_cause": {
+    "status": "reproduced_and_fixed_lab_kernel_readiness_race",
+    "evidence": "tun/README.md",
+    "post_fix_cold_starts_passed": 12,
+    "business_request_retries_added": false
+  },
+  "retained_intermediate_failures": [
+    {
+      "evidence": "make-check-before-final-assertion.txt",
+      "resolution": "initial credential checkpoint validly persists empty current/blocked state; regression now checks semantics"
+    },
+    {
+      "evidence": "final-lab-before-agent-readiness/transaction-result.json",
+      "resolution": "lab waits for real agent status and control API readiness; business/generation checks remain single attempt"
+    }
+  ],
+  "cleanup": {
+    "command_exit_code": 0,
+    "disposable_containers_remaining": [],
+    "disposable_networks_remaining": [],
+    "inventory_filter": "org.wayvia.disposable",
+    "manual_smoke_generated_credentials_removed": [
+      ".cache/protocol-smoke-generated",
+      ".cache/probe-smoke.py",
+      ".cache/tun-investigation/generated"
+    ]
+  },
+  "boundaries": {
+    "development_host_routes_modified": false,
+    "development_host_global_firewall_modified": false,
+    "existing_vpn_modified": false,
+    "production_servers_accessed": false,
+    "full_machine_reboot_tested": false,
+    "cross_version_database_downgrade_tested": false,
+    "mobile_device_acceptance": false,
+    "new_commit_remote_ci": "not_yet_executed_at_recording"
+  },
+  "log_normalization": "ANSI control codes and trailing whitespace removed; command output and failure content retained"
+}

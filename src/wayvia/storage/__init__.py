@@ -30,6 +30,12 @@ MIGRATIONS = {
     );
     CREATE TABLE settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
     """,
+    2: """
+    CREATE TABLE config_publications (
+      revision TEXT PRIMARY KEY, config_json TEXT NOT NULL,
+      confirmations_json TEXT NOT NULL, published_at REAL NOT NULL
+    );
+    """,
 }
 
 

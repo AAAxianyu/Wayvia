@@ -1,0 +1,25 @@
+{
+  "access_probe": {
+    "server": "plain local TCP listener, no TLS or Trojan handshake",
+    "probe_validation": "accepted",
+    "result": [
+      {
+        "layer": "access",
+        "status": "healthy",
+        "kind": "tcp"
+      }
+    ]
+  },
+  "stale_dataplane": {
+    "layer": "dataplane",
+    "status": "healthy",
+    "roles": [
+      {
+        "role": "ingress",
+        "transaction_id": "audit-stale",
+        "state": "ACTIVE",
+        "status": "healthy"
+      }
+    ]
+  }
+}

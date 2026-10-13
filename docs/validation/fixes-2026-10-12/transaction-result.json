@@ -1,0 +1,209 @@
+{
+  "status": "passed",
+  "simulated": false,
+  "isolation": "owned_internal_docker_network_private_cgroups",
+  "cases": [
+    {
+      "name": "exit_system_install",
+      "result": {
+        "status": "installed_and_started",
+        "role": "exit",
+        "simulated": false
+      }
+    },
+    {
+      "name": "ingress_system_install",
+      "result": {
+        "status": "installed_and_started",
+        "role": "ingress",
+        "simulated": false
+      }
+    },
+    {
+      "name": "api_pending_device",
+      "result": {
+        "id": "d09d15c06b5b497997e7f86e8c61387e",
+        "status": "pending",
+        "api_cli_same_store": true
+      }
+    },
+    {
+      "name": "exit_apply_confirm",
+      "result": {
+        "id": "2eef2cd6865b4e7484927465edb49cf6",
+        "state": "ACTIVE",
+        "role": "exit",
+        "revision": "a6605728214583fc504ef7b5bed600f091980b41f5032d2bd2c45ff32f16c3ef"
+      }
+    },
+    {
+      "name": "ingress_apply_confirm",
+      "result": {
+        "id": "8d14a98e185f4a45b9d36f8a250a8380",
+        "state": "ACTIVE",
+        "role": "ingress",
+        "revision": "a6605728214583fc504ef7b5bed600f091980b41f5032d2bd2c45ff32f16c3ef"
+      }
+    },
+    {
+      "name": "confirmed_publication",
+      "result": {
+        "status": "published_and_fetched",
+        "revision": "a6605728214583fc504ef7b5bed600f091980b41f5032d2bd2c45ff32f16c3ef",
+        "no_store": true
+      }
+    },
+    {
+      "name": "subscribed_entry_to_exit",
+      "result": {
+        "target": "foreign",
+        "peer": "172.29.0.3"
+      }
+    },
+    {
+      "name": "exit_successive_generation_rollback",
+      "result": {
+        "predecessor": "2eef2cd6865b4e7484927465edb49cf6",
+        "successor": "c0078cdcda424048a83cc2d79472ceb1",
+        "third": "f0bec3d3cbea478c8b444d73c7ef5aab",
+        "both_predecessors_restored_active": true
+      }
+    },
+    {
+      "name": "ingress_successive_generation_rollback",
+      "result": {
+        "predecessor": "8d14a98e185f4a45b9d36f8a250a8380",
+        "successor": "cc6cbce1e696442b9eeaec9d2b7d2fdd",
+        "third": "69884dbeb0124c3d97535b5093882c47",
+        "listener_sequence": [
+          443,
+          8443,
+          9443,
+          8443,
+          443
+        ],
+        "stale_monitor_preserved_unconfirmed_listener": true,
+        "both_predecessors_restored_authenticated_path": true,
+        "replaced_listeners_closed": true
+      }
+    },
+    {
+      "name": "restored_generation_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.29.0.3"
+      }
+    },
+    {
+      "name": "vpn_failure_closed",
+      "result": {
+        "status": "DEGRADED",
+        "protected_request_blocked": true
+      }
+    },
+    {
+      "name": "vpn_authenticated_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "target": {
+          "target": "foreign",
+          "peer": "172.29.0.3"
+        }
+      }
+    },
+    {
+      "name": "carrier_failure_closed",
+      "result": {
+        "status": "DEGRADED",
+        "protected_request_blocked": true
+      }
+    },
+    {
+      "name": "carrier_authenticated_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "target": {
+          "target": "foreign",
+          "peer": "172.29.0.3"
+        }
+      }
+    },
+    {
+      "name": "exit_independent_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "same_generation": true,
+        "independent_systemd_recovery": true
+      }
+    },
+    {
+      "name": "ingress_independent_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "same_generation": true,
+        "independent_systemd_recovery": true
+      }
+    },
+    {
+      "name": "recovered_generation_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.29.0.3"
+      }
+    },
+    {
+      "name": "exit_system_software_reinstall",
+      "result": {
+        "same_generation": true,
+        "control_data_preserved": true,
+        "locked_runtime_reinstalled": true
+      }
+    },
+    {
+      "name": "ingress_system_software_reinstall",
+      "result": {
+        "same_generation": true,
+        "control_data_preserved": true,
+        "locked_runtime_reinstalled": true
+      }
+    },
+    {
+      "name": "reinstalled_software_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.29.0.3"
+      }
+    },
+    {
+      "name": "device_subscription_revocation",
+      "result": {
+        "rotation_rejected_old_password": true,
+        "new_password_accepted": true,
+        "link_revoke_preserved_device": true,
+        "device_revoke_rejected_access": true,
+        "pre_revocation_plan_cannot_restore_access": true,
+        "rollback_cannot_restore_revoked_access": true
+      }
+    },
+    {
+      "name": "ingress_uninstall",
+      "result": {
+        "status": "uninstalled",
+        "control_data_retained": true,
+        "default_route_preserved": true,
+        "unrelated_network_resources_preserved": true,
+        "owned_network_resources_removed": true
+      }
+    },
+    {
+      "name": "exit_uninstall",
+      "result": {
+        "status": "uninstalled",
+        "control_data_retained": true,
+        "default_route_preserved": true,
+        "unrelated_network_resources_preserved": true,
+        "owned_network_resources_removed": true
+      }
+    }
+  ]
+}

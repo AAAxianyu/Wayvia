@@ -4,7 +4,8 @@ systems:
   production:
     name: Ubuntu
     version: '24.04'
-    status: isolated_lab_verified_arm64
+    status: software_implemented_isolated_specialties_verified
+    real_deployment_acceptance: not_executed_M6
   development:
     name: macOS
     python: 3.12.12
@@ -14,41 +15,55 @@ systems:
     architecture: arm64
     kernel: 6.8.0-117-generic
     base_image: ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
-    isolation: disposable_container_plus_network_namespaces
+    isolation: disposable_none_network_namespaces_and_internal_dual_role_private_cgroups
     os: Ubuntu 24.04.5 LTS
     python: 3.12.3
     status: passed
+    scope: current_fix_unified_isolated_gate_verified_arm64; no_real_deployment_acceptance
     evidence:
-    - docs/validation/latest-lab/lab-result.json
-    - docs/validation/latest-lab/executor-result.json
-    - docs/validation/latest-lab/recovery-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/protocol-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/mihomo-dns-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/preflight-conflicts-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+    - docs/validation/fixes-2026-10-12/commands.json
 components:
   sing-box:
     version: 1.14.3
     lock: deploy/lab/components.lock.json
     source: https://github.com/SagerNet/sing-box/releases/tag/v1.14.3
-    status: isolated_configuration_and_datapath_verified
-    evidence: docs/validation/latest-lab/lab-result.json
+    status: isolated_configuration_datapath_and_authenticated_protocol_verified
+    evidence:
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/protocol-result.json
   mihomo:
     version: 1.19.32
     lock: deploy/lab/components.lock.json
     source: https://github.com/MetaCubeX/mihomo/releases/tag/v1.19.32
-    status: real_profile_parser_verified
-    evidence: docs/validation/latest-configs/config-result.json
+    status: real_profile_parser_and_isolated_dns_behavior_verified
+    evidence:
+    - docs/validation/latest-configs/config-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/mihomo-dns-result.json
+    scope: six_real_dns_cases; no_full_mihomo_tun_or_mobile_acceptance
   v2raya:
     version: 2.5.10
     lock: deploy/lab/components.lock.json
     source: https://github.com/v2rayA/v2rayA/releases/tag/v2.5.10
     required_core: v2raya_core==2.5.10
     status: isolated_configuration_and_datapath_verified
-    evidence: docs/validation/latest-lab/lab-result.json
+    evidence:
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
   v2raya_core:
     version: 2.5.10
     based_on: xray-core 26.7.28
     lock: deploy/lab/components.lock.json
     source: https://github.com/v2rayA/v2rayA/releases/tag/v2.5.10
     status: isolated_configuration_and_datapath_verified
-    evidence: docs/validation/latest-lab/lab-result.json
+    evidence:
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
   v2ray:
     version: 5.53.0
     lock: deploy/lab/components.lock.json
@@ -61,42 +76,56 @@ components:
     source: http://ports.ubuntu.com/ubuntu-ports/pool/main/o/openvpn/openvpn_2.6.19-0ubuntu0.24.04.4_arm64.deb
     sha256: 7c641f0198d7c3a32bd0b76e9ae9d6940e3591bea7bc7ea083a77d2e337b6f6c
     source_checksum: authenticated_ubuntu_apt_release_metadata
-    status: isolated_configuration_and_datapath_verified
-    evidence: docs/validation/latest-lab/lab-result.json
+    status: isolated_identity_current_session_and_datapath_verified
+    evidence:
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/protocol-result.json
   iproute2:
     version: 6.1.0
     package_version: 6.1.0-1ubuntu6.4
     source: Ubuntu 24.04 authenticated APT repository
-    status: real_kernel_resources_and_rollback_verified
+    status: real_kernel_resources_conflicts_and_rollback_verified
     pinning: measured_version; helper package not independently pinned
+    evidence:
+    - docs/validation/fixes-2026-10-12/final-lab/preflight-conflicts-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
   nftables:
     version: 1.0.9
     package_version: 1.0.9-1ubuntu0.1
     source: Ubuntu 24.04 authenticated APT repository
     status: real_guard_and_nat_datapath_verified
     pinning: measured_version; helper package not independently pinned
+    evidence:
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/preflight-conflicts-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
   systemd:
     version: '255.4'
     package_version: 255.4-1ubuntu8.17
     source: Ubuntu 24.04 authenticated APT repository
     pinning: exact_package_version_in_Dockerfile.systemd
-    status: private_cgroup_pid1_timer_and_recovery_verified
+    status: private_cgroup_pid1_timer_recovery_and_installed_transactions_verified
     evidence:
-    - docs/validation/latest-lab/recovery-environment.json
-    - docs/validation/latest-lab/recovery-result.json
-    scope: independent timer and recovery processes in disposable container; complete
-      target-host reboot remains M6
+    - docs/validation/fixes-2026-10-12/final-lab/recovery-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+    scope: current independent timer plus installed dual-role recovery and same-version reinstall;
+      no full target-host reboot or cross-version upgrade acceptance
 client_formats:
   sing-box:
     version: 1.14.3
     parser: sing-box check
-    status: real_profile_parser_verified
-    evidence: docs/validation/latest-configs/config-result.json
+    status: real_profile_parser_and_isolated_linux_tun_verified
+    evidence:
+    - docs/validation/latest-configs/config-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
   mihomo:
     version: 1.19.32
     parser: mihomo -t
-    status: real_profile_parser_verified
-    evidence: docs/validation/latest-configs/config-result.json
+    status: real_profile_parser_and_isolated_dns_behavior_verified
+    evidence:
+    - docs/validation/latest-configs/config-result.json
+    - docs/validation/fixes-2026-10-12/final-lab/mihomo-dns-result.json
   ios:
     status: device_acceptance_requires_selected_client_and_version
   android:
@@ -108,3 +137,106 @@ transport:
   performance: no_production_sla_claim
   status: controlled_dual_layer_datapath_verified
   device_acceptance: requires_M6_inputs_and_authorization
+  evidence:
+  - docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+  - docs/validation/fixes-2026-10-12/final-lab/protocol-result.json
+  - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+review:
+  date: '2026-10-12'
+  commit: d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2
+  software_delivery: reopened_for_confirmed_implementation_defects
+  report: docs/validation/review-2026-10-12/README.md
+  findings:
+    P1: 4
+    P2: 10
+    P3: 1
+  local_gates:
+    check: failed_sdist_scope_after_150_tests_passed
+    clean_committed_source_build: passed
+    demo: passed_explicit_simulation
+    test_configs: passed_10_cases
+    test_lab_first: failed_native_tun_tcp_timeout
+    test_lab_retry: passed_22_cases_plus_executor_and_systemd_recovery
+    lab_stability: unresolved_first_run_failure
+  evidence: docs/validation/review-2026-10-12/commands.json
+  ci:
+    architecture: amd64
+    run: https://github.com/AAAxianyu/Wayvia/actions/runs/38241319117
+    commit: d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2
+    software: success
+    isolated_linux: success
+    evidence: docs/validation/review-2026-10-12/ci-run.json
+    scope: historical_d408163_baseline_not_current_fix_ci
+  production_acceptance: not_executed
+  scope: historical_pre_fix_audit_and_ci; superseded_for_current_status_by_fixes
+fixes:
+  date: '2026-10-12'
+  baseline_commit: d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2
+  status: software_fixes_and_unified_gates_passed
+  findings_fixed:
+  - R01
+  - R02
+  - R03
+  - R04
+  - R05
+  - R06
+  - R07
+  - R08
+  - R09
+  - R10
+  - R11
+  - R12
+  - R13
+  - R14
+  - R15
+  report: docs/validation/fixes-2026-10-12/README.md
+  gates:
+    check: passed
+    demo: passed_explicit_simulation
+    test_configs: passed_10_cases
+    test_lab: passed
+  command_evidence: docs/validation/fixes-2026-10-12/commands.json
+  isolated_checks:
+    dual_layer_path:
+      status: passed
+      cases: 23
+      evidence: docs/validation/fixes-2026-10-12/final-lab/lab-result.json
+    authenticated_protocol:
+      status: passed
+      cases: 7
+      evidence: docs/validation/fixes-2026-10-12/final-lab/protocol-result.json
+    mihomo_dns:
+      status: passed
+      cases: 6
+      evidence: docs/validation/fixes-2026-10-12/final-lab/mihomo-dns-result.json
+    kernel_conflicts:
+      status: passed
+      cases: 12
+      evidence: docs/validation/fixes-2026-10-12/final-lab/preflight-conflicts-result.json
+    installed_transactions:
+      status: passed
+      cases: 23
+      evidence: docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+      scope: real installed dual-role API CLI systemd; ingress 443-to-8443-to-9443-to-8443-to-443; exit
+        three same-config generations; faults independent recovery same-version reinstall revocation and
+        uninstall
+    tun_startup:
+      status: root_cause_fixed_in_lab_readiness
+      cause: SOCKS readiness preceded TUN interface and policy readiness; early native socket selected
+        physical source and was blocked
+      runtime_modified: false
+      business_request_retries_added: false
+      deterministic_evidence: docs/validation/fixes-2026-10-12/tun/readiness-stages.json
+      cold_start_runs: 12
+      cold_start_evidence: docs/validation/fixes-2026-10-12/tun/cold-starts-after.json
+      report: docs/validation/fixes-2026-10-12/tun/README.md
+  current_remote_ci: not_yet_verified_for_current_fixes
+  M6: not_executed_real_cloud_mobile_reboot_performance_and_cost
+  M7: not_implemented_or_accepted_OpenWrt
+  software_checks:
+    tests_passed: 291
+    dependency_deprecation_warnings: 3
+    ruff_format: passed
+    ruff_check: passed
+    wheel_sdist_build: passed
+    cli_help: passed

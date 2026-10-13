@@ -6,6 +6,27 @@ import json
 import socket
 import struct
 import sys
+import time
+
+CONNECTIONS = []
+
+
+def native_connection(host, port):
+    """Keep a failed native socket's source before create_connection would close it."""
+    family = socket.AF_INET6 if ipaddress.ip_address(host).version == 6 else socket.AF_INET
+    stream = socket.socket(family, socket.SOCK_STREAM)
+    stream.settimeout(4)
+    observation = {"peer": [host, port], "started_at": time.time()}
+    try:
+        stream.connect((host, port))
+    except Exception:
+        observation.update(local=stream.getsockname(), finished_at=time.time())
+        CONNECTIONS.append(observation)
+        stream.close()
+        raise
+    observation.update(local=stream.getsockname(), finished_at=time.time())
+    CONNECTIONS.append(observation)
+    return stream
 
 
 def exact(stream, count):
@@ -55,9 +76,7 @@ def connect(command, host, port):
 def probe(mode, host):
     if mode in ("tcp", "native-tcp"):
         stream, _ = (
-            connect(1, host, 8080)
-            if mode == "tcp"
-            else (socket.create_connection((host, 8080), timeout=4), None)
+            connect(1, host, 8080) if mode == "tcp" else (native_connection(host, 8080), None)
         )
         with stream:
             stream.sendall(b"GET / HTTP/1.0\r\nHost: " + host.encode() + b"\r\n\r\n")
@@ -69,7 +88,10 @@ def probe(mode, host):
                 result += part
         if b"\r\n\r\n" not in result:
             raise RuntimeError("protected connection closed without an HTTP response")
-        return json.loads(result.split(b"\r\n\r\n", 1)[1])
+        payload = json.loads(result.split(b"\r\n\r\n", 1)[1])
+        if mode == "native-tcp":
+            payload["connection"] = CONNECTIONS[-1]
+        return payload
     if mode == "native-udp":
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as datagram:
             datagram.settimeout(4)
@@ -105,5 +127,5 @@ if __name__ == "__main__":
     try:
         print(json.dumps(probe(*sys.argv[1:])))
     except Exception as error:
-        print(json.dumps({"error": str(error)}))
+        print(json.dumps({"error": str(error), "connections": CONNECTIONS}))
         sys.exit(1)

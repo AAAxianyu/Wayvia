@@ -355,6 +355,34 @@ DRAFT → VALIDATED → PLANNED → APPLYING
 
 两台服务器分别维护事务，不宣称具备跨主机原子提交。部署按“日本端就绪 → 阿里云出口就绪 → 发布终端配置”排序。记录双方配置 revision，失败时停止发布新配置并恢复受影响一侧。
 
+### 10.1 运行代次与凭据一致性
+
+角色 runtime 指针与事务日志共同记录 current generation、predecessor、blocked_reason 和 device_revision。申请新事务时先检查原计划 digest / baseline，再将持久化的最新设备检查点覆盖到入口配置，记录 submitted_digest 和 effective_digest。回退同样采用最新检查点，设备撤销优先于旧网络计划。入口内部认证探测用户由 agent 单独生成并保持在受限文件中，不能从设备接口创建、导出或覆盖。
+
+新计划成为 current 后，旧 ACTIVE 代次的 monitor 和残留确认计时器不得再操作当前服务。连续部署回退按前驱逐代恢复；恢复失败保持 RECOVERY_REQUIRED 和阻断，成功恢复后原前驱重新成为当前受监控代次。运行故障与明确的安全阻断分别持久化：普通链路故障可由 monitor / recover 重建；显式阻断或凭据同步失败持续到下一次获授权且校验成功的凭据协调。尚未部署入口时，可在验证设备、单调修订并 fsync 检查点后解除凭据保护阻断，但仍明确返回 pending / INGRESS_NOT_DEPLOYED，不宣称数据面 active。进程在 stop、恢复指针或重启之间中断后，独立恢复任务根据日志继续。
+
+确认期限同时约束探针总预算和最终 ACTIVE 提交，探针执行期间越期也必须回退。主机预检覆盖非自有 tun0、接口地址、所有路由表的静态／策略路由；只豁免可证明归属本角色的资源，不因接口名称相同而接受冲突。
+
+### 10.2 可确认的探针与发布
+
+| 层 | 入口角色 | 出口角色 |
+| --- | --- | --- |
+| access | trojan_http：实际 TLS、Trojan 凭据、受控业务请求 | trojan_vpn：实际 TLS、Trojan 凭据和受限 VPN 目标证书 |
+| carrier | vpn_handshake：经 10.89.0.1:1080 校验 VPN 服务端身份 | vpn_handshake：本机受限 VPN listener 身份 |
+| vpn | vpn_session：私有管理 socket 的已认证运行会话 | vpn_session：服务端已初始化及 peer 数量 |
+| egress / DNS / IPv6 / return | namespace 内出口、DNS 与阻断，以及宿主物理回程 | 出口组件本机对应条件，仅表示 component_readiness |
+
+access 的地址和端口必须绑定实际渲染 listener；入口 access 的 URL 和 expected 必须与 egress 探针一致。仅 TCP 端口打开、路由存在或宿主 curl 成功不能代替入口数据路径。旧 tcp / route 探针模板必须重新生成计划。证据包含 observed_at、duration_ms、valid_until、revision、generation、scope；diagnostics 和 publish 同时检查 90 秒有效期限及独立 monitor 心跳。
+
+`config publish --exit-status FILE` 由管理员显式提交同 revision 双端当前 ACTIVE 证据，控制面 migration 2 保存不可变配置快照和发布指针。export、subscription issue / fetch 只使用发布快照；初次未发布明确失败。desired config 后续变化不会悄悄改变已发布订阅，设备权限和撤销仍实时生效。远端回执由可信管理通道传输，当前协议不提供跨主机签名或分布式事务。
+
+凭据轮换使用唯一 secret_ref，文件 fsync 成功后在数据库事务中切换引用；进程中断遗留的无引用私密文件不能阻塞重试，也不能被当成当前凭据。系统 CLI 使用 `wayvia-system`（以 wayvia 身份、固定 /var/lib/wayvia/control），与 API 共用数据库、配置及同步检查点。
+
+### 10.3 安装事务与交付隔离
+
+安装器对每个写入预先持久化 journal，在 manifest 提交前可恢复旧状态；manifest 提交后按新归属完成收尾。重跑与显式 --recover 都处理残留安装。升级删除未修改的过时自有文件，保留被修改的文件及其归属记录，避免后续卸载遗漏。sdist 只包含明确列出的 Wayvia 源码、锁文件、文档和验证资源，不能遍历共享工作区的其他项目。
+
+
 ## 11 测试策略与开发命令
 
 测试以具体风险为中心，不以覆盖率数字或大量快照作为完成依据。
@@ -364,7 +392,7 @@ DRAFT → VALIDATED → PLANNED → APPLYING
 | 单元 | 规则优先级、域名与 IP 冲突、无效配置、角色凭据隔离 | 明确输入与期望行为 |
 | 服务集成 | SQLite 迁移、设备生命周期、订阅隔离、令牌撤销、API 认证 | 请求与持久化结果 |
 | 适配器契约 | 版本探测、真实配置校验、非零退出、超时、失败步骤回退 | 组件版本与命令结果 |
-| Linux 实验 | 双层数据路径、NAT 回程、DNS、IPv6、UDP、进程故障 | 受控目标日志、路由与规则计数、必要的抓包 |
+| Linux 实验 | 双层数据路径、NAT 回程、DNS、IPv6、UDP、进程故障；真实安装/API/正式事务/连续回退/monitor/独立恢复；真实 mihomo 重叠 DNS | 受控目标日志、路由与规则计数、必要的抓包 |
 | 实际环境 | 两台云服务器、客户端导入、Wi-Fi 与蜂窝切换、网关 | 带环境和版本的人工或自动验收记录 |
 
 必须有负向路径证据：关掉 OpenVPN 后代理业务不能从阿里云直接访问测试目标；关掉日本代理后 OpenVPN 不能直连日本 VPN；日本代理不能被用于任意目标转发。仅验证出口 IP 不足以证明双层顺序。

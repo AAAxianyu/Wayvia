@@ -79,10 +79,23 @@ class Action(Frozen):
 
 class Probe(Frozen):
     layer: Literal["access", "carrier", "vpn", "egress", "dns", "ipv6", "return"]
-    kind: Literal["service", "tcp", "route", "http", "dns", "ipv6_guard", "unsupported"]
+    kind: Literal[
+        "service",
+        "tcp",
+        "route",
+        "http",
+        "dns",
+        "ipv6_guard",
+        "unsupported",
+        "trojan_http",
+        "trojan_vpn",
+        "vpn_handshake",
+        "vpn_session",
+    ]
     target: str = ""
     port: int = Field(default=0, ge=0, le=65535)
     expected: str = ""
+    url: str = ""
     namespace: Literal["wayvia-egress"] | None = None
     timeout: int = Field(default=5, ge=1, le=20)
 
@@ -96,9 +109,25 @@ class Probe(Frozen):
             raise ValueError("HTTP probe requires a URL and expected exit address/body")
         if self.target.startswith("-") or any(c in self.target for c in "\n\r\x00"):
             raise ValueError("invalid probe target")
-        if self.kind in {"tcp", "dns"} and (not self.target or not self.port):
+        if self.kind == "trojan_http" and (
+            not self.url.startswith(("http://", "https://"))
+            or not self.expected
+            or any(c in self.url for c in "\n\r\x00")
+        ):
+            raise ValueError("Trojan HTTP probe needs a URL and expected body")
+        if self.kind in {"tcp", "dns", "trojan_http", "trojan_vpn", "vpn_handshake"} and (
+            not self.target or not self.port
+        ):
             raise ValueError("probe requires target and port")
-        if self.kind in {"tcp", "dns", "route"}:
+        if self.kind in {
+            "tcp",
+            "dns",
+            "route",
+            "trojan_http",
+            "trojan_vpn",
+            "vpn_handshake",
+            "vpn_session",
+        }:
             ipaddress.ip_address(self.target)
         if self.kind == "dns" and not re.fullmatch(
             r"[a-zA-Z0-9][a-zA-Z0-9.-]{0,252}", self.expected

@@ -1,8 +1,31 @@
-# M4 受控链路验证记录
+# M4 受控链路与正式事务验证
+
+更新：2026-10-12（America/Los_Angeles）。下方原有 22 项记录保留为历史基线；它不能证明审计修复后的全部实现。当前实现状态及四个约定门禁的最终结论见 [实现状态](../implementation-status.md) 和 [本轮修复证据](fixes-2026-10-12/)。原始审计失败仍保留在 [审计证据](review-2026-10-12/)。
+
+## 本轮已固定的新增证据
+
+| 范围 | 已有证据与结论 |
+| --- | --- |
+| 修复后的原生 TUN 与完整双层路径 | [23 项完整实验](fixes-2026-10-12/tun/full-lab-after.json)及[退出码](fixes-2026-10-12/tun/full-lab-command.json)通过。该轮实际等待 488 ms、观察 8 次内核状态后才创建原生 socket；业务 TCP/UDP 各一次通过 |
+| TUN 启动竞态 | [调查记录](fixes-2026-10-12/tun/README.md)保留原始失败、物理选源与 netlink 时间证据。SOCKS 已可服务时 TUN 尚未 UP；修复的是实验就绪条件。真实分阶段反例和 12 个独立冷启动有独立证据 |
+| 协议验证正负向 | [7 项真实协议检查](fixes-2026-10-12/protocol-result.json)通过：Trojan认证、VPN服务端身份和当前management状态，以及错误密码/身份、普通TCP listener拒绝 |
+| mihomo DNS 优先级 | [6 项真实 DNS 查询](fixes-2026-10-12/mihomo-dns-result.json)通过，覆盖同后缀、父子重叠、未覆盖子域和精确 bootstrap；3 个本地解析器记录实际查询，TUN 在该专项实验中关闭 |
+| 真实内核冲突检查 | [12 项真实内核检查](fixes-2026-10-12/preflight-conflicts-result.json)通过，覆盖 TUN 所有权、重叠地址、静态/策略表/blackhole 路由、允许当前自有资源及保留无关资源；这项不证明组件健康 |
+| 正式安装与事务 | [23 项专项集成](fixes-2026-10-12/transaction-result.json)通过，实际运行安装的双角色 API/CLI、systemd、agent、动态数据单元与 monitor |
+
+这些是各专项实验的结果。统一 `make test-lab` 已纳入全部专项，以及真实 LinuxExecutor 回退与独立 systemd timer/恢复。正式事务的 23 项证据覆盖设备 pending→active、双角色确认/发布、订阅、入口实际端口 `443→8443→9443→8443→443`、旧 monitor 交错、出口同配置三代次、VPN/承载故障保护及认证恢复、独立恢复、同版本重装、权限及两端卸载。轮换拒绝旧密码，单独撤销链接保留设备访问，设备撤销后旧计划和回退均不能恢复权限。独立恢复并非整机重启，同版本重装并非跨版本升级。完整统一命令的最终退出码见本轮 `fixes-2026-10-12/commands.json`，具体运行方式与输出名见 [实验手册](../../deploy/lab/README.md)。
+
+新增正式事务实验以带所有权标签的 `--internal` Docker 网络连接独立的入口、出口与目标容器；两个服务器各有私有 cgroup 和真实 systemd PID 1。其它专项仍使用 `--network none`。没有使用宿主网络或真实云主机。出口组件 ready、入口完整链路 healthy、软件检查、隔离验收和 M6 实网验收分别记录。
+
+---
+
+以下内容是首次交付时的历史运行记录。当时引用的 `latest-*` 目录会被后续命令重新生成，不作为不可变版本标识；历史软件汇总保留在 [software/software-result.json](software/software-result.json)，审计时的 22 项复跑另有 [固定副本](review-2026-10-12/lab-retry/)。历史“本次”均指该旧记录，不代表本轮修复的最终结论。
+
+# 历史基线：M4 受控链路验证记录
 
 日期：2026-10-12（America/Los_Angeles）。原始组件日志使用 UTC；这不是两台真实云服务器或手机的验收记录。
 
-## 本次实际运行
+## 历史实际运行
 
 实验在 Colima 的 Docker 29.5.2 / aarch64 / Linux 6.8.0-117-generic 上执行。Ubuntu 24.04 容器中实际 Python 为 3.12.3，iproute2 6.1.0（包6.1.0-1ubuntu6.4），nftables 1.0.9（包1.0.9-1ubuntu0.1），OpenVPN 2.6.19。数据链路容器没有 systemctl；另外使用仅有容器私有 cgroup2 挂载的 systemd PID 1 容器验证了真实独立计时器及恢复进程，版本255.4-1ubuntu8.17。该证据不等于云主机整体重启验收。
 

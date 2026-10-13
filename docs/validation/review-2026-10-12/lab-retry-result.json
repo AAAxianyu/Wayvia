@@ -1,0 +1,10 @@
+{
+  "command": "make test-lab",
+  "exit_code": 0,
+  "seconds": 55.4,
+  "changed_evidence": [
+    "recovery-result.json",
+    "executor-result.json",
+    "lab-result.json"
+  ]
+}

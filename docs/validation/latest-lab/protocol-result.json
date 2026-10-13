@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "simulated": false,
+  "cases": [
+    {
+      "name": "real_openvpn_server_identity",
+      "status": "passed",
+      "observed": {
+        "healthy": true,
+        "check": "vpn_server_identity",
+        "client_authenticated": false
+      }
+    },
+    {
+      "name": "real_openvpn_management_state",
+      "status": "passed",
+      "observed": {
+        "healthy": true,
+        "check": "vpn_server_initialized",
+        "peer_count": 1
+      }
+    },
+    {
+      "name": "real_trojan_authentication_and_vpn_identity",
+      "status": "passed",
+      "observed": {
+        "healthy": true,
+        "check": "vpn_server_identity",
+        "client_authenticated": false
+      }
+    },
+    {
+      "name": "wrong_trojan_credential_rejected",
+      "status": "passed",
+      "observed": {
+        "healthy": false,
+        "check": "vpn_server_identity",
+        "client_authenticated": false
+      }
+    },
+    {
+      "name": "wrong_carrier_tls_identity_rejected",
+      "status": "passed",
+      "observed": {
+        "healthy": false,
+        "error": "PROTOCOL_REJECTED"
+      }
+    },
+    {
+      "name": "wrong_vpn_identity_rejected",
+      "status": "passed",
+      "observed": {
+        "healthy": false,
+        "check": "vpn_server_identity",
+        "client_authenticated": false
+      }
+    },
+    {
+      "name": "plain_tcp_listener_cannot_pass_authentication",
+      "status": "passed",
+      "observed": {
+        "healthy": false,
+        "error": "PROTOCOL_REJECTED"
+      }
+    }
+  ]
+}

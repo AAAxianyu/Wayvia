@@ -207,6 +207,21 @@ def validate_plan_topology(plan):
     manifest = json.loads(artifacts["manifest.json"])
     if manifest.get("role") != plan.role or manifest.get("vpn_interface") != "tun0":
         fail()
+    for field in ("entry_server_name", "carrier_server_name", "vpn_server_name"):
+        if not isinstance(manifest.get(field), str) or not re.fullmatch(
+            r"[a-zA-Z0-9][a-zA-Z0-9.-]{0,252}", manifest[field]
+        ):
+            fail()
+    if plan.role == "ingress":
+        options = [
+            shlex.split(line, comments=True) for line in artifacts["vpn-client.conf"].splitlines()
+        ]
+        if ["verify-x509-name", manifest["vpn_server_name"], "name"] not in options:
+            fail()
+        carrier = json.loads(artifacts["carrier.json"])
+        if carrier["outbounds"][0]["tls"]["server_name"] != manifest["carrier_server_name"]:
+            fail()
+
     subnet = ipaddress.ip_network(manifest["vpn_subnet"])
     required = set()
     for name, text in artifacts.items():
@@ -247,14 +262,18 @@ def validate_probes(plan):
             "PROBE_INPUT_REQUIRED", "Every distinct path layer needs an actual probe"
         )
     kinds = {
-        "access": "tcp",
-        "carrier": "tcp",
-        "vpn": "route",
+        "access": "trojan_http" if plan.role == "ingress" else "trojan_vpn",
+        "carrier": "vpn_handshake",
+        "vpn": "vpn_session",
         "egress": "http",
         "dns": "dns",
         "ipv6": "ipv6_guard",
         "return": "route",
     }
+    artifacts = {a.resource: a.content for a in plan.actions if a.kind == "install_config"}
+    artifact = json.loads(artifacts["ingress.json" if plan.role == "ingress" else "exit.json"])
+    inbound = next(i for i in artifact["inbounds"] if i["type"] == "trojan")
+    listener = {"0.0.0.0": "127.0.0.1", "::": "::1"}.get(inbound["listen"], inbound["listen"])
     for probe in plan.probes:
         if probe.kind != kinds[probe.layer]:
             raise AdapterError(
@@ -270,8 +289,13 @@ def validate_probes(plan):
             probe.namespace or not probe.expected or probe.expected == "tun0"
         ):
             fail()
-        if probe.layer == "access" and probe.namespace:
-            fail()
+        if probe.layer == "access":
+            if probe.namespace or (probe.target, probe.port) != (listener, inbound["listen_port"]):
+                fail()
+            if plan.role == "ingress":
+                egress = next(p for p in plan.probes if p.layer == "egress")
+                if (probe.url, probe.expected) != (egress.target, egress.expected):
+                    fail()
         if probe.layer == "carrier":
             expected = (
                 ("10.89.0.1", 1080, "wayvia-egress")

@@ -7,6 +7,7 @@ import json
 import os
 import platform
 import re
+import secrets
 import tempfile
 from pathlib import Path
 
@@ -73,9 +74,11 @@ def unit_content(unit, config_root=Path("/etc/wayvia")):
         "exit": f"/usr/local/bin/sing-box run -c {config_root}/exit.json",
         "vpn-client": (
             f"/usr/sbin/openvpn --config {config_root}/vpn-client.conf --script-security 1"
+            " --management /run/wayvia/vpn-client.sock unix"
         ),
         "vpn-server": (
             f"/usr/sbin/openvpn --config {config_root}/vpn-server.conf --script-security 1"
+            " --management /run/wayvia/vpn-server.sock unix"
         ),
         "carrier": (
             "/usr/local/bin/v2raya --address 127.0.0.1:2017 "
@@ -293,19 +296,49 @@ class LinuxExecutor:
                 raise AdapterError(
                     "INTERFACE_MISSING", "Explicit physical egress interface is absent"
                 )
+        owners = self._owners()
+        owned_interfaces = set()
+        if plan.role == "ingress" and owners.get("veth:host:wayvia-host"):
+            owned_interfaces.add("wayvia-host")
+        if plan.role == "exit" and any(row["ifname"] == "tun0" for row in interfaces):
+            if not owners.get("service:host:wayvia-vpn-server.service"):
+                raise AdapterError("TUN_CONFLICT", "Host tun0 is not owned by Wayvia")
+            owned_interfaces.add("tun0")
+        owned_networks = {}
         for row in interfaces:
-            if row["ifname"] in {"wayvia-host", "tun0", "lo"}:
-                continue
             for address in row.get("addr_info", []):
                 if address.get("family") != "inet":
                     continue
                 network = ipaddress.ip_network(
                     f"{address['local']}/{address['prefixlen']}", strict=False
                 )
+                if row["ifname"] in owned_interfaces:
+                    owned_networks.setdefault(row["ifname"], []).append(network)
+                    continue
                 if any(network.overlaps(candidate) for candidate in planned):
                     raise AdapterError(
                         "SUBNET_CONFLICT", "Wayvia subnet overlaps an existing host interface"
                     )
+        routes = json.loads(self._cmd(["ip", "-j", "route", "show", "table", "all"]).stdout)
+        for route in routes:
+            destination = route.get("dst", "default")
+            if destination == "default":
+                continue
+            try:
+                network = ipaddress.ip_network(destination, strict=False)
+            except ValueError:
+                continue
+            if network.version != 4 or network.prefixlen == 0:
+                continue
+            # Exempt only kernel-created connected/local routes for the interfaces
+            # this role owns. A static/policy route using the same device is not
+            # evidence that Wayvia owns the administrator's routing decision.
+            if route.get("protocol") in {"kernel", 2} and any(
+                network.subnet_of(owned) for owned in owned_networks.get(route.get("dev"), [])
+            ):
+                continue
+            if any(network.overlaps(n) for n in planned):
+                raise AdapterError("ROUTE_CONFLICT", "Wayvia subnet overlaps an existing route")
         sockets = self._cmd(["ss", "-H", "-ltnp"]).stdout.splitlines()
         ports = (
             {1080: "wayvia-carrier.service"}
@@ -529,6 +562,20 @@ class LinuxExecutor:
         unit = "wayvia-ingress.service" if plan.role == "ingress" else "wayvia-exit.service"
         self._cmd(["systemctl", "stop", unit])
 
+    def prepare_ingress(self, action):
+        if action.kind != "install_config" or action.resource != "ingress.json":
+            return action
+        from wayvia.agent.probe_runtime import PROBE_USER
+
+        path = self.state_dir / "probe-password"
+        if not path.exists():
+            atomic_write(path, secrets.token_urlsafe(32))
+        config = json.loads(action.content)
+        inbound = next(i for i in config["inbounds"] if i["type"] == "trojan")
+        inbound["users"] = [u for u in inbound["users"] if u["name"] != PROBE_USER]
+        inbound["users"].append({"name": PROBE_USER, "password": path.read_text()})
+        return action.model_copy(update={"content": json.dumps(config)})
+
     def sync_devices(self, devices, revision):
         path = self.config_dir / "ingress.json"
         config = json.loads(path.read_text())
@@ -538,7 +585,12 @@ class LinuxExecutor:
         self.validate_devices(devices)
         inbounds[0]["users"] = [{"name": d["id"], "password": d["password"]} for d in devices]
         try:
-            atomic_write(path, json.dumps(config))
+            from wayvia.agent.models import Action
+
+            effective = self.prepare_ingress(
+                Action(kind="install_config", resource="ingress.json", content=json.dumps(config))
+            )
+            atomic_write(path, effective.content)
             SingBoxAdapter(self.runner).validate(path)
             self._cmd(["systemctl", "restart", "wayvia-ingress.service"])
             self._cmd(["systemctl", "is-active", "--quiet", "wayvia-ingress.service"])
@@ -562,6 +614,7 @@ class LinuxExecutor:
             or any(
                 set(d) != {"id", "password"}
                 or not isinstance(d["id"], str)
+                or d["id"] == "wayvia-internal-probe"
                 or not isinstance(d["password"], str)
                 or len(d["password"]) < 24
                 or len(d["password"]) > 256

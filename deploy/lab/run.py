@@ -40,6 +40,27 @@ def spawn(name, args, ns):
     return process
 
 
+def failure_snapshot():
+    snapshot = {}
+    for ns in NAMES:
+        rows = {}
+        for label, argv in (
+            ("routes", ["ip", "-j", "route", "show", "table", "all"]),
+            (
+                "native_route",
+                ["ip", "-j", "route", "get", "10.74.0.2", "ipproto", "tcp", "dport", "8080"],
+            ),
+            ("rules", ["ip", "-j", "rule", "show"]),
+            ("interfaces", ["ip", "-s", "-j", "link", "show"]),
+            ("sockets", ["ss", "-ntp"]),
+            ("firewall", ["nft", "list", "ruleset"]),
+        ):
+            result = command(argv, ns=ns, check=False)
+            rows[label] = result.stdout
+        snapshot[ns] = rows
+    return snapshot
+
+
 def test(name, func):
     start = time.monotonic()
     try:
@@ -51,6 +72,7 @@ def test(name, func):
                 "status": "failed",
                 "elapsed_ms": round((time.monotonic() - start) * 1000),
                 "error": str(error),
+                "failure_snapshot": failure_snapshot(),
             }
         )
         print(json.dumps(RESULTS[-1]), flush=True)
@@ -374,7 +396,77 @@ def probe(mode="tcp", host="10.74.0.2", expected=True):
     )
     if (result.returncode == 0) != expected:
         raise AssertionError(f"{mode} {host} expected success={expected}: " + result.stdout)
-    return json.loads(result.stdout)
+    evidence = json.loads(result.stdout)
+    if expected and mode == "native-tcp" and host == "10.74.0.2":
+        if evidence["connection"]["local"][0] != "172.28.0.1":
+            raise AssertionError("Native TCP selected a physical source: " + str(evidence))
+    return evidence
+
+
+def terminal_tun_snapshot():
+    """Read the kernel state that selects a new native application's source/route."""
+
+    def rows(argv):
+        result = command(argv, ns="terminal", check=False)
+        return json.loads(result.stdout) if result.returncode == 0 else []
+
+    interface = rows(["ip", "-j", "address", "show", "dev", "wayvia-tun"])
+    lookup = ["ip", "-j", "route", "get", "10.74.0.2"]
+    transport = ["ipproto", "tcp", "dport", "8080"]
+    route = rows(lookup + transport)
+    bound_route = rows(lookup + ["from", "172.28.0.1"] + transport)
+    source = command(
+        [
+            "python3",
+            "-c",
+            "import socket; s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM); "
+            "s.connect(('10.74.0.2',8080)); print(s.getsockname()[0]); s.close()",
+        ],
+        ns="terminal",
+        check=False,
+    )
+    selected_source = source.stdout.strip() if source.returncode == 0 else None
+    ready = (
+        len(interface) == 1
+        and {"UP", "LOWER_UP"}.issubset(interface[0]["flags"])
+        and any(a.get("local") == "172.28.0.1" for a in interface[0].get("addr_info", []))
+        and len(route) == 1
+        and route[0].get("dev") == "wayvia-tun"
+        and route[0].get("prefsrc") == "172.28.0.1"
+        and len(bound_route) == 1
+        and bound_route[0].get("dev") == "wayvia-tun"
+        and selected_source == "172.28.0.1"
+    )
+    return {
+        "ready": ready,
+        "interface": interface,
+        "route": route,
+        "bound_route": bound_route,
+        "selected_source": selected_source,
+    }
+
+
+def wait_terminal_tun(process, timeout=10):
+    # A SOCKS listener can serve requests before sing-box finishes TUN startup.
+    # Do not create a native TCP socket until both its initial and source-bound
+    # route resolve to TUN: an early physical source survives subsequent rule updates.
+    started = time.monotonic()
+    observations = 0
+    while True:
+        if process.poll() is not None:
+            raise RuntimeError("Terminal process exited before TUN kernel readiness")
+        state = terminal_tun_snapshot()
+        observations += 1
+        if state["ready"]:
+            return {
+                **state,
+                "elapsed_ms": round((time.monotonic() - started) * 1000),
+                "observations": observations,
+            }
+        if time.monotonic() - started >= timeout:
+            raise RuntimeError("TUN kernel readiness timeout: " + json.dumps(state))
+        # Poll readiness, never retry the native business request.
+        time.sleep(0.02)
 
 
 def wait_path():
@@ -539,9 +631,33 @@ def run():
     )
     bridge = spawn("bridge", ["sing-box", "run", "-c", str(paths["bridge"])], "wayvia-egress")
     entry = spawn("entry", ["sing-box", "run", "-c", str(paths["entry"])], "ali")
-    spawn("terminal", ["sing-box", "run", "-c", str(paths["terminal"])], "terminal")
+    spawn(
+        "tun-packets",
+        [
+            "tcpdump",
+            "-n",
+            "-l",
+            "-i",
+            "any",
+            "tcp",
+            "and",
+            "host",
+            "10.74.0.2",
+            "and",
+            "port",
+            "8080",
+        ],
+        "terminal",
+    )
+    spawn(
+        "tun-kernel-events",
+        ["ip", "-ts", "monitor", "route", "rule", "link", "address"],
+        "terminal",
+    )
+    terminal = spawn("terminal", ["sing-box", "run", "-c", str(paths["terminal"])], "terminal")
     test("foreign_tcp_dual_layer_japan_nat", wait_path)
     test("domestic_tcp_terminal_direct", domestic_ok)
+    test("terminal_tun_kernel_ready", lambda: wait_terminal_tun(terminal))
     test("foreign_native_tcp_intercepted_by_rendered_tun", lambda: probe("native-tcp"))
     test("foreign_native_udp_intercepted_by_rendered_tun", lambda: probe("native-udp"))
     test("foreign_udp_through_vpn_and_socks_bridge", lambda: probe("udp"))

@@ -82,6 +82,12 @@ class ControlService:
             raise WayviaError("invalid_mode", "Unknown execution mode")
         if mode == "production" and self.dataplane.simulated:
             raise WayviaError("fake_forbidden", "Production requires a real dataplane")
+        with self.db.connect() as connection:
+            connection.execute(
+                "INSERT INTO settings(key,value) VALUES('desired_revision',?) "
+                "ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+                (config.revision,),
+            )
 
     def _audit(self, connection, action, object_id, result):
         connection.execute(
@@ -124,6 +130,7 @@ class ControlService:
             "mode": self.mode,
             "devices": self.devices(),
             "configuration_revision": self.config.revision,
+            "publication": self.publication(),
         }
         if self.dataplane.simulated:
             result["dataplane"] = {"status": "simulated"}
@@ -133,6 +140,119 @@ class ControlService:
             except (OSError, WayviaError, AttributeError):
                 result["dataplane"] = {"status": "unknown", "code": "agent_unavailable"}
         return result
+
+    def publication(self):
+        """Public metadata only; the durable snapshot includes server secret refs."""
+        with self.db.connect() as connection:
+            desired = connection.execute(
+                "SELECT value FROM settings WHERE key='desired_revision'"
+            ).fetchone()
+            row = connection.execute(
+                "SELECT p.* FROM config_publications p JOIN settings s "
+                "ON s.key='published_revision' AND s.value=p.revision"
+            ).fetchone()
+        result = {
+            "desired_revision": desired[0] if desired else self.config.revision,
+            "published_revision": row["revision"] if row else None,
+            "status": "published" if row else "unpublished",
+        }
+        if row:
+            result["published_at"] = row["published_at"]
+            result["confirmations"] = {
+                role: {key: receipt.get(key) for key in ("id", "revision", "generation")}
+                for role, receipt in json.loads(row["confirmations_json"]).items()
+            }
+        return result
+
+    @staticmethod
+    def _confirmation(status, role, revision):
+        from wayvia.services.diagnostics import transaction_diagnostic
+
+        if isinstance(status, dict):
+            status = status.get("agent", status.get("dataplane"))
+        if not isinstance(status, list):
+            raise WayviaError("confirmation_invalid", "Expected an exported agent status list")
+        current = [
+            tx
+            for tx in status
+            if isinstance(tx, dict) and tx.get("role") == role and tx.get("current") is True
+        ]
+        if len(current) != 1 or current[0].get("revision") != revision:
+            raise WayviaError(
+                "configuration_unconfirmed",
+                "Both roles must confirm this exact configuration revision",
+                details={"role": role},
+                exit_code=ExitCode.RUNTIME,
+            )
+        receipt = current[0]
+        diagnostic = transaction_diagnostic(receipt)
+        if diagnostic["status"] != ("healthy" if role == "ingress" else "ready"):
+            raise WayviaError(
+                "configuration_unconfirmed",
+                "Publication requires current, healthy and fresh confirmation evidence",
+                details={"role": role, "reason": diagnostic.get("error", "unconfirmed")},
+                exit_code=ExitCode.RUNTIME,
+            )
+        return receipt
+
+    def publish(self, exit_status):
+        """Explicit operator publication after independent exit/ingress confirmation.
+
+        The remote receipt is imported by the authenticated administrator over
+        their trusted management channel. It is not a cross-host transaction or
+        a claim that an arbitrary supplied JSON document authenticates a server.
+        """
+        if self.dataplane.simulated:
+            raise WayviaError("fake_forbidden", "Publication requires real agent evidence")
+        with self.db.change_lock():
+            revision = self.config.revision
+            receipts = {
+                "exit": self._confirmation(exit_status, "exit", revision),
+                "ingress": self._confirmation(self.dataplane.status(), "ingress", revision),
+            }
+            config_json = self.config.model_dump_json()
+            # Do not let validation/serialization consume the evidence lifetime.
+            for role, receipt in receipts.items():
+                self._confirmation([receipt], role, revision)
+            with self.db.connect() as connection:
+                connection.execute(
+                    "INSERT INTO config_publications VALUES(?,?,?,?) "
+                    "ON CONFLICT(revision) DO UPDATE SET "
+                    "confirmations_json=excluded.confirmations_json,published_at=excluded.published_at",
+                    (revision, config_json, json.dumps(receipts), time.time()),
+                )
+                connection.execute(
+                    "INSERT INTO settings(key,value) VALUES('published_revision',?) "
+                    "ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+                    (revision,),
+                )
+                self._audit(connection, "configuration.publish", revision, "published")
+        return self.publication()
+
+    def _published_config(self):
+        from wayvia.config import WayviaConfig
+
+        with self.db.connect() as connection:
+            row = connection.execute(
+                "SELECT p.* FROM config_publications p JOIN settings s "
+                "ON s.key='published_revision' AND s.value=p.revision"
+            ).fetchone()
+        if row is None:
+            if self.mode in {"test", "demo"}:
+                return self.config
+            raise WayviaError(
+                "configuration_unpublished",
+                "Confirm both roles and explicitly publish a configuration before exporting",
+                exit_code=ExitCode.RUNTIME,
+            )
+        config = WayviaConfig.model_validate_json(row["config_json"])
+        if config.revision != row["revision"]:
+            raise WayviaError(
+                "publication_corrupt",
+                "Published configuration digest is invalid",
+                exit_code=ExitCode.RUNTIME,
+            )
+        return config
 
     def _sync(self) -> dict:
         with self.db.connect() as connection:
@@ -149,14 +269,21 @@ class ControlService:
             evidence = self.dataplane.sync(accepted, revision)
             if evidence.get("status") != "active":
                 raise WayviaError("dataplane_apply_failed", "Ingress revision not accepted")
-        except Exception:
-            try:
-                protection = self.dataplane.block()
-            except Exception:
-                protection = {"status": "unknown", "code": "ingress_block_unconfirmed"}
+        except Exception as error:
+            not_deployed = isinstance(error, WayviaError) and error.code == "INGRESS_NOT_DEPLOYED"
+            if not_deployed:
+                # The agent has proved no deployment or ingress artifact exists.
+                # Keep its durable desired-credential checkpoint, without turning
+                # first-time pending creation into an explicit deployment block.
+                protection = {"status": "not_deployed", "code": "INGRESS_NOT_DEPLOYED"}
+            else:
+                try:
+                    protection = self.dataplane.block()
+                except Exception:
+                    protection = {"status": "unknown", "code": "ingress_block_unconfirmed"}
             failure = {
                 "status": "unconfirmed",
-                "code": "dataplane_apply_failed",
+                "code": "INGRESS_NOT_DEPLOYED" if not_deployed else "dataplane_apply_failed",
                 "protection": protection,
             }
             with self.db.connect() as connection:
@@ -221,7 +348,10 @@ class ControlService:
             if device["status"] == "revoked" or device["desired_action"] == "revoke":
                 raise WayviaError("device_revoked", "Revoked device cannot rotate")
             version = device["credential_version"] + 1
-            ref = f"device-{device_id}-v{version}"
+            # An interrupted write may leave an unreferenced secret behind.
+            # Never re-use its name: only the reference committed in SQLite is
+            # authoritative. Reconcile resumes a committed rotation unchanged.
+            ref = f"device-{device_id}-v{version}-{uuid.uuid4().hex}"
             self.secrets.write(ref, secrets.token_urlsafe(32))
             with self.db.connect() as connection:
                 revision = connection.execute("SELECT max(revision)+1 FROM devices").fetchone()[0]
@@ -266,7 +396,9 @@ class ControlService:
             ref = connection.execute(
                 "SELECT secret_ref FROM devices WHERE id=?", (device_id,)
             ).fetchone()[0]
-        return ProfileRenderer(self.config).render(device, self.secrets.read(ref), format)
+        return ProfileRenderer(self._published_config()).render(
+            device, self.secrets.read(ref), format
+        )
 
     def issue(self, device_id: str, format: str, lifetime: int = 86400 * 30) -> dict:
         self.export(device_id, format)

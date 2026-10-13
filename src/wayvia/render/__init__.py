@@ -234,13 +234,25 @@ class ProfileRenderer:
                 resolver = resolver.model_copy(update={"protocol": "tcp"})
             resolvers[tag] = _mihomo_resolver(resolver, "Wayvia" if tag == "proxy" else "DIRECT")
         nameserver_policy = {}
+        # mihomo's domain trie chooses the most specific suffix. Our policy is
+        # first-match: a later child of an earlier suffix must therefore be
+        # omitted, while an earlier child remains alongside a later parent.
+        # Looking up its label suffixes keeps this linear in the rule input.
+        prior_suffixes = set()
         for rule in policy["rules"]:
             if rule["action"] != "direct":
                 continue
             for domain in rule.get("domains", []):
-                nameserver_policy[f"+.{domain}"] = [resolvers[rule["dns"]]]
+                labels = domain.split(".")
+                if any(".".join(labels[index:]) in prior_suffixes for index in range(len(labels))):
+                    continue
+                # '+.' inserts both exact and suffix nodes in mihomo. Preserve
+                # an earlier bootstrap exact node with a subdomain-only suffix.
+                key = f".{domain}" if domain in nameserver_policy else f"+.{domain}"
+                nameserver_policy[key] = [resolvers[rule["dns"]]]
+                prior_suffixes.add(domain)
             for domain in rule.get("exact_domains", []):
-                nameserver_policy[domain] = [resolvers[rule["dns"]]]
+                nameserver_policy.setdefault(domain, [resolvers[rule["dns"]]])
         rules = []
         for rule in policy["rules"]:
             if rule["id"] == "default":
@@ -360,6 +372,9 @@ class ServerRenderer:
                 "vpn_subnet": config.vpn.subnet,
                 "namespace_link": "10.89.0.0/30",
                 "ipv6_proxy_supported": False,
+                "entry_server_name": config.entry.server_name,
+                "carrier_server_name": config.carrier.server_name,
+                "vpn_server_name": config.vpn.server_name,
             }
         )
         return files

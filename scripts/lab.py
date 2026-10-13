@@ -22,6 +22,11 @@ def main():
     parser.add_argument("--no-build", action="store_true")
     args = parser.parse_args()
     if args.clean:
+        transaction = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/transaction_lab.py"), "--clean"]
+        ).returncode
+        if transaction:
+            return transaction
         recovery = subprocess.run(
             [sys.executable, str(ROOT / "scripts/recovery_lab.py"), "--clean"]
         ).returncode
@@ -129,9 +134,48 @@ def main():
             result = subprocess.run(executor_cmd).returncode
             if result:
                 return result
-            return subprocess.run(
-                [sys.executable, str(ROOT / "scripts/recovery_lab.py")]
-            ).returncode
+            for helper, label in (
+                ("protocol_probe.py", "protocol"),
+                ("tun_ready_probe.py", "tun-readiness"),
+                ("preflight_conflicts_probe.py", "preflight-conflicts"),
+            ):
+                helper_cmd = executor_cmd.copy()
+                helper_cmd[helper_cmd.index("org.wayvia.disposable=executor")] = (
+                    "org.wayvia.disposable=" + label
+                )
+                helper_cmd[helper_cmd.index("--entrypoint") : helper_cmd.index("--entrypoint")] = [
+                    "-e",
+                    "WAYVIA_LAB_DISPOSABLE=1",
+                    "-v",
+                    str(ROOT / "deploy/lab") + ":/opt/wayvia-lab:ro",
+                    "-v",
+                    str(generated) + ":/generated:ro",
+                ]
+                helper_cmd[-1] = "/workspace/tests/lab/" + helper
+                result = subprocess.run(helper_cmd).returncode
+                if result:
+                    return result
+            mihomo_cmd = executor_cmd.copy()
+            mihomo_cmd.remove("--privileged")
+            mihomo_cmd[mihomo_cmd.index("org.wayvia.disposable=executor")] = (
+                "org.wayvia.disposable=mihomo-dns"
+            )
+            mihomo_cmd[mihomo_cmd.index("--entrypoint") : mihomo_cmd.index("--entrypoint")] = [
+                "-e",
+                "WAYVIA_LAB_DISPOSABLE=1",
+            ]
+            mihomo_cmd[-1] = "/workspace/tests/lab/mihomo_dns_probe.py"
+            result = subprocess.run(mihomo_cmd).returncode
+            if result:
+                return result
+            for script in ("recovery_lab.py", "transaction_lab.py"):
+                command = [sys.executable, str(ROOT / "scripts" / script)]
+                if args.no_build:
+                    command.append("--no-build")
+                result = subprocess.run(command).returncode
+                if result:
+                    return result
+            return 0
     except (subprocess.CalledProcessError, FileNotFoundError) as error:
         print("LAB ENVIRONMENT UNAVAILABLE: " + str(error), file=sys.stderr)
         return 4

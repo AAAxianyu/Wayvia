@@ -1,5 +1,7 @@
 """Bounded, shell-free component commands. Never expose command output as logs."""
 
+import os
+import signal
 import subprocess
 from dataclasses import dataclass
 
@@ -53,17 +55,20 @@ class CommandRunner:
                 process.kill()
                 process.wait(timeout=2)
 
-    def run(self, argv: list[str], *, timeout=20, input_text=None, check=True):
+    def run(self, argv: list[str], *, timeout=20, input_text=None, check=True, process_tree=False):
         try:
-            result = subprocess.run(
-                argv,
-                input=input_text,
-                text=True,
-                capture_output=True,
-                timeout=timeout,
-                check=False,
-                shell=False,
-            )
+            if process_tree:
+                result = self._run_process_tree(argv, timeout=timeout, input_text=input_text)
+            else:
+                result = subprocess.run(
+                    argv,
+                    input=input_text,
+                    text=True,
+                    capture_output=True,
+                    timeout=timeout,
+                    check=False,
+                    shell=False,
+                )
         except FileNotFoundError as exc:
             raise AdapterError(
                 "COMPONENT_MISSING",
@@ -83,6 +88,32 @@ class CommandRunner:
                 details={"component": argv[0], "returncode": result.returncode},
             )
         return CommandResult(result.returncode, result.stdout, result.stderr)
+
+    @staticmethod
+    def _run_process_tree(argv, *, timeout, input_text):
+        """Keep helper children in an isolated session and reap them on interruption."""
+        with subprocess.Popen(
+            argv,
+            stdin=subprocess.PIPE if input_text is not None else None,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            shell=False,
+            start_new_session=True,
+        ) as process:
+            try:
+                stdout, stderr = process.communicate(input=input_text, timeout=timeout)
+            except BaseException:
+                # Killing only the helper leaves its OpenVPN/curl children running.
+                # The session belongs solely to this invocation, including children
+                # holding our pipes open after their direct parent has exited.
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+                process.communicate()
+                raise
+            return CommandResult(process.returncode, stdout, stderr)
 
 
 def require_real(adapter, mode="production"):

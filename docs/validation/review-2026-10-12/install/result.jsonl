@@ -1,0 +1,2 @@
+{"case": "removed_source_after_upgrade_then_uninstall", "obsolete_file_exists": true, "obsolete_file_owned": false, "obsolete_after_uninstall": true}
+{"case": "first_install_write_interruption", "files_written": 1, "manifest_exists": false, "retry_error": "resource_conflict", "uninstall_error": "not_installed"}

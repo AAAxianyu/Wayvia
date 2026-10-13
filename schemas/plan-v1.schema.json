@@ -110,7 +110,11 @@
             "http",
             "dns",
             "ipv6_guard",
-            "unsupported"
+            "unsupported",
+            "trojan_http",
+            "trojan_vpn",
+            "vpn_handshake",
+            "vpn_session"
           ],
           "title": "Kind",
           "type": "string"
@@ -130,6 +134,11 @@
         "expected": {
           "default": "",
           "title": "Expected",
+          "type": "string"
+        },
+        "url": {
+          "default": "",
+          "title": "Url",
           "type": "string"
         },
         "namespace": {

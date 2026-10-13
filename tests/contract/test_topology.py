@@ -16,13 +16,24 @@ from wayvia.render import ServerRenderer
 
 def probes():
     return (
-        Probe(layer="access", kind="tcp", target="127.0.0.1", port=443),
         Probe(
-            layer="carrier", kind="tcp", target="10.89.0.1", port=1080, namespace="wayvia-egress"
+            layer="access",
+            kind="trojan_http",
+            target="127.0.0.1",
+            port=443,
+            url="https://example.test/exit",
+            expected="203.0.113.2",
+        ),
+        Probe(
+            layer="carrier",
+            kind="vpn_handshake",
+            target="10.89.0.1",
+            port=1080,
+            namespace="wayvia-egress",
         ),
         Probe(
             layer="vpn",
-            kind="route",
+            kind="vpn_session",
             target="203.0.113.2",
             expected="tun0",
             namespace="wayvia-egress",

@@ -1,0 +1,10 @@
+{
+  "reproduced": true,
+  "failure_point": "after SecretStore.write fsync returns, before devices UPDATE",
+  "credential_version": 1,
+  "post_restart_reconcile_status": "active",
+  "retry_result": "FileExistsError",
+  "orphan_v2_present": true,
+  "evidence_kind": "real SQLite and SecretStore; explicitly simulated dataplane; injected process interruption",
+  "source": "src/wayvia/services/control.py:223-231; src/wayvia/secrets/__init__.py:54-61"
+}

@@ -1,0 +1,52 @@
+/tmp/wayvia-bootstrap/bin/uv run --locked ruff format --check src tests scripts deploy
+51 files already formatted
+/tmp/wayvia-bootstrap/bin/uv run --locked ruff check src tests scripts deploy
+All checks passed!
+/tmp/wayvia-bootstrap/bin/uv run --locked pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/dev2/Documents/project/Wayvia
+configfile: pyproject.toml
+testpaths: tests/unit, tests/contract, tests/integration
+plugins: anyio-4.15.1, cov-7.0.0
+collected 150 items
+
+tests/unit/test_policy_config.py ....................................... [ 26%]
+...                                                                      [ 28%]
+tests/unit/test_render_profiles.py .............                         [ 36%]
+tests/unit/test_transactions.py ........................                 [ 52%]
+tests/contract/test_adapters.py ...................                      [ 65%]
+tests/contract/test_diagnostics.py .....................                 [ 79%]
+tests/contract/test_preflight_certificates.py ..                         [ 80%]
+tests/contract/test_topology.py ......                                   [ 84%]
+tests/integration/test_cli.py ...                                        [ 86%]
+tests/integration/test_control.py ..........                             [ 93%]
+tests/integration/test_install.py ..........                             [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/typer/__init__.py:24
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:24: DeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_binary_stream as get_binary_stream
+
+.venv/lib/python3.12/site-packages/typer/__init__.py:25
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:25: DeprecationWarning: 'click.utils.get_text_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_text_stream as get_text_stream
+
+.venv/lib/python3.12/site-packages/starlette/testclient.py:51
+  /Users/dev2/Documents/project/Wayvia/.venv/lib/python3.12/site-packages/starlette/testclient.py:51: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 150 passed, 3 warnings in 57.84s =======================
+/tmp/wayvia-bootstrap/bin/uv build
+Building source distribution...
+  × Failed to build `/Users/dev2/Documents/project/Wayvia`
+  ├─▶ Invalid tar file
+  ├─▶ failed to unpack
+  │   `<unrelated-worktree-content/external-venv-symlink>`
+  ╰─▶ symlink path
+      `<external-python-runtime>`
+      is absolute, but external symlinks are not allowed
+  help: This file seems to be part of a virtual environment. Virtual
+        environments must be excluded from source distributions.
+make: *** [check] Error 2

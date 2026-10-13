@@ -20,12 +20,14 @@ policy_app = typer.Typer(no_args_is_help=True)
 profile_app = typer.Typer(no_args_is_help=True)
 secret_app = typer.Typer(no_args_is_help=True)
 rules_app = typer.Typer(no_args_is_help=True)
+config_app = typer.Typer(no_args_is_help=True)
 app.add_typer(device_app, name="device")
 app.add_typer(subscription_app, name="subscription")
 app.add_typer(policy_app, name="policy")
 app.add_typer(profile_app, name="profile")
 app.add_typer(secret_app, name="secret")
 app.add_typer(rules_app, name="rules")
+app.add_typer(config_app, name="config")
 
 
 def output(value):
@@ -71,17 +73,58 @@ def guarded(function):
 
 
 @app.callback(invoke_without_command=True)
+@guarded
 def options(
     ctx: typer.Context,
-    data_dir: Path = Path(".wayvia"),
+    data_dir: Path | None = None,
     config: Path | None = None,
     mode: str = "production",
-    agent_socket: Path = Path("/run/wayvia/agent.sock"),
+    agent_socket: Path | None = None,
+    system: bool = typer.Option(
+        False, "--system", help="Use the installed wayvia service identity and control directory"
+    ),
     version: bool = typer.Option(False, "--version", is_eager=True),
 ):
     if version:
         typer.echo(__version__)
         raise typer.Exit()
+    if system:
+        import platform
+        import pwd
+
+        if (
+            data_dir is not None
+            or config is not None
+            or agent_socket is not None
+            or mode != "production"
+        ):
+            raise WayviaError(
+                "system_options_conflict",
+                "--system fixes production mode, directory, configuration and socket",
+            )
+        if platform.system() != "Linux":
+            raise WayviaError(
+                "system_environment",
+                "Installed system mode requires Linux",
+                exit_code=ExitCode.ENVIRONMENT,
+            )
+        try:
+            service_uid = pwd.getpwnam("wayvia").pw_uid
+        except KeyError:
+            raise WayviaError(
+                "system_not_installed",
+                "The wayvia service identity does not exist",
+                exit_code=ExitCode.ENVIRONMENT,
+            ) from None
+        if os.geteuid() != service_uid:
+            raise WayviaError(
+                "system_identity_required",
+                "Run system control commands as the wayvia service account",
+                exit_code=ExitCode.AUTH,
+            )
+        data_dir = Path("/var/lib/wayvia/control")
+    data_dir = data_dir or Path(".wayvia")
+    agent_socket = agent_socket or Path("/run/wayvia/agent.sock")
     ctx.obj = {
         "root": data_dir,
         "config": config or data_dir / "config.yaml",
@@ -97,6 +140,21 @@ def configuration(ctx):
     from wayvia.config import load_config
 
     return load_config(ctx.obj["config"])
+
+
+@config_app.command("publish")
+@guarded
+def publish_configuration(
+    ctx: typer.Context, exit_status: Path = typer.Option(..., "--exit-status")
+):
+    """Publish after both roles confirm; import exit status via a trusted admin channel."""
+    output(service(ctx).publish(json.loads(exit_status.read_text())))
+
+
+@config_app.command("publication")
+@guarded
+def show_publication(ctx: typer.Context):
+    output(service(ctx).publication())
 
 
 def service(ctx):
@@ -312,7 +370,12 @@ def artifacts(ctx, config, role):
 
 @app.command()
 @guarded
-def render(ctx: typer.Context, config: Path, role: str, output: Path):
+def render(
+    ctx: typer.Context,
+    config: Path,
+    role: str = typer.Option(..., "--role"),
+    output: Path = typer.Option(..., "--output"),
+):
     rendered = artifacts(ctx, config, role)
     output.mkdir(parents=True, exist_ok=True, mode=0o700)
     for name, text in rendered.items():
@@ -329,8 +392,8 @@ def render(ctx: typer.Context, config: Path, role: str, output: Path):
 def plan(
     ctx: typer.Context,
     config: Path,
-    role: str,
-    output_file: Path,
+    role: str = typer.Option(..., "--role"),
+    output_file: Path = typer.Option(..., "--output-file"),
     baseline: str = "auto",
     probes: Path | None = None,
     exit_interface: str | None = None,

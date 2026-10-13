@@ -25,14 +25,24 @@
       "independent_new_process_exit": 0,
       "recovery_stdout": [
         {
-          "id": "d5fb4a189b9249c6a3d0281858c0ab85",
+          "id": "ac36733450214473b68f0f86b65daf13",
           "role": "ingress",
           "revision": "recovery-lab",
           "state": "ROLLED_BACK",
-          "deadline": "2026-10-12T11:01:23.979463+00:00",
-          "updated_at": "2026-10-12T11:01:14.071640+00:00",
+          "deadline": "2026-10-13T04:37:06.748806+00:00",
+          "updated_at": "2026-10-13T04:36:57.243161+00:00",
           "evidence": null,
-          "error": null
+          "error": null,
+          "predecessor_id": null,
+          "device_revision": null,
+          "monitored_at": null,
+          "monitor_valid_until": null,
+          "submitted_digest": null,
+          "effective_digest": null,
+          "current": false,
+          "generation": "ac36733450214473b68f0f86b65daf13",
+          "verification_scope": "datapath",
+          "blocked_reason": null
         }
       ],
       "controller_exited_before_recovery": true

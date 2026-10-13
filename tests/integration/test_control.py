@@ -164,3 +164,53 @@ def test_expired_subscription_is_denied(control):
         connection.execute("UPDATE subscriptions SET expires_at=0 WHERE id=?", (sub["id"],))
     with pytest.raises(WayviaError):
         control.fetch(sub["token"], "sing-box")
+
+
+def test_first_device_checkpoint_does_not_explicitly_block_initial_deployment(
+    tmp_path, monkeypatch
+):
+    from wayvia.adapters.linux import LinuxExecutor
+    from wayvia.agent.client import AgentClient
+    from wayvia.agent.transactions import TransactionManager
+    from wayvia.services.control import AgentDataplane
+
+    class NoHostCommands:
+        def run(self, *args, **kwargs):
+            raise AssertionError("No host command is allowed before the initial deployment")
+
+    executor = LinuxExecutor(
+        runner=NoHostCommands(),
+        config_dir=tmp_path / "uninstalled-config",
+        state_dir=tmp_path / "agent",
+        unit_dir=tmp_path / "units",
+        enforce_environment=False,
+    )
+    manager = TransactionManager(executor, tmp_path / "journals")
+    operations = []
+
+    def transport(_client, request):
+        operations.append(request["operation"])
+        if request["operation"] == "sync_devices":
+            return manager.sync_devices(request["devices"], request["revision"])
+        if request["operation"] == "block_ingress":
+            return manager.block_ingress()
+        raise AssertionError(request)
+
+    monkeypatch.setattr(AgentClient, "request", transport)
+    control = ControlService(
+        tmp_path / "control",
+        WayviaConfig.model_validate(example_config()),
+        dataplane=AgentDataplane(tmp_path / "unused.sock"),
+    )
+    device = control.add("first phone", "android")
+    assert device["status"] == "pending"
+    assert device["evidence"]["code"] == "INGRESS_NOT_DEPLOYED"
+    assert device["evidence"]["protection"]["status"] == "not_deployed"
+    assert operations == ["sync_devices"]
+    checkpoint = json.loads((manager.root / "device-state.json").read_text())
+    assert checkpoint["revision"] == 1
+    assert checkpoint["devices"][0]["id"] == device["id"]
+    assert checkpoint["devices"][0]["password"]
+    runtime = json.loads((manager.root / "ingress-runtime.json").read_text())
+    assert runtime.get("blocked_reason") is None
+    assert runtime.get("transaction_id") is None
