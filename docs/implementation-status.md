@@ -1,10 +1,16 @@
 # Wayvia 实现与验收状态
 
-更新：2026-10-12（America/Los_Angeles）。分支 `codex/m0-m5-delivery`。本轮检查基线 `739eef73d6185e6cad7b436b23a09a4be8d3dc60` 加已有未提交的 Wayvia 修复；此前修复基线为 `d4081636c15ea2c0530b2e53ff529c0a1a6a3cc2`。
+更新：2026-10-14（Asia/Shanghai）。当前分支 `QOKIK`，本次修复仍在本地工作区，未提交。
 
 ## 当前结论
 
-M0–M5 主要软件模块已实现，但当前全量交付门禁未通过。本轮 `make check` 通过 298 项测试，`make demo` 和 10 项真实配置校验通过；`make test-lab` 在入口多代更新时返回 `BASELINE_CHANGED`，make 退出 2。当前结论以 [本轮检查记录](validation/status-review-2026-10-12/summary.json) 为准，不能沿用此前“全部通过”的结论。
+已在 Linux 执行器基线中为 `guard` 与 `exit_nat` 改用 nftables JSON 结构比较；比较忽略规则计数器 `packets`、`bytes` 数值和内核分配的对象 `handle`，规则顺序及其他规则字段仍参与比较。`inspect_action()` 的完整文本快照保留给事务回退。非法 JSON 和意外结构会 fail closed。
+
+最终代码上的专项回归 17 项通过，Ruff 检查通过。最终树的 `make check` 通过：315 项测试、格式、lint、sdist/wheel 构建和 CLI help 均通过，另有 3 项依赖弃用警告。`make demo`、`make test-configs`（10 项配置）和 `make test-lab` 均通过。隔离 Linux 内核实验中，真实 nftables 计数从 1 包 / 76 字节增长到 7 包 / 476 字节，比较基线保持不变；实际规则结构变化被检测，旧计划被拒绝。详细输出和证据边界见[本次验证摘要](validation/baseline-counter-fix-2026-10-14/summary.md)。
+
+本次改动不代表真实服务器部署验收；M6 尚未执行，OpenWrt M7 尚未实现／验收。
+
+## 2026-10-12 历史审查（已由本次修复更新）
 
 检查基线提交的 [CI run 38347888025](https://github.com/AAAxianyu/Wayvia/actions/runs/38347888025) 软件任务通过、隔离 Linux 任务失败：Docker 自动子网拒绝指定静态 `--ip`。本次交付已纳入改用实际分配地址的修复和事务诊断增强，新的 amd64 CI 结果仍待验证。功能代码位于 `codex/m0-m5-delivery`；GitHub 默认 `main` 尚为文档版本，未合并该开发分支。真实阿里云／日本服务器没有可确认的部署验收记录，M6 尚未执行；OpenWrt M7 尚未实现／验收。
 
@@ -12,7 +18,7 @@ M0–M5 主要软件模块已实现，但当前全量交付门禁未通过。本
 
 [修复追踪](validation/fixes-2026-10-12/README.md) 逐项对应 4 项 P1、10 项 P2、1 项 P3，保留 [修复前审计](validation/review-2026-10-12/README.md)。此外，正式安装集成发现并修复了首次 pending 阻断、CLI 参数不一致、共享运行目录被删除、账户创建中断恢复等交付问题。
 
-## 本轮检查与未关闭项
+## 2026-10-12 检查记录与未关闭项（历史快照）
 
 检查采用当前源码副本，保留原工作区改动和既有验证文件。为避免干扰已有实验，只在副本中替换 Docker 容器、网络和镜像名称；生产源码与测试断言未改变。记录见 [名称隔离](validation/status-review-2026-10-12/lab-namespace.json) 和 [源码摘要](validation/status-review-2026-10-12/source.json)。初次 uv 沙箱启动错误及 Docker 不共享 `/private/tmp` 的环境错误均保留，环境调整后重新执行对应检查。
 
@@ -28,7 +34,7 @@ M0–M5 主要软件模块已实现，但当前全量交付门禁未通过。本
 
 临时修正候选仅在 baseline 摘要中排除 nft 实时计数，完整 capture/rollback 快照和其它冲突检查不变。真实规则变化仍被拒绝，且 [候选正式事务](validation/status-review-2026-10-12/continuation/candidate-transactions/transaction-result.json) 的 23 项全部通过，覆盖多代更新、连续回退、两层故障保护与恢复、独立恢复、重装、撤销和卸载。候选尚未应用到仓库生产代码，因此不能把候选通过当成当前代码门禁通过。可审核修改见 [候选补丁](validation/status-review-2026-10-12/continuation/baseline-candidate.patch)，完整续查记录见 [续查汇总](validation/status-review-2026-10-12/continuation/summary.json)。下一步应用正式修复、补回归检查并重跑四项门禁，同时复验本次交付的 amd64 CI。
 
-本轮未修复生产代码。现有 `RECOVERY_REQUIRED` 历史失败及后续专项通过记录继续保留于 `validation/fixes-2026-10-12/ci-follow-up/`，不能用单次重跑覆盖失败证据。
+当时的检查未修复生产代码。现有 `RECOVERY_REQUIRED` 历史失败及后续专项通过记录继续保留于 `validation/fixes-2026-10-12/ci-follow-up/`，不能用单次重跑覆盖失败证据。
 
 ## 阶段状态
 

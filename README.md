@@ -11,6 +11,7 @@
 | [产品开发文档](docs/development.md) | 工程结构、模块契约、里程碑与完成标准 |
 | [开发 Goal 指令](docs/development-goal.md) | 可复制到 Codex 的持续开发目标 |
 | [工程技能配置](docs/agents/issue-tracker.md) | 本地 Markdown issue tracker 约定；领域文档规则见 [domain.md](docs/agents/domain.md) |
+| [实现与验收状态](docs/implementation-status.md) | 当前代码、门禁结果与验收边界；本次 nft baseline 修复记录见 [验证摘要](docs/validation/baseline-counter-fix-2026-10-14/summary.md) |
 
 ## 连接路径
 

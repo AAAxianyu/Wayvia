@@ -1,0 +1,9 @@
+uv run --locked python -m wayvia.demo
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: /tmp/wayvia-qokik-demo
+warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+Installed 36 packages in 2.26s
+{"mode": "simulated", "storage": "temporary SQLite", "device": "e0fb08e5db8840a3837051e22c32d44b", "profile": "sing-box complete", "subscription_revoke": "verified", "device_permission": "active", "dataplane": "simulated, no network changes"}
+exit_code: 0

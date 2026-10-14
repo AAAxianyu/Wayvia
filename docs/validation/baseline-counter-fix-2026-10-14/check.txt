@@ -1,0 +1,3 @@
+mingw32-make: *** INTERNAL: readdir: Invalid argument
+.  Stop.
+exit_code: 2

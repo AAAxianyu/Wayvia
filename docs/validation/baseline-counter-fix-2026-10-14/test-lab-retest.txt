@@ -1,0 +1,144 @@
+uv run --locked python scripts/lab.py
+sing-box 1.14.3: SHA256 verified
+mihomo 1.19.32: SHA256 verified
+v2raya 2.5.10: SHA256 verified
+v2ray 5.53.0: SHA256 verified
+v2raya_core 2.5.10: SHA256 verified
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.11kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 184B done
+#3 DONE 0.0s
+
+#4 [1/7] FROM docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#4 resolve docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 146.12MB 5.1s
+#5 transferring context: 275.17MB 9.8s done
+#5 DONE 9.8s
+
+#6 [6/7] RUN python3 -m venv /opt/wayvia-lab-python && /opt/wayvia-lab-python/bin/pip install --no-index --require-hashes --find-links /opt/wayvia-lab-wheels -r /opt/wayvia-lab-wheels/requirements.txt
+#6 CACHED
+
+#7 [2/7] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping && rm -rf /var/lib/apt/lists/*
+#7 CACHED
+
+#8 [3/7] COPY .cache/components/amd64/sing-box .cache/components/amd64/mihomo .cache/components/amd64/v2raya .cache/components/amd64/v2raya_core .cache/components/amd64/v2ray /usr/local/bin/
+#8 CACHED
+
+#9 [5/7] COPY .cache/lab-python/amd64/ /opt/wayvia-lab-wheels/
+#9 CACHED
+
+#10 [4/7] COPY .cache/components/amd64/geoip.dat .cache/components/amd64/geosite.dat /usr/local/share/v2raya/
+#10 CACHED
+
+#11 [7/7] COPY deploy/lab/ /opt/wayvia-lab/
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:4b2e2e6beb414ced0a42eecf842791b937c8dfc8aae48dd174ae1da963ee89ae done
+#12 exporting config sha256:a1c6193edfb2d93434f79c1ab2610ed2a2ecfe4a0ee8909feaec035b05743013 done
+#12 exporting attestation manifest sha256:b1c2072c037275dbdf853051acdbd4ddba400b38e6e3b1bea274e3032dab4bc1 0.0s done
+#12 exporting manifest list sha256:47719433e4f9f4f82b61c419e5110a48b52f62881bbecc8ea1c93eda7ca3f81d 0.0s done
+#12 naming to docker.io/library/wayvia-lab:locked done
+#12 unpacking to docker.io/library/wayvia-lab:locked done
+#12 DONE 0.1s
+{"name": "isolated_topology", "status": "passed", "elapsed_ms": 2527, "evidence": {"namespaces": ["terminal", "domestic", "ali", "wayvia-egress", "jp", "foreign"], "development_host_routes_modified": false, "egress_default_physical_route": true, "unprotected_physical_baseline": {"target": "foreign", "peer": "10.73.0.1"}, "production_guard_blocks_same_path": true}}
+{"name": "temporary_ca_and_identity", "status": "passed", "elapsed_ms": 1132, "evidence": {"temporary_ca": true, "server_identity_checked": true, "keys_exported": false}}
+{"name": "v2raya_manages_matching_core", "status": "passed", "elapsed_ms": 721, "evidence": {"version": {"version": "2.5.10", "coreVersion": "2.5.10", "coreVersionValid": true, "serviceValid": true, "variant": "V2rayaCore"}, "configured": true, "production_adapter": true, "explicit_bootstrap_resolver": "10.73.0.1", "resolved_carrier": "10.73.0.2", "tls_server_name": "carrier.lab", "imported_server": true, "core_managed_by_v2raya": true}}
+{"name": "foreign_tcp_dual_layer_japan_nat", "status": "passed", "elapsed_ms": 752, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "domestic_tcp_terminal_direct", "status": "passed", "elapsed_ms": 59, "evidence": {"target": "domestic", "peer": "10.71.0.2"}}
+{"name": "terminal_tun_kernel_ready", "status": "passed", "elapsed_ms": 33, "evidence": {"ready": true, "interface": [{"ifindex": 2, "ifname": "wayvia-tun", "flags": ["POINTOPOINT", "MULTICAST", "NOARP", "UP", "LOWER_UP"], "mtu": 1400, "qdisc": "fq_codel", "operstate": "UNKNOWN", "group": "default", "txqlen": 500, "link_type": "none", "addr_info": [{"family": "inet", "local": "172.28.0.1", "prefixlen": 30, "broadcast": "172.28.0.3", "scope": "global", "label": "wayvia-tun", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fd77:7761:7976::1", "prefixlen": 126, "scope": "global", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fe80::e836:5ab1:7eb6:819c", "prefixlen": 64, "scope": "link", "stable-privacy": true, "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "route": [{"dst": "10.74.0.2", "gateway": "172.28.0.2", "dev": "wayvia-tun", "table": "2022", "prefsrc": "172.28.0.1", "flags": [], "uid": 0, "cache": []}], "bound_route": [{"dst": "10.74.0.2", "from": "172.28.0.1", "gateway": "172.28.0.2", "dev": "wayvia-tun", "table": "2022", "flags": [], "uid": 0, "cache": []}], "selected_source": "172.28.0.1", "elapsed_ms": 33, "observations": 1}}
+{"name": "foreign_native_tcp_intercepted_by_rendered_tun", "status": "passed", "elapsed_ms": 151, "evidence": {"target": "foreign", "peer": "10.74.0.1", "connection": {"peer": ["10.74.0.2", 8080], "started_at": 1791958484.0066032, "local": ["172.28.0.1", 43380], "finished_at": 1791958484.007406}}}
+{"name": "foreign_native_udp_intercepted_by_rendered_tun", "status": "passed", "elapsed_ms": 80, "evidence": {"payload": "foreign:wayvia-native-udp"}}
+{"name": "foreign_udp_through_vpn_and_socks_bridge", "status": "passed", "elapsed_ms": 75, "evidence": {"payload": "foreign:wayvia-udp"}}
+{"name": "foreign_dns_through_vpn", "status": "passed", "elapsed_ms": 91, "evidence": {"answer": "10.74.0.2"}}
+{"name": "domestic_dns_terminal_direct", "status": "passed", "elapsed_ms": 58, "evidence": {"answer": "10.71.0.1"}}
+{"name": "domestic_ipv6_terminal_direct", "status": "passed", "elapsed_ms": 69, "evidence": {"target": "domestic", "peer": "fd72:1::2"}}
+{"name": "healthy_layer_order_and_return_paths", "status": "passed", "elapsed_ms": 53, "evidence": {"socket_and_interface_snapshots": true, "proxy_endpoint": "10.73.0.2:443", "vpn_carrier": "10.89.0.1:1080", "vpn_endpoint": "127.0.0.1:1194"}}
+{"name": "unsupported_foreign_ipv6_blocked", "status": "passed", "elapsed_ms": 68, "evidence": {"error": "protected connection closed without an HTTP response", "connections": []}}
+{"name": "japan_proxy_rejects_arbitrary_target", "status": "passed", "elapsed_ms": 1026, "evidence": {"exit_code": 52, "arbitrary_forwarding_rejected": true}}
+{"name": "japan_vpn_not_publicly_reachable", "status": "passed", "elapsed_ms": 43, "evidence": {"connection_rejected": true, "listener": "127.0.0.1:1194"}}
+{"name": "management_path_keeps_physical_return", "status": "passed", "elapsed_ms": 8, "evidence": {"target": "management", "peer": "10.73.0.2"}}
+{"name": "vpn_layer_failure_protected_domestic_available", "status": "passed", "elapsed_ms": 1289, "evidence": {"protected": {"error": "protected connection closed without an HTTP response", "connections": []}, "native_protected": {"error": "protected connection closed without an HTTP response", "connections": [{"peer": ["10.74.0.2", 8080], "started_at": 1791958486.881905, "local": ["172.28.0.1", 46150], "finished_at": 1791958486.8823042}]}, "domestic": {"target": "domestic", "peer": "10.71.0.2"}, "management": {"target": "management", "peer": "10.73.0.2"}}}
+{"name": "vpn_layer_reconnect", "status": "passed", "elapsed_ms": 2541, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "proxy_layer_failure_protected_domestic_available", "status": "passed", "elapsed_ms": 1235, "evidence": {"protected": {"error": "protected connection closed without an HTTP response", "connections": []}, "native_protected": {"error": "protected connection closed without an HTTP response", "connections": [{"peer": ["10.74.0.2", 8080], "started_at": 1791958490.6623535, "local": ["172.28.0.1", 46154], "finished_at": 1791958490.6627064}]}, "domestic": {"target": "domestic", "peer": "10.71.0.2"}, "management": {"target": "management", "peer": "10.73.0.2"}}}
+{"name": "proxy_layer_reconnect", "status": "passed", "elapsed_ms": 1352, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "device_permission_revoke", "status": "passed", "elapsed_ms": 669, "evidence": {"new_connections": {"error": "protected connection closed without an HTTP response", "connections": []}, "domestic": {"target": "domestic", "peer": "10.71.0.2"}, "method": "controlled ingress restart; existing sessions terminated"}}
+{"name": "production_openvpn_adapter_isolated_handshake", "status": "passed", "elapsed_ms": 8313, "evidence": {"component": "openvpn", "version": "2.6.19", "supported": true, "validated": true, "scope": "isolated-handshake"}}
+{"status": "passed", "executor": "production LinuxExecutor with real CommandRunner", "actions": [{"kind": "namespace", "resource": "wayvia-egress", "content": null, "operation": "ensure", "namespace": null, "interface": null, "subnet": null}, {"kind": "guard", "resource": "wayvia_guard", "content": null, "operation": "ensure", "namespace": "wayvia-egress", "interface": null, "subnet": null}, {"kind": "veth", "resource": "wayvia-host", "content": null, "operation": "ensure", "namespace": null, "interface": null, "subnet": null}, {"kind": "guard", "resource": "wayvia_guard", "content": null, "operation": "ensure", "namespace": null, "interface": null, "subnet": null}], "observed": {"namespace": "wayvia-egress (id: 0)\n", "veth": [{"ifindex": 3, "link_index": 2, "ifname": "wayvia-host", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "qdisc": "noqueue", "operstate": "UP", "group": "default", "txqlen": 1000, "link_type": "ether", "address": "a2:6e:d4:bf:d6:e6", "broadcast": "ff:ff:ff:ff:ff:ff", "link_netnsid": 0, "addr_info": [{"family": "inet", "local": "10.89.0.1", "prefixlen": 30, "scope": "global", "label": "wayvia-host", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fe80::a06e:d4ff:febf:d6e6", "prefixlen": 64, "scope": "link", "tentative": true, "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "guard": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter packets 1 bytes 76 drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n", "host_guard": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter packets 0 bytes 0 drop\n\t}\n}\n"}, "rollback": {"namespace_removed": true, "veth_removed": true, "owned_guard_removed": true, "host_default_route_unchanged": true}}
+{"status": "passed", "simulated": false, "cases": [{"name": "real_openvpn_server_identity", "status": "passed", "observed": {"healthy": true, "check": "vpn_server_identity", "client_authenticated": false}}, {"name": "real_openvpn_management_state", "status": "passed", "observed": {"healthy": true, "check": "vpn_server_initialized", "peer_count": 1}}, {"name": "real_trojan_authentication_and_vpn_identity", "status": "passed", "observed": {"healthy": true, "check": "vpn_server_identity", "client_authenticated": false}}, {"name": "wrong_trojan_credential_rejected", "status": "passed", "observed": {"healthy": false, "check": "vpn_server_identity", "client_authenticated": false}}, {"name": "wrong_carrier_tls_identity_rejected", "status": "passed", "observed": {"healthy": false, "error": "PROTOCOL_REJECTED"}}, {"name": "wrong_vpn_identity_rejected", "status": "passed", "observed": {"healthy": false, "check": "vpn_server_identity", "client_authenticated": false}}, {"name": "plain_tcp_listener_cannot_pass_authentication", "status": "passed", "observed": {"healthy": false, "error": "PROTOCOL_REJECTED"}}]}
+{"status": "passed", "scope": "isolated Linux kernel readiness; no sing-box runtime modification", "deliberately_withheld_policy_stages": [{"ready": false, "interface": [{"ifindex": 3, "ifname": "wayvia-tun", "flags": ["POINTOPOINT", "MULTICAST", "NOARP"], "mtu": 1500, "qdisc": "noop", "operstate": "DOWN", "group": "default", "txqlen": 500, "link_type": "none", "addr_info": [{"family": "inet", "local": "172.28.0.1", "prefixlen": 30, "scope": "global", "label": "wayvia-tun", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "route": [{"dst": "10.74.0.2", "gateway": "10.72.0.1", "dev": "physical", "prefsrc": "10.72.0.2", "flags": [], "uid": 0, "cache": []}], "bound_route": [{"dst": "10.74.0.2", "from": "172.28.0.1", "gateway": "10.72.0.1", "dev": "physical", "flags": [], "uid": 0, "cache": []}], "selected_source": "10.72.0.2", "stage": "interface_down"}, {"ready": false, "interface": [{"ifindex": 3, "ifname": "wayvia-tun", "flags": ["POINTOPOINT", "MULTICAST", "NOARP", "UP", "LOWER_UP"], "mtu": 1500, "qdisc": "fq_codel", "operstate": "UNKNOWN", "group": "default", "txqlen": 500, "link_type": "none", "addr_info": [{"family": "inet", "local": "172.28.0.1", "prefixlen": 30, "scope": "global", "label": "wayvia-tun", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fe80::4f62:a93f:7ba0:787d", "prefixlen": 64, "scope": "link", "stable-privacy": true, "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "route": [{"dst": "10.74.0.2", "gateway": "10.72.0.1", "dev": "physical", "prefsrc": "10.72.0.2", "flags": [], "uid": 0, "cache": []}], "bound_route": [{"dst": "10.74.0.2", "from": "172.28.0.1", "gateway": "10.72.0.1", "dev": "physical", "flags": [], "uid": 0, "cache": []}], "selected_source": "10.72.0.2", "stage": "interface_up_without_policy"}, {"ready": false, "interface": [{"ifindex": 3, "ifname": "wayvia-tun", "flags": ["POINTOPOINT", "MULTICAST", "NOARP", "UP", "LOWER_UP"], "mtu": 1500, "qdisc": "fq_codel", "operstate": "UNKNOWN", "group": "default", "txqlen": 500, "link_type": "none", "addr_info": [{"family": "inet", "local": "172.28.0.1", "prefixlen": 30, "scope": "global", "label": "wayvia-tun", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fe80::4f62:a93f:7ba0:787d", "prefixlen": 64, "scope": "link", "stable-privacy": true, "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "route": [{"dst": "10.74.0.2", "dev": "wayvia-tun", "table": "2022", "prefsrc": "172.28.0.1", "flags": [], "uid": 0, "cache": []}], "bound_route": [{"dst": "10.74.0.2", "from": "172.28.0.1", "gateway": "10.72.0.1", "dev": "physical", "flags": [], "uid": 0, "cache": []}], "selected_source": "172.28.0.1", "stage": "initial_lookup_only_without_source_rule"}, {"ready": true, "interface": [{"ifindex": 3, "ifname": "wayvia-tun", "flags": ["POINTOPOINT", "MULTICAST", "NOARP", "UP", "LOWER_UP"], "mtu": 1500, "qdisc": "fq_codel", "operstate": "UNKNOWN", "group": "default", "txqlen": 500, "link_type": "none", "addr_info": [{"family": "inet", "local": "172.28.0.1", "prefixlen": 30, "scope": "global", "label": "wayvia-tun", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fe80::4f62:a93f:7ba0:787d", "prefixlen": 64, "scope": "link", "stable-privacy": true, "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "route": [{"dst": "10.74.0.2", "dev": "wayvia-tun", "table": "2022", "prefsrc": "172.28.0.1", "flags": [], "uid": 0, "cache": []}], "bound_route": [{"dst": "10.74.0.2", "from": "172.28.0.1", "dev": "wayvia-tun", "table": "2022", "flags": [], "uid": 0, "cache": []}], "selected_source": "172.28.0.1", "stage": "complete_policy", "elapsed_ms": 201, "observations": 4}], "incomplete_policy_timeout_rejected": true}
+{"status": "passed", "simulated": false, "executor": "LinuxExecutor.validate_host_conflicts with real CommandRunner", "scope": "disposable real Linux kernel preflight; no component-health claim", "cases": [{"name": "exit_rejects_unowned_unaddressed_tun", "role": "exit", "status": "passed", "result": "TUN_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "exit_rejects_unowned_unrelated_tun", "role": "exit", "status": "passed", "result": "TUN_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "exit_rejects_unowned_overlapping_tun", "role": "exit", "status": "passed", "result": "TUN_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "owned_exit_tun_kernel_routes_accepted", "role": "exit", "status": "passed", "result": "accepted", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "owned_tun_does_not_exempt_static_policy_route", "role": "exit", "status": "passed", "result": "ROUTE_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "static_main_route_rejected", "role": "exit", "status": "passed", "result": "ROUTE_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "narrower_policy_route_rejected", "role": "exit", "status": "passed", "result": "ROUTE_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "broader_policy_route_rejected", "role": "exit", "status": "passed", "result": "ROUTE_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "blackhole_policy_table_rejected", "role": "exit", "status": "passed", "result": "ROUTE_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "clean_exit_accepted", "role": "exit", "status": "passed", "result": "accepted", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "owned_ingress_veth_with_unrelated_host_vpn_accepted", "role": "ingress", "status": "passed", "result": "accepted", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}, {"name": "unowned_reserved_veth_rejected", "role": "ingress", "status": "passed", "result": "SUBNET_CONFLICT", "kernel_snapshot_unchanged": true, "ownership_unchanged": true}], "versions": {"kernel": "6.6.87.2-microsoft-standard-WSL2", "iproute2": "ip utility, iproute2-6.1.0, libbpf 1.3.0", "nftables": "nftables v1.0.9 (Old Doc Yak #3)"}, "cleanup": {"fixture_interfaces_and_namespace_removed": true, "fixture_policy_rules_removed": true, "original_default_route_unchanged": true, "unrelated_nft_preserved_until_fixture_teardown": true}}
+{"status": "passed", "version": "Mihomo Meta v1.19.32 linux amd64 with go1.26.8 Wed Sep 30 16:55:19 UTC 2026\nUse tags: with_gvisor", "scope": "production mihomo DNS policy with real local UDP resolvers; TUN disabled for DNS-only test", "cases": [{"case": "same_suffix", "domain": "sso.overlap.example", "answer": "192.0.2.10", "resolvers_contacted": ["internal"], "status": "passed"}, {"case": "earlier_parent", "domain": "sso.child.campus.example", "answer": "192.0.2.10", "resolvers_contacted": ["internal"], "status": "passed"}, {"case": "earlier_child", "domain": "sso.child.priority.example", "answer": "192.0.2.10", "resolvers_contacted": ["internal"], "status": "passed"}, {"case": "later_parent_uncovered_child", "domain": "other.priority.example", "answer": "192.0.2.20", "resolvers_contacted": ["domestic"], "status": "passed"}, {"case": "bootstrap_exact_survives_suffix", "domain": "entry.wayvia.example", "answer": "192.0.2.30", "resolvers_contacted": ["bootstrap"], "status": "passed"}, {"case": "bootstrap_does_not_cover_children", "domain": "child.entry.wayvia.example", "answer": "192.0.2.20", "resolvers_contacted": ["domestic"], "status": "passed"}]}
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.systemd
+#1 transferring dockerfile: 496B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/wayvia-lab:locked
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 184B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/wayvia-lab:locked@sha256:47719433e4f9f4f82b61c419e5110a48b52f62881bbecc8ea1c93eda7ca3f81d
+#4 resolve docker.io/library/wayvia-lab:locked@sha256:47719433e4f9f4f82b61c419e5110a48b52f62881bbecc8ea1c93eda7ca3f81d 0.0s done
+#4 DONE 0.0s
+
+#5 [2/3] RUN apt-get update && apt-get install -y --no-install-recommends systemd=255.4-1ubuntu8.17 systemd-sysv=255.4-1ubuntu8.17 && rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [3/3] RUN /opt/wayvia-lab-python/bin/python -c "import site,pathlib; pathlib.Path(site.getsitepackages()[0], 'wayvia-lab.pth').write_text('/workspace/src\n')"
+#6 CACHED
+
+#7 exporting to image
+#7 exporting layers done
+#7 exporting manifest sha256:a6762f0d5a8d452dc7b7f6f0634727024d656be648dfad0397aa7e6eb58b7752 done
+#7 exporting config sha256:77c8883a4a4c0604eea1fcaac1838ea7eb446e80c93bcbdaff30a0a8d5cbe853
+#7 exporting config sha256:77c8883a4a4c0604eea1fcaac1838ea7eb446e80c93bcbdaff30a0a8d5cbe853 done
+#7 exporting attestation manifest sha256:9eaf2110dafa2583194db69af1227f0222e664005f49a29106e9974b21579800 0.0s done
+#7 exporting manifest list sha256:fac30b4c72582f7b45b201e63fe9c7f335b99543f4c597777a86edf43bfa83bb 0.0s done
+#7 naming to docker.io/library/wayvia-lab-systemd:locked done
+#7 unpacking to docker.io/library/wayvia-lab-systemd:locked done
+#7 DONE 0.1s
+{"status": "passed", "scope": "disposable Linux systemd container", "timer": "production SystemdTimer and systemd-run", "recovery": "independent production wayvia.agent.recovery processes", "cases": [{"case": "timer", "state_before": "APPLYING", "state_after": "ROLLED_BACK", "actions_recovered": 4, "kernel_resources_removed": true, "host_default_route_unchanged": true, "systemd_timer_listed": true, "recovery_service": "Result=success\nExecMainStatus=0", "controller_exited_before_rollback": true}, {"case": "restart", "state_before": "APPLYING", "state_after": "ROLLED_BACK", "actions_recovered": 4, "kernel_resources_removed": true, "host_default_route_unchanged": true, "independent_new_process_exit": 0, "recovery_stdout": [{"id": "569fd8e5956449f6b53ece69d396a6bb", "role": "ingress", "revision": "recovery-lab", "state": "ROLLED_BACK", "deadline": "2026-10-14T06:15:40.218664+00:00", "updated_at": "2026-10-14T06:15:30.924865+00:00", "evidence": null, "error": null, "predecessor_id": null, "device_revision": null, "monitored_at": null, "monitor_valid_until": null, "submitted_digest": null, "effective_digest": null, "current": false, "generation": "569fd8e5956449f6b53ece69d396a6bb", "verification_scope": "datapath", "blocked_reason": null}], "controller_exited_before_recovery": true}]}
+wayvia-recovery-disposable
+transaction lab: exit install
+transaction lab: ingress install
+transaction lab: ingress device
+transaction lab: exit apply
+transaction lab: ingress apply
+transaction lab: exit monitor
+transaction lab: ingress monitor
+transaction lab: ingress publication
+transaction lab: ingress entry
+transaction lab: exit upgrade
+transaction lab: ingress upgrade
+transaction lab: ingress entry
+transaction lab: ingress fail-vpn
+transaction lab: ingress resume-vpn
+transaction lab: ingress fail-carrier
+transaction lab: ingress resume-carrier
+transaction lab: exit recover
+transaction lab: ingress recover
+transaction lab: ingress entry
+transaction lab: exit reinstall
+transaction lab: ingress reinstall
+transaction lab: ingress entry
+transaction lab: ingress permissions
+transaction lab: ingress uninstall
+transaction lab: exit uninstall
+exit_code: 0

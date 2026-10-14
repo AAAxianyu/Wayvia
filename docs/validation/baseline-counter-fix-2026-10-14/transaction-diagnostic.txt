@@ -1,0 +1,5 @@
+SPAWN_FAILED argv=['openssl', 'req', '-x509', '-newkey', 'rsa:2048', '-nodes', '-keyout', 'D:\\01_WorkDocs\\Wayvia\\Wayvia\\.cache\\wayvia-transaction-inputs-0rn10a9c\\certificates\\ca.key', '-out', 'D:\\01_WorkDocs\\Wayvia\\Wayvia\\.cache\\wayvia-transaction-inputs-0rn10a9c\\certificates\\vpn-ca.crt', '-days', '1', '-subj', '/CN=Wayvia transaction lab CA'] error=FileNotFoundError(2, 'ϵͳ�Ҳ���ָ�����ļ���', None, 2, None)
+transaction lab: exit diagnostics
+transaction lab: ingress diagnostics
+TRANSACTION LAB FAILED: [WinError 2] ϵͳ�Ҳ���ָ�����ļ���
+exit_code: 1

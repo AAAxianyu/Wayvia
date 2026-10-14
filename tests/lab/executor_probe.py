@@ -1,12 +1,100 @@
 """Run the production Linux executor against owned disposable kernel resources."""
 
 import json
+import re
 import subprocess
 import sys
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
+from wayvia.adapters.base import AdapterError
 from wayvia.adapters.linux import LinuxExecutor
-from wayvia.agent.models import Action
+from wayvia.agent.models import Action, Plan
+
+
+def verify_nft_baseline(executor, action):
+    baseline_before = executor.baseline([action])
+    raw_before = executor.inspect_action(action)["rules"]
+    counters_before = [
+        tuple(map(int, values))
+        for values in re.findall(r"counter packets (\d+) bytes (\d+)", raw_before)
+    ]
+    assert counters_before, "expected a live nftables counter in the guard table"
+
+    packet = (
+        "import socket; s=socket.socket(); s.settimeout(2); "
+        "s.connect_ex(('10.89.0.1', 65534)); s.close()"
+    )
+    subprocess.run(
+        ["ip", "netns", "exec", action.namespace, sys.executable, "-c", packet],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=5,
+    )
+    raw_after = executor.inspect_action(action)["rules"]
+    counters_after = [
+        tuple(map(int, values))
+        for values in re.findall(r"counter packets (\d+) bytes (\d+)", raw_after)
+    ]
+    assert len(counters_after) == len(counters_before)
+    assert any(
+        after[0] > before[0] and after[1] > before[1]
+        for before, after in zip(counters_before, counters_after, strict=True)
+    ), "the denied connection did not increment the live nftables counter"
+    baseline_after_counter = executor.baseline([action])
+    assert baseline_after_counter == baseline_before, "counter-only traffic changed the baseline"
+
+    now = datetime.now(UTC)
+    plan = Plan(
+        role="ingress",
+        revision="nft-baseline-regression",
+        baseline=baseline_before,
+        created_at=now,
+        expires_at=now + timedelta(minutes=5),
+        actions=(action,),
+        probes=(),
+    ).seal()
+    subprocess.run(
+        [
+            "ip",
+            "netns",
+            "exec",
+            action.namespace,
+            "nft",
+            "add",
+            "rule",
+            "inet",
+            action.resource,
+            "input",
+            "tcp",
+            "dport",
+            "65534",
+            "accept",
+            "comment",
+            "wayvia-baseline-regression",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    baseline_after_rule_change = executor.baseline([action])
+    assert baseline_after_rule_change != baseline_before, "a real rule change was not detected"
+    try:
+        plan.check(baseline_after_rule_change, now=now)
+    except AdapterError as error:
+        assert error.code == "BASELINE_CHANGED"
+    else:
+        raise AssertionError("the stale plan was not rejected after a real rule change")
+
+    return {
+        "status": "passed",
+        "counter_before": counters_before,
+        "counter_after": counters_after,
+        "counter_only_baseline_unchanged": True,
+        "structural_rule_change_detected": True,
+        "stale_plan_rejected": True,
+    }
 
 
 def run():
@@ -51,6 +139,7 @@ def run():
         }
         assert "policy drop" in observed["guard"]
         assert any(a.get("local") == "10.89.0.1" for a in observed["veth"][0]["addr_info"])
+        baseline_regression = verify_nft_baseline(executor, actions[1])
     finally:
         for action, before in reversed(steps):
             executor.rollback(action, before)
@@ -71,6 +160,7 @@ def run():
         "executor": "production LinuxExecutor with real CommandRunner",
         "actions": [a.model_dump() for a in actions],
         "observed": observed,
+        "baseline_regression": baseline_regression,
         "rollback": {
             "namespace_removed": True,
             "veth_removed": True,

@@ -1,5 +1,25 @@
 schema_version: 1
-resolved_at: '2026-10-12'
+resolved_at: '2026-10-14'
+latest_fix:
+  date: '2026-10-14'
+  branch: QOKIK
+  status: implemented; all_local_gates_passed; live_kernel_baseline_regression_passed
+  behavior: nft_guard_and_exit_nat_baselines_use_json_structure; ignore_counter_packets_bytes_and_object_handles_only
+  rollback_snapshot: inspect_action_full_text_snapshot_unchanged
+  focused_tests: 17_passed
+  ruff: passed
+  gates:
+    check: passed_315_tests_3_deprecation_warnings_format_lint_build_cli
+    demo: passed_exit_0
+    test_configs: passed_10_artifacts
+    test_lab: passed_23_core_cases_23_transactions_and_live_nft_baseline_regression
+  evidence:
+  - docs/validation/baseline-counter-fix-2026-10-14/summary.md
+  - docs/validation/baseline-counter-fix-2026-10-14/check-retest.txt
+  - docs/validation/baseline-counter-fix-2026-10-14/demo-retest.txt
+  - docs/validation/baseline-counter-fix-2026-10-14/test-configs-retest.txt
+  - docs/validation/baseline-counter-fix-2026-10-14/test-lab-final.txt
+  - docs/validation/baseline-counter-fix-2026-10-14/test-lab-artifacts-baseline-final/executor-result.json
 systems:
   production:
     name: Ubuntu
@@ -244,6 +264,7 @@ fixes:
     cli_help: passed
 current_inspection:
   date: '2026-10-12'
+  superseded_by: latest_fix
   source_commit: 739eef73d6185e6cad7b436b23a09a4be8d3dc60
   source_scope: current_working_tree_with_preexisting_Wayvia_changes; production_source_unchanged_by_inspection
   software_implementation: major_M0_M5_modules_implemented_delivery_acceptance_reopened

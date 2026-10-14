@@ -1,0 +1,15 @@
+{
+  "status": "failed",
+  "simulated": false,
+  "isolation": "owned_internal_docker_network_private_cgroups",
+  "cases": [],
+  "error": "[WinError 2] \u7cfb\u7edf\u627e\u4e0d\u5230\u6307\u5b9a\u7684\u6587\u4ef6\u3002",
+  "diagnostics": {
+    "exit": {
+      "status": "unavailable"
+    },
+    "ingress": {
+      "status": "unavailable"
+    }
+  }
+}

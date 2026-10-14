@@ -1,0 +1,3 @@
+uv run --locked python -m wayvia.demo
+{"mode": "simulated", "storage": "temporary SQLite", "device": "35569e2c1e544564bfba75cc66771838", "profile": "sing-box complete", "subscription_revoke": "verified", "device_permission": "active", "dataplane": "simulated, no network changes"}
+exit_code: 0

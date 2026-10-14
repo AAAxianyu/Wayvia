@@ -194,6 +194,186 @@ class LinuxExecutor:
             }
         raise AdapterError("ACTION_UNSUPPORTED", "Action implementation is unavailable")
 
+    @staticmethod
+    def _normalize_nft_baseline(value, *, counter=False, nft_object=False):
+        if isinstance(value, dict):
+            normalized = {}
+            for key, item in value.items():
+                if nft_object and key == "handle":
+                    # nftables assigns handles to identify kernel objects; they do
+                    # not change the packet-matching behavior of a rule.
+                    continue
+                if counter and key in {"packets", "bytes"}:
+                    if isinstance(item, bool) or not isinstance(item, int) or item < 0:
+                        raise AdapterError(
+                            "BASELINE_INVALID",
+                            "nftables returned invalid counter statistics",
+                        )
+                    continue
+                normalized[key] = LinuxExecutor._normalize_nft_baseline(
+                    item,
+                    counter=(key == "counter"),
+                    nft_object=(key in {"table", "chain", "rule"}),
+                )
+            if counter and (("packets" in value) != ("bytes" in value)):
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned incomplete counter statistics",
+                )
+            return normalized
+        if isinstance(value, list):
+            return [LinuxExecutor._normalize_nft_baseline(item) for item in value]
+        return value
+
+    def _inspect_nft_baseline(self, action):
+        result = self._cmd(
+            ["nft", "-j", "list", "tables", "inet"], namespace=action.namespace, check=False
+        )
+        if result.returncode:
+            raise AdapterError(
+                "BASELINE_READ_FAILED",
+                "Unable to read nftables state for deployment baseline",
+                details={"resource": action.resource, "returncode": result.returncode},
+            )
+        try:
+            payload = json.loads(result.stdout)
+        except (json.JSONDecodeError, TypeError) as exc:
+            raise AdapterError(
+                "BASELINE_INVALID",
+                "nftables returned invalid JSON for deployment baseline",
+                details={"resource": action.resource},
+            ) from exc
+        if not isinstance(payload, dict) or not isinstance(payload.get("nftables"), list):
+            raise AdapterError(
+                "BASELINE_INVALID",
+                "nftables returned an unexpected JSON structure for deployment baseline",
+                details={"resource": action.resource},
+            )
+
+        table_seen = False
+        for entry in payload["nftables"]:
+            if not isinstance(entry, dict) or len(entry) != 1:
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unexpected JSON entry for deployment baseline",
+                    details={"resource": action.resource},
+                )
+            kind, obj = next(iter(entry.items()))
+            if not isinstance(obj, dict):
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unexpected JSON object for deployment baseline",
+                    details={"resource": action.resource},
+                )
+            if kind == "metainfo":
+                continue
+            if kind != "table":
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unexpected object while listing tables",
+                    details={"resource": action.resource},
+                )
+            family, name = obj.get("family"), obj.get("name")
+            if not isinstance(family, str) or not isinstance(name, str):
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned a table without its family and name",
+                    details={"resource": action.resource},
+                )
+            if family == "inet" and name == action.resource:
+                if table_seen:
+                    raise AdapterError(
+                        "BASELINE_INVALID",
+                        "nftables returned a duplicate Wayvia table",
+                        details={"resource": action.resource},
+                    )
+                table_seen = True
+
+        if not table_seen:
+            return {"exists": False, "rules": None}
+
+        result = self._cmd(
+            ["nft", "-j", "list", "table", "inet", action.resource],
+            namespace=action.namespace,
+            check=False,
+        )
+        if result.returncode:
+            raise AdapterError(
+                "BASELINE_READ_FAILED",
+                "Unable to read nftables state for deployment baseline",
+                details={"resource": action.resource, "returncode": result.returncode},
+            )
+        try:
+            payload = json.loads(result.stdout)
+        except (json.JSONDecodeError, TypeError) as exc:
+            raise AdapterError(
+                "BASELINE_INVALID",
+                "nftables returned invalid JSON for deployment baseline",
+                details={"resource": action.resource},
+            ) from exc
+        if not isinstance(payload, dict) or not isinstance(payload.get("nftables"), list):
+            raise AdapterError(
+                "BASELINE_INVALID",
+                "nftables returned an unexpected JSON structure for deployment baseline",
+                details={"resource": action.resource},
+            )
+
+        table_contents = []
+        table_record_seen = False
+        for entry in payload["nftables"]:
+            if not isinstance(entry, dict) or len(entry) != 1:
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unexpected JSON entry for deployment baseline",
+                    details={"resource": action.resource},
+                )
+            kind, obj = next(iter(entry.items()))
+            if not isinstance(obj, dict):
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unexpected JSON object for deployment baseline",
+                    details={"resource": action.resource},
+                )
+            if kind == "metainfo":
+                continue
+            if kind == "table":
+                if obj.get("family") != "inet" or obj.get("name") != action.resource:
+                    raise AdapterError(
+                        "BASELINE_INVALID",
+                        "nftables returned an unexpected table for deployment baseline",
+                        details={"resource": action.resource},
+                    )
+                if table_record_seen:
+                    raise AdapterError(
+                        "BASELINE_INVALID",
+                        "nftables returned a duplicate Wayvia table",
+                        details={"resource": action.resource},
+                    )
+                table_record_seen = True
+                table_contents.append(self._normalize_nft_baseline({kind: obj}))
+                continue
+
+            family, table = obj.get("family"), obj.get("table")
+            if family != "inet" or table != action.resource or not table_record_seen:
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unexpected object for deployment baseline",
+                    details={"resource": action.resource},
+                )
+            table_contents.append(self._normalize_nft_baseline({kind: obj}))
+
+        if not table_record_seen:
+            raise AdapterError(
+                "BASELINE_INVALID",
+                "nftables table disappeared while reading deployment baseline",
+                details={"resource": action.resource},
+            )
+
+        return {
+            "exists": True,
+            "rules": table_contents,
+        }
+
     def baseline(self, actions):
         if platform.system() != "Linux" and self.enforce_environment:
             return "unsupported:Linux-required"
@@ -206,6 +386,8 @@ class LinuxExecutor:
                 and self.enforce_environment
             ):
                 snapshot = {"exists": False}
+            elif action.kind in {"guard", "exit_nat"}:
+                snapshot = self._inspect_nft_baseline(action)
             else:
                 snapshot = self.inspect_action(action)
             state.append({"key": self._key(action), "snapshot": snapshot})

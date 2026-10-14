@@ -1,0 +1,5 @@
+uv run --locked python scripts/test_configs.py
+LAB ENVIRONMENT UNAVAILABLE: Command '['docker', 'info', '--format', '{{.Architecture}}']' returned non-zero exit status 1.
+CONFIG ENVIRONMENT UNAVAILABLE: Command '['/tmp/wayvia-qokik-venv/bin/python3', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/scripts/lab.py', '--preflight']' returned non-zero exit status 4.
+make: *** [Makefile:25: test-configs] Error 4
+exit_code: 2

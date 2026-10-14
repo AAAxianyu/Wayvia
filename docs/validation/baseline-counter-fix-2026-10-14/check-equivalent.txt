@@ -1,0 +1,177 @@
+
+> uv run --locked ruff format --check src tests scripts deploy
+67 files already formatted
+exit_code: 0
+
+> uv run --locked ruff check src tests scripts deploy
+E501 Line too long (205 > 100)
+   --> tests\unit\test_linux_baseline.py:259:101
+    |
+257 | …
+258 | …
+259 | …{"family": "inet", "table": "wayvia_guard", "chain": "input", "expr": [{"counter": {"packets": -1, "bytes": 1}}]}}]}',
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+260 | …
+261 | …
+    |
+
+Found 1 error.
+exit_code: 1
+
+> uv run --locked ruff format --check src tests scripts deploy
+67 files already formatted
+exit_code: 0
+
+> uv run --locked ruff check src tests scripts deploy
+All checks passed!
+exit_code: 0
+
+> uv run --locked pytest
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.6.0
+rootdir: D:\01_WorkDocs\Wayvia\Wayvia
+configfile: pyproject.toml
+testpaths: tests/unit, tests/contract, tests/integration
+plugins: anyio-4.15.1, cov-7.0.0
+collected 169 items / 9 errors
+
+=================================== ERRORS ====================================
+__________ ERROR collecting tests/unit/test_transaction_revisions.py __________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\unit\test_transaction_revisions.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_transaction_revisions.py:14: in <module>
+    from test_transactions import Executor, Timer
+tests\unit\test_transactions.py:9: in <module>
+    from wayvia.agent.transactions import TransactionManager
+src\wayvia\agent\transactions.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+______________ ERROR collecting tests/unit/test_transactions.py _______________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\unit\test_transactions.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_transactions.py:9: in <module>
+    from wayvia.agent.transactions import TransactionManager
+src\wayvia\agent\transactions.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+______________ ERROR collecting tests/contract/test_adapters.py _______________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\contract\test_adapters.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\contract\test_adapters.py:12: in <module>
+    from wayvia.agent.server import dispatch, peer_allowed
+src\wayvia\agent\server.py:17: in <module>
+    from wayvia.agent.transactions import TransactionManager
+src\wayvia\agent\transactions.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+_______ ERROR collecting tests/contract/test_preflight_certificates.py ________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\contract\test_preflight_certificates.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\contract\test_preflight_certificates.py:9: in <module>
+    from wayvia.agent.transactions import TransactionManager
+src\wayvia\agent\transactions.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+_______________ ERROR collecting tests/integration/test_cli.py ________________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\integration\test_cli.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\integration\test_cli.py:4: in <module>
+    import pwd
+E   ModuleNotFoundError: No module named 'pwd'
+_____________ ERROR collecting tests/integration/test_control.py ______________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\integration\test_control.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\integration\test_control.py:12: in <module>
+    from wayvia.services.control import ControlService, SimulatedDataplane
+src\wayvia\services\control.py:12: in <module>
+    from wayvia.storage import Database
+src\wayvia\storage\__init__.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+_____________ ERROR collecting tests/integration/test_install.py ______________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\integration\test_install.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\integration\test_install.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+_______ ERROR collecting tests/integration/test_publication_recovery.py _______
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\integration\test_publication_recovery.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\integration\test_publication_recovery.py:11: in <module>
+    from wayvia.services.control import AgentDataplane, ControlService, SimulatedDataplane
+src\wayvia\services\control.py:12: in <module>
+    from wayvia.storage import Database
+src\wayvia\storage\__init__.py:3: in <module>
+    import fcntl
+E   ModuleNotFoundError: No module named 'fcntl'
+_________ ERROR collecting tests/integration/test_transaction_lab.py __________
+ImportError while importing test module 'D:\01_WorkDocs\Wayvia\Wayvia\tests\integration\test_transaction_lab.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+C:\Users\Lenovo\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\integration\test_transaction_lab.py:19: in <module>
+    PROBE_SPEC.loader.exec_module(probe)
+tests\lab\transaction_probe.py:12: in <module>
+    import pwd
+E   ModuleNotFoundError: No module named 'pwd'
+============================== warnings summary ===============================
+C:\Users\Lenovo\AppData\Local\Temp\wayvia-qokik-venv\Lib\site-packages\starlette\testclient.py:51
+  C:\Users\Lenovo\AppData\Local\Temp\wayvia-qokik-venv\Lib\site-packages\starlette\testclient.py:51: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+C:\Users\Lenovo\AppData\Local\Temp\wayvia-qokik-venv\Lib\site-packages\_pytest\cacheprovider.py:475
+  C:\Users\Lenovo\AppData\Local\Temp\wayvia-qokik-venv\Lib\site-packages\_pytest\cacheprovider.py:475: PytestCacheWarning: could not create cache path D:\01_WorkDocs\Wayvia\Wayvia\.pytest_cache\v\cache\nodeids: [WinError 5] 拒绝访问。: 'D:\\01_WorkDocs\\Wayvia\\Wayvia\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+C:\Users\Lenovo\AppData\Local\Temp\wayvia-qokik-venv\Lib\site-packages\_pytest\cacheprovider.py:429
+  C:\Users\Lenovo\AppData\Local\Temp\wayvia-qokik-venv\Lib\site-packages\_pytest\cacheprovider.py:429: PytestCacheWarning: could not create cache path D:\01_WorkDocs\Wayvia\Wayvia\.pytest_cache\v\cache\lastfailed: [WinError 5] 拒绝访问。: 'D:\\01_WorkDocs\\Wayvia\\Wayvia\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/lastfailed", self.lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/unit/test_transaction_revisions.py
+ERROR tests/unit/test_transactions.py
+ERROR tests/contract/test_adapters.py
+ERROR tests/contract/test_preflight_certificates.py
+ERROR tests/integration/test_cli.py
+ERROR tests/integration/test_control.py
+ERROR tests/integration/test_install.py
+ERROR tests/integration/test_publication_recovery.py
+ERROR tests/integration/test_transaction_lab.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 9 errors during collection !!!!!!!!!!!!!!!!!!!
+======================== 3 warnings, 9 errors in 5.99s ========================
+exit_code: 2

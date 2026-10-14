@@ -1,0 +1,19 @@
+uv run --locked ruff format --check src tests scripts deploy
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: /tmp/wayvia-qokik-venv-20261014b
+   Building wayvia @ file:///mnt/d/01_WorkDocs/Wayvia/Wayvia
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading ruff (12.7MiB)
+ Downloading pygments
+ Downloading pydantic-core
+ Downloading ruff
+  × Failed to build `wayvia @ file:///mnt/d/01_WorkDocs/Wayvia/Wayvia`
+  ├─▶ Failed to resolve requirements from `build-system.requires`
+  ├─▶ No solution found when resolving: `hatchling==1.27.0`, `editables~=0.3`
+  ├─▶ Failed to fetch: `https://pypi.org/simple/editables/`
+  ├─▶ Request failed after 3 retries
+  ├─▶ error sending request for url (https://pypi.org/simple/editables/)
+  ╰─▶ operation timed out
+make: *** [Makefile:9: check] Error 1
+exit_code: 2

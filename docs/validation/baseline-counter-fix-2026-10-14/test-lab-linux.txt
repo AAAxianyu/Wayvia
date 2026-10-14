@@ -1,0 +1,15 @@
+uv run --locked python scripts/lab.py
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: /tmp/wayvia-qokik-venv
+   Building wayvia @ file:///mnt/d/01_WorkDocs/Wayvia/Wayvia
+Downloading pygments (1.2MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading ruff (12.7MiB)
+ Downloading pygments
+ Downloading pydantic-core
+      Built wayvia @ file:///mnt/d/01_WorkDocs/Wayvia/Wayvia
+ Downloading ruff
+Installed 36 packages in 40ms
+LAB ENVIRONMENT UNAVAILABLE: Command '['docker', 'info', '--format', '{{.Architecture}}']' returned non-zero exit status 1.
+make: *** [Makefile:28: test-lab] Error 4
+exit_code: 2
