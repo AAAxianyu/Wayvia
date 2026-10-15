@@ -1,14 +1,14 @@
 # Wayvia 实现与验收状态
 
-更新：2026-10-14（Asia/Shanghai）。当前分支 `QOKIK`，本次修复仍在本地工作区，未提交。
+更新：2026-10-15（Asia/Shanghai）。当前分支 `QOKIK`，本次 fail-closed 补充修复仍在本地工作区，未提交。
 
 ## 当前结论
 
-已在 Linux 执行器基线中为 `guard` 与 `exit_nat` 改用 nftables JSON 结构比较；比较忽略规则计数器 `packets`、`bytes` 数值和内核分配的对象 `handle`，规则顺序及其他规则字段仍参与比较。`inspect_action()` 的完整文本快照保留给事务回退。非法 JSON 和意外结构会 fail closed。
+Linux 执行器对 `guard` 与 `exit_nat` 使用 nftables JSON 结构计算基线，忽略动态 `packets` / `bytes` 与 nft 分配的对象 `handle`，完整文本快照仍用于回退。本次补充限制可接受的顶层对象类型；目标表中出现未知类型时返回 `BASELINE_INVALID`，阻止计划继续。
 
-最终代码上的专项回归 17 项通过，Ruff 检查通过。最终树的 `make check` 通过：315 项测试、格式、lint、sdist/wheel 构建和 CLI help 均通过，另有 3 项依赖弃用警告。`make demo`、`make test-configs`（10 项配置）和 `make test-lab` 均通过。隔离 Linux 内核实验中，真实 nftables 计数从 1 包 / 76 字节增长到 7 包 / 476 字节，比较基线保持不变；实际规则结构变化被检测，旧计划被拒绝。详细输出和证据边界见[本次验证摘要](validation/baseline-counter-fix-2026-10-14/summary.md)。
+新增回归用例先确认旧行为会接受未知对象，再验证修复后拒绝。Python 3.12.3 下专项测试 18 项通过；`make check` 316 项通过，格式、lint、sdist/wheel 构建和 CLI help 通过（3 项弃用警告）。`make demo` 与 `make test-configs`（10 项）通过。完整 Linux 实验使用已有锁定镜像运行通过（23 项核心与 23 项事务）；标准 `make test-lab` 的干净镜像重建因 Ubuntu 仓库将 systemd 更新至 `1ubuntu8.18`、而 Dockerfile 固定 `1ubuntu8.17` 而失败。真实 nftables 执行器探针独立通过。证据见[本次补充验证摘要](validation/baseline-counter-fix-2026-10-15/summary.md)和[前次计数器修复验证](validation/baseline-counter-fix-2026-10-14/summary.md)。
 
-本次改动不代表真实服务器部署验收；M6 尚未执行，OpenWrt M7 尚未实现／验收。
+本次隔离实验不代表真实服务器部署验收；M6 尚未执行，OpenWrt M7 尚未实现／验收。
 
 ## 2026-10-12 历史审查（已由本次修复更新）
 

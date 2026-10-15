@@ -312,3 +312,28 @@ def test_absent_wayvia_table_is_a_valid_initial_baseline():
     runner = NftRunner('{"nftables": [{"metainfo": {"json_schema_version": 1}}]}')
 
     assert executor(runner).baseline([guard_action()])
+
+
+def test_unexpected_nft_object_type_fails_baseline_closed():
+    runner = NftRunner(
+        json.dumps(
+            {
+                "nftables": [
+                    {"metainfo": {"json_schema_version": 1}},
+                    {"table": {"family": "inet", "name": "wayvia_guard", "handle": 1}},
+                    {
+                        "unrecognized_object": {
+                            "family": "inet",
+                            "table": "wayvia_guard",
+                            "name": "unexpected",
+                        }
+                    },
+                ]
+            }
+        )
+    )
+
+    with pytest.raises(AdapterError) as err:
+        executor(runner).baseline([guard_action()])
+
+    assert err.value.code == "BASELINE_INVALID"

@@ -353,6 +353,13 @@ class LinuxExecutor:
                 table_contents.append(self._normalize_nft_baseline({kind: obj}))
                 continue
 
+            if kind not in {"chain", "rule"}:
+                raise AdapterError(
+                    "BASELINE_INVALID",
+                    "nftables returned an unsupported object type for deployment baseline",
+                    details={"resource": action.resource, "object_type": kind},
+                )
+
             family, table = obj.get("family"), obj.get("table")
             if family != "inet" or table != action.resource or not table_record_seen:
                 raise AdapterError(
