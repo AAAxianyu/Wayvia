@@ -1,6 +1,6 @@
 # Wayvia 实现与验收状态
 
-更新：2026-10-15（Asia/Shanghai）。当前分支 `QOKIK`，本次 fail-closed 补充修复仍在本地工作区，未提交。
+更新：2026-10-15（Asia/Shanghai）。当前分支 `QOKIK`，nftables fail-closed 补充修复已提交并推送；APT 快照锁定修复在本地工作区，未提交。
 
 ## 当前结论
 
@@ -9,6 +9,10 @@ Linux 执行器对 `guard` 与 `exit_nat` 使用 nftables JSON 结构计算基�
 新增回归用例先确认旧行为会接受未知对象，再验证修复后拒绝。Python 3.12.3 下专项测试 18 项通过；`make check` 316 项通过，格式、lint、sdist/wheel 构建和 CLI help 通过（3 项弃用警告）。`make demo` 与 `make test-configs`（10 项）通过。完整 Linux 实验使用已有锁定镜像运行通过（23 项核心与 23 项事务）；标准 `make test-lab` 的干净镜像重建因 Ubuntu 仓库将 systemd 更新至 `1ubuntu8.18`、而 Dockerfile 固定 `1ubuntu8.17` 而失败。真实 nftables 执行器探针独立通过。证据见[本次补充验证摘要](validation/baseline-counter-fix-2026-10-15/summary.md)和[前次计数器修复验证](validation/baseline-counter-fix-2026-10-14/summary.md)。
 
 本次隔离实验不代表真实服务器部署验收；M6 尚未执行，OpenWrt M7 尚未实现／验收。
+
+## 2026-10-15 CI 镜像重建失败跟进
+
+GitHub Actions 的 `software` job 通过；原 `isolated-linux` 在 systemd 实验镜像干净重建时因 Ubuntu 在线依赖版本不一致而失败。已在基础实验镜像 Dockerfile 中固定 Ubuntu APT 快照 `20261014T064100Z`，派生 systemd 与事务镜像继承该设置；关键包精确版本 pin 保留。2026-10-15 干净基础/systemd 镜像构建通过，完整隔离实验从 WSL `/tmp` 启动退出码为 0。根因跟进发现：容器向 D 盘 bind mount 写验证证据后，WSL 的 `/mnt/d` cwd 路径解析失效；从 Linux 文件系统目录启动可通过。详见[APT 快照锁定摘要](validation/apt-snapshot-lock-2026-10-15/summary.md)。
 
 ## 2026-10-12 历史审查（已由本次修复更新）
 

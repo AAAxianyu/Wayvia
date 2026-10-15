@@ -1,0 +1,86 @@
+[CWDTRACE] cwd='/mnt/d/01_WorkDocs/Wayvia/Wayvia' exists=True command=['docker', 'info', '--format', '{{.Architecture}}']
+[CWDTRACE] cwd='/mnt/d/01_WorkDocs/Wayvia/Wayvia' exists=True command=['/tmp/wayvia-project-venv/bin/python3', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/scripts/fetch_components.py', '--arch', 'amd64', '--output', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/.cache/components/amd64']
+sing-box 1.14.3: SHA256 verified
+mihomo 1.19.32: SHA256 verified
+v2raya 2.5.10: SHA256 verified
+v2ray 5.53.0: SHA256 verified
+v2raya_core 2.5.10: SHA256 verified
+[CWDTRACE] cwd='/mnt/d/01_WorkDocs/Wayvia/Wayvia' exists=True command=['/tmp/wayvia-project-venv/bin/python3', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/scripts/fetch_lab_python.py', '--arch', 'amd64']
+[CWDTRACE] cwd='/mnt/d/01_WorkDocs/Wayvia/Wayvia' exists=True command=['docker', 'build', '-t', 'wayvia-lab:locked', '-f', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/deploy/lab/Dockerfile', '/mnt/d/01_WorkDocs/Wayvia/Wayvia']
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.34kB 0.1s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#2 DONE 1.9s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 184B 0.1s done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 ...
+
+#5 [1/7] FROM docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+#5 resolve docker.io/library/ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 0.6s done
+#5 DONE 0.6s
+
+#4 [internal] load build context
+#4 transferring context: 275.17MB 1.9s done
+#4 DONE 1.9s
+
+#6 [2/7] RUN apt-get update     && apt-get install -y --no-install-recommends ca-certificates     && printf 'APT::Snapshot "%s";\n' "20261014T064100Z" > /etc/apt/apt.conf.d/50snapshot     && apt-get update     && apt-get install -y --no-install-recommends curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping     && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [3/7] COPY .cache/components/amd64/sing-box .cache/components/amd64/mihomo .cache/components/amd64/v2raya .cache/components/amd64/v2raya_core .cache/components/amd64/v2ray /usr/local/bin/
+#7 CACHED
+
+#8 [4/7] COPY .cache/components/amd64/geoip.dat .cache/components/amd64/geosite.dat /usr/local/share/v2raya/
+#8 CACHED
+
+#9 [5/7] COPY .cache/lab-python/amd64/ /opt/wayvia-lab-wheels/
+#9 CACHED
+
+#10 [6/7] RUN python3 -m venv /opt/wayvia-lab-python && /opt/wayvia-lab-python/bin/pip install --no-index --require-hashes --find-links /opt/wayvia-lab-wheels -r /opt/wayvia-lab-wheels/requirements.txt
+#10 CACHED
+
+#11 [7/7] COPY deploy/lab/ /opt/wayvia-lab/
+#11 CACHED
+
+#12 exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:143952607d36f3d2bac9ecfe98d1da8be4ca023f082371e56aa1a814865060f1 done
+#12 exporting config sha256:fb31b0b0e8b47306fdbd52efe735ab5bcfac39ff00668c6d5b26561becb29423 done
+#12 exporting attestation manifest sha256:9e084da3f54d69ef11fcb8ea6bc70c7a5b550a4ec1a9d3f1271222f3de9f15de 0.0s done
+#12 exporting manifest list sha256:52de7af871d17e2768cec17ae14b9a23359135609d0e66a81ac2216d156242e3 0.0s done
+#12 naming to docker.io/library/wayvia-lab:locked done
+#12 unpacking to docker.io/library/wayvia-lab:locked done
+#12 DONE 0.1s
+WARNING: current commit information was not captured by the build: failed to read current commit information with git rev-parse --is-inside-work-tree
+[CWDTRACE] cwd='/mnt/d/01_WorkDocs/Wayvia/Wayvia' exists=True command=['docker', 'run', '--rm', '--name', 'wayvia-m4-disposable', '--label', 'org.wayvia.disposable=m4', '--privileged', '--network', 'none', '-v', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/deploy/lab:/opt/wayvia-lab:ro', '-v', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/docs/validation/latest-lab:/evidence', '-v', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/src:/workspace/src:ro', '-e', 'PYTHONPATH=/workspace/src', '-v', '/mnt/d/01_WorkDocs/Wayvia/Wayvia/.cache/generated-lab-vjvfyzah:/generated:ro', 'wayvia-lab:locked']
+{"name": "isolated_topology", "status": "passed", "elapsed_ms": 3374, "evidence": {"namespaces": ["terminal", "domestic", "ali", "wayvia-egress", "jp", "foreign"], "development_host_routes_modified": false, "egress_default_physical_route": true, "unprotected_physical_baseline": {"target": "foreign", "peer": "10.73.0.1"}, "production_guard_blocks_same_path": true}}
+{"name": "temporary_ca_and_identity", "status": "passed", "elapsed_ms": 1255, "evidence": {"temporary_ca": true, "server_identity_checked": true, "keys_exported": false}}
+{"name": "v2raya_manages_matching_core", "status": "passed", "elapsed_ms": 761, "evidence": {"version": {"version": "2.5.10", "coreVersion": "2.5.10", "coreVersionValid": true, "serviceValid": true, "variant": "V2rayaCore"}, "configured": true, "production_adapter": true, "explicit_bootstrap_resolver": "10.73.0.1", "resolved_carrier": "10.73.0.2", "tls_server_name": "carrier.lab", "imported_server": true, "core_managed_by_v2raya": true}}
+{"name": "foreign_tcp_dual_layer_japan_nat", "status": "passed", "elapsed_ms": 954, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "domestic_tcp_terminal_direct", "status": "passed", "elapsed_ms": 190, "evidence": {"target": "domestic", "peer": "10.71.0.2"}}
+{"name": "terminal_tun_kernel_ready", "status": "passed", "elapsed_ms": 48, "evidence": {"ready": true, "interface": [{"ifindex": 2, "ifname": "wayvia-tun", "flags": ["POINTOPOINT", "MULTICAST", "NOARP", "UP", "LOWER_UP"], "mtu": 1400, "qdisc": "fq_codel", "operstate": "UNKNOWN", "group": "default", "txqlen": 500, "link_type": "none", "addr_info": [{"family": "inet", "local": "172.28.0.1", "prefixlen": 30, "broadcast": "172.28.0.3", "scope": "global", "label": "wayvia-tun", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fd77:7761:7976::1", "prefixlen": 126, "scope": "global", "valid_life_time": 4294967295, "preferred_life_time": 4294967295}, {"family": "inet6", "local": "fe80::1cbd:fedc:6215:c669", "prefixlen": 64, "scope": "link", "stable-privacy": true, "valid_life_time": 4294967295, "preferred_life_time": 4294967295}]}], "route": [{"dst": "10.74.0.2", "gateway": "172.28.0.2", "dev": "wayvia-tun", "table": "2022", "prefsrc": "172.28.0.1", "flags": [], "uid": 0, "cache": []}], "bound_route": [{"dst": "10.74.0.2", "from": "172.28.0.1", "gateway": "172.28.0.2", "dev": "wayvia-tun", "table": "2022", "flags": [], "uid": 0, "cache": []}], "selected_source": "172.28.0.1", "elapsed_ms": 48, "observations": 1}}
+{"name": "foreign_native_tcp_intercepted_by_rendered_tun", "status": "passed", "elapsed_ms": 155, "evidence": {"target": "foreign", "peer": "10.74.0.1", "connection": {"peer": ["10.74.0.2", 8080], "started_at": 1792079232.0486746, "local": ["172.28.0.1", 50198], "finished_at": 1792079232.0490892}}}
+{"name": "foreign_native_udp_intercepted_by_rendered_tun", "status": "passed", "elapsed_ms": 90, "evidence": {"payload": "foreign:wayvia-native-udp"}}
+{"name": "foreign_udp_through_vpn_and_socks_bridge", "status": "passed", "elapsed_ms": 81, "evidence": {"payload": "foreign:wayvia-udp"}}
+{"name": "foreign_dns_through_vpn", "status": "passed", "elapsed_ms": 80, "evidence": {"answer": "10.74.0.2"}}
+{"name": "domestic_dns_terminal_direct", "status": "passed", "elapsed_ms": 165, "evidence": {"answer": "10.71.0.1"}}
+{"name": "domestic_ipv6_terminal_direct", "status": "passed", "elapsed_ms": 120, "evidence": {"target": "domestic", "peer": "fd72:1::2"}}
+{"name": "healthy_layer_order_and_return_paths", "status": "passed", "elapsed_ms": 52, "evidence": {"socket_and_interface_snapshots": true, "proxy_endpoint": "10.73.0.2:443", "vpn_carrier": "10.89.0.1:1080", "vpn_endpoint": "127.0.0.1:1194"}}
+{"name": "unsupported_foreign_ipv6_blocked", "status": "passed", "elapsed_ms": 57, "evidence": {"error": "protected connection closed without an HTTP response", "connections": []}}
+{"name": "japan_proxy_rejects_arbitrary_target", "status": "passed", "elapsed_ms": 1011, "evidence": {"exit_code": 52, "arbitrary_forwarding_rejected": true}}
+{"name": "japan_vpn_not_publicly_reachable", "status": "passed", "elapsed_ms": 40, "evidence": {"connection_rejected": true, "listener": "127.0.0.1:1194"}}
+{"name": "management_path_keeps_physical_return", "status": "passed", "elapsed_ms": 7, "evidence": {"target": "management", "peer": "10.73.0.2"}}
+{"name": "vpn_layer_failure_protected_domestic_available", "status": "passed", "elapsed_ms": 1279, "evidence": {"protected": {"error": "protected connection closed without an HTTP response", "connections": []}, "native_protected": {"error": "protected connection closed without an HTTP response", "connections": [{"peer": ["10.74.0.2", 8080], "started_at": 1792079235.0426157, "local": ["172.28.0.1", 50212], "finished_at": 1792079235.0428233}]}, "domestic": {"target": "domestic", "peer": "10.71.0.2"}, "management": {"target": "management", "peer": "10.73.0.2"}}}
+{"name": "vpn_layer_reconnect", "status": "passed", "elapsed_ms": 2484, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "proxy_layer_failure_protected_domestic_available", "status": "passed", "elapsed_ms": 1295, "evidence": {"protected": {"error": "protected connection closed without an HTTP response", "connections": []}, "native_protected": {"error": "protected connection closed without an HTTP response", "connections": [{"peer": ["10.74.0.2", 8080], "started_at": 1792079238.8295863, "local": ["172.28.0.1", 33970], "finished_at": 1792079238.8298872}]}, "domestic": {"target": "domestic", "peer": "10.71.0.2"}, "management": {"target": "management", "peer": "10.73.0.2"}}}
+{"name": "proxy_layer_reconnect", "status": "passed", "elapsed_ms": 1361, "evidence": {"target": "foreign", "peer": "10.74.0.1"}}
+{"name": "device_permission_revoke", "status": "passed", "elapsed_ms": 637, "evidence": {"new_connections": {"error": "protected connection closed without an HTTP response", "connections": []}, "domestic": {"target": "domestic", "peer": "10.71.0.2"}, "method": "controlled ingress restart; existing sessions terminated"}}
+{"name": "production_openvpn_adapter_isolated_handshake", "status": "passed", "elapsed_ms": 8404, "evidence": {"component": "openvpn", "version": "2.6.19", "supported": true, "validated": true, "scope": "isolated-handshake"}}
+LAB ENVIRONMENT UNAVAILABLE: [Errno 2] No such file or directory

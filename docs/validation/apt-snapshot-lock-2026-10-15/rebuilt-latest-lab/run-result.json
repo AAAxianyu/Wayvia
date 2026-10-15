@@ -1,0 +1,20 @@
+{
+  "final_full_lab_from_tmp_exit_code": 0,
+  "standalone_transaction_exit_code": 0,
+  "make_test_lab_initial_exit_code": 1,
+  "make_test_lab_repeat_exit_code": 1,
+  "statuses": {
+    "lab": "passed",
+    "transaction": "passed",
+    "protocol": "passed",
+    "preflight": "passed",
+    "mihomo_dns": "passed"
+  },
+  "case_counts": {
+    "core": 0,
+    "transaction": 23,
+    "protocol": 7,
+    "preflight": 12,
+    "mihomo_dns": 6
+  }
+}

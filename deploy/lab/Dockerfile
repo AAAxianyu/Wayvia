@@ -1,7 +1,13 @@
 FROM ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
 ARG TARGETARCH
+ARG UBUNTU_APT_SNAPSHOT=20261014T064100Z
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping && rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates \
+    && printf 'APT::Snapshot "%s";\n' "$UBUNTU_APT_SNAPSHOT" > /etc/apt/apt.conf.d/50snapshot \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping \
+    && rm -rf /var/lib/apt/lists/*
 COPY .cache/components/${TARGETARCH}/sing-box .cache/components/${TARGETARCH}/mihomo .cache/components/${TARGETARCH}/v2raya .cache/components/${TARGETARCH}/v2raya_core .cache/components/${TARGETARCH}/v2ray /usr/local/bin/
 COPY .cache/components/${TARGETARCH}/geoip.dat .cache/components/${TARGETARCH}/geosite.dat /usr/local/share/v2raya/
 COPY .cache/lab-python/${TARGETARCH}/ /opt/wayvia-lab-wheels/

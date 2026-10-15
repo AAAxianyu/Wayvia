@@ -3,7 +3,7 @@ resolved_at: '2026-10-15'
 latest_fix:
   date: '2026-10-14'
   branch: QOKIK
-  status: implemented; follow_up_unknown_types_rejected; reused_image_lab_passed; clean_build_lab_blocked_by_package_drift
+  status: implemented; follow_up_unknown_types_rejected; ubuntu_apt_snapshot_clean_build_and_lab_passed_wsl_cwd_entrypoint_issue
   behavior: nft_guard_and_exit_nat_baselines_use_json_structure; ignore_counter_packets_bytes_and_object_handles_only; reject_unknown_target_table_object_types
   rollback_snapshot: inspect_action_full_text_snapshot_unchanged
   focused_tests: 18_passed_python_3_12
@@ -12,7 +12,8 @@ latest_fix:
     check: passed_316_tests_3_deprecation_warnings_format_lint_build_cli
     demo: passed_exit_0
     test_configs: passed_10_artifacts
-    test_lab_clean_build: blocked_ubuntu_systemd_1ubuntu8.18_conflicts_with_pin_1ubuntu8.17
+    test_lab_clean_build_before_snapshot_lock: failed_ubuntu_systemd_1ubuntu8.18_conflicted_with_pin_1ubuntu8.17
+    test_lab_clean_build_after_snapshot_lock: base_and_systemd_images_passed; full_lab_from_tmp_exit_0; make_test_lab_repo_cwd_fails_transaction_wheel_os_getcwd
     test_lab_reused_locked_images: passed_23_core_cases_23_transactions_and_live_nft_baseline_regression
   evidence:
   - docs/validation/baseline-counter-fix-2026-10-14/summary.md
@@ -25,6 +26,7 @@ latest_fix:
   - docs/validation/baseline-counter-fix-2026-10-15/check.txt
   - docs/validation/baseline-counter-fix-2026-10-15/test-lab-reuse-images.txt
   - docs/validation/baseline-counter-fix-2026-10-15/test-lab-artifacts-reused/executor-result.json
+  - docs/validation/apt-snapshot-lock-2026-10-15/summary.md
 systems:
   production:
     name: Ubuntu
@@ -37,14 +39,16 @@ systems:
     status: nonprivileged_only
   lab:
     docker: 29.5.2
-    architecture: arm64
-    kernel: 6.8.0-117-generic
+    architecture: amd64
+    kernel: 6.18.54.1-microsoft-standard-WSL2
     base_image: ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
+    apt_snapshot_id: 20261014T064100Z
+    apt_snapshot_config: deploy/lab/Dockerfile
     isolation: disposable_none_network_namespaces_and_internal_dual_role_private_cgroups
     os: Ubuntu 24.04.5 LTS
     python: 3.12.3
-    status: partial_pass_full_gate_failed
-    scope: current_working_tree_arm64_review; installed_ingress_update_BASELINE_CHANGED; no_real_deployment_acceptance
+    status: clean_images_and_full_lab_passed; make_test_lab_repo_cwd_issue
+    scope: current_working_tree_amd64_WSL2; isolated_lab_passed; no_real_deployment_acceptance
     evidence:
     - docs/validation/status-review-2026-10-12/summary.json
     - docs/validation/status-review-2026-10-12/lab/transaction-result.json
@@ -53,6 +57,10 @@ systems:
     - docs/validation/fixes-2026-10-12/final-lab/mihomo-dns-result.json
     - docs/validation/fixes-2026-10-12/final-lab/preflight-conflicts-result.json
     - docs/validation/fixes-2026-10-12/final-lab/transaction-result.json
+    - docs/validation/apt-snapshot-lock-2026-10-15/summary.md
+    - docs/validation/apt-snapshot-lock-2026-10-15/test-lab-from-tmp.txt
+    - docs/validation/apt-snapshot-lock-2026-10-15/rebuilt-latest-lab/lab-result.json
+    - docs/validation/apt-snapshot-lock-2026-10-15/rebuilt-latest-lab/transaction-result.json
     - docs/validation/fixes-2026-10-12/commands.json
 components:
   sing-box:
@@ -130,8 +138,9 @@ components:
   systemd:
     version: '255.4'
     package_version: 255.4-1ubuntu8.17
-    source: Ubuntu 24.04 authenticated APT repository
-    pinning: exact_package_version_in_Dockerfile.systemd
+    source: Ubuntu 24.04 authenticated APT snapshot
+    apt_snapshot_id: 20261014T064100Z
+    pinning: exact_package_version_with_locked_APT_snapshot
     status: private_cgroup_pid1_timer_recovery_and_installed_transactions_verified
     evidence:
     - docs/validation/fixes-2026-10-12/final-lab/recovery-result.json
