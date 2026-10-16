@@ -1,0 +1,45 @@
+{
+  "preexisting_containers_unchanged": true,
+  "before": [
+    {
+      "id": "e15df03357b6a6d12c27871be0256a5b9cf4bb416990063f86fa022b841a373a",
+      "name": "/wayvia-transaction-target",
+      "started_at": "2026-10-13T05:57:14.498293873Z",
+      "running": true
+    },
+    {
+      "id": "cd1a9e040fce22e7a518724fad2e787dc51810168ffc5bc479da1cab61dfecf1",
+      "name": "/wayvia-transaction-exit",
+      "started_at": "2026-10-13T05:57:12.254062407Z",
+      "running": true
+    },
+    {
+      "id": "e6b06a1fdf1ff437a55c54427e073c2d365903d7a00c9506625a106ab209ecdb",
+      "name": "/wayvia-transaction-ingress",
+      "started_at": "2026-10-13T05:57:06.033081846Z",
+      "running": true
+    }
+  ],
+  "after": [
+    {
+      "id": "e15df03357b6a6d12c27871be0256a5b9cf4bb416990063f86fa022b841a373a",
+      "name": "/wayvia-transaction-target",
+      "started_at": "2026-10-13T05:57:14.498293873Z",
+      "running": true
+    },
+    {
+      "id": "cd1a9e040fce22e7a518724fad2e787dc51810168ffc5bc479da1cab61dfecf1",
+      "name": "/wayvia-transaction-exit",
+      "started_at": "2026-10-13T05:57:12.254062407Z",
+      "running": true
+    },
+    {
+      "id": "e6b06a1fdf1ff437a55c54427e073c2d365903d7a00c9506625a106ab209ecdb",
+      "name": "/wayvia-transaction-ingress",
+      "started_at": "2026-10-13T05:57:06.033081846Z",
+      "running": true
+    }
+  ],
+  "task_containers_remaining": [],
+  "task_networks_remaining": []
+}

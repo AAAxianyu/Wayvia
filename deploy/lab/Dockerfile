@@ -4,7 +4,8 @@ ARG UBUNTU_APT_SNAPSHOT=20261014T064100Z
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates \
-    && printf 'APT::Snapshot "%s";\n' "$UBUNTU_APT_SNAPSHOT" > /etc/apt/apt.conf.d/50snapshot \
+    && printf 'APT::Snapshot "%s";\nAcquire::Snapshots::URI::Host::ports.ubuntu.com "https://snapshot.ubuntu.com/ubuntu/@SNAPSHOTID@/";\n' "$UBUNTU_APT_SNAPSHOT" > /etc/apt/apt.conf.d/50snapshot \
+    && rm -rf /var/lib/apt/lists/* \
     && apt-get update \
     && apt-get install -y --no-install-recommends curl iproute2 nftables openvpn=2.6.19-0ubuntu0.24.04.4 openssl python3 python3-venv python3-yaml tcpdump procps dnsutils iputils-ping \
     && rm -rf /var/lib/apt/lists/*

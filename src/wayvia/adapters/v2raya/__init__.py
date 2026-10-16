@@ -7,6 +7,7 @@ instance with the identically versioned v2raya_core, never an existing instance.
 import ipaddress
 import re
 import secrets
+import time
 from urllib.parse import quote, urlencode, urlsplit
 
 import httpx
@@ -26,19 +27,22 @@ class V2rayAAdapter:
         self.token = token
         self.runner = runner or CommandRunner()
 
-    def _request(self, method, path, body=None):
+    def _request(self, method, path, body=None, *, timeout=None):
         try:
             response = self.client.request(
                 method,
                 "/api/" + path,
                 json=body,
                 headers={"Authorization": "Bearer " + self.token} if self.token else {},
+                **({"timeout": timeout} if timeout is not None else {}),
             )
             result = response.json()
-        except (httpx.HTTPError, ValueError) as exc:
+        except httpx.HTTPError as exc:
             raise AdapterError(
                 "V2RAYA_UNAVAILABLE", "v2rayA returned no valid bounded response"
             ) from exc
+        except ValueError as exc:
+            raise AdapterError("V2RAYA_INVALID_RESPONSE", "v2rayA returned invalid JSON") from exc
         if not isinstance(result, dict):
             raise AdapterError(
                 "V2RAYA_INVALID_RESPONSE", "v2rayA response must be a structured object"
@@ -55,8 +59,8 @@ class V2rayAAdapter:
             )
         return result.get("data")
 
-    def inspect(self):
-        data = self._request("GET", "version")
+    def inspect(self, *, timeout=None):
+        data = self._request("GET", "version", timeout=timeout)
         if (
             not isinstance(data, dict)
             or not isinstance(data.get("version"), str)
@@ -71,8 +75,8 @@ class V2rayAAdapter:
             for k in ("version", "coreVersion", "coreVersionValid", "serviceValid", "variant")
         }
 
-    def validate(self):
-        info = self.inspect()
+    def validate(self, *, timeout=None):
+        info = self.inspect(timeout=timeout)
         core_version = info.get("coreVersion")
         if (
             info["version"].removeprefix("v") != self.version
@@ -84,6 +88,29 @@ class V2rayAAdapter:
                 "VERSION_MISMATCH", "v2rayA requires the locked matching v2raya_core", details=info
             )
         return info
+
+    def wait_ready(self, *, timeout=30):
+        """Wait for a compatible management API, never retry configuration writes."""
+        deadline = time.monotonic() + timeout
+        last_error = None
+        while (remaining := deadline - time.monotonic()) > 0:
+            try:
+                info = self.validate(timeout=min(2, remaining))
+                if time.monotonic() < deadline:
+                    return info
+                break
+            except AdapterError as error:
+                if error.code != "V2RAYA_UNAVAILABLE":
+                    raise
+                last_error = error
+            remaining = deadline - time.monotonic()
+            if remaining > 0:
+                time.sleep(min(0.2, remaining))
+        raise AdapterError(
+            "V2RAYA_UNAVAILABLE",
+            "v2rayA management API did not become ready before its startup deadline",
+            details={"timeout_seconds": timeout},
+        ) from last_error
 
     def login(self, username, password, *, create=False):
         if create and self._request("GET", "account")["hasAnyAccounts"]:

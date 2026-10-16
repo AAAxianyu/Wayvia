@@ -1,0 +1,15 @@
+{
+  "base_commit": "cb2676bba916c734fa5765cd8a03b2b3b20f946c",
+  "base_main_before_merge": "a23f593dff32b79601c96b7f10dfe839867dd298",
+  "branch": "codex/qokik-main-integration-20261015",
+  "sha256": {
+    "src/wayvia/adapters/linux/__init__.py": "f43862558db68891610a801b7b313b7f76acf82773a11af6c8337070bcc124a8",
+    "src/wayvia/adapters/v2raya/__init__.py": "b7398800bd174b724bbb68d959a5a0a52ab1ebb248e30e310b50f312f7218c7e",
+    "tests/contract/test_carrier_readiness.py": "ca9d517b465f13f05ed7c7517eae79b32bbf1cc5674aa2fbb1119ecf1e5499df",
+    "tests/lab/transaction_probe.py": "61a8f9c4a9178d9b64eb89d51c1c648c898de4ff157e71f50ac4d6e9c64f74f7",
+    "tests/unit/test_linux_baseline.py": "76f49ecafc3b3199ae83edca744a3763d9263edcb38819c3928107b59f383033",
+    "deploy/lab/Dockerfile": "d04ccecb786b619c2e6225e3c2ea129dafa994496c8aafdc461bf5ce5862cfff",
+    ".github/workflows/check.yml": "99d7f6d6754b289f19372f7f75ad98b5965c58860d765e7bb2ca949b3879db80"
+  },
+  "note": "Production sources and tests as exercised; temporary Docker names recorded separately. Snapshot ports mapping and empty-index refresh included."
+}

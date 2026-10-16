@@ -1,0 +1,7 @@
+{
+  "status": "environment_unavailable",
+  "container": "wayvia-merge-recovery-20261015",
+  "cgroup_mode": "private",
+  "host_cgroup_bind": false,
+  "error": "Command '['docker', 'build', '-t', 'wayvia-merge-systemd:20261015', '-f', '/Users/dev2/.codex/worktrees/qokik-main-integration/Wayvia/deploy/lab/Dockerfile.systemd', '/Users/dev2/.codex/worktrees/qokik-main-integration/Wayvia']' returned non-zero exit status 1."
+}

@@ -356,6 +356,31 @@ def ingress_upgrade_cycle():
         )
         return profile
 
+    # A simple service is active before its HTTP API is listening. Delay the
+    # actual process after systemd starts the wrapper, not via ExecStartPre
+    # (which would finish before systemctl restart returns).
+    delay_seconds = 4
+    wrapper = Path("/usr/local/bin/wayvia-lab-delayed-carrier")
+    wrapper.write_text(
+        "#!/bin/sh\necho WAYVIA_LAB_CARRIER_DELAY_BEGIN\n"
+        f"sleep {delay_seconds}\n"
+        'echo WAYVIA_LAB_CARRIER_DELAY_END\nexec "$@"\n'
+    )
+    wrapper.chmod(0o755)
+    unit = Path("/etc/systemd/system/wayvia-carrier.service")
+    original_exec = next(
+        line for line in unit.read_text().splitlines() if line.startswith("ExecStart=")
+    )
+    override = unit.with_name(unit.name + ".d") / "90-wayvia-lab-delay.conf"
+    override.parent.mkdir(exist_ok=True)
+    override.write_text(
+        "[Service]\nExecStart=\nExecStart="
+        + str(wrapper)
+        + " "
+        + original_exec.removeprefix("ExecStart=")
+        + "\n"
+    )
+    command(["systemctl", "daemon-reload"])
     try:
         second_profile = configure(8443)
         successor = apply("ingress", monitor_previous=predecessor, test_profile=second_profile)
@@ -372,16 +397,34 @@ def ingress_upgrade_cycle():
         assert current_state("ingress")["id"] == predecessor
         request_profile(original_profile)
         denied(second_profile)
+        events = command(
+            ["journalctl", "-u", "wayvia-carrier.service", "-o", "json", "--no-pager"]
+        ).stdout
+        delays, began = [], None
+        for line in events.splitlines():
+            event = json.loads(line)
+            if event.get("MESSAGE") == "WAYVIA_LAB_CARRIER_DELAY_BEGIN":
+                began = int(event["__MONOTONIC_TIMESTAMP"])
+            elif event.get("MESSAGE") == "WAYVIA_LAB_CARRIER_DELAY_END" and began is not None:
+                delays.append((int(event["__MONOTONIC_TIMESTAMP"]) - began) / 1_000_000)
+                began = None
+        assert len(delays) >= 4 and all(delay >= delay_seconds - 0.1 for delay in delays)
         return {
             "predecessor": predecessor,
             "successor": successor["id"],
             "third": third["id"],
             "listener_sequence": [443, 8443, 9443, 8443, 443],
+            "observed_start_delays_seconds": delays,
+            "carrier_api_start_delay_seconds": delay_seconds,
+            "delayed_apply_and_both_rollbacks_passed": True,
             "stale_monitor_preserved_unconfirmed_listener": True,
             "both_predecessors_restored_authenticated_path": True,
             "replaced_listeners_closed": True,
         }
     finally:
+        override.unlink(missing_ok=True)
+        wrapper.unlink(missing_ok=True)
+        command(["systemctl", "daemon-reload"])
         owned_write(config_path, config_text)
         owned_write(probes_path, probes_text)
 

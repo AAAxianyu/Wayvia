@@ -1,0 +1,182 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_carrier_restart_waits_for_delayed_api_before_configuring[apply] _____
+
+request = <Request('GET', 'http://127.0.0.1:2017/api/version')>
+
+    def handler(request):
+        requests.append((request.url.path, clock[0]))
+        if clock[0] < 3:
+>           raise httpx.ConnectError("not listening yet", request=request)
+E           httpx.ConnectError: not listening yet
+
+tests/contract/test_carrier_readiness.py:56: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/private/var/folders/lt/9m3d4mfx15j6gj72z9szm_qc0000gn/T/pytest-of-dev2/pytest-188/test_carrier_restart_waits_for0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1074d4b60>
+clock = [1.7999999999999998], operation = 'apply'
+
+    @pytest.mark.parametrize("operation", ["apply", "rollback"])
+    def test_carrier_restart_waits_for_delayed_api_before_configuring(
+        tmp_path, monkeypatch, clock, operation
+    ):
+        requests, configured = [], []
+    
+        def handler(request):
+            requests.append((request.url.path, clock[0]))
+            if clock[0] < 3:
+                raise httpx.ConnectError("not listening yet", request=request)
+            if request.url.path == "/api/version":
+                return version_response()
+            assert request.url.path == "/api/account"
+            return httpx.Response(200, json={"code": "SUCCESS", "data": {"hasAnyAccounts": True}})
+    
+        adapter = V2rayAAdapter(
+            client=httpx.Client(
+                base_url="http://127.0.0.1:2017", transport=httpx.MockTransport(handler)
+            )
+        )
+        monkeypatch.setattr("wayvia.adapters.v2raya.V2rayAAdapter", lambda **kwargs: adapter)
+        monkeypatch.setattr(
+            adapter, "configure_carrier", lambda *args, **kwargs: configured.append(clock[0])
+        )
+        config_dir = tmp_path / "config"
+        config_dir.mkdir()
+        (config_dir / "carrier.json").write_text(json.dumps({}))
+        runner = Runner()
+        executor = LinuxExecutor(
+            runner=runner,
+            config_dir=config_dir,
+            state_dir=tmp_path / "state",
+            unit_dir=tmp_path / "units",
+            enforce_environment=False,
+        )
+        action = Action(kind="service", resource="wayvia-carrier.service")
+        if operation == "apply":
+>           executor.apply(action)
+
+tests/contract/test_carrier_readiness.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/wayvia/adapters/linux/__init__.py:679: in apply
+    self.configure_carrier()
+src/wayvia/adapters/linux/__init__.py:695: in configure_carrier
+    adapter.inspect()
+src/wayvia/adapters/v2raya/__init__.py:59: in inspect
+    data = self._request("GET", "version")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wayvia.adapters.v2raya.V2rayAAdapter object at 0x106fea9c0>
+method = 'GET', path = 'version', body = None
+
+    def _request(self, method, path, body=None):
+        try:
+            response = self.client.request(
+                method,
+                "/api/" + path,
+                json=body,
+                headers={"Authorization": "Bearer " + self.token} if self.token else {},
+            )
+            result = response.json()
+        except (httpx.HTTPError, ValueError) as exc:
+>           raise AdapterError(
+                "V2RAYA_UNAVAILABLE", "v2rayA returned no valid bounded response"
+            ) from exc
+E           wayvia.adapters.base.AdapterError: v2rayA returned no valid bounded response
+
+src/wayvia/adapters/v2raya/__init__.py:39: AdapterError
+___ test_carrier_restart_waits_for_delayed_api_before_configuring[rollback] ____
+
+request = <Request('GET', 'http://127.0.0.1:2017/api/version')>
+
+    def handler(request):
+        requests.append((request.url.path, clock[0]))
+        if clock[0] < 3:
+>           raise httpx.ConnectError("not listening yet", request=request)
+E           httpx.ConnectError: not listening yet
+
+tests/contract/test_carrier_readiness.py:56: ConnectError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/private/var/folders/lt/9m3d4mfx15j6gj72z9szm_qc0000gn/T/pytest-of-dev2/pytest-188/test_carrier_restart_waits_for1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1075574a0>
+clock = [1.7999999999999998], operation = 'rollback'
+
+    @pytest.mark.parametrize("operation", ["apply", "rollback"])
+    def test_carrier_restart_waits_for_delayed_api_before_configuring(
+        tmp_path, monkeypatch, clock, operation
+    ):
+        requests, configured = [], []
+    
+        def handler(request):
+            requests.append((request.url.path, clock[0]))
+            if clock[0] < 3:
+                raise httpx.ConnectError("not listening yet", request=request)
+            if request.url.path == "/api/version":
+                return version_response()
+            assert request.url.path == "/api/account"
+            return httpx.Response(200, json={"code": "SUCCESS", "data": {"hasAnyAccounts": True}})
+    
+        adapter = V2rayAAdapter(
+            client=httpx.Client(
+                base_url="http://127.0.0.1:2017", transport=httpx.MockTransport(handler)
+            )
+        )
+        monkeypatch.setattr("wayvia.adapters.v2raya.V2rayAAdapter", lambda **kwargs: adapter)
+        monkeypatch.setattr(
+            adapter, "configure_carrier", lambda *args, **kwargs: configured.append(clock[0])
+        )
+        config_dir = tmp_path / "config"
+        config_dir.mkdir()
+        (config_dir / "carrier.json").write_text(json.dumps({}))
+        runner = Runner()
+        executor = LinuxExecutor(
+            runner=runner,
+            config_dir=config_dir,
+            state_dir=tmp_path / "state",
+            unit_dir=tmp_path / "units",
+            enforce_environment=False,
+        )
+        action = Action(kind="service", resource="wayvia-carrier.service")
+        if operation == "apply":
+            executor.apply(action)
+        else:
+>           executor.restore_services([{"action": action, "before": {"active": True}}])
+
+tests/contract/test_carrier_readiness.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/wayvia/adapters/linux/__init__.py:746: in restore_services
+    self.configure_carrier()
+src/wayvia/adapters/linux/__init__.py:695: in configure_carrier
+    adapter.inspect()
+src/wayvia/adapters/v2raya/__init__.py:59: in inspect
+    data = self._request("GET", "version")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <wayvia.adapters.v2raya.V2rayAAdapter object at 0x107554fe0>
+method = 'GET', path = 'version', body = None
+
+    def _request(self, method, path, body=None):
+        try:
+            response = self.client.request(
+                method,
+                "/api/" + path,
+                json=body,
+                headers={"Authorization": "Bearer " + self.token} if self.token else {},
+            )
+            result = response.json()
+        except (httpx.HTTPError, ValueError) as exc:
+>           raise AdapterError(
+                "V2RAYA_UNAVAILABLE", "v2rayA returned no valid bounded response"
+            ) from exc
+E           wayvia.adapters.base.AdapterError: v2rayA returned no valid bounded response
+
+src/wayvia/adapters/v2raya/__init__.py:39: AdapterError
+=========================== short test summary info ============================
+FAILED tests/contract/test_carrier_readiness.py::test_carrier_restart_waits_for_delayed_api_before_configuring[apply]
+FAILED tests/contract/test_carrier_readiness.py::test_carrier_restart_waits_for_delayed_api_before_configuring[rollback]
+2 failed, 7 deselected in 2.32s

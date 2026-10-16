@@ -1,0 +1,9 @@
+{
+  "wayvia-lab-systemd:locked": "wayvia-merge-systemd:20261015",
+  "wayvia-lab:locked": "wayvia-merge-lab:20261015",
+  "wayvia-transaction:locked": "wayvia-merge-transaction:20261015",
+  "wayvia-m4-disposable": "wayvia-merge-m4-20261015",
+  "wayvia-recovery-disposable": "wayvia-merge-recovery-20261015",
+  "wayvia-transaction-disposable": "wayvia-merge-network-20261015",
+  "\"wayvia-transaction-\"": "\"wayvia-merge-20261015-\""
+}

@@ -688,16 +688,7 @@ class LinuxExecutor:
             )
         auth = json.loads(auth_path.read_text())
         adapter = V2rayAAdapter(runner=self.runner)
-        import time
-
-        for attempt in range(10):
-            try:
-                adapter.inspect()
-                break
-            except AdapterError:
-                if attempt == 9:
-                    raise
-                time.sleep(0.2)
+        adapter.wait_ready()
         create = not adapter._request("GET", "account")["hasAnyAccounts"]
         adapter.configure_carrier(
             json.loads((self.config_dir / "carrier.json").read_text()),

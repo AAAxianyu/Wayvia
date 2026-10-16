@@ -1,0 +1,78 @@
+--- scripts/lab.py
++++ scripts/lab.py
+@@ -11,8 +11,8 @@
+ from lab_config import generate
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-NAME = "wayvia-m4-disposable"
+-IMAGE = "wayvia-lab:locked"
++NAME = "wayvia-merge-m4-20261015"
++IMAGE = "wayvia-merge-lab:20261015"
+ 
+ 
+ def main():
+--- scripts/test_configs.py
++++ scripts/test_configs.py
+@@ -41,7 +41,7 @@
+             str(output) + ":/evidence",
+             "--entrypoint",
+             "python3",
+-            "wayvia-lab:locked",
++            "wayvia-merge-lab:20261015",
+             "/opt/wayvia-lab/validate_configs.py",
+         ]
+         return subprocess.run(command).returncode
+--- scripts/recovery_lab.py
++++ scripts/recovery_lab.py
+@@ -9,8 +9,8 @@
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-NAME = "wayvia-recovery-disposable"
+-IMAGE = "wayvia-lab-systemd:locked"
++NAME = "wayvia-merge-recovery-20261015"
++IMAGE = "wayvia-merge-systemd:20261015"
+ 
+ 
+ def clean():
+--- scripts/transaction_lab.py
++++ scripts/transaction_lab.py
+@@ -17,10 +17,10 @@
+ from wayvia.config import WayviaConfig, example_config
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-NETWORK = "wayvia-transaction-disposable"
+-NAMES = {role: "wayvia-transaction-" + role for role in ("ingress", "exit", "target")}
++NETWORK = "wayvia-merge-network-20261015"
++NAMES = {role: "wayvia-merge-20261015-" + role for role in ("ingress", "exit", "target")}
+ LABEL = "org.wayvia.disposable=transaction"
+-IMAGE = "wayvia-transaction:locked"
++IMAGE = "wayvia-merge-transaction:20261015"
+ 
+ 
+ def command(argv, *, timeout=300, check=True):
+@@ -376,7 +376,7 @@
+                     NETWORK,
+                     "--entrypoint",
+                     "python3",
+-                    "wayvia-lab:locked",
++                    "wayvia-merge-lab:20261015",
+                     "-c",
+                     "import os,socket; "
+                     "address=socket.gethostbyname(socket.gethostname()); "
+--- deploy/lab/Dockerfile.systemd
++++ deploy/lab/Dockerfile.systemd
+@@ -1,4 +1,4 @@
+-FROM wayvia-lab:locked
++FROM wayvia-merge-lab:20261015
+ ENV DEBIAN_FRONTEND=noninteractive
+ RUN apt-get update && apt-get install -y --no-install-recommends systemd=255.4-1ubuntu8.17 systemd-sysv=255.4-1ubuntu8.17 && rm -rf /var/lib/apt/lists/*
+ RUN /opt/wayvia-lab-python/bin/python -c "import site,pathlib; pathlib.Path(site.getsitepackages()[0], 'wayvia-lab.pth').write_text('/workspace/src\n')"
+--- deploy/lab/Dockerfile.transaction
++++ deploy/lab/Dockerfile.transaction
+@@ -1,4 +1,4 @@
+-FROM wayvia-lab-systemd:locked
++FROM wayvia-merge-systemd:20261015
+ ENV DEBIAN_FRONTEND=noninteractive
+ RUN apt-get update && apt-get install -y --no-install-recommends netcat-openbsd && rm -rf /var/lib/apt/lists/*
+ RUN /opt/wayvia-lab-python/bin/pip install uv==0.9.7

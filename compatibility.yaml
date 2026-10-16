@@ -1,6 +1,32 @@
 schema_version: 1
 resolved_at: '2026-10-15'
 latest_fix:
+  date: '2026-10-15'
+  timezone: America/Los_Angeles
+  integration_base: cb2676bba916c734fa5765cd8a03b2b3b20f946c
+  target_branches: [main, QOKIK]
+  status: software_and_full_isolated_arm64_acceptance_passed
+  behavior: bounded_read_only_v2raya_startup_wait_for_apply_and_rollback; explicit_ubuntu_ports_snapshot_mapping_for_empty_APT_indexes
+  focused_tests: 9_readiness_and_18_nft_baseline_passed; two_delayed_restart_cases_failed_before_fix
+  gates:
+    check: passed_325_tests_3_existing_deprecation_warnings_format_lint_build_cli
+    demo: passed_simulated_exit_0
+    test_configs: passed_10_artifacts_on_rebuilt_snapshot_image
+    test_lab: passed_clean_APT_layers_23_core_23_transactions_7_protocol_6_DNS_12_conflict_2_recovery_cases_plus_TUN_and_executor
+    cleanup: passed_task_resources_removed_preexisting_experiments_unchanged
+  delayed_carrier_regression:
+    injected_seconds: 4
+    observed_seconds: [4.009317, 4.007561, 4.001168, 4.002643]
+    listener_sequence: [443, 8443, 9443, 8443, 443]
+    result: both_updates_and_both_rollbacks_restored_authenticated_paths
+  ci: clean_amd64_and_arm64_full_lab_matrix_required; post_push_results_attached_to_commit_in_GitHub_Actions
+  real_deployment_acceptance: not_executed_M6
+  evidence:
+  - docs/validation/main-carrier-readiness-2026-10-15/README.md
+  - docs/validation/main-carrier-readiness-2026-10-15/summary.json
+  - docs/validation/main-carrier-readiness-2026-10-15/installed-source.json
+  - docs/validation/main-carrier-readiness-2026-10-15/snapshot-runtime-versions.json
+previous_nft_and_snapshot_fix:
   date: '2026-10-14'
   branch: QOKIK
   status: implemented; follow_up_unknown_types_rejected; ubuntu_apt_snapshot_clean_build_and_lab_passed_wsl_cwd_entrypoint_issue
@@ -39,17 +65,20 @@ systems:
     status: nonprivileged_only
   lab:
     docker: 29.5.2
-    architecture: amd64
-    kernel: 6.18.54.1-microsoft-standard-WSL2
+    architecture: arm64
+    kernel: 6.8.0-117-generic
     base_image: ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55
     apt_snapshot_id: 20261014T064100Z
     apt_snapshot_config: deploy/lab/Dockerfile
+    arm64_snapshot_mapping: explicit_ports.ubuntu.com_to_snapshot.ubuntu.com_ubuntu
     isolation: disposable_none_network_namespaces_and_internal_dual_role_private_cgroups
-    os: Ubuntu 24.04.5 LTS
+    os: Ubuntu 24.04 LTS
     python: 3.12.3
-    status: clean_images_and_full_lab_passed; make_test_lab_repo_cwd_issue
-    scope: current_working_tree_amd64_WSL2; isolated_lab_passed; no_real_deployment_acceptance
+    status: clean_images_and_full_lab_passed_in_disposable_Linux_containers
+    scope: current_integration_source_arm64_Colima; historical_amd64_WSL2_evidence_retained; no_real_deployment_acceptance
     evidence:
+    - docs/validation/main-carrier-readiness-2026-10-15/summary.json
+    - docs/validation/main-carrier-readiness-2026-10-15/snapshot-runtime-versions.json
     - docs/validation/status-review-2026-10-12/summary.json
     - docs/validation/status-review-2026-10-12/lab/transaction-result.json
     - docs/validation/fixes-2026-10-12/final-lab/lab-result.json

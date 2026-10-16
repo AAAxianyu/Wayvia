@@ -11,6 +11,7 @@
 - Ubuntu 24.04 实验镜像固定使用 Ubuntu 官方 APT Snapshot Service 的快照 `20261014T064100Z`。
 - 先从 Ubuntu 官方签名的普通 HTTP 仓库安装 `ca-certificates`，再由 `deploy/lab/Dockerfile` 写入 `/etc/apt/apt.conf.d/50snapshot`。快照服务使用 HTTPS；CA 证书先行安装，使 APT 能验证快照服务的 TLS 证书。
 - 固定 APT 快照配置随基础镜像传递，让 systemd 派生镜像和事务派生镜像也从同一快照解析包。
+- 显式配置 `ports.ubuntu.com` 到 `https://snapshot.ubuntu.com/ubuntu/@SNAPSHOTID@/` 的主机映射。锁定镜像中的 APT 2.8.3 默认只配置 archive/security 主机映射；arm64 清空索引后，首次更新无法借助旧 Release 元数据发现快照。只写 `APT::Snapshot` 会先读取实时索引，随后的安装却找不到固定快照中的包。CA 引导后主动清空索引再更新，并在 amd64、arm64 CI 中均从基础镜像构建和运行完整实验，防止热索引或单一架构掩盖回归。
 - 继续保留关键包的精确版本约束。快照固定依赖集合，包版本约束表达实验要求；两者共同避免“固定顶层包但依赖来自另一时点”的不一致。
 - 更新快照时，先确认锁定包在新快照中可用，再在干净 Linux 环境完整运行 `make test-lab`。安全更新通过有审查的快照更新进入构建，而不是隐式跟随实时仓库。
 

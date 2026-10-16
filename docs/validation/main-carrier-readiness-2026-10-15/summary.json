@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "scope": "software_and_disposable_arm64_Linux; not_real_deployment_acceptance",
+  "integration_base": "cb2676bba916c734fa5765cd8a03b2b3b20f946c",
+  "commands": {
+    "make check": {
+      "exit_code": 0,
+      "log": "make-check-final.log"
+    },
+    "make demo": {
+      "exit_code": 0,
+      "log": "make-demo.log"
+    },
+    "make test-configs": {
+      "exit_code": 0,
+      "log": "make-test-configs-final.log"
+    },
+    "make test-lab": {
+      "exit_code": 0,
+      "log": "make-test-lab.log"
+    },
+    "make clean-lab": {
+      "exit_code": 0,
+      "log": "cleanup.log"
+    }
+  },
+  "software_tests": 325,
+  "focused_readiness_tests": 9,
+  "focused_nft_baseline_tests": 18,
+  "config_artifacts": 10,
+  "isolated_results": {
+    "executor-result.json": {
+      "status": "passed",
+      "case_count": null
+    },
+    "lab-result.json": {
+      "status": "passed",
+      "case_count": 23
+    },
+    "mihomo-dns-result.json": {
+      "status": "passed",
+      "case_count": 6
+    },
+    "preflight-conflicts-result.json": {
+      "status": "passed",
+      "case_count": 12
+    },
+    "protocol-result.json": {
+      "status": "passed",
+      "case_count": 7
+    },
+    "recovery-result.json": {
+      "status": "passed",
+      "case_count": 2
+    },
+    "transaction-result.json": {
+      "status": "passed",
+      "case_count": 23
+    },
+    "tun-ready-result.json": {
+      "status": "passed",
+      "case_count": null
+    }
+  },
+  "delayed_carrier": {
+    "predecessor": "14f9cf656a9447c6b6b35892505a6a59",
+    "successor": "fa0c01e3c7b24d13b1c47324bd9d6f03",
+    "third": "8606783a90a84c749180cee9462433f8",
+    "listener_sequence": [
+      443,
+      8443,
+      9443,
+      8443,
+      443
+    ],
+    "observed_start_delays_seconds": [
+      4.009317,
+      4.007561,
+      4.001168,
+      4.002643
+    ],
+    "carrier_api_start_delay_seconds": 4,
+    "delayed_apply_and_both_rollbacks_passed": true,
+    "stale_monitor_preserved_unconfirmed_listener": true,
+    "both_predecessors_restored_authenticated_path": true,
+    "replaced_listeners_closed": true
+  },
+  "first_full_gate": {
+    "exit_code": 2,
+    "reason": "arm64_empty_index_snapshot_discovery_missing_ports_host_mapping",
+    "evidence": "first-full-gate-failure/make-test-lab.log"
+  },
+  "cleanup": "cleanup-verification.json",
+  "versions": "snapshot-runtime-versions.json",
+  "ci_policy": "clean_amd64_and_arm64_matrix_in_workflow; post_push_runs_linked_to_commit",
+  "M6": "not_executed",
+  "M7": "not_implemented_or_accepted"
+}

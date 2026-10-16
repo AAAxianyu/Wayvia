@@ -16,6 +16,8 @@ CLI/API 只访问本机 Unix socket。agent 通过 Linux `SO_PEERCRED` 核实 ro
 
 v2rayA 使用专属 Wayvia 实例，版本 2.5.10、匹配的 `v2raya_core` 2.5.10。通过官方公开 `/api/version`、`account/login`、`ports`、`setting`、`import`、`outboundConnections`、`v2ray` 操作；不修改数据库。必须检查响应 `code=SUCCESS`，HTTP 200 不能代替成功判断。关闭透明代理和 DNS 劫持；离线 geoip/geosite 数据来自已锁定、校验过的资产。官方该版本要求自己的同版本 core，不能替换成 v2fly-core 或 xray。域名 carrier 通过配置中的独立 numeric UDP/TCP bootstrap resolver 显式解析，然后导入数字 IP，同时保留原有 TLS SNI。IP carrier 无 DNS 依赖；当前该适配器不支持 HTTPS bootstrap，明确返回 unsupported，绝不退回系统 DNS。
 
+2026-10-15 启动等待修正：systemd 的 active 不代表 v2rayA 管理 API 已监听。首次应用和恢复均先在 30 秒单调时钟预算内轮询只读 `/api/version`，单次 HTTP 各阶段超时不超过 2 秒且按剩余预算收缩；成功响应也必须在截止前到达。仅连接／传输不可用可以重试，错误响应、非法 JSON、版本／核心不兼容立即失败；就绪后才执行账户和配置写入，写入不自动重试。超时继续抛出 `V2RAYA_UNAVAILABLE`，由原事务恢复和阻断逻辑处理。软件回归覆盖延迟、永久不可用、慢读和终止错误；正式安装实验通过 systemd ExecStart 包装器延迟真实进程 4 秒，覆盖两次入口更新及连续两次回退。
+
 真实 sing-box 使用固定 1.14.3 的 `check -c`。OpenVPN 2.6.19 无 TLS 配置 dry-run；`--test-crypto` 不证明 TLS 配置有效。完整 TLS 校验要求明确的 `wayvia-validation` 隔离 namespace 和受控对端，以真实初始化标记为证据，停止并回收验证进程。普通配置读取与计划预览不启动 VPN。
 
 缺少探针输入时计划保留明确 `unsupported` 条目，apply 拒绝执行。每层只能用相应实际探针：接入 TCP、承载 TCP、TUN 路由、实际出口 HTTP 响应、DNS 查询、IPv6 保护、宿主回程路由。七个层标签不能都用 service-active 冒充网络健康；这些部署探针仍与一次性全链实验及手机实网验收分别记录。

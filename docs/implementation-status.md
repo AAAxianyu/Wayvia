@@ -1,16 +1,18 @@
 # Wayvia 实现与验收状态
 
-更新：2026-10-15（Asia/Shanghai）。当前分支 `QOKIK`，nftables fail-closed 补充修复已提交并推送；APT 快照锁定修复在本地工作区，未提交。
+更新：2026-10-15（America/Los_Angeles）。以 QOKIK `cb2676b` 合入 main 后的源码为基础，补齐 v2rayA 启动等待与 arm64 APT 快照冷索引问题；修复在 `codex/qokik-main-integration-20261015` 开发，交付目标为 main 和同步后的 QOKIK。
 
 ## 当前结论
 
-Linux 执行器对 `guard` 与 `exit_nat` 使用 nftables JSON 结构计算基线，忽略动态 `packets` / `bytes` 与 nft 分配的对象 `handle`，完整文本快照仍用于回退。本次补充限制可接受的顶层对象类型；目标表中出现未知类型时返回 `BASELINE_INVALID`，阻止计划继续。
+nftables 基线已忽略实时计数和对象句柄，同时拒绝未知顶层对象；完整回退快照保持不变。v2rayA 的首次应用和恢复共用有截止时间的只读就绪检查，错误响应与版本不符立即失败，配置写入不自动重试。Ubuntu 快照保留 `20261014T064100Z` 和 systemd `.17` 精确版本，新增 `ports.ubuntu.com` 快照映射，解决 arm64 派生镜像清空 APT 索引后找不到包的问题。
 
-新增回归用例先确认旧行为会接受未知对象，再验证修复后拒绝。Python 3.12.3 下专项测试 18 项通过；`make check` 316 项通过，格式、lint、sdist/wheel 构建和 CLI help 通过（3 项弃用警告）。`make demo` 与 `make test-configs`（10 项）通过。完整 Linux 实验使用已有锁定镜像运行通过（23 项核心与 23 项事务）；标准 `make test-lab` 的干净镜像重建因 Ubuntu 仓库将 systemd 更新至 `1ubuntu8.18`、而 Dockerfile 固定 `1ubuntu8.17` 而失败。真实 nftables 执行器探针独立通过。证据见[本次补充验证摘要](validation/baseline-counter-fix-2026-10-15/summary.md)和[前次计数器修复验证](validation/baseline-counter-fix-2026-10-14/summary.md)。
+本轮 `make check` 325 项通过（3 项已有弃用警告），格式、lint、sdist/wheel 与 CLI help 通过；`make demo` 通过；`make test-configs` 10 项通过。使用新构建的 arm64 基础/systemd 镜像，`make test-lab` 完整退出 0：23 项核心链路、23 项正式事务、7 项协议、6 项 DNS、12 项内核冲突、2 项独立恢复，以及 TUN 与 nft 执行器回归通过。真实 v2rayA 进程四次延迟约 4.001–4.009 秒，仍完成 `443→8443→9443→8443→443` 两次更新及连续两次回退；容器安装代码摘要与本次源码一致。
 
-本次隔离实验不代表真实服务器部署验收；M6 尚未执行，OpenWrt M7 尚未实现／验收。
+已把隔离 Linux CI 扩展至 amd64 和 arm64，每次均执行完整实验和冷索引镜像构建。推送后的 CI 结果以对应提交的 GitHub Actions run 为准。本轮第一次完整验收的失败记录、修正后的全部日志、版本和隔离清理证明见[合并与补充修复验收](validation/main-carrier-readiness-2026-10-15/README.md)。历史 316 项软件测试及 WSL 构建记录保留，不能当作本轮结果。
 
-## 2026-10-15 CI 镜像重建失败跟进
+上述是软件和一次性 Linux 容器验收；M6 真实服务器与设备部署尚未执行，OpenWrt M7 尚未实现／验收。
+
+## 2026-10-15 首次 APT 快照修复记录（历史）
 
 GitHub Actions 的 `software` job 通过；原 `isolated-linux` 在 systemd 实验镜像干净重建时因 Ubuntu 在线依赖版本不一致而失败。已在基础实验镜像 Dockerfile 中固定 Ubuntu APT 快照 `20261014T064100Z`，派生 systemd 与事务镜像继承该设置；关键包精确版本 pin 保留。2026-10-15 干净基础/systemd 镜像构建通过，完整隔离实验从 WSL `/tmp` 启动退出码为 0。根因跟进发现：容器向 D 盘 bind mount 写验证证据后，WSL 的 `/mnt/d` cwd 路径解析失效；从 Linux 文件系统目录启动可通过。详见[APT 快照锁定摘要](validation/apt-snapshot-lock-2026-10-15/summary.md)。
 
@@ -48,7 +50,7 @@ GitHub Actions 的 `software` job 通过；原 `isolated-linux` 在 systemd 实�
 | M1 | 策略编译、7511 APNIC CIDR、110185 国内域名；sing-box/mihomo 完整配置；mihomo 真实 6 项重叠 DNS 行为通过 | 校园真实规则和手机应用导入仍属 M6 |
 | M2 | SQLite/私密凭据、设备新增轮换撤销、私人订阅；轮换中断可重试；显式双角色版本发布与持久快照 | 正式 API→订阅→真实入口已验证；不宣称跨主机原子提交 |
 | M3 | 真实代理/VPN适配、固定 Linux 动作、事务日志、current/predecessor、凭据检查点、回退与恢复、带期限诊断 | 时间边界及崩溃注入用软件回归；真实 timer/内核/协议另有隔离证据 |
-| M4 | 本轮 23 项双层路径、7 项协议、12 项资源冲突、6 项 DNS、TUN、executor、timer/recover 通过；历史正式安装事务有 23 项通过记录 | 本轮全量在第二代入口更新返回 BASELINE_CHANGED，M4 门禁未通过；跨版本升级与整机重启仍需专门验收 |
+| M4 | 本轮 23 项双层路径、23 项正式事务、7 项协议、12 项资源冲突、6 项 DNS、TUN、executor、timer/recover 全部通过；实际 4 秒延迟下两次更新和连续回退通过 | 软件与 arm64 隔离门禁通过；跨版本升级、真实整机重启和手机实网仍需专门验收 |
 | M5 | 安装 journal、账户创建意图、生命周期锁、所有权清理、备份保留、统一 wayvia-system/控制目录和运维文档 | 实际安装/重装/卸载在专用临时容器执行，未操作真实服务器 |
 | M6 | 未执行 | 两台授权主机、生产域名证书、手机导入与切网、完整重启、性能费用 |
 | M7 | 未实现／未验收 | 指定 OpenWrt 设备、固件、透明接管与避免重复代理 |

@@ -1,0 +1,10 @@
+{
+  "wayvia.adapters.linux": {
+    "path": "/opt/wayvia/.venv/lib/python3.12/site-packages/wayvia/adapters/linux/__init__.py",
+    "sha256": "f43862558db68891610a801b7b313b7f76acf82773a11af6c8337070bcc124a8"
+  },
+  "wayvia.adapters.v2raya": {
+    "path": "/opt/wayvia/.venv/lib/python3.12/site-packages/wayvia/adapters/v2raya/__init__.py",
+    "sha256": "b7398800bd174b724bbb68d959a5a0a52ab1ebb248e30e310b50f312f7218c7e"
+  }
+}
