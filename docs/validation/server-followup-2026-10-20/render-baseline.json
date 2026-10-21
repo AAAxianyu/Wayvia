@@ -1,0 +1,16 @@
+{
+  "load_example_config": 0.221228,
+  "published_snapshot_validation": 0.082589,
+  "policy_compile": 0.016061,
+  "mihomo_build": 0.15137,
+  "pure_safe_yaml_dump": 4.329641,
+  "C_safe_yaml_dump": 1.477957,
+  "profile_bytes": 9207575,
+  "bytes_equal": true,
+  "semantics_equal": true,
+  "yaml_version": "6.0.3",
+  "libyaml": true,
+  "rules": 117712,
+  "nameserver_policy": 110188,
+  "scope": "local_full_example_rules_synthetic_credential_no_network"
+}

@@ -571,3 +571,45 @@ android_routing_speed_2026_10_20:
   real_fault_and_reboot: deferred_by_user
   production_configuration_changes: none
   evidence: docs/validation/android-routing-speed-2026-10-20/summary.json
+
+server_followup_2026_10_20:
+  date: '2026-10-20'
+  base_commit: 07ba4ff303334170ddfd96f2774df47754fffece
+  branch: codex/server-followup-20261020
+  software_version: 0.1.0
+  wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
+  software: 357_tests_demo_and_10_locked_config_checks_passed
+  full_test_lab: explicitly_deferred_by_user_not_run_for_this_patch
+  real_fault_and_reboot_tests: explicitly_deferred_by_user
+  stability:
+    historical_window_hours: 16.35
+    ingress_monitor_samples: 3708
+    ingress_degraded_episodes: 9
+    exit_monitor_samples: 3728
+    exit_degraded_episodes: 2
+    proven_false_negative: completed_valid_HTTP_response_overridden_by_relay_close_reset
+    candidate_business_probes: 100_of_100_passed
+    deployed_business_probes: 100_of_100_passed
+    unresolved: actual_HTTP_DNS_timeouts_and_long_term_postfix_stability
+  subscription:
+    serializer: PyYAML_6.0.3_CSafeDumper_with_SafeDumper_fallback
+    same_host_TLS_median_TTFB_seconds_before: 12.970733
+    same_host_TLS_median_TTFB_seconds_after: 4.217511
+    response_bytes_unchanged: true
+    final_response_cache: false
+    measurement_is_phone_acceptance: false
+  install_permissions:
+    disposable_Linux: Ubuntu_24.04_Python_3.12.3_uv_0.9.7
+    caller_umask: '077'
+    normal_fresh_and_same_version_reinstall: passed
+    fresh_service_identity_API: HTTP_200
+    secret_modes: '0700_directories_0600_files_preserved'
+    historical_bad_venv: explicit_runtime_unreadable_requires_owned_runtime_review
+    real_hosts_permission_audit: passed_read_only
+  deployment:
+    hosts: both_previously_authorized_hosts
+    only_API_reloaded: true
+    dataplane_agent_monitor_nginx_and_default_routes: unchanged
+    generations_and_logical_config: unchanged
+  evidence: docs/validation/server-followup-2026-10-20/README.md
+  versions: docs/validation/server-followup-2026-10-20/source-and-versions.json

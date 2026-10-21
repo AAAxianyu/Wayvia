@@ -1,0 +1,50 @@
+{
+  "observed_at_utc": "2026-10-21T02:35:36.363393+00:00",
+  "scope": "Ali_host_HTTPS_9443_existing_private_Mihomo_subscription_no_mutation",
+  "samples": [
+    {
+      "http_code": 200,
+      "time_connect": 0.004099,
+      "time_appconnect": 0.042611,
+      "time_starttransfer": 13.493649,
+      "time_total": 15.145327,
+      "size_download": 1152404,
+      "speed_download": 76089,
+      "ssl_verify_result": 0,
+      "uncompressed_bytes": 9207514,
+      "body_sha256": "85ce9add1f64833f0da562cfb85b145b8c97f6368dc52d7de58148d113cecd94",
+      "gzip": true,
+      "no_store_private": true
+    },
+    {
+      "http_code": 200,
+      "time_connect": 0.00372,
+      "time_appconnect": 0.053744,
+      "time_starttransfer": 14.640175,
+      "time_total": 16.463692,
+      "size_download": 1152606,
+      "speed_download": 70008,
+      "ssl_verify_result": 0,
+      "uncompressed_bytes": 9207514,
+      "body_sha256": "85ce9add1f64833f0da562cfb85b145b8c97f6368dc52d7de58148d113cecd94",
+      "gzip": true,
+      "no_store_private": true
+    },
+    {
+      "http_code": 200,
+      "time_connect": 0.003832,
+      "time_appconnect": 0.04221,
+      "time_starttransfer": 12.769805,
+      "time_total": 14.92233,
+      "size_download": 1152606,
+      "speed_download": 77240,
+      "ssl_verify_result": 0,
+      "uncompressed_bytes": 9207514,
+      "body_sha256": "85ce9add1f64833f0da562cfb85b145b8c97f6368dc52d7de58148d113cecd94",
+      "gzip": true,
+      "no_store_private": true
+    }
+  ],
+  "median_ttfb_seconds": 13.493649,
+  "median_total_seconds": 15.145327
+}

@@ -56,10 +56,10 @@ def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def run(argv, *, env=None, check=True):
+def run(argv, *, env=None, check=True, umask=-1):
     try:
         result = subprocess.run(
-            argv, capture_output=True, text=True, env=env, check=False, timeout=300
+            argv, capture_output=True, text=True, env=env, check=False, timeout=300, umask=umask
         )
     except (OSError, subprocess.TimeoutExpired):
         raise InstallError(
@@ -438,6 +438,7 @@ def write_layout(root, payloads, components, version, arch, api_uid, system):
             retained[relative] = previous["files"][relative]
     backup_path = backup(root, previous) if previous else None
     for relative, mode in {
+        "opt/wayvia": 0o755,
         "etc/wayvia": 0o700,
         "etc/wayvia/secrets": 0o700,
         "var/lib/wayvia": 0o750,
@@ -621,6 +622,52 @@ def service_account(root: Path = Path("/")):
         return user
 
 
+def install_runtime(uv: str, wheel: str):
+    """Public package files are readable independently of the caller's secret umask."""
+    env = os.environ.copy()
+    env["UV_PROJECT_ENVIRONMENT"] = "/opt/wayvia/.venv"
+    env["UV_PYTHON_DOWNLOADS"] = "never"
+    run(
+        [
+            uv,
+            "sync",
+            "--locked",
+            "--no-dev",
+            "--no-install-project",
+            "--project",
+            "/opt/wayvia/source",
+            "--python",
+            "python3.12",
+        ],
+        env=env,
+        umask=0o022,
+    )
+    run(
+        [
+            uv,
+            "pip",
+            "install",
+            "--no-deps",
+            "--reinstall-package",
+            "wayvia",
+            "--python",
+            "/opt/wayvia/.venv/bin/python",
+            wheel,
+        ],
+        umask=0o022,
+    )
+    readable = run(
+        ["runuser", "-u", "wayvia", "--", "/opt/wayvia/.venv/bin/wayvia", "--version"],
+        check=False,
+    )
+    if readable.returncode:
+        raise InstallError(
+            "runtime_unreadable",
+            "Installed runtime is not executable by wayvia; review existing runtime permissions",
+            5,
+        )
+
+
 def system_install(args) -> dict:
     system_preflight(args.uv)
     actual_arch = {"aarch64": "arm64", "x86_64": "amd64"}.get(platform.machine())
@@ -641,35 +688,7 @@ def system_install(args) -> dict:
         system=True,
     )
     installed_manifest = json.loads((Path("/") / MANIFEST).read_text())
-    env = os.environ.copy()
-    env["UV_PROJECT_ENVIRONMENT"] = "/opt/wayvia/.venv"
-    env["UV_PYTHON_DOWNLOADS"] = "never"
-    run(
-        [
-            args.uv,
-            "sync",
-            "--locked",
-            "--no-dev",
-            "--no-install-project",
-            "--project",
-            "/opt/wayvia/source",
-            "--python",
-            "python3.12",
-        ],
-        env=env,
-    )
-    run(
-        [
-            args.uv,
-            "pip",
-            "install",
-            "--no-deps",
-            "--python",
-            "/opt/wayvia/.venv/bin/python",
-            installed_manifest["wheel"],
-        ]
-    )
-    run(["/opt/wayvia/.venv/bin/wayvia", "--version"])
+    install_runtime(args.uv, installed_manifest["wheel"])
     control = Path("/var/lib/wayvia/control")
     if not (control / "config.yaml").exists():
         run(["/opt/wayvia/.venv/bin/wayvia", "--data-dir", str(control), "init"])

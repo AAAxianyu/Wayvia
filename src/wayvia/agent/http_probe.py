@@ -43,35 +43,45 @@ def observe_http(payload, *, connect=None):
         retry = False
         code = None
         status = None
+        result = None
+        transport_closed_after_response = False
         try:
-            with connect(budget) as proxy:
-                result = subprocess.run(
-                    [
-                        "curl",
-                        "--disable",
-                        "--silent",
-                        "--show-error",
-                        "--fail",
-                        "--noproxy",
-                        "",
-                        "--proxy",
-                        "",
-                        *proxy,
-                        "--proto",
-                        "=http,https",
-                        "--max-filesize",
-                        "16384",
-                        "--max-time",
-                        str(budget),
-                        "--write-out",
-                        "\n%{http_code}",
-                        "--",
-                        url,
-                    ],
-                    capture_output=True,
-                    timeout=budget,
-                    check=False,
-                )
+            try:
+                with connect(budget) as proxy:
+                    result = subprocess.run(
+                        [
+                            "curl",
+                            "--disable",
+                            "--silent",
+                            "--show-error",
+                            "--fail",
+                            "--noproxy",
+                            "",
+                            "--proxy",
+                            "",
+                            *proxy,
+                            "--proto",
+                            "=http,https",
+                            "--max-filesize",
+                            "16384",
+                            "--max-time",
+                            str(budget),
+                            "--write-out",
+                            "\n%{http_code}",
+                            "--",
+                            url,
+                        ],
+                        capture_output=True,
+                        timeout=budget,
+                        check=False,
+                    )
+            except ConnectionError:
+                if result is None:
+                    raise
+                # Curl has completed. A relay close/reset during teardown must not
+                # replace its result; TLS, status, identity and deadline checks below
+                # still decide success. In particular, curl TLS failures stay fatal.
+                transport_closed_after_response = True
             code = result.returncode
             body, status_text = result.stdout.decode("utf-8").rsplit("\n", 1)
             status = int(status_text)
@@ -105,6 +115,11 @@ def observe_http(payload, *, connect=None):
                 "curl_code": code,
                 "http_status": status,
                 "result": error or "healthy",
+                **(
+                    {"transport_closed_after_response": True}
+                    if transport_closed_after_response
+                    else {}
+                ),
             }
         )
         if not error:

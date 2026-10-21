@@ -1,0 +1,319 @@
+{
+  "since": "2026-10-20 13:50:00 UTC",
+  "until": "2026-10-20 23:30:00 UTC",
+  "network_and_vpn_events": [
+    {
+      "at": "2026-10-20T14:00:20.177543+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T14:00:20.182515+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T14:00:32.432886+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T14:00:32.433437+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T14:00:34.434968+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T14:00:42.527069+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T14:00:42.529138+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T14:00:42.529138+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T14:01:21.561356+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T14:01:21.571433+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T14:01:23.849892+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T14:01:23.849892+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T14:01:25.852591+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T14:01:26.852739+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T14:01:26.855206+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T14:01:26.855206+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T15:32:00.102104+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T15:32:00.106602+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T15:32:02.109695+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T15:32:04.282610+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T15:32:04.284276+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T15:32:04.284276+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:26:37.023761+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T20:26:37.030383+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T20:26:39.033748+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T20:26:41.305781+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:26:41.309422+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T20:26:41.309422+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:28:07.293174+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T20:28:07.300810+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T20:28:09.303900+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T20:28:11.610241+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:28:11.611857+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T20:28:11.611857+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:28:12.053538+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:28:12.055854+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T20:28:12.056211+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:28:38.215077+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T20:28:38.221246+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T20:28:40.224018+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T20:28:42.290263+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T20:28:42.292304+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T20:28:42.292304+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T22:10:29.014641+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T22:10:29.022505+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T22:10:31.025947+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T22:10:33.565520+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T22:10:33.567349+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T22:10:33.567349+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T22:59:43.366471+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T22:59:43.372476+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T22:59:45.375262+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T22:59:47.656590+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T22:59:47.659647+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T22:59:47.659647+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T23:23:47.107774+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_reset"
+    },
+    {
+      "at": "2026-10-20T23:23:47.113553+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T23:23:49.116717+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_restart"
+    },
+    {
+      "at": "2026-10-20T23:23:51.609041+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    },
+    {
+      "at": "2026-10-20T23:23:51.611181+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_established"
+    },
+    {
+      "at": "2026-10-20T23:23:51.611181+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "ping_restart_reference_not_a_failure_count"
+    }
+  ],
+  "kernel_category_counts": {
+    "oom": 0,
+    "link_drop": 0,
+    "conntrack_full": 0,
+    "soft_lockup": 0
+  },
+  "historical_cpu_metrics_available": true,
+  "categorization_note": "The broad ping-restart match includes timer configuration lines; do not count those entries as inactivity failures. Precise unit inactivity categorization is in stability-*.json."
+}

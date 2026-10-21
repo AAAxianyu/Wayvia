@@ -1,0 +1,25 @@
+{
+  "modes": {
+    "/opt/wayvia": "0o755",
+    "/opt/wayvia/.venv": "0o755",
+    "/opt/wayvia/.venv/lib/python3.12/site-packages/wayvia": "0o755",
+    "/etc/wayvia": "0o700",
+    "/etc/wayvia/secrets": "0o700",
+    "/etc/wayvia/agent.env": "0o600",
+    "/var/lib/wayvia": "0o750",
+    "/var/lib/wayvia/control": "0o700",
+    "/var/lib/wayvia/control/config.yaml": "0o600",
+    "/var/lib/wayvia/control/secrets": "0o700"
+  },
+  "service_identity_CLI": true,
+  "server_private_keys": {
+    "count": 3,
+    "all_root_0600": true,
+    "none_readable_by_API": true
+  },
+  "control_secrets": {
+    "count": 2,
+    "all_service_uid_0600": true,
+    "none_readable_by_nobody": true
+  }
+}

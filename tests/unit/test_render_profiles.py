@@ -13,6 +13,18 @@ def config():
     return WayviaConfig.model_validate(example_config())
 
 
+def test_safe_yaml_acceleration_and_fallback_preserve_profile(config, monkeypatch):
+    renderer = ProfileRenderer(config)
+    password = "false: '\n日本 !!python/object:example # [value]"
+    expected = renderer._mihomo(password)
+    fast = renderer.render({"id": "one"}, password, "mihomo")
+    monkeypatch.delattr(yaml, "CSafeDumper", raising=False)
+    fallback = renderer.render({"id": "one"}, password, "mihomo")
+    loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+    assert yaml.load(fast, Loader=loader) == expected
+    assert yaml.load(fallback, Loader=loader) == expected
+
+
 @pytest.mark.parametrize("format", ProfileRenderer.supported_formats)
 def test_complete_profile_has_only_terminal_credentials(config, format):
     device = {

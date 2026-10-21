@@ -1,0 +1,13 @@
+{
+  "scope": "disposable_Linux_no_network_no_services_no_fault_injection",
+  "umask": "077",
+  "before_fix_service_identity_exit": 1,
+  "before_fix_permission_denied": true,
+  "modes": {
+    "opt/wayvia": "0o700",
+    "opt/wayvia/.venv": "0o700",
+    "opt/wayvia/.venv/lib/python3.12/site-packages/wayvia": "0o700"
+  },
+  "uv": "uv 0.9.7",
+  "python": "3.12.3"
+}

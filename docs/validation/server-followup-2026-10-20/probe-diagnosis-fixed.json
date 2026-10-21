@@ -1,0 +1,36 @@
+{
+  "scope": "100_read_only_business_probes_no_monitor_mutation_or_fault_injection",
+  "samples": 100,
+  "elapsed_seconds": 21.459910046309233,
+  "exception_or_fallback_samples": [
+    {
+      "sample": 53,
+      "result": {
+        "healthy": true,
+        "check": "authenticated_ingress_business_path",
+        "attempts": [
+          {
+            "endpoint": 0,
+            "duration_ms": 188,
+            "curl_code": 0,
+            "http_status": 200,
+            "result": "healthy",
+            "transport_closed_after_response": true
+          }
+        ]
+      },
+      "sequence": [
+        {
+          "curl_code": 0,
+          "http_status": 200,
+          "valid_identity": true
+        },
+        {
+          "relay_exception_type": "ConnectionResetError",
+          "errno": 104
+        }
+      ]
+    }
+  ],
+  "candidate_loaded_only_in_diagnostic_process": true
+}

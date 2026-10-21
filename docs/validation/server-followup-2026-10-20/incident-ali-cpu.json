@@ -1,0 +1,383 @@
+{
+  "scope": "UTC_historical_interval_averages_not_subsecond_incident_capture",
+  "rows": [
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "13:50:00",
+        "utc": 1,
+        "interval": 598
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.39,
+          "nice": 0.0,
+          "system": 1.59,
+          "iowait": 0.04,
+          "steal": 0.0,
+          "idle": 91.98
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 328,
+        "ldavg-1": 0.08,
+        "ldavg-5": 0.22,
+        "ldavg-15": 0.21,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "14:00:01",
+        "utc": 1,
+        "interval": 601
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.28,
+          "nice": 0.0,
+          "system": 1.53,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 92.15
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 332,
+        "ldavg-1": 0.12,
+        "ldavg-5": 0.16,
+        "ldavg-15": 0.17,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "14:10:03",
+        "utc": 1,
+        "interval": 602
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 7.81,
+          "nice": 0.31,
+          "system": 2.08,
+          "iowait": 0.46,
+          "steal": 0.0,
+          "idle": 89.33
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 327,
+        "ldavg-1": 0.18,
+        "ldavg-5": 0.23,
+        "ldavg-15": 0.2,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "20:20:10",
+        "utc": 1,
+        "interval": 602
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.37,
+          "nice": 0.0,
+          "system": 1.69,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 91.89
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 328,
+        "ldavg-1": 0.31,
+        "ldavg-5": 0.22,
+        "ldavg-15": 0.16,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "20:30:00",
+        "utc": 1,
+        "interval": 590
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 7.46,
+          "nice": 0.0,
+          "system": 1.97,
+          "iowait": 0.12,
+          "steal": 0.0,
+          "idle": 90.45
+        }
+      ],
+      "queue": {
+        "runq-sz": 3,
+        "plist-sz": 328,
+        "ldavg-1": 0.34,
+        "ldavg-5": 0.27,
+        "ldavg-15": 0.2,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "20:40:00",
+        "utc": 1,
+        "interval": 600
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.12,
+          "nice": 0.0,
+          "system": 1.53,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 92.3
+        }
+      ],
+      "queue": {
+        "runq-sz": 1,
+        "plist-sz": 329,
+        "ldavg-1": 0.29,
+        "ldavg-5": 0.2,
+        "ldavg-15": 0.18,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "22:00:03",
+        "utc": 1,
+        "interval": 601
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.39,
+          "nice": 0.0,
+          "system": 1.59,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 91.97
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 329,
+        "ldavg-1": 0.16,
+        "ldavg-5": 0.2,
+        "ldavg-15": 0.18,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "22:10:03",
+        "utc": 1,
+        "interval": 600
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.13,
+          "nice": 0.0,
+          "system": 1.5,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 92.33
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 329,
+        "ldavg-1": 0.11,
+        "ldavg-5": 0.12,
+        "ldavg-15": 0.15,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "22:20:05",
+        "utc": 1,
+        "interval": 602
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 8.34,
+          "nice": 0.9,
+          "system": 2.63,
+          "iowait": 1.65,
+          "steal": 0.0,
+          "idle": 86.47
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 328,
+        "ldavg-1": 0.13,
+        "ldavg-5": 0.14,
+        "ldavg-15": 0.17,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "22:50:06",
+        "utc": 1,
+        "interval": 601
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.19,
+          "nice": 0.0,
+          "system": 1.53,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 92.24
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 327,
+        "ldavg-1": 0.1,
+        "ldavg-5": 0.1,
+        "ldavg-15": 0.13,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "23:00:05",
+        "utc": 1,
+        "interval": 599
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.29,
+          "nice": 0.0,
+          "system": 1.6,
+          "iowait": 0.1,
+          "steal": 0.0,
+          "idle": 92.01
+        }
+      ],
+      "queue": {
+        "runq-sz": 0,
+        "plist-sz": 327,
+        "ldavg-1": 0.09,
+        "ldavg-5": 0.14,
+        "ldavg-15": 0.13,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "23:10:00",
+        "utc": 1,
+        "interval": 596
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.15,
+          "nice": 0.0,
+          "system": 1.54,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 92.27
+        }
+      ],
+      "queue": {
+        "runq-sz": 1,
+        "plist-sz": 328,
+        "ldavg-1": 0.18,
+        "ldavg-5": 0.17,
+        "ldavg-15": 0.15,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "23:20:02",
+        "utc": 1,
+        "interval": 602
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.24,
+          "nice": 0.0,
+          "system": 1.51,
+          "iowait": 0.05,
+          "steal": 0.0,
+          "idle": 92.2
+        }
+      ],
+      "queue": {
+        "runq-sz": 4,
+        "plist-sz": 328,
+        "ldavg-1": 0.28,
+        "ldavg-5": 0.21,
+        "ldavg-15": 0.18,
+        "blocked": 0
+      }
+    },
+    {
+      "timestamp": {
+        "date": "2026-10-20",
+        "time": "23:30:06",
+        "utc": 1,
+        "interval": 603
+      },
+      "cpu-load": [
+        {
+          "cpu": "all",
+          "user": 6.68,
+          "nice": 0.0,
+          "system": 1.71,
+          "iowait": 0.06,
+          "steal": 0.0,
+          "idle": 91.55
+        }
+      ],
+      "queue": {
+        "runq-sz": 4,
+        "plist-sz": 328,
+        "ldavg-1": 0.06,
+        "ldavg-5": 0.18,
+        "ldavg-15": 0.18,
+        "blocked": 0
+      }
+    }
+  ]
+}

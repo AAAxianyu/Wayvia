@@ -130,7 +130,11 @@ class ProfileRenderer:
         # The renderer never copies device/config dictionaries into the document.
         # Each protocol field is explicitly selected; server refs and carrier remain private.
         return (
-            _json(rendered) if format == "sing-box" else yaml.safe_dump(rendered, sort_keys=False)
+            _json(rendered)
+            if format == "sing-box"
+            else yaml.dump(
+                rendered, Dumper=getattr(yaml, "CSafeDumper", yaml.SafeDumper), sort_keys=False
+            )
         )
 
     def _sing_box(self, password: str) -> dict:

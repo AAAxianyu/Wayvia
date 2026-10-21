@@ -1,0 +1,25 @@
+[
+  {
+    "command": "make check",
+    "exit_code": 0,
+    "elapsed_seconds": 91.08,
+    "log": "check.log"
+  },
+  {
+    "command": "make demo",
+    "exit_code": 0,
+    "elapsed_seconds": 1.26,
+    "log": "demo.log"
+  },
+  {
+    "command": "make test-configs",
+    "exit_code": 0,
+    "elapsed_seconds": 21.33,
+    "log": "test-configs.log"
+  },
+  {
+    "command": "make test-lab",
+    "status": "explicitly_deferred_by_user",
+    "reason": "Includes fault and restart experiments; not run this phase. No current full-lab acceptance claimed."
+  }
+]

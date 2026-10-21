@@ -22,20 +22,21 @@ def control(tmp_path):
     )
 
 
-def test_independent_credentials_rotation_and_revocation(control):
+@pytest.mark.parametrize("format", ["sing-box", "mihomo"])
+def test_independent_credentials_rotation_and_revocation(control, format):
     first = control.add("first", "android")
     second = control.add("second", "ios")
     password = control.dataplane.accepted[first["id"]]
     assert password != control.dataplane.accepted[second["id"]]
-    sub = control.issue(first["id"], "sing-box")
-    assert password in control.fetch(sub["token"], "sing-box")
+    sub = control.issue(first["id"], format)
+    assert password in control.fetch(sub["token"], format)
     rotated = control.rotate(first["id"])
     assert rotated["credential_version"] == 2
-    assert password not in control.fetch(sub["token"], "sing-box")
+    assert password not in control.fetch(sub["token"], format)
     assert control.revoke_device(first["id"])["status"] == "revoked"
     assert first["id"] not in control.dataplane.accepted
     with pytest.raises(WayviaError, match="unavailable"):
-        control.fetch(sub["token"], "sing-box")
+        control.fetch(sub["token"], format)
     assert control.device(second["id"])["status"] == "active"
 
 

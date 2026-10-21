@@ -1,0 +1,18 @@
+{
+  "scope": "disposable_Linux_normal_install_runtime_no_external_network_fresh_unprivileged_API_no_fault_injection",
+  "umask": "077",
+  "fresh_service_identity_version": "0.1.0",
+  "same_version_rebuilt_wheel_installed": true,
+  "fresh_service_identity_API_health": 200,
+  "modes": {
+    "/opt/wayvia": "0o755",
+    "/opt/wayvia/.venv": "0o755",
+    "/opt/wayvia/.venv/lib/python3.12/site-packages/wayvia": "0o755",
+    "/etc/wayvia/secrets": "0o700",
+    "/etc/wayvia/agent.env": "0o600",
+    "/var/lib/wayvia/control": "0o700"
+  },
+  "caller_umask_unchanged": true,
+  "uv": "uv 0.9.7",
+  "python": "3.12.3"
+}

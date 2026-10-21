@@ -1,0 +1,19 @@
+{
+  "role": "ingress",
+  "mode": "apply",
+  "old_wheel_sha256": "2d76abb1ccd6c9eff7302995d0f55bfe67a8c6c2b5b48643c9ccac3becba502f",
+  "new_wheel_sha256": "6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31",
+  "independent_module_changes": [
+    "wayvia/agent/http_probe.py",
+    "wayvia/render/__init__.py"
+  ],
+  "generation_unchanged": "6f80275960ed46238f51691722e918b5",
+  "started_at_utc": "2026-10-21T02:37:53.628166+00:00",
+  "completed_at_utc": "2026-10-21T02:37:56.958783+00:00",
+  "API_health": 200,
+  "dataplane_agent_monitor_and_nginx_unchanged": true,
+  "default_routes_unchanged": true,
+  "all_installed_sources_match_wheel": true,
+  "service_identity_CLI": true,
+  "only_API_reloaded": true
+}

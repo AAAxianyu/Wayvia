@@ -39,3 +39,19 @@ or guarantee bandwidth improvement. Measure production effects separately.
 
 References: [OpenVPN 2.6 manual](https://openvpn.net/community-docs/community-articles/openvpn-2-6-manual.html),
 [Cloudflare /cdn-cgi endpoints](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/).
+
+### Completed-response teardown correction (2026-10-20 follow-up)
+
+A read-only production reproduction captured curl exit 0, HTTP 200 and the correct
+fresh exit identity, followed by `ConnectionResetError` from relay teardown. The
+context manager exception replaced the completed result and could exhaust both
+alternatives despite successful responses. Keep a completed curl result when
+teardown raises `ConnectionError`, then apply every existing curl TLS/status,
+identity and overall deadline check. A pre-response reset, incomplete request,
+TLS exception or expired deadline still fails. Evidence marks
+`transport_closed_after_response`; it never fabricates a response or uses a cache.
+
+This fixes a proven false-negative mechanism. Historical transport-only failures
+did not preserve their curl results, so they cannot all be attributed conclusively
+to this mechanism. Simultaneous HTTP/DNS timeouts remain unresolved. See the
+[server follow-up](../validation/server-followup-2026-10-20/README.md).

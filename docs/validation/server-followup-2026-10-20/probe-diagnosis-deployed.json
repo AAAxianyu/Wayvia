@@ -1,0 +1,91 @@
+{
+  "scope": "100_read_only_business_probes_no_monitor_mutation_or_fault_injection",
+  "samples": 100,
+  "elapsed_seconds": 22.49414088949561,
+  "exception_or_fallback_samples": [
+    {
+      "sample": 56,
+      "result": {
+        "healthy": true,
+        "check": "authenticated_ingress_business_path",
+        "attempts": [
+          {
+            "endpoint": 0,
+            "duration_ms": 229,
+            "curl_code": 0,
+            "http_status": 200,
+            "result": "healthy",
+            "transport_closed_after_response": true
+          }
+        ]
+      },
+      "sequence": [
+        {
+          "curl_code": 0,
+          "http_status": 200,
+          "valid_identity": true
+        },
+        {
+          "relay_exception_type": "ConnectionResetError",
+          "errno": 104
+        }
+      ]
+    },
+    {
+      "sample": 59,
+      "result": {
+        "healthy": true,
+        "check": "authenticated_ingress_business_path",
+        "attempts": [
+          {
+            "endpoint": 0,
+            "duration_ms": 259,
+            "curl_code": 0,
+            "http_status": 200,
+            "result": "healthy",
+            "transport_closed_after_response": true
+          }
+        ]
+      },
+      "sequence": [
+        {
+          "curl_code": 0,
+          "http_status": 200,
+          "valid_identity": true
+        },
+        {
+          "relay_exception_type": "ConnectionResetError",
+          "errno": 104
+        }
+      ]
+    },
+    {
+      "sample": 93,
+      "result": {
+        "healthy": true,
+        "check": "authenticated_ingress_business_path",
+        "attempts": [
+          {
+            "endpoint": 0,
+            "duration_ms": 203,
+            "curl_code": 0,
+            "http_status": 200,
+            "result": "healthy",
+            "transport_closed_after_response": true
+          }
+        ]
+      },
+      "sequence": [
+        {
+          "curl_code": 0,
+          "http_status": 200,
+          "valid_identity": true
+        },
+        {
+          "relay_exception_type": "ConnectionResetError",
+          "errno": 104
+        }
+      ]
+    }
+  ]
+}

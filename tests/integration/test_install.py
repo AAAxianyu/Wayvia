@@ -6,8 +6,10 @@ import hashlib
 import importlib.util
 import io
 import json
+import os
 import platform
 import sqlite3
+import sys
 import tarfile
 import zipfile
 from pathlib import Path
@@ -198,6 +200,42 @@ def test_nonprivileged_stage_is_complete_inactive_and_has_restricted_permissions
     assert manifest["wheel"] == "/opt/wayvia/wayvia-0.1.0-py3-none-any.whl"
     assert (stage / "opt/wayvia/source/uv.lock").is_file()
     assert not (stage / "opt/wayvia/.venv").exists()
+
+
+def test_strict_umask_keeps_public_runtime_parent_and_private_state_distinct(tmp_path, inputs):
+    before = os.umask(0o077)
+    try:
+        stage = tmp_path / "strict-stage"
+        prepare(stage, inputs)
+        assert (stage / "opt/wayvia").stat().st_mode & 0o777 == 0o755
+        assert (stage / "etc/wayvia/secrets").stat().st_mode & 0o777 == 0o700
+        assert (stage / "etc/wayvia/agent.env").stat().st_mode & 0o777 == 0o600
+        public = tmp_path / "public-runtime-file"
+        installer.run(
+            [
+                sys.executable,
+                "-c",
+                "import pathlib,sys;pathlib.Path(sys.argv[1]).touch()",
+                str(public),
+            ],
+            umask=0o022,
+        )
+        private = tmp_path / "private-after-runtime"
+        private.touch()
+        assert public.stat().st_mode & 0o777 == 0o644
+        assert private.stat().st_mode & 0o777 == 0o600
+    finally:
+        os.umask(before)
+
+
+def test_runtime_install_requires_service_identity_access(monkeypatch):
+    def invoke(argv, **kwargs):
+        return SimpleNamespace(returncode=1 if argv[0] == "runuser" else 0, stdout="")
+
+    monkeypatch.setattr(installer, "run", invoke)
+    with pytest.raises(installer.InstallError) as failure:
+        installer.install_runtime("uv", "/opt/wayvia/wayvia-0.1.0-py3-none-any.whl")
+    assert failure.value.code == "runtime_unreadable"
 
 
 def test_cached_binary_tampering_cannot_override_locked_archive(tmp_path, inputs):

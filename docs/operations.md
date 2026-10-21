@@ -68,6 +68,10 @@ python3.12 deploy/install.py --system --arch arm64 --uv /path/to/uv \
 
 系统安装创建专属 wayvia 用户、root 与 API 用户分别拥有的运行目录、锁定 venv、软件及 API/agent/恢复/监控单元，然后 daemon-reload；结果 installed_inactive，不自动启动服务或改变网络。生产文件路径固定 `/opt/wayvia`、`/etc/wayvia`、`/var/lib/wayvia`。升级要求先停服务，备份旧清单、配置、密钥、恢复日志与一致的 SQLite 快照；修改过的安装文件需先审核，不能被自动覆盖。网络事务配置的证书私钥属于 root 的 0600 文件；控制面的设备密码属于 wayvia 用户的 0600 文件。
 
+安装器支持调用方使用 `umask 077`：明确设置公开运行父目录 `/opt/wayvia` 为 0755，仅创建 Python 运行环境的两个 uv 子进程使用 022；调用方及后续秘密文件仍保留原 umask。安装会强制重装 Wayvia 包，以免相同版本号的新 wheel 被跳过，并以 `wayvia` 服务账户执行版本检查。私密配置和状态目录继续保持 0700/0600。已存在的错误权限 venv 不会被宽泛递归放权；出现 `runtime_unreadable` 时，先在停服维护范围内核对拥有权、备份和公开运行环境，再定向修复或重建。不要对 `/etc/wayvia`、控制面或密钥目录执行 `chmod -R`，也不要用继承 077 的外部 uv 重装脚本替代正式安装器。
+
+Mihomo 完整订阅优先使用 PyYAML 的 `CSafeDumper`，不可用时回退 `SafeDumper`；两者都只输出安全 YAML 数据。每次请求仍执行令牌、期限、设备状态、发布快照和当前凭据检查，不缓存含凭据的最终响应。性能对照和严格权限验证见[服务器续查报告](validation/server-followup-2026-10-20/README.md)。
+
 安装器在第一次软件文件变更前写入受限事务日志。安装或升级中断后，重新执行同一安装命令会先恢复上次文件前态再安装；也可先显式运行 `python3.12 deploy/install.py --system --recover`，stage 模式对应 `--stage DIR --recover`。若中断后管理员又改动相关文件，恢复会拒绝覆盖并保留日志，需要先审核该文件。提交后的 manifest 是完成边界；系统运行环境安装失败时状态保持 `runtime_install_pending`，重新执行安装命令继续完成依赖和服务账户配置。旧版本删除的文件只在摘要未变时自动清理；管理员修改过的旧文件继续记录所有权并报告保留。
 
 系统安装、恢复和卸载使用独立操作锁串行执行，锁覆盖账户、软件布局、venv 与完成标记。首次创建账户前记录预留组身份；建组后中断可安全重试，已有但没有本项目创建记录的同名独立组会被拒绝，不会被自动接管。

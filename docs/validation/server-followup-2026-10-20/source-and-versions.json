@@ -1,0 +1,27 @@
+{
+  "base_commit": "07ba4ff303334170ddfd96f2774df47754fffece",
+  "branch": "codex/server-followup-20261020",
+  "files": {
+    "deploy/install.py": "5ffd4d1b61fa95c78d156edc3e0277985241db8b3aaf4ab42edb79e7e2a7824d",
+    "src/wayvia/agent/http_probe.py": "2cb065e693d8e99affbeff3e1018bd86942fcb0d9a9db450f4b1b8b6da1b9447",
+    "src/wayvia/render/__init__.py": "14c67bf83046518b5b8690632ece7f28d69ad89f2a87db5e410a8bcd1c9e81e8",
+    "dist/wayvia-0.1.0-py3-none-any.whl": "6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31"
+  },
+  "python": "Python 3.12.12",
+  "uv": "uv 0.9.7 (0adb44480 2025-10-30)",
+  "version": "0.1.0",
+  "existing_container_image": "sha256:32632c983701a5c9dabfebe136eff3affe73f38d7f1740e36eb0acae331018d0",
+  "permission_containers_remaining": [],
+  "hosts": {
+    "jp": {
+      "python": "3.12.3",
+      "PyYAML": "6.0.3",
+      "libyaml": true
+    },
+    "ali": {
+      "python": "3.12.3",
+      "PyYAML": "6.0.3",
+      "libyaml": true
+    }
+  }
+}

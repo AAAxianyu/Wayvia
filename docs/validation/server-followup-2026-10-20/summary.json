@@ -1,0 +1,284 @@
+{
+  "scope": "three_server_only_followups_no_phone_no_fault_or_reboot_tests",
+  "stability": {
+    "ali": {
+      "historical_first": "2026-10-20T10:06:15.050173+00:00",
+      "historical_last": "2026-10-21T02:27:16.229874+00:00",
+      "historical_monitor_count": 3708,
+      "historical_state_counts": {
+        "ACTIVE": 3699,
+        "DEGRADED": 9
+      },
+      "postfix_first": "2026-10-21T02:38:05.941005+00:00",
+      "postfix_last": "2026-10-21T02:42:50.926898+00:00",
+      "postfix_span_seconds": 284.985893,
+      "postfix_monitor_count": 19,
+      "postfix_state_counts": {
+        "ACTIVE": 19
+      },
+      "postfix_current_state": "ACTIVE"
+    },
+    "jp": {
+      "historical_first": "2026-10-20T10:06:14.300979+00:00",
+      "historical_last": "2026-10-21T02:27:23.804961+00:00",
+      "historical_monitor_count": 3728,
+      "historical_state_counts": {
+        "ACTIVE": 3725,
+        "DEGRADED": 3
+      },
+      "postfix_first": "2026-10-21T02:38:01.321161+00:00",
+      "postfix_last": "2026-10-21T02:42:49.558172+00:00",
+      "postfix_span_seconds": 288.237011,
+      "postfix_monitor_count": 19,
+      "postfix_state_counts": {
+        "ACTIVE": 19
+      },
+      "postfix_current_state": "ACTIVE"
+    }
+  },
+  "subscriptions": {
+    "same_host_TLS": {
+      "samples_per_phase": 3,
+      "median_TTFB_seconds_before": 12.970733,
+      "median_TTFB_seconds_after": 4.217511,
+      "TTFB_reduction_percent": 67.48,
+      "median_download_seconds_before": 13.177675,
+      "median_download_seconds_after": 4.416814
+    },
+    "self_public_IP": {
+      "samples_per_phase": 3,
+      "median_TTFB_seconds_before": 13.493649,
+      "median_TTFB_seconds_after": 4.333854,
+      "TTFB_reduction_percent": 67.88,
+      "median_download_seconds_before": 15.145327,
+      "median_download_seconds_after": 6.393564
+    },
+    "all_12_bodies_byte_identical": true
+  },
+  "installation": {
+    "strict_umask_normal_install": {
+      "scope": "disposable_Linux_normal_install_runtime_no_external_network_fresh_unprivileged_API_no_fault_injection",
+      "umask": "077",
+      "fresh_service_identity_version": "0.1.0",
+      "same_version_rebuilt_wheel_installed": true,
+      "fresh_service_identity_API_health": 200,
+      "modes": {
+        "/opt/wayvia": "0o755",
+        "/opt/wayvia/.venv": "0o755",
+        "/opt/wayvia/.venv/lib/python3.12/site-packages/wayvia": "0o755",
+        "/etc/wayvia/secrets": "0o700",
+        "/etc/wayvia/agent.env": "0o600",
+        "/var/lib/wayvia/control": "0o700"
+      },
+      "caller_umask_unchanged": true,
+      "uv": "uv 0.9.7",
+      "python": "3.12.3"
+    },
+    "real_host_audit_passed": true
+  },
+  "gates": [
+    {
+      "command": "make check",
+      "exit_code": 0,
+      "elapsed_seconds": 91.08,
+      "log": "check.log"
+    },
+    {
+      "command": "make demo",
+      "exit_code": 0,
+      "elapsed_seconds": 1.26,
+      "log": "demo.log"
+    },
+    {
+      "command": "make test-configs",
+      "exit_code": 0,
+      "elapsed_seconds": 21.33,
+      "log": "test-configs.log"
+    },
+    {
+      "command": "make test-lab",
+      "status": "explicitly_deferred_by_user",
+      "reason": "Includes fault and restart experiments; not run this phase. No current full-lab acceptance claimed."
+    }
+  ],
+  "remaining": [
+    "Actual simultaneous HTTP/DNS timeout cause",
+    "Long-term observation after completed-response teardown fix",
+    "Full lab fault/recovery and real reboot acceptance explicitly deferred"
+  ],
+  "probe_diagnostics": {
+    "baseline": {
+      "scope": "100_read_only_business_probes_no_monitor_mutation_or_fault_injection",
+      "samples": 100,
+      "elapsed_seconds": 21.63672235235572,
+      "exception_or_fallback_samples": [
+        {
+          "sample": 37,
+          "result": {
+            "healthy": true,
+            "check": "authenticated_ingress_business_path",
+            "attempts": [
+              {
+                "endpoint": 0,
+                "duration_ms": 176,
+                "curl_code": null,
+                "http_status": null,
+                "result": "HTTP_TRANSPORT_FAILED"
+              },
+              {
+                "endpoint": 1,
+                "duration_ms": 176,
+                "curl_code": 0,
+                "http_status": 200,
+                "result": "healthy"
+              }
+            ]
+          },
+          "sequence": [
+            {
+              "curl_code": 0,
+              "http_status": 200,
+              "valid_identity": true
+            },
+            {
+              "relay_exception_type": "ConnectionResetError",
+              "errno": 104
+            },
+            {
+              "curl_code": 0,
+              "http_status": 200,
+              "valid_identity": true
+            }
+          ]
+        }
+      ]
+    },
+    "candidate": {
+      "scope": "100_read_only_business_probes_no_monitor_mutation_or_fault_injection",
+      "samples": 100,
+      "elapsed_seconds": 21.459910046309233,
+      "exception_or_fallback_samples": [
+        {
+          "sample": 53,
+          "result": {
+            "healthy": true,
+            "check": "authenticated_ingress_business_path",
+            "attempts": [
+              {
+                "endpoint": 0,
+                "duration_ms": 188,
+                "curl_code": 0,
+                "http_status": 200,
+                "result": "healthy",
+                "transport_closed_after_response": true
+              }
+            ]
+          },
+          "sequence": [
+            {
+              "curl_code": 0,
+              "http_status": 200,
+              "valid_identity": true
+            },
+            {
+              "relay_exception_type": "ConnectionResetError",
+              "errno": 104
+            }
+          ]
+        }
+      ],
+      "candidate_loaded_only_in_diagnostic_process": true
+    },
+    "deployed": {
+      "scope": "100_read_only_business_probes_no_monitor_mutation_or_fault_injection",
+      "samples": 100,
+      "elapsed_seconds": 22.49414088949561,
+      "exception_or_fallback_samples": [
+        {
+          "sample": 56,
+          "result": {
+            "healthy": true,
+            "check": "authenticated_ingress_business_path",
+            "attempts": [
+              {
+                "endpoint": 0,
+                "duration_ms": 229,
+                "curl_code": 0,
+                "http_status": 200,
+                "result": "healthy",
+                "transport_closed_after_response": true
+              }
+            ]
+          },
+          "sequence": [
+            {
+              "curl_code": 0,
+              "http_status": 200,
+              "valid_identity": true
+            },
+            {
+              "relay_exception_type": "ConnectionResetError",
+              "errno": 104
+            }
+          ]
+        },
+        {
+          "sample": 59,
+          "result": {
+            "healthy": true,
+            "check": "authenticated_ingress_business_path",
+            "attempts": [
+              {
+                "endpoint": 0,
+                "duration_ms": 259,
+                "curl_code": 0,
+                "http_status": 200,
+                "result": "healthy",
+                "transport_closed_after_response": true
+              }
+            ]
+          },
+          "sequence": [
+            {
+              "curl_code": 0,
+              "http_status": 200,
+              "valid_identity": true
+            },
+            {
+              "relay_exception_type": "ConnectionResetError",
+              "errno": 104
+            }
+          ]
+        },
+        {
+          "sample": 93,
+          "result": {
+            "healthy": true,
+            "check": "authenticated_ingress_business_path",
+            "attempts": [
+              {
+                "endpoint": 0,
+                "duration_ms": 203,
+                "curl_code": 0,
+                "http_status": 200,
+                "result": "healthy",
+                "transport_closed_after_response": true
+              }
+            ]
+          },
+          "sequence": [
+            {
+              "curl_code": 0,
+              "http_status": 200,
+              "valid_identity": true
+            },
+            {
+              "relay_exception_type": "ConnectionResetError",
+              "errno": 104
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

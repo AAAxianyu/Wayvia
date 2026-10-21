@@ -1,7 +1,9 @@
 """Transient endpoint loss may fall back; identity and TLS failures must not."""
 
+import contextlib
 import hashlib
 import json
+import ssl
 import subprocess
 from types import SimpleNamespace
 
@@ -86,6 +88,58 @@ def test_all_endpoints_unavailable_is_failed(monkeypatch):
     observation = http_probe.observe_http(payload())
     assert observation["healthy"] is False
     assert len(observation["attempts"]) == 2
+
+
+@pytest.mark.parametrize(
+    "response,healthy,error",
+    [
+        (result(), True, None),
+        (result(body="ip=203.0.113.9\n"), False, "HTTP_IDENTITY_MISMATCH"),
+        (result(60, "", 0), False, "HTTP_TLS_FAILED"),
+        (result(0, "", 302), False, "HTTP_REQUEST_FAILED"),
+    ],
+)
+def test_relay_reset_after_curl_keeps_response_security_checks(
+    monkeypatch, response, healthy, error
+):
+    @contextlib.contextmanager
+    def closed_after_response(timeout):
+        yield []
+        raise ConnectionResetError("peer closed after completed response")
+
+    monkeypatch.setattr(http_probe.subprocess, "run", lambda *a, **k: response)
+    observation = http_probe.observe_http(payload(), connect=closed_after_response)
+    assert observation["healthy"] is healthy
+    assert observation.get("error") == error
+    assert len(observation["attempts"]) == 1
+    assert observation["attempts"][0]["transport_closed_after_response"] is True
+
+
+def test_relay_reset_before_response_never_succeeds(monkeypatch):
+    @contextlib.contextmanager
+    def disconnected(timeout):
+        raise ConnectionResetError("no response")
+        yield []
+
+    monkeypatch.setattr(
+        http_probe.subprocess, "run", lambda *a, **k: pytest.fail("relay never became ready")
+    )
+    observation = http_probe.observe_http(payload(), connect=disconnected)
+    assert observation["healthy"] is False
+    assert len(observation["attempts"]) == 2
+
+
+def test_relay_tls_error_is_fatal_even_if_curl_returned(monkeypatch):
+    @contextlib.contextmanager
+    def failed_tls(timeout):
+        yield []
+        raise ssl.SSLError("TLS failure")
+
+    monkeypatch.setattr(http_probe.subprocess, "run", lambda *a, **k: result())
+    observation = http_probe.observe_http(payload(), connect=failed_tls)
+    assert observation["healthy"] is False
+    assert observation["error"] == "HTTP_TLS_FAILED"
+    assert len(observation["attempts"]) == 1
 
 
 def test_success_arriving_after_deadline_is_not_healthy(monkeypatch):
