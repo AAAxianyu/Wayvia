@@ -1,0 +1,117 @@
+{
+  "reviewed_at_utc": "2026-10-21T04:12:42.003430+00:00",
+  "source_commit": "46b3618",
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "new_actionable_event": false,
+  "notification": "none_unchanged_since_user_report",
+  "hosts": {
+    "ali": {
+      "previous_journal_checked_at_utc": "2026-10-21T03:59:48.002704+00:00",
+      "journal_until_utc": "2026-10-21T04:11:35.405311+00:00",
+      "latest_sample_utc": "2026-10-21T04:11:34.703436+00:00",
+      "previous_samples": 615,
+      "samples": 748,
+      "new_samples": 133,
+      "sample_gap_seconds": {
+        "count": 747,
+        "median": 5.000104356557131,
+        "p95": 5.000151876360178,
+        "max": 5.001452047377825
+      },
+      "current_state": "ACTIVE",
+      "journal_monitor_count": 235,
+      "journal_states": {
+        "ACTIVE": 233,
+        "DEGRADED": 2
+      },
+      "new_failed_checks": [],
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 22
+        },
+        "host_cf_alternative": {
+          "failed": 22
+        },
+        "host_dns_cf": {
+          "ok": 22
+        },
+        "host_dns_google": {
+          "ok": 22
+        },
+        "vpn_cf_primary": {
+          "ok": 22,
+          "failed": 0
+        },
+        "vpn_cf_alternative": {
+          "ok": 22,
+          "failed": 0
+        },
+        "vpn_dns_cf": {
+          "ok": 22,
+          "failed": 0
+        },
+        "vpn_dns_google": {
+          "ok": 22,
+          "failed": 0
+        }
+      },
+      "new_failed_protected_control_labels": [],
+      "observer_active": "active",
+      "observer_substate": "running",
+      "observer_result": null,
+      "evidence_bytes": 1878891,
+      "partial_lines_ignored": 0
+    },
+    "jp": {
+      "previous_journal_checked_at_utc": "2026-10-21T03:59:47.973264+00:00",
+      "journal_until_utc": "2026-10-21T04:11:35.405311+00:00",
+      "latest_sample_utc": "2026-10-21T04:11:33.278159+00:00",
+      "previous_samples": 614,
+      "samples": 747,
+      "new_samples": 133,
+      "sample_gap_seconds": {
+        "count": 746,
+        "median": 5.0001747444985085,
+        "p95": 5.000538624997716,
+        "max": 5.001112458005082
+      },
+      "current_state": "ACTIVE",
+      "journal_monitor_count": 236,
+      "journal_states": {
+        "ACTIVE": 236
+      },
+      "new_failed_checks": [],
+      "control_count_delta": {
+        "host_cf_primary": {
+          "ok": 22
+        },
+        "host_cf_alternative": {
+          "ok": 22
+        },
+        "host_dns_cf": {
+          "ok": 22
+        },
+        "host_dns_google": {
+          "ok": 22
+        }
+      },
+      "new_failed_protected_control_labels": [],
+      "observer_active": "active",
+      "observer_substate": "running",
+      "observer_result": null,
+      "evidence_bytes": 1689237,
+      "partial_lines_ignored": 0
+    }
+  },
+  "known_incident_context_windows_utc": [
+    [
+      "2026-10-21T03:49:53+00:00",
+      "2026-10-21T03:54:19+00:00"
+    ],
+    [
+      "2026-10-21T03:56:45+00:00",
+      "2026-10-21T04:01:09+00:00"
+    ]
+  ]
+}
