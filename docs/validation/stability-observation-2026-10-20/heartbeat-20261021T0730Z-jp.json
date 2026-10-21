@@ -1,0 +1,161 @@
+{
+  "samples": 3138,
+  "monitor_states": {
+    "ACTIVE": 990
+  },
+  "transitions": [
+    {
+      "at": "2026-10-21T03:09:11.554302+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "failed_monitor_checks": [],
+  "failed_control_examples": [],
+  "completed_response_closes": 0,
+  "partial_lines_ignored": 0,
+  "peer_ping": {
+    "ok": 3138
+  },
+  "carrier_connection_count": {
+    "1": 2930,
+    "2": 206,
+    "0": 2
+  },
+  "controls": {
+    "host_cf_primary": {
+      "ok": 523
+    },
+    "host_cf_alternative": {
+      "ok": 523
+    },
+    "host_dns_cf": {
+      "ok": 523
+    },
+    "host_dns_google": {
+      "ok": 523
+    }
+  },
+  "start": {
+    "type": "start",
+    "at": "2026-10-21T03:09:23.017920+00:00",
+    "role": "exit",
+    "generation": "64fee7096d28466e9ab15d463e5a55e5",
+    "until": "2026-10-22T03:09:21.680729+00:00",
+    "sample_interval_seconds": 5,
+    "control_interval_seconds": 30,
+    "max_bytes": 100663296,
+    "scope": "diagnostics_only_no_health_decision_or_mutation",
+    "ntp": true
+  },
+  "latest_record_at": "2026-10-21T07:30:48.878370+00:00",
+  "sample_gap_seconds": {
+    "count": 3137,
+    "median": 5.000178453992703,
+    "p95": 5.000685125007294,
+    "max": 5.0036203719937475
+  },
+  "cpu_busy_percent_excluding_iowait": {
+    "count": 3137,
+    "median": 4.11522633744856,
+    "p95": 35.2112676056338,
+    "max": 98.39679358717434
+  },
+  "peer_ping_rtt_ms": {
+    "count": 3138,
+    "median": 38.6,
+    "p95": 38.9,
+    "max": 214.0
+  },
+  "timings": {
+    "carrier_tcp_rtt_ms": {
+      "count": 3342,
+      "median": 52.802499999999995,
+      "p95": 61.357,
+      "max": 1360.17
+    },
+    "host_cf_primary_time_connect_ms": {
+      "count": 523,
+      "median": 5.439,
+      "p95": 9.386000000000001,
+      "max": 16.333000000000002
+    },
+    "host_cf_primary_time_appconnect_ms": {
+      "count": 523,
+      "median": 117.339,
+      "p95": 236.857,
+      "max": 429.605
+    },
+    "host_cf_primary_time_starttransfer_ms": {
+      "count": 523,
+      "median": 125.924,
+      "p95": 248.136,
+      "max": 453.625
+    },
+    "host_cf_primary_time_total_ms": {
+      "count": 523,
+      "median": 125.97900000000001,
+      "p95": 248.179,
+      "max": 453.67400000000004
+    },
+    "host_cf_alternative_time_connect_ms": {
+      "count": 523,
+      "median": 5.432,
+      "p95": 9.344999999999999,
+      "max": 17.388
+    },
+    "host_cf_alternative_time_appconnect_ms": {
+      "count": 523,
+      "median": 116.95899999999999,
+      "p95": 237.107,
+      "max": 433.935
+    },
+    "host_cf_alternative_time_starttransfer_ms": {
+      "count": 523,
+      "median": 127.385,
+      "p95": 247.589,
+      "max": 445.43100000000004
+    },
+    "host_cf_alternative_time_total_ms": {
+      "count": 523,
+      "median": 127.42999999999999,
+      "p95": 247.631,
+      "max": 445.481
+    },
+    "host_dns_cf_query_ms": {
+      "count": 523,
+      "median": 5,
+      "p95": 9,
+      "max": 45
+    },
+    "host_dns_google_query_ms": {
+      "count": 523,
+      "median": 7,
+      "p95": 14,
+      "max": 107
+    }
+  },
+  "host_global_tcp_delta": {
+    "Tcp:InSegs": 699740,
+    "Tcp:OutSegs": 714300,
+    "Tcp:RetransSegs": 1571,
+    "Tcp:InErrs": 0,
+    "TcpExt:ListenDrops": 0,
+    "TcpExt:TCPLostRetransmit": 224,
+    "TcpExt:TCPTimeouts": 12,
+    "TcpExt:TCPMemoryPressures": 0,
+    "TcpExt:TCPSynRetrans": 11
+  },
+  "end": null,
+  "file_bytes": 7107735,
+  "limits": "First 100 failed examples only; counts complete. Sampled monitor snapshots can miss intermediate states: reconcile with journal. Global TCP counters include other workloads. ICMP misses alone are not service failures. No phone or failure-injection acceptance.",
+  "observer_unit": {
+    "MainPID": "164702",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "MemoryCurrent": "18411520",
+    "MemoryPeak": "27336704",
+    "CPUUsageNSec": "144372809000",
+    "ActiveState": "active",
+    "SubState": "running"
+  }
+}

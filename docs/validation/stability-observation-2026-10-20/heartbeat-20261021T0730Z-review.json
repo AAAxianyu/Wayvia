@@ -1,0 +1,281 @@
+{
+  "reviewed_at_utc": "2026-10-21T07:33:07.184234+00:00",
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "comparison": "heartbeat-20261021T0628Z-review.json",
+  "new_production_failure": false,
+  "new_control_only_failure": true,
+  "new_actionable_event": false,
+  "notification": "none_no_new_business_failure_or_sampling_problem",
+  "ssh_management": {
+    "ali": "existing_channel_succeeded",
+    "jp": "existing_channel_succeeded"
+  },
+  "hosts": {
+    "ali": {
+      "summary_file": "heartbeat-20261021T0730Z-ali.json",
+      "monitor_file": "heartbeat-20261021T0730Z-monitor-ali.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T07:30:49.719894+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T06:28:10.136800+00:00",
+        "2026-10-21T07:30:49.719894+00:00"
+      ],
+      "latest_record_at_utc": "2026-10-21T07:30:49.963312+00:00",
+      "previous_samples": 2386,
+      "samples": 3139,
+      "new_samples": 753,
+      "sample_gap_seconds": {
+        "count": 3138,
+        "median": 5.000102725811303,
+        "p95": 5.000143246725202,
+        "max": 5.003144457936287
+      },
+      "current_state": "ACTIVE",
+      "generation_unchanged": true,
+      "journal_monitor_count": 987,
+      "new_journal_monitor_count": 237,
+      "journal_states": {
+        "ACTIVE": 985,
+        "DEGRADED": 2
+      },
+      "new_failed_checks": [],
+      "new_unit_events": [],
+      "new_state_transitions": [],
+      "unit_event_count_delta": {
+        "service_stopped": 0,
+        "connection_reset": 0,
+        "process_restart": 0,
+        "service_started": 0,
+        "remote_close": 0,
+        "vpn_established": 0
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 125
+        },
+        "host_cf_alternative": {
+          "failed": 125
+        },
+        "host_dns_cf": {
+          "failed": 1,
+          "ok": 124
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_cf_primary": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_cf_alternative": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_dns_cf": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_dns_google": {
+          "failed": 0,
+          "ok": 125
+        }
+      },
+      "new_failed_protected_control_labels": [],
+      "peer_ping_count_delta": {
+        "ok": 753
+      },
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "37801984",
+        "MemoryPeak": "50671616",
+        "CPUUsageNSec": "154270520000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "observer_result": null,
+      "evidence_bytes": 7899025,
+      "file_growth_bytes": 1897274,
+      "partial_lines_ignored": 0
+    },
+    "jp": {
+      "summary_file": "heartbeat-20261021T0730Z-jp.json",
+      "monitor_file": "heartbeat-20261021T0730Z-monitor-jp.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T07:30:49.719894+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T06:28:10.136800+00:00",
+        "2026-10-21T07:30:49.719894+00:00"
+      ],
+      "latest_record_at_utc": "2026-10-21T07:30:48.878370+00:00",
+      "previous_samples": 2386,
+      "samples": 3138,
+      "new_samples": 752,
+      "sample_gap_seconds": {
+        "count": 3137,
+        "median": 5.000178453992703,
+        "p95": 5.000685125007294,
+        "max": 5.0036203719937475
+      },
+      "current_state": "ACTIVE",
+      "generation_unchanged": true,
+      "journal_monitor_count": 989,
+      "new_journal_monitor_count": 238,
+      "journal_states": {
+        "ACTIVE": 989
+      },
+      "new_failed_checks": [],
+      "new_unit_events": [],
+      "new_state_transitions": [],
+      "unit_event_count_delta": {
+        "tls_error": 472,
+        "connection_reset": 477
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "ok": 125
+        },
+        "host_cf_alternative": {
+          "ok": 125
+        },
+        "host_dns_cf": {
+          "ok": 125
+        },
+        "host_dns_google": {
+          "ok": 125
+        }
+      },
+      "new_failed_protected_control_labels": [],
+      "peer_ping_count_delta": {
+        "ok": 752
+      },
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "18411520",
+        "MemoryPeak": "27336704",
+        "CPUUsageNSec": "144372809000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "observer_result": null,
+      "evidence_bytes": 7107735,
+      "file_growth_bytes": 1706413,
+      "partial_lines_ignored": 0
+    }
+  },
+  "control_only_events": [
+    {
+      "classification": "host_direct_dns_control_only_no_production_degradation",
+      "host": "ali",
+      "label": "host_dns_cf",
+      "started_at_utc": "2026-10-21T06:28:49.936460+00:00",
+      "finished_at_utc": "2026-10-21T06:28:51.989069+00:00",
+      "duration_ms": 2053,
+      "dns_budget_seconds": 2,
+      "dig_exit": 9,
+      "next_scheduled_query": {
+        "started_at_utc": "2026-10-21T06:29:19.935575+00:00",
+        "finished_at_utc": "2026-10-21T06:29:20.040182+00:00",
+        "rcode": "NOERROR",
+        "query_ms": 71
+      },
+      "requested_evidence_window_utc": [
+        "2026-10-21T06:26:44+00:00",
+        "2026-10-21T06:31:29+00:00"
+      ],
+      "evidence": {
+        "ali": {
+          "file": "control-timeout-0628-ali.jsonl",
+          "rows": 137,
+          "samples": 57,
+          "first_at_utc": "2026-10-21T06:26:44.880024+00:00",
+          "last_at_utc": "2026-10-21T06:31:24.886452+00:00",
+          "control_counts": {
+            "host_cf_primary": {
+              "failed": 10
+            },
+            "host_cf_alternative": {
+              "failed": 10
+            },
+            "host_dns_cf": {
+              "ok": 9,
+              "failed": 1
+            },
+            "host_dns_google": {
+              "ok": 10
+            },
+            "vpn_cf_primary": {
+              "ok": 10
+            },
+            "vpn_cf_alternative": {
+              "ok": 10
+            },
+            "vpn_dns_cf": {
+              "ok": 10
+            },
+            "vpn_dns_google": {
+              "ok": 10
+            }
+          },
+          "peer_ping_rtt_ms_range": [
+            38.5,
+            45.9
+          ],
+          "carrier_tcp_rtt_ms_range": [
+            37.835,
+            348.935
+          ]
+        },
+        "jp": {
+          "file": "control-timeout-0628-jp.jsonl",
+          "rows": 97,
+          "samples": 57,
+          "first_at_utc": "2026-10-21T06:26:48.693580+00:00",
+          "last_at_utc": "2026-10-21T06:31:28.707326+00:00",
+          "control_counts": {
+            "host_cf_primary": {
+              "ok": 10
+            },
+            "host_cf_alternative": {
+              "ok": 10
+            },
+            "host_dns_cf": {
+              "ok": 10
+            },
+            "host_dns_google": {
+              "ok": 10
+            }
+          },
+          "peer_ping_rtt_ms_range": [
+            38.5,
+            39.2
+          ],
+          "carrier_tcp_rtt_ms_range": [
+            42.858,
+            150.86
+          ]
+        }
+      },
+      "assessment": "One Ali host-direct Cloudflare DNS query exceeded the 2-second diagnostic budget. Same-batch Ali host Google DNS, VPN HTTP/DNS and adjacent Japan controls succeeded; the next scheduled host Cloudflare DNS query succeeded. No production failure, protection transition or service restart coincided. The underlying cause of this isolated direct-path failure is undetermined; carrier RTT/retransmission variation does not establish a cause of this host-direct DNS query."
+    }
+  ],
+  "classification_notes": [
+    "Ali host-direct Cloudflare HTTPS repeated timeouts remain the launch baseline, not new proxy outages.",
+    "Sampled DEGRADED snapshots are repeated evidence of the two known incidents; complete journal still has two degraded rounds.",
+    "Repetitive Japan VPN TLS/reset categories increased, but remain separate from successful business checks; no new state transitions or restart events were observed.",
+    "Observation remains scheduled to end at 2026-10-22T03:09:22Z; no sampler extension or restart."
+  ]
+}
