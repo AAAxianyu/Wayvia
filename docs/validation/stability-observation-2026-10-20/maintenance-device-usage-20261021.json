@@ -1,0 +1,53 @@
+{
+  "scope": "previous_user_authorized_maintenance_read_only_reconciliation_in_this_heartbeat",
+  "source_commit": "08695f2",
+  "source_branch": "codex/device-usage-20261021",
+  "source_evidence": {
+    "revocation.json": {
+      "repository_path": "docs/validation/device-usage-2026-10-21/revocation.json",
+      "sha256": "21b12fd1d8584f2aea0d3d6dcc4b5509dd7b9871971e34e5df070f6d2383c67d"
+    },
+    "deployment.json": {
+      "repository_path": "docs/validation/device-usage-2026-10-21/deployment.json",
+      "sha256": "9545e9e1219144a955ac10a8f6ffcc35aec98e7086bc713e659f4a5d07bcb0fc"
+    },
+    "final-state.json": {
+      "repository_path": "docs/validation/device-usage-2026-10-21/final-state.json",
+      "sha256": "36343cfbfdd2f962d0fec24507c3a785e48dbe0485b8aa05e52b33533f8c7133"
+    }
+  },
+  "host": "ali",
+  "jp_changed": false,
+  "windows": [
+    {
+      "purpose": "revoke_shared_device_credential_and_close_existing_ingress_sessions",
+      "start_utc": "2026-10-21T10:23:23.601774+00:00",
+      "end_utc": "2026-10-21T10:23:25.806653+00:00",
+      "old_user_removed": true
+    },
+    {
+      "purpose": "deploy_independent_device_accounts_and_usage_collection",
+      "start_utc": "2026-10-21T10:36:45.579584+00:00",
+      "end_utc": "2026-10-21T10:37:16.225518+00:00",
+      "status": "deployed"
+    }
+  ],
+  "initial_wheel_sha256": "6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31",
+  "current_ali_wheel_sha256": "7d312506bc5ec20def75bded8bd909fd3b8627ab95376ab550bb2c66e7e8d7a2",
+  "current_jp_wheel_sha256": "6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31",
+  "software_audit_curl_35_candidate_deployed": false,
+  "original_observer_restarted_or_extended": false,
+  "host_reboot": false,
+  "fault_injection": false,
+  "ingress_routing_and_tls_unchanged": true,
+  "existing_monitor_timer_paused_for_authorized_upgrade": true,
+  "monitor_timer_pause_utc": [
+    "2026-10-21T10:36:47.115537+00:00",
+    "2026-10-21T10:37:16.214349+00:00"
+  ],
+  "monitor_completion_gap_seconds": 29.197513,
+  "service_events_evidence": "heartbeat-20261021T1045Z-events-ali.json",
+  "service_identity_note": "The existing collector can label systemd manager events init.scope; supplementary records use the allowlisted UNIT field to identify the target without exporting message text.",
+  "acceptance_traffic_note": "Two new device credentials were exercised by test clients at approximately 10:39:10-10:39:12 UTC, about 6 KB per device. Later public subscription downloads are host HTTPS traffic, not VPN business throughput. Old-account rejection checks are intentional, not natural TLS failures.",
+  "interpretation": "Separate these maintenance windows and the package version change from natural outage analysis. Healthy VPN controls do not prove uninterrupted ingress client sessions during ingress reloads."
+}

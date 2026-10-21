@@ -26,5 +26,30 @@
       "until_utc": "2026-10-22T03:09:21.680729+00:00",
       "production_units_and_default_route_unchanged": true
     }
-  }
+  },
+  "baseline_fields_scope": "installed_wayvia_wheel_sha256 and production_units_and_default_route_unchanged describe observer launch, not the whole window; reconcile authorized maintenance below.",
+  "authorized_changes": [
+    {
+      "host": "ali",
+      "evidence": "maintenance-device-usage-20261021.json",
+      "windows": [
+        {
+          "purpose": "revoke_shared_device_credential_and_close_existing_ingress_sessions",
+          "start_utc": "2026-10-21T10:23:23.601774+00:00",
+          "end_utc": "2026-10-21T10:23:25.806653+00:00",
+          "old_user_removed": true
+        },
+        {
+          "purpose": "deploy_independent_device_accounts_and_usage_collection",
+          "start_utc": "2026-10-21T10:36:45.579584+00:00",
+          "end_utc": "2026-10-21T10:37:16.225518+00:00",
+          "status": "deployed"
+        }
+      ],
+      "current_wheel_sha256": "7d312506bc5ec20def75bded8bd909fd3b8627ab95376ab550bb2c66e7e8d7a2",
+      "source_commit": "08695f2",
+      "observer_restarted_or_extended": false
+    }
+  ],
+  "latest_review": "heartbeat-20261021T1045Z-review.json"
 }

@@ -13,6 +13,8 @@ Priority: P1
 
 ## 下一步
 
+最新观察接续（2026-10-21 10:46 UTC）：从 [10:46 检查点](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T1045Z-review.json) 继续。两端原采样 PID/期限保持；另一个已授权功能任务在 10:23 撤销旧共享账号、10:36–10:37 更新阿里云设备统计包并同步独立账号，须按[维护记录](../../../docs/validation/stability-observation-2026-10-20/maintenance-device-usage-20261021.json)分段，不能再假定全天软件与生产服务不变。日本未改，curl 35 候选仍未部署。原调查暂停和禁止联系平台的决定保持。
+
 最新决定（2026-10-21 软件阶段收尾）：用户明确禁止联系平台，随后要求阶段性收尾。主动排查暂停，原 24 小时只读观察按既定期限继续；不再请求供应商提交授权或等待供应商答复作为软件前置条件。[本轮软件审查](../../../docs/validation/stability-observation-2026-10-20/software-audit.md)和[待办 12](12-software-timeout-recovery.md)记录候选修复、整链恢复放大与未解最初超时。候选未部署、生产配置不变。下次观察从 [09:51 检查点](../../../docs/validation/stability-observation-2026-10-20/software-audit-review.json) 接续；下述供应商接续为历史经过，已被本决定替代。
 
 最新接续：09:40 用户已提供 Chrome 登录会话，实例详情确认 2 Mbps；可见 5 分钟监控和用户操作日志仍不能定位十几秒断连。需供应商反馈宿主/vSwitch/NAT/上联历史记录及实际整形策略；[发送版工单](../../../docs/validation/stability-observation-2026-10-20/provider-ticket-draft.txt)已准备，但未经明确对外联系授权尚未发送。09:21 捕捉的带载承载超时与 08:27/08:28 低流量共同失联仍分开排查。见[控制台核查报告](../../../docs/validation/stability-observation-2026-10-20/provider-console-review.md)。原 24 小时采样和静默 heartbeat 按既定期限继续，不延长、不重启；根因尚未确定。
@@ -63,3 +65,5 @@ Priority: P1
 2026-10-21 09:33 UTC heartbeat：两端既有 SSH/采样正常，各累计 4604 个样本、新增 141，PID/代次不变。完整 monitor 各新增 47 轮，入口累计 1447 轮仍仅已知五次降级、日本 1459 ACTIVE；无新增生产失败、备用切换、保护或服务事件。VPN/日本/宿主 DNS 每端点 24 次新增对照成功，跨境 ICMP 各 141 次成功，入口宿主 CF HTTPS 保持基线分类。无显著变化，静默记录；主动归因仍等待用户控制台配合，不重复提问，原采样期限不变。下一次比较 [09:33 review](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0933Z-review.json)。
 
 2026-10-21 09:40 UTC：完成用户已登录 Chrome 控制台只读核查，确认实例 2 Mbps，补齐吞吐额度证据。平台可见监控为 5 分钟点，无当日用户操作、无自动任务；供应商内部网络和整形记录仍不可见。准备具体工单正文，待明确授权后才可向衡天云提交；否则等待用户自行取得答复。没有生产变更、外部消息或付费，01 保持 in_progress。
+
+2026-10-21 10:46 UTC heartbeat：两端各 5484 样本、PID/代次保持，完整 monitor 各新增 206 轮，无新失败或备用切换；入口累计五次自然降级、日本始终 ACTIVE。新增两次入口宿主 Google DNS 2 秒超时，下一次定时查询恢复；VPN/日本每端点新增 111 次对照全成功，双端窗口已保留，不算新代理断连。10:23 账号撤销、10:36–10:37 阿里云设备统计部署与入口重载归入已授权维护，monitor 完成记录的 29.198 秒间隔单列；原观察采样无中断，日本未改，未实施故障/重启测试。后续按生产 wheel 和维护窗口分段。根因仍未确定，无需新通知；原定到期收尾后暂停 heartbeat，不延长观察。

@@ -1,0 +1,95 @@
+{
+  "service_events": [
+    {
+      "at": "2026-10-21T10:23:25.648942+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:23:25.664396+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:36:47.115537+00:00",
+      "unit": "wayvia-monitor.timer",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:47.315359+00:00",
+      "unit": "wayvia-api.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:47.326785+00:00",
+      "unit": "wayvia-agent.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:52.728718+00:00",
+      "unit": "wayvia-agent.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:36:52.738216+00:00",
+      "unit": "wayvia-api.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:36:54.539786+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:54.555798+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:37:02.248096+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:37:02.256030+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:37:08.608077+00:00",
+      "unit": "wayvia-usage.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:37:16.214349+00:00",
+      "unit": "wayvia-monitor.timer",
+      "event": "service_started"
+    }
+  ],
+  "monitor_window": {
+    "since_utc": "2026-10-21T09:51:32.586233+00:00",
+    "until_utc": "2026-10-21T10:46:19.581564+00:00",
+    "records": 206,
+    "first": {
+      "at": "2026-10-21T09:51:41.310810+00:00",
+      "state": "ACTIVE"
+    },
+    "last": {
+      "at": "2026-10-21T10:46:03.816692+00:00",
+      "state": "ACTIVE"
+    },
+    "gaps_over_20_seconds": [
+      {
+        "before": {
+          "at": "2026-10-21T10:36:49.022603+00:00",
+          "state": "ACTIVE"
+        },
+        "after": {
+          "at": "2026-10-21T10:37:18.220116+00:00",
+          "state": "ACTIVE"
+        },
+        "seconds": 29.197513
+      }
+    ]
+  }
+}

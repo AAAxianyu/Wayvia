@@ -1,0 +1,17 @@
+{
+  "service_events": [],
+  "monitor_window": {
+    "since_utc": "2026-10-21T09:51:32.586233+00:00",
+    "until_utc": "2026-10-21T10:46:19.581564+00:00",
+    "records": 206,
+    "first": {
+      "at": "2026-10-21T09:51:42.906649+00:00",
+      "state": "ACTIVE"
+    },
+    "last": {
+      "at": "2026-10-21T10:46:05.970037+00:00",
+      "state": "ACTIVE"
+    },
+    "gaps_over_20_seconds": []
+  }
+}
