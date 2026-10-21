@@ -1,0 +1,2250 @@
+{
+  "observed_at_utc": "2026-10-21T19:56:44.975213+00:00",
+  "since_utc": "2026-10-21T03:09:19+00:00",
+  "role": "ingress",
+  "generation": "6f80275960ed46238f51691722e918b5",
+  "current_state": "ACTIVE",
+  "first_monitor": "2026-10-21T03:09:28.887231+00:00",
+  "last_monitor": "2026-10-21T19:56:29.813744+00:00",
+  "monitor_count": 3802,
+  "state_counts": {
+    "ACTIVE": 3797,
+    "DEGRADED": 5
+  },
+  "hourly_counts": {
+    "2026-10-21T03:00:00Z": {
+      "ACTIVE": 189,
+      "DEGRADED": 2
+    },
+    "2026-10-21T04:00:00Z": {
+      "ACTIVE": 226
+    },
+    "2026-10-21T05:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T06:00:00Z": {
+      "ACTIVE": 226
+    },
+    "2026-10-21T07:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T08:00:00Z": {
+      "ACTIVE": 225,
+      "DEGRADED": 2
+    },
+    "2026-10-21T09:00:00Z": {
+      "ACTIVE": 224,
+      "DEGRADED": 1
+    },
+    "2026-10-21T10:00:00Z": {
+      "ACTIVE": 226
+    },
+    "2026-10-21T11:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T12:00:00Z": {
+      "ACTIVE": 226
+    },
+    "2026-10-21T13:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T14:00:00Z": {
+      "ACTIVE": 226
+    },
+    "2026-10-21T15:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T16:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T17:00:00Z": {
+      "ACTIVE": 227
+    },
+    "2026-10-21T18:00:00Z": {
+      "ACTIVE": 226
+    },
+    "2026-10-21T19:00:00Z": {
+      "ACTIVE": 214
+    }
+  },
+  "layer_timings": {
+    "access": {
+      "samples": 3802,
+      "median_ms": 436.0,
+      "p95_ms": 844,
+      "max_ms": 11744
+    },
+    "carrier": {
+      "samples": 3802,
+      "median_ms": 464.0,
+      "p95_ms": 544,
+      "max_ms": 2409
+    },
+    "vpn": {
+      "samples": 3802,
+      "median_ms": 244.0,
+      "p95_ms": 297,
+      "max_ms": 2820
+    },
+    "egress": {
+      "samples": 3802,
+      "median_ms": 431.0,
+      "p95_ms": 829,
+      "max_ms": 11386
+    },
+    "dns": {
+      "samples": 3802,
+      "median_ms": 76.0,
+      "p95_ms": 205,
+      "max_ms": 4474
+    },
+    "ipv6": {
+      "samples": 3802,
+      "median_ms": 7.0,
+      "p95_ms": 10,
+      "max_ms": 231
+    },
+    "return": {
+      "samples": 3802,
+      "median_ms": 2.0,
+      "p95_ms": 3,
+      "max_ms": 68
+    }
+  },
+  "failed_checks": [
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T03:51:53.117956+00:00",
+      "duration_ms": 5292,
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5028,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T03:58:45.131578+00:00",
+      "duration_ms": 5254,
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5024,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T08:26:59.126995+00:00",
+      "duration_ms": 5346,
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5061,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ]
+    },
+    {
+      "layer": "carrier",
+      "kind": "vpn_handshake",
+      "status": "failed",
+      "observed_at": "2026-10-21T08:27:04.472818+00:00",
+      "duration_ms": 2363
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T08:28:19.121185+00:00",
+      "duration_ms": 5256,
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5027,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T09:09:27.119715+00:00",
+      "duration_ms": 11744,
+      "error": "HTTP_TIMEOUT",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5759,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 5751,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        }
+      ]
+    }
+  ],
+  "fallbacks": [
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T03:57:10.167704+00:00",
+      "duration_ms": 8130,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5761,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 2053,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy"
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T03:57:57.129030+00:00",
+      "duration_ms": 7755,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5761,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 1744,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy"
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T09:06:19.229692+00:00",
+      "duration_ms": 11629,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5759,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 5590,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy"
+        }
+      ]
+    },
+    {
+      "layer": "egress",
+      "kind": "http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T09:06:31.623550+00:00",
+      "duration_ms": 11386,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5757,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 5381,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy"
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T09:09:27.119715+00:00",
+      "duration_ms": 11744,
+      "error": "HTTP_TIMEOUT",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5759,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 5751,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        }
+      ]
+    }
+  ],
+  "state_transitions": [
+    {
+      "at": "2026-10-21T03:09:28.887231+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T03:52:01.291628+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T03:52:18.491120+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T03:58:55.639478+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T03:59:08.587749+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T08:27:11.639764+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T08:27:23.729662+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T08:28:28.657882+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T08:28:42.820109+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T09:09:44.031197+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T09:09:52.895989+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "units": {
+    "wayvia-agent": "active",
+    "wayvia-api": "active",
+    "wayvia-monitor.timer": "active",
+    "wayvia-ingress": "active",
+    "wayvia-bridge": "active",
+    "wayvia-carrier": "active",
+    "wayvia-vpn-client": "active"
+  },
+  "unit_events": [
+    {
+      "at": "2026-10-21T03:52:01.279022+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:52:10.641366+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T03:52:10.648513+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T03:52:10.683820+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:52:10.695744+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:52:12.651386+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T03:52:12.651386+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T03:52:14.653008+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T03:52:15.029117+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:52:15.040147+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:52:15.095634+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T03:52:15.395370+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T03:52:15.504978+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:52:15.515347+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:52:15.974503+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:58:55.630127+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:59:02.386501+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T03:59:02.390343+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T03:59:02.392873+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:59:02.403140+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:59:04.392832+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T03:59:04.393795+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T03:59:06.148374+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:59:06.154598+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:59:06.186596+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T03:59:06.507264+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T03:59:06.572191+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T03:59:06.586122+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T03:59:07.044663+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:11.623930+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:16.615681+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T08:27:16.620572+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:27:16.639282+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:16.650817+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:18.623510+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:27:18.624461+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:27:20.627353+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:27:20.911970+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:20.918898+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:20.966863+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:27:21.265605+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T08:27:21.369398+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:21.381475+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:21.880493+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:28.642486+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:36.112223+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T08:28:36.119542+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:28:36.124956+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:36.135225+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:38.121944+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:28:38.121944+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:28:40.124378+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:28:40.241030+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:40.251969+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:40.290453+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:28:40.649555+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T08:28:40.697577+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:40.708490+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:41.180673+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T09:09:44.020598+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T09:09:45.744934+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T09:09:45.749443+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T09:09:45.793161+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T09:09:45.803443+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T09:09:47.751518+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T09:09:47.751518+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T09:09:49.752917+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T09:09:50.086329+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T09:09:50.189267+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T09:09:50.203349+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T09:09:50.246769+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T09:09:50.541849+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T09:09:50.634325+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T09:09:50.646949+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T09:09:51.099965+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:23:25.648942+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:23:25.664396+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:36:47.115537+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:47.315359+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:47.326785+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:52.728718+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:36:52.738216+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:36:54.539786+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:36:54.555798+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:37:02.248096+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T10:37:02.256030+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T10:37:16.214349+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    }
+  ],
+  "kernel_oom_kill_count_since": 0,
+  "uptime_seconds": 9007371.72,
+  "completed_response_closes": [
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T04:09:54.127625+00:00",
+      "duration_ms": 468,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 207,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T04:40:07.123682+00:00",
+      "duration_ms": 414,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 185,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T04:58:59.141624+00:00",
+      "duration_ms": 415,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 183,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T05:06:23.122270+00:00",
+      "duration_ms": 410,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 182,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T05:19:53.118364+00:00",
+      "duration_ms": 475,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 204,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T05:34:28.174352+00:00",
+      "duration_ms": 453,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 190,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T05:40:16.126104+00:00",
+      "duration_ms": 418,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 188,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T06:46:05.135667+00:00",
+      "duration_ms": 476,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 216,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T07:27:52.232453+00:00",
+      "duration_ms": 395,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 177,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T07:33:11.133863+00:00",
+      "duration_ms": 441,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 202,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T07:36:54.115554+00:00",
+      "duration_ms": 406,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 182,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T07:43:00.157115+00:00",
+      "duration_ms": 477,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 208,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T07:45:23.241812+00:00",
+      "duration_ms": 480,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 215,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:04:27.118294+00:00",
+      "duration_ms": 464,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 186,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:04:43.167782+00:00",
+      "duration_ms": 450,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 189,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:07:37.232058+00:00",
+      "duration_ms": 441,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 176,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:08:39.219110+00:00",
+      "duration_ms": 418,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 183,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:16:36.226373+00:00",
+      "duration_ms": 442,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 196,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:38:51.227892+00:00",
+      "duration_ms": 393,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 166,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:55:28.205336+00:00",
+      "duration_ms": 386,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 166,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:56:48.150406+00:00",
+      "duration_ms": 451,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 173,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T08:58:52.376799+00:00",
+      "duration_ms": 2388,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 2129,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T09:09:11.120350+00:00",
+      "duration_ms": 2049,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 1818,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T09:40:33.119877+00:00",
+      "duration_ms": 561,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 320,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T09:41:52.570033+00:00",
+      "duration_ms": 830,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 559,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T10:20:59.212522+00:00",
+      "duration_ms": 463,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 214,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T10:25:11.128480+00:00",
+      "duration_ms": 448,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 190,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T10:48:10.129147+00:00",
+      "duration_ms": 471,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 213,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T10:48:26.175355+00:00",
+      "duration_ms": 669,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 290,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T10:53:27.157158+00:00",
+      "duration_ms": 490,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 207,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T10:58:28.355003+00:00",
+      "duration_ms": 415,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 182,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T11:02:59.123699+00:00",
+      "duration_ms": 457,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 221,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T11:22:02.162863+00:00",
+      "duration_ms": 440,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 191,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T11:30:30.122555+00:00",
+      "duration_ms": 476,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 207,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T11:30:46.138197+00:00",
+      "duration_ms": 447,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 215,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T11:32:54.115580+00:00",
+      "duration_ms": 413,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 188,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T11:49:39.121955+00:00",
+      "duration_ms": 425,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 199,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T12:00:58.120865+00:00",
+      "duration_ms": 419,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 184,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T12:44:56.155684+00:00",
+      "duration_ms": 449,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 220,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T12:48:06.497899+00:00",
+      "duration_ms": 742,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 436,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T12:57:06.129253+00:00",
+      "duration_ms": 463,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 201,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T13:06:56.127899+00:00",
+      "duration_ms": 467,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 224,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T13:34:20.224063+00:00",
+      "duration_ms": 984,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 630,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T13:36:59.135690+00:00",
+      "duration_ms": 522,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 263,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T13:53:02.127080+00:00",
+      "duration_ms": 875,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 637,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T13:59:23.157337+00:00",
+      "duration_ms": 2219,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 1949,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:08:08.133212+00:00",
+      "duration_ms": 445,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 205,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:08:55.607147+00:00",
+      "duration_ms": 430,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 198,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:17:39.121389+00:00",
+      "duration_ms": 416,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 178,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:30:40.119671+00:00",
+      "duration_ms": 412,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 184,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:30:56.159407+00:00",
+      "duration_ms": 407,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 182,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:39:27.119360+00:00",
+      "duration_ms": 398,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 177,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T14:42:07.132204+00:00",
+      "duration_ms": 433,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 194,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:31:47.122978+00:00",
+      "duration_ms": 401,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 175,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:38:24.145600+00:00",
+      "duration_ms": 703,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 464,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:38:55.123398+00:00",
+      "duration_ms": 470,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 197,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:39:27.175077+00:00",
+      "duration_ms": 493,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 238,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:39:59.120755+00:00",
+      "duration_ms": 461,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 174,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:43:11.129602+00:00",
+      "duration_ms": 433,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 176,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:43:43.122571+00:00",
+      "duration_ms": 413,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 176,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:55:39.129374+00:00",
+      "duration_ms": 429,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 187,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T15:58:35.150442+00:00",
+      "duration_ms": 444,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 186,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T16:05:59.116059+00:00",
+      "duration_ms": 407,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 183,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T16:33:43.123041+00:00",
+      "duration_ms": 444,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 179,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T16:40:05.188764+00:00",
+      "duration_ms": 507,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 184,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T16:40:36.230199+00:00",
+      "duration_ms": 414,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 181,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T16:44:32.154095+00:00",
+      "duration_ms": 442,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 179,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T16:53:00.178062+00:00",
+      "duration_ms": 487,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 180,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T17:02:32.242075+00:00",
+      "duration_ms": 417,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 178,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T17:21:37.125790+00:00",
+      "duration_ms": 400,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 168,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T17:23:59.125293+00:00",
+      "duration_ms": 404,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 168,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T17:27:09.224476+00:00",
+      "duration_ms": 478,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 170,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T17:28:13.128038+00:00",
+      "duration_ms": 433,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 166,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T17:31:08.137040+00:00",
+      "duration_ms": 418,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 178,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T18:09:41.118080+00:00",
+      "duration_ms": 416,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 181,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T18:16:17.132521+00:00",
+      "duration_ms": 447,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 182,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T18:22:23.133722+00:00",
+      "duration_ms": 429,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 178,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T18:51:30.131352+00:00",
+      "duration_ms": 413,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 169,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T19:10:50.259033+00:00",
+      "duration_ms": 533,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 181,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T19:15:52.160500+00:00",
+      "duration_ms": 460,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 199,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T19:20:08.142293+00:00",
+      "duration_ms": 453,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 183,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T19:44:31.134377+00:00",
+      "duration_ms": 440,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 172,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T19:55:56.210456+00:00",
+      "duration_ms": 474,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 174,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    }
+  ],
+  "requested_until_utc": "2026-10-21T19:56:31.262238+00:00",
+  "unit_event_counts": {
+    "service_stopped": 26,
+    "connection_reset": 5,
+    "process_restart": 10,
+    "service_started": 26,
+    "remote_close": 14,
+    "vpn_established": 6
+  },
+  "repetitive_vpn_server_event_examples": []
+}
