@@ -1,0 +1,557 @@
+{
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "new_production_failure": false,
+  "new_control_only_failure": true,
+  "new_actionable_event": false,
+  "notification": "none_no_new_business_failure_or_sampling_problem",
+  "ssh_management": {
+    "ali": "existing_channel_succeeded",
+    "jp": "existing_channel_succeeded"
+  },
+  "heartbeat_remote_mutations": false,
+  "active_investigation": "paused_by_user_stage_close",
+  "external_contact": "prohibited_by_user_not_sent",
+  "maintenance_evidence": "maintenance-device-usage-20261021.json",
+  "new_service_maintenance_in_journal": false,
+  "baseline_note": "Ali host direct Cloudflare HTTPS has timed out since launch and remains excluded from new proxy failures. Production software changed on Ali during separately documented authorized maintenance; original observer PIDs and end times are unchanged.",
+  "limits": "Production journal states are authoritative; sampled monitor snapshots are deduplicated and may miss transitions. No claim of uninterrupted real-client experience, resolved root cause or completed long-term acceptance. Diagnostic request limits differ from production.",
+  "next": "Continue existing observers to original deadlines, without extension or restart. On expiry collect final evidence, update status and pause heartbeat.",
+  "reviewed_at_utc": "2026-10-21T15:50:45.026101+00:00",
+  "comparison": "heartbeat-20261021T1451Z-review.json",
+  "hosts": {
+    "ali": {
+      "summary_file": "heartbeat-20261021T1548Z-ali.json",
+      "monitor_file": "heartbeat-20261021T1548Z-monitor-ali.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T15:48:59.174515+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T14:52:02.938428+00:00",
+        "2026-10-21T15:48:59.174515+00:00"
+      ],
+      "latest_record_at": "2026-10-21T15:48:55.959959+00:00",
+      "samples": 9116,
+      "new_samples": 683,
+      "sample_gap_seconds": {
+        "count": 9115,
+        "median": 5.000101216137409,
+        "p95": 5.0001437440514565,
+        "max": 5.235809417441487
+      },
+      "generation_unchanged": true,
+      "current_state": "ACTIVE",
+      "monitor_count": 2866,
+      "new_monitor_count": 215,
+      "state_counts": {
+        "ACTIVE": 2861,
+        "DEGRADED": 5
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "new_state_transitions": [],
+      "new_unit_events": [],
+      "unit_event_count_delta": {
+        "connection_reset": 0,
+        "process_restart": 0,
+        "remote_close": 0,
+        "service_started": 0,
+        "service_stopped": 0,
+        "vpn_established": 0
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 114
+        },
+        "host_cf_alternative": {
+          "failed": 114
+        },
+        "host_dns_cf": {
+          "failed": 3,
+          "ok": 111
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 114
+        },
+        "vpn_cf_primary": {
+          "failed": 0,
+          "ok": 114
+        },
+        "vpn_cf_alternative": {
+          "failed": 0,
+          "ok": 114
+        },
+        "vpn_dns_cf": {
+          "failed": 0,
+          "ok": 114
+        },
+        "vpn_dns_google": {
+          "failed": 0,
+          "ok": 114
+        }
+      },
+      "peer_ping_count_delta": {
+        "miss": 0,
+        "ok": 683
+      },
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "27181056",
+        "MemoryPeak": "56057856",
+        "CPUUsageNSec": "451697971000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "end": null,
+      "evidence_bytes": 22982492,
+      "file_growth_bytes": 1732021,
+      "partial_lines_ignored": 0,
+      "unchanged_deadline_utc": "2026-10-22T03:09:19.112548+00:00",
+      "services": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-ingress": "active",
+        "wayvia-bridge": "active",
+        "wayvia-carrier": "active",
+        "wayvia-vpn-client": "active"
+      }
+    },
+    "jp": {
+      "summary_file": "heartbeat-20261021T1548Z-jp.json",
+      "monitor_file": "heartbeat-20261021T1548Z-monitor-jp.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T15:48:59.174515+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T14:52:02.938428+00:00",
+        "2026-10-21T15:48:59.174515+00:00"
+      ],
+      "latest_record_at": "2026-10-21T15:49:00.288494+00:00",
+      "samples": 9116,
+      "new_samples": 683,
+      "sample_gap_seconds": {
+        "count": 9115,
+        "median": 5.000175310997292,
+        "p95": 5.000651289999951,
+        "max": 5.012651012992137
+      },
+      "generation_unchanged": true,
+      "current_state": "ACTIVE",
+      "monitor_count": 2879,
+      "new_monitor_count": 214,
+      "state_counts": {
+        "ACTIVE": 2879
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "new_state_transitions": [],
+      "new_unit_events": [],
+      "unit_event_count_delta": {
+        "connection_reset": 434,
+        "tls_error": 418
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 0,
+          "ok": 114
+        },
+        "host_cf_alternative": {
+          "failed": 0,
+          "ok": 114
+        },
+        "host_dns_cf": {
+          "failed": 0,
+          "ok": 114
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 114
+        }
+      },
+      "peer_ping_count_delta": {
+        "miss": 0,
+        "ok": 683
+      },
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "33091584",
+        "MemoryPeak": "42033152",
+        "CPUUsageNSec": "415701949000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "end": null,
+      "evidence_bytes": 20674080,
+      "file_growth_bytes": 1550984,
+      "partial_lines_ignored": 0,
+      "unchanged_deadline_utc": "2026-10-22T03:09:21.680729+00:00",
+      "services": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-exit": "active",
+        "wayvia-vpn-server": "active"
+      },
+      "repetitive_vpn_server_events_note": "Existing cumulative monitor-related TLS/reset category increments alone are not new business failures; full failed_checks/fallbacks, controls and state transitions show no new failure."
+    }
+  },
+  "control_only_event": {
+    "classification": "three_ali_host_Cloudflare_DNS_query_timeouts_not_new_proxy_disconnects",
+    "failures_and_next_queries": [
+      {
+        "failure": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:01:50.949448+00:00",
+          "at": "2026-10-21T15:01:52.984207+00:00",
+          "duration_ms": 2035,
+          "result": {
+            "exit": 9,
+            "rcode": null,
+            "query_ms": null
+          }
+        },
+        "next_same_control": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:02:20.949866+00:00",
+          "at": "2026-10-21T15:02:21.091788+00:00",
+          "duration_ms": 142,
+          "result": {
+            "exit": 0,
+            "rcode": "NOERROR",
+            "query_ms": 107
+          }
+        },
+        "next_success": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:02:20.949866+00:00",
+          "at": "2026-10-21T15:02:21.091788+00:00",
+          "duration_ms": 142,
+          "result": {
+            "exit": 0,
+            "rcode": "NOERROR",
+            "query_ms": 107
+          }
+        }
+      },
+      {
+        "failure": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:14:50.967638+00:00",
+          "at": "2026-10-21T15:14:53.007707+00:00",
+          "duration_ms": 2040,
+          "result": {
+            "exit": 9,
+            "rcode": null,
+            "query_ms": null
+          }
+        },
+        "next_same_control": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:15:20.967149+00:00",
+          "at": "2026-10-21T15:15:21.122766+00:00",
+          "duration_ms": 156,
+          "result": {
+            "exit": 0,
+            "rcode": "NOERROR",
+            "query_ms": 117
+          }
+        },
+        "next_success": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:15:20.967149+00:00",
+          "at": "2026-10-21T15:15:21.122766+00:00",
+          "duration_ms": 156,
+          "result": {
+            "exit": 0,
+            "rcode": "NOERROR",
+            "query_ms": 117
+          }
+        }
+      },
+      {
+        "failure": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:27:50.983876+00:00",
+          "at": "2026-10-21T15:27:53.025345+00:00",
+          "duration_ms": 2041,
+          "result": {
+            "exit": 9,
+            "rcode": null,
+            "query_ms": null
+          }
+        },
+        "next_same_control": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:28:20.985035+00:00",
+          "at": "2026-10-21T15:28:21.174308+00:00",
+          "duration_ms": 189,
+          "result": {
+            "exit": 0,
+            "rcode": "NOERROR",
+            "query_ms": 168
+          }
+        },
+        "next_success": {
+          "type": "control",
+          "label": "host_dns_cf",
+          "started_at": "2026-10-21T15:28:20.985035+00:00",
+          "at": "2026-10-21T15:28:21.174308+00:00",
+          "duration_ms": 189,
+          "result": {
+            "exit": 0,
+            "rcode": "NOERROR",
+            "query_ms": 168
+          }
+        }
+      }
+    ],
+    "cause": "unresolved",
+    "associated_production_failure": false,
+    "associated_protected_control_failure": false,
+    "windows": {
+      "control-timeout-1501": {
+        "event_index": 0,
+        "requested_window_utc": [
+          "2026-10-21T14:59:45+00:00",
+          "2026-10-21T15:04:30+00:00"
+        ],
+        "hosts": {
+          "ali": {
+            "evidence": "control-timeout-1501-ali.jsonl",
+            "first_record_at_utc": "2026-10-21T14:59:45.893602+00:00",
+            "last_record_at_utc": "2026-10-21T15:04:25.900827+00:00",
+            "samples": 57,
+            "controls": {
+              "host_cf_primary": {
+                "failed": 10
+              },
+              "host_cf_alternative": {
+                "failed": 10
+              },
+              "host_dns_cf": {
+                "ok": 9,
+                "failed": 1
+              },
+              "host_dns_google": {
+                "ok": 10
+              },
+              "vpn_cf_primary": {
+                "ok": 10
+              },
+              "vpn_cf_alternative": {
+                "ok": 10
+              },
+              "vpn_dns_cf": {
+                "ok": 10
+              },
+              "vpn_dns_google": {
+                "ok": 10
+              }
+            },
+            "peer_ping_misses": 0,
+            "new_monitor_snapshots": {
+              "ACTIVE": 18
+            },
+            "monitor_omission_means": "unchanged_snapshot_not_unavailable",
+            "carrier_tcp_rtt_max_ms": 64.703
+          },
+          "jp": {
+            "evidence": "control-timeout-1501-jp.jsonl",
+            "first_record_at_utc": "2026-10-21T14:59:45.159740+00:00",
+            "last_record_at_utc": "2026-10-21T15:04:25.312127+00:00",
+            "samples": 57,
+            "controls": {
+              "host_cf_primary": {
+                "ok": 10
+              },
+              "host_cf_alternative": {
+                "ok": 10
+              },
+              "host_dns_cf": {
+                "ok": 10
+              },
+              "host_dns_google": {
+                "ok": 10
+              }
+            },
+            "peer_ping_misses": 0,
+            "new_monitor_snapshots": {
+              "ACTIVE": 18
+            },
+            "monitor_omission_means": "unchanged_snapshot_not_unavailable",
+            "carrier_tcp_rtt_max_ms": 67.023
+          }
+        }
+      },
+      "control-timeout-1514": {
+        "event_index": 1,
+        "requested_window_utc": [
+          "2026-10-21T15:12:45+00:00",
+          "2026-10-21T15:17:30+00:00"
+        ],
+        "hosts": {
+          "ali": {
+            "evidence": "control-timeout-1514-ali.jsonl",
+            "first_record_at_utc": "2026-10-21T15:12:45.911256+00:00",
+            "last_record_at_utc": "2026-10-21T15:17:25.917675+00:00",
+            "samples": 57,
+            "controls": {
+              "host_cf_primary": {
+                "failed": 10
+              },
+              "host_cf_alternative": {
+                "failed": 10
+              },
+              "host_dns_cf": {
+                "ok": 9,
+                "failed": 1
+              },
+              "host_dns_google": {
+                "ok": 10
+              },
+              "vpn_cf_primary": {
+                "ok": 10
+              },
+              "vpn_cf_alternative": {
+                "ok": 10
+              },
+              "vpn_dns_cf": {
+                "ok": 10
+              },
+              "vpn_dns_google": {
+                "ok": 10
+              }
+            },
+            "peer_ping_misses": 0,
+            "new_monitor_snapshots": {
+              "ACTIVE": 18
+            },
+            "monitor_omission_means": "unchanged_snapshot_not_unavailable",
+            "carrier_tcp_rtt_max_ms": 66.313
+          },
+          "jp": {
+            "evidence": "control-timeout-1514-jp.jsonl",
+            "first_record_at_utc": "2026-10-21T15:12:45.192104+00:00",
+            "last_record_at_utc": "2026-10-21T15:17:25.344008+00:00",
+            "samples": 57,
+            "controls": {
+              "host_cf_primary": {
+                "ok": 10
+              },
+              "host_cf_alternative": {
+                "ok": 10
+              },
+              "host_dns_cf": {
+                "ok": 10
+              },
+              "host_dns_google": {
+                "ok": 10
+              }
+            },
+            "peer_ping_misses": 0,
+            "new_monitor_snapshots": {
+              "ACTIVE": 18
+            },
+            "monitor_omission_means": "unchanged_snapshot_not_unavailable",
+            "carrier_tcp_rtt_max_ms": 62.262
+          }
+        }
+      },
+      "control-timeout-1527": {
+        "event_index": 2,
+        "requested_window_utc": [
+          "2026-10-21T15:25:45+00:00",
+          "2026-10-21T15:30:30+00:00"
+        ],
+        "hosts": {
+          "ali": {
+            "evidence": "control-timeout-1527-ali.jsonl",
+            "first_record_at_utc": "2026-10-21T15:25:45.928977+00:00",
+            "last_record_at_utc": "2026-10-21T15:30:25.935493+00:00",
+            "samples": 57,
+            "controls": {
+              "host_cf_primary": {
+                "failed": 10
+              },
+              "host_cf_alternative": {
+                "failed": 10
+              },
+              "host_dns_cf": {
+                "ok": 9,
+                "failed": 1
+              },
+              "host_dns_google": {
+                "ok": 10
+              },
+              "vpn_cf_primary": {
+                "ok": 10
+              },
+              "vpn_cf_alternative": {
+                "ok": 10
+              },
+              "vpn_dns_cf": {
+                "ok": 10
+              },
+              "vpn_dns_google": {
+                "ok": 10
+              }
+            },
+            "peer_ping_misses": 0,
+            "new_monitor_snapshots": {
+              "ACTIVE": 18
+            },
+            "monitor_omission_means": "unchanged_snapshot_not_unavailable",
+            "carrier_tcp_rtt_max_ms": 55.461
+          },
+          "jp": {
+            "evidence": "control-timeout-1527-jp.jsonl",
+            "first_record_at_utc": "2026-10-21T15:25:45.226730+00:00",
+            "last_record_at_utc": "2026-10-21T15:30:25.401011+00:00",
+            "samples": 57,
+            "controls": {
+              "host_cf_primary": {
+                "ok": 10
+              },
+              "host_cf_alternative": {
+                "ok": 10
+              },
+              "host_dns_cf": {
+                "ok": 10
+              },
+              "host_dns_google": {
+                "ok": 10
+              }
+            },
+            "peer_ping_misses": 0,
+            "new_monitor_snapshots": {
+              "ACTIVE": 18
+            },
+            "monitor_omission_means": "unchanged_snapshot_not_unavailable",
+            "carrier_tcp_rtt_max_ms": 52.131
+          }
+        }
+      }
+    },
+    "correlation_limit": "Concurrent carrier RTT or traffic changes do not establish the cause of host direct DNS timeouts; VPN and Japan controls remained successful."
+  }
+}
