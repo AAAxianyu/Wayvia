@@ -648,8 +648,20 @@ stability_observation_2026_10_20:
     supplementary_path_cycles_each: 120
     supplementary_queue_cycles_each: 90
     supplementary_exit: cycles_complete_no_persistent_service
-    next_required_input: provider_console_login_and_fault_window_network_evidence
+    next_required_input: provider_internal_network_evidence_and_ticket_send_authorization
     evidence: docs/validation/stability-observation-2026-10-20/root-cause-followup.md
+  provider_console_review:
+    method: read_only_authenticated_Chrome_UI
+    region_display: Japan_Tokyo_zone_2
+    instance_configured_bandwidth_mbps: 2
+    bandwidth_direction_shared_burst_policer_details: not_displayed
+    visible_monitor_point_spacing_seconds: 300
+    user_operation_log_rows_on_2026_10_21: 0
+    automatic_tasks: none_displayed
+    exact_disconnect_root_cause: unresolved_provider_internal_evidence_required
+    ticket_status: prepared_locally_not_sent_waiting_explicit_authorization
+    production_changes: none
+    evidence: docs/validation/stability-observation-2026-10-20/provider-console-review.md
   path_localization:
     supplemental_cycles_each: 120
     interval_seconds: 5

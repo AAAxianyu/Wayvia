@@ -1,0 +1,11 @@
+{
+  "validated_at_utc": "2026-10-21T09:44:39.520397+00:00",
+  "JSON_YAML": "passed",
+  "local_report_links": "passed",
+  "credential_account_order_operator_address_redaction": "passed",
+  "source": "visible authenticated browser UI only, selected operational fields manually transcribed",
+  "production_software_changes": false,
+  "software_gates": "unchanged production sources; see path-localization-gates.json",
+  "test_lab": "deferred_user_not_run_not_passed",
+  "external_ticket": "local_draft_only_not_submitted"
+}
