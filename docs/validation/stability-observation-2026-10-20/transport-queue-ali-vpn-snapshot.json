@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-21T09:15:45.594404+00:00",
+  "namespace": "wayvia-egress",
+  "exit": 0,
+  "connections": [
+    {
+      "id": "2463da9abaed9c0b",
+      "layer": "vpn_transport",
+      "state": "ESTAB",
+      "recv_queue_bytes": 0,
+      "send_queue_bytes": 78,
+      "peer_is_loopback": false,
+      "rtt": "10.507/1.32",
+      "rto": "211",
+      "cwnd": "22",
+      "bytes_sent": "3194641",
+      "bytes_acked": "3194564",
+      "bytes_received": "75299311",
+      "lastsnd": "13",
+      "lastrcv": "13",
+      "unacked": "1",
+      "minrtt": "0.008",
+      "rcv_rtt": "13.059",
+      "rcv_space": "24980",
+      "rcv_ssthresh": "179292",
+      "snd_wnd": "77184",
+      "busy": "275792",
+      "segs_out": "55409",
+      "segs_in": "56377",
+      "data_segs_out": "29522",
+      "data_segs_in": "54734",
+      "send_bps": 24255068.0,
+      "pacing_rate_bps": 29106080.0,
+      "delivery_rate_bps": 1654857136.0,
+      "socket_memory_bytes": {
+        "r": 0,
+        "rb": 241424,
+        "t": 0,
+        "tb": 87040,
+        "f": 3058,
+        "w": 1038,
+        "o": 0,
+        "bl": 0,
+        "d": 1
+      }
+    }
+  ],
+  "base_script_sha256": "d0be3e258107d08d58e864c369aa1331e1f43d2cbb1a75a04d743b0d657ffafd",
+  "execution": "same parser, ss executed in wayvia-egress namespace, one snapshot"
+}

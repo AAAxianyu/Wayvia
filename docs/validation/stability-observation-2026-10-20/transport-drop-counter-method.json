@@ -1,0 +1,9 @@
+{
+  "base_script": "observe_transport_queues.py",
+  "base_sha256": "d0be3e258107d08d58e864c369aa1331e1f43d2cbb1a75a04d743b0d657ffafd",
+  "extension_source": "\nimport pathlib\nfor i in range(12):\n counts={}\n for name in ['netstat','snmp']:\n  lines=pathlib.Path('/proc/net/'+name).read_text().splitlines()\n  for a,b in zip(lines[::2],lines[1::2]):\n   aa,bb=a.split(),b.split()\n   if aa[0] not in ['Tcp:','TcpExt:']:continue\n   for k,v in zip(aa[1:],bb[1:]):\n    if any(s in k for s in ['Drop','Discard','PAWS','ACKSkipped','Checksum','InErr','RcvCollapsed','MemoryPressure','ListenOverflow','Retrans','ZeroWindow','OFO']):counts[aa[0]+k]=int(v)\n print(json.dumps({'at':now(),'counters':counts,**snapshot('jp')}),flush=True)\n if i<11:time.sleep(5)\n",
+  "cycles": 12,
+  "interval_seconds": 5,
+  "purpose": "distinguish socket-drop counters from guest TCP receive queue or checksum pressure",
+  "remote_persistence": false
+}

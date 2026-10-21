@@ -1,0 +1,16 @@
+{
+  "at": "2026-10-21T09:20:04.970740+00:00",
+  "new_diagnostics_python_compile": "passed",
+  "queue_parser_synthetic_checks": "passed_selection_hashing_units_memory_queues_and_no_raw_address_secret_output",
+  "executed_source_hash": "matches_transport_queue_run",
+  "production_software_changes": false,
+  "software_gates_reused": "path-localization-gates.json_same_production_source",
+  "test_lab": "deferred_user_not_run_not_passed",
+  "evidence_JSON_JSONL_validated": 29,
+  "evidence_redaction_pattern_check": "passed",
+  "report_local_links": "passed",
+  "incident_windows_at_least_120_seconds_before_first_failure_and_after_first_recovery": "passed",
+  "path_probe_source_hash": "matches_run",
+  "finite_path_queue_drop_runs": "completed_exit_0",
+  "yaml_parse": "passed"
+}

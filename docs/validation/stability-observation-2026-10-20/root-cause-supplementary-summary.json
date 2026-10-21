@@ -1,0 +1,291 @@
+{
+  "at": "2026-10-21T09:21:12.627644+00:00",
+  "path_comparison": {
+    "ali": {
+      "file": "root-cause-path-ali.jsonl",
+      "samples": 120,
+      "first": "2026-10-21T09:10:08.457878+00:00",
+      "last": "2026-10-21T09:20:03.453077+00:00",
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T09:20:03.540119+00:00",
+        "reason": "cycles_complete",
+        "samples": 120,
+        "elapsed_seconds": 595.087
+      },
+      "probes": {
+        "gateway": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 0.066,
+            "p95": 0.092,
+            "max": 0.128
+          }
+        },
+        "peer": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 43.55,
+            "p95": 51.1,
+            "max": 57.4
+          }
+        },
+        "cloudflare": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 81.1,
+            "p95": 81.6,
+            "max": 95.1
+          }
+        },
+        "google_dns": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 38.0,
+            "p95": 38.1,
+            "max": 40.0
+          }
+        },
+        "local_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 0.2235,
+            "p95": 3.333,
+            "max": 9.841
+          }
+        },
+        "peer_ssh": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 47.912499999999994,
+            "p95": 57.781,
+            "max": 64.765
+          }
+        },
+        "peer_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 47.605999999999995,
+            "p95": 56.291,
+            "max": 61.917
+          }
+        }
+      }
+    },
+    "jp": {
+      "file": "root-cause-path-jp.jsonl",
+      "samples": 120,
+      "first": "2026-10-21T09:10:09.167049+00:00",
+      "last": "2026-10-21T09:20:04.165047+00:00",
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T09:20:04.227374+00:00",
+        "reason": "cycles_complete",
+        "samples": 120,
+        "elapsed_seconds": 595.062
+      },
+      "probes": {
+        "gateway": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 0.0865,
+            "p95": 0.131,
+            "max": 0.188
+          }
+        },
+        "peer": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 43.7,
+            "p95": 50.8,
+            "max": 55.2
+          }
+        },
+        "cloudflare": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 8.64,
+            "p95": 15.2,
+            "max": 19.8
+          }
+        },
+        "google_dns": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 8.684999999999999,
+            "p95": 14.9,
+            "max": 20.1
+          }
+        },
+        "local_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 0.5145,
+            "p95": 4.022,
+            "max": 20.934
+          }
+        },
+        "peer_ssh": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 46.5505,
+            "p95": 57.904,
+            "max": 65.562
+          }
+        },
+        "peer_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "timing_ms": {
+            "count": 120,
+            "median": 47.8365,
+            "p95": 58.86,
+            "max": 66.681
+          }
+        }
+      }
+    }
+  },
+  "transport_queues": {
+    "ali": {
+      "file": "transport-queue-ali.jsonl",
+      "samples": 90,
+      "first": "2026-10-21T09:13:07.714164+00:00",
+      "last": "2026-10-21T09:20:32.714239+00:00",
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T09:20:32.734168+00:00",
+        "reason": "cycles_complete",
+        "samples": 90
+      },
+      "by_layer": {
+        "carrier": {
+          "rtt_ms": {
+            "count": 95,
+            "median": 154.24,
+            "p95": 173.652,
+            "max": 267.474
+          },
+          "recv_queue_bytes": {
+            "count": 95,
+            "median": 0,
+            "p95": 0,
+            "max": 2796
+          },
+          "send_queue_bytes": {
+            "count": 95,
+            "median": 1200,
+            "p95": 1833,
+            "max": 7374
+          },
+          "socket_drop_counter_values": {
+            "count": 95,
+            "median": 0,
+            "p95": 0,
+            "max": 0
+          }
+        }
+      },
+      "scope": "initial host network namespace; Ali OpenVPN is recorded separately by one namespace snapshot"
+    },
+    "jp": {
+      "file": "transport-queue-jp.jsonl",
+      "samples": 90,
+      "first": "2026-10-21T09:13:08.382226+00:00",
+      "last": "2026-10-21T09:20:33.383076+00:00",
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T09:20:33.402992+00:00",
+        "reason": "cycles_complete",
+        "samples": 90
+      },
+      "by_layer": {
+        "vpn_transport": {
+          "rtt_ms": {
+            "count": 96,
+            "median": 0.1995,
+            "p95": 1.322,
+            "max": 6.664
+          },
+          "recv_queue_bytes": {
+            "count": 96,
+            "median": 0.0,
+            "p95": 0,
+            "max": 78
+          },
+          "send_queue_bytes": {
+            "count": 96,
+            "median": 0.0,
+            "p95": 1426,
+            "max": 1426
+          },
+          "socket_drop_counter_values": {
+            "count": 96,
+            "median": 0.0,
+            "p95": 0,
+            "max": 0
+          }
+        },
+        "carrier": {
+          "rtt_ms": {
+            "count": 97,
+            "median": 151.894,
+            "p95": 178.291,
+            "max": 322.462
+          },
+          "recv_queue_bytes": {
+            "count": 97,
+            "median": 0,
+            "p95": 0,
+            "max": 100
+          },
+          "send_queue_bytes": {
+            "count": 97,
+            "median": 31858,
+            "p95": 37484,
+            "max": 38901
+          },
+          "socket_drop_counter_values": {
+            "count": 97,
+            "median": 3,
+            "p95": 9,
+            "max": 10
+          }
+        }
+      },
+      "scope": "initial host network namespace; Ali OpenVPN is recorded separately by one namespace snapshot"
+    }
+  },
+  "limitations": [
+    "Supplementary observations started after 09:09 protection recovery, not at the failure itself.",
+    "TCP connect controls do not validate authenticated proxy acceptance.",
+    "Socket d counters are not NIC/qdisc drops and do not localize a provider-side cause.",
+    "No new finite observer persists after cycles_complete; original 24-hour sampler is unchanged."
+  ]
+}

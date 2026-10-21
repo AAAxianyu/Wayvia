@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-21T09:12:23.732185+00:00",
+  "host": "ali",
+  "listeners": [
+    {
+      "port": "8443",
+      "loopback": false,
+      "processes": [
+        "sing-box"
+      ]
+    }
+  ],
+  "congestion_control": "cubic"
+}

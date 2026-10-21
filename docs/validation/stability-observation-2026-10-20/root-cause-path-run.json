@@ -1,0 +1,8 @@
+{
+  "started_at_utc": "2026-10-21T09:10:08.150160+00:00",
+  "cycles_per_host": 120,
+  "interval_seconds": 5,
+  "remote_persistence": false,
+  "original_observer_unchanged": true,
+  "script_sha256": "304f7f7acc8e1f8857e3a6da0420b3e8debe2e12128f29c982a7d2023ce3d582"
+}

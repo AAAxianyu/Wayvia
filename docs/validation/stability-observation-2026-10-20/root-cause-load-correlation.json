@@ -1,0 +1,1924 @@
+{
+  "generated_at_utc": "2026-10-21T09:18:50.563422+00:00",
+  "causal_status": "unresolved_two_observed_failure_patterns",
+  "incident_sources": [
+    "incidents-0352-0359-ali.jsonl",
+    "incidents-0352-0359-jp.jsonl",
+    "incident-0827-ali.jsonl",
+    "incident-0827-jp.jsonl",
+    "incidents-0906-0909-ali.jsonl",
+    "incidents-0906-0909-jp.jsonl"
+  ],
+  "per_minute": {
+    "ali": {
+      "2026-10-21T08:50Z": {
+        "physical_rx_mbps": {
+          "count": 11,
+          "median": 0.026123,
+          "min": 0.007401,
+          "max": 0.118164
+        },
+        "physical_tx_mbps": {
+          "count": 11,
+          "median": 0.02108,
+          "min": 0.010435,
+          "max": 0.111313
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 11,
+          "median": 46.603,
+          "min": 45.643,
+          "max": 54.345
+        },
+        "peer_ping_rtt_ms": {
+          "count": 11,
+          "median": 38.7,
+          "min": 38.5,
+          "max": 42.6
+        },
+        "cpu_steal_percent": {
+          "count": 11,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 11,
+          "median": 4.979675,
+          "min": 2.339776,
+          "max": 22.639594
+        }
+      },
+      "2026-10-21T08:51Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.029827,
+          "min": 0.008329,
+          "max": 0.062021
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.024463,
+          "min": 0.012416,
+          "max": 0.071112
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 48.216,
+          "min": 42.942,
+          "max": 57.101
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.8,
+          "min": 38.6,
+          "max": 42.8
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 8.838384,
+          "min": 2.318548,
+          "max": 43.592331
+        }
+      },
+      "2026-10-21T08:52Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.04996,
+          "min": 0.004624,
+          "max": 0.153261
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.044768,
+          "min": 0.007611,
+          "max": 3.245687
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 47.636,
+          "min": 42.623,
+          "max": 56.029
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.8,
+          "min": 38.5,
+          "max": 43.2
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 10.717897,
+          "min": 2.618328,
+          "max": 52.48227
+        }
+      },
+      "2026-10-21T08:53Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.021995,
+          "min": 0.005213,
+          "max": 0.082617
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.020612,
+          "min": 0.006099,
+          "max": 0.258704
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 45.776,
+          "min": 43.768,
+          "max": 50.208
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.7,
+          "min": 38.6,
+          "max": 39.2
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 4.485638,
+          "min": 2.323232,
+          "max": 23.9636
+        }
+      },
+      "2026-10-21T08:54Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.029552,
+          "min": 0.002238,
+          "max": 0.887427
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.018675,
+          "min": 0.002238,
+          "max": 0.91941
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 48.832,
+          "min": 44.81,
+          "max": 156.963
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.6,
+          "min": 38.6,
+          "max": 39.6
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 5.954014,
+          "min": 2.020202,
+          "max": 20.486815
+        }
+      },
+      "2026-10-21T08:55Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.026272,
+          "min": 0.004566,
+          "max": 0.105024
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.017874,
+          "min": 0.00503,
+          "max": 0.096038
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 48.517,
+          "min": 40.702,
+          "max": 52.19
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.65,
+          "min": 38.5,
+          "max": 40.7
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 4.533863,
+          "min": 2.226721,
+          "max": 18.825911
+        }
+      },
+      "2026-10-21T08:56Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.035206,
+          "min": 0.004726,
+          "max": 0.300836
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.027107,
+          "min": 0.004742,
+          "max": 0.402549
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 47.3235,
+          "min": 44.078,
+          "max": 55.309
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.65,
+          "min": 38.6,
+          "max": 44.0
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 4.534015,
+          "min": 2.123357,
+          "max": 19.868996
+        }
+      },
+      "2026-10-21T08:57Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.033165,
+          "min": 0.006885,
+          "max": 0.108171
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.029122,
+          "min": 0.007077,
+          "max": 0.094374
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 14,
+          "median": 49.0965,
+          "min": 37.684,
+          "max": 54.346
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.65,
+          "min": 38.5,
+          "max": 39.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 7.097753,
+          "min": 2.228977,
+          "max": 24.821246
+        }
+      },
+      "2026-10-21T08:58Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.091627,
+          "min": 0.003904,
+          "max": 1.837861
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.108434,
+          "min": 0.004032,
+          "max": 2.890542
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 53.548,
+          "min": 37.552,
+          "max": 83.729
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.7,
+          "min": 38.5,
+          "max": 48.8
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 4.981908,
+          "min": 2.743902,
+          "max": 52.786221
+        }
+      },
+      "2026-10-21T08:59Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.985166,
+          "min": 1.91737,
+          "max": 2.040029
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.900374,
+          "min": 1.866248,
+          "max": 1.963582
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 154.577,
+          "min": 47.735,
+          "max": 303.473
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.95,
+          "min": 39.6,
+          "max": 50.2
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 10.894558,
+          "min": 5.93047,
+          "max": 21.187308
+        }
+      },
+      "2026-10-21T09:00Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.019325,
+          "min": 1.876375,
+          "max": 2.140189
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.995603,
+          "min": 1.89157,
+          "max": 2.222947
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 260.65,
+          "min": 145.001,
+          "max": 518.978
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 43.15,
+          "min": 39.8,
+          "max": 48.9
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 13.018285,
+          "min": 6.543967,
+          "max": 24.897959
+        }
+      },
+      "2026-10-21T09:01Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.000594,
+          "min": 1.988936,
+          "max": 2.021503
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.947091,
+          "min": 1.932679,
+          "max": 2.009732
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 215.999,
+          "min": 46.36,
+          "max": 432.228
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.0,
+          "min": 40.5,
+          "max": 50.0
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 10.217398,
+          "min": 6.262834,
+          "max": 23.559671
+        }
+      },
+      "2026-10-21T09:02Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.003693,
+          "min": 1.98439,
+          "max": 2.068284
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.960771,
+          "min": 1.91627,
+          "max": 2.04977
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 214.4775,
+          "min": 167.251,
+          "max": 599.803
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.25,
+          "min": 38.7,
+          "max": 50.8
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 8.691216,
+          "min": 6.057495,
+          "max": 29.068577
+        }
+      },
+      "2026-10-21T09:03Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.997681,
+          "min": 1.99081,
+          "max": 2.006003
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.94658,
+          "min": 1.808052,
+          "max": 2.064953
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 367.642,
+          "min": 49.606,
+          "max": 772.179
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 42.65,
+          "min": 39.4,
+          "max": 49.9
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.800631,
+          "min": 6.632653,
+          "max": 20.449898
+        }
+      },
+      "2026-10-21T09:04Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.997747,
+          "min": 1.981669,
+          "max": 2.014154
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.946294,
+          "min": 1.927497,
+          "max": 1.995751
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 519.264,
+          "min": 48.468,
+          "max": 932.612
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.7,
+          "min": 39.4,
+          "max": 49.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.540816,
+          "min": 6.339468,
+          "max": 20.9826
+        }
+      },
+      "2026-10-21T09:05Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.004829,
+          "min": 1.980899,
+          "max": 2.02216
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.938429,
+          "min": 1.712336,
+          "max": 2.271115
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 933.3695,
+          "min": 104.266,
+          "max": 1234.76
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 42.65,
+          "min": 38.7,
+          "max": 56.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.739143,
+          "min": 4.294479,
+          "max": 23.227133
+        }
+      },
+      "2026-10-21T09:06Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.008439,
+          "min": 1.97171,
+          "max": 2.032771
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.934526,
+          "min": 1.647567,
+          "max": 2.220083
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 757.627,
+          "min": 521.585,
+          "max": 1263.26
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 43.2,
+          "min": 39.4,
+          "max": 49.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 8.520469,
+          "min": 5.107252,
+          "max": 19.673802
+        }
+      },
+      "2026-10-21T09:07Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.013991,
+          "min": 1.975503,
+          "max": 2.07254
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.944388,
+          "min": 1.613071,
+          "max": 2.227761
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 847.128,
+          "min": 388.683,
+          "max": 1138.61
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.0,
+          "min": 40.2,
+          "max": 49.4
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 8.74418,
+          "min": 4.79103,
+          "max": 21.712538
+        }
+      },
+      "2026-10-21T09:08Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.992855,
+          "min": 1.940824,
+          "max": 2.031734
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.911512,
+          "min": 1.764095,
+          "max": 2.099394
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 589.257,
+          "min": 52.898,
+          "max": 956.276
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.75,
+          "min": 39.6,
+          "max": 50.7
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 11.235028,
+          "min": 6.020408,
+          "max": 16.888434
+        }
+      },
+      "2026-10-21T09:09Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.991877,
+          "min": 0.063562,
+          "max": 2.011733
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.869788,
+          "min": 0.076037,
+          "max": 2.194461
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 479.677,
+          "min": 42.29,
+          "max": 1275.45
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.2,
+          "min": 38.6,
+          "max": 51.3
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 13.809123,
+          "min": 5.419223,
+          "max": 57.916241
+        }
+      },
+      "2026-10-21T09:10Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 2.004688,
+          "min": 1.942857,
+          "max": 2.080931
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.947793,
+          "min": 1.877467,
+          "max": 2.19105
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 166.836,
+          "min": 42.543,
+          "max": 212.977
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 41.35,
+          "min": 39.0,
+          "max": 50.8
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 11.99822,
+          "min": 7.27459,
+          "max": 23.132037
+        }
+      },
+      "2026-10-21T09:11Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.981984,
+          "min": 1.641157,
+          "max": 2.00494
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.900221,
+          "min": 1.603037,
+          "max": 2.288485
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 166.646,
+          "min": 141.083,
+          "max": 194.32
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.1,
+          "min": 39.6,
+          "max": 60.0
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.538483,
+          "min": 5.413687,
+          "max": 24.106231
+        }
+      },
+      "2026-10-21T09:12Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.98729,
+          "min": 1.941356,
+          "max": 2.054015
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.910675,
+          "min": 1.865064,
+          "max": 1.965648
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 145.722,
+          "min": 52.194,
+          "max": 176.597
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 46.05,
+          "min": 40.6,
+          "max": 49.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 8.576606,
+          "min": 5.720123,
+          "max": 24.642127
+        }
+      },
+      "2026-10-21T09:13Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.971087,
+          "min": 1.935911,
+          "max": 2.011547
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.894335,
+          "min": 1.858516,
+          "max": 1.948037
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 156.246,
+          "min": 49.705,
+          "max": 176.157
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.9,
+          "min": 42.9,
+          "max": 50.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 8.802885,
+          "min": 5.725971,
+          "max": 23.282051
+        }
+      },
+      "2026-10-21T09:14Z": {
+        "physical_rx_mbps": {
+          "count": 7,
+          "median": 1.99144,
+          "min": 1.938595,
+          "max": 2.003453
+        },
+        "physical_tx_mbps": {
+          "count": 7,
+          "median": 1.898976,
+          "min": 1.847673,
+          "max": 1.930475
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 7,
+          "median": 140.794,
+          "min": 108.877,
+          "max": 164.364
+        },
+        "peer_ping_rtt_ms": {
+          "count": 7,
+          "median": 43.2,
+          "min": 40.9,
+          "max": 48.8
+        },
+        "cpu_steal_percent": {
+          "count": 7,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 7,
+          "median": 8.138352,
+          "min": 5.720123,
+          "max": 22.47191
+        }
+      }
+    },
+    "jp": {
+      "2026-10-21T08:50Z": {
+        "physical_rx_mbps": {
+          "count": 11,
+          "median": 0.034915,
+          "min": 0.011089,
+          "max": 0.12855
+        },
+        "physical_tx_mbps": {
+          "count": 11,
+          "median": 0.03811,
+          "min": 0.014105,
+          "max": 0.135981
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 14,
+          "median": 50.5615,
+          "min": 43.57,
+          "max": 57.291
+        },
+        "peer_ping_rtt_ms": {
+          "count": 11,
+          "median": 38.7,
+          "min": 38.6,
+          "max": 39.6
+        },
+        "cpu_steal_percent": {
+          "count": 11,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 11,
+          "median": 15.895372,
+          "min": 2.008032,
+          "max": 36.345382
+        }
+      },
+      "2026-10-21T08:51Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.036822,
+          "min": 0.012689,
+          "max": 0.068038
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.040091,
+          "min": 0.01654,
+          "max": 0.078811
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 53.7745,
+          "min": 43.29,
+          "max": 61.526
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.7,
+          "min": 38.6,
+          "max": 39.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 2.710843,
+          "min": 1.810865,
+          "max": 34.738956
+        }
+      },
+      "2026-10-21T08:52Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.028643,
+          "min": 0.005293,
+          "max": 0.109059
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.029304,
+          "min": 0.005816,
+          "max": 0.107069
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 51.692,
+          "min": 44.901,
+          "max": 55.163
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.7,
+          "min": 38.6,
+          "max": 39.0
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 10.943775,
+          "min": 1.408451,
+          "max": 81.526104
+        }
+      },
+      "2026-10-21T08:53Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.037961,
+          "min": 0.0086,
+          "max": 0.072951
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.031891,
+          "min": 0.008883,
+          "max": 0.245675
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 50.119,
+          "min": 42.035,
+          "max": 56.103
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.7,
+          "min": 38.5,
+          "max": 39.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.2
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 4.632229,
+          "min": 1.408451,
+          "max": 37.2
+        }
+      },
+      "2026-10-21T08:54Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.042168,
+          "min": 0.006254,
+          "max": 0.838784
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.039118,
+          "min": 0.006915,
+          "max": 0.843973
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 52.951,
+          "min": 44.745,
+          "max": 348.752
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.75,
+          "min": 38.6,
+          "max": 45.3
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 4.0258,
+          "min": 1.209677,
+          "max": 37.22334
+        }
+      },
+      "2026-10-21T08:55Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.03008,
+          "min": 0.008153,
+          "max": 0.095879
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.03017,
+          "min": 0.009019,
+          "max": 0.100952
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 14,
+          "median": 52.5305,
+          "min": 41.805,
+          "max": 56.851
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.6,
+          "min": 38.6,
+          "max": 39.0
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 6.434196,
+          "min": 1.209677,
+          "max": 35.4
+        }
+      },
+      "2026-10-21T08:56Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.039073,
+          "min": 0.017927,
+          "max": 0.191424
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.04129,
+          "min": 0.01855,
+          "max": 0.199629
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 50.395,
+          "min": 43.039,
+          "max": 60.735
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.6,
+          "min": 38.5,
+          "max": 40.2
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.200803
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 2.410051,
+          "min": 1.207243,
+          "max": 38.877756
+        }
+      },
+      "2026-10-21T08:57Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.037647,
+          "min": 0.010155,
+          "max": 0.080062
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.036874,
+          "min": 0.010934,
+          "max": 0.084429
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 50.752,
+          "min": 47.061,
+          "max": 56.364
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.8,
+          "min": 38.6,
+          "max": 40.7
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 3.710232,
+          "min": 1.603206,
+          "max": 33.066132
+        }
+      },
+      "2026-10-21T08:58Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 0.07723,
+          "min": 0.012971,
+          "max": 1.944307
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 0.081597,
+          "min": 0.009507,
+          "max": 2.035265
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 52.146,
+          "min": 45.232,
+          "max": 343.83
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 38.65,
+          "min": 38.6,
+          "max": 51.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 5.971232,
+          "min": 1.414141,
+          "max": 34.879032
+        }
+      },
+      "2026-10-21T08:59Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.923989,
+          "min": 1.89475,
+          "max": 1.954204
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.933351,
+          "min": 1.891177,
+          "max": 1.962695
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 148.8115,
+          "min": 112.018,
+          "max": 179.459
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.05,
+          "min": 40.0,
+          "max": 49.3
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.203666
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 10.020492,
+          "min": 5.510204,
+          "max": 37.931034
+        }
+      },
+      "2026-10-21T09:00Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.93976,
+          "min": 1.846234,
+          "max": 2.041805
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.933386,
+          "min": 1.822213,
+          "max": 2.07876
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 217.76,
+          "min": 58.514,
+          "max": 485.441
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 42.95,
+          "min": 39.2,
+          "max": 47.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.20284
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.203733,
+          "min": 6.378601,
+          "max": 41.836735
+        }
+      },
+      "2026-10-21T09:01Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.949137,
+          "min": 1.898443,
+          "max": 2.011618
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.927715,
+          "min": 1.888117,
+          "max": 2.009155
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 205.688,
+          "min": 52.93,
+          "max": 437.711
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 43.6,
+          "min": 39.5,
+          "max": 51.4
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.204082
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 11.208903,
+          "min": 6.365503,
+          "max": 41.344196
+        }
+      },
+      "2026-10-21T09:02Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.968466,
+          "min": 1.863434,
+          "max": 2.045834
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.953592,
+          "min": 1.875683,
+          "max": 2.050475
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 269.313,
+          "min": 54.689,
+          "max": 722.356
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 41.7,
+          "min": 39.8,
+          "max": 56.2
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.205339
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 6.967242,
+          "min": 5.737705,
+          "max": 42.566191
+        }
+      },
+      "2026-10-21T09:03Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.956619,
+          "min": 1.756223,
+          "max": 2.084021
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.940841,
+          "min": 1.75091,
+          "max": 2.086378
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 374.62,
+          "min": 183.469,
+          "max": 667.837
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.15,
+          "min": 39.3,
+          "max": 50.7
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.204918
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 6.95988,
+          "min": 5.338809,
+          "max": 39.714868
+        }
+      },
+      "2026-10-21T09:04Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.971371,
+          "min": 1.734572,
+          "max": 2.121704
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.973327,
+          "min": 1.7623,
+          "max": 2.109175
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 458.163,
+          "min": 53.553,
+          "max": 1061.7
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.15,
+          "min": 39.2,
+          "max": 50.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.201207
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 7.748452,
+          "min": 4.73251,
+          "max": 38.821138
+        }
+      },
+      "2026-10-21T09:05Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.978518,
+          "min": 1.620366,
+          "max": 2.134003
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 2.00452,
+          "min": 1.658171,
+          "max": 2.162714
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 862.399,
+          "min": 126.908,
+          "max": 1178.74
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.7,
+          "min": 40.4,
+          "max": 49.3
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.204082
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.062872,
+          "min": 4.897959,
+          "max": 38.492872
+        }
+      },
+      "2026-10-21T09:06Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.92805,
+          "min": 0.992971,
+          "max": 2.669972
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 2.013878,
+          "min": 1.820087,
+          "max": 2.366472
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 14,
+          "median": 678.2775,
+          "min": 49.351,
+          "max": 1211.59
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 46.4,
+          "min": 40.2,
+          "max": 56.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.202429
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 7.323343,
+          "min": 3.643725,
+          "max": 41.093117
+        }
+      },
+      "2026-10-21T09:07Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.910815,
+          "min": 1.456518,
+          "max": 2.335009
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.978972,
+          "min": 1.73875,
+          "max": 2.169559
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 15,
+          "median": 743.23,
+          "min": 55.741,
+          "max": 1075.99
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.8,
+          "min": 40.3,
+          "max": 51.4
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.20284
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 13.508093,
+          "min": 5.443548,
+          "max": 40.808081
+        }
+      },
+      "2026-10-21T09:08Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.915652,
+          "min": 1.678115,
+          "max": 2.097615
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.985358,
+          "min": 1.750831,
+          "max": 2.131966
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 580.707,
+          "min": 356.154,
+          "max": 919.067
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.4,
+          "min": 39.8,
+          "max": 51.5
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.20202
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 6.395843,
+          "min": 5.295316,
+          "max": 41.818182
+        }
+      },
+      "2026-10-21T09:09Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.830374,
+          "min": 0.06063,
+          "max": 2.952763
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.841661,
+          "min": 0.079187,
+          "max": 2.258517
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 363.455,
+          "min": 47.985,
+          "max": 1212.68
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 40.95,
+          "min": 38.6,
+          "max": 53.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.20202
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.598541,
+          "min": 2.226721,
+          "max": 43.232323
+        }
+      },
+      "2026-10-21T09:10Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.894356,
+          "min": 1.858895,
+          "max": 1.917368
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.93677,
+          "min": 1.893952,
+          "max": 1.964443
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 161.323,
+          "min": 53.496,
+          "max": 174.35
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.25,
+          "min": 39.2,
+          "max": 50.4
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.202429
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 14.736308,
+          "min": 7.272727,
+          "max": 100.0
+        }
+      },
+      "2026-10-21T09:11Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.894597,
+          "min": 1.538083,
+          "max": 1.934663
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.930736,
+          "min": 1.868788,
+          "max": 1.990546
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 147.183,
+          "min": 51.119,
+          "max": 203.555
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 43.75,
+          "min": 38.6,
+          "max": 50.2
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.203666
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 9.823848,
+          "min": 7.520325,
+          "max": 46.572581
+        }
+      },
+      "2026-10-21T09:12Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.900843,
+          "min": 1.839105,
+          "max": 1.942305
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.942309,
+          "min": 1.887914,
+          "max": 1.979905
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 12,
+          "median": 164.2015,
+          "min": 146.398,
+          "max": 236.163
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 44.9,
+          "min": 40.5,
+          "max": 49.1
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.20284
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 12.487838,
+          "min": 7.739308,
+          "max": 41.176471
+        }
+      },
+      "2026-10-21T09:13Z": {
+        "physical_rx_mbps": {
+          "count": 12,
+          "median": 1.884509,
+          "min": 1.853487,
+          "max": 1.924668
+        },
+        "physical_tx_mbps": {
+          "count": 12,
+          "median": 1.925762,
+          "min": 1.893695,
+          "max": 1.963566
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 13,
+          "median": 147.464,
+          "min": 54.091,
+          "max": 223.613
+        },
+        "peer_ping_rtt_ms": {
+          "count": 12,
+          "median": 45.2,
+          "min": 39.1,
+          "max": 49.8
+        },
+        "cpu_steal_percent": {
+          "count": 12,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.203666
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 12,
+          "median": 10.156707,
+          "min": 7.157464,
+          "max": 40.241449
+        }
+      },
+      "2026-10-21T09:14Z": {
+        "physical_rx_mbps": {
+          "count": 6,
+          "median": 1.88407,
+          "min": 1.828991,
+          "max": 1.942011
+        },
+        "physical_tx_mbps": {
+          "count": 6,
+          "median": 1.924774,
+          "min": 1.871011,
+          "max": 1.980452
+        },
+        "carrier_tcp_rtt_ms": {
+          "count": 6,
+          "median": 123.857,
+          "min": 51.307,
+          "max": 156.617
+        },
+        "peer_ping_rtt_ms": {
+          "count": 6,
+          "median": 42.3,
+          "min": 38.9,
+          "max": 47.6
+        },
+        "cpu_steal_percent": {
+          "count": 6,
+          "median": 0.0,
+          "min": 0.0,
+          "max": 0.203252
+        },
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 6,
+          "median": 15.962661,
+          "min": 6.938776,
+          "max": 37.601626
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Guest NIC traffic includes all host traffic and headers. Carrier throughput must use stable same-connection byte deltas.",
+    "Correlation with load and retransmissions does not identify the provider policer or queue, or prove a unique root cause.",
+    "09:06 and 09:09 failures differ from low-load common Japan-external/cross-border outages at 08:27/08:28.",
+    "No artificial traffic load, fault injection or manual restart was introduced."
+  ]
+}

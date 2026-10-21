@@ -1,0 +1,20 @@
+{
+  "host": "jp",
+  "at": "2026-10-21T09:13:55.417141+00:00",
+  "window_utc": [
+    "2026-10-21T08:24:00+00:00",
+    "2026-10-21T09:13:00+00:00"
+  ],
+  "journal_exit": {
+    "kernel": 0,
+    "network": 0,
+    "clock": 0
+  },
+  "read_record_counts": {
+    "kernel": 1,
+    "network": 0,
+    "clock": 0
+  },
+  "classified_events": [],
+  "limitation": "Only allowlisted categories; absence does not establish upstream health."
+}

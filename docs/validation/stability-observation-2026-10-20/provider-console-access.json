@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-10-21T09:18:50.600051+00:00",
+  "method": "read_only_browser_navigation",
+  "public_product_url": "https://www.htstack.com/jp-cloud.shtml",
+  "login_url": "https://www.htstack.com/login.shtml",
+  "observed_state": "login_form_no_authenticated_console_session",
+  "credentials_entered": false,
+  "messages_sent": false,
+  "instance_plan_verified": false,
+  "required_evidence": "instance bandwidth/policer settings and provider-side fault-window network telemetry"
+}

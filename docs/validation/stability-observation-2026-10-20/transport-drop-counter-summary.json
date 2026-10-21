@@ -1,0 +1,62 @@
+{
+  "first": "2026-10-21T09:22:31.601319+00:00",
+  "last": "2026-10-21T09:23:26.815312+00:00",
+  "samples": 12,
+  "all_counter_deltas": {
+    "TcpExt:LockDroppedIcmps": 0,
+    "TcpExt:PAWSActive": 0,
+    "TcpExt:PAWSEstab": 0,
+    "TcpExt:ListenOverflows": 0,
+    "TcpExt:ListenDrops": 0,
+    "TcpExt:TCPLostRetransmit": 0,
+    "TcpExt:TCPFastRetrans": 0,
+    "TcpExt:TCPSlowStartRetrans": 0,
+    "TcpExt:TCPRcvCollapsed": 0,
+    "TcpExt:TCPMemoryPressures": 0,
+    "TcpExt:TCPMemoryPressuresChrono": 0,
+    "TcpExt:TCPSACKDiscard": 0,
+    "TcpExt:TCPBacklogDrop": 0,
+    "TcpExt:PFMemallocDrop": 0,
+    "TcpExt:TCPMinTTLDrop": 0,
+    "TcpExt:TCPDeferAcceptDrop": 0,
+    "TcpExt:TCPReqQFullDrop": 0,
+    "TcpExt:TCPRetransFail": 0,
+    "TcpExt:TCPOFOQueue": 3,
+    "TcpExt:TCPOFODrop": 0,
+    "TcpExt:TCPOFOMerge": 0,
+    "TcpExt:TCPFastOpenListenOverflow": 0,
+    "TcpExt:TCPFromZeroWindowAdv": 0,
+    "TcpExt:TCPToZeroWindowAdv": 0,
+    "TcpExt:TCPWantZeroWindowAdv": 0,
+    "TcpExt:TCPSynRetrans": 0,
+    "TcpExt:TCPACKSkippedSynRecv": 0,
+    "TcpExt:TCPACKSkippedPAWS": 0,
+    "TcpExt:TCPACKSkippedSeq": 0,
+    "TcpExt:TCPACKSkippedFinWait2": 0,
+    "TcpExt:TCPACKSkippedTimeWait": 0,
+    "TcpExt:TCPACKSkippedChallenge": 0,
+    "TcpExt:TCPZeroWindowDrop": 0,
+    "TcpExt:TCPRcvQDrop": 0,
+    "TcpExt:TCPAODroppedIcmps": 0,
+    "Tcp:RetransSegs": 0,
+    "Tcp:InErrs": 0
+  },
+  "changed_counters": {
+    "TcpExt:TCPOFOQueue": 3
+  },
+  "same_socket_drop_counters": [
+    {
+      "id": "81ce9e9f7b786dfa",
+      "layer": "vpn_transport",
+      "socket_d_start": 0,
+      "socket_d_end": 0
+    },
+    {
+      "id": "f6ed9214300d40a4",
+      "layer": "carrier",
+      "socket_d_start": 10,
+      "socket_d_end": 10
+    }
+  ],
+  "scope": "Guest-wide TCP counters include other host traffic; simultaneous changes do not prove a per-socket drop reason."
+}
