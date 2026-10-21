@@ -1,0 +1,28 @@
+{
+  "window_utc": [
+    "2026-10-21T20:40:00+00:00",
+    "2026-10-21T20:51:00+00:00"
+  ],
+  "service_events": [
+    {
+      "at": "2026-10-21T20:46:14.709736+00:00",
+      "unit": "wayvia-exit.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:46:16.844907+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:46:16.866888+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:46:17.522230+00:00",
+      "unit": "wayvia-exit.service",
+      "event": "service_started"
+    }
+  ]
+}

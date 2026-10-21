@@ -1,0 +1,88 @@
+{
+  "window_utc": [
+    "2026-10-21T20:40:00+00:00",
+    "2026-10-21T20:51:00+00:00"
+  ],
+  "service_events": [
+    {
+      "at": "2026-10-21T20:46:20.781368+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:46:22.839691+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:46:22.848641+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:46:27.355731+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:46:27.365200+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:46:27.851511+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:46:27.860077+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:46:28.311111+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:48:01.112534+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:48:02.657497+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:48:02.671516+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:48:06.695188+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:48:06.703527+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:48:07.191157+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T20:48:07.203751+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T20:48:07.693304+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "service_started"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "window_utc": [
+    "2026-10-21T20:40:00+00:00",
+    "2026-10-21T20:51:00+00:00"
+  ],
+  "kernel_journal_rows": 0,
+  "category_counts": {
+    "oom": 0,
+    "netdev_watchdog": 0,
+    "link_down": 0,
+    "conntrack_full": 0,
+    "blocked_task": 0,
+    "kernel_panic": 0
+  },
+  "events": [],
+  "limits": "Allowlisted kernel categories only; absence does not exclude host, virtual-network or upstream faults."
+}

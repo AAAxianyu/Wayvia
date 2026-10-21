@@ -1,0 +1,19 @@
+{
+  "at_utc": "2026-10-21T20:59:42.316964+00:00",
+  "scope": "read_only_evidence_and_documentation_only_no_runtime_source_changes",
+  "json_files_parsed": 11,
+  "jsonl_files_parsed": 2,
+  "jsonl_records_parsed": 528,
+  "review_count_state_generation_pid_deadline_checks": "passed",
+  "event_before_and_after_120_second_coverage": "passed_both_hosts_before_first_loss_and_after_last_first_control_recovery",
+  "all_new_nonbaseline_control_failures_and_ping_misses_in_saved_window": "passed",
+  "protection_interval_calculations": "passed",
+  "compatibility_yaml_parse_and_counts": "passed",
+  "git_diff_check": "passed",
+  "credential_url_and_private_key_pattern_scan": "passed",
+  "make_check_demo_test_configs": "not_repeated_no_runtime_or_configuration_source_changes_prior_gate_results_retained",
+  "make_test_lab": "deferred_by_user_not_executed_not_passed",
+  "remote_mutation": "none_by_observer_natural_automatic_recovery_recorded",
+  "management_connection": "Japan_local_SSH_multiplex_reestablished_with_existing_pinned_host_key_and_authorized_credential_no_server_changes",
+  "primary_workspace": "not_modified"
+}

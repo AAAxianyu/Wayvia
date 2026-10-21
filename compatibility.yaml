@@ -628,16 +628,18 @@ stability_observation_2026_10_20:
   production_wheel_field_scope: baseline_at_observer_launch
   production_services_and_default_route: unchanged_at_start
   latest_review:
-    journal_until_utc: '2026-10-21T19:56:31.262238+00:00'
-    samples: {ali: 12087, jp: 12086}
-    monitor_rounds: {ali: 3802, jp: 3815}
-    degraded_rounds: {ali: 5, jp: 0}
-    new_ingress_degradations: 0
-    new_japan_primary_HTTP_timeouts_with_successful_fallback: 0
-    result: no_new_production_or_control_failure_baseline_excluded_roots_unresolved
-    production_changes: none_by_observer_separate_authorized_maintenance_recorded
+    journal_until_utc: '2026-10-21T20:55:33.384881+00:00'
+    samples: {ali: 12795, jp: 12795}
+    monitor_rounds: {ali: 4023, jp: 4041}
+    degraded_rounds: {ali: 7, jp: 1}
+    new_ingress_degradations: 2
+    new_japan_degradations: 1
+    new_japan_primary_HTTP_timeouts_with_successful_fallback: 2
+    result: new_natural_network_and_recovery_incidents_currently_recovered_roots_unresolved
+    production_changes: none_by_observer_natural_automatic_recovery_service_restarts_recorded
     observer_pid_and_deadline: unchanged
-    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T1956Z-review.json
+    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T2052Z-review.json
+    incident_evidence: docs/validation/stability-observation-2026-10-20/incidents-2046-2048.md
   authorized_mid_window_maintenance:
     source_commit: 08695f2
     host: ali
