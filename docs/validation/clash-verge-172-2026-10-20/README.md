@@ -11,3 +11,5 @@
 [Clash Verge v1.7.2 的订阅页面源码](https://github.com/clash-verge-rev/clash-verge-rev/blob/v1.7.2/src/pages/profiles.tsx)支持 URL 导入；[该版本下载代码](https://github.com/clash-verge-rev/clash-verge-rev/blob/v1.7.2/src-tauri/src/config/prfitem.rs)使用 HTTPS 证书验证、默认直连获取 YAML。用户可复制链接至订阅页面输入框后点击导入，选中该配置并保持规则模式。尚未在用户桌面实际运行 Clash Verge GUI，不将上述配置解析结果当作桌面 TUN、UDP、DNS/IPv6 或全应用分流验收。
 
 签发发生于 2026-10-21 03:33 UTC，随后发生一次完整订阅下载，这些是当前 24 小时观察期间的正常控制面活动。复核入口事务代次未变、状态 ACTIVE；日本本次 SSH 管理读取返回 255，未取得新鲜状态，不能将其当作业务断连。见 [生产状态](production-state.json)。没有改变已启动采样；故障与重启测试继续暂缓。生产源码未改，沿用当前源码已完成的 369 项软件回归、demo 和 10 项配置门禁；本次额外完成指定旧核心的独立真实解析验证，不重复执行故障/重启实验。
+
+管理连接补查：原日本 SSH 复用连接已不可用，BatchMode 无法进行密码认证；使用用户先前提供的密码重新建立 SSH 管理连接后，确认同一代次 ACTIVE、独立观察单元仍 active。只给本机 SSH 客户端增加 keepalive，未改服务器 SSH 配置或任何数据面。见 [重新认证后的状态](management-reconnected-jp.json)。首次读取失败证据保留，不能解释为业务中断。

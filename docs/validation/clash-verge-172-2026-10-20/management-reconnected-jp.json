@@ -1,0 +1,7 @@
+{
+  "generation": "64fee7096d28466e9ab15d463e5a55e5",
+  "state": "ACTIVE",
+  "monitor_at": "2026-10-21T03:35:31.875271+00:00",
+  "observer_state": "active",
+  "management_connection": "reauthenticated_existing_password_and_enabled_SSH_client_keepalive_only"
+}
