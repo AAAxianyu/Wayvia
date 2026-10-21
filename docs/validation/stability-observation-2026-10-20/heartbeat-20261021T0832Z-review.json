@@ -1,0 +1,891 @@
+{
+  "reviewed_at_utc": "2026-10-21T08:33:54.741107+00:00",
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "comparison": "heartbeat-20261021T0730Z-review.json",
+  "initial_collection_prefix": "heartbeat-20261021T0827Z",
+  "new_production_failure": true,
+  "new_control_only_failure": true,
+  "new_actionable_event": true,
+  "user_action_required": false,
+  "notification": "two_new_natural_degradations_and_correlated_network_failures_recovered",
+  "ssh_management": {
+    "ali": "existing_channel_succeeded",
+    "jp": "existing_channel_succeeded"
+  },
+  "hosts": {
+    "ali": {
+      "summary_file": "heartbeat-20261021T0832Z-ali.json",
+      "monitor_file": "heartbeat-20261021T0832Z-monitor-ali.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T08:32:11.583259+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T07:30:49.719894+00:00",
+        "2026-10-21T08:32:11.583259+00:00"
+      ],
+      "latest_record_at_utc": "2026-10-21T08:32:10.045733+00:00",
+      "previous_samples": 3139,
+      "samples": 3875,
+      "new_samples": 736,
+      "sample_gap_seconds": {
+        "count": 3874,
+        "median": 5.000102912075818,
+        "p95": 5.00014309771359,
+        "max": 5.003144457936287
+      },
+      "current_state": "ACTIVE",
+      "generation_unchanged": true,
+      "journal_monitor_count": 1218,
+      "new_journal_monitor_count": 231,
+      "journal_states": {
+        "ACTIVE": 1214,
+        "DEGRADED": 4
+      },
+      "new_failed_checks": [
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "failed",
+          "observed_at": "2026-10-21T08:26:59.126995+00:00",
+          "duration_ms": 5346,
+          "error": "HTTP_TLS_FAILED",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5061,
+              "curl_code": 35,
+              "http_status": 0,
+              "result": "HTTP_TLS_FAILED"
+            }
+          ]
+        },
+        {
+          "layer": "carrier",
+          "kind": "vpn_handshake",
+          "status": "failed",
+          "observed_at": "2026-10-21T08:27:04.472818+00:00",
+          "duration_ms": 2363
+        },
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "failed",
+          "observed_at": "2026-10-21T08:28:19.121185+00:00",
+          "duration_ms": 5256,
+          "error": "HTTP_TLS_FAILED",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5027,
+              "curl_code": 35,
+              "http_status": 0,
+              "result": "HTTP_TLS_FAILED"
+            }
+          ]
+        }
+      ],
+      "new_fallbacks": [],
+      "new_unit_events": [
+        {
+          "at": "2026-10-21T08:27:11.623930+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:27:16.615681+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T08:27:16.620572+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T08:27:16.639282+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:27:16.650817+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:27:18.623510+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T08:27:18.624461+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T08:27:20.627353+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T08:27:20.911970+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:27:20.918898+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:27:20.966863+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T08:27:21.265605+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "vpn_established"
+        },
+        {
+          "at": "2026-10-21T08:27:21.369398+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:27:21.381475+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:27:21.880493+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:28:28.642486+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:28:36.112223+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T08:28:36.119542+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T08:28:36.124956+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:28:36.135225+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:28:38.121944+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T08:28:38.121944+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T08:28:40.124378+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T08:28:40.241030+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:28:40.251969+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:28:40.290453+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T08:28:40.649555+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "vpn_established"
+        },
+        {
+          "at": "2026-10-21T08:28:40.697577+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T08:28:40.708490+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T08:28:41.180673+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        }
+      ],
+      "new_state_transitions": [
+        {
+          "at": "2026-10-21T08:27:11.639764+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-21T08:27:23.729662+00:00",
+          "state": "ACTIVE"
+        },
+        {
+          "at": "2026-10-21T08:28:28.657882+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-21T08:28:42.820109+00:00",
+          "state": "ACTIVE"
+        }
+      ],
+      "unit_event_count_delta": {
+        "service_stopped": 8,
+        "connection_reset": 2,
+        "process_restart": 4,
+        "service_started": 8,
+        "remote_close": 6,
+        "vpn_established": 2
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 123
+        },
+        "host_cf_alternative": {
+          "failed": 123
+        },
+        "host_dns_cf": {
+          "failed": 4,
+          "ok": 119
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 123
+        },
+        "vpn_cf_primary": {
+          "failed": 2,
+          "ok": 121
+        },
+        "vpn_cf_alternative": {
+          "failed": 2,
+          "ok": 121
+        },
+        "vpn_dns_cf": {
+          "failed": 1,
+          "ok": 122
+        },
+        "vpn_dns_google": {
+          "failed": 1,
+          "ok": 122
+        }
+      },
+      "peer_ping_count_delta": {
+        "ok": 730,
+        "miss": 6
+      },
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "34615296",
+        "MemoryPeak": "50671616",
+        "CPUUsageNSec": "191618802000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "observer_result": null,
+      "evidence_bytes": 9754707,
+      "file_growth_bytes": 1855682,
+      "partial_lines_ignored": 0
+    },
+    "jp": {
+      "summary_file": "heartbeat-20261021T0832Z-jp.json",
+      "monitor_file": "heartbeat-20261021T0832Z-monitor-jp.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T08:32:11.583259+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T07:30:49.719894+00:00",
+        "2026-10-21T08:32:11.583259+00:00"
+      ],
+      "latest_record_at_utc": "2026-10-21T08:32:09.060061+00:00",
+      "previous_samples": 3138,
+      "samples": 3874,
+      "new_samples": 736,
+      "sample_gap_seconds": {
+        "count": 3873,
+        "median": 5.000180214992724,
+        "p95": 5.000670838999213,
+        "max": 5.003699731008965
+      },
+      "current_state": "ACTIVE",
+      "generation_unchanged": true,
+      "journal_monitor_count": 1227,
+      "new_journal_monitor_count": 238,
+      "journal_states": {
+        "ACTIVE": 1227
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [
+        {
+          "layer": "egress",
+          "kind": "http",
+          "status": "healthy",
+          "observed_at": "2026-10-21T08:26:57.494877+00:00",
+          "duration_ms": 10198,
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5758,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 4176,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ]
+        },
+        {
+          "layer": "egress",
+          "kind": "http",
+          "status": "healthy",
+          "observed_at": "2026-10-21T08:28:15.116269+00:00",
+          "duration_ms": 11209,
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5759,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5208,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ]
+        }
+      ],
+      "new_unit_events": [],
+      "new_state_transitions": [],
+      "unit_event_count_delta": {
+        "tls_error": 484,
+        "connection_reset": 469
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 1,
+          "ok": 122
+        },
+        "host_cf_alternative": {
+          "failed": 1,
+          "ok": 122
+        },
+        "host_dns_cf": {
+          "failed": 2,
+          "ok": 121
+        },
+        "host_dns_google": {
+          "failed": 2,
+          "ok": 121
+        }
+      },
+      "peer_ping_count_delta": {
+        "ok": 731,
+        "miss": 5
+      },
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "19996672",
+        "MemoryPeak": "30244864",
+        "CPUUsageNSec": "178701817000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "observer_result": null,
+      "evidence_bytes": 8784916,
+      "file_growth_bytes": 1677181,
+      "partial_lines_ignored": 0
+    }
+  },
+  "production_incidents": [
+    {
+      "id": "0827",
+      "first_network_miss_utc": "2026-10-21T08:26:54.042964+00:00",
+      "access_probe_started_at_utc": "2026-10-21T08:26:59.126995+00:00",
+      "access_probe_duration_ms": 5346,
+      "degraded_at_utc": "2026-10-21T08:27:11.639764+00:00",
+      "active_at_utc": "2026-10-21T08:27:23.729662+00:00",
+      "japan_egress_probe_duration_ms": 10198,
+      "japan_primary_attempt_timeout_ms": 5758,
+      "japan_alternative_attempt_success_ms": 4176,
+      "ali_carrier_rto_max_ms": 8096,
+      "degraded_seconds": 12.089898,
+      "limitation": "State duration is not a measured continuous user outage; sampled misses bound observations, not exact packet-loss start/end."
+    },
+    {
+      "id": "0828",
+      "first_network_miss_utc": "2026-10-21T08:28:14.046536+00:00",
+      "access_probe_started_at_utc": "2026-10-21T08:28:19.121185+00:00",
+      "access_probe_duration_ms": 5256,
+      "degraded_at_utc": "2026-10-21T08:28:28.657882+00:00",
+      "active_at_utc": "2026-10-21T08:28:42.820109+00:00",
+      "japan_egress_probe_duration_ms": 11209,
+      "japan_primary_attempt_timeout_ms": 5759,
+      "japan_alternative_attempt_success_ms": 5208,
+      "ali_carrier_rto_max_ms": 8128,
+      "degraded_seconds": 14.162227,
+      "limitation": "State duration is not a measured continuous user outage; sampled misses bound observations, not exact packet-loss start/end."
+    }
+  ],
+  "event_windows": {
+    "incident-0827": {
+      "ali": {
+        "file": "incident-0827-ali.jsonl",
+        "rows": 183,
+        "samples": 79,
+        "first_at_utc": "2026-10-21T08:24:45.035915+00:00",
+        "last_at_utc": "2026-10-21T08:31:15.044450+00:00",
+        "controls": {
+          "host_cf_primary": {
+            "failed": 13
+          },
+          "host_cf_alternative": {
+            "failed": 13
+          },
+          "host_dns_cf": {
+            "ok": 13
+          },
+          "host_dns_google": {
+            "ok": 13
+          },
+          "vpn_cf_primary": {
+            "ok": 11,
+            "failed": 2
+          },
+          "vpn_cf_alternative": {
+            "ok": 11,
+            "failed": 2
+          },
+          "vpn_dns_cf": {
+            "ok": 12,
+            "failed": 1
+          },
+          "vpn_dns_google": {
+            "ok": 12,
+            "failed": 1
+          }
+        },
+        "failed_nonbaseline_controls": [
+          {
+            "type": "control",
+            "label": "vpn_cf_primary",
+            "started_at": "2026-10-21T08:27:20.242828+00:00",
+            "at": "2026-10-21T08:27:22.264294+00:00",
+            "duration_ms": 2021,
+            "result": {
+              "curl_exit": 28,
+              "valid_https_response": false,
+              "single_valid_trace_ip": false,
+              "expected_exit_match": false,
+              "http_code": 0,
+              "ssl_verify_result": 0,
+              "time_connect": 0.0,
+              "time_appconnect": 0.0,
+              "time_starttransfer": 0.0,
+              "time_total": 2.00537,
+              "size_download": 0
+            }
+          },
+          {
+            "type": "control",
+            "label": "vpn_cf_alternative",
+            "started_at": "2026-10-21T08:27:20.297871+00:00",
+            "at": "2026-10-21T08:27:22.321670+00:00",
+            "duration_ms": 2024,
+            "result": {
+              "curl_exit": 28,
+              "valid_https_response": false,
+              "single_valid_trace_ip": false,
+              "expected_exit_match": false,
+              "http_code": 0,
+              "ssl_verify_result": 0,
+              "time_connect": 0.0,
+              "time_appconnect": 0.0,
+              "time_starttransfer": 0.0,
+              "time_total": 2.007882,
+              "size_download": 0
+            }
+          },
+          {
+            "type": "control",
+            "label": "vpn_cf_primary",
+            "started_at": "2026-10-21T08:28:21.126125+00:00",
+            "at": "2026-10-21T08:28:23.142355+00:00",
+            "duration_ms": 2016,
+            "result": {
+              "curl_exit": 28,
+              "valid_https_response": false,
+              "single_valid_trace_ip": false,
+              "expected_exit_match": false,
+              "http_code": 0,
+              "ssl_verify_result": 0,
+              "time_connect": 0.0,
+              "time_appconnect": 0.0,
+              "time_starttransfer": 0.0,
+              "time_total": 2.002668,
+              "size_download": 0
+            }
+          },
+          {
+            "type": "control",
+            "label": "vpn_cf_alternative",
+            "started_at": "2026-10-21T08:28:21.156863+00:00",
+            "at": "2026-10-21T08:28:23.177896+00:00",
+            "duration_ms": 2021,
+            "result": {
+              "curl_exit": 28,
+              "valid_https_response": false,
+              "single_valid_trace_ip": false,
+              "expected_exit_match": false,
+              "http_code": 0,
+              "ssl_verify_result": 0,
+              "time_connect": 0.0,
+              "time_appconnect": 0.0,
+              "time_starttransfer": 0.0,
+              "time_total": 2.0062,
+              "size_download": 0
+            }
+          },
+          {
+            "type": "control",
+            "label": "vpn_dns_cf",
+            "started_at": "2026-10-21T08:28:23.069131+00:00",
+            "at": "2026-10-21T08:28:25.107729+00:00",
+            "duration_ms": 2039,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "vpn_dns_google",
+            "started_at": "2026-10-21T08:28:23.086296+00:00",
+            "at": "2026-10-21T08:28:25.123130+00:00",
+            "duration_ms": 2037,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          }
+        ],
+        "ping_misses": [
+          "2026-10-21T08:26:55.039027+00:00",
+          "2026-10-21T08:27:00.038792+00:00",
+          "2026-10-21T08:27:05.038910+00:00",
+          "2026-10-21T08:28:15.040381+00:00",
+          "2026-10-21T08:28:20.040444+00:00",
+          "2026-10-21T08:28:25.041022+00:00"
+        ]
+      },
+      "jp": {
+        "file": "incident-0827-jp.jsonl",
+        "rows": 131,
+        "samples": 79,
+        "first_at_utc": "2026-10-21T08:24:49.036673+00:00",
+        "last_at_utc": "2026-10-21T08:31:19.058691+00:00",
+        "controls": {
+          "host_cf_primary": {
+            "ok": 12,
+            "failed": 1
+          },
+          "host_cf_alternative": {
+            "ok": 12,
+            "failed": 1
+          },
+          "host_dns_cf": {
+            "ok": 11,
+            "failed": 2
+          },
+          "host_dns_google": {
+            "ok": 11,
+            "failed": 2
+          }
+        },
+        "failed_nonbaseline_controls": [
+          {
+            "type": "control",
+            "label": "host_cf_primary",
+            "started_at": "2026-10-21T08:26:55.059480+00:00",
+            "at": "2026-10-21T08:26:57.120711+00:00",
+            "duration_ms": 2061,
+            "result": {
+              "curl_exit": 28,
+              "valid_https_response": false,
+              "single_valid_trace_ip": false,
+              "expected_exit_match": false,
+              "http_code": 0,
+              "ssl_verify_result": 0,
+              "time_connect": 0.0,
+              "time_appconnect": 0.0,
+              "time_starttransfer": 0.0,
+              "time_total": 2.005473,
+              "size_download": 0
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_cf_alternative",
+            "started_at": "2026-10-21T08:26:55.059889+00:00",
+            "at": "2026-10-21T08:26:57.123186+00:00",
+            "duration_ms": 2063,
+            "result": {
+              "curl_exit": 28,
+              "valid_https_response": false,
+              "single_valid_trace_ip": false,
+              "expected_exit_match": false,
+              "http_code": 0,
+              "ssl_verify_result": 1,
+              "time_connect": 1.792905,
+              "time_appconnect": 0.0,
+              "time_starttransfer": 0.0,
+              "time_total": 2.00191,
+              "size_download": 0
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_cf",
+            "started_at": "2026-10-21T08:26:55.060179+00:00",
+            "at": "2026-10-21T08:26:57.143186+00:00",
+            "duration_ms": 2083,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_google",
+            "started_at": "2026-10-21T08:26:55.061896+00:00",
+            "at": "2026-10-21T08:26:57.141104+00:00",
+            "duration_ms": 2079,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_cf",
+            "started_at": "2026-10-21T08:28:25.066528+00:00",
+            "at": "2026-10-21T08:28:27.129728+00:00",
+            "duration_ms": 2063,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_google",
+            "started_at": "2026-10-21T08:28:25.068843+00:00",
+            "at": "2026-10-21T08:28:27.141165+00:00",
+            "duration_ms": 2072,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          }
+        ],
+        "ping_misses": [
+          "2026-10-21T08:26:54.042964+00:00",
+          "2026-10-21T08:27:04.043259+00:00",
+          "2026-10-21T08:28:14.046536+00:00",
+          "2026-10-21T08:28:19.047732+00:00",
+          "2026-10-21T08:28:24.047052+00:00"
+        ]
+      }
+    },
+    "control-timeouts-0814-0821": {
+      "ali": {
+        "file": "control-timeouts-0814-0821-ali.jsonl",
+        "rows": 348,
+        "samples": 148,
+        "first_at_utc": "2026-10-21T08:12:10.020290+00:00",
+        "last_at_utc": "2026-10-21T08:24:25.035807+00:00",
+        "controls": {
+          "host_cf_primary": {
+            "failed": 25
+          },
+          "host_cf_alternative": {
+            "failed": 25
+          },
+          "host_dns_cf": {
+            "ok": 21,
+            "failed": 4
+          },
+          "host_dns_google": {
+            "ok": 25
+          },
+          "vpn_cf_primary": {
+            "ok": 25
+          },
+          "vpn_cf_alternative": {
+            "ok": 25
+          },
+          "vpn_dns_cf": {
+            "ok": 25
+          },
+          "vpn_dns_google": {
+            "ok": 25
+          }
+        },
+        "failed_nonbaseline_controls": [
+          {
+            "type": "control",
+            "label": "host_dns_cf",
+            "started_at": "2026-10-21T08:14:20.075595+00:00",
+            "at": "2026-10-21T08:14:22.117083+00:00",
+            "duration_ms": 2041,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_cf",
+            "started_at": "2026-10-21T08:16:20.078133+00:00",
+            "at": "2026-10-21T08:16:22.121813+00:00",
+            "duration_ms": 2044,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_cf",
+            "started_at": "2026-10-21T08:21:20.083626+00:00",
+            "at": "2026-10-21T08:21:22.124110+00:00",
+            "duration_ms": 2040,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          },
+          {
+            "type": "control",
+            "label": "host_dns_cf",
+            "started_at": "2026-10-21T08:21:50.084337+00:00",
+            "at": "2026-10-21T08:21:52.127239+00:00",
+            "duration_ms": 2043,
+            "result": {
+              "exit": 9,
+              "rcode": null,
+              "query_ms": null
+            }
+          }
+        ],
+        "ping_misses": []
+      },
+      "jp": {
+        "file": "control-timeouts-0814-0821-jp.jsonl",
+        "rows": 248,
+        "samples": 148,
+        "first_at_utc": "2026-10-21T08:12:13.999005+00:00",
+        "last_at_utc": "2026-10-21T08:24:29.036306+00:00",
+        "controls": {
+          "host_cf_primary": {
+            "ok": 25
+          },
+          "host_cf_alternative": {
+            "ok": 25
+          },
+          "host_dns_cf": {
+            "ok": 25
+          },
+          "host_dns_google": {
+            "ok": 25
+          }
+        },
+        "failed_nonbaseline_controls": [],
+        "ping_misses": []
+      }
+    }
+  },
+  "assessment": {
+    "supported": "Both new episodes show bidirectional cross-border ICMP misses and carrier TCP retransmission/backoff before ingress TLS failure and protection. Japan host-direct HTTP/DNS and production primary HTTP attempts were also affected. Evidence supports real network-path impairment shared by these observations, not an isolated access-probe false alarm.",
+    "japan_active_caveat": "Japan stayed ACTIVE because alternate HTTPS attempts succeeded after primary timeouts; overall healthy status did not mean uninterrupted network reachability.",
+    "resource_evidence": "During first pre-protection 5-second intervals, Ali busy CPU was 4.33–10.09%, Japan 1.81–29.86%, minimum available memory 632468/492432 KiB. Both NICs stayed UP with no observed error/drop increments. No allowlisted OOM/link/watchdog/conntrack/stall events appeared in the collected kernel window. Later Ali CPU/IO rises followed protection/recovery. These samples do not exclude microbursts, hypervisor or upstream problems.",
+    "not_established": [
+      "specific cloud host/hypervisor or upstream link responsible",
+      "campus filtering or national filtering",
+      "provider bandwidth cap as the cause",
+      "root cause repaired"
+    ],
+    "protection_order": "Observed network errors and request failures precede service stop/recovery events. Service resets in this window are recorded as later actions, not assumed to be the initiating cause.",
+    "separate_controls": "Four additional Ali host-direct Cloudflare DNS failures at 08:14/08:16/08:21 occurred while protected and Japan controls succeeded; their cause remains unresolved and they are not merged into the two proxy incidents."
+  },
+  "classification_notes": [
+    "Ali host-direct Cloudflare HTTPS repeated timeouts remain the launch baseline, not new proxy outages.",
+    "Full monitor state counts and fallback attempts must both be compared on later runs; sampled DEGRADED snapshots can repeat the same evidence.",
+    "SSH management connections succeeded; no management failure is counted as a business failure.",
+    "No production configuration, routes, firewall, VPN, health threshold or sampler schedule changed; no manual service/host restart or fault injection.",
+    "Observation remains scheduled to end at 2026-10-22T03:09:22Z. Software versions and prior software validation remain unchanged."
+  ],
+  "validation": {
+    "json_jsonl_files_parsed": 17,
+    "compatibility_yaml_parsed": true,
+    "new_nonbaseline_control_failures_fully_accounted_in_saved_windows": true,
+    "event_evidence_at_least_120_seconds_before_first_network_miss_and_after_last_control_recovery": true,
+    "local_report_links_exist": true,
+    "sensitive_pattern_scan": "passed_for_new_JSON_JSONL",
+    "software_tests": "not_rerun_evidence_and_documentation_only_no_source_or_production_changes",
+    "fault_and_reboot_tests": "deferred_by_user_not_run"
+  }
+}

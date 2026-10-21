@@ -1,0 +1,7 @@
+{
+  "journal_exit": 0,
+  "since_utc": "2026-10-21T08:24:45+00:00",
+  "until_utc": "2026-10-21T08:30:10+00:00",
+  "matching_events": [],
+  "limitation": "Only allowlisted kernel events; absence does not prove external-network health."
+}

@@ -6,11 +6,17 @@
 
 ## 最近只读复核
 
+2026-10-21 08:27 heartbeat / 08:32 UTC 补查（journal 截止 08:32:11）：新增两次真实自然降级，入口在 08:27:11–08:27:23、08:28:28–08:28:42 处于 DEGRADED，分别约 12.09/14.16 秒，随后自动恢复。两次之前均出现双向跨境 ICMP 丢包、承载 TCP 重传和退避；日本宿主直连 HTTP/DNS 也受影响。日本完整 monitor 始终 ACTIVE，但两次主 HTTPS 尝试超时后才由备用地址成功，整项耗时 10.20/11.21 秒；不能把 ACTIVE 当成全程无异常。已有证据支持网络路径真实受损，尚不能定位到具体主机、虚拟化层或上游线路，也不能归因校园网或限速。见[事件时间线与归因边界](incidents-0827-0828.md)。
+
+两端既有 SSH、采样单元及 PID 正常，入口/出口累计 3875/3874 个样本，较 07:30 各新增 736 个，最大间隔仍约 5.004 秒、无损坏或未完成行。入口完整 monitor 1218 轮（1214 ACTIVE / 累计 4 DEGRADED），出口 1227 轮 ACTIVE；两端运行代次不变。08:24:45–08:31:20 的两端脱敏证据覆盖两事件前后至少两分钟，另保留 08:14/08:16/08:21 的四次入口宿主直连 CF DNS 超时；这些较早对照失败期间 VPN/日本路径正常，单独分类。
+
+[最新比较与 UTC 窗口](heartbeat-20261021T0832Z-review.json)关联完整摘要、monitor、备用尝试、内核分类与事件采样；下一次优先与此 review 比较，并同时核对 `failed_checks` 和 `fallbacks`。已向用户报告新事件。没有人工重启、注入故障或调整生产配置，原定结束时间保持。
+
 2026-10-21 07:30 UTC 复核（journal 截止 07:30:49）：两端既有 SSH 通道正常，诊断单元 active/running、PID 保持；入口/出口累计 3139/3138 个样本，较 06:28 新增 753/752 个，最大间隔仍约 5.004 秒，无损坏或未完成行。完整 monitor 新增 237/238 轮，入口累计 987 轮（985 ACTIVE / 已知 2 DEGRADED），出口 989 轮全部 ACTIVE；无新增生产失败、保护转换、服务重启或 OOM 事件，运行代次不变。VPN/日本每个 HTTP/DNS 对照新增 125 次均成功，跨境 ICMP 新增 753/752 次均成功。
 
 06:28:49 入口宿主直连 Cloudflare DNS 出现一次 2 秒预算内超时（dig 退出 9，调用约 2053 ms）；06:29:19 下次定时查询恢复，NOERROR / 71 ms。同批入口宿主 Google DNS、VPN HTTP/DNS 与邻近日本对照均成功，没有触发保护。已保存 06:26:44–06:31:29 的[入口](control-timeout-0628-ali.jsonl)/[出口](control-timeout-0628-jp.jsonl)证据，覆盖失败前及首次观测恢复后至少两分钟。该窗口承载 TCP RTT 有波动，但不能据此解释宿主直连 DNS 超时；原因未确定，不能算作新代理断连。宿主 CF HTTPS 各新增 125 次原基线超时仍单独归类。
 
-没有需用户处理的新业务异常，静默记录，采样按原结束时间继续。[最新比较与 UTC 窗口](heartbeat-20261021T0730Z-review.json)关联两端完整摘要、monitor 和本次对照事件；下一次优先与此 review 比较。
+没有需用户处理的新业务异常，静默记录，采样按原结束时间继续。[07:30 比较与 UTC 窗口](heartbeat-20261021T0730Z-review.json)关联两端完整摘要、monitor 和当次对照事件，保留为历史检查点。
 
 2026-10-21 06:28 UTC 复核（journal 截止 06:28:10）：两端既有 SSH 通道均正常，诊断单元 active/running、PID 保持，各累计 2386 个样本，较 05:15 各新增 880 个，最大间隔约 5.004 秒，无损坏或未完成行。完整 monitor 各新增 277 轮；入口累计 750 轮（748 ACTIVE / 已知 2 DEGRADED），出口 751 轮全部 ACTIVE。无新增生产失败、状态转换或服务重启事件，运行代次保持；采样摘要中四份 DEGRADED 快照仍是原两次事件的重复证据，不算新降级。
 
@@ -59,7 +65,7 @@ VPN/日本每个 HTTP/DNS 对照新增 147 次均成功，入口宿主两个 DNS
 
 1. 读取 run.json，核对远端诊断单元 `ActiveState`、`SubState`、`Result`、`ExecMainStatus` 与日志是否持续增长。远端目录 `samples.jsonl` 保存完整脱敏序列，`result.json` 在采样结束时生成；若提前失败，记录原因和覆盖缺口，不自行重启采样。
 2. 使用既有可信 SSH 通道，在服务器执行 `python3 <run.json 中的 remote_script_directory>/summarize_observation.py stability-20261020`。也可将仓库同一脚本经 SSH 标准输入执行。它只读取该观察目录。认证材料只从本聊天已授权渠道取得，不写进自动化提示词/仓库，不盲目重放旧部署脚本。SSH 管理连接失败与业务失败分开记录。
-3. 保存带采集 UTC 时间的两端摘要。现有 [collect-stability.py](../server-followup-2026-10-20/collect-stability.py) 可从 2026-10-21T03:09:19+00:00 起补齐生产 monitor 日志与服务事件；5 秒当前状态快照可能漏掉短暂状态，不能代替日志完整计数。不要输出原始 journal、plan 或 credentials。
+3. 保存带采集 UTC 时间的两端摘要。现有 [collect-stability.py](../server-followup-2026-10-20/collect-stability.py) 可从 2026-10-21T03:09:19+00:00 起补齐生产 monitor 日志与服务事件；5 秒当前状态快照可能漏掉短暂状态，不能代替日志完整计数。同时比较 `failed_checks` 和 `fallbacks` 中的每次尝试，避免漏掉主端点超时、备用成功而整轮仍 ACTIVE 的事件。不要输出原始 journal、plan 或 credentials。
 4. 若出现新 DEGRADED 或受保护路径超时，按 `started_at`/`observed_at` 对齐两端事发前后至少 120 秒的脱敏 JSONL，补齐服务/内核事件分类。判断最早请求失败、随后保护动作和恢复的先后，比较 host/vpn、两个 DNS、两条同供应商 HTTP、跨境 RTT/承载重传、接口和 CPU/PSI。只写证据支持的结论，暂不修改健康规则。
 5. [汇总器](../../../scripts/summarize_observation.py)只保留前 100 个失败示例，计数完整；全量序列仍在服务器。若出现新事件，按时间段读取原始脱敏序列，不仅依赖摘要前 100 个示例。日志尾部未完成的一行可暂跳过；其他 JSON 损坏显式失败。资源指标单位见字段名，HTTP 分阶段耗时在汇总中转换为毫秒。
 6. 到期确认两端 `reason=deadline`、采样起止/间隔/缺口、失败率与状态轮数，关联完整 monitor 日志，更新本报告、compatibility.yaml、implementation-status 和 01 票。没有复现只写“该窗口未复现”，真实超时根因未确定则保持未解决。暂停 `wayvia-24`，并保留有限的远端证据供后续复查。

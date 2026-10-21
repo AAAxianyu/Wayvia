@@ -1,0 +1,2236 @@
+{
+  "samples": 3823,
+  "monitor_states": {
+    "ACTIVE": 1200,
+    "DEGRADED": 6
+  },
+  "transitions": [
+    {
+      "at": "2026-10-21T03:09:12.794106+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T03:52:01.291628+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T03:52:18.491120+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T03:58:55.639478+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T03:59:08.587749+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T08:27:11.639764+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T08:27:23.729662+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "failed_monitor_checks": [
+    {
+      "layer": "access",
+      "status": "unhealthy",
+      "duration_ms": 5292,
+      "observed_at": "2026-10-21T03:51:53.117956+00:00",
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5028,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED",
+          "transport_closed_after_response": false
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "status": "unhealthy",
+      "duration_ms": 5292,
+      "observed_at": "2026-10-21T03:51:53.117956+00:00",
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5028,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED",
+          "transport_closed_after_response": false
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "status": "unhealthy",
+      "duration_ms": 5254,
+      "observed_at": "2026-10-21T03:58:45.131578+00:00",
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5024,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED",
+          "transport_closed_after_response": false
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "status": "unhealthy",
+      "duration_ms": 5254,
+      "observed_at": "2026-10-21T03:58:45.131578+00:00",
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5024,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED",
+          "transport_closed_after_response": false
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "status": "unhealthy",
+      "duration_ms": 5346,
+      "observed_at": "2026-10-21T08:26:59.126995+00:00",
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5061,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED",
+          "transport_closed_after_response": false
+        }
+      ]
+    },
+    {
+      "layer": "carrier",
+      "status": "unhealthy",
+      "duration_ms": 2363,
+      "observed_at": "2026-10-21T08:27:04.472818+00:00",
+      "attempts": []
+    },
+    {
+      "layer": "access",
+      "status": "unhealthy",
+      "duration_ms": 5346,
+      "observed_at": "2026-10-21T08:26:59.126995+00:00",
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5061,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED",
+          "transport_closed_after_response": false
+        }
+      ]
+    },
+    {
+      "layer": "carrier",
+      "status": "unhealthy",
+      "duration_ms": 2363,
+      "observed_at": "2026-10-21T08:27:04.472818+00:00",
+      "attempts": []
+    }
+  ],
+  "failed_control_examples": [
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:09:19.669231+00:00",
+      "at": "2026-10-21T03:09:21.708665+00:00",
+      "duration_ms": 2039,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00643,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:09:19.670186+00:00",
+      "at": "2026-10-21T03:09:21.699700+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003567,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:09:49.665615+00:00",
+      "at": "2026-10-21T03:09:51.692005+00:00",
+      "duration_ms": 2026,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00491,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:09:49.665699+00:00",
+      "at": "2026-10-21T03:09:51.684664+00:00",
+      "duration_ms": 2019,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005541,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:10:19.667138+00:00",
+      "at": "2026-10-21T03:10:21.686810+00:00",
+      "duration_ms": 2020,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00593,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:10:19.667222+00:00",
+      "at": "2026-10-21T03:10:21.691376+00:00",
+      "duration_ms": 2024,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006431,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:10:49.667660+00:00",
+      "at": "2026-10-21T03:10:51.693429+00:00",
+      "duration_ms": 2026,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003709,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:10:49.667738+00:00",
+      "at": "2026-10-21T03:10:51.697610+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006903,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:11:19.675931+00:00",
+      "at": "2026-10-21T03:11:21.708060+00:00",
+      "duration_ms": 2032,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005564,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:11:19.676517+00:00",
+      "at": "2026-10-21T03:11:21.715268+00:00",
+      "duration_ms": 2039,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006524,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:11:49.668719+00:00",
+      "at": "2026-10-21T03:11:51.688114+00:00",
+      "duration_ms": 2019,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006066,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:11:49.668797+00:00",
+      "at": "2026-10-21T03:11:51.698165+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006563,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:12:19.668980+00:00",
+      "at": "2026-10-21T03:12:21.685924+00:00",
+      "duration_ms": 2017,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004066,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:12:19.669064+00:00",
+      "at": "2026-10-21T03:12:21.697830+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006517,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:12:49.669531+00:00",
+      "at": "2026-10-21T03:12:51.693482+00:00",
+      "duration_ms": 2024,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006496,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:12:49.669598+00:00",
+      "at": "2026-10-21T03:12:51.689417+00:00",
+      "duration_ms": 2020,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006735,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:13:19.670706+00:00",
+      "at": "2026-10-21T03:13:21.695213+00:00",
+      "duration_ms": 2025,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005541,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:13:19.670800+00:00",
+      "at": "2026-10-21T03:13:21.689857+00:00",
+      "duration_ms": 2019,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004673,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:13:49.671630+00:00",
+      "at": "2026-10-21T03:13:51.700606+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006305,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:13:49.671699+00:00",
+      "at": "2026-10-21T03:13:51.691277+00:00",
+      "duration_ms": 2020,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00643,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:14:19.672788+00:00",
+      "at": "2026-10-21T03:14:21.690560+00:00",
+      "duration_ms": 2018,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004068,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:14:19.672870+00:00",
+      "at": "2026-10-21T03:14:21.700232+00:00",
+      "duration_ms": 2027,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006147,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:14:49.671844+00:00",
+      "at": "2026-10-21T03:14:51.698172+00:00",
+      "duration_ms": 2026,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005402,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:14:49.671916+00:00",
+      "at": "2026-10-21T03:14:51.694698+00:00",
+      "duration_ms": 2023,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006051,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:15:19.674847+00:00",
+      "at": "2026-10-21T03:15:21.694661+00:00",
+      "duration_ms": 2020,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006621,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:15:19.675143+00:00",
+      "at": "2026-10-21T03:15:21.715488+00:00",
+      "duration_ms": 2040,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006078,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:15:49.673691+00:00",
+      "at": "2026-10-21T03:15:51.707793+00:00",
+      "duration_ms": 2034,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006753,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:15:49.673927+00:00",
+      "at": "2026-10-21T03:15:51.708033+00:00",
+      "duration_ms": 2034,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005489,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:16:19.674157+00:00",
+      "at": "2026-10-21T03:16:21.702821+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006682,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:16:19.674254+00:00",
+      "at": "2026-10-21T03:16:21.697566+00:00",
+      "duration_ms": 2023,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005951,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:16:49.675486+00:00",
+      "at": "2026-10-21T03:16:51.704548+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003982,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:16:49.675567+00:00",
+      "at": "2026-10-21T03:16:51.707059+00:00",
+      "duration_ms": 2031,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00621,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:17:19.675201+00:00",
+      "at": "2026-10-21T03:17:21.705024+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005346,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:17:19.675279+00:00",
+      "at": "2026-10-21T03:17:21.705604+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004763,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:17:49.676345+00:00",
+      "at": "2026-10-21T03:17:51.706716+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006655,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:17:49.676422+00:00",
+      "at": "2026-10-21T03:17:51.695741+00:00",
+      "duration_ms": 2019,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005731,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:18:19.676656+00:00",
+      "at": "2026-10-21T03:18:21.706419+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004073,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:18:19.676724+00:00",
+      "at": "2026-10-21T03:18:21.707094+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004228,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:18:49.676583+00:00",
+      "at": "2026-10-21T03:18:51.692195+00:00",
+      "duration_ms": 2016,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003001,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:18:49.676814+00:00",
+      "at": "2026-10-21T03:18:51.704046+00:00",
+      "duration_ms": 2027,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005627,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:19:19.679147+00:00",
+      "at": "2026-10-21T03:19:21.725026+00:00",
+      "duration_ms": 2046,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002381,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:19:19.679363+00:00",
+      "at": "2026-10-21T03:19:21.729002+00:00",
+      "duration_ms": 2050,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006897,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:19:49.679355+00:00",
+      "at": "2026-10-21T03:19:51.703412+00:00",
+      "duration_ms": 2024,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003968,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:19:49.679432+00:00",
+      "at": "2026-10-21T03:19:51.703582+00:00",
+      "duration_ms": 2024,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002906,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:20:19.683568+00:00",
+      "at": "2026-10-21T03:20:21.725122+00:00",
+      "duration_ms": 2042,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006075,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:20:19.683650+00:00",
+      "at": "2026-10-21T03:20:21.726598+00:00",
+      "duration_ms": 2043,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005918,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:20:49.681281+00:00",
+      "at": "2026-10-21T03:20:51.702292+00:00",
+      "duration_ms": 2021,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006096,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:20:49.681423+00:00",
+      "at": "2026-10-21T03:20:51.714166+00:00",
+      "duration_ms": 2033,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006321,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:21:19.681742+00:00",
+      "at": "2026-10-21T03:21:21.701595+00:00",
+      "duration_ms": 2020,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006576,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:21:19.682076+00:00",
+      "at": "2026-10-21T03:21:21.712216+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005688,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:21:49.683844+00:00",
+      "at": "2026-10-21T03:21:51.718738+00:00",
+      "duration_ms": 2035,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006844,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:21:49.683987+00:00",
+      "at": "2026-10-21T03:21:51.700173+00:00",
+      "duration_ms": 2016,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002715,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:22:19.681772+00:00",
+      "at": "2026-10-21T03:22:21.705417+00:00",
+      "duration_ms": 2024,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002155,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:22:19.682008+00:00",
+      "at": "2026-10-21T03:22:21.709303+00:00",
+      "duration_ms": 2027,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005572,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:22:49.683066+00:00",
+      "at": "2026-10-21T03:22:51.710755+00:00",
+      "duration_ms": 2028,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006665,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:22:49.683142+00:00",
+      "at": "2026-10-21T03:22:51.707291+00:00",
+      "duration_ms": 2024,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002932,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:23:19.684227+00:00",
+      "at": "2026-10-21T03:23:21.703344+00:00",
+      "duration_ms": 2019,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005741,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:23:19.684348+00:00",
+      "at": "2026-10-21T03:23:21.719038+00:00",
+      "duration_ms": 2035,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004906,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:23:49.686186+00:00",
+      "at": "2026-10-21T03:23:51.718801+00:00",
+      "duration_ms": 2033,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00602,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:23:49.686270+00:00",
+      "at": "2026-10-21T03:23:51.705181+00:00",
+      "duration_ms": 2019,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004122,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:24:19.686732+00:00",
+      "at": "2026-10-21T03:24:21.728304+00:00",
+      "duration_ms": 2042,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005739,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:24:19.686808+00:00",
+      "at": "2026-10-21T03:24:21.714923+00:00",
+      "duration_ms": 2028,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005212,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:24:49.686794+00:00",
+      "at": "2026-10-21T03:24:51.740938+00:00",
+      "duration_ms": 2054,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005766,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:24:49.687155+00:00",
+      "at": "2026-10-21T03:24:51.739645+00:00",
+      "duration_ms": 2052,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006217,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:25:19.686422+00:00",
+      "at": "2026-10-21T03:25:21.711520+00:00",
+      "duration_ms": 2025,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006117,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:25:19.686527+00:00",
+      "at": "2026-10-21T03:25:21.729339+00:00",
+      "duration_ms": 2043,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00527,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:25:49.687773+00:00",
+      "at": "2026-10-21T03:25:51.711132+00:00",
+      "duration_ms": 2023,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005403,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:25:49.687847+00:00",
+      "at": "2026-10-21T03:25:51.725584+00:00",
+      "duration_ms": 2038,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005452,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:26:19.688632+00:00",
+      "at": "2026-10-21T03:26:21.706154+00:00",
+      "duration_ms": 2018,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004739,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:26:19.688725+00:00",
+      "at": "2026-10-21T03:26:21.723920+00:00",
+      "duration_ms": 2035,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006475,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:26:49.688851+00:00",
+      "at": "2026-10-21T03:26:51.708524+00:00",
+      "duration_ms": 2020,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006476,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:26:49.689191+00:00",
+      "at": "2026-10-21T03:26:51.723390+00:00",
+      "duration_ms": 2034,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006208,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:27:19.690036+00:00",
+      "at": "2026-10-21T03:27:21.724736+00:00",
+      "duration_ms": 2035,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004393,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:27:19.690107+00:00",
+      "at": "2026-10-21T03:27:21.713345+00:00",
+      "duration_ms": 2023,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006478,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:27:49.689791+00:00",
+      "at": "2026-10-21T03:27:51.705905+00:00",
+      "duration_ms": 2016,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002453,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:27:49.690051+00:00",
+      "at": "2026-10-21T03:27:51.720141+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005949,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:28:19.690953+00:00",
+      "at": "2026-10-21T03:28:21.723067+00:00",
+      "duration_ms": 2032,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003999,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:28:19.691086+00:00",
+      "at": "2026-10-21T03:28:21.720206+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005984,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:28:49.694262+00:00",
+      "at": "2026-10-21T03:28:51.742877+00:00",
+      "duration_ms": 2049,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006656,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:28:49.694357+00:00",
+      "at": "2026-10-21T03:28:51.741897+00:00",
+      "duration_ms": 2048,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005903,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:29:19.692362+00:00",
+      "at": "2026-10-21T03:29:21.719512+00:00",
+      "duration_ms": 2027,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006096,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:29:19.692609+00:00",
+      "at": "2026-10-21T03:29:21.730267+00:00",
+      "duration_ms": 2038,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005964,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:29:49.694597+00:00",
+      "at": "2026-10-21T03:29:51.735646+00:00",
+      "duration_ms": 2041,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005924,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:29:49.694682+00:00",
+      "at": "2026-10-21T03:29:51.726634+00:00",
+      "duration_ms": 2032,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.001739,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:30:19.695578+00:00",
+      "at": "2026-10-21T03:30:21.729167+00:00",
+      "duration_ms": 2034,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005869,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:30:19.695681+00:00",
+      "at": "2026-10-21T03:30:21.725562+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.002782,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:30:49.694643+00:00",
+      "at": "2026-10-21T03:30:51.717517+00:00",
+      "duration_ms": 2023,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003196,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:30:49.694920+00:00",
+      "at": "2026-10-21T03:30:51.729741+00:00",
+      "duration_ms": 2035,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006893,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:31:19.696152+00:00",
+      "at": "2026-10-21T03:31:21.723885+00:00",
+      "duration_ms": 2028,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003093,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:31:19.696471+00:00",
+      "at": "2026-10-21T03:31:21.728511+00:00",
+      "duration_ms": 2032,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006392,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:31:49.695834+00:00",
+      "at": "2026-10-21T03:31:51.732954+00:00",
+      "duration_ms": 2037,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006926,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:31:49.698529+00:00",
+      "at": "2026-10-21T03:31:51.727315+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00597,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:32:19.698375+00:00",
+      "at": "2026-10-21T03:32:21.731852+00:00",
+      "duration_ms": 2033,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005562,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:32:19.698638+00:00",
+      "at": "2026-10-21T03:32:21.723706+00:00",
+      "duration_ms": 2025,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006094,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:32:49.698422+00:00",
+      "at": "2026-10-21T03:32:51.726436+00:00",
+      "duration_ms": 2028,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006063,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:32:49.698506+00:00",
+      "at": "2026-10-21T03:32:51.725724+00:00",
+      "duration_ms": 2027,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006105,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:33:19.706365+00:00",
+      "at": "2026-10-21T03:33:21.748518+00:00",
+      "duration_ms": 2042,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004015,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:33:19.706542+00:00",
+      "at": "2026-10-21T03:33:21.748012+00:00",
+      "duration_ms": 2041,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.004953,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:33:49.704268+00:00",
+      "at": "2026-10-21T03:33:51.733715+00:00",
+      "duration_ms": 2029,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006932,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:33:49.705474+00:00",
+      "at": "2026-10-21T03:33:51.733261+00:00",
+      "duration_ms": 2028,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00627,
+        "size_download": 0
+      }
+    }
+  ],
+  "completed_response_closes": 18,
+  "partial_lines_ignored": 0,
+  "peer_ping": {
+    "ok": 3820,
+    "miss": 3
+  },
+  "carrier_connection_count": {
+    "1": 3463,
+    "2": 358,
+    "0": 2
+  },
+  "controls": {
+    "host_cf_primary": {
+      "failed": 637
+    },
+    "host_cf_alternative": {
+      "failed": 637
+    },
+    "host_dns_cf": {
+      "ok": 632,
+      "failed": 5
+    },
+    "host_dns_google": {
+      "ok": 636,
+      "failed": 1
+    },
+    "vpn_cf_primary": {
+      "ok": 632,
+      "failed": 5
+    },
+    "vpn_cf_alternative": {
+      "ok": 632,
+      "failed": 5
+    },
+    "vpn_dns_cf": {
+      "ok": 636,
+      "failed": 1
+    },
+    "vpn_dns_google": {
+      "ok": 636,
+      "failed": 1
+    }
+  },
+  "start": {
+    "type": "start",
+    "at": "2026-10-21T03:09:19.522090+00:00",
+    "role": "ingress",
+    "generation": "6f80275960ed46238f51691722e918b5",
+    "until": "2026-10-22T03:09:19.112548+00:00",
+    "sample_interval_seconds": 5,
+    "control_interval_seconds": 30,
+    "max_bytes": 100663296,
+    "scope": "diagnostics_only_no_health_decision_or_mutation",
+    "ntp": true
+  },
+  "latest_record_at": "2026-10-21T08:27:50.039889+00:00",
+  "failed_monitor_check_count": 8,
+  "sample_gap_seconds": {
+    "count": 3822,
+    "median": 5.000102868303657,
+    "p95": 5.00014309771359,
+    "max": 5.003144457936287
+  },
+  "cpu_busy_percent_excluding_iowait": {
+    "count": 3822,
+    "median": 4.838709677419355,
+    "p95": 20.141700404858298,
+    "max": 75.58022199798184
+  },
+  "peer_ping_rtt_ms": {
+    "count": 3820,
+    "median": 38.6,
+    "p95": 38.9,
+    "max": 57.1
+  },
+  "timings": {
+    "carrier_tcp_rtt_ms": {
+      "count": 4146,
+      "median": 51.097,
+      "p95": 58.016,
+      "max": 1295.09
+    },
+    "host_dns_cf_query_ms": {
+      "count": 632,
+      "median": 74.0,
+      "p95": 230,
+      "max": 277
+    },
+    "host_dns_google_query_ms": {
+      "count": 636,
+      "median": 41.0,
+      "p95": 57,
+      "max": 530
+    },
+    "vpn_cf_primary_time_connect_ms": {
+      "count": 632,
+      "median": 46.730000000000004,
+      "p95": 49.021,
+      "max": 519.786
+    },
+    "vpn_cf_primary_time_appconnect_ms": {
+      "count": 632,
+      "median": 110.12400000000001,
+      "p95": 126.881,
+      "max": 854.971
+    },
+    "vpn_cf_primary_time_starttransfer_ms": {
+      "count": 632,
+      "median": 160.993,
+      "p95": 182.245,
+      "max": 1277.715
+    },
+    "vpn_cf_primary_time_total_ms": {
+      "count": 632,
+      "median": 161.1265,
+      "p95": 182.308,
+      "max": 1278.786
+    },
+    "vpn_cf_alternative_time_connect_ms": {
+      "count": 632,
+      "median": 46.66499999999999,
+      "p95": 49.794,
+      "max": 405.887
+    },
+    "vpn_cf_alternative_time_appconnect_ms": {
+      "count": 632,
+      "median": 111.21600000000001,
+      "p95": 126.189,
+      "max": 864.93
+    },
+    "vpn_cf_alternative_time_starttransfer_ms": {
+      "count": 632,
+      "median": 162.6945,
+      "p95": 185.65699999999998,
+      "max": 1272.414
+    },
+    "vpn_cf_alternative_time_total_ms": {
+      "count": 632,
+      "median": 162.749,
+      "p95": 185.705,
+      "max": 1272.461
+    },
+    "vpn_dns_cf_query_ms": {
+      "count": 636,
+      "median": 47.0,
+      "p95": 54,
+      "max": 1459
+    },
+    "vpn_dns_google_query_ms": {
+      "count": 636,
+      "median": 49.0,
+      "p95": 58,
+      "max": 1534
+    }
+  },
+  "host_global_tcp_delta": {
+    "Tcp:InSegs": 960497,
+    "Tcp:OutSegs": 1028519,
+    "Tcp:RetransSegs": 8194,
+    "Tcp:InErrs": 0,
+    "TcpExt:ListenDrops": 0,
+    "TcpExt:TCPLostRetransmit": 1260,
+    "TcpExt:TCPTimeouts": 2228,
+    "TcpExt:TCPMemoryPressures": 0,
+    "TcpExt:TCPSynRetrans": 1515
+  },
+  "end": null,
+  "file_bytes": 9624328,
+  "limits": "First 100 failed examples only; counts complete. Sampled monitor snapshots can miss intermediate states: reconcile with journal. Global TCP counters include other workloads. ICMP misses alone are not service failures. No phone or failure-injection acceptance.",
+  "observer_unit": {
+    "MainPID": "2790488",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "MemoryCurrent": "35844096",
+    "MemoryPeak": "50671616",
+    "CPUUsageNSec": "189166715000",
+    "ActiveState": "active",
+    "SubState": "running"
+  }
+}

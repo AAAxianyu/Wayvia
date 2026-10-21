@@ -626,6 +626,17 @@ stability_observation_2026_10_20:
   python_server: 3.12.3
   production_wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
   production_services_and_default_route: unchanged_at_start
+  latest_review:
+    journal_until_utc: '2026-10-21T08:32:11.583259+00:00'
+    samples: {ali: 3875, jp: 3874}
+    monitor_rounds: {ali: 1218, jp: 1227}
+    degraded_rounds: {ali: 4, jp: 0}
+    new_ingress_degradations: 2
+    new_japan_primary_HTTP_timeouts_with_successful_fallback: 2
+    ingress_degraded_seconds: [12.089898, 14.162227]
+    result: recovered_network_impairment_observed_root_cause_unresolved
+    production_changes: none_by_observer_existing_recovery_actions_recorded
+    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0832Z-review.json
   preflight:
     seconds_each_host: 75
     samples_each_host: 15

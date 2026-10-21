@@ -1,0 +1,304 @@
+{
+  "observed_at_utc": "2026-10-21T08:30:44.859493+00:00",
+  "since_utc": "2026-10-21T08:24:45+00:00",
+  "role": "ingress",
+  "generation": "6f80275960ed46238f51691722e918b5",
+  "current_state": "ACTIVE",
+  "first_monitor": "2026-10-21T08:24:52.768704+00:00",
+  "last_monitor": "2026-10-21T08:30:09.846219+00:00",
+  "monitor_count": 21,
+  "state_counts": {
+    "ACTIVE": 19,
+    "DEGRADED": 2
+  },
+  "hourly_counts": {
+    "2026-10-21T08:00:00Z": {
+      "ACTIVE": 19,
+      "DEGRADED": 2
+    }
+  },
+  "layer_timings": {
+    "access": {
+      "samples": 21,
+      "median_ms": 431,
+      "p95_ms": 5256,
+      "max_ms": 5346
+    },
+    "carrier": {
+      "samples": 21,
+      "median_ms": 467,
+      "p95_ms": 1745,
+      "max_ms": 2363
+    },
+    "vpn": {
+      "samples": 21,
+      "median_ms": 244,
+      "p95_ms": 276,
+      "max_ms": 318
+    },
+    "egress": {
+      "samples": 21,
+      "median_ms": 422,
+      "p95_ms": 2020,
+      "max_ms": 4307
+    },
+    "dns": {
+      "samples": 21,
+      "median_ms": 75,
+      "p95_ms": 89,
+      "max_ms": 214
+    },
+    "ipv6": {
+      "samples": 21,
+      "median_ms": 7,
+      "p95_ms": 15,
+      "max_ms": 21
+    },
+    "return": {
+      "samples": 21,
+      "median_ms": 2,
+      "p95_ms": 3,
+      "max_ms": 4
+    }
+  },
+  "failed_checks": [
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T08:26:59.126995+00:00",
+      "duration_ms": 5346,
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5061,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ]
+    },
+    {
+      "layer": "carrier",
+      "kind": "vpn_handshake",
+      "status": "failed",
+      "observed_at": "2026-10-21T08:27:04.472818+00:00",
+      "duration_ms": 2363
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "failed",
+      "observed_at": "2026-10-21T08:28:19.121185+00:00",
+      "duration_ms": 5256,
+      "error": "HTTP_TLS_FAILED",
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5027,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ]
+    }
+  ],
+  "fallbacks": [],
+  "state_transitions": [
+    {
+      "at": "2026-10-21T08:24:52.768704+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T08:27:11.639764+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T08:27:23.729662+00:00",
+      "state": "ACTIVE"
+    },
+    {
+      "at": "2026-10-21T08:28:28.657882+00:00",
+      "state": "DEGRADED"
+    },
+    {
+      "at": "2026-10-21T08:28:42.820109+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "units": {
+    "wayvia-agent": "active",
+    "wayvia-api": "active",
+    "wayvia-monitor.timer": "active",
+    "wayvia-ingress": "active",
+    "wayvia-bridge": "active",
+    "wayvia-carrier": "active",
+    "wayvia-vpn-client": "active"
+  },
+  "unit_events": [
+    {
+      "at": "2026-10-21T08:27:11.623930+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:16.615681+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T08:27:16.620572+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:27:16.639282+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:16.650817+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:18.623510+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:27:18.624461+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:27:20.627353+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:27:20.911970+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:20.918898+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:20.966863+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:27:21.265605+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T08:27:21.369398+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:27:21.381475+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:27:21.880493+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:28.642486+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:36.112223+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T08:28:36.119542+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:28:36.124956+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:36.135225+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:38.121944+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:28:38.121944+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "process_restart"
+    },
+    {
+      "at": "2026-10-21T08:28:40.124378+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:28:40.241030+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:40.251969+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:40.290453+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T08:28:40.649555+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    },
+    {
+      "at": "2026-10-21T08:28:40.697577+00:00",
+      "unit": "init.scope",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-21T08:28:40.708490+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-21T08:28:41.180673+00:00",
+      "unit": "init.scope",
+      "event": "service_started"
+    }
+  ],
+  "kernel_oom_kill_count_since": 0,
+  "uptime_seconds": 8966210.89,
+  "completed_response_closes": [],
+  "requested_until_utc": "2026-10-21T08:30:10+00:00",
+  "unit_event_counts": {
+    "service_stopped": 8,
+    "connection_reset": 2,
+    "process_restart": 4,
+    "service_started": 8,
+    "remote_close": 6,
+    "vpn_established": 2
+  },
+  "repetitive_vpn_server_event_examples": []
+}
