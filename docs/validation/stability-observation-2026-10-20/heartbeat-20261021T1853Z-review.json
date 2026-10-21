@@ -1,0 +1,210 @@
+{
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "new_production_failure": false,
+  "new_control_only_failure": false,
+  "new_actionable_event": false,
+  "notification": "none_no_new_business_failure_or_sampling_problem",
+  "ssh_management": {
+    "ali": "existing_channel_succeeded",
+    "jp": "existing_channel_succeeded"
+  },
+  "heartbeat_remote_mutations": false,
+  "active_investigation": "paused_by_user_stage_close",
+  "external_contact": "prohibited_by_user_not_sent",
+  "maintenance_evidence": "maintenance-device-usage-20261021.json",
+  "new_service_maintenance_in_journal": false,
+  "baseline_note": "Ali host direct Cloudflare HTTPS has timed out since launch and remains excluded from new proxy failures. Production software changed on Ali during separately documented authorized maintenance; original observer PIDs and end times are unchanged.",
+  "limits": "Production journal states are authoritative; sampled monitor snapshots are deduplicated and may miss transitions. No claim of uninterrupted real-client experience, resolved root cause or completed long-term acceptance. Diagnostic request limits differ from production.",
+  "next": "Continue existing observers to original deadlines, without extension or restart. On expiry collect final evidence, update status and pause heartbeat.",
+  "reviewed_at_utc": "2026-10-21T18:54:06.547413+00:00",
+  "comparison": "heartbeat-20261021T1750Z-review.json",
+  "hosts": {
+    "ali": {
+      "summary_file": "heartbeat-20261021T1853Z-ali.json",
+      "monitor_file": "heartbeat-20261021T1853Z-monitor-ali.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T18:53:30.944493+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T17:51:13.995178+00:00",
+        "2026-10-21T18:53:30.944493+00:00"
+      ],
+      "latest_record_at": "2026-10-21T18:53:31.211758+00:00",
+      "samples": 11331,
+      "new_samples": 748,
+      "sample_gap_seconds": {
+        "count": 11330,
+        "median": 5.000101744197309,
+        "p95": 5.000144911929965,
+        "max": 5.235809417441487
+      },
+      "generation_unchanged": true,
+      "current_state": "ACTIVE",
+      "monitor_count": 3564,
+      "new_monitor_count": 235,
+      "state_counts": {
+        "ACTIVE": 3559,
+        "DEGRADED": 5
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "new_state_transitions": [],
+      "new_unit_events": [],
+      "unit_event_count_delta": {
+        "connection_reset": 0,
+        "process_restart": 0,
+        "remote_close": 0,
+        "service_started": 0,
+        "service_stopped": 0,
+        "vpn_established": 0
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 125
+        },
+        "host_cf_alternative": {
+          "failed": 125
+        },
+        "host_dns_cf": {
+          "failed": 0,
+          "ok": 125
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_cf_primary": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_cf_alternative": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_dns_cf": {
+          "failed": 0,
+          "ok": 125
+        },
+        "vpn_dns_google": {
+          "failed": 0,
+          "ok": 125
+        }
+      },
+      "peer_ping_count_delta": {
+        "miss": 0,
+        "ok": 748
+      },
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "20553728",
+        "MemoryPeak": "59502592",
+        "CPUUsageNSec": "563708596000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "end": null,
+      "evidence_bytes": 28586202,
+      "file_growth_bytes": 1892137,
+      "partial_lines_ignored": 0,
+      "unchanged_deadline_utc": "2026-10-22T03:09:19.112548+00:00",
+      "services": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-ingress": "active",
+        "wayvia-bridge": "active",
+        "wayvia-carrier": "active",
+        "wayvia-vpn-client": "active"
+      }
+    },
+    "jp": {
+      "summary_file": "heartbeat-20261021T1853Z-jp.json",
+      "monitor_file": "heartbeat-20261021T1853Z-monitor-jp.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T18:53:30.944493+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T17:51:13.995178+00:00",
+        "2026-10-21T18:53:30.944493+00:00"
+      ],
+      "latest_record_at": "2026-10-21T18:53:30.821127+00:00",
+      "samples": 11330,
+      "new_samples": 747,
+      "sample_gap_seconds": {
+        "count": 11329,
+        "median": 5.000174515007529,
+        "p95": 5.000663177997922,
+        "max": 5.012651012992137
+      },
+      "generation_unchanged": true,
+      "current_state": "ACTIVE",
+      "monitor_count": 3573,
+      "new_monitor_count": 234,
+      "state_counts": {
+        "ACTIVE": 3573
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "new_state_transitions": [],
+      "new_unit_events": [],
+      "unit_event_count_delta": {
+        "connection_reset": 495,
+        "tls_error": 418
+      },
+      "kernel_oom_kill_count_delta": 0,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 0,
+          "ok": 125
+        },
+        "host_cf_alternative": {
+          "failed": 0,
+          "ok": 125
+        },
+        "host_dns_cf": {
+          "failed": 0,
+          "ok": 125
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 125
+        }
+      },
+      "peer_ping_count_delta": {
+        "miss": 0,
+        "ok": 747
+      },
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "37978112",
+        "MemoryPeak": "46919680",
+        "CPUUsageNSec": "512714285000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "end": null,
+      "evidence_bytes": 25705476,
+      "file_growth_bytes": 1699095,
+      "partial_lines_ignored": 0,
+      "unchanged_deadline_utc": "2026-10-22T03:09:21.680729+00:00",
+      "services": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-exit": "active",
+        "wayvia-vpn-server": "active"
+      },
+      "repetitive_vpn_server_events_note": "Existing cumulative monitor-related TLS/reset category increments alone are not new business failures; full failed_checks/fallbacks, controls and state transitions show no new failure."
+    }
+  }
+}

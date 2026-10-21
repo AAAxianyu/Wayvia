@@ -628,16 +628,16 @@ stability_observation_2026_10_20:
   production_wheel_field_scope: baseline_at_observer_launch
   production_services_and_default_route: unchanged_at_start
   latest_review:
-    journal_until_utc: '2026-10-21T17:51:13.995178+00:00'
-    samples: {ali: 10583, jp: 10583}
-    monitor_rounds: {ali: 3329, jp: 3339}
+    journal_until_utc: '2026-10-21T18:53:30.944493+00:00'
+    samples: {ali: 11331, jp: 11330}
+    monitor_rounds: {ali: 3564, jp: 3573}
     degraded_rounds: {ali: 5, jp: 0}
     new_ingress_degradations: 0
     new_japan_primary_HTTP_timeouts_with_successful_fallback: 0
     result: no_new_production_or_control_failure_baseline_excluded_roots_unresolved
     production_changes: none_by_observer_separate_authorized_maintenance_recorded
     observer_pid_and_deadline: unchanged
-    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T1750Z-review.json
+    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T1853Z-review.json
   authorized_mid_window_maintenance:
     source_commit: 08695f2
     host: ali
