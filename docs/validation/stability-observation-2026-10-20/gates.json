@@ -3,19 +3,22 @@
     "target": "check",
     "exit": 0,
     "seconds": 76.98,
-    "log": "check.log"
+    "log": "check.txt",
+    "log_normalization": "trailing whitespace removed; original local .log retained"
   },
   {
     "target": "demo",
     "exit": 0,
     "seconds": 0.81,
-    "log": "demo.log"
+    "log": "demo.txt",
+    "log_normalization": "trailing whitespace removed; original local .log retained"
   },
   {
     "target": "test-configs",
     "exit": 0,
     "seconds": 19.76,
-    "log": "test-configs.log"
+    "log": "test-configs.txt",
+    "log_normalization": "trailing whitespace removed; original local .log retained"
   },
   {
     "target": "test-lab",
