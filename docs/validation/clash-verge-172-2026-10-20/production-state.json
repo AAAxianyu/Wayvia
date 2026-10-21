@@ -1,0 +1,12 @@
+[
+  {
+    "role": "ingress",
+    "generation": "6f80275960ed46238f51691722e918b5",
+    "state": "ACTIVE",
+    "monitor_at": "2026-10-21T03:34:07.827869+00:00"
+  },
+  {
+    "host": "jp",
+    "ssh_exit": 255
+  }
+]

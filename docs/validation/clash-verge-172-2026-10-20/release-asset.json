@@ -1,0 +1,7 @@
+{
+  "name": "mihomo-linux-arm64-v1.19.13.gz",
+  "browser_download_url": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.13/mihomo-linux-arm64-v1.19.13.gz",
+  "digest": "sha256:7aa8651738202741467d83b9ce51638ab7f01eef352472d2fba17e71dd5cce9a",
+  "size": 10836110,
+  "architecture": "arm64"
+}

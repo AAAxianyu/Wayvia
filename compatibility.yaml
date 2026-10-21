@@ -645,3 +645,15 @@ stability_observation_2026_10_20:
     phone: not_tested
     fault_and_reboot: deferred_by_user
   evidence: docs/validation/stability-observation-2026-10-20/README.md
+
+clash_verge_172_subscription_2026_10_20:
+  client_requested: Clash Verge v1.7.2
+  core_tested: Mihomo v1.19.13
+  architecture_tested: Linux arm64
+  scope: complete_subscription_download_and_isolated_core_parser_only
+  parser_exit: 0
+  download: HTTPS_verified_200_gzip_no_store
+  subscription: additional_link_same_existing_active_device_credentials
+  production_generation: unchanged_both_ACTIVE
+  desktop_GUI_TUN_and_routing_acceptance: not_performed
+  evidence: docs/validation/clash-verge-172-2026-10-20/README.md

@@ -1,0 +1,14 @@
+{
+  "parser_exit": 0,
+  "seconds": 7.103,
+  "version": "Mihomo Meta v1.19.13 linux arm64 with go1.25.0 Wed Aug 27 09:35:30 UTC 2025\nUse tags: with_gvisor",
+  "input": "unchanged_downloaded_subscription",
+  "validation_scope": "isolated_Linux_arm64_parser_no_network_no_TUN_or_GUI_execution",
+  "config_success_reported": true,
+  "rule_count": 117712,
+  "nameserver_policy_count": 110187,
+  "mode": "rule",
+  "proxy_count": 1,
+  "tls_verification_enabled": true,
+  "ends_in_wayvia": true
+}
