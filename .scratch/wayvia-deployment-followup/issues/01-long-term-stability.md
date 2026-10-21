@@ -41,3 +41,5 @@ Priority: P1
 2026-10-21 04:11 UTC heartbeat：两端采样运行，各新增 133 个样本，最大间隔约 5.002 秒；全窗口 journal 入口 235 轮含已知两次降级、出口 236 轮全部 ACTIVE。比上次已报告结果无新故障，VPN/日本每个 HTTP/DNS 对照新增 22 次均成功；宿主直连 CF 的原有超时保持基线分类。已补存已知两事件前后至少两分钟的两端脱敏采样，观察不延长、不重启。下一次比较入口为 [04:11 review](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0411Z-review.json)，不重复告知用户已知事件。
 
 2026-10-21 05:15 UTC heartbeat：两端各 1506 样本、单元运行，最大间隔约 5.004 秒；全窗口 journal 入口 473 轮仍只含原两次降级，出口 474 轮全部 ACTIVE。无新增生产失败，VPN/日本每端点新增 126 次对照成功。05:05:19 入口宿主直连 Google DNS 单次约 2 秒超时，下次定时查询恢复；同批 VPN/日本路径正常，已保存两端前后至少两分钟证据，按对照路径孤立失败记录，不能算新代理断连或归因校园网。继续原定观察，下一次比较 [05:15 review](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0515Z-review.json)。
+
+2026-10-21 06:28 UTC heartbeat：两端 SSH 与采样运行正常，各累计 2386 样本、新增 880，最大间隔约 5.004 秒；完整 monitor 各新增 277 轮，入口累计 750 轮仍只有原两次降级，出口 751 轮全部 ACTIVE。VPN/日本每端点新增 147 次 HTTP/DNS 对照成功，入口宿主 DNS 同样成功；宿主 CF HTTPS 原基线超时单独归类。无新业务异常或采样问题，原定结束时间不变，不重复通知。下一次比较 [06:28 review](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0628Z-review.json)。
