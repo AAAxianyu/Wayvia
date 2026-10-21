@@ -294,7 +294,12 @@ def validate_probes(plan):
                 fail()
             if plan.role == "ingress":
                 egress = next(p for p in plan.probes if p.layer == "egress")
-                if (probe.url, probe.expected) != (egress.target, egress.expected):
+                if (probe.url, probe.expected, probe.response_format, probe.fallback_urls) != (
+                    egress.target,
+                    egress.expected,
+                    egress.response_format,
+                    egress.fallback_urls,
+                ):
                     fail()
         if probe.layer == "carrier":
             expected = (

@@ -1,0 +1,44 @@
+[
+  {
+    "host": "jp",
+    "operation": "jp-activate-confirm",
+    "exit": 0,
+    "seconds": 12.39
+  },
+  {
+    "host": "ali",
+    "operation": "ali-activate-confirm",
+    "exit": 0,
+    "seconds": 12.17
+  },
+  {
+    "host": "ali",
+    "operation": "android-device-enroll",
+    "exit": 0,
+    "seconds": 4.29
+  },
+  {
+    "host": "jp",
+    "operation": "jp-monitor-before-publish",
+    "exit": 0,
+    "seconds": 2.81
+  },
+  {
+    "host": "ali",
+    "operation": "android-publish-export",
+    "exit": 0,
+    "seconds": 7.82
+  },
+  {
+    "host": "ali",
+    "operation": "ali-deployed-state",
+    "exit": 0,
+    "seconds": 3.9
+  },
+  {
+    "host": "jp",
+    "operation": "jp-deployed-state",
+    "exit": 0,
+    "seconds": 5.58
+  }
+]

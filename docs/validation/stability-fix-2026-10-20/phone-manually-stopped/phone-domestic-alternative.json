@@ -1,0 +1,22 @@
+[
+  {
+    "host": "mirrors.ustc.edu.cn",
+    "exit": 56,
+    "http_code": 0,
+    "time_total": 0.005257,
+    "time_starttransfer": 0.0,
+    "size_download": 0,
+    "speed_download": 0,
+    "ssl_verify_result": 0
+  },
+  {
+    "host": "mirrors.aliyun.com",
+    "exit": 56,
+    "http_code": 0,
+    "time_total": 0.003177,
+    "time_starttransfer": 0.0,
+    "size_download": 0,
+    "speed_download": 0,
+    "ssl_verify_result": 0
+  }
+]

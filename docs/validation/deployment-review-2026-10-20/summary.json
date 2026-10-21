@@ -1,0 +1,163 @@
+{
+  "source_commit": "0e5bbbc63b59031377b698311f0cb6fda44c5401",
+  "commands": [
+    {
+      "command": "make check",
+      "exit_code": 0,
+      "timeout": false,
+      "duration_seconds": 116.34,
+      "started_at_utc": "2026-10-20T07:28:28.080794+00:00",
+      "log": "make-check.log",
+      "log_sha256": "ac0c8a108bae141a76d522b282a9483734e323d0113b5bb652b7c26d7a7910f0"
+    },
+    {
+      "command": "make demo",
+      "exit_code": 0,
+      "timeout": false,
+      "duration_seconds": 1.5,
+      "started_at_utc": "2026-10-20T07:30:24.423091+00:00",
+      "log": "make-demo.log",
+      "log_sha256": "601648971a99231aed7facd67aa516eb8e4022b8d9ce1db4a62854824f068257"
+    },
+    {
+      "command": "make test-configs",
+      "exit_code": 0,
+      "timeout": false,
+      "duration_seconds": 34.06,
+      "started_at_utc": "2026-10-20T07:30:25.924351+00:00",
+      "log": "make-test-configs.log",
+      "log_sha256": "83ce87439d0bf90fac04e008477499087f64d3a3fff8e62c50236bd9239bdc95"
+    },
+    {
+      "command": "make test-lab",
+      "exit_code": -2,
+      "timeout": true,
+      "duration_seconds": 480.35,
+      "started_at_utc": "2026-10-20T07:30:59.986051+00:00",
+      "log": "make-test-lab.log",
+      "log_sha256": "68017946f8b74c7c702f8b3429cea82441d789464918f412f2406edb20199c2f"
+    },
+    {
+      "command": "make clean-lab",
+      "exit_code": 0,
+      "timeout": false,
+      "duration_seconds": 1.25,
+      "started_at_utc": "2026-10-20T07:39:00.331341+00:00",
+      "log": "make-clean-lab.log",
+      "log_sha256": "a7a18179011f4bd083dff7619263462791df3ed8521e9b127af8beb8365e8650"
+    }
+  ],
+  "fresh_modules_only": {
+    "config-result.json": {
+      "status": "passed",
+      "cases": 10
+    },
+    "recovery-result.json": {
+      "status": "passed",
+      "cases": 2
+    },
+    "executor-result.json": {
+      "status": "passed",
+      "cases": null
+    },
+    "lab-result.json": {
+      "status": "passed",
+      "cases": 23
+    },
+    "mihomo-dns-result.json": {
+      "status": "passed",
+      "cases": 6
+    },
+    "protocol-result.json": {
+      "status": "passed",
+      "cases": 7
+    },
+    "tun-ready-result.json": {
+      "status": "passed",
+      "cases": null
+    },
+    "preflight-conflicts-result.json": {
+      "status": "passed",
+      "cases": 12
+    },
+    "recovery-environment.json": {
+      "status": "passed",
+      "cases": null
+    }
+  },
+  "local_full_lab": "passed_on_complete_retry_463_seconds",
+  "last_stage": "all_gates_completed_including_23_installed_transactions",
+  "historical_same_commit_CI": "software_amd64_arm64_success_confirmed_via_gh_run_view",
+  "M6": "authorized_deployment_in_progress; see_separate_cloud_evidence; not_accepted",
+  "M7": "not_implemented_or_accepted",
+  "cleanup": {
+    "containers_remaining": [],
+    "networks_remaining": [],
+    "preexisting_wayvia_network_preserved": true,
+    "clean_lab_exit_code": 0
+  },
+  "production_source_changed": false,
+  "production_servers_accessed": true,
+  "development_host_network_changed": false,
+  "initial_full_lab": "incomplete_review_timeout_480_seconds_SIGINT_not_a_passing_gate",
+  "retry_commands": [
+    {
+      "command": "make test-lab",
+      "exit_code": 0,
+      "timeout": false,
+      "budget_seconds": 1800,
+      "duration_seconds": 463.03,
+      "started_at_utc": "2026-10-20T07:54:31.131183+00:00",
+      "log": "make-test-lab-retry.log",
+      "log_sha256": "9ea2df518ff9727066ac0e0744f6dcd03e70f977bb8d1259b2b2d3ae1c015781"
+    },
+    {
+      "command": "make clean-lab",
+      "exit_code": 0,
+      "timeout": false,
+      "budget_seconds": 60,
+      "duration_seconds": 0.82,
+      "started_at_utc": "2026-10-20T08:02:14.195366+00:00",
+      "log": "make-clean-lab-retry.log",
+      "log_sha256": "a7a18179011f4bd083dff7619263462791df3ed8521e9b127af8beb8365e8650"
+    }
+  ],
+  "retry_fresh_modules": {
+    "recovery-result.json": {
+      "status": "passed",
+      "cases": 2
+    },
+    "executor-result.json": {
+      "status": "passed",
+      "cases": null
+    },
+    "lab-result.json": {
+      "status": "passed",
+      "cases": null
+    },
+    "mihomo-dns-result.json": {
+      "status": "passed",
+      "cases": 6
+    },
+    "protocol-result.json": {
+      "status": "passed",
+      "cases": 7
+    },
+    "tun-ready-result.json": {
+      "status": "passed",
+      "cases": null
+    },
+    "transaction-result.json": {
+      "status": "passed",
+      "cases": 23
+    },
+    "preflight-conflicts-result.json": {
+      "status": "passed",
+      "cases": 12
+    },
+    "recovery-environment.json": {
+      "status": "passed",
+      "cases": null
+    }
+  }
+}

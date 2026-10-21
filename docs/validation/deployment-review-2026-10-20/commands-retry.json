@@ -1,0 +1,22 @@
+[
+  {
+    "command": "make test-lab",
+    "exit_code": 0,
+    "timeout": false,
+    "budget_seconds": 1800,
+    "duration_seconds": 463.03,
+    "started_at_utc": "2026-10-20T07:54:31.131183+00:00",
+    "log": "make-test-lab-retry.log",
+    "log_sha256": "9ea2df518ff9727066ac0e0744f6dcd03e70f977bb8d1259b2b2d3ae1c015781"
+  },
+  {
+    "command": "make clean-lab",
+    "exit_code": 0,
+    "timeout": false,
+    "budget_seconds": 60,
+    "duration_seconds": 0.82,
+    "started_at_utc": "2026-10-20T08:02:14.195366+00:00",
+    "log": "make-clean-lab-retry.log",
+    "log_sha256": "a7a18179011f4bd083dff7619263462791df3ed8521e9b127af8beb8365e8650"
+  }
+]

@@ -1,6 +1,77 @@
 schema_version: 1
 resolved_at: '2026-10-15'
 latest_fix:
+  date: '2026-10-20'
+  timezone: UTC
+  base_commit: 0e5bbbc63b59031377b698311f0cb6fda44c5401
+  branch: codex/deployment-readiness-20261020
+  status: deployed_short_normal_path_observation_healthy_long_term_pending
+  behavior: bounded_fresh_HTTPS_egress_identity_alternatives_no_crossborder_return_dependency_and_TCP_NODELAY
+  monitor_recovery_state_machine: unchanged_fail_closed
+  probe_provider_redundancy: two_IP_endpoints_same_Cloudflare_provider
+  versions:
+    wayvia: 0.1.0 patched
+    openvpn: 2.6.19
+    sing-box: 1.14.3
+    v2raya: 2.5.10
+    v2ray_core: 5.53.0
+    mihomo_config_validation: 1.19.32
+    Android_CMFA: 2.11.35.Meta
+  installed_wheel_sha256: 2d76abb1ccd6c9eff7302995d0f55bfe67a8c6c2b5b48643c9ccac3becba502f
+  gates:
+    check: passed_347_tests_3_existing_warnings_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_10_real_artifacts
+    test_lab: deferred_by_user_contains_fault_and_recovery_tests_no_current_pass_claim
+  deployment:
+    both_hosts: ACTIVE_new_generation_same_revision_republished
+    all_installed_python_sources: matched_worktree
+    normal_observation:
+      jp:
+        window_seconds: 879.4
+        monitor_count: 56
+        states:
+          ACTIVE: 56
+        failed_layer_checks: 0
+        fallback_attempts: 0
+      ali:
+        window_seconds: 880.5
+        monitor_count: 56
+        states:
+          ACTIVE: 56
+        failed_layer_checks: 0
+        fallback_attempts: 1
+    host_default_routes: unchanged
+    existing_Ali_nginx_vhosts: unchanged
+    guard: default_drop_IPv4_tun0_only_protected_IPv6_blocked
+    real_fault_and_reboot: deferred_by_user
+  latency_median_ms:
+    jp_new_https_total_ms: 64.228
+    ali_bridge_new_https_total_ms: 170.737
+    phone_network: WiFi
+    phone_new_https_total_ms: 492.984
+    phone_new_https_until_TLS_complete_ms: 423.93
+    phone_reused_https_first_byte_ms: 70.385
+    phone_reused_https_total_ms: 70.505
+  speed_Mbps:
+    jp:
+      download_median_Mbps: 9.028
+      upload_median_Mbps: 1.862
+      parallel_two_stream_upload_aggregate_Mbps: 1.848239973593307
+    ali:
+      download_median_Mbps: 1.64
+      upload_median_Mbps: 3.2
+    phone:
+      foreign_download_median_Mbps: 1.575
+      domestic: HTTP_403_excluded_from_throughput
+  exact_purchased_bandwidth: unconfirmed_measured_Japan_shared_egress_about_1_85_Mbps
+  phone_stop: user_confirmed_manual_stop_excluded_from_outages_preserved
+  long_term_stability: not_accepted
+  evidence:
+  - docs/validation/stability-fix-2026-10-20/README.md
+  - docs/validation/stability-fix-2026-10-20/summary.json
+  - docs/validation/stability-fix-2026-10-20/installed-source.json
+previous_carrier_readiness_fix:
   date: '2026-10-15'
   timezone: America/Los_Angeles
   integration_base: cb2676bba916c734fa5765cd8a03b2b3b20f946c
@@ -58,7 +129,7 @@ systems:
     name: Ubuntu
     version: '24.04'
     status: software_implemented_isolated_specialties_verified
-    real_deployment_acceptance: not_executed_M6
+    real_deployment_acceptance: normal_paths_and_short_monitor_window_passed_full_M6_pending
   development:
     name: macOS
     python: 3.12.12
@@ -344,3 +415,159 @@ current_inspection:
   evidence: docs/validation/status-review-2026-10-12/summary.json
   M6: not_executed_no_verified_real_cloud_server_deployment_or_mobile_acceptance
   M7: not_implemented_or_accepted_OpenWrt
+deployment_review_2026_10_20:
+  date: '2026-10-20'
+  source_commit: 0e5bbbc63b59031377b698311f0cb6fda44c5401
+  scope: independent_codex_worktree; source_and_tests_unchanged; Docker_names_only_in_test_harness
+  gates:
+    check: passed_325_tests_3_existing_warnings
+    demo: passed_simulated
+    test_configs: passed_10_real_component_checks
+    test_lab: passed_complete_retry_463s_including_23_installed_transactions
+    initial_test_lab: review_timeout_480s_SIGINT_preserved_in_commands_json
+    clean_lab: passed_no_review_containers_or_networks
+  same_commit_ci: software_amd64_arm64_success_rechecked; not_a_new_CI_run
+  M6: authorized_deployment_in_progress_not_accepted
+  M7: not_implemented_or_accepted
+  evidence: docs/validation/deployment-review-2026-10-20/summary.json
+  versions: docs/validation/deployment-review-2026-10-20/versions.json
+cloud_preparation_2026_10_20:
+  scope: historical_pre_port_release_snapshot
+  superseded_by: cloud_deployment_2026_10_20
+  source_commit: 0e5bbbc63b59031377b698311f0cb6fda44c5401
+  platforms:
+    ingress: Ubuntu_24.04.3_amd64_kernel_6.8.0-79_systemd_255.4-1ubuntu8.18
+    exit: Ubuntu_24.04.1_amd64_kernel_6.8.0-48_systemd_255.4-1ubuntu8.4
+  python: 3.12.3
+  uv: 0.9.7
+  openvpn_package: 2.6.19-0ubuntu0.24.04.4
+  nftables: 1.0.9
+  certbot: 5.8.0
+  software: same_verified_bundle_installed_on_both_hosts
+  control_plane: active_loopback_API_both_hosts
+  TLS: production_IP_certificates_issued_for_both_hosts
+  certificate_renewal: staging_dry_runs_passed_four_hour_timers_enabled
+  future_automatic_renewal: not_yet_observed
+  data_plane: plans_previewed_not_applied_or_confirmed
+  publication: not_published_no_terminal_credentials_issued
+  blocker: ingress_9443_local_TLS_passes_but_external_connections_timeout
+  requested_cloud_rules: TCP_8443_and_9443_ingress
+  host_default_routes: preserved
+  existing_ingress_apps: nginx_and_docker_active_existing_vhost_hashes_preserved
+  real_fault_and_reboot_tests: explicitly_deferred_by_user
+  M6: prepared_not_accepted
+  evidence: docs/validation/cloud-preparation-2026-10-20/summary.json
+  versions: docs/validation/cloud-preparation-2026-10-20/versions-and-state.json
+cloud_deployment_2026_10_20:
+  date: '2026-10-20'
+  source_commit: 0e5bbbc63b59031377b698311f0cb6fda44c5401
+  revision: 0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424
+  scope: actual_authorized_cloud_hosts_and_disposable_external_Linux_client
+  platforms_and_versions: docs/validation/cloud-preparation-2026-10-20/versions-and-state.json
+  ingress: ACTIVE_confirmed_seven_healthy_datapath_layers
+  exit: ACTIVE_confirmed_seven_healthy_component_readiness_layers
+  publication: published_same_revision_after_fresh_SSH_exit_receipt
+  android_device: independent_credentials_active_and_synced
+  subscription: public_HTTPS_200_valid_IP_certificate_matches_complete_export
+  subscription_expiry_utc: '2026-11-19T08:33:00Z'
+  external_client:
+    engine: sing-box_1.14.3
+    platform: disposable_Linux_arm64_TUN_not_physical_Android
+    profile: unmodified_complete_export
+    configuration_check: passed
+    own_probe_and_foreign_HTTPS: passed_Japan_public_IP
+    domestic_domain: Baidu_HTTPS_200_physical_direct_connection_captured
+    foreign_DNS: UDP_A_NOERROR_two_answers_no_physical_UDP_to_foreign_resolver
+    foreign_AAAA: NOERROR_empty_answer
+    protected_IPv6_request: failed_curl_exit_35_consistent_with_reject_policy
+    cleanup: client_container_removed
+    initial_failure: mistaken_direct_expectation_for_ingress_probe_IP_outside_APNIC_CN_CIDRs
+  transport_order: observed_OpenVPN_to_SOCKS_then_Japan_carrier_to_loopback_VPN
+  server_secret_boundary: only_ingress_device_password_exported
+  host_default_routes: unchanged_both
+  existing_ingress_apps: nginx_docker_active_existing_vhost_hashes_unchanged
+  management: loopback_API_public_api_path_404
+  routing_coverage: pinned_domestic_domains_and_APNIC_CIDRs_not_live_geolocation
+  certificate_renewal: staging_dry_runs_passed_enabled_timer_future_real_cycle_unobserved
+  real_fault_and_reboot_tests: explicitly_deferred_by_user
+  Android: CMFA_2.11.35_physical_LTE_URL_import_and_basic_HTTPS_Japan_egress_passed
+  additional_clash_profile:
+    format: mihomo_YAML_same_published_revision_and_android_device
+    parser: mihomo_1.19.32_passed
+    physical_Android: CMFA_2.11.35_URL_import_and_basic_HTTPS_passed_full_policy_suite_pending
+    evidence: docs/validation/cloud-deployment-2026-10-20/clash-config-check.json
+  clash_subscription:
+    format: mihomo
+    HTTPS: verified_200_application_yaml_matches_validated_complete_profile
+    expires_at_utc: '2026-11-19T08:47:19Z'
+    physical_Android_import: CMFA_2.11.35_passed_with_gzip_delivery
+    evidence: docs/validation/cloud-deployment-2026-10-20/clash-subscription-validation.json
+  NekoBox: node_protocol_possible_full_policy_import_requires_version_specific_adaptation
+  M6: normal_server_Linux_and_Android_basic_paths_passed_full_mobile_policy_lifecycle_performance_pending
+  M7: not_implemented_or_accepted
+  evidence: docs/validation/cloud-deployment-2026-10-20/summary.json
+android_import_2026_10_20:
+  device: HUAWEI_HBN-AL10_Android_12_SDK_31
+  transport: CELLULAR_LTE
+  original_application: Clash_for_Android_2.5.12.premium_outside_mihomo_compatibility_target
+  original_spinner_unique_root_cause: not_proven_in_isolation
+  verified_application: official_Clash_Meta_for_Android_2.11.35.Meta_arm64
+  APK_sha256: af7f05d8801798a8e75de682e5f67070138becb8623b7a341c3e5cd042a3753d
+  ADB: 37.0.1-15733141
+  subscription_delivery:
+    change: gzip_only_for_Wayvia_subscription_location
+    prior_wire_bytes: 9207514
+    current_wire_bytes: 1152634
+    prior_total_seconds: 34.627656
+    current_total_seconds: 15.541716
+    decoded_profile: byte_identical_to_validated_Mihomo_YAML
+    server_first_byte: still_about_14_seconds_generation_optimization_pending
+    authentication_and_revocation: unchanged_no_response_cache
+  physical_acceptance:
+    URL_import: completed_within_21.6_seconds_observation
+    UI_state: running_rule_mode_Wayvia_Android_active
+    own_HTTPS_probe: Japan_egress_IP
+    full_domestic_DNS_IPv6_matrix: not_executed_on_phone
+    WiFi_cellular_switching: not_executed
+  real_server_fault_and_reboot: deferred_by_user
+  evidence: docs/validation/android-import-2026-10-20/summary.json
+android_routing_speed_2026_10_20:
+  device: HUAWEI_HBN-AL10_Android_12_SDK_31
+  application: Clash_Meta_for_Android_2.11.35.Meta
+  network: China_Mobile_CELLULAR_LTE
+  domestic: browser_sees_cellular_exit_core_logs_DIRECT
+  domestic_IPv6: browser_exit_matches_phone_assigned_address_selected_target_only
+  foreign: browser_sees_expected_Japan_exit_core_logs_Wayvia
+  download_sample: three_sequential_2_MiB_requests_per_path
+  phone_core_via_USB_median_Mbps:
+    domestic: 14.235
+    foreign: 1.360
+  actual_phone_browser:
+    foreign_median_Mbps: 1.678
+    domestic_download: mirror_HTTP_403_not_counted_as_throughput
+    all_app_TUN_acceptance: not_proven_by_browser_local_proxy_path
+  server_comparison_Mbps:
+    Japan_direct: 8.906
+    ingress_business_bridge_over_existing_chain: [1.646, 1.661]
+  performance: proxy_works_but_slow_limit_reproduced_on_server_chain
+  exact_bottleneck_cause: not_isolated
+  latency_followup:
+    phone_cellular_to_ingress_ICMP_mean_ms: 51.191
+    ingress_to_Japan_carrier_TCP_connect_mean_ms: 41.715
+    ingress_to_Japan_VPN_peer_ICMP_mean_ms: 46.589
+    Japan_to_Cloudflare_1_1_1_1_ICMP_mean_ms: 3.214
+    phone_reused_HTTPS_first_byte_median_ms: 85.584
+    phone_reused_HTTPS_total_median_ms: 120.284
+    phone_new_HTTPS_total_median_ms: 604.615
+    phone_new_HTTPS_until_TLS_complete_median_ms: 485.041
+    observed_incident: spontaneous_probe_timeout_DEGRADED_then_monitor_recovery_both_hosts
+    exit_stop_to_ingress_ACTIVE_seconds_approx: 19
+    initial_timeout_cause: unresolved
+    long_term_stability: not_accepted
+    evidence: docs/validation/android-routing-speed-2026-10-20/latency.json
+  DNS_IPv6_UDP_full_matrix: pending
+  WiFi_and_switching: not_tested
+  upload_and_long_running_capacity: not_tested
+  real_fault_and_reboot: deferred_by_user
+  production_configuration_changes: none
+  evidence: docs/validation/android-routing-speed-2026-10-20/summary.json

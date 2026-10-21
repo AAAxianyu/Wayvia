@@ -1,0 +1,67 @@
+[
+  {
+    "http_code": 200,
+    "time_namelookup": 2.8e-05,
+    "time_connect": 0.000193,
+    "time_appconnect": 0.231832,
+    "time_pretransfer": 0.232037,
+    "time_starttransfer": 0.306139,
+    "time_total": 0.306206,
+    "size_download": 209,
+    "ssl_verify_result": 0,
+    "run": 1,
+    "exit": 0
+  },
+  {
+    "http_code": 200,
+    "time_namelookup": 3.1e-05,
+    "time_connect": 0.000157,
+    "time_appconnect": 0.119251,
+    "time_pretransfer": 0.119464,
+    "time_starttransfer": 0.175186,
+    "time_total": 0.175314,
+    "size_download": 213,
+    "ssl_verify_result": 0,
+    "run": 2,
+    "exit": 0
+  },
+  {
+    "http_code": 200,
+    "time_namelookup": 2.8e-05,
+    "time_connect": 0.000167,
+    "time_appconnect": 0.109605,
+    "time_pretransfer": 0.110322,
+    "time_starttransfer": 0.16499,
+    "time_total": 0.165063,
+    "size_download": 213,
+    "ssl_verify_result": 0,
+    "run": 3,
+    "exit": 0
+  },
+  {
+    "http_code": 200,
+    "time_namelookup": 2.7e-05,
+    "time_connect": 0.000166,
+    "time_appconnect": 0.114674,
+    "time_pretransfer": 0.114874,
+    "time_starttransfer": 0.166797,
+    "time_total": 0.166872,
+    "size_download": 213,
+    "ssl_verify_result": 0,
+    "run": 4,
+    "exit": 0
+  },
+  {
+    "http_code": 200,
+    "time_namelookup": 2.7e-05,
+    "time_connect": 0.000165,
+    "time_appconnect": 0.114569,
+    "time_pretransfer": 0.11489,
+    "time_starttransfer": 0.170456,
+    "time_total": 0.170737,
+    "size_download": 214,
+    "ssl_verify_result": 0,
+    "run": 5,
+    "exit": 0
+  }
+]

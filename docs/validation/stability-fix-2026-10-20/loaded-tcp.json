@@ -1,0 +1,22 @@
+{
+  "context": "single_existing_carrier_TCP_sample_during_phone_foreign_download",
+  "missing_counter_means_unreported_not_zero": true,
+  "hosts": {
+    "jp": {
+      "rtt_ms": 153.456,
+      "minrtt_ms": 42.273,
+      "cwnd": 135.0,
+      "bytes_retrans": null,
+      "reord_seen": 812.0,
+      "rcv_ooopack": 4.0
+    },
+    "ali": {
+      "rtt_ms": 153.029,
+      "minrtt_ms": 42.262,
+      "cwnd": 46.0,
+      "bytes_retrans": 100.0,
+      "reord_seen": 4.0,
+      "rcv_ooopack": 877.0
+    }
+  }
+}

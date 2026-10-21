@@ -1,0 +1,90 @@
+diff --git a/deploy/lab/Dockerfile.systemd b/deploy/lab/Dockerfile.systemd
+index 8590aa8..43c6421 100644
+--- a/deploy/lab/Dockerfile.systemd
++++ b/deploy/lab/Dockerfile.systemd
+@@ -1,4 +1,4 @@
+-FROM wayvia-lab:locked
++FROM wayvia-deployreview-lab:20261020
+ ENV DEBIAN_FRONTEND=noninteractive
+ RUN apt-get update && apt-get install -y --no-install-recommends systemd=255.4-1ubuntu8.17 systemd-sysv=255.4-1ubuntu8.17 && rm -rf /var/lib/apt/lists/*
+ RUN /opt/wayvia-lab-python/bin/python -c "import site,pathlib; pathlib.Path(site.getsitepackages()[0], 'wayvia-lab.pth').write_text('/workspace/src\n')"
+diff --git a/deploy/lab/Dockerfile.transaction b/deploy/lab/Dockerfile.transaction
+index 5beddfd..433f51d 100644
+--- a/deploy/lab/Dockerfile.transaction
++++ b/deploy/lab/Dockerfile.transaction
+@@ -1,4 +1,4 @@
+-FROM wayvia-lab-systemd:locked
++FROM wayvia-deployreview-systemd:20261020
+ ENV DEBIAN_FRONTEND=noninteractive
+ RUN apt-get update && apt-get install -y --no-install-recommends netcat-openbsd && rm -rf /var/lib/apt/lists/*
+ RUN /opt/wayvia-lab-python/bin/pip install uv==0.9.7
+diff --git a/scripts/lab.py b/scripts/lab.py
+index b28f79f..4b38973 100644
+--- a/scripts/lab.py
++++ b/scripts/lab.py
+@@ -11,8 +11,8 @@ from pathlib import Path
+ from lab_config import generate
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-NAME = "wayvia-m4-disposable"
+-IMAGE = "wayvia-lab:locked"
++NAME = "wayvia-deployreview-m4-20261020"
++IMAGE = "wayvia-deployreview-lab:20261020"
+ 
+ 
+ def main():
+diff --git a/scripts/recovery_lab.py b/scripts/recovery_lab.py
+index bfdf2a1..955c187 100644
+--- a/scripts/recovery_lab.py
++++ b/scripts/recovery_lab.py
+@@ -9,8 +9,8 @@ import time
+ from pathlib import Path
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-NAME = "wayvia-recovery-disposable"
+-IMAGE = "wayvia-lab-systemd:locked"
++NAME = "wayvia-deployreview-recovery-20261020"
++IMAGE = "wayvia-deployreview-systemd:20261020"
+ 
+ 
+ def clean():
+diff --git a/scripts/test_configs.py b/scripts/test_configs.py
+index ac017a2..9201424 100644
+--- a/scripts/test_configs.py
++++ b/scripts/test_configs.py
+@@ -41,7 +41,7 @@ def main():
+             str(output) + ":/evidence",
+             "--entrypoint",
+             "python3",
+-            "wayvia-lab:locked",
++            "wayvia-deployreview-lab:20261020",
+             "/opt/wayvia-lab/validate_configs.py",
+         ]
+         return subprocess.run(command).returncode
+diff --git a/scripts/transaction_lab.py b/scripts/transaction_lab.py
+index 5df0f07..9c71d42 100644
+--- a/scripts/transaction_lab.py
++++ b/scripts/transaction_lab.py
+@@ -17,10 +17,10 @@ import yaml
+ from wayvia.config import WayviaConfig, example_config
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-NETWORK = "wayvia-transaction-disposable"
+-NAMES = {role: "wayvia-transaction-" + role for role in ("ingress", "exit", "target")}
++NETWORK = "wayvia-deployreview-network-20261020"
++NAMES = {role: "wayvia-deployreview-20261020-" + role for role in ("ingress", "exit", "target")}
+ LABEL = "org.wayvia.disposable=transaction"
+-IMAGE = "wayvia-transaction:locked"
++IMAGE = "wayvia-deployreview-transaction:20261020"
+ 
+ 
+ def command(argv, *, timeout=300, check=True):
+@@ -376,7 +376,7 @@ def run(output):
+                     NETWORK,
+                     "--entrypoint",
+                     "python3",
+-                    "wayvia-lab:locked",
++                    "wayvia-deployreview-lab:20261020",
+                     "-c",
+                     "import os,socket; "
+                     "address=socket.gethostbyname(socket.gethostname()); "

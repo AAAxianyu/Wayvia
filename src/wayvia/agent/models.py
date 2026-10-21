@@ -7,6 +7,7 @@ import re
 from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Literal
+from urllib.parse import urlsplit
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -98,9 +99,31 @@ class Probe(Frozen):
     url: str = ""
     namespace: Literal["wayvia-egress"] | None = None
     timeout: int = Field(default=5, ge=1, le=20)
+    response_format: Literal["text", "cloudflare_trace"] = "text"
+    fallback_urls: tuple[str, ...] = Field(default=(), max_length=2)
 
     @model_validator(mode="after")
     def restrict(self):
+        if self.response_format != "text" or self.fallback_urls:
+            if self.kind not in {"http", "trojan_http"}:
+                raise ValueError("HTTP options require an HTTP probe")
+            primary = self.url if self.kind == "trojan_http" else self.target
+            urls = (primary, *self.fallback_urls)
+            if len(set(urls)) != len(urls):
+                raise ValueError("probe endpoints must be distinct")
+            for url in urls:
+                parsed = urlsplit(url)
+                if (
+                    parsed.scheme != "https"
+                    or not parsed.hostname
+                    or parsed.username
+                    or parsed.password
+                    or parsed.fragment
+                    or any(c in url for c in "\n\r\x00")
+                ):
+                    raise ValueError("redundant/structured probes require credential-free HTTPS")
+            if self.response_format == "cloudflare_trace":
+                ipaddress.ip_address(self.expected)
         if self.kind == "service" and self.target not in UNITS:
             raise ValueError("probe unit is not owned")
         if self.kind == "http" and (
@@ -164,6 +187,12 @@ class Plan(Frozen):
 
     def computed_digest(self):
         value = self.model_dump(mode="json", exclude={"digest"})
+        # Preserve sealed v1 plans when optional HTTP fields use their legacy defaults.
+        for probe in value["probes"]:
+            if probe["response_format"] == "text":
+                del probe["response_format"]
+            if not probe["fallback_urls"]:
+                del probe["fallback_urls"]
         return hashlib.sha256(
             json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
         ).hexdigest()

@@ -1,0 +1,143 @@
+[
+  {
+    "http_code": 206,
+    "http_version": "2",
+    "time_connect": 0.000363,
+    "time_appconnect": 0.124381,
+    "time_starttransfer": 0.248754,
+    "time_total": 1.573498,
+    "size_download": 2097152,
+    "speed_download": 1332796,
+    "ssl_verify_result": 0,
+    "test": "domestic",
+    "run": 1,
+    "utc": "2026-10-20T09:14:06.050281+00:00",
+    "curl_exit": 0,
+    "error": "",
+    "mbps_total": 10.662,
+    "mbps_body": 12.664,
+    "response_headers": [
+      "HTTP/1.1 200 Connection established",
+      "HTTP/2 206 ",
+      "content-length: 2097152",
+      "content-range: bytes 0-2097151/38516929"
+    ]
+  },
+  {
+    "http_code": 200,
+    "http_version": "1.1",
+    "time_connect": 0.000559,
+    "time_appconnect": 0.699137,
+    "time_starttransfer": 0.807064,
+    "time_total": 14.611795,
+    "size_download": 2097152,
+    "speed_download": 143524,
+    "ssl_verify_result": 0,
+    "test": "foreign",
+    "run": 1,
+    "utc": "2026-10-20T09:14:20.692578+00:00",
+    "curl_exit": 0,
+    "error": "",
+    "mbps_total": 1.148,
+    "mbps_body": 1.215,
+    "response_headers": [
+      "HTTP/1.1 200 Connection established",
+      "HTTP/1.1 200 OK",
+      "Content-Length: 2097152"
+    ]
+  },
+  {
+    "http_code": 206,
+    "http_version": "2",
+    "time_connect": 0.001157,
+    "time_appconnect": 0.111923,
+    "time_starttransfer": 0.163936,
+    "time_total": 0.946878,
+    "size_download": 2097152,
+    "speed_download": 2214806,
+    "ssl_verify_result": 0,
+    "test": "domestic",
+    "run": 2,
+    "utc": "2026-10-20T09:14:21.741126+00:00",
+    "curl_exit": 0,
+    "error": "",
+    "mbps_total": 17.718,
+    "mbps_body": 21.428,
+    "response_headers": [
+      "HTTP/1.1 200 Connection established",
+      "HTTP/2 206 ",
+      "content-length: 2097152",
+      "content-range: bytes 0-2097151/38516929"
+    ]
+  },
+  {
+    "http_code": 200,
+    "http_version": "1.1",
+    "time_connect": 0.000414,
+    "time_appconnect": 0.404767,
+    "time_starttransfer": 0.556064,
+    "time_total": 11.552872,
+    "size_download": 2097152,
+    "speed_download": 181526,
+    "ssl_verify_result": 0,
+    "test": "foreign",
+    "run": 2,
+    "utc": "2026-10-20T09:14:33.315483+00:00",
+    "curl_exit": 0,
+    "error": "",
+    "mbps_total": 1.452,
+    "mbps_body": 1.526,
+    "response_headers": [
+      "HTTP/1.1 200 Connection established",
+      "HTTP/1.1 200 OK",
+      "Content-Length: 2097152"
+    ]
+  },
+  {
+    "http_code": 206,
+    "http_version": "2",
+    "time_connect": 0.000349,
+    "time_appconnect": 0.105963,
+    "time_starttransfer": 0.23611,
+    "time_total": 1.178576,
+    "size_download": 2097152,
+    "speed_download": 1779394,
+    "ssl_verify_result": 0,
+    "test": "domestic",
+    "run": 3,
+    "utc": "2026-10-20T09:14:34.514767+00:00",
+    "curl_exit": 0,
+    "error": "",
+    "mbps_total": 14.235,
+    "mbps_body": 17.801,
+    "response_headers": [
+      "HTTP/1.1 200 Connection established",
+      "HTTP/2 206 ",
+      "content-length: 2097152",
+      "content-range: bytes 0-2097151/38516929"
+    ]
+  },
+  {
+    "http_code": 200,
+    "http_version": "1.1",
+    "time_connect": 0.000285,
+    "time_appconnect": 0.331091,
+    "time_starttransfer": 0.447478,
+    "time_total": 12.339781,
+    "size_download": 2097152,
+    "speed_download": 169950,
+    "ssl_verify_result": 0,
+    "test": "foreign",
+    "run": 3,
+    "utc": "2026-10-20T09:14:46.870159+00:00",
+    "curl_exit": 0,
+    "error": "",
+    "mbps_total": 1.36,
+    "mbps_body": 1.411,
+    "response_headers": [
+      "HTTP/1.1 200 Connection established",
+      "HTTP/1.1 200 OK",
+      "Content-Length: 2097152"
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "desired_revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+  "published_revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+  "status": "published",
+  "published_at": 1792485176.8842623,
+  "confirmations": {
+    "exit": {
+      "id": "f5d5a248d3a24b66976382319405d207",
+      "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+      "generation": "f5d5a248d3a24b66976382319405d207"
+    },
+    "ingress": {
+      "id": "581c16248ca94897b552ed752d647f51",
+      "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+      "generation": "581c16248ca94897b552ed752d647f51"
+    }
+  }
+}

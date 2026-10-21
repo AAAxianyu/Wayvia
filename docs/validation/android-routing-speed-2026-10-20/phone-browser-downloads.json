@@ -1,0 +1,56 @@
+[
+  {
+    "test": "domestic",
+    "run": 1,
+    "utc": "2026-10-20T09:16:08.765Z",
+    "status": 403,
+    "error": "unexpected_status"
+  },
+  {
+    "test": "domestic",
+    "run": 2,
+    "utc": "2026-10-20T09:16:08.947Z",
+    "status": 403,
+    "error": "unexpected_status"
+  },
+  {
+    "test": "domestic",
+    "run": 3,
+    "utc": "2026-10-20T09:16:09.459Z",
+    "status": 403,
+    "error": "unexpected_status"
+  },
+  {
+    "test": "foreign",
+    "run": 1,
+    "utc": "2026-10-20T09:16:21.066Z",
+    "status": 200,
+    "bytes": 2097152,
+    "first_byte_ms": 703.8999998569489,
+    "total_ms": 10543.299999952316,
+    "body_mbps": 1.7051055958531403,
+    "total_mbps": 1.5912680090745666
+  },
+  {
+    "test": "foreign",
+    "run": 2,
+    "utc": "2026-10-20T09:16:31.069Z",
+    "status": 200,
+    "bytes": 2097152,
+    "first_byte_ms": 321.59999990463257,
+    "total_ms": 9998.599999904633,
+    "body_mbps": 1.7337207812338535,
+    "total_mbps": 1.6779565139279522
+  },
+  {
+    "test": "foreign",
+    "run": 3,
+    "utc": "2026-10-20T09:16:40.963Z",
+    "status": 200,
+    "bytes": 2097152,
+    "first_byte_ms": 260.89999985694885,
+    "total_ms": 9888.700000047684,
+    "body_mbps": 1.7425804440960166,
+    "total_mbps": 1.696604811544399
+  }
+]

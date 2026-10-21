@@ -1,0 +1,31 @@
+{
+  "scope": "disposable Linux TUN client against actual deployed servers; not Android UI",
+  "core_version": "sing-box version 1.14.3",
+  "original_profile_sha256": "1cbd11c4d65ccadcb347e21b1bd47501047e2356a8691af22228c2d766547ec1",
+  "config_check": 0,
+  "baseline_direct_ip": "<CLIENT_PUBLIC_IP>",
+  "tun_route": [
+    {
+      "dst": "1.1.1.1",
+      "gateway": "172.28.0.2",
+      "dev": "wayvia-tun",
+      "table": "2022",
+      "prefsrc": "172.28.0.1",
+      "flags": [],
+      "uid": 0,
+      "cache": []
+    }
+  ],
+  "own_probe_ip": "<JP_PUBLIC_IP>",
+  "own_probe_classification": "default_proxy: ingress IP is outside APNIC CN CIDRs; only entry port 8443 is bootstrap direct",
+  "domestic_https": "200 153.3.238.127",
+  "domestic_physical_capture": "tcpdump: verbose output suppressed, use -v[v]... for full protocol decode\nlistening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes\n08:36:00.877287 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [S], seq 766833121, win 64240, options [mss 1460,sackOK,TS val 3098102402 ecr 0,nop,wscale 7], length 0\n08:36:00.917661 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [.], ack 103186500, win 502, options [nop,nop,TS val 3098102442 ecr 233154032], length 0\n08:36:00.917906 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [P.], seq 0:517, ack 1, win 502, options [nop,nop,TS val 3098102442 ecr 233154032], length 517\n08:36:00.945794 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [.], ack 5235, win 584, options [nop,nop,TS val 3098102470 ecr 233154061], length 0\n08:36:00.947659 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [P.], seq 517:643, ack 5235, win 584, options [nop,nop,TS val 3098102472 ecr 233154061], length 126\n08:36:01.043671 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [P.], seq 643:748, ack 5286, win 584, options [nop,nop,TS val 3098102568 ecr 233154157], length 105\n08:36:01.070378 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [.], ack 8151, win 629, options [nop,nop,TS val 3098102595 ecr 233154185], length 0\n08:36:01.070956 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [P.], seq 748:779, ack 8151, win 629, options [nop,nop,TS val 3098102595 ecr 233154185], length 31\n08:36:01.071391 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [F.], seq 779, ack 8151, win 629, options [nop,nop,TS val 3098102596 ecr 233154186], length 0\n08:36:01.088954 IP 172.17.0.2.49814 > 153.3.238.127.443: Flags [.], ack 8183, win 629, options [nop,nop,TS val 3098102613 ecr 233154204], length 0\n\n10 packets captured\n10 packets received by filter\n0 packets dropped by kernel\n",
+  "foreign_https_ip": "<JP_PUBLIC_IP>",
+  "foreign_tls": "TLSv1.3",
+  "foreign_dns_A": "\n; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> @1.1.1.1 example.net A +time=5 +tries=1\n; (1 server found)\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54986\n;; flags: qr rd ra ad; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version: 0, flags:; udp: 1232\n;; QUESTION SECTION:\n;example.net.\t\t\tIN\tA\n\n;; ANSWER SECTION:\nexample.net.\t\t300\tIN\tA\t104.20.21.8\nexample.net.\t\t300\tIN\tA\t172.66.175.59\n\n;; Query time: 239 msec\n;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)\n;; WHEN: Tue Oct 20 08:36:13 UTC 2026\n;; MSG SIZE  rcvd: 94\n\n",
+  "foreign_dns_AAAA": "\n; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> @1.1.1.1 example.net AAAA +time=5 +tries=1\n; (1 server found)\n;; global options: +cmd\n;; Got answer:\n;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 50558\n;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0\n\n;; QUESTION SECTION:\n;example.net.\t\t\tIN\tAAAA\n\n;; Query time: 0 msec\n;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)\n;; WHEN: Tue Oct 20 08:36:13 UTC 2026\n;; MSG SIZE  rcvd: 29\n\n",
+  "physical_foreign_dns_capture": "tcpdump: verbose output suppressed, use -v[v]... for full protocol decode\nlistening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes\n\n0 packets captured\n0 packets received by filter\n0 packets dropped by kernel\n",
+  "protected_ipv6_request_exit": 35,
+  "profile_unchanged": true,
+  "core_log": "\u001b[33mWARN\u001b[0m[0000] `independent_cache` DNS option is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, checkout documentation for migration: https://sing-box.sagernet.org/migration/#migrate-independent-dns-cache\n"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "test": "domestic",
+    "run": 1,
+    "utc": "2026-10-20T09:18:07.560Z",
+    "status": 200,
+    "total_ms": 208.09999990463257,
+    "exit_country": "CN",
+    "exit_network": "China Mobile",
+    "exit_is_phone_cellular": true,
+    "exit_is_japan": false,
+    "address_family": 6,
+    "exit_matches_phone_assigned_address": true
+  },
+  {
+    "test": "domestic",
+    "run": 2,
+    "utc": "2026-10-20T09:18:07.662Z",
+    "status": 200,
+    "total_ms": 95,
+    "exit_country": "CN",
+    "exit_network": "China Mobile",
+    "exit_is_phone_cellular": true,
+    "exit_is_japan": false,
+    "address_family": 6,
+    "exit_matches_phone_assigned_address": true
+  },
+  {
+    "test": "domestic",
+    "run": 3,
+    "utc": "2026-10-20T09:18:07.771Z",
+    "status": 200,
+    "total_ms": 104,
+    "exit_country": "CN",
+    "exit_network": "China Mobile",
+    "exit_is_phone_cellular": true,
+    "exit_is_japan": false,
+    "address_family": 6,
+    "exit_matches_phone_assigned_address": true
+  },
+  {
+    "test": "domestic",
+    "run": 4,
+    "utc": "2026-10-20T09:18:07.886Z",
+    "status": 200,
+    "total_ms": 110,
+    "exit_country": "CN",
+    "exit_network": "China Mobile",
+    "exit_is_phone_cellular": true,
+    "exit_is_japan": false,
+    "address_family": 6,
+    "exit_matches_phone_assigned_address": true
+  },
+  {
+    "test": "domestic",
+    "run": 5,
+    "utc": "2026-10-20T09:18:07.982Z",
+    "status": 200,
+    "total_ms": 89.40000009536743,
+    "exit_country": "CN",
+    "exit_network": "China Mobile",
+    "exit_is_phone_cellular": true,
+    "exit_is_japan": false,
+    "address_family": 6,
+    "exit_matches_phone_assigned_address": true
+  },
+  {
+    "test": "foreign",
+    "run": 1,
+    "utc": "2026-10-20T09:18:08.973Z",
+    "status": 200,
+    "total_ms": 522.1000001430511,
+    "exit_is_expected_japan": true,
+    "exit_country": "JP",
+    "cdn_site": "NRT",
+    "tls": "TLSv1.3"
+  },
+  {
+    "test": "foreign",
+    "run": 2,
+    "utc": "2026-10-20T09:18:09.112Z",
+    "status": 200,
+    "total_ms": 134.60000014305115,
+    "exit_is_expected_japan": true,
+    "exit_country": "JP",
+    "cdn_site": "NRT",
+    "tls": "TLSv1.3"
+  },
+  {
+    "test": "foreign",
+    "run": 3,
+    "utc": "2026-10-20T09:18:09.205Z",
+    "status": 200,
+    "total_ms": 88.79999995231628,
+    "exit_is_expected_japan": true,
+    "exit_country": "JP",
+    "cdn_site": "NRT",
+    "tls": "TLSv1.3"
+  },
+  {
+    "test": "foreign",
+    "run": 4,
+    "utc": "2026-10-20T09:18:09.292Z",
+    "status": 200,
+    "total_ms": 84.29999995231628,
+    "exit_is_expected_japan": true,
+    "exit_country": "JP",
+    "cdn_site": "NRT",
+    "tls": "TLSv1.3"
+  },
+  {
+    "test": "foreign",
+    "run": 5,
+    "utc": "2026-10-20T09:18:09.388Z",
+    "status": 200,
+    "total_ms": 93,
+    "exit_is_expected_japan": true,
+    "exit_country": "JP",
+    "cdn_site": "NRT",
+    "tls": "TLSv1.3"
+  }
+]

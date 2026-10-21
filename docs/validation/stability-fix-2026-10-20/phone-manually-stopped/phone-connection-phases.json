@@ -1,0 +1,47 @@
+[
+  {
+    "run": 1,
+    "exit": 56,
+    "events": [
+      "03:12:52.554295 * Connected to 127.0.0.1 (127.0.0.1) port 57616",
+      "03:12:52.554354 > CONNECT www.cloudflare.com:443 HTTP/1.1"
+    ],
+    "timings": {
+      "time_connect": 0.000636,
+      "time_appconnect": 0.0,
+      "time_starttransfer": 0.0,
+      "time_total": 0.016211,
+      "time_namelookup": 0.000159
+    }
+  },
+  {
+    "run": 2,
+    "exit": 56,
+    "events": [
+      "03:12:52.583580 * Connected to 127.0.0.1 (127.0.0.1) port 57616",
+      "03:12:52.583647 > CONNECT www.cloudflare.com:443 HTTP/1.1"
+    ],
+    "timings": {
+      "time_connect": 0.000679,
+      "time_appconnect": 0.0,
+      "time_starttransfer": 0.0,
+      "time_total": 0.004389,
+      "time_namelookup": 0.000164
+    }
+  },
+  {
+    "run": 3,
+    "exit": 56,
+    "events": [
+      "03:12:52.600867 * Connected to 127.0.0.1 (127.0.0.1) port 57616",
+      "03:12:52.600929 > CONNECT www.cloudflare.com:443 HTTP/1.1"
+    ],
+    "timings": {
+      "time_connect": 0.000833,
+      "time_appconnect": 0.0,
+      "time_starttransfer": 0.0,
+      "time_total": 0.004197,
+      "time_namelookup": 0.000189
+    }
+  }
+]

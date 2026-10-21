@@ -1,0 +1,6 @@
+{
+  "scope": "controlled browser probe only; unrelated transient browser UI omitted",
+  "result_ip": "<JP_PUBLIC_IP>",
+  "probe": "https://<ALI_PUBLIC_IP>:9443/wayvia-probe",
+  "observed_after_seconds": 17.1
+}

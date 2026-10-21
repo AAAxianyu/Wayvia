@@ -1,0 +1,51 @@
+{
+  "samples": [
+    {
+      "http_code": 200,
+      "size_download": 2097152,
+      "speed_download": 1113275,
+      "time_starttransfer": 0.111822,
+      "time_total": 1.883768,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "host": "jp",
+      "mbps_total": 8.906,
+      "mbps_body": 9.468
+    },
+    {
+      "http_code": 200,
+      "size_download": 2097152,
+      "speed_download": 205737,
+      "time_starttransfer": 0.245118,
+      "time_total": 10.193337,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "host": "ali-bridge",
+      "run": 1,
+      "mbps_total": 1.646,
+      "mbps_body": 1.686
+    },
+    {
+      "http_code": 200,
+      "size_download": 2097152,
+      "speed_download": 207635,
+      "time_starttransfer": 0.221501,
+      "time_total": 10.100166,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "host": "ali-bridge",
+      "run": 2,
+      "mbps_total": 1.661,
+      "mbps_body": 1.698
+    }
+  ],
+  "method": "Japan host direct HTTPS; ingress curl SOCKS5H through the existing business bridge, then the deployed OpenVPN-over-proxy chain. Sequential 2 MiB samples, outside phone speed runs.",
+  "initial_diagnostic_failure": {
+    "method": "plain curl inside wayvia-egress without bridge DNS",
+    "exit": 6,
+    "error": "Could not resolve host: speed.cloudflare.com",
+    "interpretation": "Raw namespace curl did not have an accessible OS resolver. Retest used the actual business bridge and its DNS path, without changing any resolver."
+  },
+  "services_active": true,
+  "inference": "The same approximately 1.65 Mbps limit is reproduced upstream of the phone on the existing ingress-to-exit chain. Exact carrier bandwidth, route congestion and protocol contribution remain unisolated."
+}

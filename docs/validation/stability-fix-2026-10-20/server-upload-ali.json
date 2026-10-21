@@ -1,0 +1,26 @@
+[
+  {
+    "run": 1,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.265563,
+    "time_appconnect": 0.475363,
+    "time_starttransfer": 5.357051,
+    "time_total": 5.357093,
+    "size_upload": 2097152,
+    "speed_upload": 391472,
+    "ssl_verify_result": 0
+  },
+  {
+    "run": 2,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.255183,
+    "time_appconnect": 0.45929,
+    "time_starttransfer": 5.134535,
+    "time_total": 5.134564,
+    "size_upload": 2097152,
+    "speed_upload": 408438,
+    "ssl_verify_result": 0
+  }
+]

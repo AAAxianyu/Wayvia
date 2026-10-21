@@ -1,0 +1,6 @@
+{
+  "commit": "0e5bbbc63b59031377b698311f0cb6fda44c5401",
+  "branch": "codex/deployment-readiness-20261020",
+  "source_changes": "Only Docker resource names in six harness files; src and tests unchanged.",
+  "production_servers_accessed": false
+}

@@ -1,0 +1,6 @@
+{
+  "client_state": "stopped",
+  "cause": "user_confirmed_manual_stop",
+  "network_outage": false,
+  "action": "preserved_stopped_state"
+}

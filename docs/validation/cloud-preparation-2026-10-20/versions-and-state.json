@@ -1,0 +1,104 @@
+{
+  "ali": {
+    "os": "Ubuntu 24.04.3 LTS",
+    "arch": "x86_64",
+    "kernel": "6.8.0-79-generic",
+    "systemd": "systemd 255 (255.4-1ubuntu8.18)",
+    "nft": "nftables v1.0.9 (Old Doc Yak #3)",
+    "python": "Python 3.12.3",
+    "openvpn": "OpenVPN 2.6.19 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]",
+    "certbot": "certbot 5.8.0",
+    "components": {
+      "sing-box": {
+        "version": "1.14.3",
+        "source": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/sing-box-1.14.3-linux-amd64.tar.gz",
+        "archive_sha256": "e2bdf179c15a3652955dc44867e33ca0965c9c9b91b34267dcc5a5d639a5feee",
+        "binary_sha256": "768d31fa7f68debc067bb4626539498a1e8751d36a7b99e1a54bee6a23815f93"
+      },
+      "mihomo": {
+        "version": "1.19.32",
+        "source": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-compatible-v1.19.32.gz",
+        "archive_sha256": "ba3ce607747a07f948fc35780e108a4a7c7f552a38b9bd4d115f313ebcb89c20",
+        "binary_sha256": "7a0d59da2e678d56c899a3db996a2ad8963286c4f3634b0451435db248f13fa1"
+      },
+      "v2raya": {
+        "version": "2.5.10",
+        "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_linux_x64_2.5.10",
+        "archive_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d",
+        "binary_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d"
+      },
+      "v2raya_core": {
+        "version": "2.5.10",
+        "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_core_linux_x64_2.5.10",
+        "archive_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73",
+        "binary_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73"
+      },
+      "v2ray": {
+        "version": "5.53.0",
+        "source": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-linux-64.zip",
+        "archive_sha256": "6bbb8aee65a57d0b12599b4b7c842b3ad0daca4436e661d94015c447cb31b4fa",
+        "binary_sha256": "a7bc11ff3ee286bc15d8191440ebb10810ac801ced54bbd4ce79ce4d291f7f25"
+      }
+    },
+    "software_layout_status": "installed_inactive",
+    "control": {
+      "version": "0.1.0",
+      "mode": "production",
+      "devices": [],
+      "agent": []
+    },
+    "host_default_route_unchanged": true,
+    "forwarding": "1"
+  },
+  "jp": {
+    "os": "Ubuntu 24.04.1 LTS",
+    "arch": "x86_64",
+    "kernel": "6.8.0-48-generic",
+    "systemd": "systemd 255 (255.4-1ubuntu8.4)",
+    "nft": "nftables v1.0.9 (Old Doc Yak #3)",
+    "python": "Python 3.12.3",
+    "openvpn": "OpenVPN 2.6.19 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]",
+    "certbot": "certbot 5.8.0",
+    "components": {
+      "sing-box": {
+        "version": "1.14.3",
+        "source": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/sing-box-1.14.3-linux-amd64.tar.gz",
+        "archive_sha256": "e2bdf179c15a3652955dc44867e33ca0965c9c9b91b34267dcc5a5d639a5feee",
+        "binary_sha256": "768d31fa7f68debc067bb4626539498a1e8751d36a7b99e1a54bee6a23815f93"
+      },
+      "mihomo": {
+        "version": "1.19.32",
+        "source": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-compatible-v1.19.32.gz",
+        "archive_sha256": "ba3ce607747a07f948fc35780e108a4a7c7f552a38b9bd4d115f313ebcb89c20",
+        "binary_sha256": "7a0d59da2e678d56c899a3db996a2ad8963286c4f3634b0451435db248f13fa1"
+      },
+      "v2raya": {
+        "version": "2.5.10",
+        "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_linux_x64_2.5.10",
+        "archive_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d",
+        "binary_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d"
+      },
+      "v2raya_core": {
+        "version": "2.5.10",
+        "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_core_linux_x64_2.5.10",
+        "archive_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73",
+        "binary_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73"
+      },
+      "v2ray": {
+        "version": "5.53.0",
+        "source": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-linux-64.zip",
+        "archive_sha256": "6bbb8aee65a57d0b12599b4b7c842b3ad0daca4436e661d94015c447cb31b4fa",
+        "binary_sha256": "a7bc11ff3ee286bc15d8191440ebb10810ac801ced54bbd4ce79ce4d291f7f25"
+      }
+    },
+    "software_layout_status": "installed_inactive",
+    "control": {
+      "version": "0.1.0",
+      "mode": "production",
+      "devices": [],
+      "agent": []
+    },
+    "host_default_route_unchanged": true,
+    "forwarding": "1"
+  }
+}

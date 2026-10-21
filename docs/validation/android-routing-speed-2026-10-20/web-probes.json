@@ -1,0 +1,95 @@
+{
+  "initial": [
+    {
+      "http_code": 200,
+      "time_connect": 0.000333,
+      "time_appconnect": 0.204283,
+      "time_starttransfer": 0.245017,
+      "time_total": 0.246618,
+      "size_download": 2443,
+      "speed_download": 9906,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "name": "baidu",
+      "curl_exit": 0,
+      "error": ""
+    },
+    {
+      "http_code": 501,
+      "time_connect": 0.000665,
+      "time_appconnect": 0.168307,
+      "time_starttransfer": 0.207652,
+      "time_total": 0.208177,
+      "size_download": 326,
+      "speed_download": 1565,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "name": "qq",
+      "curl_exit": 0,
+      "error": ""
+    },
+    {
+      "http_code": 200,
+      "time_connect": 0.000467,
+      "time_appconnect": 0.580631,
+      "time_starttransfer": 0.699545,
+      "time_total": 0.700054,
+      "size_download": 15,
+      "speed_download": 21,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "name": "foreign_probe",
+      "curl_exit": 0,
+      "error": ""
+    },
+    {
+      "http_code": 200,
+      "time_connect": 0.000306,
+      "time_appconnect": 0.830277,
+      "time_starttransfer": 0.96235,
+      "time_total": 0.971409,
+      "size_download": 214,
+      "speed_download": 220,
+      "ssl_verify_result": 0,
+      "exitcode": 0,
+      "name": "cloudflare_trace",
+      "curl_exit": 0,
+      "error": ""
+    },
+    {
+      "http_code": 200,
+      "time_appconnect": 0.196017,
+      "time_starttransfer": 0.259006,
+      "time_total": 0.259247,
+      "size_download": 70,
+      "speed_download": 270,
+      "ssl_verify_result": 0,
+      "name": "domestic_ip",
+      "curl_exit": 0,
+      "error": ""
+    }
+  ],
+  "additional": [
+    {
+      "http_code": 200,
+      "size_download": 127090,
+      "time_starttransfer": 0.232207,
+      "time_total": 0.299502,
+      "ssl_verify_result": 0,
+      "test": "qq_browser_ua",
+      "curl_exit": 0,
+      "error": ""
+    },
+    {
+      "http_code": 204,
+      "size_download": 0,
+      "time_starttransfer": 0.686031,
+      "time_total": 0.686072,
+      "ssl_verify_result": 0,
+      "test": "google_204",
+      "curl_exit": 0,
+      "error": ""
+    }
+  ],
+  "qq_note": "Default curl User-Agent received HTTP 501; Android browser User-Agent returned HTTP 200 in 0.300 s. This was not a tunnel or TLS failure."
+}

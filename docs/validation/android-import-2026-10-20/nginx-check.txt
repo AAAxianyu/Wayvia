@@ -1,0 +1,5 @@
+/etc/nginx/sites-available/default: OK
+/etc/nginx/sites-available/miaoban-https: OK
+/etc/nginx/sites-available/miaoban-http: OK
+/etc/nginx/sites-available/about-me-20261012: OK
+{"subscription_gzip_enabled": true, "scope": "Wayvia subscriptions location only", "nginx_reload": "success", "existing_vhosts": "hashes_unchanged"}

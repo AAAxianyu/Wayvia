@@ -1,0 +1,194 @@
+{
+  "hostname": "<ALI_HOSTNAME>",
+  "status": {
+    "version": "0.1.0",
+    "mode": "production",
+    "devices": [
+      {
+        "id": "2b6377342542475baff413f20541c988",
+        "name": "android-primary",
+        "platform": "android",
+        "status": "active",
+        "credential_version": 1,
+        "revision": 1,
+        "created_at": 1792484969.4192786,
+        "updated_at": 1792484969.6459002,
+        "desired_action": null,
+        "evidence": {
+          "revision": 1,
+          "status": "active",
+          "simulated": false,
+          "sessions": "all_previous_sessions_closed"
+        },
+        "simulated": false
+      }
+    ],
+    "agent": [
+      {
+        "id": "581c16248ca94897b552ed752d647f51",
+        "role": "ingress",
+        "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+        "state": "ACTIVE",
+        "deadline": "2026-10-20T08:30:39.131645+00:00",
+        "updated_at": "2026-10-20T08:36:42.518393+00:00",
+        "evidence": [
+          {
+            "check": "authenticated_ingress_business_path",
+            "duration_ms": 654,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "trojan_http",
+            "layer": "access",
+            "observed_at": "2026-10-20T08:36:40.742142+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:10.742142+00:00"
+          },
+          {
+            "check": "vpn_server_identity",
+            "client_authenticated": false,
+            "duration_ms": 474,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "vpn_handshake",
+            "layer": "carrier",
+            "observed_at": "2026-10-20T08:36:41.395808+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:11.395808+00:00"
+          },
+          {
+            "check": "authenticated_vpn_session",
+            "duration_ms": 233,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "vpn_session",
+            "layer": "vpn",
+            "observed_at": "2026-10-20T08:36:41.870147+00:00",
+            "peer_count": 0,
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:11.870147+00:00"
+          },
+          {
+            "duration_ms": 322,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "http",
+            "layer": "egress",
+            "observed_at": "2026-10-20T08:36:42.103068+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:12.103068+00:00"
+          },
+          {
+            "duration_ms": 85,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "dns",
+            "layer": "dns",
+            "observed_at": "2026-10-20T08:36:42.424606+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:12.424606+00:00"
+          },
+          {
+            "duration_ms": 6,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "ipv6_guard",
+            "layer": "ipv6",
+            "observed_at": "2026-10-20T08:36:42.509289+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:12.509289+00:00"
+          },
+          {
+            "duration_ms": 2,
+            "generation": "581c16248ca94897b552ed752d647f51",
+            "kind": "route",
+            "layer": "return",
+            "observed_at": "2026-10-20T08:36:42.515739+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "datapath",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:12.515739+00:00"
+          }
+        ],
+        "error": null,
+        "predecessor_id": null,
+        "device_revision": 1,
+        "monitored_at": "2026-10-20T08:36:42.518385+00:00",
+        "monitor_valid_until": "2026-10-20T08:38:12.518385+00:00",
+        "submitted_digest": "0e9d230f56d64c3b716a7f1bdc3046fa6d77a75f5d0dc90fd6ced0c64ae0f8b4",
+        "effective_digest": "d984aa2d069591564e078d59ae6000bc7ff83a8eb1966b362919336d359f4519",
+        "current": true,
+        "generation": "581c16248ca94897b552ed752d647f51",
+        "verification_scope": "datapath",
+        "blocked_reason": null
+      }
+    ]
+  },
+  "default_route_unchanged": true,
+  "units": {
+    "exit": 0,
+    "stdout": "UNIT                             LOAD   ACTIVE   SUB     DESCRIPTION\nwayvia-agent.service             loaded active   running Wayvia privileged local action agent\nwayvia-api.service               loaded active   running Wayvia local authenticated management and private subscriptions\nwayvia-bridge.service            loaded active   running Wayvia bridge\nwayvia-carrier.service           loaded active   running Wayvia carrier\nwayvia-certificate-renew.service loaded inactive dead    Renew and deploy the dedicated Wayvia IP certificate\nwayvia-ingress.service           loaded active   running Wayvia ingress\nwayvia-monitor.service           loaded inactive dead    Check Wayvia path probes and block degraded ingress\nwayvia-recover.service           loaded active   exited  Restore Wayvia transaction state and fail-closed protection after boot\nwayvia-vpn-client.service        loaded active   running Wayvia vpn-client\nwayvia-certificate-renew.timer   loaded active   waiting Check Wayvia short-lived IP certificate renewal every four hours\nwayvia-monitor.timer             loaded active   waiting Periodically check the confirmed Wayvia path\n\nLegend: LOAD   → Reflects whether the unit definition was properly loaded.\n        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.\n        SUB    → The low-level unit activation state, values depend on unit type.\n\n11 loaded units listed.\nTo show all installed unit files use 'systemctl list-unit-files'.",
+    "stderr": ""
+  },
+  "renew_timer_enabled": {
+    "exit": 0,
+    "stdout": "enabled",
+    "stderr": ""
+  },
+  "renew_timer_active": {
+    "exit": 0,
+    "stdout": "active",
+    "stderr": ""
+  },
+  "host_listeners": {
+    "exit": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess\nLISTEN 0      4096       127.0.0.1:37999      0.0.0.0:*          \nLISTEN 0      4096       127.0.0.1:35877      0.0.0.0:*          \nLISTEN 0      511          0.0.0.0:8080       0.0.0.0:*          \nLISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*          \nLISTEN 0      511          0.0.0.0:9443       0.0.0.0:*          \nLISTEN 0      4096      127.0.0.54:53         0.0.0.0:*          \nLISTEN 0      4096         0.0.0.0:8443       0.0.0.0:*          \nLISTEN 0      2048       127.0.0.1:8787       0.0.0.0:*          \nLISTEN 0      4096         0.0.0.0:22         0.0.0.0:*          \nLISTEN 0      4096       127.0.0.1:18000      0.0.0.0:*          \nLISTEN 0      511          0.0.0.0:80         0.0.0.0:*          \nLISTEN 0      4096       127.0.0.1:2017       0.0.0.0:*          \nLISTEN 0      511          0.0.0.0:443        0.0.0.0:*          \nLISTEN 0      4096           [::1]:37999         [::]:*          \nLISTEN 0      4096               *:1080             *:*          \nLISTEN 0      4096            [::]:22            [::]:*          \nLISTEN 0      511             [::]:80            [::]:*          \nLISTEN 0      511             [::]:443           [::]:*",
+    "stderr": ""
+  },
+  "ipv4_forward": {
+    "exit": 0,
+    "stdout": "1",
+    "stderr": ""
+  },
+  "wayvia_host_connections": [
+    "ESTAB      0      0               127.0.0.1:37999          127.0.0.1:49438 users:((\"v2raya_core\",pid=2327527,fd=10))",
+    "ESTAB      0      0               127.0.0.1:49438          127.0.0.1:37999 users:((\"v2raya\",pid=2327500,fd=10))     ",
+    "ESTAB      0      0           172.30.196.51:36326    <JP_PUBLIC_IP>:443   users:((\"v2raya_core\",pid=2327527,fd=9)) ",
+    "ESTAB      0      0      [::ffff:10.89.0.1]:1080  [::ffff:10.89.0.2]:59940 users:((\"v2raya_core\",pid=2327527,fd=8))"
+  ],
+  "business_routes": {
+    "exit": 0,
+    "stdout": "0.0.0.0/1 via 10.77.0.1 dev tun0 \ndefault via 10.89.0.1 dev wayvia-ns \n10.77.0.0/24 dev tun0 proto kernel scope link src 10.77.0.2 \n10.89.0.0/30 via 10.89.0.1 dev wayvia-ns \n10.89.0.0/30 dev wayvia-ns proto kernel scope link src 10.89.0.2 \n10.89.0.1 via 10.89.0.1 dev wayvia-ns \n128.0.0.0/1 via 10.77.0.1 dev tun0",
+    "stderr": ""
+  },
+  "business_connections": {
+    "exit": 0,
+    "stdout": "State Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess\nESTAB 0      0          10.89.0.2:59940    10.89.0.1:1080 users:((\"openvpn\",pid=2327589,fd=4))",
+    "stderr": ""
+  },
+  "business_guards": {
+    "exit": 0,
+    "stdout": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter packets 26 bytes 1448 drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}",
+    "stderr": ""
+  },
+  "existing_apps": {
+    "exit": 0,
+    "stdout": "active\nactive",
+    "stderr": ""
+  },
+  "nginx_existing_hashes": {
+    "exit": 0,
+    "stdout": "/etc/nginx/sites-available/default: OK\n/etc/nginx/sites-available/miaoban-https: OK\n/etc/nginx/sites-available/miaoban-http: OK\n/etc/nginx/sites-available/about-me-20261012: OK",
+    "stderr": ""
+  },
+  "public_admin_status": {
+    "exit": 0,
+    "stdout": "404",
+    "stderr": ""
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "date_utc": "2026-10-20",
+  "reported_problem": "phone_old_Clash_URL_import_remains_downloading",
+  "old_client": {
+    "package": "com.github.kr328.clash",
+    "version": "2.5.12.premium",
+    "spinner_observed": true,
+    "not_target_mihomo_core": true,
+    "error_log": "no_actionable_download_error_captured",
+    "unique_cause_of_spinner": "not_proven_in_isolation"
+  },
+  "phone": {
+    "model": "HBN-AL10",
+    "android_release": "12",
+    "sdk": 31,
+    "application_package": "com.github.metacubex.clash.meta",
+    "application_version": "2.11.35.Meta",
+    "network_transports_observed": [
+      "CELLULAR",
+      "CELLULAR|VPN"
+    ],
+    "VPN_transport_present": true
+  },
+  "subscription_before": {
+    "bytes": 9207514,
+    "first_byte_seconds": 14.01979,
+    "total_seconds": 34.627656,
+    "local_server_first_byte_seconds": 14.824764
+  },
+  "fix": {
+    "client": "official_CMFA_2.11.35_Meta_arm64_release_SHA256_verified",
+    "server": "gzip_for_dedicated_subscriptions_location_only",
+    "no_configuration_rules_removed": true,
+    "nginx_config_check": "passed",
+    "existing_vhost_hashes": "unchanged",
+    "data_plane_changes": false,
+    "application_source_changes": false
+  },
+  "subscription_after": {
+    "wire_bytes": 1152634,
+    "decoded_bytes": 9207514,
+    "first_byte_seconds": 13.69894,
+    "total_seconds": 15.541716,
+    "decoded_matches_validated_yaml": true,
+    "reading_requires_valid_subscription_and_active_device": true,
+    "cache_control": "no-store, private"
+  },
+  "physical_acceptance": {
+    "transport": "CELLULAR_LTE",
+    "URL_import": "completed_after_21.6_seconds_observation",
+    "active_profile": "Wayvia Android",
+    "mode": "rule",
+    "state": "running",
+    "controlled_browser_HTTPS_probe": "Japan_egress_IP_observed",
+    "independent_DNS_IPv6_and_domestic_phone_suite": "not_executed"
+  },
+  "installation": {
+    "first_attempt": "INSTALL_FAILED_ABORTED_User_rejected_permissions",
+    "user_then_authorized_retry": true,
+    "retry": "success",
+    "old_application": "still_installed"
+  },
+  "remaining": [
+    "phone_WiFi_and_cellular_switching",
+    "phone_domestic_DNS_IPv6_full_matrix",
+    "campus_private_DNS_rules",
+    "real_host_fault_and_reboot_tests_deferred",
+    "server_profile_generation_still_about_14_seconds",
+    "long_term_performance_and_certificate_renewal_cycle"
+  ],
+  "privacy": "no_serial_tokens_device_password_or_browser_history_in_public_evidence"
+}

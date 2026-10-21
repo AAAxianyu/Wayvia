@@ -1,0 +1,32 @@
+[
+  {
+    "command": "make check",
+    "exit": 0,
+    "seconds": 83.86,
+    "started_at": "2026-10-20T09:59:32.253281+00:00"
+  },
+  {
+    "command": "make demo",
+    "exit": 0,
+    "seconds": 1.19,
+    "started_at": "2026-10-20T10:00:56.119275+00:00"
+  },
+  {
+    "command": "make test-configs",
+    "exit": 0,
+    "seconds": 28.87,
+    "started_at": "2026-10-20T10:00:57.307962+00:00"
+  },
+  {
+    "command": "make test-lab",
+    "status": "deferred_by_user",
+    "reason": "Full target includes fault injection and systemd recovery/rebuild tests; user deferred fault and reboot testing. No full-lab pass claimed."
+  },
+  {
+    "command": "make check",
+    "exit": 0,
+    "seconds": 87.13,
+    "started_at": "2026-10-20T10:14:52.685037+00:00",
+    "reason": "Final source after curlrc isolation and closed-transport error classification"
+  }
+]

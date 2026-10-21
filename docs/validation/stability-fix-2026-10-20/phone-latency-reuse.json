@@ -1,0 +1,68 @@
+[
+  {
+    "http_code": 200,
+    "time_connect": 0.00042,
+    "time_appconnect": 0.331022,
+    "time_starttransfer": 0.411285,
+    "time_total": 0.411545,
+    "size_download": 213,
+    "speed_download": 517,
+    "ssl_verify_result": 0,
+    "num_connects": 1
+  },
+  {
+    "http_code": 200,
+    "time_connect": 0.0,
+    "time_appconnect": 0.0,
+    "time_starttransfer": 0.077598,
+    "time_total": 0.077699,
+    "size_download": 214,
+    "speed_download": 2754,
+    "ssl_verify_result": 0,
+    "num_connects": 0
+  },
+  {
+    "http_code": 200,
+    "time_connect": 0.0,
+    "time_appconnect": 0.0,
+    "time_starttransfer": 0.065683,
+    "time_total": 0.065885,
+    "size_download": 209,
+    "speed_download": 3172,
+    "ssl_verify_result": 0,
+    "num_connects": 0
+  },
+  {
+    "http_code": 200,
+    "time_connect": 0.0,
+    "time_appconnect": 0.0,
+    "time_starttransfer": 0.070385,
+    "time_total": 0.070505,
+    "size_download": 214,
+    "speed_download": 3035,
+    "ssl_verify_result": 0,
+    "num_connects": 0
+  },
+  {
+    "http_code": 200,
+    "time_connect": 0.0,
+    "time_appconnect": 0.0,
+    "time_starttransfer": 0.06953,
+    "time_total": 0.069736,
+    "size_download": 209,
+    "speed_download": 2997,
+    "ssl_verify_result": 0,
+    "num_connects": 0
+  },
+  {
+    "http_code": 200,
+    "time_connect": 0.0,
+    "time_appconnect": 0.0,
+    "time_starttransfer": 0.073307,
+    "time_total": 0.080268,
+    "size_download": 214,
+    "speed_download": 2666,
+    "ssl_verify_result": 0,
+    "num_connects": 0
+  }
+]

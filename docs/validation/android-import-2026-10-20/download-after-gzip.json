@@ -1,0 +1,13 @@
+{
+  "exit": 0,
+  "metrics": {
+    "http_code": "200",
+    "time_starttransfer": "13.698940",
+    "time_total": "15.541716",
+    "wire_bytes": "1152634",
+    "speed_download": "74163"
+  },
+  "stderr": "",
+  "headers": "HTTP/1.1 200 OK\nServer: nginx\nDate: Tue, 20 Oct 2026 08:57:52 GMT\nContent-Type: application/yaml\nTransfer-Encoding: chunked\nConnection: keep-alive\nVary: Accept-Encoding\nx-request-id: 012602bb679244799e16cc86af5b0a09\ncache-control: no-store, private\npragma: no-cache\nx-content-type-options: nosniff\nContent-Encoding: gzip\n\n",
+  "decoded_matches_validated_yaml": true
+}

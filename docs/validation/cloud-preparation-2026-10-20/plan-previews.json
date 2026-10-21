@@ -1,0 +1,18 @@
+{
+  "same_logical_revision": true,
+  "plans_applied": false,
+  "roles": {
+    "jp": {
+      "role": "exit",
+      "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+      "created_at": "2026-10-20T08:21:27.167868Z",
+      "digest": "d2629acf765c736ac7d4c367021029d2e4584e8f9965978b3a24e4edeaf5a39d"
+    },
+    "ali": {
+      "role": "ingress",
+      "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+      "created_at": "2026-10-20T08:21:30.322526Z",
+      "digest": "7b5eb2593cf8fc384d8060b0b7c52ca9d6a331d4267279c81d629ab67d71f256"
+    }
+  }
+}

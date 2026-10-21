@@ -1,0 +1,569 @@
+{
+  "status": "passed",
+  "environment": {
+    "os": "PRETTY_NAME=\"Ubuntu 24.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.5 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+    "architecture": "aarch64",
+    "kernel": "6.8.0-117-generic",
+    "python": "Python 3.12.3",
+    "iproute2": "ip utility, iproute2-6.1.0, libbpf 1.3.0",
+    "nftables": "nftables v1.0.9 (Old Doc Yak #3)",
+    "packages": "iproute2\t6.1.0-1ubuntu6.4\nlibssl3t64:arm64\t3.0.13-0ubuntu3.16\nnftables\t1.0.9-1ubuntu0.1\nopenssl\t3.0.13-0ubuntu3.16\nopenvpn\t2.6.19-0ubuntu0.24.04.4\nprocps\t2:4.0.4-4ubuntu3.3\npython3.12\t3.12.3-1ubuntu0.17\n",
+    "systemd": {
+      "systemctl_installed": false,
+      "live_service_manager_validated": false
+    }
+  },
+  "tests": [
+    {
+      "name": "isolated_topology",
+      "status": "passed",
+      "elapsed_ms": 1881,
+      "evidence": {
+        "namespaces": [
+          "terminal",
+          "domestic",
+          "ali",
+          "wayvia-egress",
+          "jp",
+          "foreign"
+        ],
+        "development_host_routes_modified": false,
+        "egress_default_physical_route": true,
+        "unprotected_physical_baseline": {
+          "target": "foreign",
+          "peer": "10.73.0.1"
+        },
+        "production_guard_blocks_same_path": true
+      }
+    },
+    {
+      "name": "temporary_ca_and_identity",
+      "status": "passed",
+      "elapsed_ms": 1267,
+      "evidence": {
+        "temporary_ca": true,
+        "server_identity_checked": true,
+        "keys_exported": false
+      }
+    },
+    {
+      "name": "v2raya_manages_matching_core",
+      "status": "passed",
+      "elapsed_ms": 1682,
+      "evidence": {
+        "version": {
+          "version": "2.5.10",
+          "coreVersion": "2.5.10",
+          "coreVersionValid": true,
+          "serviceValid": true,
+          "variant": "V2rayaCore"
+        },
+        "configured": true,
+        "production_adapter": true,
+        "explicit_bootstrap_resolver": "10.73.0.1",
+        "resolved_carrier": "10.73.0.2",
+        "tls_server_name": "carrier.lab",
+        "imported_server": true,
+        "core_managed_by_v2raya": true
+      }
+    },
+    {
+      "name": "foreign_tcp_dual_layer_japan_nat",
+      "status": "passed",
+      "elapsed_ms": 719,
+      "evidence": {
+        "target": "foreign",
+        "peer": "10.74.0.1"
+      }
+    },
+    {
+      "name": "domestic_tcp_terminal_direct",
+      "status": "passed",
+      "elapsed_ms": 58,
+      "evidence": {
+        "target": "domestic",
+        "peer": "10.71.0.2"
+      }
+    },
+    {
+      "name": "terminal_tun_kernel_ready",
+      "status": "passed",
+      "elapsed_ms": 41,
+      "evidence": {
+        "ready": true,
+        "interface": [
+          {
+            "ifindex": 2,
+            "ifname": "wayvia-tun",
+            "flags": [
+              "POINTOPOINT",
+              "MULTICAST",
+              "NOARP",
+              "UP",
+              "LOWER_UP"
+            ],
+            "mtu": 1400,
+            "qdisc": "fq_codel",
+            "operstate": "UNKNOWN",
+            "group": "default",
+            "txqlen": 500,
+            "link_type": "none",
+            "addr_info": [
+              {
+                "family": "inet",
+                "local": "172.28.0.1",
+                "prefixlen": 30,
+                "broadcast": "172.28.0.3",
+                "scope": "global",
+                "label": "wayvia-tun",
+                "valid_life_time": 4294967295,
+                "preferred_life_time": 4294967295
+              },
+              {
+                "family": "inet6",
+                "local": "fd77:7761:7976::1",
+                "prefixlen": 126,
+                "scope": "global",
+                "valid_life_time": 4294967295,
+                "preferred_life_time": 4294967295
+              },
+              {
+                "family": "inet6",
+                "local": "fe80::65eb:a9f4:8c79:216a",
+                "prefixlen": 64,
+                "scope": "link",
+                "stable-privacy": true,
+                "valid_life_time": 4294967295,
+                "preferred_life_time": 4294967295
+              }
+            ]
+          }
+        ],
+        "route": [
+          {
+            "dst": "10.74.0.2",
+            "gateway": "172.28.0.2",
+            "dev": "wayvia-tun",
+            "table": "2022",
+            "prefsrc": "172.28.0.1",
+            "flags": [],
+            "uid": 0,
+            "cache": []
+          }
+        ],
+        "bound_route": [
+          {
+            "dst": "10.74.0.2",
+            "from": "172.28.0.1",
+            "gateway": "172.28.0.2",
+            "dev": "wayvia-tun",
+            "table": "2022",
+            "flags": [],
+            "uid": 0,
+            "cache": []
+          }
+        ],
+        "selected_source": "172.28.0.1",
+        "elapsed_ms": 41,
+        "observations": 1
+      }
+    },
+    {
+      "name": "foreign_native_tcp_intercepted_by_rendered_tun",
+      "status": "passed",
+      "elapsed_ms": 136,
+      "evidence": {
+        "target": "foreign",
+        "peer": "10.74.0.1",
+        "connection": {
+          "peer": [
+            "10.74.0.2",
+            8080
+          ],
+          "started_at": 1792482887.9763927,
+          "local": [
+            "172.28.0.1",
+            40554
+          ],
+          "finished_at": 1792482887.977907
+        }
+      }
+    },
+    {
+      "name": "foreign_native_udp_intercepted_by_rendered_tun",
+      "status": "passed",
+      "elapsed_ms": 87,
+      "evidence": {
+        "payload": "foreign:wayvia-native-udp"
+      }
+    },
+    {
+      "name": "foreign_udp_through_vpn_and_socks_bridge",
+      "status": "passed",
+      "elapsed_ms": 42,
+      "evidence": {
+        "payload": "foreign:wayvia-udp"
+      }
+    },
+    {
+      "name": "foreign_dns_through_vpn",
+      "status": "passed",
+      "elapsed_ms": 52,
+      "evidence": {
+        "answer": "10.74.0.2"
+      }
+    },
+    {
+      "name": "domestic_dns_terminal_direct",
+      "status": "passed",
+      "elapsed_ms": 45,
+      "evidence": {
+        "answer": "10.71.0.1"
+      }
+    },
+    {
+      "name": "domestic_ipv6_terminal_direct",
+      "status": "passed",
+      "elapsed_ms": 36,
+      "evidence": {
+        "target": "domestic",
+        "peer": "fd72:1::2"
+      }
+    },
+    {
+      "name": "healthy_layer_order_and_return_paths",
+      "status": "passed",
+      "elapsed_ms": 116,
+      "evidence": {
+        "socket_and_interface_snapshots": true,
+        "proxy_endpoint": "10.73.0.2:443",
+        "vpn_carrier": "10.89.0.1:1080",
+        "vpn_endpoint": "127.0.0.1:1194"
+      }
+    },
+    {
+      "name": "unsupported_foreign_ipv6_blocked",
+      "status": "passed",
+      "elapsed_ms": 47,
+      "evidence": {
+        "error": "protected connection closed without an HTTP response",
+        "connections": []
+      }
+    },
+    {
+      "name": "japan_proxy_rejects_arbitrary_target",
+      "status": "passed",
+      "elapsed_ms": 1015,
+      "evidence": {
+        "exit_code": 52,
+        "arbitrary_forwarding_rejected": true
+      }
+    },
+    {
+      "name": "japan_vpn_not_publicly_reachable",
+      "status": "passed",
+      "elapsed_ms": 33,
+      "evidence": {
+        "connection_rejected": true,
+        "listener": "127.0.0.1:1194"
+      }
+    },
+    {
+      "name": "management_path_keeps_physical_return",
+      "status": "passed",
+      "elapsed_ms": 9,
+      "evidence": {
+        "target": "management",
+        "peer": "10.73.0.2"
+      }
+    },
+    {
+      "name": "vpn_layer_failure_protected_domestic_available",
+      "status": "passed",
+      "elapsed_ms": 1462,
+      "evidence": {
+        "protected": {
+          "error": "protected connection closed without an HTTP response",
+          "connections": []
+        },
+        "native_protected": {
+          "error": "protected connection closed without an HTTP response",
+          "connections": [
+            {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1792482890.8721633,
+              "local": [
+                "172.28.0.1",
+                52140
+              ],
+              "finished_at": 1792482890.874811
+            }
+          ]
+        },
+        "domestic": {
+          "target": "domestic",
+          "peer": "10.71.0.2"
+        },
+        "management": {
+          "target": "management",
+          "peer": "10.73.0.2"
+        }
+      }
+    },
+    {
+      "name": "vpn_layer_reconnect",
+      "status": "passed",
+      "elapsed_ms": 2389,
+      "evidence": {
+        "target": "foreign",
+        "peer": "10.74.0.1"
+      }
+    },
+    {
+      "name": "proxy_layer_failure_protected_domestic_available",
+      "status": "passed",
+      "elapsed_ms": 1134,
+      "evidence": {
+        "protected": {
+          "error": "protected connection closed without an HTTP response",
+          "connections": []
+        },
+        "native_protected": {
+          "error": "protected connection closed without an HTTP response",
+          "connections": [
+            {
+              "peer": [
+                "10.74.0.2",
+                8080
+              ],
+              "started_at": 1792482894.2533798,
+              "local": [
+                "172.28.0.1",
+                52154
+              ],
+              "finished_at": 1792482894.2536836
+            }
+          ]
+        },
+        "domestic": {
+          "target": "domestic",
+          "peer": "10.71.0.2"
+        },
+        "management": {
+          "target": "management",
+          "peer": "10.73.0.2"
+        }
+      }
+    },
+    {
+      "name": "proxy_layer_reconnect",
+      "status": "passed",
+      "elapsed_ms": 1865,
+      "evidence": {
+        "target": "foreign",
+        "peer": "10.74.0.1"
+      }
+    },
+    {
+      "name": "device_permission_revoke",
+      "status": "passed",
+      "elapsed_ms": 639,
+      "evidence": {
+        "new_connections": {
+          "error": "protected connection closed without an HTTP response",
+          "connections": []
+        },
+        "domestic": {
+          "target": "domestic",
+          "peer": "10.71.0.2"
+        },
+        "method": "controlled ingress restart; existing sessions terminated"
+      }
+    },
+    {
+      "name": "production_openvpn_adapter_isolated_handshake",
+      "status": "passed",
+      "elapsed_ms": 8128,
+      "evidence": {
+        "component": "openvpn",
+        "version": "2.6.19",
+        "supported": true,
+        "validated": true,
+        "scope": "isolated-handshake"
+      }
+    }
+  ],
+  "healthy_path": {
+    "terminal": {
+      "sockets": "State Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                            \nESTAB 0      0      10.72.0.2%taa:55126    10.72.0.1:443  users:((\"sing-box\",pid=199,fd=13))\nESTAB 0      0      10.72.0.2%taa:55106    10.72.0.1:443  users:((\"sing-box\",pid=199,fd=10))\n",
+      "routes": "default via 10.72.0.1 dev taa \n10.71.0.0/24 dev tda proto kernel scope link src 10.71.0.2 \n10.72.0.0/24 dev taa proto kernel scope link src 10.72.0.2 \n172.28.0.0/30 dev wayvia-tun proto kernel scope link src 172.28.0.1 \n",
+      "interfaces": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    RX:  bytes packets errors dropped  missed   mcast           \n          5464      87      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n          5464      87      0       0       0       0 \n2: wayvia-tun: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1400 qdisc fq_codel state UNKNOWN mode DEFAULT group default qlen 500\n    link/none \n    RX:  bytes packets errors dropped  missed   mcast           \n           826      12      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n           818      12      0       0       0       0 \n3: tda@if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether f2:c5:b7:76:62:2f brd ff:ff:ff:ff:ff:ff link-netns domestic\n    RX:  bytes packets errors dropped  missed   mcast           \n          2210      23      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n          1954      23      0       0       0       0 \n5: taa@if4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether 66:de:0e:a2:2c:86 brd ff:ff:ff:ff:ff:ff link-netns ali\n    RX:  bytes packets errors dropped  missed   mcast           \n         15725      39      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         11954      50      0       0       0       0 \n"
+    },
+    "domestic": {
+      "sockets": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+      "routes": "10.71.0.0/24 dev tdb proto kernel scope link src 10.71.0.1 \n",
+      "interfaces": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    RX:  bytes packets errors dropped  missed   mcast           \n             0       0      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n             0       0      0       0       0       0 \n2: tdb@if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether fe:1e:27:77:55:50 brd ff:ff:ff:ff:ff:ff link-netns terminal\n    RX:  bytes packets errors dropped  missed   mcast           \n          1954      23      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n          2210      23      0       0       0       0 \n"
+    },
+    "ali": {
+      "sockets": "State Recv-Q Send-Q      Local Address:Port        Peer Address:Port Process                              \nESTAB 0      0               10.72.0.1:443            10.72.0.2:55126 users:((\"sing-box\",pid=196,fd=11))  \nESTAB 0      0               127.0.0.1:41791          127.0.0.1:52550 users:((\"v2raya_core\",pid=184,fd=9))\nESTAB 0      0               10.72.0.1:443            10.72.0.2:55106 users:((\"sing-box\",pid=196,fd=8))   \nESTAB 0      0               10.73.0.1:38476          10.73.0.2:443   users:((\"v2raya_core\",pid=184,fd=8))\nESTAB 0      0               10.89.0.1:39910          10.89.0.2:1081  users:((\"sing-box\",pid=196,fd=12))  \nESTAB 0      0               10.89.0.1:39900          10.89.0.2:1081  users:((\"sing-box\",pid=196,fd=9))   \nESTAB 0      0               127.0.0.1:52550          127.0.0.1:41791 users:((\"v2raya\",pid=131,fd=9))     \nESTAB 0      0      [::ffff:10.89.0.1]:1080  [::ffff:10.89.0.2]:53414 users:((\"v2raya_core\",pid=184,fd=7))\n",
+      "routes": "10.72.0.0/24 dev tab proto kernel scope link src 10.72.0.1 \n10.73.0.0/24 dev aja proto kernel scope link src 10.73.0.1 \n10.74.0.0/24 via 10.73.0.2 dev aja \n10.89.0.0/30 dev wayvia-host proto kernel scope link src 10.89.0.1 \n",
+      "interfaces": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    RX:  bytes packets errors dropped  missed   mcast           \n         16776      94      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         16776      94      0       0       0       0 \n4: tab@if5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether 7e:3e:e5:a7:1a:49 brd ff:ff:ff:ff:ff:ff link-netns terminal\n    RX:  bytes packets errors dropped  missed   mcast           \n         11954      50      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         15725      39      0       0       0       0 \n7: aja@if6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether aa:4e:9a:07:96:47 brd ff:ff:ff:ff:ff:ff link-netns jp\n    RX:  bytes packets errors dropped  missed   mcast           \n         11082      46      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         10224      50      0       0       0       0 \n11: wayvia-host@if10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether 9a:8e:24:d3:2d:30 brd ff:ff:ff:ff:ff:ff link-netns wayvia-egress\n    RX:  bytes packets errors dropped  missed   mcast           \n         10080      78      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         11025      87      0       0       0       0 \n"
+    },
+    "wayvia-egress": {
+      "sockets": "State Recv-Q Send-Q Local Address:Port  Peer Address:Port Process                            \nESTAB 0      0          10.89.0.2:1081     10.89.0.1:39910 users:((\"sing-box\",pid=195,fd=10))\nESTAB 0      0          10.89.0.2:1081     10.89.0.1:39900 users:((\"sing-box\",pid=195,fd=7)) \nESTAB 0      0          10.89.0.2:53414    10.89.0.1:1080  users:((\"openvpn\",pid=194,fd=3))  \n",
+      "routes": "0.0.0.0/1 via 10.77.0.1 dev tun0 \ndefault via 10.89.0.1 dev wayvia-ns \n10.77.0.0/24 dev tun0 proto kernel scope link src 10.77.0.2 \n10.89.0.0/30 via 10.89.0.1 dev wayvia-ns \n10.89.0.0/30 dev wayvia-ns proto kernel scope link src 10.89.0.2 \n10.89.0.1 via 10.89.0.1 dev wayvia-ns \n128.0.0.0/1 via 10.77.0.1 dev tun0 \n",
+      "interfaces": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    RX:  bytes packets errors dropped  missed   mcast           \n             0       0      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n             0       0      0       0       0       0 \n2: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1400 qdisc fq_codel state UNKNOWN mode DEFAULT group default qlen 500\n    link/none \n    RX:  bytes packets errors dropped  missed   mcast           \n          1204      15      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n           874      15      0       0       0       0 \n10: wayvia-ns@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether 32:40:71:a7:89:d5 brd ff:ff:ff:ff:ff:ff link-netns ali\n    RX:  bytes packets errors dropped  missed   mcast           \n         11025      87      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         10080      78      0       0       0       0 \n"
+    },
+    "jp": {
+      "sockets": "State Recv-Q Send-Q Local Address:Port  Peer Address:Port Process                           \nESTAB 0      0          127.0.0.1:1194     127.0.0.1:42674 users:((\"openvpn\",pid=130,fd=6)) \nESTAB 0      0          10.73.0.2:443      10.73.0.1:38476 users:((\"sing-box\",pid=129,fd=8))\nESTAB 0      0          127.0.0.1:42674    127.0.0.1:1194  users:((\"sing-box\",pid=129,fd=9))\n",
+      "routes": "10.73.0.0/24 dev ajb proto kernel scope link src 10.73.0.2 \n10.74.0.0/24 dev jfa proto kernel scope link src 10.74.0.1 \n10.77.0.0/24 dev tun0 proto kernel scope link src 10.77.0.1 \n",
+      "interfaces": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    RX:  bytes packets errors dropped  missed   mcast           \n         12338      62      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         12338      62      0       0       0       0 \n2: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1400 qdisc fq_codel state UNKNOWN mode DEFAULT group default qlen 500\n    link/none \n    RX:  bytes packets errors dropped  missed   mcast           \n           874      15      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n          1252      16      0       0       0       0 \n6: ajb@if7: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether e2:8e:6b:57:16:3f brd ff:ff:ff:ff:ff:ff link-netns ali\n    RX:  bytes packets errors dropped  missed   mcast           \n         10224      50      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n         11082      46      0       0       0       0 \n9: jfa@if8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether 1e:99:b3:0b:bf:80 brd ff:ff:ff:ff:ff:ff link-netns foreign\n    RX:  bytes packets errors dropped  missed   mcast           \n          2860      33      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n          2529      33      0       0       0       0 \n"
+    },
+    "foreign": {
+      "sockets": "State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\n",
+      "routes": "default via 10.74.0.1 dev jfb \n10.74.0.0/24 dev jfb proto kernel scope link src 10.74.0.2 \n",
+      "interfaces": "1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000\n    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00\n    RX:  bytes packets errors dropped  missed   mcast           \n             0       0      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n             0       0      0       0       0       0 \n8: jfb@if9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000\n    link/ether fe:b4:8c:27:30:8a brd ff:ff:ff:ff:ff:ff link-netns jp\n    RX:  bytes packets errors dropped  missed   mcast           \n          2529      33      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n          2860      33      0       0       0       0 \n"
+    }
+  },
+  "logs": {
+    "bridge.log": "\u001b[31mERROR\u001b[0m[0003] [\u001b[38;5;229m3437010901\u001b[0m 2ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: connect: no such device\n\u001b[31mERROR\u001b[0m[0003] [\u001b[38;5;120m3130250600\u001b[0m 5ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: connect: no such device\n\u001b[31mERROR\u001b[0m[0003] [\u001b[38;5;29m2768227597\u001b[0m 0ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: connect: no such device\n\u001b[31mERROR\u001b[0m[0004] [\u001b[38;5;189m108245165\u001b[0m 0ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0004] [\u001b[38;5;42m1127377137\u001b[0m 0ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0005] [\u001b[38;5;170m1218329242\u001b[0m 1ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;188m3694172203\u001b[0m 1ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;212m2313382084\u001b[0m 0ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;37m3467099925\u001b[0m 1ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;79m1304958015\u001b[0m 0ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n\u001b[31mERROR\u001b[0m[0008] [\u001b[38;5;63m875981359\u001b[0m 2ms] connection: open connection to 10.74.0.2:8080 using outbound/direct[vpn]: dial tcp 10.74.0.2:8080: route ip+net : no such network interface\n",
+    "japan.log": "\u001b[31mERROR\u001b[0m[0000] network: missing default interface\n",
+    "terminal.log": "\u001b[33mWARN\u001b[0m[0000] `independent_cache` DNS option is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, checkout documentation for migration: https://sing-box.sagernet.org/migration/#migrate-independent-dns-cache\n",
+    "entry-revoked.log": "\u001b[31mERROR\u001b[0m[0000] network: missing default interface\n\u001b[31mERROR\u001b[0m[0000] [\u001b[38;5;224m3913505502\u001b[0m 2ms] inbound/trojan[entry]: process connection from 10.72.0.2:39952: bad request: fallback disabled\n",
+    "vpn-server-restart.log": "2026-10-20 07:54:50 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-20 07:54:50 Note: Kernel support for ovpn-dco missing, disabling data channel offload.\n2026-10-20 07:54:50 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-20 07:54:50 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-20 07:54:50 DCO version: N/A\n2026-10-20 07:54:50 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-20 07:54:50 net_route_v4_best_gw result: via 0.0.0.0 dev \n2026-10-20 07:54:50 TUN/TAP device tun0 opened\n2026-10-20 07:54:50 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-20 07:54:50 net_iface_up: set tun0 up\n2026-10-20 07:54:50 net_addr_v4_add: 10.77.0.1/24 dev tun0\n2026-10-20 07:54:50 Could not determine IPv4/IPv6 protocol. Using AF_INET\n2026-10-20 07:54:50 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-20 07:54:50 Listening for incoming TCP connection on [AF_INET]127.0.0.1:1194\n2026-10-20 07:54:50 TCPv4_SERVER link local (bound): [AF_INET]127.0.0.1:1194\n2026-10-20 07:54:50 TCPv4_SERVER link remote: [AF_UNSPEC]\n2026-10-20 07:54:50 MULTI: multi_init called, r=256 v=256\n2026-10-20 07:54:50 IFCONFIG POOL IPv4: base=10.77.0.2 size=253\n2026-10-20 07:54:50 MULTI: TCP INIT maxclients=1024 maxevents=1029\n2026-10-20 07:54:50 Initialization Sequence Completed\n2026-10-20 07:54:52 TCP connection established with [AF_INET]127.0.0.1:59336\n2026-10-20 07:54:52 127.0.0.1:59336 TLS: Initial packet from [AF_INET]127.0.0.1:59336, sid=2806a137 51083cc9\n2026-10-20 07:54:52 127.0.0.1:59336 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:52 127.0.0.1:59336 VERIFY KU OK\n2026-10-20 07:54:52 127.0.0.1:59336 Validating certificate extended key usage\n2026-10-20 07:54:52 127.0.0.1:59336 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\n2026-10-20 07:54:52 127.0.0.1:59336 VERIFY EKU OK\n2026-10-20 07:54:52 127.0.0.1:59336 VERIFY OK: depth=0, CN=vpn-client.lab\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_VER=2.6.19\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_PLAT=linux\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_TCPNL=1\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_MTU=1600\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_NCP=2\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_PROTO=990\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_LZO_STUB=1\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_COMP_STUB=1\n2026-10-20 07:54:52 127.0.0.1:59336 peer info: IV_COMP_STUBv2=1\n2026-10-20 07:54:52 127.0.0.1:59336 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:52 127.0.0.1:59336 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:52 127.0.0.1:59336 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:52 127.0.0.1:59336 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:59336\n2026-10-20 07:54:52 vpn-client.lab/127.0.0.1:59336 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\n2026-10-20 07:54:52 vpn-client.lab/127.0.0.1:59336 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:59336\n2026-10-20 07:54:52 vpn-client.lab/127.0.0.1:59336 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:59336: 10.77.0.2\n2026-10-20 07:54:52 vpn-client.lab/127.0.0.1:59336 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\n2026-10-20 07:54:53 vpn-client.lab/127.0.0.1:59336 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:53 vpn-client.lab/127.0.0.1:59336 Timers: ping 10, ping-restart 120\n2026-10-20 07:54:53 vpn-client.lab/127.0.0.1:59336 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n2026-10-20 07:54:53 vpn-client.lab/127.0.0.1:59336 Connection reset, restarting [0]\n2026-10-20 07:54:53 vpn-client.lab/127.0.0.1:59336 SIGUSR1[soft,connection-reset] received, client-instance restarting\n2026-10-20 07:54:55 TCP connection established with [AF_INET]127.0.0.1:59346\n2026-10-20 07:54:55 127.0.0.1:59346 TLS: Initial packet from [AF_INET]127.0.0.1:59346, sid=409b2f2b d8f33b61\n2026-10-20 07:54:55 127.0.0.1:59346 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:55 127.0.0.1:59346 VERIFY KU OK\n2026-10-20 07:54:55 127.0.0.1:59346 Validating certificate extended key usage\n2026-10-20 07:54:55 127.0.0.1:59346 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\n2026-10-20 07:54:55 127.0.0.1:59346 VERIFY EKU OK\n2026-10-20 07:54:55 127.0.0.1:59346 VERIFY OK: depth=0, CN=vpn-client.lab\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_VER=2.6.19\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_PLAT=linux\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_TCPNL=1\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_MTU=1600\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_NCP=2\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_PROTO=990\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_LZO_STUB=1\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_COMP_STUB=1\n2026-10-20 07:54:55 127.0.0.1:59346 peer info: IV_COMP_STUBv2=1\n2026-10-20 07:54:55 127.0.0.1:59346 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:55 127.0.0.1:59346 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:55 127.0.0.1:59346 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:55 127.0.0.1:59346 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:59346\n2026-10-20 07:54:55 vpn-client.lab/127.0.0.1:59346 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\n2026-10-20 07:54:55 vpn-client.lab/127.0.0.1:59346 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:59346\n2026-10-20 07:54:55 vpn-client.lab/127.0.0.1:59346 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:59346: 10.77.0.2\n2026-10-20 07:54:55 vpn-client.lab/127.0.0.1:59346 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\n2026-10-20 07:54:56 vpn-client.lab/127.0.0.1:59346 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:56 vpn-client.lab/127.0.0.1:59346 Timers: ping 10, ping-restart 120\n2026-10-20 07:54:56 vpn-client.lab/127.0.0.1:59346 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n2026-10-20 07:54:57 TCP connection established with [AF_INET]127.0.0.1:59362\n2026-10-20 07:54:57 127.0.0.1:59362 TLS: Initial packet from [AF_INET]127.0.0.1:59362, sid=aa775268 91808f7e\n2026-10-20 07:54:57 127.0.0.1:59362 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:57 127.0.0.1:59362 VERIFY KU OK\n2026-10-20 07:54:57 127.0.0.1:59362 Validating certificate extended key usage\n2026-10-20 07:54:57 127.0.0.1:59362 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\n2026-10-20 07:54:57 127.0.0.1:59362 VERIFY EKU OK\n2026-10-20 07:54:57 127.0.0.1:59362 VERIFY OK: depth=0, CN=vpn-client.lab\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_VER=2.6.19\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_PLAT=linux\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_TCPNL=1\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_MTU=1600\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_NCP=2\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_PROTO=990\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_LZO_STUB=1\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_COMP_STUB=1\n2026-10-20 07:54:57 127.0.0.1:59362 peer info: IV_COMP_STUBv2=1\n2026-10-20 07:54:57 127.0.0.1:59362 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:57 127.0.0.1:59362 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:57 127.0.0.1:59362 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:57 127.0.0.1:59362 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:59362\n2026-10-20 07:54:57 MULTI: new connection by client 'vpn-client.lab' will cause previous active sessions by this client to be dropped.  Remember to use the --duplicate-cn option if you want multiple clients using the same certificate or username to concurrently connect.\n2026-10-20 07:54:57 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\n2026-10-20 07:54:57 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:59362\n2026-10-20 07:54:57 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:59362: 10.77.0.2\n2026-10-20 07:54:57 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 1,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\n2026-10-20 07:54:58 vpn-client.lab/127.0.0.1:59362 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:58 vpn-client.lab/127.0.0.1:59362 Timers: ping 10, ping-restart 120\n2026-10-20 07:54:58 vpn-client.lab/127.0.0.1:59362 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n",
+    "tun-packets.log": "tcpdump: data link type LINUX_SLL2\ntcpdump: verbose output suppressed, use -v[v]... for full protocol decode\nlistening on any, link-type LINUX_SLL2 (Linux cooked v2), snapshot length 262144 bytes\n07:54:47.976463 wayvia-tun Out IP 172.28.0.1.40554 > 10.74.0.2.8080: Flags [S], seq 2746259252, win 65280, options [mss 1360,sackOK,TS val 2668085349 ecr 0,nop,wscale 7], length 0\n07:54:47.977768 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.40554: Flags [S.], seq 992333350, ack 2746259253, win 64704, options [mss 1360,sackOK,TS val 2279447741 ecr 2668085349,nop,wscale 7], length 0\n07:54:47.977791 wayvia-tun Out IP 172.28.0.1.40554 > 10.74.0.2.8080: Flags [.], ack 1, win 510, options [nop,nop,TS val 2668085351 ecr 2279447741], length 0\n07:54:47.977958 wayvia-tun Out IP 172.28.0.1.40554 > 10.74.0.2.8080: Flags [P.], seq 1:36, ack 1, win 510, options [nop,nop,TS val 2668085351 ecr 2279447741], length 35: HTTP: GET / HTTP/1.0\n07:54:47.978137 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.40554: Flags [.], ack 36, win 506, options [nop,nop,TS val 2279447741 ecr 2668085351], length 0\n07:54:48.076475 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.40554: Flags [P.], seq 1:155, ack 36, win 506, options [nop,nop,TS val 2279447839 ecr 2668085351], length 154: HTTP: HTTP/1.0 200 OK\n07:54:48.076495 wayvia-tun Out IP 172.28.0.1.40554 > 10.74.0.2.8080: Flags [.], ack 155, win 509, options [nop,nop,TS val 2668085449 ecr 2279447839], length 0\n07:54:48.076627 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.40554: Flags [F.], seq 155, ack 36, win 506, options [nop,nop,TS val 2279447839 ecr 2668085449], length 0\n07:54:48.076707 wayvia-tun Out IP 172.28.0.1.40554 > 10.74.0.2.8080: Flags [F.], seq 36, ack 156, win 509, options [nop,nop,TS val 2668085450 ecr 2279447839], length 0\n07:54:48.076947 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.40554: Flags [.], ack 37, win 506, options [nop,nop,TS val 2279447840 ecr 2668085450], length 0\n07:54:50.872216 wayvia-tun Out IP 172.28.0.1.52140 > 10.74.0.2.8080: Flags [S], seq 3636727718, win 65280, options [mss 1360,sackOK,TS val 2668088245 ecr 0,nop,wscale 7], length 0\n07:54:50.874480 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52140: Flags [S.], seq 102391355, ack 3636727719, win 64704, options [mss 1360,sackOK,TS val 2279450637 ecr 2668088245,nop,wscale 7], length 0\n07:54:50.874511 wayvia-tun Out IP 172.28.0.1.52140 > 10.74.0.2.8080: Flags [.], ack 1, win 510, options [nop,nop,TS val 2668088247 ecr 2279450637], length 0\n07:54:50.874845 wayvia-tun Out IP 172.28.0.1.52140 > 10.74.0.2.8080: Flags [P.], seq 1:36, ack 1, win 510, options [nop,nop,TS val 2668088248 ecr 2279450637], length 35: HTTP: GET / HTTP/1.0\n07:54:50.875198 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52140: Flags [.], ack 36, win 506, options [nop,nop,TS val 2279450638 ecr 2668088248], length 0\n07:54:50.892241 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52140: Flags [F.], seq 1, ack 36, win 506, options [nop,nop,TS val 2279450655 ecr 2668088248], length 0\n07:54:50.892444 wayvia-tun Out IP 172.28.0.1.52140 > 10.74.0.2.8080: Flags [F.], seq 36, ack 2, win 510, options [nop,nop,TS val 2668088265 ecr 2279450655], length 0\n07:54:50.894289 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52140: Flags [.], ack 37, win 506, options [nop,nop,TS val 2279450657 ecr 2668088265], length 0\n07:54:54.253445 wayvia-tun Out IP 172.28.0.1.52154 > 10.74.0.2.8080: Flags [S], seq 2732932538, win 65280, options [mss 1360,sackOK,TS val 2668091861 ecr 0,nop,wscale 7], length 0\n07:54:54.253646 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52154: Flags [S.], seq 2379633143, ack 2732932539, win 64704, options [mss 1360,sackOK,TS val 2279454252 ecr 2668091861,nop,wscale 7], length 0\n07:54:54.253660 wayvia-tun Out IP 172.28.0.1.52154 > 10.74.0.2.8080: Flags [.], ack 1, win 510, options [nop,nop,TS val 2668091862 ecr 2279454252], length 0\n07:54:54.253703 wayvia-tun Out IP 172.28.0.1.52154 > 10.74.0.2.8080: Flags [P.], seq 1:36, ack 1, win 510, options [nop,nop,TS val 2668091862 ecr 2279454252], length 35: HTTP: GET / HTTP/1.0\n07:54:54.253786 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52154: Flags [.], ack 36, win 506, options [nop,nop,TS val 2279454252 ecr 2668091862], length 0\n07:54:54.258771 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52154: Flags [F.], seq 1, ack 36, win 506, options [nop,nop,TS val 2279454257 ecr 2668091862], length 0\n07:54:54.258956 wayvia-tun Out IP 172.28.0.1.52154 > 10.74.0.2.8080: Flags [F.], seq 36, ack 2, win 510, options [nop,nop,TS val 2668091867 ecr 2279454257], length 0\n07:54:54.259066 wayvia-tun In  IP 10.74.0.2.8080 > 172.28.0.1.52154: Flags [.], ack 37, win 506, options [nop,nop,TS val 2279454257 ecr 2668091867], length 0\n",
+    "japan-restart.log": "\u001b[31mERROR\u001b[0m[0000] network: missing default interface\n",
+    "v2raya.log": "2026/10/20 07:54:45.526 \u001b[1;34m[I]\u001b[0m [sqlite.go:96]  Initializing database schema\n2026/10/20 07:54:45.536 \u001b[1;34m[I]\u001b[0m [sqlite.go:96]  Database schema initialized successfully\n2026/10/20 07:54:45.537 \u001b[1;34m[I]\u001b[0m [pre_database.go:132]  init DB\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  V2Ray binary is /usr/local/bin/v2raya_core\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  V2Ray asset directory is /usr/local/share/v2raya\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  v2rayA working directory is /\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  v2rayA configuration directory is /tmp/wayvia-lab-q2tzjr8x/v2raya\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  Golang: go1.26.8\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  OS: linux\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  Arch: arm64\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  Lite: true\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  Version: 2.5.10\n2026/10/20 07:54:45.559 \u001b[1;36m[A]\u001b[0m [main.go:24]  Starting...\n2026/10/20 07:54:45.560 \u001b[1;34m[I]\u001b[0m [main.go:25]  v2ray-core was not running when v2rayA last exited\n2026/10/20 07:54:45.689 \u001b[1;36m[A]\u001b[0m [index.go:225]  v2rayA is listening at http://127.0.0.1:2017\n2026/10/20 07:54:46.442 \u001b[1;34m[I]\u001b[0m [import.go:44]  Import: appending a new server\n2026/10/20 07:54:46.456 \u001b[1;34m[I]\u001b[0m [process.go:100]  Asset directory for v2raya_core: /usr/local/share/v2raya\n2026/10/20 07:54:46.499 \u001b[1;34m[I]\u001b[0m [io.go:431]  V2RAYA_CORE 2.5.10 (based on xray-core 26.7.28)\n2026/10/20 07:54:46.505 \u001b[1;34m[I]\u001b[0m [io.go:431]  [Info] ore/hint/conf: v2raya-core: reading config: &{Name:/tmp/wayvia-lab-q2tzjr8x/v2raya/config.json Format:json}\n2026/10/20 07:54:46.551 \u001b[1;34m[I]\u001b[0m [io.go:431]  [Warning] common/errors: The feature Trojan (with no Flow, etc.) is deprecated, not recommended for using and might be removed. Please migrate to VLESS with Flow & Seed as soon as possible.\n2026/10/20 07:54:46.968 \u001b[1;34m[I]\u001b[0m [io.go:431]  [dns module] no dns_module config found, skipping\n2026/10/20 07:54:47.070 \u001b[1;34m[I]\u001b[0m [io.go:431]  from 127.0.0.1:52546 accepted tcp:127.0.0.1:41791 [api-in_ipv4 -> api-out]\n2026/10/20 07:54:47.332 \u001b[1;34m[I]\u001b[0m [io.go:431]  from tcp:10.89.0.2:53414 accepted tcp:127.0.0.1:1194 [socks -> proxy]\n2026/10/20 07:54:47.453 \u001b[1;34m[I]\u001b[0m [io.go:431]  from 127.0.0.1:52550 accepted tcp:127.0.0.1:41791 [api-in_ipv4 -> api-out]\n2026/10/20 07:54:48.513 \u001b[1;34m[I]\u001b[0m [io.go:431]  from tcp:10.89.0.2:53416 accepted tcp:10.74.0.2:8080 [socks -> proxy]\n2026/10/20 07:54:52.547 \u001b[1;34m[I]\u001b[0m [io.go:431]  from tcp:10.89.0.2:41872 accepted tcp:127.0.0.1:1194 [socks -> proxy]\n2026/10/20 07:54:55.620 \u001b[1;34m[I]\u001b[0m [io.go:431]  from tcp:10.89.0.2:41880 accepted tcp:127.0.0.1:1194 [socks -> proxy]\n2026/10/20 07:54:57.142 \u001b[1;34m[I]\u001b[0m [io.go:431]  from tcp:10.89.0.2:41886 accepted tcp:127.0.0.1:1194 [socks -> proxy]\n",
+    "domestic.log": "",
+    "tun-kernel-events.log": "[2026-10-20T07:54:47.200256] 2: wayvia-tun: <POINTOPOINT,MULTICAST,NOARP> mtu 1500 qdisc noop state DOWN group default \n    link/none \n[2026-10-20T07:54:47.200867] 2: wayvia-tun: <POINTOPOINT,MULTICAST,NOARP> mtu 1400 qdisc noop state DOWN group default \n    link/none \n[2026-10-20T07:54:47.200876] 2: wayvia-tun    inet 172.28.0.1/30 brd 172.28.0.3 scope global wayvia-tun\n       valid_lft forever preferred_lft forever\n[2026-10-20T07:54:47.200888] local 172.28.0.1 dev wayvia-tun table local proto kernel scope host src 172.28.0.1 \n[2026-10-20T07:54:47.200930] 2: wayvia-tun    inet6 fd77:7761:7976::1/126 scope global tentative \n       valid_lft forever preferred_lft forever\n[2026-10-20T07:54:47.200935] 2: wayvia-tun    inet6 fd77:7761:7976::1/126 scope global \n       valid_lft forever preferred_lft forever\n[2026-10-20T07:54:47.200939] local fd77:7761:7976::1 dev wayvia-tun table local proto kernel metric 0 pref medium\n[2026-10-20T07:54:47.202456] 2: wayvia-tun: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1400 qdisc fq_codel state UNKNOWN group default \n    link/none \n[2026-10-20T07:54:47.202607] broadcast 172.28.0.3 dev wayvia-tun table local proto kernel scope link src 172.28.0.1 \n[2026-10-20T07:54:47.202644] 172.28.0.0/30 dev wayvia-tun proto kernel scope link src 172.28.0.1 \n[2026-10-20T07:54:47.202684] fd77:7761:7976::/126 dev wayvia-tun proto kernel metric 256 pref medium\n[2026-10-20T07:54:47.202707] multicast ff00::/8 dev wayvia-tun table local proto kernel metric 256 pref medium\n[2026-10-20T07:54:47.202795] fe80::/64 dev wayvia-tun proto kernel metric 256 pref medium\n[2026-10-20T07:54:47.202801] 2: wayvia-tun    inet6 fe80::65eb:a9f4:8c79:216a/64 scope link stable-privacy \n       valid_lft forever preferred_lft forever\n[2026-10-20T07:54:47.202807] local fe80::65eb:a9f4:8c79:216a dev wayvia-tun table local proto kernel metric 0 pref medium\n[2026-10-20T07:54:47.202956] default via 172.28.0.2 dev wayvia-tun table 2022 \n[2026-10-20T07:54:47.203021] default via fd77:7761:7976::2 dev wayvia-tun table 2022 metric 1024 pref medium\n[2026-10-20T07:54:47.203135] 9000:\tfrom all to 172.28.0.0/30 lookup 2022\n[2026-10-20T07:54:47.203161] 9001:\tfrom all lookup 2022 suppress_prefixlength 0\n[2026-10-20T07:54:47.203188] 9000:\tfrom all lookup 2022 suppress_prefixlength 0\n[2026-10-20T07:54:47.203209] 9002:\tnot from all dport 53 lookup main suppress_prefixlength 0\n[2026-10-20T07:54:47.203228] 9001:\tnot from all dport 53 lookup main suppress_prefixlength 0\n[2026-10-20T07:54:47.203248] 9002:\tfrom all iif wayvia-tun goto 9010 [unresolved]\n[2026-10-20T07:54:47.203266] 9003:\tnot from all iif lo lookup 2022\n[2026-10-20T07:54:47.203285] 9003:\tfrom 0.0.0.0 iif lo lookup 2022\n[2026-10-20T07:54:47.203851] 9003:\tfrom 172.28.0.0/30 iif lo lookup 2022\n[2026-10-20T07:54:47.204120] 9001:\tfrom fd77:7761:7976::/126 iif lo lookup 2022\n[2026-10-20T07:54:47.204175] 9002:\tfrom all iif wayvia-tun goto 9010 [unresolved]\n[2026-10-20T07:54:47.204212] 9002:\tfrom ::/1 iif lo goto 9010 [unresolved]\n[2026-10-20T07:54:47.204241] 9002:\tfrom 8000::/1 iif lo goto 9010 [unresolved]\n[2026-10-20T07:54:47.204269] 9003:\tfrom all lookup 2022\n[2026-10-20T07:54:47.204296] 9010:\tfrom all nop\n[2026-10-20T07:54:47.204326] 9010:\tfrom all nop\n",
+    "vpn-client.log": "2026-10-20 07:54:47 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-20 07:54:47 Note: --socks-proxy disables data channel offload.\n2026-10-20 07:54:47 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-20 07:54:47 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-20 07:54:47 DCO version: N/A\n2026-10-20 07:54:47 TCP/UDP: Preserving recently used remote address: [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:47 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-20 07:54:47 Attempting to establish TCP connection with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:47 TCP connection established with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:47 TCPv4_CLIENT link local: (not bound)\n2026-10-20 07:54:47 TCPv4_CLIENT link remote: [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:47 TLS: Initial packet from [AF_INET]10.89.0.1:1080, sid=9acf6fff f7e48638\n2026-10-20 07:54:47 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:47 VERIFY KU OK\n2026-10-20 07:54:47 Validating certificate extended key usage\n2026-10-20 07:54:47 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication\n2026-10-20 07:54:47 VERIFY EKU OK\n2026-10-20 07:54:47 VERIFY X509NAME OK: CN=vpn-server.lab\n2026-10-20 07:54:47 VERIFY OK: depth=0, CN=vpn-server.lab\n2026-10-20 07:54:47 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:47 [vpn-server.lab] Peer Connection Initiated with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:47 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:47 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:47 PUSH: Received control message: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400'\n2026-10-20 07:54:47 OPTIONS IMPORT: --ifconfig/up options modified\n2026-10-20 07:54:47 OPTIONS IMPORT: route-related options modified\n2026-10-20 07:54:47 OPTIONS IMPORT: tun-mtu set to 1400\n2026-10-20 07:54:47 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-20 07:54:47 net_route_v4_best_gw result: via 10.89.0.1 dev wayvia-ns\n2026-10-20 07:54:47 ROUTE_GATEWAY 10.89.0.1/255.255.255.252 IFACE=wayvia-ns HWADDR=32:40:71:a7:89:d5\n2026-10-20 07:54:47 TUN/TAP device tun0 opened\n2026-10-20 07:54:47 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-20 07:54:47 net_iface_up: set tun0 up\n2026-10-20 07:54:47 net_addr_v4_add: 10.77.0.2/24 dev tun0\n2026-10-20 07:54:47 net_route_v4_add: 10.89.0.1/32 via 10.89.0.1 dev wayvia-ns table 0 metric -1\n2026-10-20 07:54:47 net_route_v4_add: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:47 net_route_v4_add: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:47 net_route_v4_add: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:47 Initialization Sequence Completed\n2026-10-20 07:54:47 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:47 Timers: ping 10, ping-restart 60\n2026-10-20 07:54:47 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n2026-10-20 07:54:50 Connection reset, restarting [0]\n2026-10-20 07:54:50 net_route_v4_del: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:50 net_route_v4_del: 10.89.0.1/32 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:50 net_route_v4_del: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:50 net_route_v4_del: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:50 Closing TUN/TAP interface\n2026-10-20 07:54:50 net_addr_v4_del: 10.77.0.2 dev tun0\n2026-10-20 07:54:50 SIGUSR1[soft,connection-reset] received, process restarting\n2026-10-20 07:54:50 Restart pause, 2 second(s)\n2026-10-20 07:54:52 TCP/UDP: Preserving recently used remote address: [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:52 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-20 07:54:52 Attempting to establish TCP connection with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:52 TCP connection established with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:52 TCPv4_CLIENT link local: (not bound)\n2026-10-20 07:54:52 TCPv4_CLIENT link remote: [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:52 TLS: Initial packet from [AF_INET]10.89.0.1:1080, sid=8f51f6e1 2353c6f6\n2026-10-20 07:54:52 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:52 VERIFY KU OK\n2026-10-20 07:54:52 Validating certificate extended key usage\n2026-10-20 07:54:52 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication\n2026-10-20 07:54:52 VERIFY EKU OK\n2026-10-20 07:54:52 VERIFY X509NAME OK: CN=vpn-server.lab\n2026-10-20 07:54:52 VERIFY OK: depth=0, CN=vpn-server.lab\n2026-10-20 07:54:52 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:52 [vpn-server.lab] Peer Connection Initiated with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:52 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:52 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:52 PUSH: Received control message: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400'\n2026-10-20 07:54:52 OPTIONS IMPORT: --ifconfig/up options modified\n2026-10-20 07:54:52 OPTIONS IMPORT: route-related options modified\n2026-10-20 07:54:52 OPTIONS IMPORT: tun-mtu set to 1400\n2026-10-20 07:54:52 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-20 07:54:52 net_route_v4_best_gw result: via 10.89.0.1 dev wayvia-ns\n2026-10-20 07:54:52 ROUTE_GATEWAY 10.89.0.1/255.255.255.252 IFACE=wayvia-ns HWADDR=32:40:71:a7:89:d5\n2026-10-20 07:54:52 TUN/TAP device tun0 opened\n2026-10-20 07:54:52 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-20 07:54:52 net_iface_up: set tun0 up\n2026-10-20 07:54:52 net_addr_v4_add: 10.77.0.2/24 dev tun0\n2026-10-20 07:54:52 net_route_v4_add: 10.89.0.1/32 via 10.89.0.1 dev wayvia-ns table 0 metric -1\n2026-10-20 07:54:52 net_route_v4_add: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:52 net_route_v4_add: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:52 net_route_v4_add: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:52 Initialization Sequence Completed\n2026-10-20 07:54:52 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:52 Timers: ping 10, ping-restart 60\n2026-10-20 07:54:52 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n2026-10-20 07:54:53 Connection reset, restarting [0]\n2026-10-20 07:54:53 net_route_v4_del: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:53 net_route_v4_del: 10.89.0.1/32 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:53 net_route_v4_del: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:53 net_route_v4_del: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:53 Closing TUN/TAP interface\n2026-10-20 07:54:53 net_addr_v4_del: 10.77.0.2 dev tun0\n2026-10-20 07:54:53 SIGUSR1[soft,connection-reset] received, process restarting\n2026-10-20 07:54:53 Restart pause, 2 second(s)\n2026-10-20 07:54:55 TCP/UDP: Preserving recently used remote address: [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:55 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-20 07:54:55 Attempting to establish TCP connection with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:55 TCP connection established with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:55 TCPv4_CLIENT link local: (not bound)\n2026-10-20 07:54:55 TCPv4_CLIENT link remote: [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:55 TLS: Initial packet from [AF_INET]10.89.0.1:1080, sid=7ec56487 d8c96ff5\n2026-10-20 07:54:55 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:55 VERIFY KU OK\n2026-10-20 07:54:55 Validating certificate extended key usage\n2026-10-20 07:54:55 ++ Certificate has EKU (str) TLS Web Server Authentication, expects TLS Web Server Authentication\n2026-10-20 07:54:55 VERIFY EKU OK\n2026-10-20 07:54:55 VERIFY X509NAME OK: CN=vpn-server.lab\n2026-10-20 07:54:55 VERIFY OK: depth=0, CN=vpn-server.lab\n2026-10-20 07:54:55 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:55 [vpn-server.lab] Peer Connection Initiated with [AF_INET]10.89.0.1:1080\n2026-10-20 07:54:55 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:55 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:55 PUSH: Received control message: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400'\n2026-10-20 07:54:55 OPTIONS IMPORT: --ifconfig/up options modified\n2026-10-20 07:54:55 OPTIONS IMPORT: route-related options modified\n2026-10-20 07:54:55 OPTIONS IMPORT: tun-mtu set to 1400\n2026-10-20 07:54:55 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-20 07:54:55 net_route_v4_best_gw result: via 10.89.0.1 dev wayvia-ns\n2026-10-20 07:54:55 ROUTE_GATEWAY 10.89.0.1/255.255.255.252 IFACE=wayvia-ns HWADDR=32:40:71:a7:89:d5\n2026-10-20 07:54:55 TUN/TAP device tun0 opened\n2026-10-20 07:54:55 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-20 07:54:55 net_iface_up: set tun0 up\n2026-10-20 07:54:55 net_addr_v4_add: 10.77.0.2/24 dev tun0\n2026-10-20 07:54:55 net_route_v4_add: 10.89.0.1/32 via 10.89.0.1 dev wayvia-ns table 0 metric -1\n2026-10-20 07:54:55 net_route_v4_add: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:55 net_route_v4_add: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:55 net_route_v4_add: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:55 Initialization Sequence Completed\n2026-10-20 07:54:55 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:55 Timers: ping 10, ping-restart 60\n2026-10-20 07:54:55 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n2026-10-20 07:54:56 event_wait : Interrupted system call (fd=-1,code=4)\n2026-10-20 07:54:56 net_route_v4_del: 10.89.0.0/30 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:56 net_route_v4_del: 10.89.0.1/32 via 10.89.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:56 net_route_v4_del: 0.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:56 net_route_v4_del: 128.0.0.0/1 via 10.77.0.1 dev [NULL] table 0 metric -1\n2026-10-20 07:54:56 Closing TUN/TAP interface\n2026-10-20 07:54:56 net_addr_v4_del: 10.77.0.2 dev tun0\n2026-10-20 07:54:56 SIGTERM[hard,] received, process exiting\n",
+    "vpn-server.log": "2026-10-20 07:54:45 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-20 07:54:45 Note: Kernel support for ovpn-dco missing, disabling data channel offload.\n2026-10-20 07:54:45 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-20 07:54:45 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-20 07:54:45 DCO version: N/A\n2026-10-20 07:54:45 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-20 07:54:45 net_route_v4_best_gw result: via 0.0.0.0 dev \n2026-10-20 07:54:45 TUN/TAP device tun0 opened\n2026-10-20 07:54:45 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-20 07:54:45 net_iface_up: set tun0 up\n2026-10-20 07:54:45 net_addr_v4_add: 10.77.0.1/24 dev tun0\n2026-10-20 07:54:45 Could not determine IPv4/IPv6 protocol. Using AF_INET\n2026-10-20 07:54:45 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-20 07:54:45 Listening for incoming TCP connection on [AF_INET]127.0.0.1:1194\n2026-10-20 07:54:45 TCPv4_SERVER link local (bound): [AF_INET]127.0.0.1:1194\n2026-10-20 07:54:45 TCPv4_SERVER link remote: [AF_UNSPEC]\n2026-10-20 07:54:45 MULTI: multi_init called, r=256 v=256\n2026-10-20 07:54:45 IFCONFIG POOL IPv4: base=10.77.0.2 size=253\n2026-10-20 07:54:45 MULTI: TCP INIT maxclients=1024 maxevents=1029\n2026-10-20 07:54:45 Initialization Sequence Completed\n2026-10-20 07:54:47 TCP connection established with [AF_INET]127.0.0.1:42674\n2026-10-20 07:54:47 127.0.0.1:42674 TLS: Initial packet from [AF_INET]127.0.0.1:42674, sid=09cc03c8 c8a21350\n2026-10-20 07:54:47 127.0.0.1:42674 VERIFY OK: depth=1, CN=Wayvia disposable lab CA\n2026-10-20 07:54:47 127.0.0.1:42674 VERIFY KU OK\n2026-10-20 07:54:47 127.0.0.1:42674 Validating certificate extended key usage\n2026-10-20 07:54:47 127.0.0.1:42674 ++ Certificate has EKU (str) TLS Web Client Authentication, expects TLS Web Client Authentication\n2026-10-20 07:54:47 127.0.0.1:42674 VERIFY EKU OK\n2026-10-20 07:54:47 127.0.0.1:42674 VERIFY OK: depth=0, CN=vpn-client.lab\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_VER=2.6.19\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_PLAT=linux\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_TCPNL=1\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_MTU=1600\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_NCP=2\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_CIPHERS=AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_PROTO=990\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_LZO_STUB=1\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_COMP_STUB=1\n2026-10-20 07:54:47 127.0.0.1:42674 peer info: IV_COMP_STUBv2=1\n2026-10-20 07:54:47 127.0.0.1:42674 TLS: move_session: dest=TM_ACTIVE src=TM_INITIAL reinit_src=1\n2026-10-20 07:54:47 127.0.0.1:42674 TLS: tls_multi_process: initial untrusted session promoted to trusted\n2026-10-20 07:54:47 127.0.0.1:42674 Control Channel: TLSv1.3, cipher TLSv1.3 TLS_AES_256_GCM_SHA384, peer certificate: 2048 bits RSA, signature: RSA-SHA256, peer temporary key: 253 bits X25519\n2026-10-20 07:54:47 127.0.0.1:42674 [vpn-client.lab] Peer Connection Initiated with [AF_INET]127.0.0.1:42674\n2026-10-20 07:54:47 vpn-client.lab/127.0.0.1:42674 MULTI_sva: pool returned IPv4=10.77.0.2, IPv6=(Not enabled)\n2026-10-20 07:54:47 vpn-client.lab/127.0.0.1:42674 MULTI: Learn: 10.77.0.2 -> vpn-client.lab/127.0.0.1:42674\n2026-10-20 07:54:47 vpn-client.lab/127.0.0.1:42674 MULTI: primary virtual IP for vpn-client.lab/127.0.0.1:42674: 10.77.0.2\n2026-10-20 07:54:47 vpn-client.lab/127.0.0.1:42674 SENT CONTROL [vpn-client.lab]: 'PUSH_REPLY,route-gateway 10.77.0.1,topology subnet,ping 10,ping-restart 60,ifconfig 10.77.0.2 255.255.255.0,peer-id 0,cipher AES-256-GCM,protocol-flags cc-exit tls-ekm dyn-tls-crypt,tun-mtu 1400' (status=1)\n2026-10-20 07:54:48 vpn-client.lab/127.0.0.1:42674 Data Channel: cipher 'AES-256-GCM', peer-id: 0\n2026-10-20 07:54:48 vpn-client.lab/127.0.0.1:42674 Timers: ping 10, ping-restart 120\n2026-10-20 07:54:48 vpn-client.lab/127.0.0.1:42674 Protocol options: protocol-flags cc-exit tls-ekm dyn-tls-crypt\n2026-10-20 07:54:49 Closing TUN/TAP interface\n2026-10-20 07:54:49 net_addr_v4_del: 10.77.0.1 dev tun0\n2026-10-20 07:54:49 SIGTERM[hard,] received, process exiting\n",
+    "management.log": "",
+    "foreign.log": "",
+    "entry.log": "\u001b[31mERROR\u001b[0m[0000] network: missing default interface\n\u001b[31mERROR\u001b[0m[0003] [\u001b[38;5;182m127194022\u001b[0m 21ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0003] [\u001b[38;5;81m4278547777\u001b[0m 16ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0003] [\u001b[38;5;230m3125503446\u001b[0m 3ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0004] [\u001b[38;5;112m804819296\u001b[0m 8ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0004] [\u001b[38;5;103m1307094359\u001b[0m 3ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0005] [\u001b[38;5;185m3315767209\u001b[0m 5ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;136m3838083960\u001b[0m 4ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;187m1000898348\u001b[0m 4ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;227m3091173380\u001b[0m 4ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0007] [\u001b[38;5;146m4157351042\u001b[0m 4ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n\u001b[31mERROR\u001b[0m[0008] [\u001b[38;5;120m3557250920\u001b[0m 10ms] connection: open connection to 10.74.0.2:8080 using outbound/socks[vpn-business]: socks5: request rejected, code=1\n"
+  },
+  "artifact_generation": "production ProfileRenderer and ServerRenderer; only local SOCKS test input appended",
+  "bootstrap_resolution": "carrier.lab via explicit controlled DNS 10.73.0.1; terminal entry uses a numeric endpoint",
+  "routes": {
+    "terminal": "default via 10.72.0.1 dev taa \n10.71.0.0/24 dev tda proto kernel scope link src 10.71.0.2 \n10.72.0.0/24 dev taa proto kernel scope link src 10.72.0.2 \n172.28.0.0/30 dev wayvia-tun proto kernel scope link src 172.28.0.1 \n",
+    "domestic": "10.71.0.0/24 dev tdb proto kernel scope link src 10.71.0.1 \n",
+    "ali": "10.72.0.0/24 dev tab proto kernel scope link src 10.72.0.1 \n10.73.0.0/24 dev aja proto kernel scope link src 10.73.0.1 \n10.74.0.0/24 via 10.73.0.2 dev aja \n10.89.0.0/30 dev wayvia-host proto kernel scope link src 10.89.0.1 \n",
+    "wayvia-egress": "default via 10.89.0.1 dev wayvia-ns \n10.89.0.0/30 dev wayvia-ns proto kernel scope link src 10.89.0.2 \n",
+    "jp": "10.73.0.0/24 dev ajb proto kernel scope link src 10.73.0.2 \n10.74.0.0/24 dev jfa proto kernel scope link src 10.74.0.1 \n10.77.0.0/24 dev tun0 proto kernel scope link src 10.77.0.1 \n",
+    "foreign": "default via 10.74.0.1 dev jfb \n10.74.0.0/24 dev jfb proto kernel scope link src 10.74.0.2 \n"
+  },
+  "firewall": {
+    "terminal": "table inet wayvia_terminal {\n\tchain output {\n\t\ttype filter hook output priority filter; policy drop;\n\t\toifname \"lo\" accept\n\t\toifname \"wayvia-tun\" accept\n\t\tct state established,related accept\n\t\tip daddr 10.71.0.0/24 accept\n\t\tip6 daddr fd72:1::/64 accept\n\t\tmeta l4proto ipv6-icmp accept\n\t\tip daddr 10.72.0.1 tcp dport 443 accept\n\t}\n}\n",
+    "domestic": "",
+    "ali": "table ip lab_unprotected_baseline {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.89.0.0/30 oifname \"aja\" masquerade\n\t}\n}\ntable inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter packets 0 bytes 0 drop\n\t}\n}\n",
+    "wayvia-egress": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter packets 12 bytes 732 drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n",
+    "jp": "table inet wayvia_exit {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.77.0.0/24 oifname \"jfa\" counter packets 7 bytes 380 masquerade\n\t}\n}\n",
+    "foreign": ""
+  },
+  "targets": {
+    "domestic": [
+      {
+        "target": "domestic",
+        "protocol": "tcp",
+        "peer": "10.71.0.2"
+      },
+      {
+        "target": "domestic",
+        "protocol": "dns",
+        "peer": "10.71.0.2"
+      },
+      {
+        "target": "domestic",
+        "protocol": "tcp",
+        "peer": "fd72:1::2"
+      },
+      {
+        "target": "domestic",
+        "protocol": "tcp",
+        "peer": "10.71.0.2"
+      },
+      {
+        "target": "domestic",
+        "protocol": "tcp",
+        "peer": "10.71.0.2"
+      },
+      {
+        "target": "domestic",
+        "protocol": "tcp",
+        "peer": "10.71.0.2"
+      }
+    ],
+    "foreign": [
+      {
+        "target": "foreign",
+        "protocol": "tcp",
+        "peer": "10.73.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "tcp",
+        "peer": "10.74.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "tcp",
+        "peer": "10.74.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "udp",
+        "peer": "10.74.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "udp",
+        "peer": "10.74.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "dns",
+        "peer": "10.74.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "tcp",
+        "peer": "10.74.0.1"
+      },
+      {
+        "target": "foreign",
+        "protocol": "tcp",
+        "peer": "10.74.0.1"
+      }
+    ],
+    "management": [
+      {
+        "target": "management",
+        "protocol": "dns",
+        "peer": "10.73.0.1"
+      },
+      {
+        "target": "management",
+        "protocol": "dns",
+        "peer": "10.73.0.1"
+      },
+      {
+        "target": "management",
+        "protocol": "tcp",
+        "peer": "10.73.0.2"
+      },
+      {
+        "target": "management",
+        "protocol": "tcp",
+        "peer": "10.73.0.2"
+      },
+      {
+        "target": "management",
+        "protocol": "tcp",
+        "peer": "10.73.0.2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "seconds": 5.4,
+    "texts": [
+      "正在从 <ALI_PUBLIC_IP>:9443 下载配置文件"
+    ]
+  },
+  {
+    "seconds": 10.8,
+    "texts": [
+      "正在从 <ALI_PUBLIC_IP>:9443 下载配置文件"
+    ]
+  },
+  {
+    "seconds": 16.2,
+    "texts": [
+      "正在从 <ALI_PUBLIC_IP>:9443 下载配置文件"
+    ]
+  },
+  {
+    "seconds": 21.6,
+    "texts": [
+      "Clash Meta for Android",
+      "已停止",
+      "点此启动",
+      "配置",
+      "未选择",
+      "日志",
+      "设置",
+      "帮助",
+      "关于"
+    ]
+  }
+]

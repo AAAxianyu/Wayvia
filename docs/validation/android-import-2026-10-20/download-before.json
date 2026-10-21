@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "{\"http_code\": \"200\", \"time_connect\": \"0.038579\", \"time_appconnect\": \"0.108201\", \"time_starttransfer\": \"14.019790\", \"time_total\": \"34.627656\", \"size_download\": \"9207514\", \"speed_download\": \"265900\"}\n",
+  "stderr": ""
+}

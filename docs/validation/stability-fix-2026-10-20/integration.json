@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-21T02:22:11.839270+00:00",
+  "request": "commit_this_phase_changes_and_validation_to_main_with_followup_todos",
+  "source_branch": "codex/deployment-readiness-20261020",
+  "target_branch": "main",
+  "scope": "local_commit_and_fast_forward; remote_push_not_requested",
+  "production_source": "byte_identical_to_final_tested_and_deployed_source_manifest",
+  "tests": "reuse_completed_gates_no_production_changes_in_closeout",
+  "full_lab_and_real_fault_reboot": "still_deferred_by_user",
+  "followup": "../../../.scratch/wayvia-deployment-followup/spec.md",
+  "followup_issue_count": 10,
+  "validation_records": "JSON_and_YAML_parse_and_relative_Markdown_links_checked",
+  "staged_whitespace_check": "passed_except_two_intentionally_preserved_raw_evidence_files",
+  "raw_whitespace_exceptions": [
+    "deployment-review-2026-10-20/lab-name-isolation.patch: blank unified-diff context lines",
+    "stability-fix-2026-10-20/check.txt: original formatted CLI output"
+  ],
+  "preexisting_main_edits": "preserve_two_modified_documents_and_26_untracked_files_outside_this_commit",
+  "private_material": "excluded_ignored_deployment_cache_credentials_private_keys_subscription_links_and_phone_identifiers"
+}

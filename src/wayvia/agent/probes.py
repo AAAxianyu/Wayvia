@@ -35,7 +35,7 @@ def verify(executor, probes, *, deadline_monotonic=None):
                     "PROBE_UPGRADE_REQUIRED",
                     "Replan legacy reachability probes with authenticated protocol checks",
                 )
-            if probe.kind in {"trojan_http", "trojan_vpn", "vpn_handshake", "vpn_session"}:
+            if probe.kind in {"http", "trojan_http", "trojan_vpn", "vpn_handshake", "vpn_session"}:
                 payload = probe.model_dump()
                 payload.update(
                     config_dir=str(executor.config_dir), timeout=max(0.01, timeout - 0.5)
@@ -53,7 +53,7 @@ def verify(executor, probes, *, deadline_monotonic=None):
                 healthy = observation.get("healthy") is True
                 detail = {
                     key: observation[key]
-                    for key in ("check", "client_authenticated", "peer_count", "error")
+                    for key in ("check", "client_authenticated", "peer_count", "error", "attempts")
                     if key in observation
                 }
             elif probe.kind == "unsupported":
@@ -75,22 +75,6 @@ def verify(executor, probes, *, deadline_monotonic=None):
                     timeout=timeout,
                 )
                 healthy = any(row.get("dev") == probe.expected for row in json.loads(result.stdout))
-            elif probe.kind == "http":
-                result = executor._cmd(
-                    [
-                        "curl",
-                        "--silent",
-                        "--show-error",
-                        "--fail",
-                        "--max-time",
-                        str(timeout),
-                        "--",
-                        probe.target,
-                    ],
-                    namespace=probe.namespace,
-                    timeout=timeout,
-                )
-                healthy = result.stdout.strip() == probe.expected
             elif probe.kind == "dns":
                 result = executor._cmd(
                     [

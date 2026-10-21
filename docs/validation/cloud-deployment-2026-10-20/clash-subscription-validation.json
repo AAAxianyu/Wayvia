@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-20T08:48:06.442541+00:00",
+  "format": "mihomo",
+  "https_status": 200,
+  "tls_verification": true,
+  "content_type": "application/yaml",
+  "bytes": 9207514,
+  "sha256": "85ce9add1f64833f0da562cfb85b145b8c97f6368dc52d7de58148d113cecd94",
+  "matches_previously_validated_complete_profile": true,
+  "device": "android-primary",
+  "subscription_id": "130e31bf9dd046439bff5a5110ac1a30",
+  "expires_at_utc": "2026-11-19T08:47:19.799574+00:00",
+  "full_token_in_public_evidence": false,
+  "physical_android_import_verified": false
+}

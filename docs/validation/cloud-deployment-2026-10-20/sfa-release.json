@@ -1,0 +1,66 @@
+{
+  "tag": "v1.14.3",
+  "url": "https://github.com/SagerNet/sing-box/releases/tag/v1.14.3",
+  "apk_assets": [
+    {
+      "name": "SFA-1.14.3-arm64-v8a.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-arm64-v8a.apk",
+      "sha256": "sha256:bde02cb70bc15a98bea14309f97cb7026ec61abda0694378873fd6cead2685fd",
+      "size": 36637979
+    },
+    {
+      "name": "SFA-1.14.3-armeabi-v7a.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-armeabi-v7a.apk",
+      "sha256": "sha256:8b2ffff58132cb483f7b2127741de87dc16834dcc4e9de072d338a503585699a",
+      "size": 36512945
+    },
+    {
+      "name": "SFA-1.14.3-legacy-android-5-arm64-v8a.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-legacy-android-5-arm64-v8a.apk",
+      "sha256": "sha256:dfd1641018a8cdd3debb4fcd6ba2b961eef119871d6fac38afe421f5147a673f",
+      "size": 31225223
+    },
+    {
+      "name": "SFA-1.14.3-legacy-android-5-armeabi-v7a.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-legacy-android-5-armeabi-v7a.apk",
+      "sha256": "sha256:e44d35a25a655be3a263847016afaf53fea217f1ce2362355bd224b3645336c4",
+      "size": 31746375
+    },
+    {
+      "name": "SFA-1.14.3-legacy-android-5-universal.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-legacy-android-5-universal.apk",
+      "sha256": "sha256:139e1d3674b32fec6d58a9057024c9dbb7f17f3dd3c7798aedfbf7fe980103ae",
+      "size": 106762458
+    },
+    {
+      "name": "SFA-1.14.3-legacy-android-5-x86.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-legacy-android-5-x86.apk",
+      "sha256": "sha256:d363a5fb52ef1f1bfc327ff5784de1fd0e9c8bd46f2ebc06fd5dabbd7164b2be",
+      "size": 33744966
+    },
+    {
+      "name": "SFA-1.14.3-legacy-android-5-x86_64.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-legacy-android-5-x86_64.apk",
+      "sha256": "sha256:2316567e642dd354592e78555248720ef5282eeb524d5958439a45fb0dc5b005",
+      "size": 32966326
+    },
+    {
+      "name": "SFA-1.14.3-universal.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-universal.apk",
+      "sha256": "sha256:159ec32088af0acba27dd1a58e99569faf7a95b751fdd2281ead5db0b2409e0d",
+      "size": 127173836
+    },
+    {
+      "name": "SFA-1.14.3-x86.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-x86.apk",
+      "sha256": "sha256:ed8c7094f1ff7aee7a661ee355046f17473c6fb9a70197aa60106583edc77737",
+      "size": 39587913
+    },
+    {
+      "name": "SFA-1.14.3-x86_64.apk",
+      "download_url": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/SFA-1.14.3-x86_64.apk",
+      "sha256": "sha256:5f4d59358cc4de63bf061fb5d9c317ca527fa5966b052359d68bb94e8cce311b",
+      "size": 38543546
+    }
+  ]
+}

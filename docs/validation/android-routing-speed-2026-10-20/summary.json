@@ -1,0 +1,94 @@
+{
+  "date_utc": "2026-10-20",
+  "source_commit": "0e5bbbc63b59031377b698311f0cb6fda44c5401",
+  "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+  "device": "HUAWEI HBN-AL10 Android 12 SDK31",
+  "application": "Clash Meta for Android 2.11.35.Meta",
+  "network": "CELLULAR LTE China Mobile",
+  "vpn_active": true,
+  "routing": {
+    "domestic": "PASS: browser IP probe sees China Mobile; core logs DIRECT via domestic CIDR and cn domain rules",
+    "foreign": "PASS: browser trace sees configured Japan egress, JP/NRT; core logs Wayvia[Wayvia-entry]",
+    "domestic_IPv6": "Five browser IP probes used the phone assigned global IPv6 address; initial probe used China Mobile IPv4. This is a selected direct-path observation, not full IPv6 acceptance."
+  },
+  "download": {
+    "payload_bytes_per_sample": 2097152,
+    "sample_count_per_path": 3,
+    "phone_core_via_USB": {
+      "domestic_total_mbps": [
+        10.662,
+        17.718,
+        14.235
+      ],
+      "domestic_median_mbps": 14.235,
+      "foreign_total_mbps": [
+        1.148,
+        1.452,
+        1.36
+      ],
+      "foreign_median_mbps": 1.36
+    },
+    "actual_phone_browser": {
+      "foreign_total_mbps": [
+        1.5913,
+        1.678,
+        1.6966
+      ],
+      "foreign_median_mbps": 1.678,
+      "domestic_range_download": "HTTP 403 from mirror, not counted as throughput; keep failure in evidence"
+    },
+    "server_comparison_mbps": {
+      "japan_direct": 8.906,
+      "ingress_existing_chain": [
+        1.646,
+        1.661
+      ]
+    },
+    "assessment": "domestic usable; foreign proxy works but limited to approximately 1.4–1.7 Mbps in this session",
+    "known_successful_phone_download_payload_bytes": 18874368,
+    "traffic_accounting_note": "18 MiB of bounded download payload; probes, headers, page assets, retransmissions and unrelated background traffic are additional."
+  },
+  "scope": {
+    "proxy_measurement": "Host curl sends requests through USB ADB forward to the physical phone local mixed proxy. Internet sockets and routing are on the phone; not a Mac internet speed measurement.",
+    "browser_measurement": "Fetch executed within the Huawei Browser test tab over its normal active VPN/proxy setup. CDP reports a loopback browser proxy, so this does not independently prove every non-browser app TUN path.",
+    "latency": "Browser probes allow connection reuse; elapsed fetch time is not ICMP RTT.",
+    "first_download_pair": "Overlapped small browser exit probes; later pairs and the browser speed series were separate.",
+    "not_tested": [
+      "Wi-Fi",
+      "network switching",
+      "campus access",
+      "all-app TUN coverage",
+      "complete DNS/IPv6/UDP matrix",
+      "upload throughput",
+      "long-run peak capacity",
+      "real server fault injection",
+      "reboot"
+    ]
+  },
+  "mutations": {
+    "server_configuration": "none",
+    "phone_configuration": "unchanged",
+    "host_routes_and_firewall": "unchanged",
+    "temporary_ADB_forwards": "both_removed"
+  },
+  "software_gates": "Prior same-task four gates passed; no production source or test changes in this operational phone check.",
+  "cleanup": {
+    "temporary_forward_count_removed": 2,
+    "active_networks": [
+      {
+        "transport": "CELLULAR",
+        "validated": true,
+        "clash_vpn_owner": false
+      },
+      {
+        "transport": "CELLULAR|VPN",
+        "validated": true,
+        "clash_vpn_owner": true
+      }
+    ],
+    "Clash_Meta_left_running": true,
+    "selected_profile": true,
+    "exit_address_consistency": "passed_for_both_address_families"
+  },
+  "validation_note": "Initial post-check incorrectly expected every domestic response to repeat the first IPv4 address. Corrected to validate address family and actual phone-assigned IPv6; foreign IPv4 consistently matches Japan."
+}

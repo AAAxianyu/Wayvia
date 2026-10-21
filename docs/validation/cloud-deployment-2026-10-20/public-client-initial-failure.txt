@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "/test.py", line 29, in <module>
+{
+  "scope": "disposable Linux TUN client against actual deployed servers; not Android UI",
+  "core_version": "sing-box version 1.14.3",
+  "original_profile_sha256": "1cbd11c4d65ccadcb347e21b1bd47501047e2356a8691af22228c2d766547ec1",
+  "config_check": 0,
+  "baseline_direct_ip": "<CLIENT_PUBLIC_IP>",
+  "tun_route": [
+    {
+      "dst": "1.1.1.1",
+      "gateway": "172.28.0.2",
+      "dev": "wayvia-tun",
+      "table": "2022",
+      "prefsrc": "172.28.0.1",
+      "flags": [],
+      "uid": 0,
+      "cache": []
+    }
+  ],
+  "domestic_probe_ip": "<JP_PUBLIC_IP>",
+  "core_log": "\u001b[33mWARN\u001b[0m[0000] `independent_cache` DNS option is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, checkout documentation for migration: https://sing-box.sagernet.org/migration/#migrate-independent-dns-cache\n"
+}
+    results['domestic_probe_ip']=domestic;assert domestic==baseline
+                                                 ^^^^^^^^^^^^^^^^^^
+AssertionError

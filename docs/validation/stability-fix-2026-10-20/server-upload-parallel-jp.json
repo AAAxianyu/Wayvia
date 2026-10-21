@@ -1,0 +1,1 @@
+{"streams": [{"run": 1, "exit": 0, "http_code": 200, "time_total": 9.032733, "size_upload": 1048576, "speed_upload": 116086}, {"run": 2, "exit": 0, "http_code": 200, "time_total": 9.022413, "size_upload": 1048576, "speed_upload": 116219}], "elapsed_seconds": 9.077401333000125, "aggregate_Mbps": 1.848239973593307}

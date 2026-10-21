@@ -1,0 +1,155 @@
+{
+  "hostname": "<JP_HOSTNAME>",
+  "status": {
+    "version": "0.1.0",
+    "mode": "production",
+    "devices": [],
+    "agent": [
+      {
+        "id": "f5d5a248d3a24b66976382319405d207",
+        "role": "exit",
+        "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+        "state": "ACTIVE",
+        "deadline": "2026-10-20T08:30:28.669070+00:00",
+        "updated_at": "2026-10-20T08:36:41.191099+00:00",
+        "evidence": [
+          {
+            "check": "vpn_server_identity",
+            "client_authenticated": false,
+            "duration_ms": 707,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "trojan_vpn",
+            "layer": "access",
+            "observed_at": "2026-10-20T08:36:38.840465+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:08.840465+00:00"
+          },
+          {
+            "check": "vpn_server_identity",
+            "client_authenticated": false,
+            "duration_ms": 598,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "vpn_handshake",
+            "layer": "carrier",
+            "observed_at": "2026-10-20T08:36:39.547105+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:09.547105+00:00"
+          },
+          {
+            "check": "vpn_server_initialized",
+            "duration_ms": 692,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "vpn_session",
+            "layer": "vpn",
+            "observed_at": "2026-10-20T08:36:40.145272+00:00",
+            "peer_count": 2,
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:10.145272+00:00"
+          },
+          {
+            "duration_ms": 275,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "http",
+            "layer": "egress",
+            "observed_at": "2026-10-20T08:36:40.837205+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:10.837205+00:00"
+          },
+          {
+            "duration_ms": 70,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "dns",
+            "layer": "dns",
+            "observed_at": "2026-10-20T08:36:41.112250+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:11.112250+00:00"
+          },
+          {
+            "duration_ms": 0,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "ipv6_guard",
+            "layer": "ipv6",
+            "observed_at": "2026-10-20T08:36:41.182225+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:11.182225+00:00"
+          },
+          {
+            "duration_ms": 8,
+            "generation": "f5d5a248d3a24b66976382319405d207",
+            "kind": "route",
+            "layer": "return",
+            "observed_at": "2026-10-20T08:36:41.182546+00:00",
+            "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+            "scope": "component_readiness",
+            "status": "healthy",
+            "valid_until": "2026-10-20T08:38:11.182546+00:00"
+          }
+        ],
+        "error": null,
+        "predecessor_id": null,
+        "device_revision": null,
+        "monitored_at": "2026-10-20T08:36:41.191087+00:00",
+        "monitor_valid_until": "2026-10-20T08:38:11.191087+00:00",
+        "submitted_digest": "0bb461ba7e6dba1af264ba3f28c85541b9f7dd0f7b3ae1581dc31cfbc48878e4",
+        "effective_digest": "0bb461ba7e6dba1af264ba3f28c85541b9f7dd0f7b3ae1581dc31cfbc48878e4",
+        "current": true,
+        "generation": "f5d5a248d3a24b66976382319405d207",
+        "verification_scope": "component_readiness",
+        "blocked_reason": null
+      }
+    ]
+  },
+  "default_route_unchanged": true,
+  "units": {
+    "exit": 0,
+    "stdout": "UNIT                             LOAD   ACTIVE   SUB     DESCRIPTION\nwayvia-agent.service             loaded active   running Wayvia privileged local action agent\nwayvia-api.service               loaded active   running Wayvia local authenticated management and private subscriptions\nwayvia-certificate-renew.service loaded inactive dead    Renew and deploy the dedicated Wayvia IP certificate\nwayvia-cloud-access.service      loaded active   exited  Limit the Wayvia carrier port to the authorized ingress host\nwayvia-exit.service              loaded active   running Wayvia exit\nwayvia-monitor.service           loaded inactive dead    Check Wayvia path probes and block degraded ingress\nwayvia-recover.service           loaded active   exited  Restore Wayvia transaction state and fail-closed protection after boot\nwayvia-vpn-server.service        loaded active   running Wayvia vpn-server\nwayvia-certificate-renew.timer   loaded active   waiting Check Wayvia short-lived IP certificate renewal every four hours\nwayvia-monitor.timer             loaded active   waiting Periodically check the confirmed Wayvia path\n\nLegend: LOAD   → Reflects whether the unit definition was properly loaded.\n        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.\n        SUB    → The low-level unit activation state, values depend on unit type.\n\n10 loaded units listed.\nTo show all installed unit files use 'systemctl list-unit-files'.",
+    "stderr": ""
+  },
+  "renew_timer_enabled": {
+    "exit": 0,
+    "stdout": "enabled",
+    "stderr": ""
+  },
+  "renew_timer_active": {
+    "exit": 0,
+    "stdout": "active",
+    "stderr": ""
+  },
+  "host_listeners": {
+    "exit": 0,
+    "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\nLISTEN 0      4096         0.0.0.0:443       0.0.0.0:*          \nLISTEN 0      4096   127.0.0.53%lo:53        0.0.0.0:*          \nLISTEN 0      4096      127.0.0.54:53        0.0.0.0:*          \nLISTEN 0      32         127.0.0.1:1194      0.0.0.0:*          \nLISTEN 0      128          0.0.0.0:22        0.0.0.0:*          \nLISTEN 0      2048       127.0.0.1:8787      0.0.0.0:*          \nLISTEN 0      128             [::]:22           [::]:*",
+    "stderr": ""
+  },
+  "ipv4_forward": {
+    "exit": 0,
+    "stdout": "1",
+    "stderr": ""
+  },
+  "wayvia_host_connections": [
+    "ESTAB 0      0         10.1.251.2:443       <ALI_PUBLIC_IP>:36326 users:((\"sing-box\",pid=2945,fd=10))                    ",
+    "ESTAB 0      0          127.0.0.1:56874      127.0.0.1:1194  users:((\"sing-box\",pid=2945,fd=11))                    ",
+    "ESTAB 0      0          127.0.0.1:1194       127.0.0.1:56874 users:((\"openvpn\",pid=13644,fd=7))"
+  ],
+  "nft_wayvia_cloud_access": {
+    "exit": 0,
+    "stdout": "table inet wayvia_cloud_access {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"lo\" accept\n\t\ttcp dport 443 ip saddr <ALI_PUBLIC_IP> accept\n\t\ttcp dport 443 counter packets 23 bytes 1372 drop\n\t}\n}",
+    "stderr": ""
+  },
+  "nft_wayvia_exit": {
+    "exit": 0,
+    "stdout": "table inet wayvia_exit {\n\tchain postrouting {\n\t\ttype nat hook postrouting priority srcnat; policy accept;\n\t\tip saddr 10.77.0.0/24 oifname \"ens17\" counter packets 106 bytes 7060 masquerade\n\t}\n}",
+    "stderr": ""
+  }
+}

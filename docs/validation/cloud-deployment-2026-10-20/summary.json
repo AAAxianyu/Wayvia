@@ -1,0 +1,66 @@
+{
+  "date_utc": "2026-10-20",
+  "source_commit": "0e5bbbc63b59031377b698311f0cb6fda44c5401",
+  "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+  "ingress": "ACTIVE_confirmed_7_healthy_datapath_layers",
+  "exit": "ACTIVE_confirmed_7_healthy_component_readiness_layers",
+  "publication": "published_after_fresh_authenticated_SSH_exit_receipt",
+  "device": {
+    "id": "2b6377342542475baff413f20541c988",
+    "name": "android-primary",
+    "platform": "android",
+    "status": "active",
+    "simulated": false
+  },
+  "subscription": {
+    "https_download_status": 200,
+    "download_matches_export": true,
+    "bytes": 5872116,
+    "expires_at_utc": "2026-11-19T08:33:00.712623+00:00",
+    "token_recorded_in_public_evidence": false
+  },
+  "public_client": {
+    "image_id": "sha256:c7cc7d3ffbab125325ef81b931d05cfa69ee3f9142906b64f19da6811461453a",
+    "architecture": "arm64",
+    "engine": "sing-box_1.14.3",
+    "scope": "unmodified_exported_profile_TUN_in_disposable_Linux_against_real_cloud_hosts",
+    "config_check_exit": 0,
+    "run_exit": 0,
+    "own_https_probe_returned_japan_ip": true,
+    "foreign_https_returned_japan_ip": true,
+    "domestic_baidu_https": 200,
+    "domestic_physical_443_capture_confirmed": true,
+    "foreign_DNS_UDP_A": "NOERROR_2_answers",
+    "foreign_DNS_AAAA": "NOERROR_0_answers",
+    "physical_UDP_to_foreign_resolver_packets": 0,
+    "protected_ipv6_curl_exit": 35,
+    "profile_unchanged": true,
+    "container_removed": true
+  },
+  "profile_secret_boundary": {
+    "terminal_connects_only_to_ingress": true,
+    "credential_fields": [
+      "/outbounds/0/password"
+    ],
+    "server_carrier_or_VPN_material": false,
+    "tls_verification_enabled": true
+  },
+  "host_default_routes": "unchanged_both",
+  "existing_aliyun_apps": "nginx_docker_active_existing_vhost_hashes_unchanged",
+  "management_API": "loopback_only_public_9443_api_returns_404",
+  "certificate_renewal": "dry_runs_passed_timer_enabled_real_future_cycle_unobserved",
+  "initial_client_test_failure": "incorrect_expected_direct_for_ingress_probe_IP_outside_APNIC_CN_CIDRs; assertion_corrected; runtime_and_profile_unchanged",
+  "routing_coverage_limit": "domestic_membership_uses_pinned_domains_and_APNIC_CIDRs_not_live_geolocation; ingress_IP_not_in_current_CN_CIDRs",
+  "engine_warning": "independent_cache_deprecated_since_1.14_removed_1.16; locked_1.14.3_passed",
+  "M6": "normal_server_path_and_external_Linux_client_passed_mobile_and_lifecycle_acceptance_pending",
+  "not_executed": [
+    "physical_Android_import",
+    "WiFi_cellular_switching",
+    "campus_private_DNS_rules",
+    "real_host_fault_injection",
+    "real_host_reboot",
+    "long_term_performance_and_cost",
+    "future_automatic_certificate_renewal_cycle"
+  ],
+  "real_fault_and_reboot_authorization": "explicitly_deferred_by_user"
+}

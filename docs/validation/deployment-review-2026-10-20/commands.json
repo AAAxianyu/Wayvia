@@ -1,0 +1,47 @@
+[
+  {
+    "command": "make check",
+    "exit_code": 0,
+    "timeout": false,
+    "duration_seconds": 116.34,
+    "started_at_utc": "2026-10-20T07:28:28.080794+00:00",
+    "log": "make-check.log",
+    "log_sha256": "ac0c8a108bae141a76d522b282a9483734e323d0113b5bb652b7c26d7a7910f0"
+  },
+  {
+    "command": "make demo",
+    "exit_code": 0,
+    "timeout": false,
+    "duration_seconds": 1.5,
+    "started_at_utc": "2026-10-20T07:30:24.423091+00:00",
+    "log": "make-demo.log",
+    "log_sha256": "601648971a99231aed7facd67aa516eb8e4022b8d9ce1db4a62854824f068257"
+  },
+  {
+    "command": "make test-configs",
+    "exit_code": 0,
+    "timeout": false,
+    "duration_seconds": 34.06,
+    "started_at_utc": "2026-10-20T07:30:25.924351+00:00",
+    "log": "make-test-configs.log",
+    "log_sha256": "83ce87439d0bf90fac04e008477499087f64d3a3fff8e62c50236bd9239bdc95"
+  },
+  {
+    "command": "make test-lab",
+    "exit_code": -2,
+    "timeout": true,
+    "duration_seconds": 480.35,
+    "started_at_utc": "2026-10-20T07:30:59.986051+00:00",
+    "log": "make-test-lab.log",
+    "log_sha256": "68017946f8b74c7c702f8b3429cea82441d789464918f412f2406edb20199c2f"
+  },
+  {
+    "command": "make clean-lab",
+    "exit_code": 0,
+    "timeout": false,
+    "duration_seconds": 1.25,
+    "started_at_utc": "2026-10-20T07:39:00.331341+00:00",
+    "log": "make-clean-lab.log",
+    "log_sha256": "a7a18179011f4bd083dff7619263462791df3ed8521e9b127af8beb8365e8650"
+  }
+]

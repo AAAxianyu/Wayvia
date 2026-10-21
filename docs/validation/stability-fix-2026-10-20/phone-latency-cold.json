@@ -1,0 +1,67 @@
+[
+  {
+    "run": 1,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.000469,
+    "time_appconnect": 0.632199,
+    "time_starttransfer": 0.712784,
+    "time_total": 0.712973,
+    "size_download": 208,
+    "speed_download": 291,
+    "ssl_verify_result": 0,
+    "num_connects": 1
+  },
+  {
+    "run": 2,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.000283,
+    "time_appconnect": 0.400833,
+    "time_starttransfer": 0.476977,
+    "time_total": 0.477114,
+    "size_download": 214,
+    "speed_download": 448,
+    "ssl_verify_result": 0,
+    "num_connects": 1
+  },
+  {
+    "run": 3,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.000462,
+    "time_appconnect": 0.42393,
+    "time_starttransfer": 0.492723,
+    "time_total": 0.492984,
+    "size_download": 207,
+    "speed_download": 419,
+    "ssl_verify_result": 0,
+    "num_connects": 1
+  },
+  {
+    "run": 4,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.000453,
+    "time_appconnect": 0.406743,
+    "time_starttransfer": 0.484055,
+    "time_total": 0.484171,
+    "size_download": 214,
+    "speed_download": 441,
+    "ssl_verify_result": 0,
+    "num_connects": 1
+  },
+  {
+    "run": 5,
+    "exit": 0,
+    "http_code": 200,
+    "time_connect": 0.000527,
+    "time_appconnect": 0.515437,
+    "time_starttransfer": 0.604249,
+    "time_total": 0.604368,
+    "size_download": 213,
+    "speed_download": 352,
+    "ssl_verify_result": 0,
+    "num_connects": 1
+  }
+]

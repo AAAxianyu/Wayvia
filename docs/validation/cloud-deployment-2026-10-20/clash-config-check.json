@@ -1,0 +1,15 @@
+{
+  "observed_at_utc": "2026-10-20T08:44:47Z",
+  "format": "mihomo",
+  "engine": "1.19.32",
+  "source": "existing_published_revision_with_same_android_device_credential",
+  "revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+  "profile_sha256": "85ce9add1f64833f0da562cfb85b145b8c97f6368dc52d7de58148d113cecd94",
+  "profile_bytes": 9207514,
+  "command": "docker run --rm --entrypoint mihomo <locked-lab-image> -t -f /config.yaml",
+  "exit": 0,
+  "result": "configuration file /config.yaml test is successful",
+  "server_mutations": false,
+  "physical_Android_import_verified": false,
+  "full_mihomo_TUN_against_cloud_hosts_verified": false
+}

@@ -19,6 +19,8 @@ import threading
 import time
 from pathlib import Path
 
+from wayvia.agent.http_probe import observe_http
+
 PROBE_USER = "wayvia-internal-probe"
 
 
@@ -27,7 +29,7 @@ def exact(sock, size):
     while len(data) < size:
         part = sock.recv(size - len(data))
         if not part:
-            raise OSError("closed")
+            raise ConnectionError("closed")
         data += part
     return data
 
@@ -57,6 +59,7 @@ def trojan_relay(payload, config, manifest):
         try:
             client, _ = listener.accept()
             sockets.append(client)
+            client.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             client.settimeout(max(0.01, deadline - time.monotonic()))
             version, methods = exact(client, 2)
             if version != 5 or 0 not in exact(client, methods):
@@ -79,6 +82,7 @@ def trojan_relay(payload, config, manifest):
                 (payload["target"], payload["port"]), max(0.01, deadline - time.monotonic())
             )
             sockets.append(raw)
+            raw.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             upstream = context.wrap_socket(raw, server_hostname=server_name)
             sockets.append(upstream)
             upstream.sendall(
@@ -108,8 +112,8 @@ def trojan_relay(payload, config, manifest):
                     destination.settimeout(max(0.01, deadline - time.monotonic()))
                     destination.sendall(block)
                     destination.setblocking(False)
-        except Exception:
-            errors.append("TRANSPORT_FAILED")
+        except Exception as exc:
+            errors.append(exc)
         finally:
             for item in sockets:
                 item.close()
@@ -119,7 +123,7 @@ def trojan_relay(payload, config, manifest):
     try:
         yield listener.getsockname()[1]
         if errors:
-            raise OSError(errors[0])
+            raise errors[0]
     finally:
         listener.close()
         for item in sockets:
@@ -250,6 +254,8 @@ def vpn_session(payload, manifest):
 
 
 def run(payload):
+    if payload["kind"] == "http":
+        return observe_http(payload)
     root = Path(payload["config_dir"])
     manifest = json.loads((root / "manifest.json").read_text())
     kind = payload["kind"]
@@ -262,33 +268,19 @@ def run(payload):
         (root / ("ingress.json" if manifest["role"] == "ingress" else "exit.json")).read_text()
     )
     ipaddress.ip_address(payload["target"])
-    with trojan_relay(payload, config, manifest) as port:
-        if kind == "trojan_vpn":
+    if kind == "trojan_vpn":
+        with trojan_relay(payload, config, manifest) as port:
             return vpn_identity(payload, root, manifest, ("127.0.0.1", port))
-        result = subprocess.run(
-            [
-                "curl",
-                "--silent",
-                "--show-error",
-                "--fail",
-                "--noproxy",
-                "",
-                "--socks5-hostname",
-                f"127.0.0.1:{port}",
-                "--max-time",
-                str(payload["timeout"]),
-                "--",
-                payload["url"],
-            ],
-            capture_output=True,
-            timeout=payload["timeout"],
-            check=False,
-        )
-        return {
-            "healthy": result.returncode == 0
-            and result.stdout.decode().strip() == payload["expected"],
-            "check": "authenticated_ingress_business_path",
-        }
+
+    @contextlib.contextmanager
+    def connect(timeout):
+        with trojan_relay({**payload, "timeout": timeout}, config, manifest) as port:
+            yield ["--socks5-hostname", f"127.0.0.1:{port}"]
+
+    return {
+        **observe_http(payload, connect=connect),
+        "check": "authenticated_ingress_business_path",
+    }
 
 
 def main():

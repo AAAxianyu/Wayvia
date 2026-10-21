@@ -1,0 +1,271 @@
+{
+  "recorded_at_utc": "2026-10-20T10:21:54.230001+00:00",
+  "base_commit": "0e5bbbc63b59031377b698311f0cb6fda44c5401",
+  "branch": "codex/deployment-readiness-20261020",
+  "status": "deployed_short_normal_path_observation_healthy_long_term_pending",
+  "installed_wheel_sha256": "2d76abb1ccd6c9eff7302995d0f55bfe67a8c6c2b5b48643c9ccac3becba502f",
+  "deployment_archive_sha256": "6749d0faa4b2df22ced3f5709398adefcf9c0265eaf513e03c948e9827514f4d",
+  "source_hashes": "installed-source.json",
+  "publication": {
+    "desired_revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+    "published_revision": "0cfa4377db5ddb2e8f965ebbed8d2d2f8922cb6cc79ba8398a82c68e688df424",
+    "status": "published",
+    "published_at": 1792490852.935997
+  },
+  "versions": {
+    "ali": {
+      "os": "Ubuntu 24.04.3 LTS",
+      "arch": "x86_64",
+      "kernel": "6.8.0-79-generic",
+      "systemd": "systemd 255 (255.4-1ubuntu8.18)",
+      "nft": "nftables v1.0.9 (Old Doc Yak #3)",
+      "python": "Python 3.12.3",
+      "openvpn": "OpenVPN 2.6.19 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]",
+      "certbot": "certbot 5.8.0",
+      "components": {
+        "sing-box": {
+          "version": "1.14.3",
+          "source": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/sing-box-1.14.3-linux-amd64.tar.gz",
+          "archive_sha256": "e2bdf179c15a3652955dc44867e33ca0965c9c9b91b34267dcc5a5d639a5feee",
+          "binary_sha256": "768d31fa7f68debc067bb4626539498a1e8751d36a7b99e1a54bee6a23815f93"
+        },
+        "mihomo": {
+          "version": "1.19.32",
+          "source": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-compatible-v1.19.32.gz",
+          "archive_sha256": "ba3ce607747a07f948fc35780e108a4a7c7f552a38b9bd4d115f313ebcb89c20",
+          "binary_sha256": "7a0d59da2e678d56c899a3db996a2ad8963286c4f3634b0451435db248f13fa1"
+        },
+        "v2raya": {
+          "version": "2.5.10",
+          "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_linux_x64_2.5.10",
+          "archive_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d",
+          "binary_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d"
+        },
+        "v2raya_core": {
+          "version": "2.5.10",
+          "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_core_linux_x64_2.5.10",
+          "archive_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73",
+          "binary_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73"
+        },
+        "v2ray": {
+          "version": "5.53.0",
+          "source": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-linux-64.zip",
+          "archive_sha256": "6bbb8aee65a57d0b12599b4b7c842b3ad0daca4436e661d94015c447cb31b4fa",
+          "binary_sha256": "a7bc11ff3ee286bc15d8191440ebb10810ac801ced54bbd4ce79ce4d291f7f25"
+        }
+      },
+      "wayvia": "0.1.0 with bounded-probe/TCP_NODELAY patch; see installed-source.json"
+    },
+    "jp": {
+      "os": "Ubuntu 24.04.1 LTS",
+      "arch": "x86_64",
+      "kernel": "6.8.0-48-generic",
+      "systemd": "systemd 255 (255.4-1ubuntu8.4)",
+      "nft": "nftables v1.0.9 (Old Doc Yak #3)",
+      "python": "Python 3.12.3",
+      "openvpn": "OpenVPN 2.6.19 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]",
+      "certbot": "certbot 5.8.0",
+      "components": {
+        "sing-box": {
+          "version": "1.14.3",
+          "source": "https://github.com/SagerNet/sing-box/releases/download/v1.14.3/sing-box-1.14.3-linux-amd64.tar.gz",
+          "archive_sha256": "e2bdf179c15a3652955dc44867e33ca0965c9c9b91b34267dcc5a5d639a5feee",
+          "binary_sha256": "768d31fa7f68debc067bb4626539498a1e8751d36a7b99e1a54bee6a23815f93"
+        },
+        "mihomo": {
+          "version": "1.19.32",
+          "source": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-compatible-v1.19.32.gz",
+          "archive_sha256": "ba3ce607747a07f948fc35780e108a4a7c7f552a38b9bd4d115f313ebcb89c20",
+          "binary_sha256": "7a0d59da2e678d56c899a3db996a2ad8963286c4f3634b0451435db248f13fa1"
+        },
+        "v2raya": {
+          "version": "2.5.10",
+          "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_linux_x64_2.5.10",
+          "archive_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d",
+          "binary_sha256": "3253e3eb3bacede187a7333a701b159ea28fde1d706598cf824453dff1e02a7d"
+        },
+        "v2raya_core": {
+          "version": "2.5.10",
+          "source": "https://github.com/v2rayA/v2rayA/releases/download/v2.5.10/v2raya_core_linux_x64_2.5.10",
+          "archive_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73",
+          "binary_sha256": "88019dabae0a5bcdee84ed09b9e6ccce0b487b975ca58be842a6acd7e75d9c73"
+        },
+        "v2ray": {
+          "version": "5.53.0",
+          "source": "https://github.com/v2fly/v2ray-core/releases/download/v5.53.0/v2ray-linux-64.zip",
+          "archive_sha256": "6bbb8aee65a57d0b12599b4b7c842b3ad0daca4436e661d94015c447cb31b4fa",
+          "binary_sha256": "a7bc11ff3ee286bc15d8191440ebb10810ac801ced54bbd4ce79ce4d291f7f25"
+        }
+      },
+      "wayvia": "0.1.0 with bounded-probe/TCP_NODELAY patch; see installed-source.json"
+    }
+  },
+  "gates": [
+    {
+      "command": "make check",
+      "exit": 0,
+      "seconds": 83.86,
+      "started_at": "2026-10-20T09:59:32.253281+00:00"
+    },
+    {
+      "command": "make demo",
+      "exit": 0,
+      "seconds": 1.19,
+      "started_at": "2026-10-20T10:00:56.119275+00:00"
+    },
+    {
+      "command": "make test-configs",
+      "exit": 0,
+      "seconds": 28.87,
+      "started_at": "2026-10-20T10:00:57.307962+00:00"
+    },
+    {
+      "command": "make test-lab",
+      "status": "deferred_by_user",
+      "reason": "Full target includes fault injection and systemd recovery/rebuild tests; user deferred fault and reboot testing. No full-lab pass claimed."
+    },
+    {
+      "command": "make check",
+      "exit": 0,
+      "seconds": 87.13,
+      "started_at": "2026-10-20T10:14:52.685037+00:00",
+      "reason": "Final source after curlrc isolation and closed-transport error classification"
+    }
+  ],
+  "observations": {
+    "jp": {
+      "observed_at": "2026-10-20T10:20:51.338752+00:00",
+      "since": "2026-10-20T10:06:11.981889+00:00",
+      "generation": "64fee7096d28466e9ab15d463e5a55e5",
+      "state": "ACTIVE",
+      "default_route_unchanged": true,
+      "tcp_nodelay": true,
+      "units": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-certificate-renew.timer": "active",
+        "wayvia-exit": "active",
+        "wayvia-vpn-server": "active"
+      },
+      "monitor_count": 56,
+      "states": {
+        "ACTIVE": 56
+      },
+      "window_seconds": 879.4,
+      "layer_checks": 392,
+      "failed_layer_checks": 0,
+      "fallback_attempts": 0
+    },
+    "ali": {
+      "observed_at": "2026-10-20T10:20:52.443025+00:00",
+      "since": "2026-10-20T10:06:11.981889+00:00",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "state": "ACTIVE",
+      "default_route_unchanged": true,
+      "tcp_nodelay": true,
+      "units": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-certificate-renew.timer": "active",
+        "wayvia-ingress": "active",
+        "wayvia-bridge": "active",
+        "wayvia-carrier": "active",
+        "wayvia-vpn-client": "active"
+      },
+      "monitor_count": 56,
+      "states": {
+        "ACTIVE": 56
+      },
+      "old_nginx_vhosts_unchanged": true,
+      "guard_default_drop": true,
+      "guard_ipv4_tunnel_only": true,
+      "window_seconds": 880.5,
+      "layer_checks": 392,
+      "failed_layer_checks": 0,
+      "fallback_attempts": 1
+    }
+  },
+  "latency": {
+    "before": {
+      "jp_new_https_total_ms": 64.911,
+      "ali_bridge_new_https_total_ms": 259.228,
+      "phone_network": "CELLULAR_LTE",
+      "phone_new_https_total_ms": 604.615,
+      "phone_reused_https_first_byte_ms": 85.584,
+      "phone_reused_https_total_ms": 120.284
+    },
+    "after": {
+      "jp_new_https_total_ms": 64.228,
+      "ali_bridge_new_https_total_ms": 170.737,
+      "phone_network": "WiFi",
+      "phone_new_https_total_ms": 492.984,
+      "phone_new_https_until_TLS_complete_ms": 423.93,
+      "phone_reused_https_first_byte_ms": 70.385,
+      "phone_reused_https_total_ms": 70.505
+    },
+    "limits": [
+      "Phone network changed; do not attribute all improvement to patch",
+      "Cumulative TLS timer includes proxy connection, DNS and remote TCP/TLS",
+      "No controlled reverse A/B attribution; server network variation possible",
+      "Further CONNECT/TLS phase test failed after confirmed manual phone stop"
+    ]
+  },
+  "speed": {
+    "jp": {
+      "download_median_Mbps": 9.028,
+      "upload_median_Mbps": 1.862,
+      "parallel_two_stream_upload_aggregate_Mbps": 1.848239973593307
+    },
+    "ali": {
+      "download_median_Mbps": 1.64,
+      "upload_median_Mbps": 3.2
+    },
+    "phone": {
+      "foreign_download_median_Mbps": 1.575,
+      "domestic": "HTTP_403_excluded_from_throughput"
+    }
+  },
+  "phone": {
+    "application": "Clash Meta for Android 2.11.35.Meta",
+    "device": "HUAWEI HBN-AL10 Android 12",
+    "expected_Japan_exit": true,
+    "final_client_state": "stopped_by_user_confirmation",
+    "stop_is_network_outage": false,
+    "ADB_forwards_after_test": [],
+    "fresh_routing_log": "not_obtained_prior_LTE_evidence_retained"
+  },
+  "provider": {
+    "public_product_page": "https://www.htstack.com/jp-cloud.shtml",
+    "catalog_bandwidth_Mbps": [
+      2,
+      5
+    ],
+    "actual_account_plan": "unverified_browser_redirected_to_login",
+    "inference": "measured_total_egress_consistent_with_about_2_Mbps_shared_limit_not_proof_of_purchased_plan",
+    "purchase_or_account_changes": false
+  },
+  "scope_limits": [
+    "Initial spontaneous transient network timeout cause remains unproven",
+    "Both probe IP endpoints belong to Cloudflare",
+    "No fault injection or real machine reboot testing",
+    "Full make test-lab deferred; historical pass not current patch acceptance",
+    "Normal deployment required short service stop/start; not counted as unexplained outage",
+    "No full mobile DNS IPv6 UDP all-app TUN or WiFi-cellular switching acceptance",
+    "No automatic monitoring scheduled beyond existing Wayvia server monitors"
+  ],
+  "handoff": {
+    "status": "phase_closed_at_user_request",
+    "phone": "user_will_disconnect_USB; preserve_manually_stopped_client",
+    "further_phone_tests": "stopped",
+    "servers": "existing_Wayvia_services_and_monitors_left_running",
+    "pending": [
+      "long-term_stability_acceptance",
+      "phone_CONNECT_DNS_TLS_phase_isolation_on_same_network",
+      "actual_purchased_Japan_egress_bandwidth",
+      "full_mobile_routing_matrix",
+      "fault_and_reboot_tests_deferred_by_user"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "observed_at_utc": "2026-10-20T08:22:02.100294+00:00",
+  "source_commit": "0e5bbbc63b59031377b698311f0cb6fda44c5401",
+  "authorization": "two_named_hosts_deployment_allowed; fault_and_full_host_reboot_tests_deferred",
+  "software": "both_hosts_installed_from_same_sha256_verified_bundle",
+  "control_plane": "both_hosts_ready_localhost_only",
+  "data_plane": "not_applied; agent_transactions_empty",
+  "configuration_publication": "not_published; no_device_credentials_issued",
+  "ip_certificates": "both_production_certificates_issued_and_IP_SAN_verified",
+  "renewal": "both_staging_renewal_dry_runs_passed; four_hour_systemd_timers_enabled; actual_future_renewal_not_yet_observed",
+  "host_routes": "both_unchanged",
+  "existing_ali_apps": "nginx_and_docker_active; existing_vhost_hashes_unchanged",
+  "management_public_exposure": "9443_api_path_returns_404_in_local_TLS_check; API_binds_loopback",
+  "blocking_condition": "ali_9443_local_TLS_succeeds_external_JP_and_development_network_timeout; cloud_security_group_or_upstream_firewall_change_required",
+  "requested_cloud_ports": {
+    "8443": "Trojan_entry_TCP",
+    "9443": "HTTPS_subscription_and_owned_probe_TCP"
+  },
+  "M6": "prepared_not_accepted",
+  "M7": "not_implemented_or_accepted",
+  "fault_tests": "isolated_lab_only; no_cloud_fault_injection_or_full_host_reboot"
+}
