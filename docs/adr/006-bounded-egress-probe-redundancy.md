@@ -55,3 +55,25 @@ This fixes a proven false-negative mechanism. Historical transport-only failures
 did not preserve their curl results, so they cannot all be attributed conclusively
 to this mechanism. Simultaneous HTTP/DNS timeouts remain unresolved. See the
 [server follow-up](../validation/server-followup-2026-10-20/README.md).
+
+### Handshake transport loss classification (2026-10-21, candidate not deployed)
+
+This narrows the original blanket rule that every curl 35 error is terminal.
+Curl 35 denotes a failed TLS handshake, not specifically a certificate failure.
+OpenSSL `SSL_ERROR_SYSCALL` and `unexpected eof while reading` can report loss of
+the transport before the handshake finishes. When curl 35 contains one of these
+fixed markers and no certificate, x509, verify or alert indicator, record
+`HTTP_TLS_TRANSPORT_FAILED` and allow the existing bounded alternative. Never log
+stderr. Unknown curl 35 messages, Python TLS exceptions, certificate/cipher errors,
+identity mismatches and malformed responses remain terminal. An alternative must
+independently pass normal TLS verification and the fresh exit identity check;
+there is no insecure retry, cached success or extension of the total deadline.
+
+Four observed failures returned curl 35 around 5 seconds and skipped the fallback.
+Historical stderr was not retained, so those events cannot be retroactively
+classified as this transport-loss case or claimed fixed. Software regression and
+production acceptance remain separate. The full-chain recovery policy and the
+production thresholds are unchanged. See the
+[software audit](../validation/stability-observation-2026-10-20/software-audit.md).
+
+Reference: [curl error codes](https://curl.se/libcurl/c/libcurl-errors.html).

@@ -1,0 +1,450 @@
+{
+  "observed_at_utc": "2026-10-21T09:52:41.102937+00:00",
+  "role": "ingress",
+  "outbound_timeout_fields": {
+    "ingress.json": [
+      {
+        "type": "socks",
+        "tag": "vpn-business"
+      }
+    ],
+    "bridge.json": [
+      {
+        "type": "direct",
+        "tag": "vpn",
+        "bind_interface": "tun0"
+      }
+    ]
+  },
+  "installed_module_sha256": {
+    "http_probe.py": "2cb065e693d8e99affbeff3e1018bd86942fcb0d9a9db450f4b1b8b6da1b9447",
+    "probe_runtime.py": "e9775cce7a4e1f5fb789f259ff87948979e5459a095ec3b6b9d0091ae36d988f",
+    "transactions.py": "c4951e3628fe2aa9beb71b4a8928321afe74cbf9f9bd2c1351a13a1277ed75f6"
+  },
+  "events": [
+    {
+      "at_utc": "2026-10-21T03:52:01.264803+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:01.279022+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:10.601634+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:10.683820+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:10.695744+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.025528+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.029117+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.040147+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.499381+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.504978+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.515347+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:52:15.974503+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:58:55.599459+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:58:55.630127+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:02.381723+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:02.392873+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:02.403140+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:06.146076+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:06.148374+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:06.154598+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:06.566244+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:06.572191+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:06.586122+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T03:59:07.044663+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:11.556005+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:11.623930+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:16.557697+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:16.639282+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:16.650817+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:20.909942+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:20.911970+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:20.918898+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:21.360374+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:21.369398+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:21.381475+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:27:21.880493+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:28.630788+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:28.642486+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:36.106611+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:36.124956+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:36.135225+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:40.238350+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:40.241030+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:40.251969+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:40.691358+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:40.697577+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:40.708490+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T08:28:41.180673+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:43.939760+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:44.020598+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:45.667202+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:45.793161+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:45.803443+00:00",
+      "unit": "wayvia-carrier.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:50.175834+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:50.189267+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:50.203349+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:50.627231+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopping",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:50.634325+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "stopped",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:50.646949+00:00",
+      "unit": "wayvia-bridge.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    },
+    {
+      "at_utc": "2026-10-21T09:09:51.099965+00:00",
+      "unit": "wayvia-ingress.service",
+      "event": "started",
+      "categories": [],
+      "duration_label": null
+    }
+  ],
+  "error_category_counts_no_targets": {
+    "wayvia-vpn-client.service:socks_failure": 5,
+    "wayvia-vpn-client.service:certificate": 12
+  }
+}

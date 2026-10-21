@@ -1,0 +1,157 @@
+..........FFFFF...................                                       [100%]
+=================================== FAILURES ===================================
+_ test_handshake_transport_close_can_try_verified_fallback[curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to private.example:443] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10710b7d0>
+stderr = b'curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to private.example:443'
+
+    @pytest.mark.parametrize(
+        "stderr",
+        [
+            b"curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to private.example:443",
+            b"curl: (35) OpenSSL/3.0.13: error:0A000126:SSL routines::unexpected eof while reading",
+        ],
+    )
+    def test_handshake_transport_close_can_try_verified_fallback(monkeypatch, stderr):
+        calls = []
+
+        def run(argv, **kwargs):
+            calls.append(argv)
+            if len(calls) == 1:
+                response = result(35, "", 0)
+                response.stderr = stderr
+                return response
+            return result()
+
+        monkeypatch.setattr(http_probe.subprocess, "run", run)
+        observation = http_probe.observe_http(payload())
+>       assert observation["healthy"] is True
+E       assert False is True
+
+tests/contract/test_http_probe_resilience.py:113: AssertionError
+_ test_handshake_transport_close_can_try_verified_fallback[curl: (35) OpenSSL/3.0.13: error:0A000126:SSL routines::unexpected eof while reading] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10714fe00>
+stderr = b'curl: (35) OpenSSL/3.0.13: error:0A000126:SSL routines::unexpected eof while reading'
+
+    @pytest.mark.parametrize(
+        "stderr",
+        [
+            b"curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to private.example:443",
+            b"curl: (35) OpenSSL/3.0.13: error:0A000126:SSL routines::unexpected eof while reading",
+        ],
+    )
+    def test_handshake_transport_close_can_try_verified_fallback(monkeypatch, stderr):
+        calls = []
+
+        def run(argv, **kwargs):
+            calls.append(argv)
+            if len(calls) == 1:
+                response = result(35, "", 0)
+                response.stderr = stderr
+                return response
+            return result()
+
+        monkeypatch.setattr(http_probe.subprocess, "run", run)
+        observation = http_probe.observe_http(payload())
+>       assert observation["healthy"] is True
+E       assert False is True
+
+tests/contract/test_http_probe_resilience.py:113: AssertionError
+_____ test_transport_close_cannot_bypass_fallback_authentication[second0] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10714cf50>
+second = namespace(returncode=60, stdout=b'\n000')
+
+    @pytest.mark.parametrize(
+        "second",
+        [result(60, "", 0), result(body="ip=203.0.113.9\n"), result(35, "", 0)],
+    )
+    def test_transport_close_cannot_bypass_fallback_authentication(monkeypatch, second):
+        first = result(35, "", 0)
+        first.stderr = b"OpenSSL SSL_connect: SSL_ERROR_SYSCALL"
+        replies = iter([first, second])
+        calls = []
+
+        def run(argv, **kwargs):
+            calls.append(argv)
+            return next(replies)
+
+        monkeypatch.setattr(http_probe.subprocess, "run", run)
+        data = payload()
+        data["fallback_urls"].append("https://192.0.2.1/trace")
+        observation = http_probe.observe_http(data)
+        assert observation["healthy"] is False
+>       assert len(calls) == 2  # The third endpoint cannot hide a certificate/identity/TLS error.
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len([['curl', '--disable', '--silent', '--show-error', '--fail', '--noproxy', ...]])
+
+tests/contract/test_http_probe_resilience.py:140: AssertionError
+_____ test_transport_close_cannot_bypass_fallback_authentication[second1] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10714d5b0>
+second = namespace(returncode=0, stdout=b'ip=203.0.113.9\n\n200')
+
+    @pytest.mark.parametrize(
+        "second",
+        [result(60, "", 0), result(body="ip=203.0.113.9\n"), result(35, "", 0)],
+    )
+    def test_transport_close_cannot_bypass_fallback_authentication(monkeypatch, second):
+        first = result(35, "", 0)
+        first.stderr = b"OpenSSL SSL_connect: SSL_ERROR_SYSCALL"
+        replies = iter([first, second])
+        calls = []
+
+        def run(argv, **kwargs):
+            calls.append(argv)
+            return next(replies)
+
+        monkeypatch.setattr(http_probe.subprocess, "run", run)
+        data = payload()
+        data["fallback_urls"].append("https://192.0.2.1/trace")
+        observation = http_probe.observe_http(data)
+        assert observation["healthy"] is False
+>       assert len(calls) == 2  # The third endpoint cannot hide a certificate/identity/TLS error.
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len([['curl', '--disable', '--silent', '--show-error', '--fail', '--noproxy', ...]])
+
+tests/contract/test_http_probe_resilience.py:140: AssertionError
+_____ test_transport_close_cannot_bypass_fallback_authentication[second2] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10714dcd0>
+second = namespace(returncode=35, stdout=b'\n000')
+
+    @pytest.mark.parametrize(
+        "second",
+        [result(60, "", 0), result(body="ip=203.0.113.9\n"), result(35, "", 0)],
+    )
+    def test_transport_close_cannot_bypass_fallback_authentication(monkeypatch, second):
+        first = result(35, "", 0)
+        first.stderr = b"OpenSSL SSL_connect: SSL_ERROR_SYSCALL"
+        replies = iter([first, second])
+        calls = []
+
+        def run(argv, **kwargs):
+            calls.append(argv)
+            return next(replies)
+
+        monkeypatch.setattr(http_probe.subprocess, "run", run)
+        data = payload()
+        data["fallback_urls"].append("https://192.0.2.1/trace")
+        observation = http_probe.observe_http(data)
+        assert observation["healthy"] is False
+>       assert len(calls) == 2  # The third endpoint cannot hide a certificate/identity/TLS error.
+        ^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len([['curl', '--disable', '--silent', '--show-error', '--fail', '--noproxy', ...]])
+
+tests/contract/test_http_probe_resilience.py:140: AssertionError
+=========================== short test summary info ============================
+FAILED tests/contract/test_http_probe_resilience.py::test_handshake_transport_close_can_try_verified_fallback[curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to private.example:443]
+FAILED tests/contract/test_http_probe_resilience.py::test_handshake_transport_close_can_try_verified_fallback[curl: (35) OpenSSL/3.0.13: error:0A000126:SSL routines::unexpected eof while reading]
+FAILED tests/contract/test_http_probe_resilience.py::test_transport_close_cannot_bypass_fallback_authentication[second0]
+FAILED tests/contract/test_http_probe_resilience.py::test_transport_close_cannot_bypass_fallback_authentication[second1]
+FAILED tests/contract/test_http_probe_resilience.py::test_transport_close_cannot_bypass_fallback_authentication[second2]
+5 failed, 29 passed in 0.58s

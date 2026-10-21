@@ -1,0 +1,74 @@
+{
+  "commands": [
+    {
+      "target": "check",
+      "exit": 0,
+      "started_at_utc": "2026-10-21T09:55:33.461527+00:00",
+      "ended_at_utc": "2026-10-21T09:58:05.287680+00:00"
+    },
+    {
+      "target": "demo",
+      "exit": 0,
+      "started_at_utc": "2026-10-21T09:58:05.291193+00:00",
+      "ended_at_utc": "2026-10-21T09:58:06.737600+00:00"
+    },
+    {
+      "target": "test-configs",
+      "exit": 0,
+      "started_at_utc": "2026-10-21T09:58:06.739610+00:00",
+      "ended_at_utc": "2026-10-21T09:58:59.439911+00:00"
+    }
+  ],
+  "test_lab": "deferred_user_not_run_not_passed",
+  "production_changes": false,
+  "check_tests_passed": 376,
+  "check_existing_warnings": 3,
+  "real_configs_validated": 10,
+  "before_candidate_regression": {
+    "passed": 29,
+    "failed": 5,
+    "expected_failures": true
+  },
+  "targeted_after_candidate": {
+    "passed": 58,
+    "subsequent_deadline_case": "included_in_full_check"
+  },
+  "production_acceptance": "not_deployed_not_accepted",
+  "source_sha256": {
+    "src/wayvia/agent/http_probe.py": "b16a356cba5a1b017427aed72dff9c30bfb420747273a2ade13683eb81065911",
+    "scripts/observe_stability.py": "58e9266a234154a22dc48c008d7cc2256ecb71295323435b83d4abf806d2c8da",
+    "tests/contract/test_http_probe_resilience.py": "757bd00aeddc26754fc4a42d892240028ee22f8bf14c2e3a2d0900a368f7a5c1"
+  },
+  "log_normalization": [
+    {
+      "file": "software-audit-check.log",
+      "raw_sha256": "97b5e28ccdd7bad4276e63476c512181e66603df5e39d4e0495c58151390de88",
+      "saved_sha256": "e5a8b56603e07435b0399e742a4a03896439c7db413cf373580c8cd0202ce713",
+      "method": "normalize carriage returns, trailing whitespace and trailing blank lines only"
+    },
+    {
+      "file": "software-audit-demo.log",
+      "raw_sha256": "e6307c57909b886890c8ab030154030a0d6f30bf6bdfd1b52a09bd8e8f0af954",
+      "saved_sha256": "e6307c57909b886890c8ab030154030a0d6f30bf6bdfd1b52a09bd8e8f0af954",
+      "method": "normalize carriage returns, trailing whitespace and trailing blank lines only"
+    },
+    {
+      "file": "software-audit-test-configs.log",
+      "raw_sha256": "e52f603426e6336396d45b380af34adaa578525cecfc62bba80abd3c0d4c84db",
+      "saved_sha256": "e52f603426e6336396d45b380af34adaa578525cecfc62bba80abd3c0d4c84db",
+      "method": "normalize carriage returns, trailing whitespace and trailing blank lines only"
+    },
+    {
+      "file": "software-audit-before.log",
+      "raw_sha256": "1df4388e5bcceb12fc0f2abf2145e024f3e89b6cb46cb6eb3cf1af41baddb4c2",
+      "saved_sha256": "e3d04b2921f714d4eb969d34cd8b2830d358a69f2dc4bff276942783c85ed1ef",
+      "method": "normalize carriage returns, trailing whitespace and trailing blank lines only"
+    },
+    {
+      "file": "software-audit-targeted.log",
+      "raw_sha256": "9f94123a0d3f8899039ccb97b5c12248b73c58721c8a13c46a4e0a4c9349b46b",
+      "saved_sha256": "9f94123a0d3f8899039ccb97b5c12248b73c58721c8a13c46a4e0a4c9349b46b",
+      "method": "normalize carriage returns, trailing whitespace and trailing blank lines only"
+    }
+  ]
+}

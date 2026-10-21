@@ -627,15 +627,15 @@ stability_observation_2026_10_20:
   production_wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
   production_services_and_default_route: unchanged_at_start
   latest_review:
-    journal_until_utc: '2026-10-21T09:32:58.759448+00:00'
-    samples: {ali: 4604, jp: 4604}
-    monitor_rounds: {ali: 1447, jp: 1459}
+    journal_until_utc: '2026-10-21T09:51:32.586233+00:00'
+    samples: {ali: 4816, jp: 4815}
+    monitor_rounds: {ali: 1517, jp: 1529}
     degraded_rounds: {ali: 5, jp: 0}
     new_ingress_degradations: 0
     new_japan_primary_HTTP_timeouts_with_successful_fallback: 0
-    result: no_new_failure_prior_patterns_unresolved_awaiting_provider_evidence
+    result: no_new_failure_software_audit_stage_closed_roots_unresolved
     production_changes: none_by_observer_existing_recovery_actions_recorded
-    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0933Z-review.json
+    evidence: docs/validation/stability-observation-2026-10-20/software-audit-review.json
   root_cause_followup:
     new_event_utc: '2026-10-21T09:09:27+00:00'
     new_ingress_degraded_seconds: 8.864792
@@ -648,8 +648,22 @@ stability_observation_2026_10_20:
     supplementary_path_cycles_each: 120
     supplementary_queue_cycles_each: 90
     supplementary_exit: cycles_complete_no_persistent_service
-    next_required_input: provider_internal_network_evidence_and_ticket_send_authorization
+    next_required_input: none_for_software_review_user_requested_stage_close
     evidence: docs/validation/stability-observation-2026-10-20/root-cause-followup.md
+  software_audit:
+    status: candidate_not_deployed_stage_closed_by_user
+    confirmed_amplification: single_failed_required_probe_then_full_chain_rebuild
+    ingress_stop_to_next_start_seconds: [7.079367, 14.695481]
+    curl_35_historical_details: unknown_no_stderr_retained
+    candidate: bounded_retry_for_explicit_handshake_transport_loss
+    certificate_identity_and_unknown_TLS_errors: terminal
+    deadline_and_production_thresholds: unchanged
+    full_chain_recovery: unchanged_followup_issue_12
+    gates: docs/validation/stability-observation-2026-10-20/software-audit-gates.json
+    production_acceptance: pending_not_deployed
+    fault_and_reboot_tests: deferred_by_user_not_run_not_passed
+    platform_contact: prohibited_by_user
+    evidence: docs/validation/stability-observation-2026-10-20/software-audit.md
   provider_console_review:
     method: read_only_authenticated_Chrome_UI
     region_display: Japan_Tokyo_zone_2
@@ -658,8 +672,8 @@ stability_observation_2026_10_20:
     visible_monitor_point_spacing_seconds: 300
     user_operation_log_rows_on_2026_10_21: 0
     automatic_tasks: none_displayed
-    exact_disconnect_root_cause: unresolved_provider_internal_evidence_required
-    ticket_status: prepared_locally_not_sent_waiting_explicit_authorization
+    exact_disconnect_root_cause: unresolved
+    ticket_status: not_sent_user_prohibits_platform_contact
     production_changes: none
     evidence: docs/validation/stability-observation-2026-10-20/provider-console-review.md
   path_localization:

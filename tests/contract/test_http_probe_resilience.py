@@ -91,6 +91,91 @@ def test_all_endpoints_unavailable_is_failed(monkeypatch):
 
 
 @pytest.mark.parametrize(
+    "stderr",
+    [
+        b"curl: (35) OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to private.example:443",
+        b"curl: (35) OpenSSL/3.0.13: error:0A000126:SSL routines::unexpected eof while reading",
+    ],
+)
+def test_handshake_transport_close_can_try_verified_fallback(monkeypatch, stderr):
+    calls = []
+
+    def run(argv, **kwargs):
+        calls.append(argv)
+        if len(calls) == 1:
+            response = result(35, "", 0)
+            response.stderr = stderr
+            return response
+        return result()
+
+    monkeypatch.setattr(http_probe.subprocess, "run", run)
+    observation = http_probe.observe_http(payload())
+    assert observation["healthy"] is True
+    assert len(calls) == 2
+    assert observation["attempts"][0]["result"] == "HTTP_TLS_TRANSPORT_FAILED"
+    assert "private.example" not in json.dumps(observation)
+    assert "SSL_ERROR" not in json.dumps(observation)
+    assert all("--insecure" not in argv for argv in calls)
+
+
+@pytest.mark.parametrize(
+    "second",
+    [result(60, "", 0), result(body="ip=203.0.113.9\n"), result(35, "", 0)],
+)
+def test_transport_close_cannot_bypass_fallback_authentication(monkeypatch, second):
+    first = result(35, "", 0)
+    first.stderr = b"OpenSSL SSL_connect: SSL_ERROR_SYSCALL"
+    replies = iter([first, second])
+    calls = []
+
+    def run(argv, **kwargs):
+        calls.append(argv)
+        return next(replies)
+
+    monkeypatch.setattr(http_probe.subprocess, "run", run)
+    data = payload()
+    data["fallback_urls"].append("https://192.0.2.1/trace")
+    observation = http_probe.observe_http(data)
+    assert observation["healthy"] is False
+    assert len(calls) == 2  # The third endpoint cannot hide a certificate/identity/TLS error.
+
+
+def test_ambiguous_tls_error_is_still_terminal(monkeypatch):
+    response = result(35, "", 0)
+    response.stderr = b"certificate verify failed; SSL_ERROR_SYSCALL"
+    calls = []
+
+    def run(argv, **kwargs):
+        calls.append(argv)
+        return response
+
+    monkeypatch.setattr(http_probe.subprocess, "run", run)
+    observation = http_probe.observe_http(payload())
+    assert observation["error"] == "HTTP_TLS_FAILED"
+    assert len(calls) == 1
+
+
+def test_handshake_transport_retry_keeps_deadline_and_requires_fresh_success(monkeypatch):
+    now = [0.0]
+    budgets = []
+    monkeypatch.setattr(http_probe.time, "monotonic", lambda: now[0])
+
+    def run(argv, **kwargs):
+        budgets.append(kwargs["timeout"])
+        now[0] += kwargs["timeout"]
+        response = result(35, "", 0)
+        response.stderr = b"SSL_ERROR_SYSCALL"
+        return response
+
+    monkeypatch.setattr(http_probe.subprocess, "run", run)
+    observation = http_probe.observe_http(payload())
+    assert observation["healthy"] is False
+    assert budgets == [5.0, 5.0]
+    assert now[0] == payload()["timeout"]
+    assert [a["curl_code"] for a in observation["attempts"]] == [35, 35]
+
+
+@pytest.mark.parametrize(
     "response,healthy,error",
     [
         (result(), True, None),

@@ -1,0 +1,119 @@
+{
+  "source_monitor": "software-audit-monitor-ali.json",
+  "source_lifecycle": "software-audit-timeouts-ali.json",
+  "events": [
+    {
+      "access_started_at_utc": "2026-10-21T03:51:53.117956+00:00",
+      "access_duration_ms": 5292,
+      "access_attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5028,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ],
+      "ingress_stopped_at_utc": "2026-10-21T03:52:01.279022+00:00",
+      "carrier_stopping_at_utc": "2026-10-21T03:52:10.601634+00:00",
+      "vpn_stopping_at_utc": "2026-10-21T03:52:15.025528+00:00",
+      "bridge_stopping_at_utc": "2026-10-21T03:52:15.499381+00:00",
+      "ingress_started_at_utc": "2026-10-21T03:52:15.974503+00:00",
+      "active_reported_at_utc": "2026-10-21T03:52:18.491120+00:00",
+      "ingress_stopped_to_started_seconds": 14.695481,
+      "degraded_to_active_seconds": 17.199492
+    },
+    {
+      "access_started_at_utc": "2026-10-21T03:58:45.131578+00:00",
+      "access_duration_ms": 5254,
+      "access_attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5024,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ],
+      "ingress_stopped_at_utc": "2026-10-21T03:58:55.630127+00:00",
+      "carrier_stopping_at_utc": "2026-10-21T03:59:02.381723+00:00",
+      "vpn_stopping_at_utc": "2026-10-21T03:59:06.146076+00:00",
+      "bridge_stopping_at_utc": "2026-10-21T03:59:06.566244+00:00",
+      "ingress_started_at_utc": "2026-10-21T03:59:07.044663+00:00",
+      "active_reported_at_utc": "2026-10-21T03:59:08.587749+00:00",
+      "ingress_stopped_to_started_seconds": 11.414536,
+      "degraded_to_active_seconds": 12.948271
+    },
+    {
+      "access_started_at_utc": "2026-10-21T08:26:59.126995+00:00",
+      "access_duration_ms": 5346,
+      "access_attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5061,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ],
+      "ingress_stopped_at_utc": "2026-10-21T08:27:11.623930+00:00",
+      "carrier_stopping_at_utc": "2026-10-21T08:27:16.557697+00:00",
+      "vpn_stopping_at_utc": "2026-10-21T08:27:20.909942+00:00",
+      "bridge_stopping_at_utc": "2026-10-21T08:27:21.360374+00:00",
+      "ingress_started_at_utc": "2026-10-21T08:27:21.880493+00:00",
+      "active_reported_at_utc": "2026-10-21T08:27:23.729662+00:00",
+      "ingress_stopped_to_started_seconds": 10.256563,
+      "degraded_to_active_seconds": 12.089898
+    },
+    {
+      "access_started_at_utc": "2026-10-21T08:28:19.121185+00:00",
+      "access_duration_ms": 5256,
+      "access_attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5027,
+          "curl_code": 35,
+          "http_status": 0,
+          "result": "HTTP_TLS_FAILED"
+        }
+      ],
+      "ingress_stopped_at_utc": "2026-10-21T08:28:28.642486+00:00",
+      "carrier_stopping_at_utc": "2026-10-21T08:28:36.106611+00:00",
+      "vpn_stopping_at_utc": "2026-10-21T08:28:40.238350+00:00",
+      "bridge_stopping_at_utc": "2026-10-21T08:28:40.691358+00:00",
+      "ingress_started_at_utc": "2026-10-21T08:28:41.180673+00:00",
+      "active_reported_at_utc": "2026-10-21T08:28:42.820109+00:00",
+      "ingress_stopped_to_started_seconds": 12.538187,
+      "degraded_to_active_seconds": 14.162227
+    },
+    {
+      "access_started_at_utc": "2026-10-21T09:09:27.119715+00:00",
+      "access_duration_ms": 11744,
+      "access_attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 5759,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        },
+        {
+          "endpoint": 1,
+          "duration_ms": 5751,
+          "curl_code": null,
+          "http_status": null,
+          "result": "HTTP_TIMEOUT"
+        }
+      ],
+      "ingress_stopped_at_utc": "2026-10-21T09:09:44.020598+00:00",
+      "carrier_stopping_at_utc": "2026-10-21T09:09:45.667202+00:00",
+      "vpn_stopping_at_utc": "2026-10-21T09:09:50.175834+00:00",
+      "bridge_stopping_at_utc": "2026-10-21T09:09:50.627231+00:00",
+      "ingress_started_at_utc": "2026-10-21T09:09:51.099965+00:00",
+      "active_reported_at_utc": "2026-10-21T09:09:52.895989+00:00",
+      "ingress_stopped_to_started_seconds": 7.079367,
+      "degraded_to_active_seconds": 8.864792
+    }
+  ],
+  "limitation": "Systemd started is not business-ready; these intervals are not exact user outage durations."
+}

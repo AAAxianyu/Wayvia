@@ -13,6 +13,8 @@ Priority: P1
 
 ## 下一步
 
+最新决定（2026-10-21 软件阶段收尾）：用户明确禁止联系平台，随后要求阶段性收尾。主动排查暂停，原 24 小时只读观察按既定期限继续；不再请求供应商提交授权或等待供应商答复作为软件前置条件。[本轮软件审查](../../../docs/validation/stability-observation-2026-10-20/software-audit.md)和[待办 12](12-software-timeout-recovery.md)记录候选修复、整链恢复放大与未解最初超时。候选未部署、生产配置不变。下次观察从 [09:51 检查点](../../../docs/validation/stability-observation-2026-10-20/software-audit-review.json) 接续；下述供应商接续为历史经过，已被本决定替代。
+
 最新接续：09:40 用户已提供 Chrome 登录会话，实例详情确认 2 Mbps；可见 5 分钟监控和用户操作日志仍不能定位十几秒断连。需供应商反馈宿主/vSwitch/NAT/上联历史记录及实际整形策略；[发送版工单](../../../docs/validation/stability-observation-2026-10-20/provider-ticket-draft.txt)已准备，但未经明确对外联系授权尚未发送。09:21 捕捉的带载承载超时与 08:27/08:28 低流量共同失联仍分开排查。见[控制台核查报告](../../../docs/validation/stability-observation-2026-10-20/provider-console-review.md)。原 24 小时采样和静默 heartbeat 按既定期限继续，不延长、不重启；根因尚未确定。
 
 保持只读正常观测，按明确 UTC 窗口收集修复后的 monitor 状态、各层失败和 completed-response-close 字段。下一次自然超时需同步记录入口/出口及独立路径证据，区分目标服务、跨境连接、VPN 与主机资源；不注入故障、不改保护阈值。独立供应商备用探针需先定义 TLS、DNS、响应格式和隐私边界，现有两个 IP 仍属同一供应商。

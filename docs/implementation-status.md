@@ -1,5 +1,11 @@
 # Wayvia 实现与验收状态
 
+## 2026-10-21 软件侧排查阶段收尾
+
+用户明确要求不联系平台，并在本轮要求阶段收尾。源码与生产单元日志确认：一次必需探针失败后会停止入口，下一轮全量重启承载、VPN、bridge 和入口；五次自然事件入口停止至下一次启动记录约 7.08–14.70 秒，不能当成精确用户断流时间。四次 curl 35 在约 5 秒终止且未用备用端点；历史细节不足，不能断言都是证书错误或已找全根因。
+
+本地候选只修正明确握手传输中断的有界备用重试，证书/身份/未知 TLS 错误仍终止，成功仍需新鲜验证响应，保持总预算及 fail-closed。候选未部署、整链恢复未修改；故障/重启实验继续暂缓。软件门禁和细节见[审查报告](validation/stability-observation-2026-10-20/software-audit.md)及[待办 12](../.scratch/wayvia-deployment-followup/issues/12-software-timeout-recovery.md)。截至 09:51 UTC 无新增生产失败；原 24 小时只读观察按既定期限继续，主动扩展排查暂停。未宣称真实网络根因修复。
+
 ## 2026-10-20 Windows / i-hdu 只读验证
 
 实际客户端为 Clash Verge 1.7.2 / Mihomo 1.19.31。用户自行开启 TUN 后，已确认百度 DIRECT、Google IPv4 和 Cloudflare 走 Wayvia，日本出口匹配；Google/YouTube IPv4 测试首字节中位约 286/294 ms，Cloudflare 新连接约 257 ms、复用约 63 ms。国外 IPv6 按既定规则 REJECT，默认 curl 选到 IPv6 后未回退 IPv4，需要独立适配，不能误记为已支持 IPv6 出现故障。未修改用户配置。

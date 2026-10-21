@@ -1,4 +1,4 @@
-"""Bounded HTTPS endpoint redundancy; identity failures never fall back.
+"""Bounded HTTPS redundancy; identity and certificate failures never fall back.
 
 Only one fresh, authenticated response matching the configured exit identity can
 succeed. Attempts share the original deadline and never follow redirects or use
@@ -10,6 +10,24 @@ import ipaddress
 import ssl
 import subprocess
 import time
+
+
+def handshake_transport_closed(result):
+    """Recognize curl/OpenSSL transport loss, not certificate or protocol failures.
+
+    curl 35 also covers an EOF/reset before the target handshake completes. Keep
+    unknown diagnostics terminal, and expose only a fixed code, never stderr.
+    A retry still needs a new TLS-verified response with the expected identity.
+    """
+    diagnostic = getattr(result, "stderr", b"")
+    if not isinstance(diagnostic, bytes):
+        return False
+    diagnostic = diagnostic[:8192].lower()
+    if any(word in diagnostic for word in (b"certificate", b"x509", b"alert", b"verify")):
+        return False
+    return any(
+        marker in diagnostic for marker in (b"ssl_error_syscall", b"unexpected eof while reading")
+    )
 
 
 def matches_body(body, expected, response_format):
@@ -93,6 +111,8 @@ def observe_http(payload, *, connect=None):
                     )
                     else "HTTP_IDENTITY_MISMATCH"
                 )
+            elif code == 35 and handshake_transport_closed(result):
+                error, retry = "HTTP_TLS_TRANSPORT_FAILED", True
             elif code in {35, 51, 58, 59, 60, 64, 66, 77, 80, 82, 83, 90, 91}:
                 error = "HTTP_TLS_FAILED"
             else:

@@ -7,6 +7,8 @@ Updated: 2026-10-20
 
 ## 下次从这里继续
 
+2026-10-21 最新阶段交接：用户要求不联系平台，主动排查暂收尾。先读[软件侧审查](../../docs/validation/stability-observation-2026-10-20/software-audit.md)和[待办 12](issues/12-software-timeout-recovery.md)；候选未部署，原 24 小时只读观察继续至既定期限。不要恢复供应商联系或重放部署脚本。
+
 1. 先读 [24 小时观察与接续流程](../../docs/validation/stability-observation-2026-10-20/README.md)、[最新实现状态](../../docs/implementation-status.md)和[最新续查报告](../../docs/validation/server-followup-2026-10-20/README.md)，再检查 Git 工作区。主工作区原有未提交的进度检查记录独立保留，不能覆盖或误算成本次提交。
 2. 优先处理 01 稳定性只读复核；手机就绪时处理 02/04，提供商账号资料可用时处理 03。08、09 已完成；01 的真实超时原因和修复后长周期观察仍未完成。
 3. 手机由用户手动停止并移除，临时 ADB 转发已清空；这不是断连。重新测试前确认设备和客户端状态，不自动改用旧私密缓存中的链接或凭据。
@@ -39,6 +41,7 @@ Updated: 2026-10-20
 | [09 复核严格 umask 下的安装与重装权限](issues/09-install-permissions.md) | P2 | done |
 | [10 补充 NekoBox 与 iPhone 客户端适配](issues/10-client-compatibility.md) | P3 | blocked |
 | [11 Windows TUN 国外 IPv4 自动使用与回退](issues/11-windows-ipv4-fallback.md) | P1 | open |
+| [12 探针错误分类与恢复范围](issues/12-software-timeout-recovery.md) | P1 | open |
 
 ## 工作边界
 

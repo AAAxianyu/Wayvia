@@ -1,0 +1,135 @@
+{
+  "reviewed_at_utc": "2026-10-21T09:58:37.452405+00:00",
+  "status": "running_not_accepted",
+  "comparison": "heartbeat-20261021T0933Z-review.json",
+  "purpose": "software_audit_stage_handoff",
+  "new_production_failure": false,
+  "production_changes": false,
+  "external_contact": "prohibited_by_user_not_sent",
+  "active_investigation": "paused_by_user_stage_close",
+  "hosts": {
+    "ali": {
+      "summary_file": "software-audit-20261021-ali.json",
+      "monitor_file": "software-audit-monitor-ali.json",
+      "journal_until_utc": "2026-10-21T09:51:32.586233+00:00",
+      "samples": 4816,
+      "new_samples": 212,
+      "sample_gap_seconds": {
+        "count": 4815,
+        "median": 5.000102339312434,
+        "p95": 5.000144911929965,
+        "max": 5.101144880056381
+      },
+      "latest_record_at": "2026-10-21T09:50:35.255221+00:00",
+      "monitor_count": 1517,
+      "new_monitor_count": 70,
+      "state_counts": {
+        "ACTIVE": 1512,
+        "DEGRADED": 5
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "27205632",
+        "MemoryPeak": "50671616",
+        "CPUUsageNSec": "238632165000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "end": null,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 35
+        },
+        "host_cf_alternative": {
+          "failed": 35
+        },
+        "host_dns_cf": {
+          "ok": 35,
+          "failed": 0
+        },
+        "host_dns_google": {
+          "ok": 35,
+          "failed": 0
+        },
+        "vpn_cf_primary": {
+          "ok": 35,
+          "failed": 0
+        },
+        "vpn_cf_alternative": {
+          "ok": 35,
+          "failed": 0
+        },
+        "vpn_dns_cf": {
+          "ok": 35,
+          "failed": 0
+        },
+        "vpn_dns_google": {
+          "ok": 35,
+          "failed": 0
+        }
+      },
+      "peer_ping_count_delta": {
+        "ok": 212,
+        "miss": 0
+      }
+    },
+    "jp": {
+      "summary_file": "software-audit-20261021-jp.json",
+      "monitor_file": "software-audit-monitor-jp.json",
+      "journal_until_utc": "2026-10-21T09:51:32.586233+00:00",
+      "samples": 4815,
+      "new_samples": 211,
+      "sample_gap_seconds": {
+        "count": 4814,
+        "median": 5.00017771700368,
+        "p95": 5.00066579299164,
+        "max": 5.012651012992137
+      },
+      "latest_record_at": "2026-10-21T09:50:34.287702+00:00",
+      "monitor_count": 1529,
+      "new_monitor_count": 70,
+      "state_counts": {
+        "ACTIVE": 1529
+      },
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "22491136",
+        "MemoryPeak": "31645696",
+        "CPUUsageNSec": "221666492000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "end": null,
+      "control_count_delta": {
+        "host_cf_primary": {
+          "ok": 35,
+          "failed": 0
+        },
+        "host_cf_alternative": {
+          "ok": 35,
+          "failed": 0
+        },
+        "host_dns_cf": {
+          "ok": 35,
+          "failed": 0
+        },
+        "host_dns_google": {
+          "ok": 35,
+          "failed": 0
+        }
+      },
+      "peer_ping_count_delta": {
+        "ok": 211,
+        "miss": 0
+      }
+    }
+  }
+}
