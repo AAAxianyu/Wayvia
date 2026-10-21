@@ -627,15 +627,15 @@ stability_observation_2026_10_20:
   production_wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
   production_services_and_default_route: unchanged_at_start
   latest_review:
-    journal_until_utc: '2026-10-21T09:20:34.044004+00:00'
-    samples: {ali: 4463, jp: 4463}
-    monitor_rounds: {ali: 1400, jp: 1412}
+    journal_until_utc: '2026-10-21T09:32:58.759448+00:00'
+    samples: {ali: 4604, jp: 4604}
+    monitor_rounds: {ali: 1447, jp: 1459}
     degraded_rounds: {ali: 5, jp: 0}
-    new_ingress_degradations: 1
+    new_ingress_degradations: 0
     new_japan_primary_HTTP_timeouts_with_successful_fallback: 0
-    result: load_correlated_ingress_timeout_and_prior_common_outage_both_unresolved
+    result: no_new_failure_prior_patterns_unresolved_awaiting_provider_evidence
     production_changes: none_by_observer_existing_recovery_actions_recorded
-    evidence: docs/validation/stability-observation-2026-10-20/followup-20261021T0921Z-review.json
+    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0933Z-review.json
   root_cause_followup:
     new_event_utc: '2026-10-21T09:09:27+00:00'
     new_ingress_degraded_seconds: 8.864792

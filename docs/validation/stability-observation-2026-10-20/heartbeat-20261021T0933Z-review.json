@@ -1,0 +1,180 @@
+{
+  "reviewed_at_utc": "2026-10-21T09:34:18.018824+00:00",
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "comparison": "followup-20261021T0921Z-review.json",
+  "new_production_failure": false,
+  "new_control_only_failure": false,
+  "new_actionable_event": false,
+  "notification": "silent_no_significant_change",
+  "ssh_management": {
+    "ali": "existing_channel_succeeded",
+    "jp": "existing_channel_succeeded"
+  },
+  "hosts": {
+    "ali": {
+      "summary_file": "heartbeat-20261021T0933Z-ali.json",
+      "monitor_file": "heartbeat-20261021T0933Z-monitor-ali.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T09:32:58.759448+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T09:20:34.044004+00:00",
+        "2026-10-21T09:32:58.759448+00:00"
+      ],
+      "latest_record_at_utc": "2026-10-21T09:32:55.231827+00:00",
+      "previous_samples": 4463,
+      "samples": 4604,
+      "new_samples": 141,
+      "sample_gap_seconds": {
+        "count": 4603,
+        "median": 5.000102411955595,
+        "p95": 5.000144921243191,
+        "max": 5.101144880056381
+      },
+      "current_state": "ACTIVE",
+      "generation_unchanged": true,
+      "journal_monitor_count": 1447,
+      "new_journal_monitor_count": 47,
+      "journal_states": {
+        "ACTIVE": 1442,
+        "DEGRADED": 5
+      },
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 24
+        },
+        "host_cf_alternative": {
+          "failed": 24
+        },
+        "host_dns_cf": {
+          "failed": 0,
+          "ok": 24
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 24
+        },
+        "vpn_cf_primary": {
+          "failed": 0,
+          "ok": 24
+        },
+        "vpn_cf_alternative": {
+          "failed": 0,
+          "ok": 24
+        },
+        "vpn_dns_cf": {
+          "failed": 0,
+          "ok": 24
+        },
+        "vpn_dns_google": {
+          "failed": 0,
+          "ok": 24
+        }
+      },
+      "peer_ping_count_delta": {
+        "miss": 0,
+        "ok": 141
+      },
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "30564352",
+        "MemoryPeak": "50671616",
+        "CPUUsageNSec": "228029310000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "observer_result": null,
+      "evidence_bytes": 11576556,
+      "file_growth_bytes": 357200,
+      "partial_lines_ignored": 0,
+      "kernel_oom_kill_count_since": 0,
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "new_unit_events": [],
+      "new_state_transitions": []
+    },
+    "jp": {
+      "summary_file": "heartbeat-20261021T0933Z-jp.json",
+      "monitor_file": "heartbeat-20261021T0933Z-monitor-jp.json",
+      "journal_window_utc": [
+        "2026-10-21T03:09:19+00:00",
+        "2026-10-21T09:32:58.759448+00:00"
+      ],
+      "new_journal_window_utc": [
+        "2026-10-21T09:20:34.044004+00:00",
+        "2026-10-21T09:32:58.759448+00:00"
+      ],
+      "latest_record_at_utc": "2026-10-21T09:32:59.243382+00:00",
+      "previous_samples": 4463,
+      "samples": 4604,
+      "new_samples": 141,
+      "sample_gap_seconds": {
+        "count": 4603,
+        "median": 5.000178121001227,
+        "p95": 5.000666943989927,
+        "max": 5.012651012992137
+      },
+      "current_state": "ACTIVE",
+      "generation_unchanged": true,
+      "journal_monitor_count": 1459,
+      "new_journal_monitor_count": 47,
+      "journal_states": {
+        "ACTIVE": 1459
+      },
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 0,
+          "ok": 24
+        },
+        "host_cf_alternative": {
+          "failed": 0,
+          "ok": 24
+        },
+        "host_dns_cf": {
+          "failed": 0,
+          "ok": 24
+        },
+        "host_dns_google": {
+          "failed": 0,
+          "ok": 24
+        }
+      },
+      "peer_ping_count_delta": {
+        "miss": 0,
+        "ok": 141
+      },
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "21938176",
+        "MemoryPeak": "31031296",
+        "CPUUsageNSec": "212226430000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_pid_unchanged": true,
+      "observer_result": null,
+      "evidence_bytes": 10426802,
+      "file_growth_bytes": 318325,
+      "partial_lines_ignored": 0,
+      "kernel_oom_kill_count_since": 0,
+      "new_failed_checks": [],
+      "new_fallbacks": [],
+      "new_unit_events": [],
+      "new_state_transitions": []
+    }
+  },
+  "classification_notes": [
+    "No new production failure, primary-attempt fallback, protection transition, service event or control-path incident since the previous checkpoint.",
+    "Ali host-direct CF HTTPS failures remain the launch baseline and are not new proxy outages.",
+    "Ali maximum sample interval increased to 5.101 seconds; file growth and sample count are continuous, with no partial lines. Japan maximum remains 5.013 seconds rounded.",
+    "Original observer PID/deadline unchanged; no new probes, deployments, faults or manual restarts.",
+    "Active root-cause investigation remains paused awaiting provider-console cooperation; this is only the independently authorized scheduled read-only observation."
+  ]
+}
