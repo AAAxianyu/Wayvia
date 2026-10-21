@@ -1,0 +1,141 @@
+{
+  "reviewed_at_utc": "2026-10-21T05:16:10.667367+00:00",
+  "run_id": "stability-20261020",
+  "status": "running_not_accepted",
+  "comparison": "heartbeat-20261021T0411Z-review.json",
+  "new_production_failure": false,
+  "new_actionable_event": false,
+  "notification": "none_no_new_business_failure_or_sampling_problem",
+  "new_control_only_event": {
+    "host": "ali",
+    "label": "host_dns_google",
+    "started_at": "2026-10-21T05:05:19.825136+00:00",
+    "completed_at": "2026-10-21T05:05:21.863688+00:00",
+    "exit": 9,
+    "duration_ms": 2039,
+    "next_scheduled_probe": "2026-10-21T05:05:49.825823+00:00",
+    "next_result": "NOERROR_41_ms",
+    "interpretation": "single_host_direct_DNS_control_failure_no_concurrent_protected_path_failure_observed",
+    "cause": "unresolved_no_provider_or_campus_attribution",
+    "context_window_utc": [
+      "2026-10-21T05:03:19+00:00",
+      "2026-10-21T05:07:22+00:00"
+    ]
+  },
+  "hosts": {
+    "ali": {
+      "journal_until_utc": "2026-10-21T05:14:47.316979+00:00",
+      "latest_sample_utc": "2026-10-21T05:14:44.784385+00:00",
+      "previous_samples": 748,
+      "samples": 1506,
+      "new_samples": 758,
+      "sample_gap_seconds": {
+        "count": 1505,
+        "median": 5.000101951882243,
+        "p95": 5.000148059800267,
+        "max": 5.001452047377825
+      },
+      "current_state": "ACTIVE",
+      "journal_monitor_count": 473,
+      "journal_states": {
+        "ACTIVE": 471,
+        "DEGRADED": 2
+      },
+      "new_failed_checks": [],
+      "control_count_delta": {
+        "host_cf_primary": {
+          "failed": 126
+        },
+        "host_cf_alternative": {
+          "failed": 126
+        },
+        "host_dns_cf": {
+          "ok": 126
+        },
+        "host_dns_google": {
+          "ok": 125,
+          "failed": 1
+        },
+        "vpn_cf_primary": {
+          "ok": 126,
+          "failed": 0
+        },
+        "vpn_cf_alternative": {
+          "ok": 126,
+          "failed": 0
+        },
+        "vpn_dns_cf": {
+          "ok": 126,
+          "failed": 0
+        },
+        "vpn_dns_google": {
+          "ok": 126,
+          "failed": 0
+        }
+      },
+      "new_failed_protected_control_labels": [],
+      "observer_unit": {
+        "MainPID": "2790488",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "33103872",
+        "MemoryPeak": "50671616",
+        "CPUUsageNSec": "73022336000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_result": null,
+      "evidence_bytes": 3785025,
+      "file_growth_bytes": 1906134,
+      "partial_lines_ignored": 0
+    },
+    "jp": {
+      "journal_until_utc": "2026-10-21T05:14:47.316979+00:00",
+      "latest_sample_utc": "2026-10-21T05:14:48.483004+00:00",
+      "previous_samples": 747,
+      "samples": 1506,
+      "new_samples": 759,
+      "sample_gap_seconds": {
+        "count": 1505,
+        "median": 5.000180514995009,
+        "p95": 5.000655228999676,
+        "max": 5.0036203719937475
+      },
+      "current_state": "ACTIVE",
+      "journal_monitor_count": 474,
+      "journal_states": {
+        "ACTIVE": 474
+      },
+      "new_failed_checks": [],
+      "control_count_delta": {
+        "host_cf_primary": {
+          "ok": 126
+        },
+        "host_cf_alternative": {
+          "ok": 126
+        },
+        "host_dns_cf": {
+          "ok": 126
+        },
+        "host_dns_google": {
+          "ok": 126
+        }
+      },
+      "new_failed_protected_control_labels": [],
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "14475264",
+        "MemoryPeak": "23416832",
+        "CPUUsageNSec": "70342619000",
+        "ActiveState": "active",
+        "SubState": "running"
+      },
+      "observer_result": null,
+      "evidence_bytes": 3407524,
+      "file_growth_bytes": 1718287,
+      "partial_lines_ignored": 0
+    }
+  }
+}

@@ -39,3 +39,5 @@ Priority: P1
 2026-10-21 03:48–03:59 UTC：Windows 实网诊断期间只读取证发现阿里云 44 轮中两次自然降级，日本 44/44 ACTIVE。access 为 HTTP_TLS_FAILED/curl 35、HTTP 0，未完成响应，区别于前次已修的 relay 关闭覆盖成功。DEGRADED→ACTIVE 17.20/12.95 秒；承载 TCP RTT 可达约 1.3 秒并伴重传，ICMP 仍约 40 ms，第二次保护前 VPN HTTPS 已超时、DNS 约 1.5 秒。继续排查承载排队/重传及负载关联，未证明具体限速点或唯一根因；不主动注入故障、不调整健康阈值。见 [Windows 诊断与事件窗口](../../../docs/validation/windows-campus-2026-10-20/README.md)。
 
 2026-10-21 04:11 UTC heartbeat：两端采样运行，各新增 133 个样本，最大间隔约 5.002 秒；全窗口 journal 入口 235 轮含已知两次降级、出口 236 轮全部 ACTIVE。比上次已报告结果无新故障，VPN/日本每个 HTTP/DNS 对照新增 22 次均成功；宿主直连 CF 的原有超时保持基线分类。已补存已知两事件前后至少两分钟的两端脱敏采样，观察不延长、不重启。下一次比较入口为 [04:11 review](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0411Z-review.json)，不重复告知用户已知事件。
+
+2026-10-21 05:15 UTC heartbeat：两端各 1506 样本、单元运行，最大间隔约 5.004 秒；全窗口 journal 入口 473 轮仍只含原两次降级，出口 474 轮全部 ACTIVE。无新增生产失败，VPN/日本每端点新增 126 次对照成功。05:05:19 入口宿主直连 Google DNS 单次约 2 秒超时，下次定时查询恢复；同批 VPN/日本路径正常，已保存两端前后至少两分钟证据，按对照路径孤立失败记录，不能算新代理断连或归因校园网。继续原定观察，下一次比较 [05:15 review](../../../docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0515Z-review.json)。

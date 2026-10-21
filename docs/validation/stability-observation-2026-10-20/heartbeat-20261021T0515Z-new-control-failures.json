@@ -1,0 +1,14 @@
+[
+  {
+    "type": "control",
+    "label": "host_dns_google",
+    "started_at": "2026-10-21T05:05:19.825136+00:00",
+    "at": "2026-10-21T05:05:21.863688+00:00",
+    "duration_ms": 2039,
+    "result": {
+      "exit": 9,
+      "rcode": null,
+      "query_ms": null
+    }
+  }
+]

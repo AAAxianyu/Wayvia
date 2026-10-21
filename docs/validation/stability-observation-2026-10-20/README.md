@@ -6,9 +6,13 @@
 
 ## 最近只读复核
 
+2026-10-21 05:15 UTC 复核（journal 截止 05:14:47）：两端诊断单元仍 active/running，各 1506 个样本，较上次新增 758/759 个；最大采样间隔约 5.004 秒，文件持续增长，未提前结束。入口完整 monitor 473 轮（471 ACTIVE / 已知 2 DEGRADED）、出口 474 轮全部 ACTIVE；无新生产失败或恢复事件，VPN/日本每个 HTTP/DNS 对照新增 126 次均成功。
+
+新增一个宿主直连 DNS 对照事件：入口 05:05:19 向 Google DNS 的查询在单次 2 秒预算内未收到响应，dig 退出 9；30 秒后下次定时查询恢复为 NOERROR / 41 ms。同批宿主 CF DNS、VPN 两个 DNS 和两个 HTTPS、日本对应对照均成功，未触发保护。已保留 05:03:19–05:07:22 的[入口](control-timeout-0505-ali.jsonl)/[出口](control-timeout-0505-jp.jsonl)采样；这次仅宿主直连对照失败不能写作 Wayvia 新断连，原因未确定。没有需用户处理的新业务异常，按静默规则记录，不修改生产或采样配置。[最新比较](heartbeat-20261021T0515Z-review.json)关联本次两端摘要和 monitor；下一次优先与此 review 比较。
+
 2026-10-21 04:11:35 UTC：两端采样单元仍为 active/running，分别累计 748/747 个样本，比上一份 Windows 诊断摘要各增加 133 个；最大采样间隔约 5.002 秒，没有损坏或未完成行，结束文件尚未生成。完整 monitor 日志入口 235 轮（233 ACTIVE / 2 DEGRADED）、出口 236 轮全部 ACTIVE。两次降级均为已向用户报告的 03:52、03:59 事件；自上次复核无新降级或受保护对照失败，新增每端点 22 次 VPN/日本 HTTP/DNS 对照全部成功。阿里云宿主两个 CF HTTPS 各新增 22 次原有基线超时，不计新事故。继续原定窗口，不重复通知、不重启采样。
 
-[本次比较与采样覆盖](heartbeat-20261021T0411Z-review.json)关联[入口摘要](heartbeat-20261021T0411Z-ali.json)、[出口摘要](heartbeat-20261021T0411Z-jp.json)和完整[入口 monitor](heartbeat-20261021T0411Z-monitor-ali.json)/[出口 monitor](heartbeat-20261021T0411Z-monitor-jp.json)。已补存两个已知事件从首个失败前至少两分钟至恢复后至少两分钟的两端完整脱敏采样：[入口](incidents-0352-0359-ali.jsonl)、[出口](incidents-0352-0359-jp.jsonl)。归因仍以[Windows 诊断事件分析](../windows-campus-2026-10-20/README.md)为准；采样中的重复 DEGRADED 证据不算新增事件。下一次跟进优先与这份 review 对比。
+[本次比较与采样覆盖](heartbeat-20261021T0411Z-review.json)关联[入口摘要](heartbeat-20261021T0411Z-ali.json)、[出口摘要](heartbeat-20261021T0411Z-jp.json)和完整[入口 monitor](heartbeat-20261021T0411Z-monitor-ali.json)/[出口 monitor](heartbeat-20261021T0411Z-monitor-jp.json)。已补存两个已知事件从首个失败前至少两分钟至恢复后至少两分钟的两端完整脱敏采样：[入口](incidents-0352-0359-ali.jsonl)、[出口](incidents-0352-0359-jp.jsonl)。归因仍以[Windows 诊断事件分析](../windows-campus-2026-10-20/README.md)为准；采样中的重复 DEGRADED 证据不算新增事件。此 review 保留为历史检查点。
 
 ## 窗口和当前证据
 
