@@ -1,0 +1,30 @@
+{
+  "status": "running_not_accepted",
+  "base_commit": "2b46212fdba2286718da84634acdea06112487e1",
+  "branch": "codex/stability-observation-20261020",
+  "run_id": "stability-20261020",
+  "unit": "wayvia-observe-stability-20261020",
+  "remote_directory": "/var/lib/wayvia/observations/stability-20261020",
+  "remote_script_directory": "/var/lib/wayvia/observations/bin-220d551082c5",
+  "automation": {
+    "id": "wayvia-24",
+    "kind": "heartbeat",
+    "interval": "hourly",
+    "completion": "pause after final evidence review"
+  },
+  "observer_sha256": "220d551082c5ec006891860eae9e0399a4ed5b4b70059e45e0f364dde106972c",
+  "summary_sha256": "3a08f5def1e3efe0294f7d78fba00a84f8cb124cdf770686020ccb6a8f0efad9",
+  "installed_wayvia_wheel_sha256": "6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31",
+  "hosts": {
+    "ali": {
+      "launched_at_utc": "2026-10-21T03:09:19.527873+00:00",
+      "until_utc": "2026-10-22T03:09:19.112548+00:00",
+      "production_units_and_default_route_unchanged": true
+    },
+    "jp": {
+      "launched_at_utc": "2026-10-21T03:09:22.978923+00:00",
+      "until_utc": "2026-10-22T03:09:21.680729+00:00",
+      "production_units_and_default_route_unchanged": true
+    }
+  }
+}

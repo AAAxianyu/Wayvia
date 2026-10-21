@@ -1,0 +1,88 @@
+{
+  "host": "jp",
+  "started_at": "2026-10-21T03:09:22.978923+00:00",
+  "until": "2026-10-22T03:09:21.680729+00:00",
+  "run_id": "stability-20261020",
+  "unit": "wayvia-observe-stability-20261020",
+  "exit": 0,
+  "checksums": {
+    "observe_stability.py": "220d551082c5ec006891860eae9e0399a4ed5b4b70059e45e0f364dde106972c",
+    "summarize_observation.py": "3a08f5def1e3efe0294f7d78fba00a84f8cb124cdf770686020ccb6a8f0efad9"
+  },
+  "before": {
+    "units": {
+      "wayvia-agent": [
+        "MainPID=81038",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=7515978197"
+      ],
+      "wayvia-api": [
+        "MainPID=162026",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=67150506202"
+      ],
+      "wayvia-monitor.timer": [
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=7655306344"
+      ],
+      "nginx": [
+        "MainPID=0",
+        "ActiveState=inactive",
+        "ActiveEnterTimestampMonotonic=0"
+      ],
+      "wayvia-exit": [
+        "MainPID=104793",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=21765037249"
+      ],
+      "wayvia-vpn-server": [
+        "MainPID=104737",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=21764350539"
+      ]
+    },
+    "default_route_sha256": "93320e219f5349c81bda5287a3d575d04672712f47858bb86f999eae928e8eb3"
+  },
+  "after": {
+    "units": {
+      "wayvia-agent": [
+        "MainPID=81038",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=7515978197"
+      ],
+      "wayvia-api": [
+        "MainPID=162026",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=67150506202"
+      ],
+      "wayvia-monitor.timer": [
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=7655306344"
+      ],
+      "nginx": [
+        "MainPID=0",
+        "ActiveState=inactive",
+        "ActiveEnterTimestampMonotonic=0"
+      ],
+      "wayvia-exit": [
+        "MainPID=104793",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=21765037249"
+      ],
+      "wayvia-vpn-server": [
+        "MainPID=104737",
+        "ActiveState=active",
+        "ActiveEnterTimestampMonotonic=21764350539"
+      ]
+    },
+    "default_route_sha256": "93320e219f5349c81bda5287a3d575d04672712f47858bb86f999eae928e8eb3"
+  },
+  "production_units_and_default_route_unchanged": true,
+  "limits": {
+    "runtime_max_seconds": 86460,
+    "memory_bytes": 134217728,
+    "tasks": 32,
+    "nice": 10,
+    "restart": "no"
+  }
+}

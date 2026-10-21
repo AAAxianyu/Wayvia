@@ -1,0 +1,131 @@
+{
+  "observed_at_utc": "2026-10-21T03:02:54.430946+00:00",
+  "since_utc": "2026-10-21T02:38:00+00:00",
+  "role": "exit",
+  "generation": "64fee7096d28466e9ab15d463e5a55e5",
+  "current_state": "ACTIVE",
+  "first_monitor": "2026-10-21T02:38:01.321161+00:00",
+  "last_monitor": "2026-10-21T03:02:42.885888+00:00",
+  "monitor_count": 94,
+  "state_counts": {
+    "ACTIVE": 94
+  },
+  "hourly_counts": {
+    "2026-10-21T02:00:00Z": {
+      "ACTIVE": 83
+    },
+    "2026-10-21T03:00:00Z": {
+      "ACTIVE": 11
+    }
+  },
+  "layer_timings": {
+    "access": {
+      "samples": 94,
+      "median_ms": 321.0,
+      "p95_ms": 398,
+      "max_ms": 785
+    },
+    "carrier": {
+      "samples": 94,
+      "median_ms": 297.5,
+      "p95_ms": 519,
+      "max_ms": 765
+    },
+    "vpn": {
+      "samples": 94,
+      "median_ms": 280.0,
+      "p95_ms": 361,
+      "max_ms": 636
+    },
+    "egress": {
+      "samples": 94,
+      "median_ms": 344.5,
+      "p95_ms": 425,
+      "max_ms": 980
+    },
+    "dns": {
+      "samples": 94,
+      "median_ms": 37.0,
+      "p95_ms": 45,
+      "max_ms": 191
+    },
+    "ipv6": {
+      "samples": 94,
+      "median_ms": 0.0,
+      "p95_ms": 1,
+      "max_ms": 1
+    },
+    "return": {
+      "samples": 94,
+      "median_ms": 4.0,
+      "p95_ms": 5,
+      "max_ms": 28
+    }
+  },
+  "failed_checks": [],
+  "fallbacks": [],
+  "state_transitions": [
+    {
+      "at": "2026-10-21T02:38:01.321161+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "units": {
+    "wayvia-agent": "active",
+    "wayvia-api": "active",
+    "wayvia-monitor.timer": "active",
+    "wayvia-exit": "active",
+    "wayvia-vpn-server": "active"
+  },
+  "unit_events": [],
+  "kernel_oom_kill_count_since": 0,
+  "uptime_seconds": 68656.92,
+  "completed_response_closes": [],
+  "requested_until_utc": null,
+  "unit_event_counts": {
+    "connection_reset": 192,
+    "tls_error": 178
+  },
+  "repetitive_vpn_server_event_examples": [
+    {
+      "at": "2026-10-21T02:38:00.470830+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T02:38:06.046146+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T02:38:15.859873+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "tls_error"
+    },
+    {
+      "at": "2026-10-21T02:38:15.859873+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "tls_error"
+    },
+    {
+      "at": "2026-10-21T02:38:16.198675+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "tls_error"
+    },
+    {
+      "at": "2026-10-21T02:38:16.198675+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "tls_error"
+    },
+    {
+      "at": "2026-10-21T02:38:22.453214+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "connection_reset"
+    },
+    {
+      "at": "2026-10-21T02:38:31.836352+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "connection_reset"
+    }
+  ]
+}

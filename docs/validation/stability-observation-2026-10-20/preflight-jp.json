@@ -1,0 +1,165 @@
+{
+  "samples": 15,
+  "monitor_states": {
+    "ACTIVE": 5
+  },
+  "transitions": [
+    {
+      "at": "2026-10-21T03:07:53.835047+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "failed_monitor_checks": [],
+  "failed_control_examples": [],
+  "completed_response_closes": 0,
+  "partial_lines_ignored": 0,
+  "peer_ping": {
+    "ok": 15
+  },
+  "carrier_connection_count": {
+    "1": 14,
+    "2": 1
+  },
+  "controls": {
+    "host_cf_primary": {
+      "ok": 3
+    },
+    "host_cf_alternative": {
+      "ok": 3
+    },
+    "host_dns_cf": {
+      "ok": 3
+    },
+    "host_dns_google": {
+      "ok": 3
+    }
+  },
+  "start": {
+    "type": "start",
+    "at": "2026-10-21T03:07:55.628439+00:00",
+    "role": "exit",
+    "generation": "64fee7096d28466e9ab15d463e5a55e5",
+    "until": "2026-10-21T03:09:09.263180+00:00",
+    "sample_interval_seconds": 5,
+    "control_interval_seconds": 30,
+    "max_bytes": 100663296,
+    "scope": "diagnostics_only_no_health_decision_or_mutation",
+    "ntp": true
+  },
+  "latest_record_at": "2026-10-21T03:09:05.733404+00:00",
+  "sample_gap_seconds": {
+    "count": 14,
+    "median": 5.000179670510988,
+    "p95": 5.001019429997541,
+    "max": 5.001019429997541
+  },
+  "cpu_busy_percent_excluding_iowait": {
+    "count": 14,
+    "median": 5.110040160642571,
+    "p95": 34.0,
+    "max": 34.0
+  },
+  "peer_ping_rtt_ms": {
+    "count": 15,
+    "median": 38.7,
+    "p95": 39.1,
+    "max": 39.1
+  },
+  "timings": {
+    "carrier_tcp_rtt_ms": {
+      "count": 16,
+      "median": 50.29,
+      "p95": 51.515,
+      "max": 51.515
+    },
+    "host_cf_primary_time_connect_ms": {
+      "count": 3,
+      "median": 4.231999999999999,
+      "p95": 5.346,
+      "max": 5.346
+    },
+    "host_cf_primary_time_appconnect_ms": {
+      "count": 3,
+      "median": 122.492,
+      "p95": 217.73899999999998,
+      "max": 217.73899999999998
+    },
+    "host_cf_primary_time_starttransfer_ms": {
+      "count": 3,
+      "median": 128.153,
+      "p95": 225.938,
+      "max": 225.938
+    },
+    "host_cf_primary_time_total_ms": {
+      "count": 3,
+      "median": 128.193,
+      "p95": 226.415,
+      "max": 226.415
+    },
+    "host_cf_alternative_time_connect_ms": {
+      "count": 3,
+      "median": 7.2989999999999995,
+      "p95": 7.575,
+      "max": 7.575
+    },
+    "host_cf_alternative_time_appconnect_ms": {
+      "count": 3,
+      "median": 121.93299999999999,
+      "p95": 221.831,
+      "max": 221.831
+    },
+    "host_cf_alternative_time_starttransfer_ms": {
+      "count": 3,
+      "median": 128.416,
+      "p95": 231.653,
+      "max": 231.653
+    },
+    "host_cf_alternative_time_total_ms": {
+      "count": 3,
+      "median": 128.466,
+      "p95": 231.685,
+      "max": 231.685
+    },
+    "host_dns_cf_query_ms": {
+      "count": 3,
+      "median": 5,
+      "p95": 6,
+      "max": 6
+    },
+    "host_dns_google_query_ms": {
+      "count": 3,
+      "median": 11,
+      "p95": 14,
+      "max": 14
+    }
+  },
+  "host_global_tcp_delta": {
+    "Tcp:InSegs": 1587,
+    "Tcp:OutSegs": 1599,
+    "Tcp:RetransSegs": 0,
+    "Tcp:InErrs": 0,
+    "TcpExt:ListenDrops": 0,
+    "TcpExt:TCPLostRetransmit": 0,
+    "TcpExt:TCPTimeouts": 0,
+    "TcpExt:TCPMemoryPressures": 0,
+    "TcpExt:TCPSynRetrans": 0
+  },
+  "end": {
+    "type": "end",
+    "at": "2026-10-21T03:09:09.263362+00:00",
+    "reason": "deadline",
+    "bytes_written": 35075
+  },
+  "file_bytes": 35075,
+  "limits": "First 100 failed examples only; counts complete. Sampled monitor snapshots can miss intermediate states: reconcile with journal. Global TCP counters include other workloads. ICMP misses alone are not service failures. No phone or failure-injection acceptance.",
+  "observer_unit": {
+    "MainPID": "0",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "MemoryCurrent": "[not set]",
+    "MemoryPeak": "[not set]",
+    "CPUUsageNSec": "[not set]",
+    "ActiveState": "inactive",
+    "SubState": "dead"
+  }
+}

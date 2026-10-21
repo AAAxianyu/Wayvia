@@ -613,3 +613,35 @@ server_followup_2026_10_20:
     generations_and_logical_config: unchanged
   evidence: docs/validation/server-followup-2026-10-20/README.md
   versions: docs/validation/server-followup-2026-10-20/source-and-versions.json
+
+stability_observation_2026_10_20:
+  base_commit: 2b46212fdba2286718da84634acdea06112487e1
+  branch: codex/stability-observation-20261020
+  status: running_not_accepted
+  window_utc: 2026-10-21T03:09Z_to_2026-10-22T03:09Z
+  observer: independent_read_only_diagnostics_no_health_decision
+  run_id: stability-20261020
+  heartbeat_id: wayvia-24
+  heartbeat_interval: hourly_until_final_review_then_pause
+  python_server: 3.12.3
+  production_wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
+  production_services_and_default_route: unchanged_at_start
+  preflight:
+    seconds_each_host: 75
+    samples_each_host: 15
+    exit_reason_both: deadline
+    crossborder_ping_median_ms: {ali: 38.6, jp: 38.7}
+    vpn_and_exit_HTTP_DNS_controls: all_passed_3_each_endpoint
+    ali_host_direct_Cloudflare_HTTPS: timeout_baseline_not_proxy_failure
+  gates:
+    check: passed_369_tests_3_existing_warnings
+    demo: passed_simulated
+    test_configs: passed_10_real_artifacts
+    final_redaction_tightening: passed_12_targeted_tests_format_lint
+    test_lab: deferred_by_user_not_executed_not_passed
+  acceptance:
+    long_term_stability: pending
+    actual_timeout_root_cause: unresolved
+    phone: not_tested
+    fault_and_reboot: deferred_by_user
+  evidence: docs/validation/stability-observation-2026-10-20/README.md

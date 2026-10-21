@@ -1,0 +1,222 @@
+{
+  "samples": 3,
+  "monitor_states": {
+    "ACTIVE": 2
+  },
+  "transitions": [
+    {
+      "at": "2026-10-21T03:09:12.794106+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "failed_monitor_checks": [],
+  "failed_control_examples": [
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T03:09:19.669231+00:00",
+      "at": "2026-10-21T03:09:21.708665+00:00",
+      "duration_ms": 2039,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00643,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T03:09:19.670186+00:00",
+      "at": "2026-10-21T03:09:21.699700+00:00",
+      "duration_ms": 2030,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.003567,
+        "size_download": 0
+      }
+    }
+  ],
+  "completed_response_closes": 0,
+  "partial_lines_ignored": 0,
+  "peer_ping": {
+    "ok": 3
+  },
+  "carrier_connection_count": {
+    "1": 3
+  },
+  "controls": {
+    "host_cf_primary": {
+      "failed": 1
+    },
+    "host_cf_alternative": {
+      "failed": 1
+    },
+    "host_dns_cf": {
+      "ok": 1
+    },
+    "host_dns_google": {
+      "ok": 1
+    },
+    "vpn_cf_primary": {
+      "ok": 1
+    },
+    "vpn_cf_alternative": {
+      "ok": 1
+    },
+    "vpn_dns_cf": {
+      "ok": 1
+    },
+    "vpn_dns_google": {
+      "ok": 1
+    }
+  },
+  "start": {
+    "type": "start",
+    "at": "2026-10-21T03:09:19.522090+00:00",
+    "role": "ingress",
+    "generation": "6f80275960ed46238f51691722e918b5",
+    "until": "2026-10-22T03:09:19.112548+00:00",
+    "sample_interval_seconds": 5,
+    "control_interval_seconds": 30,
+    "max_bytes": 100663296,
+    "scope": "diagnostics_only_no_health_decision_or_mutation",
+    "ntp": true
+  },
+  "latest_record_at": "2026-10-21T03:09:29.613250+00:00",
+  "sample_gap_seconds": {
+    "count": 2,
+    "median": 5.00010808557272,
+    "p95": 5.000112662091851,
+    "max": 5.000112662091851
+  },
+  "cpu_busy_percent_excluding_iowait": {
+    "count": 2,
+    "median": 12.706018319120222,
+    "p95": 18.31983805668016,
+    "max": 18.31983805668016
+  },
+  "peer_ping_rtt_ms": {
+    "count": 3,
+    "median": 38.6,
+    "p95": 38.8,
+    "max": 38.8
+  },
+  "timings": {
+    "carrier_tcp_rtt_ms": {
+      "count": 3,
+      "median": 47.913,
+      "p95": 48.915,
+      "max": 48.915
+    },
+    "host_dns_cf_query_ms": {
+      "count": 1,
+      "median": 67,
+      "p95": 67,
+      "max": 67
+    },
+    "host_dns_google_query_ms": {
+      "count": 1,
+      "median": 43,
+      "p95": 43,
+      "max": 43
+    },
+    "vpn_cf_primary_time_connect_ms": {
+      "count": 1,
+      "median": 48.436,
+      "p95": 48.436,
+      "max": 48.436
+    },
+    "vpn_cf_primary_time_appconnect_ms": {
+      "count": 1,
+      "median": 128.69400000000002,
+      "p95": 128.69400000000002,
+      "max": 128.69400000000002
+    },
+    "vpn_cf_primary_time_starttransfer_ms": {
+      "count": 1,
+      "median": 178.63000000000002,
+      "p95": 178.63000000000002,
+      "max": 178.63000000000002
+    },
+    "vpn_cf_primary_time_total_ms": {
+      "count": 1,
+      "median": 178.672,
+      "p95": 178.672,
+      "max": 178.672
+    },
+    "vpn_cf_alternative_time_connect_ms": {
+      "count": 1,
+      "median": 47.439,
+      "p95": 47.439,
+      "max": 47.439
+    },
+    "vpn_cf_alternative_time_appconnect_ms": {
+      "count": 1,
+      "median": 119.61099999999999,
+      "p95": 119.61099999999999,
+      "max": 119.61099999999999
+    },
+    "vpn_cf_alternative_time_starttransfer_ms": {
+      "count": 1,
+      "median": 170.623,
+      "p95": 170.623,
+      "max": 170.623
+    },
+    "vpn_cf_alternative_time_total_ms": {
+      "count": 1,
+      "median": 170.661,
+      "p95": 170.661,
+      "max": 170.661
+    },
+    "vpn_dns_cf_query_ms": {
+      "count": 1,
+      "median": 48,
+      "p95": 48,
+      "max": 48
+    },
+    "vpn_dns_google_query_ms": {
+      "count": 1,
+      "median": 48,
+      "p95": 48,
+      "max": 48
+    }
+  },
+  "host_global_tcp_delta": {
+    "Tcp:InSegs": 349,
+    "Tcp:OutSegs": 378,
+    "Tcp:RetransSegs": 4,
+    "Tcp:InErrs": 0,
+    "TcpExt:ListenDrops": 0,
+    "TcpExt:TCPLostRetransmit": 0,
+    "TcpExt:TCPTimeouts": 2,
+    "TcpExt:TCPMemoryPressures": 0,
+    "TcpExt:TCPSynRetrans": 2
+  },
+  "end": null,
+  "file_bytes": 10226,
+  "limits": "First 100 failed examples only; counts complete. Sampled monitor snapshots can miss intermediate states: reconcile with journal. Global TCP counters include other workloads. ICMP misses alone are not service failures. No phone or failure-injection acceptance.",
+  "observer_unit": {
+    "MainPID": "2790488",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "MemoryCurrent": "9809920",
+    "MemoryPeak": "19222528",
+    "CPUUsageNSec": "351406000",
+    "ActiveState": "active",
+    "SubState": "running"
+  }
+}

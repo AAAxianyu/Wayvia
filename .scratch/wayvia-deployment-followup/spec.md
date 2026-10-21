@@ -3,11 +3,11 @@
 Status: open
 Updated: 2026-10-20
 
-本轮完成不依赖手机的订阅提速、安装权限修复，并取得稳定性续查和误判修复证据。本目录按仓库 issue tracker 约定逐项记录接续工作；不创建定时任务，不自动恢复手机测试，也不授权购买带宽或故障注入。
+本轮完成不依赖手机的订阅提速、安装权限修复，并取得稳定性续查和误判修复证据。本目录按仓库 issue tracker 约定逐项记录接续工作；本次按用户要求创建有限观察窗口的每小时跟进，不自动恢复手机测试，也不授权购买带宽或故障注入。
 
 ## 下次从这里继续
 
-1. 先读[最新实现状态](../../docs/implementation-status.md)和[最新续查报告](../../docs/validation/server-followup-2026-10-20/README.md)，再检查 Git 工作区。主工作区原有未提交的进度检查记录独立保留，不能覆盖或误算成本次提交。
+1. 先读 [24 小时观察与接续流程](../../docs/validation/stability-observation-2026-10-20/README.md)、[最新实现状态](../../docs/implementation-status.md)和[最新续查报告](../../docs/validation/server-followup-2026-10-20/README.md)，再检查 Git 工作区。主工作区原有未提交的进度检查记录独立保留，不能覆盖或误算成本次提交。
 2. 优先处理 01 稳定性只读复核；手机就绪时处理 02/04，提供商账号资料可用时处理 03。08、09 已完成；01 的真实超时原因和修复后长周期观察仍未完成。
 3. 手机由用户手动停止并移除，临时 ADB 转发已清空；这不是断连。重新测试前确认设备和客户端状态，不自动改用旧私密缓存中的链接或凭据。
 4. 故障和重启测试继续暂缓，包括 05 的完整隔离目标及 06 的真实测试。开始这些项前先确认用户恢复授权和具体范围。
@@ -24,11 +24,11 @@ Updated: 2026-10-20
 
 ## 待办索引
 
-`open` 表示可开始独立工作，`blocked` 表示缺少明确输入，`deferred` 表示用户暂缓。`done` 表示该票本轮约定范围已完成，不代表整个 M6 验收。
+`in_progress` 表示观察进行中，`open` 表示可开始独立工作，`blocked` 表示缺少明确输入，`deferred` 表示用户暂缓。`done` 表示该票本轮约定范围已完成，不代表整个 M6 验收。
 
 | 待办 | 优先级 | 状态 |
 | --- | --- | --- |
-| [01 持续观察探针与自然断连](issues/01-long-term-stability.md) | P1 | open |
+| [01 持续观察探针与自然断连](issues/01-long-term-stability.md) | P1 | in_progress |
 | [02 拆分手机首次建连延迟](issues/02-phone-cold-connection-latency.md) | P1 | blocked |
 | [03 核实日本公网出站额度与吞吐瓶颈](issues/03-egress-bandwidth.md) | P1 | blocked |
 | [04 补齐实体 Android 分流与协议矩阵](issues/04-mobile-routing-acceptance.md) | P1 | blocked |

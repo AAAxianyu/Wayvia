@@ -1,0 +1,26 @@
+[
+  {
+    "target": "check",
+    "exit": 0,
+    "seconds": 76.98,
+    "log": "check.log"
+  },
+  {
+    "target": "demo",
+    "exit": 0,
+    "seconds": 0.81,
+    "log": "demo.log"
+  },
+  {
+    "target": "test-configs",
+    "exit": 0,
+    "seconds": 19.76,
+    "log": "test-configs.log"
+  },
+  {
+    "target": "test-lab",
+    "status": "deferred_by_user",
+    "executed": false,
+    "reason": "Includes fault/recovery experiments; user explicitly deferred fault and reboot tests."
+  }
+]

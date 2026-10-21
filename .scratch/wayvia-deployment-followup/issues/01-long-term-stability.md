@@ -1,6 +1,6 @@
 # 01 持续观察探针与自然断连
 
-Status: open
+Status: in_progress
 Priority: P1
 
 ## 当前证据
@@ -33,3 +33,5 @@ Priority: P1
 2026-10-20：按用户指示开始不依赖手机的续查；故障与重启测试继续暂缓。
 
 2026-10-20 续查：完成历史复核并修复一个已证明误判；保留 open 给真实超时根因与修复后长期观察。没有创建定时任务。
+
+2026-10-20 长期观察：已启动独立的 24 小时正常采样，UTC 2026-10-21 03:09 至 10-22 03:09，heartbeat `wayvia-24` 每小时只读复核。75 秒预运行正常到期退出，跨境 RTT 约 39 ms、VPN/出口 HTTP/DNS 全通过；阿里云宿主 CF HTTPS 直连超时作为独立对照基线。真实超时根因仍未知，完整窗口未完成。见 [观察报告](../../../docs/validation/stability-observation-2026-10-20/README.md) 和 [接续参数](../../../docs/validation/stability-observation-2026-10-20/run.json)。故障和重启继续暂缓。
