@@ -1,0 +1,16 @@
+{
+  "core": "Mihomo Meta v1.19.13",
+  "platform": "linux arm64",
+  "scope": "new desktop subscription configuration validation only",
+  "command": [
+    "mihomo",
+    "-t",
+    "-f",
+    "<private desktop profile>",
+    "-d",
+    "<disposable directory>"
+  ],
+  "exit_code": 0,
+  "tls_verified_https_download": true,
+  "physical_client_import": "pending"
+}

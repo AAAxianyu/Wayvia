@@ -46,6 +46,11 @@ class AgentDataplane:
 
         return AgentClient(self.socket_path).request({"operation": "status"})
 
+    def usage(self):
+        from wayvia.agent.client import AgentClient
+
+        return AgentClient(self.socket_path, timeout=5).request({"operation": "device_usage"})
+
     def block(self):
         from wayvia.agent.client import AgentClient
 
@@ -96,6 +101,8 @@ class ControlService:
         )
 
     def _public(self, row):
+        from wayvia.services.usage import UsageStore
+
         return {
             key: row[key]
             for key in (
@@ -109,7 +116,26 @@ class ControlService:
                 "updated_at",
                 "desired_action",
             )
-        } | {"evidence": json.loads(row["evidence"]), "simulated": self.dataplane.simulated}
+        } | {
+            "evidence": json.loads(row["evidence"]),
+            "simulated": self.dataplane.simulated,
+            "usage": UsageStore(self.db).device(row["id"]),
+        }
+
+    def collect_usage(self):
+        from wayvia.services.usage import UsageStore
+
+        store = UsageStore(self.db)
+        try:
+            if self.dataplane.simulated:
+                raise WayviaError("USAGE_SIMULATED", "Simulation cannot observe real device usage")
+            sample = self.dataplane.usage()
+            store.record(sample)
+        except (WayviaError, OSError, ValueError) as exc:
+            code = exc.code if isinstance(exc, WayviaError) else "USAGE_COLLECTION_FAILED"
+            store.failure(code)
+            return {"status": "unavailable", "code": code}
+        return {"status": "observed", "observed_at": sample["observed_at"]}
 
     def device(self, device_id: str) -> dict:
         with self.db.connect() as connection:
@@ -409,7 +435,9 @@ class ControlService:
         expires = time.time() + lifetime
         with self.db.connect() as connection:
             connection.execute(
-                "INSERT INTO subscriptions VALUES(?,?,?,?,?,?,?)",
+                "INSERT INTO subscriptions "
+                "(id,device_id,token_hash,format,expires_at,revoked_at,created_at) "
+                "VALUES(?,?,?,?,?,?,?)",
                 (subscription_id, device_id, digest(token), format, expires, None, time.time()),
             )
             self._audit(connection, "subscription.issue", subscription_id, "issued")
@@ -435,7 +463,28 @@ class ControlService:
             raise WayviaError(
                 "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
             )
-        return self.export(row["device_id"], format)
+        text = self.export(row["device_id"], format)
+        with self.db.connect() as connection:
+            cursor = connection.execute(
+                "UPDATE subscriptions SET last_fetched_at=?,fetch_count=fetch_count+1 "
+                "WHERE id=? AND revoked_at IS NULL AND expires_at>?",
+                (time.time(), row["id"], time.time()),
+            )
+            if cursor.rowcount != 1:
+                raise WayviaError(
+                    "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
+                )
+        return text
+
+    def subscriptions(self):
+        with self.db.connect() as connection:
+            return [
+                dict(row)
+                for row in connection.execute(
+                    "SELECT id,device_id,format,expires_at,revoked_at,created_at,last_fetched_at,"
+                    "fetch_count FROM subscriptions ORDER BY created_at"
+                )
+            ]
 
     def revoke_subscription(self, subscription_id: str) -> dict:
         with self.db.connect() as connection:

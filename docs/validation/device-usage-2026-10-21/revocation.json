@@ -1,0 +1,11 @@
+{
+  "id": "2b6377342542475baff413f20541c988",
+  "status": "revoked",
+  "desired_action": null,
+  "code": null,
+  "start": "2026-10-21T10:23:23.601774+00:00",
+  "end": "2026-10-21T10:23:25.806653+00:00",
+  "exit": 0,
+  "old_user_present": false,
+  "active_devices": 0
+}

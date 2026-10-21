@@ -1,0 +1,35 @@
+{
+  "start_utc": "2026-10-21T10:36:45.579584+00:00",
+  "maintenance": "authorized account replacement and usage deployment",
+  "fault_injection": false,
+  "host_reboot": false,
+  "devices": {
+    "phone": {
+      "id": "2d8441dce1ba433c96f945079a331a99",
+      "name": "phone-primary",
+      "subscription_id": "14b87c83f584490397160464c5d8c40b",
+      "expires_at": 1824115020.1586266
+    },
+    "desktop": {
+      "id": "00161652dc2f488d94692665a0ef884c",
+      "name": "computer-primary",
+      "subscription_id": "8712675d3a024fc083e82047fc4ba9d5",
+      "expires_at": 1824115028.0838969
+    }
+  },
+  "usage_collection": {
+    "status": "observed",
+    "observed_at": 1792579036.1108482
+  },
+  "wheel_sha256": "7d312506bc5ec20def75bded8bd909fd3b8627ab95376ab550bb2c66e7e8d7a2",
+  "status": "deployed",
+  "end_utc": "2026-10-21T10:37:16.225518+00:00",
+  "services": {
+    "wayvia-agent": "active",
+    "wayvia-api": "active",
+    "wayvia-ingress": "active",
+    "wayvia-usage": "active",
+    "wayvia-monitor.timer": "active",
+    "wayvia-observe-stability-20261020": "active"
+  }
+}

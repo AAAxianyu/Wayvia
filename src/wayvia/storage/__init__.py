@@ -36,6 +36,21 @@ MIGRATIONS = {
       confirmations_json TEXT NOT NULL, published_at REAL NOT NULL
     );
     """,
+    3: """
+    ALTER TABLE subscriptions ADD COLUMN last_fetched_at REAL;
+    ALTER TABLE subscriptions ADD COLUMN fetch_count INTEGER NOT NULL DEFAULT 0;
+    CREATE TABLE device_usage (
+      device_id TEXT PRIMARY KEY REFERENCES devices(id),
+      upload_bytes INTEGER NOT NULL DEFAULT 0, download_bytes INTEGER NOT NULL DEFAULT 0,
+      active_connections INTEGER NOT NULL DEFAULT 0, last_used_at REAL,
+      observed_at REAL, started_at REAL NOT NULL
+    );
+    CREATE TABLE usage_connections (
+      id TEXT PRIMARY KEY, device_id TEXT NOT NULL REFERENCES devices(id),
+      upload_bytes INTEGER NOT NULL, download_bytes INTEGER NOT NULL,
+      closed_at REAL, observed_at REAL NOT NULL
+    );
+    """,
 }
 
 

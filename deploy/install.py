@@ -33,6 +33,7 @@ MANIFEST = "var/lib/wayvia/install-manifest.json"
 JOURNAL = "var/lib/wayvia/install-transaction.json"
 UNITS = (
     "wayvia-api.service",
+    "wayvia-usage.service",
     "wayvia-agent.service",
     "wayvia-recover.service",
     "wayvia-monitor.service",
@@ -403,6 +404,10 @@ def install_layout(
         data = (source_root / "deploy/systemd" / filename).read_bytes()
         payloads["etc/systemd/system/" + filename] = (data, 0o644)
     payloads["etc/systemd/system/wayvia-api.service"] = (api_unit(), 0o644)
+    payloads["etc/systemd/system/wayvia-usage.service"] = (
+        (source_root / "deploy/systemd/wayvia-usage.service").read_bytes(),
+        0o644,
+    )
     payloads["etc/wayvia/agent.env"] = (f"WAYVIA_API_UID={api_uid}\n".encode(), 0o600)
     payloads["etc/tmpfiles.d/wayvia.conf"] = (
         b"d /run/wayvia 0750 root wayvia -\nd /var/lib/wayvia 0750 root wayvia -\n",

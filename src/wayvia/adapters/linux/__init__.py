@@ -754,7 +754,22 @@ class LinuxExecutor:
         inbound = next(i for i in config["inbounds"] if i["type"] == "trojan")
         inbound["users"] = [u for u in inbound["users"] if u["name"] != PROBE_USER]
         inbound["users"].append({"name": PROBE_USER, "password": path.read_text()})
+        from wayvia.adapters.singbox.usage import api_config
+
+        usage_secret = self.state_dir / "usage-api-secret"
+        if not usage_secret.exists():
+            atomic_write(usage_secret, secrets.token_urlsafe(32))
+        config["services"] = [api_config(usage_secret.read_text())]
         return action.model_copy(update={"content": json.dumps(config)})
+
+    def device_usage(self):
+        from wayvia.adapters.singbox.usage import snapshot
+
+        try:
+            secret = (self.state_dir / "usage-api-secret").read_text()
+        except OSError:
+            raise AdapterError("USAGE_UNAVAILABLE", "Ingress usage is not configured") from None
+        return snapshot(secret)
 
     def sync_devices(self, devices, revision):
         path = self.config_dir / "ingress.json"

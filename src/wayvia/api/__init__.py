@@ -191,6 +191,10 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
     def devices():
         return {"devices": service.devices()}
 
+    @app.get("/api/v1/subscriptions", dependencies=admin)
+    def subscriptions():
+        return {"subscriptions": service.subscriptions()}
+
     @app.post("/api/v1/devices", dependencies=admin)
     def add_device(data: DeviceInput, idempotency_key: str | None = Header(default=None)):
         return idempotent(

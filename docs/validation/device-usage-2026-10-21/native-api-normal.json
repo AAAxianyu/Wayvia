@@ -1,0 +1,21 @@
+{
+  "scope": "isolated native API normal-path only",
+  "core": "sing-box 1.14.3",
+  "unauthenticated_rejected": true,
+  "devices": {
+    "phone": {
+      "attributed": true,
+      "online_observed": true,
+      "closed_observed": true,
+      "upload_bytes": 78,
+      "download_bytes": 65651
+    },
+    "desktop": {
+      "attributed": true,
+      "online_observed": true,
+      "closed_observed": true,
+      "upload_bytes": 78,
+      "download_bytes": 65651
+    }
+  }
+}

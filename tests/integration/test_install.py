@@ -127,6 +127,7 @@ def inputs(tmp_path):
         "wayvia-recover.service",
         "wayvia-monitor.service",
         "wayvia-monitor.timer",
+        "wayvia-usage.service",
     ):
         (source / "deploy/systemd" / unit).write_text("[Unit]\nDescription=Isolated test fixture\n")
     lock = {"schema_version": 1, "components": {}}

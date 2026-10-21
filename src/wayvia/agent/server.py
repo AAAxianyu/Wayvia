@@ -40,6 +40,7 @@ def dispatch(manager, request):
         "baseline": {"operation", "plan"},
         "block_ingress": {"operation"},
         "sync_devices": {"operation", "devices", "revision"},
+        "device_usage": {"operation"},
     }
     if operation not in permitted or set(request) != permitted[operation]:
         raise AdapterError("OPERATION_FORBIDDEN", "Request is outside the fixed agent protocol")
@@ -54,6 +55,8 @@ def dispatch(manager, request):
         return manager.rollback(request["transaction_id"])
     if operation == "status":
         return manager.status()
+    if operation == "device_usage":
+        return manager.executor.device_usage()
     if operation == "recover":
         return manager.recover(rebuild_active=True)
     if operation == "sync_devices":

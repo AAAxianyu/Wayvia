@@ -235,6 +235,40 @@ def list_devices(ctx: typer.Context):
     output({"devices": service(ctx).devices()})
 
 
+@device_app.command("usage")
+@guarded
+def device_usage(ctx: typer.Context):
+    """Observed authenticated connections and proxy payload totals (not billing)."""
+    output(
+        {
+            "devices": [
+                {key: device[key] for key in ("id", "name", "platform", "status", "usage")}
+                for device in service(ctx).devices()
+            ]
+        }
+    )
+
+
+@app.command("usage-collect")
+@guarded
+def usage_collect(ctx: typer.Context, once: bool = False):
+    """Collect every five seconds; reads the fixed local agent operation only."""
+    import time
+
+    control = service(ctx)
+    while True:
+        started = time.monotonic()
+        result = control.collect_usage()
+        if once:
+            output(result)
+            if result["status"] != "observed":
+                raise typer.Exit(int(ExitCode.RUNTIME))
+            return
+        if result["status"] != "observed":
+            output(result)
+        time.sleep(max(0.1, 5 - (time.monotonic() - started)))
+
+
 @device_app.command("rotate")
 @guarded
 def rotate(ctx: typer.Context, device: str):
@@ -279,7 +313,15 @@ def issue(ctx: typer.Context, device: str, format: str = "sing-box", lifetime: i
 @subscription_app.command("revoke")
 @guarded
 def revoke_subscription(ctx: typer.Context, subscription: str):
+    """Revoke download permission only. Use device revoke to also cut off traffic."""
     output(service(ctx).revoke_subscription(subscription))
+
+
+@subscription_app.command("list")
+@guarded
+def list_subscriptions(ctx: typer.Context):
+    """List subscription metadata and fetch times without bearer tokens."""
+    output({"subscriptions": service(ctx).subscriptions()})
 
 
 @secret_app.command("import")

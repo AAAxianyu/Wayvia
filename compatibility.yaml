@@ -1,4 +1,38 @@
 schema_version: 1
+device_usage_20261021:
+  branch: codex/device-usage-20261021
+  baseline_commit: 20e33ab
+  status: deployed_ali_ingress_normal_paths_verified
+  sing_box: 1.14.3
+  native_api_version: 4
+  grpcio: 1.76.0
+  protobuf: 6.33.0
+  listener: loopback_authenticated_127.0.0.1_19090
+  collection_interval_seconds: 5
+  stale_after_seconds: 20
+  accounting: best_effort_authenticated_proxy_payload_not_billing
+  online_semantics: observed_active_authenticated_connections_not_physical_reachability
+  desktop_core_config_validation: mihomo_1.19.13_linux_arm64_passed
+  physical_client_import: pending_user_import_of_new_link
+  installed_wheel_sha256: 7d312506bc5ec20def75bded8bd909fd3b8627ab95376ab550bb2c66e7e8d7a2
+  gates:
+    check: passed_377_tests_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_10_real_component_checks
+    native_usage: passed_isolated_two_credentials_normal_path
+    test_lab: deferred_by_user_no_current_pass_claim
+  production:
+    old_subscriptions_revoked: 3
+    old_shared_device_revoked_and_absent_from_recovery: true
+    independent_active_devices: 2
+    new_https_subscriptions_verified: 2
+    both_new_accounts_HTTPS_200_and_usage_attributed: true
+    old_account_HTTP_000_valid_control_HTTP_200: true
+    public_management_HTTP: 404
+    japan_changed: false
+    original_ingress_routing_and_TLS_unchanged: true
+    observer_not_restarted_or_extended: true
+  evidence: docs/validation/device-usage-2026-10-21/README.md
 resolved_at: '2026-10-15'
 rolling_diagnostics_incidents:
   date: '2026-10-25'

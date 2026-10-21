@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-21T10:39:10.515350+00:00",
+  "scope": "authorized server-side account acceptance; not physical client usage",
+  "devices": {
+    "phone": {
+      "http_status": "HTTP/1.1 200 OK",
+      "online_observed": true,
+      "upload_positive": true,
+      "download_positive": true
+    },
+    "desktop": {
+      "http_status": "HTTP/1.1 200 OK",
+      "online_observed": true,
+      "upload_positive": true,
+      "download_positive": true
+    }
+  },
+  "usage_api_auth_required": true,
+  "usage_listener_loopback_only": true,
+  "old_device_revoked": true,
+  "old_credential_absent": true,
+  "old_recovery_credential_absent": true,
+  "old_subscriptions_revoked": true,
+  "distinct_device_passwords": true,
+  "device_usage": [
+    {
+      "id": "2b6377342542475baff413f20541c988",
+      "name": "android-primary",
+      "platform": "android",
+      "status": "revoked",
+      "usage": {
+        "online": false,
+        "status": "offline",
+        "active_connections": 0,
+        "last_used_at": null,
+        "upload_bytes": 0,
+        "download_bytes": 0,
+        "total_bytes": 0,
+        "observed_at": 1792579152.5985224,
+        "counting_since": 1792579030.2799628,
+        "last_subscription_fetch_at": null,
+        "subscription_fetches": 0,
+        "accounting": "best_effort_proxy_payload",
+        "gaps": 0,
+        "last_gap_reason": null,
+        "collection_error": null
+      }
+    },
+    {
+      "id": "2d8441dce1ba433c96f945079a331a99",
+      "name": "phone-primary",
+      "platform": "android",
+      "status": "active",
+      "usage": {
+        "online": false,
+        "status": "offline",
+        "active_connections": 0,
+        "last_used_at": 1792579150.833,
+        "upload_bytes": 684,
+        "download_bytes": 5411,
+        "total_bytes": 6095,
+        "observed_at": 1792579152.5985224,
+        "counting_since": 1792579030.2799628,
+        "last_subscription_fetch_at": null,
+        "subscription_fetches": 0,
+        "accounting": "best_effort_proxy_payload",
+        "gaps": 0,
+        "last_gap_reason": null,
+        "collection_error": null
+      }
+    },
+    {
+      "id": "00161652dc2f488d94692665a0ef884c",
+      "name": "computer-primary",
+      "platform": "desktop",
+      "status": "active",
+      "usage": {
+        "online": false,
+        "status": "offline",
+        "active_connections": 0,
+        "last_used_at": 1792579151.042,
+        "upload_bytes": 684,
+        "download_bytes": 5413,
+        "total_bytes": 6097,
+        "observed_at": 1792579152.5985224,
+        "counting_since": 1792579030.2799628,
+        "last_subscription_fetch_at": null,
+        "subscription_fetches": 0,
+        "accounting": "best_effort_proxy_payload",
+        "gaps": 0,
+        "last_gap_reason": null,
+        "collection_error": null
+      }
+    }
+  ]
+}

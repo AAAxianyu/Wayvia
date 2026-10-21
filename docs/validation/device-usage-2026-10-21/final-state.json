@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-21T10:40:54.359439+00:00",
+  "ingress_routing_and_tls_unchanged": true,
+  "devices": [
+    {
+      "id": "2b6377342542475baff413f20541c988",
+      "name": "android-primary",
+      "platform": "android",
+      "status": "revoked",
+      "usage": {
+        "online": false,
+        "status": "offline",
+        "active_connections": 0,
+        "last_used_at": null,
+        "upload_bytes": 0,
+        "download_bytes": 0,
+        "total_bytes": 0,
+        "observed_at": 1792579255.2492404,
+        "counting_since": 1792579030.2799628,
+        "last_subscription_fetch_at": null,
+        "subscription_fetches": 0,
+        "accounting": "best_effort_proxy_payload",
+        "gaps": 0,
+        "last_gap_reason": null,
+        "collection_error": null
+      }
+    },
+    {
+      "id": "2d8441dce1ba433c96f945079a331a99",
+      "name": "phone-primary",
+      "platform": "android",
+      "status": "active",
+      "usage": {
+        "online": false,
+        "status": "offline",
+        "active_connections": 0,
+        "last_used_at": 1792579150.833,
+        "upload_bytes": 684,
+        "download_bytes": 5411,
+        "total_bytes": 6095,
+        "observed_at": 1792579255.2492404,
+        "counting_since": 1792579030.2799628,
+        "last_subscription_fetch_at": 1792579187.9164824,
+        "subscription_fetches": 1,
+        "accounting": "best_effort_proxy_payload",
+        "gaps": 0,
+        "last_gap_reason": null,
+        "collection_error": null
+      }
+    },
+    {
+      "id": "00161652dc2f488d94692665a0ef884c",
+      "name": "computer-primary",
+      "platform": "desktop",
+      "status": "active",
+      "usage": {
+        "online": false,
+        "status": "offline",
+        "active_connections": 0,
+        "last_used_at": 1792579151.042,
+        "upload_bytes": 684,
+        "download_bytes": 5413,
+        "total_bytes": 6097,
+        "observed_at": 1792579255.2492404,
+        "counting_since": 1792579030.2799628,
+        "last_subscription_fetch_at": 1792579207.3078065,
+        "subscription_fetches": 1,
+        "accounting": "best_effort_proxy_payload",
+        "gaps": 0,
+        "last_gap_reason": null,
+        "collection_error": null
+      }
+    }
+  ],
+  "collector_unit": [
+    "NRestarts=0",
+    "ActiveState=active",
+    "SubState=running"
+  ],
+  "observer_unit": "active"
+}

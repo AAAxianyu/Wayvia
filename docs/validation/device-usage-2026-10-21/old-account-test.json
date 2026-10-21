@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-21T10:40:30.440765+00:00",
+  "results": [
+    {
+      "test": "old_account",
+      "curl_exit": 35,
+      "http": "000"
+    },
+    {
+      "test": "internal_control",
+      "curl_exit": 0,
+      "http": "200"
+    }
+  ]
+}

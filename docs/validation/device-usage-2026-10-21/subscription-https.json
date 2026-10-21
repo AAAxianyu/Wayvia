@@ -1,0 +1,20 @@
+{
+  "phone": {
+    "http_status": 200,
+    "bytes": 9207514,
+    "tls_verified": true,
+    "format": "mihomo",
+    "only_ali_entry": true,
+    "tls_verification_enabled": true
+  },
+  "desktop": {
+    "http_status": 200,
+    "bytes": 9207514,
+    "tls_verified": true,
+    "format": "mihomo",
+    "only_ali_entry": true,
+    "tls_verification_enabled": true
+  },
+  "public_admin_status": 404,
+  "same_routing_policy_independent_passwords": true
+}
