@@ -1,0 +1,255 @@
+{
+  "samples": 10583,
+  "monitor_states": {
+    "ACTIVE": 3340
+  },
+  "transitions": [
+    {
+      "at": "2026-10-21T03:09:11.554302+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "failed_monitor_checks": [],
+  "failed_control_examples": [
+    {
+      "type": "control",
+      "label": "host_cf_primary",
+      "started_at": "2026-10-21T08:26:55.059480+00:00",
+      "at": "2026-10-21T08:26:57.120711+00:00",
+      "duration_ms": 2061,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "expected_exit_match": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.005473,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-21T08:26:55.059889+00:00",
+      "at": "2026-10-21T08:26:57.123186+00:00",
+      "duration_ms": 2063,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "expected_exit_match": false,
+        "http_code": 0,
+        "ssl_verify_result": 1,
+        "time_connect": 1.792905,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.00191,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_dns_cf",
+      "started_at": "2026-10-21T08:26:55.060179+00:00",
+      "at": "2026-10-21T08:26:57.143186+00:00",
+      "duration_ms": 2083,
+      "result": {
+        "exit": 9,
+        "rcode": null,
+        "query_ms": null
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_dns_google",
+      "started_at": "2026-10-21T08:26:55.061896+00:00",
+      "at": "2026-10-21T08:26:57.141104+00:00",
+      "duration_ms": 2079,
+      "result": {
+        "exit": 9,
+        "rcode": null,
+        "query_ms": null
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_dns_cf",
+      "started_at": "2026-10-21T08:28:25.066528+00:00",
+      "at": "2026-10-21T08:28:27.129728+00:00",
+      "duration_ms": 2063,
+      "result": {
+        "exit": 9,
+        "rcode": null,
+        "query_ms": null
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_dns_google",
+      "started_at": "2026-10-21T08:28:25.068843+00:00",
+      "at": "2026-10-21T08:28:27.141165+00:00",
+      "duration_ms": 2072,
+      "result": {
+        "exit": 9,
+        "rcode": null,
+        "query_ms": null
+      }
+    }
+  ],
+  "completed_response_closes": 0,
+  "partial_lines_ignored": 0,
+  "peer_ping": {
+    "ok": 10578,
+    "miss": 5
+  },
+  "carrier_connection_count": {
+    "1": 9852,
+    "2": 726,
+    "0": 5
+  },
+  "controls": {
+    "host_cf_primary": {
+      "ok": 1763,
+      "failed": 1
+    },
+    "host_cf_alternative": {
+      "ok": 1763,
+      "failed": 1
+    },
+    "host_dns_cf": {
+      "ok": 1762,
+      "failed": 2
+    },
+    "host_dns_google": {
+      "ok": 1762,
+      "failed": 2
+    }
+  },
+  "start": {
+    "type": "start",
+    "at": "2026-10-21T03:09:23.017920+00:00",
+    "role": "exit",
+    "generation": "64fee7096d28466e9ab15d463e5a55e5",
+    "until": "2026-10-22T03:09:21.680729+00:00",
+    "sample_interval_seconds": 5,
+    "control_interval_seconds": 30,
+    "max_bytes": 100663296,
+    "scope": "diagnostics_only_no_health_decision_or_mutation",
+    "ntp": true
+  },
+  "latest_record_at": "2026-10-21T17:51:15.651097+00:00",
+  "sample_gap_seconds": {
+    "count": 10582,
+    "median": 5.000174815504579,
+    "p95": 5.000663177997922,
+    "max": 5.012651012992137
+  },
+  "cpu_busy_percent_excluding_iowait": {
+    "count": 10582,
+    "median": 4.790419161676646,
+    "p95": 35.685483870967744,
+    "max": 100.0
+  },
+  "peer_ping_rtt_ms": {
+    "count": 10578,
+    "median": 38.7,
+    "p95": 45.2,
+    "max": 214.0
+  },
+  "timings": {
+    "carrier_tcp_rtt_ms": {
+      "count": 11304,
+      "median": 52.679,
+      "p95": 166.523,
+      "max": 1360.17
+    },
+    "host_cf_primary_time_connect_ms": {
+      "count": 1763,
+      "median": 5.56,
+      "p95": 12.107,
+      "max": 1014.4599999999999
+    },
+    "host_cf_primary_time_appconnect_ms": {
+      "count": 1763,
+      "median": 116.838,
+      "p95": 234.913,
+      "max": 1094.44
+    },
+    "host_cf_primary_time_starttransfer_ms": {
+      "count": 1763,
+      "median": 126.573,
+      "p95": 247.356,
+      "max": 1101.074
+    },
+    "host_cf_primary_time_total_ms": {
+      "count": 1763,
+      "median": 126.62399999999998,
+      "p95": 247.395,
+      "max": 1101.1329999999998
+    },
+    "host_cf_alternative_time_connect_ms": {
+      "count": 1763,
+      "median": 5.507,
+      "p95": 12.05,
+      "max": 1031.701
+    },
+    "host_cf_alternative_time_appconnect_ms": {
+      "count": 1763,
+      "median": 116.608,
+      "p95": 237.107,
+      "max": 1130.6290000000001
+    },
+    "host_cf_alternative_time_starttransfer_ms": {
+      "count": 1763,
+      "median": 127.076,
+      "p95": 246.714,
+      "max": 1139.417
+    },
+    "host_cf_alternative_time_total_ms": {
+      "count": 1763,
+      "median": 127.191,
+      "p95": 246.752,
+      "max": 1139.453
+    },
+    "host_dns_cf_query_ms": {
+      "count": 1762,
+      "median": 5.0,
+      "p95": 14,
+      "max": 45
+    },
+    "host_dns_google_query_ms": {
+      "count": 1762,
+      "median": 7.0,
+      "p95": 17,
+      "max": 107
+    }
+  },
+  "host_global_tcp_delta": {
+    "Tcp:InSegs": 4639745,
+    "Tcp:OutSegs": 5072819,
+    "Tcp:RetransSegs": 3252,
+    "Tcp:InErrs": 0,
+    "TcpExt:ListenDrops": 0,
+    "TcpExt:TCPLostRetransmit": 291,
+    "TcpExt:TCPTimeouts": 174,
+    "TcpExt:TCPMemoryPressures": 0,
+    "TcpExt:TCPSynRetrans": 120
+  },
+  "end": null,
+  "file_bytes": 24006381,
+  "limits": "First 100 failed examples only; counts complete. Sampled monitor snapshots can miss intermediate states: reconcile with journal. Global TCP counters include other workloads. ICMP misses alone are not service failures. No phone or failure-injection acceptance.",
+  "observer_unit": {
+    "MainPID": "164702",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "MemoryCurrent": "36229120",
+    "MemoryPeak": "45162496",
+    "CPUUsageNSec": "480144109000",
+    "ActiveState": "active",
+    "SubState": "running"
+  }
+}
