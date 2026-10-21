@@ -1,5 +1,11 @@
 # Wayvia 实现与验收状态
 
+## 2026-10-20 Windows / i-hdu 只读验证
+
+实际客户端为 Clash Verge 1.7.2 / Mihomo 1.19.31。用户自行开启 TUN 后，已确认百度 DIRECT、Google IPv4 和 Cloudflare 走 Wayvia，日本出口匹配；Google/YouTube IPv4 测试首字节中位约 286/294 ms，Cloudflare 新连接约 257 ms、复用约 63 ms。国外 IPv6 按既定规则 REJECT，默认 curl 选到 IPv6 后未回退 IPv4，需要独立适配，不能误记为已支持 IPv6 出现故障。未修改用户配置。
+
+同期只读服务器日志捕获阿里云两次自然 access TLS 失败并自动恢复，DEGRADED→ACTIVE 约 17.2/12.9 秒；日本同期保持 ACTIVE。跨境承载 TCP RTT 曾升至约 1.3 秒且有重传，ICMP 仍约 40 ms，继续排查排队/承载负载，不能将断连全部归于 TUN 切换或校园网拦截。正常路径部分通过，长期稳定及全设备 DNS/UDP/IPv6 矩阵未验收；24 小时观察继续，故障和重启仍暂缓。见[实测、失败样本与可观察范围](validation/windows-campus-2026-10-20/README.md)，新增待办 11；没有代码或生产配置变更。
+
 ## 2026-10-20 Clash Verge 指定核心订阅校验
 
 应用户要求为 Clash Verge v1.7.2 / Mihomo v1.19.13 签发额外完整订阅链接，沿用现有已启用设备凭据；HTTPS 200、TLS 验证通过，外部下载约 6 秒。官方摘要验证的 Mihomo v1.19.13 在无网络一次性 Linux 容器中校验未经修改的订阅成功，国内直连/默认 Wayvia 路由和 TLS 校验保持。用户桌面 GUI、TUN 及完整分流尚未实测。入口保持原事务代次 ACTIVE，日本 SSH 复用连接失效后重新认证，确认同代次 ACTIVE、采样仍运行，24 小时观察配置未变；源码/数据面未改、故障和重启仍暂缓。见[指定版本验证](validation/clash-verge-172-2026-10-20/README.md)。

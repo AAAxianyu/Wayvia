@@ -1,0 +1,286 @@
+{
+  "scope": "read_only_authorized_Windows_client_tests_and_server_observation",
+  "network_user_reported": "i-hdu; rules not supplied; concern recognition/blocking",
+  "versions": {
+    "Clash_Verge": "1.7.2",
+    "Mihomo_actual": "1.19.31",
+    "Mihomo_previously_requested_parser_only": "1.19.13",
+    "Windows": "11 Home build 26200"
+  },
+  "user_tun_enable_confirmed": true,
+  "service_core_started_at_utc": "2026-10-21T03:51:02.7930420Z",
+  "client_settings_changed_by_agent": false,
+  "source_or_production_configuration_changed": false,
+  "fault_or_reboot_injection": false,
+  "acceptance": "partial_ipv4_normal_paths_verified_ipv6_fallback_and_natural_server_interruptions_unresolved",
+  "latency": {
+    "baidu": {
+      "stage": "after_tun_with_server_incident",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 133.872,
+        "min": 124.191,
+        "max": 159.305
+      },
+      "total_ms": {
+        "median": 133.902,
+        "min": 124.22,
+        "max": 159.332
+      }
+    },
+    "qq": {
+      "stage": "before_tun",
+      "count": 1,
+      "http_2xx_successes": 0
+    },
+    "google": {
+      "stage": "after_tun_with_server_incident",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 258.711,
+        "min": 258.682,
+        "max": 440.819
+      },
+      "total_ms": {
+        "median": 258.728,
+        "min": 258.7,
+        "max": 440.838
+      }
+    },
+    "youtube": {
+      "stage": "after_tun_with_server_incident",
+      "count": 3,
+      "http_2xx_successes": 2,
+      "first_byte_ms": {
+        "median": 712.419,
+        "min": 268.595,
+        "max": 1156.243
+      },
+      "total_ms": {
+        "median": 712.436,
+        "min": 268.612,
+        "max": 1156.26
+      }
+    },
+    "wikipedia": {
+      "stage": "before_tun",
+      "count": 1,
+      "http_2xx_successes": 1
+    },
+    "github": {
+      "stage": "before_tun",
+      "count": 1,
+      "http_2xx_successes": 1
+    },
+    "cf_exit": {
+      "stage": "after_tun_with_server_incident",
+      "count": 3,
+      "http_2xx_successes": 1,
+      "first_byte_ms": {
+        "median": 6821.92,
+        "min": 6821.92,
+        "max": 6821.92
+      },
+      "total_ms": {
+        "median": 6821.971,
+        "min": 6821.971,
+        "max": 6821.971
+      }
+    },
+    "google_unproxied": {
+      "stage": "before_tun",
+      "count": 1,
+      "http_2xx_successes": 0
+    },
+    "cf_unproxied": {
+      "stage": "before_tun",
+      "count": 1,
+      "http_2xx_successes": 0
+    },
+    "windows_default_proxy_google": {
+      "stage": "after_tun_with_server_incident",
+      "count": 1,
+      "http_2xx_successes": 0
+    },
+    "baidu_tun": {
+      "stage": "after_tun_default_family",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 136.403,
+        "min": 125.489,
+        "max": 143.037
+      },
+      "total_ms": {
+        "median": 136.434,
+        "min": 125.516,
+        "max": 143.074
+      }
+    },
+    "google_tun": {
+      "stage": "after_tun_default_family",
+      "count": 3,
+      "http_2xx_successes": 0
+    },
+    "cf_tun": {
+      "stage": "after_tun_default_family",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 256.919,
+        "min": 245.97,
+        "max": 273.91
+      },
+      "total_ms": {
+        "median": 256.946,
+        "min": 245.998,
+        "max": 273.938
+      }
+    },
+    "cf_proxy": {
+      "stage": "after_tun_default_family",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 255.327,
+        "min": 252.489,
+        "max": 261.579
+      },
+      "total_ms": {
+        "median": 255.354,
+        "min": 252.516,
+        "max": 261.606
+      }
+    },
+    "google_tun_v4": {
+      "stage": "after_tun_family_comparison",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 285.996,
+        "min": 273.172,
+        "max": 622.196
+      },
+      "total_ms": {
+        "median": 286.015,
+        "min": 273.189,
+        "max": 622.214
+      }
+    },
+    "google_tun_v6": {
+      "stage": "after_tun_family_comparison",
+      "count": 3,
+      "http_2xx_successes": 0
+    },
+    "youtube_tun_v4": {
+      "stage": "after_tun_family_comparison",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 294.349,
+        "min": 276.221,
+        "max": 328.074
+      },
+      "total_ms": {
+        "median": 294.366,
+        "min": 276.238,
+        "max": 328.091
+      }
+    },
+    "github_tun_v4": {
+      "stage": "after_tun_family_comparison",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 921.247,
+        "min": 671.164,
+        "max": 1088.14
+      },
+      "total_ms": {
+        "median": 921.319,
+        "min": 797.598,
+        "max": 1663.546
+      }
+    },
+    "baidu_tun_v4": {
+      "stage": "after_tun_family_comparison",
+      "count": 3,
+      "http_2xx_successes": 3,
+      "first_byte_ms": {
+        "median": 121.739,
+        "min": 115.827,
+        "max": 127.825
+      },
+      "total_ms": {
+        "median": 121.787,
+        "min": 118.603,
+        "max": 127.88
+      }
+    },
+    "cf_reused_tun_v4": {
+      "stage": "after_tun_connection_reuse",
+      "count": 5,
+      "http_2xx_successes": 5,
+      "first_byte_ms": {
+        "median": 63.002,
+        "min": 60.241,
+        "max": 258.624
+      },
+      "total_ms": {
+        "median": 63.075,
+        "min": 60.298,
+        "max": 258.685
+      }
+    },
+    "google_explicit_http_proxy": {
+      "stage": "after_tun_connection_reuse",
+      "count": 2,
+      "http_2xx_successes": 2,
+      "first_byte_ms": {
+        "median": 281.4515,
+        "min": 254.931,
+        "max": 307.972
+      },
+      "total_ms": {
+        "median": 281.46950000000004,
+        "min": 254.949,
+        "max": 307.99
+      }
+    }
+  },
+  "cf_reused_first_byte_ms_median": 62.6155,
+  "cf_reused_count": 4,
+  "entry_icmp_ms_median": 9,
+  "entry_tcp_ms_median": 10.8984,
+  "failures": {
+    "google_default_family": {
+      "count": 3,
+      "mechanism": "Mihomo IPCIDR(::/0) REJECT confirmed at matching timestamps; expected unsupported protected IPv6 block; IPv4 fallback did not occur in tested curl"
+    },
+    "google_forced_ipv6": {
+      "count": 3,
+      "mechanism": "same expected REJECT"
+    },
+    "google_forced_ipv4": {
+      "successes": 3,
+      "count": 3
+    },
+    "google_http_proxy": {
+      "successes": 2,
+      "count": 2
+    },
+    "initial_google_proxy": "curl 28; core log entry connect deadline; cause not established",
+    "server_ali_natural_degradations_in_0348_to_0359_window": 2,
+    "server_jp_degradations_in_same_window": 0
+  },
+  "limits": [
+    "HTTP small-response timing is not download throughput or a latency SLA.",
+    "TUN synthetic IPv6 observed by curl does not establish physical IPv6 egress; WLAN has no global IPv6.",
+    "No all-app, DNS leak, QUIC/UDP, campus policy, failure injection, reboot or future-blocking acceptance.",
+    "The server observers are sampled; use journal transitions rather than counting repeated degraded snapshots.",
+    "Read-only SSH commands with local timeout or malformed PowerShell serialization are harness failures, not business measurements.",
+    "Existing 369-test check, demo and 10-config gate evidence predates documentation-only additions; full lab remains deferred."
+  ]
+}

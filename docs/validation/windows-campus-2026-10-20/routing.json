@@ -1,0 +1,328 @@
+{
+  "runtime": {
+    "version": {
+      "meta": true,
+      "version": "v1.19.31"
+    },
+    "config": {
+      "mixed_port": 7897,
+      "socks_port": 7898,
+      "ipv6": true,
+      "tun": {
+        "enable": true,
+        "device": "Mihomo",
+        "stack": "gVisor",
+        "dns-hijack": [
+          "any:53"
+        ],
+        "auto-route": true,
+        "auto-detect-interface": true,
+        "mtu": 1500,
+        "gso-max-size": 65536,
+        "inet4-address": [
+          "198.18.0.1/30"
+        ],
+        "inet6-address": [
+          "fdfe:dcba:9876::1/126"
+        ],
+        "file-descriptor": 0,
+        "recvmsgx": true,
+        "processors-per-channel": 1
+      },
+      "mode": "rule",
+      "http_port": 7899
+    },
+    "wayvia_group": {
+      "now": "Wayvia-entry",
+      "all": [
+        "Wayvia-entry"
+      ],
+      "type": "Selector"
+    },
+    "verge_flags": [
+      "enable_tun_mode: true",
+      "enable_service_mode: true",
+      "enable_system_proxy: true",
+      "clash_core: verge-mihomo",
+      "verge_mixed_port: 7897"
+    ],
+    "tailscale_exit_node_in_use": false
+  },
+  "before_tun": [
+    {
+      "rule_payload": "",
+      "type": "HTTPS",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "103.102.166.224",
+      "at": "2026-10-21T03:50:00.0758785Z",
+      "process": "",
+      "host": "www.wikipedia.org",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "51371"
+    },
+    {
+      "rule_payload": "qq.com",
+      "type": "HTTPS",
+      "chains": [
+        "DIRECT"
+      ],
+      "destination": "58.217.183.232",
+      "at": "2026-10-21T03:49:51.9730213Z",
+      "process": "",
+      "host": "www.qq.com",
+      "rule": "DomainSuffix",
+      "network": "tcp",
+      "source_port": "49288"
+    },
+    {
+      "rule_payload": "",
+      "type": "HTTPS",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "142.251.153.119",
+      "at": "2026-10-21T03:49:55.9578193Z",
+      "process": "",
+      "host": "www.google.com",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "53314"
+    },
+    {
+      "rule_payload": "baidu.com",
+      "type": "HTTPS",
+      "chains": [
+        "DIRECT"
+      ],
+      "destination": "180.101.49.44",
+      "at": "2026-10-21T03:49:48.7708950Z",
+      "process": "",
+      "host": "www.baidu.com",
+      "rule": "DomainSuffix",
+      "network": "tcp",
+      "source_port": "49284"
+    }
+  ],
+  "after_tun": [
+    {
+      "rule_payload": "",
+      "type": "HTTPS",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:12.1141273Z",
+      "process": "",
+      "host": "",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "50919"
+    },
+    {
+      "rule_payload": "",
+      "type": "HTTPS",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:11.7672689Z",
+      "process": "",
+      "host": "",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "50917"
+    },
+    {
+      "rule_payload": "",
+      "type": "Tun",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:11.0778787Z",
+      "process": "",
+      "host": "",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "50913"
+    },
+    {
+      "rule_payload": "",
+      "type": "Tun",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:10.5987581Z",
+      "process": "",
+      "host": "",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "50909"
+    },
+    {
+      "rule_payload": "",
+      "type": "HTTPS",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:11.4166265Z",
+      "process": "",
+      "host": "",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "50915"
+    },
+    {
+      "rule_payload": "",
+      "type": "Tun",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:10.9166229Z",
+      "process": "",
+      "host": "",
+      "rule": "Match",
+      "network": "tcp",
+      "source_port": "50911"
+    },
+    {
+      "rule_payload": "",
+      "type": "Inner",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:16.7424993Z",
+      "process": "",
+      "host": "",
+      "rule": "",
+      "network": "udp",
+      "source_port": "0"
+    },
+    {
+      "rule_payload": "",
+      "type": "Inner",
+      "chains": [
+        "Wayvia-entry",
+        "Wayvia"
+      ],
+      "destination": "1.1.1.1",
+      "at": "2026-10-21T03:55:16.7424993Z",
+      "process": "",
+      "host": "",
+      "rule": "",
+      "network": "udp",
+      "source_port": "0"
+    }
+  ],
+  "confirmed_snapshot": {
+    "mode": "rule",
+    "physical_global_v6_count": 0,
+    "known_test_socket_groups": [
+      {
+        "destination": "8.136.0.78, 8443",
+        "count": 44
+      }
+    ],
+    "at": "2026-10-21T04:03:13.9245842Z",
+    "google_rejects": [
+      "time=\"2026-10-21T11:55:09.780602100+08:00\" level=info msg=\"[TCP] [fdfe:dcba:9876::1]:50905 --> www.google.com:443 match IPCIDR(::/0) using REJECT\"",
+      "time=\"2026-10-21T11:55:09.824656200+08:00\" level=info msg=\"[TCP] [fdfe:dcba:9876::1]:50906 --> www.google.com:443 match IPCIDR(::/0) using REJECT\"",
+      "time=\"2026-10-21T11:55:09.874566300+08:00\" level=info msg=\"[TCP] [fdfe:dcba:9876::1]:50907 --> www.google.com:443 match IPCIDR(::/0) using REJECT\"",
+      "time=\"2026-10-21T12:00:11.682838500+08:00\" level=info msg=\"[TCP] [fdfe:dcba:9876::1]:59280 --> www.google.com:443 match IPCIDR(::/0) using REJECT\"",
+      "time=\"2026-10-21T12:00:11.743290100+08:00\" level=info msg=\"[TCP] [fdfe:dcba:9876::1]:59281 --> www.google.com:443 match IPCIDR(::/0) using REJECT\"",
+      "time=\"2026-10-21T12:00:11.803958500+08:00\" level=info msg=\"[TCP] [fdfe:dcba:9876::1]:59282 --> www.google.com:443 match IPCIDR(::/0) using REJECT\""
+    ],
+    "tun": true,
+    "selected_test_paths": [
+      "time=\"2026-10-21T12:00:11.070662300+08:00\" level=info msg=\"[TCP] 198.18.0.1:59275 --> www.google.com:443 match Match using Wayvia[Wayvia-entry]\"",
+      "time=\"2026-10-21T12:00:11.377143400+08:00\" level=info msg=\"[TCP] 198.18.0.1:59277 --> www.google.com:443 match Match using Wayvia[Wayvia-entry]\"",
+      "time=\"2026-10-21T12:00:16.324712200+08:00\" level=info msg=\"[TCP] 198.18.0.1:63221 --> www.baidu.com:443 match DomainSuffix(baidu.com) using DIRECT\"",
+      "time=\"2026-10-21T12:00:16.474822000+08:00\" level=info msg=\"[TCP] 198.18.0.1:63229 --> www.baidu.com:443 match DomainSuffix(baidu.com) using DIRECT\"",
+      "time=\"2026-10-21T12:00:16.608437000+08:00\" level=info msg=\"[TCP] 198.18.0.1:63233 --> www.baidu.com:443 match DomainSuffix(baidu.com) using DIRECT\"",
+      "time=\"2026-10-21T12:03:06.042670800+08:00\" level=info msg=\"[TCP] 198.18.0.1:60291 --> 1.1.1.1:443 match Match using Wayvia[Wayvia-entry]\"",
+      "time=\"2026-10-21T12:03:06.786843900+08:00\" level=info msg=\"[TCP] 127.0.0.1:60293 --> www.google.com:443 match Match using Wayvia[Wayvia-entry]\"",
+      "time=\"2026-10-21T12:03:07.116098600+08:00\" level=info msg=\"[TCP] 127.0.0.1:60295 --> www.google.com:443 match Match using Wayvia[Wayvia-entry]\"",
+      "2026-10-21 11:47:53 INFO - [mihomo]: time=\"2026-10-21T11:47:53.590075900+08:00\" level=info msg=\"[TCP] 127.0.0.1:63029 --> www.google.com:443 match Match using Wayvia[Wayvia-entry]\"",
+      "2026-10-21 11:47:59 INFO - [mihomo]: time=\"2026-10-21T11:47:59.735283900+08:00\" level=info msg=\"[TCP] 127.0.0.1:51189 --> 1.1.1.1:443 match Match using Wayvia[Wayvia-entry]\"",
+      "2026-10-21 11:49:11 INFO - [mihomo]: time=\"2026-10-21T11:49:11.565886800+08:00\" level=info msg=\"[TCP] 127.0.0.1:49258 --> www.baidu.com:443 match DomainSuffix(baidu.com) using DIRECT\"",
+      "2026-10-21 11:49:17 INFO - [mihomo]: time=\"2026-10-21T11:49:17.016828600+08:00\" level=warning msg=\"[TCP] dial Wayvia (match Match/) 127.0.0.1:49266 --> www.google.com:443 error: 8.136.0.78:8443 connect error: context deadline exceeded\"",
+      "2026-10-21 11:49:19 INFO - [mihomo]: time=\"2026-10-21T11:49:19.244836100+08:00\" level=info msg=\"[TCP] 127.0.0.1:49277 --> 1.1.1.1:443 match Match using Wayvia[Wayvia-entry]\"",
+      "2026-10-21 11:49:44 INFO - [mihomo]: time=\"2026-10-21T11:49:44.839744000+08:00\" level=info msg=\"[TCP] 127.0.0.1:49284 --> www.baidu.com:443 match DomainSuffix(baidu.com) using DIRECT\"",
+      "2026-10-21 11:49:52 INFO - [mihomo]: time=\"2026-10-21T11:49:52.125537600+08:00\" level=info msg=\"[TCP] 127.0.0.1:53314 --> www.google.com:443 match Match using Wayvia[Wayvia-entry]\"",
+      "2026-10-21 11:50:00 INFO - [mihomo]: time=\"2026-10-21T11:50:00.303402300+08:00\" level=info msg=\"[TCP] 127.0.0.1:51374 --> 1.1.1.1:443 match Match using Wayvia[Wayvia-entry]\""
+    ],
+    "process_start": "2026-10-21T03:51:02.7930420Z",
+    "terminal_rules": [
+      "- IP-CIDR6,::/0,REJECT,no-resolve",
+      "- MATCH,Wayvia"
+    ]
+  },
+  "baseline_samples": [
+    {
+      "ok": true,
+      "ms": 20.8143,
+      "kind": "tcp_to_ali_8443"
+    },
+    {
+      "ok": true,
+      "ms": 9.1104,
+      "kind": "tcp_to_ali_8443"
+    },
+    {
+      "ok": true,
+      "ms": 10.5767,
+      "kind": "tcp_to_ali_8443"
+    },
+    {
+      "ok": true,
+      "ms": 10.8984,
+      "kind": "tcp_to_ali_8443"
+    },
+    {
+      "ok": true,
+      "ms": 12.8781,
+      "kind": "tcp_to_ali_8443"
+    },
+    {
+      "status": "Success",
+      "ms": 10,
+      "kind": "icmp_to_ali"
+    },
+    {
+      "status": "Success",
+      "ms": 8,
+      "kind": "icmp_to_ali"
+    },
+    {
+      "status": "Success",
+      "ms": 8,
+      "kind": "icmp_to_ali"
+    },
+    {
+      "status": "Success",
+      "ms": 9,
+      "kind": "icmp_to_ali"
+    },
+    {
+      "status": "Success",
+      "ms": 10,
+      "kind": "icmp_to_ali"
+    }
+  ]
+}

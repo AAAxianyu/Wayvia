@@ -657,3 +657,29 @@ clash_verge_172_subscription_2026_10_20:
   production_state: both_same_generation_ACTIVE_exit_management_reauthenticated
   desktop_GUI_TUN_and_routing_acceptance: not_performed
   evidence: docs/validation/clash-verge-172-2026-10-20/README.md
+
+windows_campus_observation_2026_10_20:
+  actual_window_utc: 2026-10-21T03:49Z_to_04:03Z
+  client: Clash Verge 1.7.2
+  actual_core: Mihomo 1.19.31
+  system: Windows 11 Home build 26200
+  network: user_reported_i_hdu
+  tun: enabled_by_user_during_tests_confirmed_separately
+  agent_changes_to_client_or_production_configuration: false
+  selected_paths: domestic_DIRECT_foreign_IPv4_Wayvia_Japan_exit_verified
+  protected_IPv6: rejected_as_designed_default_curl_IPv4_fallback_issue_open
+  first_byte_median_ms:
+    baidu_IPv4: 121.739
+    google_IPv4: 285.996
+    youtube_IPv4: 294.349
+    github_IPv4: 921.247
+    cloudflare_new: 256.919
+    cloudflare_reused: 62.6155
+  natural_ali_degradations_in_journal_window: 2
+  corresponding_jp_degradations: 0
+  diagnosis: carrier_TCP_RTT_spikes_and_retransmissions_observed_causal_location_unresolved
+  campus_recognition_or_future_blocking: cannot_determine_from_client_tests
+  acceptance: partial_normal_paths_not_full_M6
+  fault_reboot_tests: deferred_by_user
+  software_gates: prior_369_check_demo_10_configs_unchanged_source_not_rerun_for_documentation
+  evidence: docs/validation/windows-campus-2026-10-20/README.md

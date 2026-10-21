@@ -1,0 +1,4590 @@
+{
+  "ali": {
+    "journal": {
+      "observed_at_utc": "2026-10-21T03:59:48.002704+00:00",
+      "since_utc": "2026-10-21T03:48:00+00:00",
+      "role": "ingress",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "current_state": "ACTIVE",
+      "first_monitor": "2026-10-21T03:48:10.705086+00:00",
+      "last_monitor": "2026-10-21T03:59:34.742150+00:00",
+      "monitor_count": 44,
+      "state_counts": {
+        "ACTIVE": 42,
+        "DEGRADED": 2
+      },
+      "hourly_counts": {
+        "2026-10-21T03:00:00Z": {
+          "ACTIVE": 42,
+          "DEGRADED": 2
+        }
+      },
+      "layer_timings": {
+        "access": {
+          "samples": 44,
+          "median_ms": 436.0,
+          "p95_ms": 5880,
+          "max_ms": 8130
+        },
+        "carrier": {
+          "samples": 44,
+          "median_ms": 457.5,
+          "p95_ms": 635,
+          "max_ms": 745
+        },
+        "vpn": {
+          "samples": 44,
+          "median_ms": 242.5,
+          "p95_ms": 304,
+          "max_ms": 368
+        },
+        "egress": {
+          "samples": 44,
+          "median_ms": 420.0,
+          "p95_ms": 578,
+          "max_ms": 3814
+        },
+        "dns": {
+          "samples": 44,
+          "median_ms": 75.5,
+          "p95_ms": 112,
+          "max_ms": 653
+        },
+        "ipv6": {
+          "samples": 44,
+          "median_ms": 6.0,
+          "p95_ms": 11,
+          "max_ms": 22
+        },
+        "return": {
+          "samples": 44,
+          "median_ms": 2.0,
+          "p95_ms": 3,
+          "max_ms": 4
+        }
+      },
+      "failed_checks": [
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "failed",
+          "observed_at": "2026-10-21T03:51:53.117956+00:00",
+          "duration_ms": 5292,
+          "error": "HTTP_TLS_FAILED",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5028,
+              "curl_code": 35,
+              "http_status": 0,
+              "result": "HTTP_TLS_FAILED"
+            }
+          ]
+        },
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "failed",
+          "observed_at": "2026-10-21T03:58:45.131578+00:00",
+          "duration_ms": 5254,
+          "error": "HTTP_TLS_FAILED",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5024,
+              "curl_code": 35,
+              "http_status": 0,
+              "result": "HTTP_TLS_FAILED"
+            }
+          ]
+        }
+      ],
+      "fallbacks": [
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "healthy",
+          "observed_at": "2026-10-21T03:57:10.167704+00:00",
+          "duration_ms": 8130,
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5761,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 2053,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ]
+        },
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "healthy",
+          "observed_at": "2026-10-21T03:57:57.129030+00:00",
+          "duration_ms": 7755,
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5761,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 1744,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ]
+        }
+      ],
+      "state_transitions": [
+        {
+          "at": "2026-10-21T03:48:10.705086+00:00",
+          "state": "ACTIVE"
+        },
+        {
+          "at": "2026-10-21T03:52:01.291628+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-21T03:52:18.491120+00:00",
+          "state": "ACTIVE"
+        },
+        {
+          "at": "2026-10-21T03:58:55.639478+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-21T03:59:08.587749+00:00",
+          "state": "ACTIVE"
+        }
+      ],
+      "units": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-ingress": "active",
+        "wayvia-bridge": "active",
+        "wayvia-carrier": "active",
+        "wayvia-vpn-client": "active"
+      },
+      "unit_events": [
+        {
+          "at": "2026-10-21T03:52:01.279022+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:52:10.641366+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:52:10.648513+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T03:52:10.683820+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:52:10.695744+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:52:12.651386+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T03:52:12.651386+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T03:52:14.653008+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T03:52:15.029117+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:52:15.040147+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:52:15.095634+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T03:52:15.395370+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "vpn_established"
+        },
+        {
+          "at": "2026-10-21T03:52:15.504978+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:52:15.515347+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:52:15.974503+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:58:55.630127+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:59:02.386501+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:59:02.390343+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T03:59:02.392873+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:59:02.403140+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:59:04.392832+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T03:59:04.393795+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "process_restart"
+        },
+        {
+          "at": "2026-10-21T03:59:06.148374+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:59:06.154598+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:59:06.186596+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "remote_close"
+        },
+        {
+          "at": "2026-10-21T03:59:06.507264+00:00",
+          "unit": "wayvia-vpn-client.service",
+          "event": "vpn_established"
+        },
+        {
+          "at": "2026-10-21T03:59:06.572191+00:00",
+          "unit": "init.scope",
+          "event": "service_stopped"
+        },
+        {
+          "at": "2026-10-21T03:59:06.586122+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        },
+        {
+          "at": "2026-10-21T03:59:07.044663+00:00",
+          "unit": "init.scope",
+          "event": "service_started"
+        }
+      ],
+      "kernel_oom_kill_count_since": 0,
+      "uptime_seconds": 8949954.06,
+      "completed_response_closes": [],
+      "requested_until_utc": null,
+      "unit_event_counts": {
+        "service_stopped": 8,
+        "connection_reset": 2,
+        "process_restart": 4,
+        "service_started": 8,
+        "remote_close": 5,
+        "vpn_established": 2
+      },
+      "repetitive_vpn_server_event_examples": []
+    },
+    "observer": {
+      "samples": 615,
+      "latest_record_at": "2026-10-21T04:00:29.686814+00:00",
+      "controls": {
+        "host_cf_primary": {
+          "failed": 103
+        },
+        "host_cf_alternative": {
+          "failed": 103
+        },
+        "host_dns_cf": {
+          "ok": 103
+        },
+        "host_dns_google": {
+          "ok": 103
+        },
+        "vpn_cf_primary": {
+          "ok": 99,
+          "failed": 4
+        },
+        "vpn_cf_alternative": {
+          "ok": 99,
+          "failed": 4
+        },
+        "vpn_dns_cf": {
+          "ok": 102,
+          "failed": 1
+        },
+        "vpn_dns_google": {
+          "ok": 102,
+          "failed": 1
+        }
+      },
+      "peer_ping_rtt_ms": {
+        "count": 615,
+        "median": 38.6,
+        "p95": 41.0,
+        "max": 57.1
+      },
+      "timings": {
+        "carrier_tcp_rtt_ms": {
+          "count": 651,
+          "median": 49.061,
+          "p95": 277.241,
+          "max": 1295.09
+        },
+        "host_dns_cf_query_ms": {
+          "count": 103,
+          "median": 73,
+          "p95": 80,
+          "max": 95
+        },
+        "host_dns_google_query_ms": {
+          "count": 103,
+          "median": 40,
+          "p95": 47,
+          "max": 391
+        },
+        "vpn_cf_primary_time_connect_ms": {
+          "count": 99,
+          "median": 47.279,
+          "p95": 49.157,
+          "max": 519.786
+        },
+        "vpn_cf_primary_time_appconnect_ms": {
+          "count": 99,
+          "median": 109.794,
+          "p95": 128.69400000000002,
+          "max": 854.971
+        },
+        "vpn_cf_primary_time_starttransfer_ms": {
+          "count": 99,
+          "median": 160.123,
+          "p95": 178.63000000000002,
+          "max": 1277.715
+        },
+        "vpn_cf_primary_time_total_ms": {
+          "count": 99,
+          "median": 160.417,
+          "p95": 178.672,
+          "max": 1278.786
+        },
+        "vpn_cf_alternative_time_connect_ms": {
+          "count": 99,
+          "median": 47.249,
+          "p95": 51.769000000000005,
+          "max": 405.887
+        },
+        "vpn_cf_alternative_time_appconnect_ms": {
+          "count": 99,
+          "median": 111.17699999999999,
+          "p95": 126.54899999999999,
+          "max": 864.93
+        },
+        "vpn_cf_alternative_time_starttransfer_ms": {
+          "count": 99,
+          "median": 161.675,
+          "p95": 184.964,
+          "max": 1272.414
+        },
+        "vpn_cf_alternative_time_total_ms": {
+          "count": 99,
+          "median": 161.72400000000002,
+          "p95": 185.023,
+          "max": 1272.461
+        },
+        "vpn_dns_cf_query_ms": {
+          "count": 102,
+          "median": 48.0,
+          "p95": 56,
+          "max": 1459
+        },
+        "vpn_dns_google_query_ms": {
+          "count": 102,
+          "median": 49.0,
+          "p95": 62,
+          "max": 1534
+        }
+      },
+      "cpu_busy_percent_excluding_iowait": {
+        "count": 614,
+        "median": 6.234059694069435,
+        "p95": 22.199798183652877,
+        "max": 75.58022199798184
+      },
+      "end": null
+    },
+    "incident_samples": [
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:29.672552+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 47.4
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "601.023/2.181",
+              "rto": "1152",
+              "cwnd": "228",
+              "retrans": "0/6",
+              "bytes_sent": "9847557",
+              "bytes_received": "29219986",
+              "bytes_retrans": "1709",
+              "lastsnd": "17",
+              "lastrcv": "5",
+              "unacked": "33"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.6,
+              "avg60": 1.2,
+              "avg300": 1.12,
+              "total": 43714248992.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908860262.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794502690.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 642012,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:34.672640+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 39.2
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "713.616/10.28",
+              "rto": "949",
+              "cwnd": "228",
+              "retrans": "0/6",
+              "bytes_sent": "9932048",
+              "bytes_received": "30345376",
+              "bytes_retrans": "1709",
+              "lastsnd": "5",
+              "lastrcv": "7",
+              "unacked": "72"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.57,
+              "avg60": 1.25,
+              "avg300": 1.13,
+              "total": 43714325193.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908861066.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794503472.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 643276,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:39.672755+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 57.1
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "46.983/4.415",
+              "rto": "247",
+              "cwnd": "228",
+              "retrans": "0/6",
+              "bytes_sent": "10014136",
+              "bytes_received": "30896758",
+              "bytes_retrans": "1709",
+              "lastsnd": "19",
+              "lastrcv": "19",
+              "unacked": "2"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.74,
+              "avg60": 1.3,
+              "avg300": 1.14,
+              "total": 43714497829.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908872725.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794514522.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 642336,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:44.672951+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 41.8
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "1121.21/60.043",
+              "rto": "2124",
+              "cwnd": "228",
+              "retrans": "0/6",
+              "bytes_sent": "10045369",
+              "bytes_received": "31676865",
+              "bytes_retrans": "1709",
+              "lastsnd": "179",
+              "lastrcv": "180",
+              "unacked": "20"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.71,
+              "avg60": 1.36,
+              "avg300": 1.16,
+              "total": 43714569820.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908874279.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794515894.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 648540,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:49.672992+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "54.523/14.502",
+              "rto": "288",
+              "cwnd": "159",
+              "retrans": "0/11",
+              "bytes_sent": "10137796",
+              "bytes_received": "32991981",
+              "bytes_retrans": "8145",
+              "lastsnd": "10",
+              "lastrcv": "188",
+              "unacked": "3"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.47,
+              "avg60": 1.33,
+              "avg300": 1.15,
+              "total": 43714672496.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908875559.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794516537.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 668828,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:51:49.726087+00:00",
+        "at": "2026-10-21T03:51:49.835777+00:00",
+        "duration_ms": 110,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 74
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:51:49.726477+00:00",
+        "at": "2026-10-21T03:51:49.804231+00:00",
+        "duration_ms": 78,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 43
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_primary",
+        "started_at": "2026-10-21T03:51:49.804262+00:00",
+        "at": "2026-10-21T03:51:49.979833+00:00",
+        "duration_ms": 176,
+        "result": {
+          "curl_exit": 0,
+          "valid_https_response": true,
+          "single_valid_trace_ip": true,
+          "expected_exit_match": true,
+          "http_code": 200,
+          "ssl_verify_result": 0,
+          "time_connect": 0.047674,
+          "time_appconnect": 0.103722,
+          "time_starttransfer": 0.160195,
+          "time_total": 0.160252,
+          "size_download": 196
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_alternative",
+        "started_at": "2026-10-21T03:51:49.835811+00:00",
+        "at": "2026-10-21T03:51:50.008800+00:00",
+        "duration_ms": 173,
+        "result": {
+          "curl_exit": 0,
+          "valid_https_response": true,
+          "single_valid_trace_ip": true,
+          "expected_exit_match": true,
+          "http_code": 200,
+          "ssl_verify_result": 0,
+          "time_connect": 0.047784,
+          "time_appconnect": 0.106774,
+          "time_starttransfer": 0.155131,
+          "time_total": 0.155182,
+          "size_download": 196
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_cf",
+        "started_at": "2026-10-21T03:51:49.979860+00:00",
+        "at": "2026-10-21T03:51:50.053867+00:00",
+        "duration_ms": 74,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 47
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_google",
+        "started_at": "2026-10-21T03:51:50.008828+00:00",
+        "at": "2026-10-21T03:51:50.093858+00:00",
+        "duration_ms": 85,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 56
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:54.673396+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 40.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "1119.68/16.579",
+              "rto": "1863",
+              "cwnd": "159",
+              "retrans": "0/11",
+              "bytes_sent": "10166991",
+              "bytes_received": "33699313",
+              "bytes_retrans": "8145",
+              "lastsnd": "10",
+              "lastrcv": "11",
+              "unacked": "67"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.83,
+              "avg60": 1.43,
+              "avg300": 1.18,
+              "total": 43714802084.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908876792.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794517395.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 632488,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:59.673285+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 40.4
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "c9cb4156ebf0b9c9",
+              "state": "ESTAB",
+              "rtt": "44.797/11.698",
+              "rto": "245",
+              "cwnd": "10",
+              "bytes_sent": "2462",
+              "bytes_received": "8299",
+              "lastsnd": "827",
+              "lastrcv": "811"
+            },
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "1295.09/10.13",
+              "rto": "1691",
+              "cwnd": "159",
+              "retrans": "0/11",
+              "bytes_sent": "10203995",
+              "bytes_received": "34563277",
+              "bytes_retrans": "8145",
+              "lastsnd": "93",
+              "lastrcv": "1285",
+              "unacked": "8"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.52,
+              "avg60": 1.4,
+              "avg300": 1.18,
+              "total": 43714926133.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908877284.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794517395.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 619856,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:04.673309+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "54.654/16.908",
+              "rto": "273",
+              "cwnd": "111",
+              "retrans": "0/14",
+              "bytes_sent": "10251360",
+              "bytes_received": "35170931",
+              "bytes_retrans": "9937",
+              "lastsnd": "3054",
+              "lastrcv": "3055"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.62,
+              "avg60": 1.45,
+              "avg300": 1.19,
+              "total": 43715009265.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908887230.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794524622.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 652072,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:09.673451+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2da49bd944d7fa18",
+              "state": "ESTAB",
+              "rtt": "53.175/15.638",
+              "rto": "267",
+              "cwnd": "111",
+              "retrans": "0/14",
+              "bytes_sent": "10251460",
+              "bytes_received": "35170931",
+              "bytes_retrans": "9937",
+              "lastsnd": "4654",
+              "lastrcv": "8058"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.23,
+              "avg60": 1.39,
+              "avg300": 1.18,
+              "total": 43715123442.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23182585.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18906761.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 908944244.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 794579125.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 650240,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:14.674060+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "2ef29e76a00d9746",
+              "state": "SYN-SENT",
+              "rto": "1000",
+              "cwnd": "10",
+              "lastsnd": "359266044",
+              "lastrcv": "359266044",
+              "unacked": "1"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 4.3,
+              "avg60": 2.02,
+              "avg300": 1.32,
+              "total": 43715675819.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23184270.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 18908423.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 3.77,
+              "avg60": 0.81,
+              "avg300": 0.17,
+              "total": 909428776.0
+            },
+            "full": {
+              "avg10": 3.2,
+              "avg60": 0.69,
+              "avg300": 0.14,
+              "total": 794988103.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 632108,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:19.674737+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "48.644/12.194",
+              "rto": "249",
+              "cwnd": "10",
+              "bytes_sent": "10368",
+              "bytes_received": "18773",
+              "lastsnd": "1279",
+              "lastrcv": "1235"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 12.75,
+              "avg60": 3.79,
+              "avg300": 1.71,
+              "total": 43717397760.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.18,
+              "avg60": 0.03,
+              "avg300": 0.0,
+              "total": 23234652.0
+            },
+            "full": {
+              "avg10": 0.18,
+              "avg60": 0.03,
+              "avg300": 0.0,
+              "total": 18943512.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 6.02,
+              "avg60": 1.41,
+              "avg300": 0.31,
+              "total": 910032629.0
+            },
+            "full": {
+              "avg10": 4.26,
+              "avg60": 1.04,
+              "avg300": 0.22,
+              "total": 795399400.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 665844,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:52:19.739566+00:00",
+        "at": "2026-10-21T03:52:19.871674+00:00",
+        "duration_ms": 132,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 71
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:52:19.739750+00:00",
+        "at": "2026-10-21T03:52:19.873675+00:00",
+        "duration_ms": 134,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 45
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_primary",
+        "started_at": "2026-10-21T03:52:19.871705+00:00",
+        "at": "2026-10-21T03:52:20.219750+00:00",
+        "duration_ms": 348,
+        "result": {
+          "curl_exit": 0,
+          "valid_https_response": true,
+          "single_valid_trace_ip": true,
+          "expected_exit_match": true,
+          "http_code": 200,
+          "ssl_verify_result": 0,
+          "time_connect": 0.046234,
+          "time_appconnect": 0.157104,
+          "time_starttransfer": 0.205229,
+          "time_total": 0.205265,
+          "size_download": 196
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_alternative",
+        "started_at": "2026-10-21T03:52:19.873703+00:00",
+        "at": "2026-10-21T03:52:20.219955+00:00",
+        "duration_ms": 346,
+        "result": {
+          "curl_exit": 0,
+          "valid_https_response": true,
+          "single_valid_trace_ip": true,
+          "expected_exit_match": true,
+          "http_code": 200,
+          "ssl_verify_result": 0,
+          "time_connect": 0.044585,
+          "time_appconnect": 0.157228,
+          "time_starttransfer": 0.204101,
+          "time_total": 0.204145,
+          "size_download": 197
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_cf",
+        "started_at": "2026-10-21T03:52:20.219776+00:00",
+        "at": "2026-10-21T03:52:20.343698+00:00",
+        "duration_ms": 124,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 44
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_google",
+        "started_at": "2026-10-21T03:52:20.219968+00:00",
+        "at": "2026-10-21T03:52:20.346208+00:00",
+        "duration_ms": 126,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 51
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:24.675650+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "43.328/3.235",
+              "rto": "244",
+              "cwnd": "16",
+              "bytes_sent": "15018",
+              "bytes_received": "28675",
+              "lastsnd": "4442",
+              "lastrcv": "4392"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 12.89,
+              "avg60": 4.85,
+              "avg300": 1.98,
+              "total": 43717726182.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.81,
+              "avg60": 0.18,
+              "avg300": 0.04,
+              "total": 23357861.0
+            },
+            "full": {
+              "avg10": 0.54,
+              "avg60": 0.12,
+              "avg300": 0.02,
+              "total": 19039993.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 9.78,
+              "avg60": 2.61,
+              "avg300": 0.59,
+              "total": 910900879.0
+            },
+            "full": {
+              "avg10": 7.91,
+              "avg60": 2.08,
+              "avg300": 0.46,
+              "total": 796153144.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 645344,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_primary",
+        "started_at": "2026-10-21T03:58:19.857482+00:00",
+        "at": "2026-10-21T03:58:20.047044+00:00",
+        "duration_ms": 190,
+        "result": {
+          "curl_exit": 0,
+          "valid_https_response": true,
+          "single_valid_trace_ip": true,
+          "expected_exit_match": true,
+          "http_code": 200,
+          "ssl_verify_result": 0,
+          "time_connect": 0.045492,
+          "time_appconnect": 0.123187,
+          "time_starttransfer": 0.173977,
+          "time_total": 0.174026,
+          "size_download": 191
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_alternative",
+        "started_at": "2026-10-21T03:58:19.879236+00:00",
+        "at": "2026-10-21T03:58:20.062727+00:00",
+        "duration_ms": 183,
+        "result": {
+          "curl_exit": 0,
+          "valid_https_response": true,
+          "single_valid_trace_ip": true,
+          "expected_exit_match": true,
+          "http_code": 200,
+          "ssl_verify_result": 0,
+          "time_connect": 0.044187,
+          "time_appconnect": 0.114152,
+          "time_starttransfer": 0.164833,
+          "time_total": 0.164873,
+          "size_download": 191
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_cf",
+        "started_at": "2026-10-21T03:58:20.047081+00:00",
+        "at": "2026-10-21T03:58:20.124954+00:00",
+        "duration_ms": 78,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 45
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_google",
+        "started_at": "2026-10-21T03:58:20.062757+00:00",
+        "at": "2026-10-21T03:58:20.143435+00:00",
+        "duration_ms": 81,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 51
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:24.684413+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 46.8
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "547.176/1.395",
+              "rto": "883",
+              "cwnd": "153",
+              "bytes_sent": "1578549",
+              "bytes_received": "17331000",
+              "lastsnd": "30",
+              "lastrcv": "7",
+              "unacked": "26"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.96,
+              "avg60": 1.19,
+              "avg300": 1.31,
+              "total": 43723516997.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.3,
+              "total": 912486440.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.23,
+              "total": 797408863.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 683932,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:29.684304+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 39.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "797.924/21.765",
+              "rto": "1012",
+              "cwnd": "153",
+              "bytes_sent": "1611237",
+              "bytes_received": "18502524",
+              "lastsnd": "6",
+              "lastrcv": "6",
+              "unacked": "52"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.79,
+              "avg60": 1.21,
+              "avg300": 1.31,
+              "total": 43723609152.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.3,
+              "total": 912494133.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.23,
+              "total": 797415909.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 637840,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:34.684431+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 41.0
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "1282.71/55.132",
+              "rto": "2554",
+              "cwnd": "153",
+              "bytes_sent": "1637805",
+              "bytes_received": "19327826",
+              "lastsnd": "19",
+              "lastrcv": "6",
+              "unacked": "49"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.37,
+              "avg60": 1.18,
+              "avg300": 1.3,
+              "total": 43723679142.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.29,
+              "total": 912496772.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.22,
+              "total": 797418487.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 652332,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:39.684525+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "127.497/129.076",
+              "rto": "863",
+              "cwnd": "153",
+              "bytes_sent": "1642975",
+              "bytes_received": "19489708",
+              "lastsnd": "276",
+              "lastrcv": "233"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.07,
+              "avg60": 1.14,
+              "avg300": 1.29,
+              "total": 43723722250.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.29,
+              "total": 912497637.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.22,
+              "total": 797419328.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 667368,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:44.684618+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 47.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "465.803/157.22",
+              "rto": "1145",
+              "cwnd": "153",
+              "bytes_sent": "1665274",
+              "bytes_received": "19847664",
+              "lastsnd": "23",
+              "lastrcv": "12",
+              "unacked": "19"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 0.73,
+              "avg60": 1.06,
+              "avg300": 1.27,
+              "total": 43723765119.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.28,
+              "total": 912497928.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.21,
+              "total": 797419603.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 665900,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:49.684714+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 47.3
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "1006.59/10.792",
+              "rto": "1649",
+              "cwnd": "153",
+              "bytes_sent": "1686993",
+              "bytes_received": "20673882",
+              "lastsnd": "246",
+              "lastrcv": "769",
+              "unacked": "6"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 0.97,
+              "avg60": 1.09,
+              "avg300": 1.27,
+              "total": 43723835927.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.28,
+              "total": 912498748.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.21,
+              "total": 797420413.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 636824,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:58:49.745126+00:00",
+        "at": "2026-10-21T03:58:49.841108+00:00",
+        "duration_ms": 96,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 66
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:58:49.745229+00:00",
+        "at": "2026-10-21T03:58:49.817277+00:00",
+        "duration_ms": 72,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 39
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_primary",
+        "started_at": "2026-10-21T03:58:49.817306+00:00",
+        "at": "2026-10-21T03:58:51.835103+00:00",
+        "duration_ms": 2018,
+        "result": {
+          "curl_exit": 28,
+          "valid_https_response": false,
+          "single_valid_trace_ip": false,
+          "expected_exit_match": false,
+          "http_code": 0,
+          "ssl_verify_result": 1,
+          "time_connect": 1.682407,
+          "time_appconnect": 0.0,
+          "time_starttransfer": 0.0,
+          "time_total": 2.001075,
+          "size_download": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_cf_alternative",
+        "started_at": "2026-10-21T03:58:49.841148+00:00",
+        "at": "2026-10-21T03:58:51.858216+00:00",
+        "duration_ms": 2017,
+        "result": {
+          "curl_exit": 28,
+          "valid_https_response": false,
+          "single_valid_trace_ip": false,
+          "expected_exit_match": false,
+          "http_code": 0,
+          "ssl_verify_result": 1,
+          "time_connect": 1.660074,
+          "time_appconnect": 0.0,
+          "time_starttransfer": 0.0,
+          "time_total": 2.002448,
+          "size_download": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_cf",
+        "started_at": "2026-10-21T03:58:51.766193+00:00",
+        "at": "2026-10-21T03:58:53.252223+00:00",
+        "duration_ms": 1486,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 1459
+        }
+      },
+      {
+        "type": "control",
+        "label": "vpn_dns_google",
+        "started_at": "2026-10-21T03:58:51.773620+00:00",
+        "at": "2026-10-21T03:58:53.335601+00:00",
+        "duration_ms": 1562,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 1534
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:54.685030+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 47.0
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "978.192/4.593",
+              "rto": "1602",
+              "cwnd": "153",
+              "bytes_sent": "1726410",
+              "bytes_received": "22172187",
+              "lastsnd": "12",
+              "unacked": "38"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.28,
+              "avg60": 1.14,
+              "avg300": 1.28,
+              "total": 43723967274.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.27,
+              "total": 912499584.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.2,
+              "total": 797420660.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 640224,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:59.684941+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "f6e3e65e158f32c2",
+              "state": "ESTAB",
+              "rtt": "79.547/37.699",
+              "rto": "420",
+              "cwnd": "153",
+              "bytes_sent": "1738247",
+              "bytes_received": "22374028",
+              "lastsnd": "3809",
+              "lastrcv": "3810"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.15,
+              "avg60": 1.13,
+              "avg300": 1.28,
+              "total": 43724038913.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23573480.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19163795.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.01,
+              "avg300": 0.27,
+              "total": 912515236.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.2,
+              "total": 797435184.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 674204,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:59:04.685023+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": []
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.0,
+              "avg60": 1.48,
+              "avg300": 1.35,
+              "total": 43724399910.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23590188.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19164834.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 3.82,
+              "avg60": 0.72,
+              "avg300": 0.41,
+              "total": 912990187.0
+            },
+            "full": {
+              "avg10": 3.31,
+              "avg60": 0.62,
+              "avg300": 0.33,
+              "total": 797852371.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 654740,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:59:09.685085+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "13eb27e4bfbd3fa3",
+              "state": "ESTAB",
+              "rtt": "48.169/10.279",
+              "rto": "249",
+              "cwnd": "10",
+              "bytes_sent": "11216",
+              "bytes_received": "19309",
+              "lastsnd": "323",
+              "lastrcv": "323"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 6.87,
+              "avg60": 2.32,
+              "avg300": 1.53,
+              "total": 43724969231.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23590669.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19165310.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 2.56,
+              "avg60": 0.67,
+              "avg300": 0.4,
+              "total": 913004253.0
+            },
+            "full": {
+              "avg10": 2.21,
+              "avg60": 0.58,
+              "avg300": 0.32,
+              "total": 797862577.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 675080,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:59:14.685299+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "13eb27e4bfbd3fa3",
+              "state": "ESTAB",
+              "rtt": "48.169/10.279",
+              "rto": "249",
+              "cwnd": "10",
+              "bytes_sent": "11216",
+              "bytes_received": "19309",
+              "lastsnd": "5324",
+              "lastrcv": "5324"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.77,
+              "avg60": 2.1,
+              "avg300": 1.49,
+              "total": 43724997051.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 23590669.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 19165310.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 1.4,
+              "avg60": 0.61,
+              "avg300": 0.4,
+              "total": 913005387.0
+            },
+            "full": {
+              "avg10": 1.21,
+              "avg60": 0.52,
+              "avg300": 0.31,
+              "total": 797863694.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 1651804,
+          "MemAvailable": 674092,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      }
+    ]
+  },
+  "jp": {
+    "journal": {
+      "observed_at_utc": "2026-10-21T03:59:47.973264+00:00",
+      "since_utc": "2026-10-21T03:48:00+00:00",
+      "role": "exit",
+      "generation": "64fee7096d28466e9ab15d463e5a55e5",
+      "current_state": "ACTIVE",
+      "first_monitor": "2026-10-21T03:48:15.892199+00:00",
+      "last_monitor": "2026-10-21T03:59:40.730980+00:00",
+      "monitor_count": 44,
+      "state_counts": {
+        "ACTIVE": 44
+      },
+      "hourly_counts": {
+        "2026-10-21T03:00:00Z": {
+          "ACTIVE": 44
+        }
+      },
+      "layer_timings": {
+        "access": {
+          "samples": 44,
+          "median_ms": 308.5,
+          "p95_ms": 358,
+          "max_ms": 382
+        },
+        "carrier": {
+          "samples": 44,
+          "median_ms": 295.0,
+          "p95_ms": 331,
+          "max_ms": 373
+        },
+        "vpn": {
+          "samples": 44,
+          "median_ms": 274.0,
+          "p95_ms": 453,
+          "max_ms": 515
+        },
+        "egress": {
+          "samples": 44,
+          "median_ms": 340.0,
+          "p95_ms": 409,
+          "max_ms": 434
+        },
+        "dns": {
+          "samples": 44,
+          "median_ms": 36.0,
+          "p95_ms": 48,
+          "max_ms": 73
+        },
+        "ipv6": {
+          "samples": 44,
+          "median_ms": 0.0,
+          "p95_ms": 1,
+          "max_ms": 1
+        },
+        "return": {
+          "samples": 44,
+          "median_ms": 4.0,
+          "p95_ms": 5,
+          "max_ms": 5
+        }
+      },
+      "failed_checks": [],
+      "fallbacks": [],
+      "state_transitions": [
+        {
+          "at": "2026-10-21T03:48:15.892199+00:00",
+          "state": "ACTIVE"
+        }
+      ],
+      "units": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-exit": "active",
+        "wayvia-vpn-server": "active"
+      },
+      "unit_events": [],
+      "kernel_oom_kill_count_since": 0,
+      "uptime_seconds": 72070.46,
+      "completed_response_closes": [],
+      "requested_until_utc": null,
+      "unit_event_counts": {
+        "connection_reset": 95,
+        "tls_error": 80
+      },
+      "repetitive_vpn_server_event_examples": [
+        {
+          "at": "2026-10-21T03:48:10.961026+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:48:14.912690+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:48:15.203587+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "tls_error"
+        },
+        {
+          "at": "2026-10-21T03:48:15.203587+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "tls_error"
+        },
+        {
+          "at": "2026-10-21T03:48:27.071028+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:48:30.856151+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:48:31.162718+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "connection_reset"
+        },
+        {
+          "at": "2026-10-21T03:48:43.082023+00:00",
+          "unit": "wayvia-vpn-server.service",
+          "event": "connection_reset"
+        }
+      ]
+    },
+    "observer": {
+      "samples": 614,
+      "latest_record_at": "2026-10-21T04:00:28.248359+00:00",
+      "controls": {
+        "host_cf_primary": {
+          "ok": 103
+        },
+        "host_cf_alternative": {
+          "ok": 103
+        },
+        "host_dns_cf": {
+          "ok": 103
+        },
+        "host_dns_google": {
+          "ok": 103
+        }
+      },
+      "peer_ping_rtt_ms": {
+        "count": 614,
+        "median": 38.7,
+        "p95": 41.9,
+        "max": 58.1
+      },
+      "timings": {
+        "carrier_tcp_rtt_ms": {
+          "count": 655,
+          "median": 50.878,
+          "p95": 433.886,
+          "max": 1360.17
+        },
+        "host_cf_primary_time_connect_ms": {
+          "count": 103,
+          "median": 5.0,
+          "p95": 11.774,
+          "max": 15.915
+        },
+        "host_cf_primary_time_appconnect_ms": {
+          "count": 103,
+          "median": 117.007,
+          "p95": 228.492,
+          "max": 263.348
+        },
+        "host_cf_primary_time_starttransfer_ms": {
+          "count": 103,
+          "median": 124.36999999999999,
+          "p95": 235.861,
+          "max": 269.495
+        },
+        "host_cf_primary_time_total_ms": {
+          "count": 103,
+          "median": 124.416,
+          "p95": 235.903,
+          "max": 277.04
+        },
+        "host_cf_alternative_time_connect_ms": {
+          "count": 103,
+          "median": 5.5120000000000005,
+          "p95": 12.655,
+          "max": 17.388
+        },
+        "host_cf_alternative_time_appconnect_ms": {
+          "count": 103,
+          "median": 117.446,
+          "p95": 231.009,
+          "max": 260.513
+        },
+        "host_cf_alternative_time_starttransfer_ms": {
+          "count": 103,
+          "median": 126.137,
+          "p95": 239.701,
+          "max": 278.507
+        },
+        "host_cf_alternative_time_total_ms": {
+          "count": 103,
+          "median": 126.637,
+          "p95": 239.756,
+          "max": 278.55400000000003
+        },
+        "host_dns_cf_query_ms": {
+          "count": 103,
+          "median": 5,
+          "p95": 9,
+          "max": 15
+        },
+        "host_dns_google_query_ms": {
+          "count": 103,
+          "median": 7,
+          "p95": 13,
+          "max": 26
+        }
+      },
+      "cpu_busy_percent_excluding_iowait": {
+        "count": 613,
+        "median": 4.016064257028113,
+        "p95": 34.738955823293175,
+        "max": 41.955193482688394
+      },
+      "end": null
+    },
+    "incident_samples": [
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:28.225375+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 55.9
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "354.3/40.307",
+              "rto": "555",
+              "cwnd": "92",
+              "retrans": "0/173",
+              "bytes_sent": "29214246",
+              "bytes_received": "9824069",
+              "bytes_retrans": "199766",
+              "lastsnd": "5",
+              "lastrcv": "19",
+              "unacked": "92"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 4.28,
+              "avg60": 2.33,
+              "avg300": 1.83,
+              "total": 1119323811.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.04,
+              "avg300": 0.09,
+              "total": 458883285.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.06,
+              "total": 382584145.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 505608,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:33.227486+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 39.0
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "643.088/9.516",
+              "rto": "844",
+              "cwnd": "107",
+              "retrans": "0/173",
+              "bytes_sent": "30360606",
+              "bytes_received": "9909048",
+              "bytes_retrans": "199766",
+              "lastsnd": "7",
+              "lastrcv": "7",
+              "unacked": "106"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.82,
+              "avg60": 2.37,
+              "avg300": 1.85,
+              "total": 1119481811.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.04,
+              "avg300": 0.09,
+              "total": 458885687.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.06,
+              "total": 382586206.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 505000,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:38.225631+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "47.421/8.177",
+              "rto": "272",
+              "cwnd": "192",
+              "retrans": "0/173",
+              "bytes_sent": "31073743",
+              "bytes_received": "9992321",
+              "bytes_retrans": "199766",
+              "lastsnd": "58",
+              "lastrcv": "4"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.12,
+              "avg60": 2.36,
+              "avg300": 1.86,
+              "total": 1119613937.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.09,
+              "total": 458898801.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.06,
+              "total": 382598881.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 505056,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:43.226074+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 43.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "1087.35/43.162",
+              "rto": "1378",
+              "cwnd": "219",
+              "retrans": "54/295",
+              "bytes_sent": "32396687",
+              "bytes_received": "10037919",
+              "bytes_retrans": "370322",
+              "lastsnd": "8",
+              "lastrcv": "387",
+              "unacked": "510"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.75,
+              "avg60": 2.34,
+              "avg300": 1.86,
+              "total": 1119783002.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.09,
+              "total": 458904712.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.06,
+              "total": 382603955.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 508352,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:48.226309+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 42.0
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "1059.68/6.343",
+              "rto": "1295",
+              "cwnd": "182",
+              "retrans": "0/386",
+              "bytes_sent": "33469585",
+              "bytes_received": "10099620",
+              "bytes_retrans": "497540",
+              "lastsnd": "112",
+              "lastrcv": "10",
+              "unacked": "90"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.89,
+              "avg60": 2.43,
+              "avg300": 1.89,
+              "total": 1119952769.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.12,
+              "avg60": 0.05,
+              "avg300": 0.09,
+              "total": 458931472.0
+            },
+            "full": {
+              "avg10": 0.12,
+              "avg60": 0.05,
+              "avg300": 0.06,
+              "total": 382629181.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 505160,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:53.226354+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 49.0
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "791.791/48.445",
+              "rto": "1001",
+              "cwnd": "181",
+              "retrans": "0/386",
+              "bytes_sent": "34114371",
+              "bytes_received": "10146645",
+              "bytes_retrans": "497540",
+              "lastsnd": "1",
+              "lastrcv": "11",
+              "unacked": "181"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.45,
+              "avg60": 2.37,
+              "avg300": 1.89,
+              "total": 1120059536.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.52,
+              "avg60": 0.15,
+              "avg300": 0.11,
+              "total": 459002521.0
+            },
+            "full": {
+              "avg10": 0.52,
+              "avg60": 0.14,
+              "avg300": 0.08,
+              "total": 382697715.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 504724,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:51:53.298690+00:00",
+        "at": "2026-10-21T03:51:53.399612+00:00",
+        "duration_ms": 101,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 8
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:51:53.300120+00:00",
+        "at": "2026-10-21T03:51:53.411725+00:00",
+        "duration_ms": 112,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 18
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:51:58.227093+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 39.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "1272.15/6.58",
+              "rto": "1476",
+              "cwnd": "231",
+              "retrans": "0/386",
+              "bytes_sent": "35340417",
+              "bytes_received": "10191396",
+              "bytes_retrans": "497540",
+              "lastsnd": "5",
+              "lastrcv": "4",
+              "unacked": "231"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.46,
+              "avg60": 2.64,
+              "avg300": 1.96,
+              "total": 1120392901.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.28,
+              "avg60": 0.13,
+              "avg300": 0.11,
+              "total": 459011072.0
+            },
+            "full": {
+              "avg10": 0.28,
+              "avg60": 0.13,
+              "avg300": 0.08,
+              "total": 382705736.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 504472,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:03.226955+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "45.825/5.257",
+              "rto": "264",
+              "cwnd": "119",
+              "retrans": "0/438",
+              "bytes_sent": "35739645",
+              "bytes_received": "10241423",
+              "bytes_retrans": "568714",
+              "lastsnd": "1631",
+              "lastrcv": "1587"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.42,
+              "avg60": 2.69,
+              "avg300": 1.98,
+              "total": 1120537465.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.19,
+              "avg60": 0.12,
+              "avg300": 0.1,
+              "total": 459026569.0
+            },
+            "full": {
+              "avg10": 0.19,
+              "avg60": 0.12,
+              "avg300": 0.08,
+              "total": 382720309.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 525524,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:08.227011+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "4b0185deb64b40cf",
+              "state": "ESTAB",
+              "rtt": "45.825/5.257",
+              "rto": "264",
+              "cwnd": "119",
+              "retrans": "0/438",
+              "bytes_sent": "35739645",
+              "bytes_received": "10241523",
+              "bytes_retrans": "568714",
+              "lastsnd": "6630",
+              "lastrcv": "3183"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.88,
+              "avg60": 2.43,
+              "avg300": 1.94,
+              "total": 1120546797.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.1,
+              "avg60": 0.11,
+              "avg300": 0.1,
+              "total": 459032060.0
+            },
+            "full": {
+              "avg10": 0.1,
+              "avg60": 0.11,
+              "avg300": 0.07,
+              "total": 382725728.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 525524,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:13.227237+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": []
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.26,
+              "avg60": 2.28,
+              "avg300": 1.91,
+              "total": 1120561161.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.07,
+              "avg60": 0.1,
+              "avg300": 0.1,
+              "total": 459042183.0
+            },
+            "full": {
+              "avg10": 0.07,
+              "avg60": 0.1,
+              "avg300": 0.07,
+              "total": 382735546.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 525656,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:18.227247+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "45.384/9.796",
+              "rto": "246",
+              "cwnd": "10",
+              "bytes_sent": "14081",
+              "bytes_received": "8996",
+              "lastsnd": "46",
+              "lastrcv": "2"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.58,
+              "avg60": 2.25,
+              "avg300": 1.91,
+              "total": 1120709992.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.18,
+              "avg60": 0.12,
+              "avg300": 0.1,
+              "total": 459069389.0
+            },
+            "full": {
+              "avg10": 0.18,
+              "avg60": 0.12,
+              "avg300": 0.08,
+              "total": 382760101.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 505260,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:52:23.228331+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "43.355/4.294",
+              "rto": "244",
+              "cwnd": "17",
+              "bytes_sent": "28675",
+              "bytes_received": "15018",
+              "lastsnd": "2942",
+              "lastrcv": "2952"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.06,
+              "avg60": 2.1,
+              "avg300": 1.89,
+              "total": 1120732526.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.12,
+              "avg60": 0.11,
+              "avg300": 0.1,
+              "total": 459077567.0
+            },
+            "full": {
+              "avg10": 0.12,
+              "avg60": 0.11,
+              "avg300": 0.07,
+              "total": 382768149.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 505272,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:52:23.289199+00:00",
+        "at": "2026-10-21T03:52:23.371212+00:00",
+        "duration_ms": 82,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 3
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:52:23.289852+00:00",
+        "at": "2026-10-21T03:52:23.377994+00:00",
+        "duration_ms": 88,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 5
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:23.243780+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 46.7
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "521.072/3.024",
+              "rto": "738",
+              "cwnd": "89",
+              "retrans": "0/808",
+              "bytes_sent": "18212308",
+              "bytes_received": "1570548",
+              "bytes_retrans": "1097998",
+              "lastsnd": "11",
+              "lastrcv": "41",
+              "unacked": "88"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.68,
+              "avg60": 2.27,
+              "avg300": 1.81,
+              "total": 1128141180.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.05,
+              "avg300": 0.12,
+              "total": 460360671.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.09,
+              "total": 383981100.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 513792,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:58:23.317132+00:00",
+        "at": "2026-10-21T03:58:23.410589+00:00",
+        "duration_ms": 93,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 11
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:58:23.318936+00:00",
+        "at": "2026-10-21T03:58:23.410285+00:00",
+        "duration_ms": 91,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 16
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:28.243247+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 39.9
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "642.246/4.113",
+              "rto": "844",
+              "cwnd": "121",
+              "retrans": "0/808",
+              "bytes_sent": "19427170",
+              "bytes_received": "1601359",
+              "bytes_retrans": "1097998",
+              "lastsnd": "3",
+              "lastrcv": "2",
+              "unacked": "120"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.29,
+              "avg60": 2.48,
+              "avg300": 1.87,
+              "total": 1128420516.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.05,
+              "avg300": 0.11,
+              "total": 460364625.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.09,
+              "total": 383984969.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 539020,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:33.243263+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 41.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "982.977/29.189",
+              "rto": "1380",
+              "cwnd": "220",
+              "retrans": "0/808",
+              "bytes_sent": "20386680",
+              "bytes_received": "1631201",
+              "bytes_retrans": "1097998",
+              "lastsnd": "12",
+              "lastrcv": "12",
+              "unacked": "219"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.71,
+              "avg60": 2.42,
+              "avg300": 1.86,
+              "total": 1128515366.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.04,
+              "avg300": 0.11,
+              "total": 460364625.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.09,
+              "total": 383984969.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 538812,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:38.243339+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "491.143/222.006",
+              "rto": "1380",
+              "cwnd": "235",
+              "retrans": "0/812",
+              "bytes_sent": "20592626",
+              "bytes_received": "1642591",
+              "bytes_retrans": "1103590",
+              "lastsnd": "1561",
+              "lastrcv": "1521"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.15,
+              "avg60": 2.32,
+              "avg300": 1.85,
+              "total": 1128618583.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.04,
+              "avg300": 0.11,
+              "total": 460390325.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.09,
+              "total": 384009902.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 504640,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:43.243574+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "123.337/29.827",
+              "rto": "483",
+              "cwnd": "29",
+              "retrans": "0/812",
+              "bytes_sent": "20707115",
+              "bytes_received": "1654546",
+              "bytes_retrans": "1103590",
+              "lastsnd": "553",
+              "lastrcv": "513"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.44,
+              "avg60": 2.17,
+              "avg300": 1.82,
+              "total": 1128653519.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.03,
+              "avg300": 0.11,
+              "total": 460390325.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.02,
+              "avg300": 0.08,
+              "total": 384009902.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 504644,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:48.243854+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 45.1
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "1186/17.122",
+              "rto": "1425",
+              "cwnd": "203",
+              "retrans": "43/883",
+              "bytes_sent": "22166116",
+              "bytes_received": "1684096",
+              "bytes_retrans": "1202848",
+              "lastsnd": "2",
+              "lastrcv": "19",
+              "unacked": "379"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.36,
+              "avg60": 2.09,
+              "avg300": 1.81,
+              "total": 1128749840.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.12,
+              "avg60": 0.06,
+              "avg300": 0.11,
+              "total": 460413415.0
+            },
+            "full": {
+              "avg10": 0.12,
+              "avg60": 0.05,
+              "avg300": 0.09,
+              "total": 384032480.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 503532,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:53.244099+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 39.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "872.453/25.294",
+              "rto": "1238",
+              "cwnd": "158",
+              "retrans": "0/945",
+              "bytes_sent": "23342881",
+              "bytes_received": "1718261",
+              "bytes_retrans": "1289524",
+              "lastsnd": "12",
+              "lastrcv": "11",
+              "unacked": "157"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 1.64,
+              "avg60": 2.08,
+              "avg300": 1.82,
+              "total": 1128923433.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.08,
+              "avg60": 0.06,
+              "avg300": 0.11,
+              "total": 460418770.0
+            },
+            "full": {
+              "avg10": 0.08,
+              "avg60": 0.04,
+              "avg300": 0.09,
+              "total": 384032751.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 508276,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_cf",
+        "started_at": "2026-10-21T03:58:53.322399+00:00",
+        "at": "2026-10-21T03:58:53.482224+00:00",
+        "duration_ms": 160,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 15
+        }
+      },
+      {
+        "type": "control",
+        "label": "host_dns_google",
+        "started_at": "2026-10-21T03:58:53.323843+00:00",
+        "at": "2026-10-21T03:58:53.482073+00:00",
+        "duration_ms": 158,
+        "result": {
+          "exit": 0,
+          "rcode": "NOERROR",
+          "query_ms": 14
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:58:58.244478+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "774775fa27318a60",
+              "state": "ESTAB",
+              "rtt": "120.728/123.074",
+              "rto": "704",
+              "cwnd": "170",
+              "retrans": "0/945",
+              "bytes_sent": "23663552",
+              "bytes_received": "1738247",
+              "bytes_retrans": "1289524",
+              "lastsnd": "2387",
+              "lastrcv": "2347"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 3.96,
+              "avg60": 2.65,
+              "avg300": 1.95,
+              "total": 1129333620.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.16,
+              "avg60": 0.08,
+              "avg300": 0.11,
+              "total": 460455145.0
+            },
+            "full": {
+              "avg10": 0.16,
+              "avg60": 0.07,
+              "avg300": 0.09,
+              "total": 384067595.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 500296,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:59:03.245385+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.5
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": []
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.65,
+              "avg60": 2.48,
+              "avg300": 1.92,
+              "total": 1129346087.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.11,
+              "avg60": 0.07,
+              "avg300": 0.11,
+              "total": 460459105.0
+            },
+            "full": {
+              "avg10": 0.11,
+              "avg60": 0.06,
+              "avg300": 0.09,
+              "total": 384071496.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 500300,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:59:08.245456+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "b2006911f6f20ef2",
+              "state": "ESTAB",
+              "rtt": "39.903/5.374",
+              "rto": "240",
+              "cwnd": "10",
+              "bytes_sent": "8277",
+              "bytes_received": "2526",
+              "lastsnd": "436",
+              "lastrcv": "394"
+            },
+            {
+              "id": "3163a5e8544e941d",
+              "state": "ESTAB",
+              "rtt": "42.92/1.382",
+              "rto": "243",
+              "cwnd": "10",
+              "bytes_sent": "14040",
+              "bytes_received": "8425",
+              "lastsnd": "817",
+              "lastrcv": "774"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.18,
+              "avg60": 2.37,
+              "avg300": 1.91,
+              "total": 1129441743.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.06,
+              "avg60": 0.07,
+              "avg300": 0.11,
+              "total": 460463162.0
+            },
+            "full": {
+              "avg10": 0.06,
+              "avg60": 0.06,
+              "avg300": 0.09,
+              "total": 384071496.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 508776,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      },
+      {
+        "type": "sample",
+        "at": "2026-10-21T03:59:13.245388+00:00",
+        "peer_ping": {
+          "exit": 0,
+          "rtt_ms": 38.6
+        },
+        "carrier": {
+          "exit": 0,
+          "known_carrier_connections": [
+            {
+              "id": "3163a5e8544e941d",
+              "state": "ESTAB",
+              "rtt": "45.974/7.408",
+              "rto": "246",
+              "cwnd": "10",
+              "bytes_sent": "19309",
+              "bytes_received": "11216",
+              "lastsnd": "3906",
+              "lastrcv": "3864"
+            }
+          ]
+        },
+        "host_pressure": {
+          "cpu": {
+            "some": {
+              "avg10": 2.05,
+              "avg60": 2.35,
+              "avg300": 1.91,
+              "total": 1129522042.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 0.0
+            }
+          },
+          "memory": {
+            "some": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 24933276.0
+            },
+            "full": {
+              "avg10": 0.0,
+              "avg60": 0.0,
+              "avg300": 0.0,
+              "total": 16832117.0
+            }
+          },
+          "io": {
+            "some": {
+              "avg10": 0.03,
+              "avg60": 0.06,
+              "avg300": 0.11,
+              "total": 460471752.0
+            },
+            "full": {
+              "avg10": 0.03,
+              "avg60": 0.05,
+              "avg300": 0.08,
+              "total": 384079861.0
+            }
+          }
+        },
+        "host_memory_kib": {
+          "MemTotal": 984716,
+          "MemAvailable": 504328,
+          "SwapTotal": 0,
+          "SwapFree": 0
+        }
+      }
+    ]
+  }
+}

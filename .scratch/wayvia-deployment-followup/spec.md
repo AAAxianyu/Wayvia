@@ -38,6 +38,7 @@ Updated: 2026-10-20
 | [08 降低订阅生成首字节等待](issues/08-subscription-generation-speed.md) | P2 | done |
 | [09 复核严格 umask 下的安装与重装权限](issues/09-install-permissions.md) | P2 | done |
 | [10 补充 NekoBox 与 iPhone 客户端适配](issues/10-client-compatibility.md) | P3 | blocked |
+| [11 Windows TUN 国外 IPv4 自动使用与回退](issues/11-windows-ipv4-fallback.md) | P1 | open |
 
 ## 工作边界
 

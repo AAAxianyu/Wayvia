@@ -35,3 +35,5 @@ Priority: P1
 2026-10-20 续查：完成历史复核并修复一个已证明误判；保留 open 给真实超时根因与修复后长期观察。没有创建定时任务。
 
 2026-10-20 长期观察：已启动独立的 24 小时正常采样，UTC 2026-10-21 03:09 至 10-22 03:09，heartbeat `wayvia-24` 每小时只读复核。75 秒预运行正常到期退出，跨境 RTT 约 39 ms、VPN/出口 HTTP/DNS 全通过；阿里云宿主 CF HTTPS 直连超时作为独立对照基线。真实超时根因仍未知，完整窗口未完成。见 [观察报告](../../../docs/validation/stability-observation-2026-10-20/README.md) 和 [接续参数](../../../docs/validation/stability-observation-2026-10-20/run.json)。故障和重启继续暂缓。
+
+2026-10-21 03:48–03:59 UTC：Windows 实网诊断期间只读取证发现阿里云 44 轮中两次自然降级，日本 44/44 ACTIVE。access 为 HTTP_TLS_FAILED/curl 35、HTTP 0，未完成响应，区别于前次已修的 relay 关闭覆盖成功。DEGRADED→ACTIVE 17.20/12.95 秒；承载 TCP RTT 可达约 1.3 秒并伴重传，ICMP 仍约 40 ms，第二次保护前 VPN HTTPS 已超时、DNS 约 1.5 秒。继续排查承载排队/重传及负载关联，未证明具体限速点或唯一根因；不主动注入故障、不调整健康阈值。见 [Windows 诊断与事件窗口](../../../docs/validation/windows-campus-2026-10-20/README.md)。
