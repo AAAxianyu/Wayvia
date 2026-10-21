@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-21T08:40:57.653226+00:00",
+  "host": "jp",
+  "target_label": "peer",
+  "exit": 0,
+  "hops": [],
+  "limitation": "Three low-rate ICMP trace cycles; missing intermediate replies alone do not establish loss."
+}

@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-21T08:43:58.562709+00:00",
+  "host": "jp",
+  "ip_rules": [
+    {
+      "priority": 0,
+      "src": "all",
+      "table": "local"
+    },
+    {
+      "priority": 32766,
+      "src": "all",
+      "table": "main"
+    },
+    {
+      "priority": 32767,
+      "src": "all",
+      "table": "default"
+    }
+  ],
+  "kernel": "6.8.0-48-generic",
+  "cpu_max": null,
+  "firewall_chains": [
+    {
+      "family": "inet",
+      "table": "wayvia_cloud_access",
+      "name": "input",
+      "hook": "input",
+      "policy": "accept",
+      "prio": -10
+    },
+    {
+      "family": "inet",
+      "table": "wayvia_exit",
+      "name": "postrouting",
+      "hook": "postrouting",
+      "policy": "accept",
+      "prio": 100
+    }
+  ],
+  "drop_rule_counters": [
+    {
+      "family": "inet",
+      "table": "wayvia_cloud_access",
+      "chain": "input",
+      "handle": 4,
+      "counters": [
+        {
+          "packets": 704,
+          "bytes": 36700
+        }
+      ]
+    }
+  ],
+  "firewall_parse_error": null,
+  "driver_error_counters": {
+    "rx_queue_0_drops": 0,
+    "rx_queue_0_xdp_drops": 0,
+    "tx_queue_0_xdp_tx_drops": 0,
+    "tx_queue_0_tx_timeouts": 0
+  },
+  "driver_stats_exit": 0
+}

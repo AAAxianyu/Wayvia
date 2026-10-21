@@ -1,0 +1,26 @@
+[
+  {
+    "target": "1.1.1.1",
+    "at": "2026-10-21T08:45:58.633770+00:00",
+    "curl_exit": 0,
+    "http_code": 200,
+    "ssl_verify_result": 0,
+    "peer_colo": "NRT",
+    "exit_ip_matches_japan": true,
+    "connect_ms": 11.066,
+    "tls_ms": 245.21,
+    "total_ms": 264.561
+  },
+  {
+    "target": "1.0.0.1",
+    "at": "2026-10-21T08:45:58.647191+00:00",
+    "curl_exit": 0,
+    "http_code": 200,
+    "ssl_verify_result": 0,
+    "peer_colo": "NRT",
+    "exit_ip_matches_japan": true,
+    "connect_ms": 13.703,
+    "tls_ms": 257.368,
+    "total_ms": 274.453
+  }
+]

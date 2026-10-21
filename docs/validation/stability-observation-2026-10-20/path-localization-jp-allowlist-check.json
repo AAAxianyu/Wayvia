@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-21T08:47:20.553313+00:00",
+  "allow_443_source_matches_authorized_ali": true,
+  "restricted_443_drop_counter": {
+    "packets": 707,
+    "bytes": 36836
+  },
+  "scope": "Read-only current rules; not historical per-packet evidence."
+}

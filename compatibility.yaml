@@ -627,16 +627,25 @@ stability_observation_2026_10_20:
   production_wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
   production_services_and_default_route: unchanged_at_start
   latest_review:
-    journal_until_utc: '2026-10-21T08:32:11.583259+00:00'
-    samples: {ali: 3875, jp: 3874}
-    monitor_rounds: {ali: 1218, jp: 1227}
+    journal_until_utc: '2026-10-21T08:52:49.091931+00:00'
+    samples: {ali: 4122, jp: 4122}
+    monitor_rounds: {ali: 1296, jp: 1306}
     degraded_rounds: {ali: 4, jp: 0}
-    new_ingress_degradations: 2
-    new_japan_primary_HTTP_timeouts_with_successful_fallback: 2
-    ingress_degraded_seconds: [12.089898, 14.162227]
-    result: recovered_network_impairment_observed_root_cause_unresolved
+    new_ingress_degradations: 0
+    new_japan_primary_HTTP_timeouts_with_successful_fallback: 0
+    result: no_new_production_failure_prior_network_impairment_unresolved
     production_changes: none_by_observer_existing_recovery_actions_recorded
-    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T0832Z-review.json
+    evidence: docs/validation/stability-observation-2026-10-20/followup-20261021T0852Z-review.json
+  path_localization:
+    supplemental_cycles_each: 120
+    interval_seconds: 5
+    exit_reason_both: cycles_complete
+    persistent_supplemental_service: false
+    japan_gateway_local_peer_external_controls: all_120_successful_each
+    historical_common_outage_reproduced: false
+    hypothesis_priority: japan_virtual_network_gateway_or_common_upstream_not_yet_proven
+    exclusive_crossborder_explanation: insufficient_for_Japan_direct_external_failures
+    evidence: docs/validation/stability-observation-2026-10-20/path-localization.md
   preflight:
     seconds_each_host: 75
     samples_each_host: 15

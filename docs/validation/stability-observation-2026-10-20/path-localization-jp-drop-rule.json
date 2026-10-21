@@ -1,0 +1,85 @@
+{
+  "at": "2026-10-21T08:44:34.898907+00:00",
+  "host": "jp",
+  "table": "wayvia_cloud_access",
+  "chain": "input",
+  "rules": [
+    {
+      "handle": 2,
+      "conditions_and_action": [
+        {
+          "match": {
+            "op": "==",
+            "left": {
+              "meta": {
+                "key": "iifname"
+              }
+            },
+            "right": "lo"
+          }
+        },
+        {
+          "accept": null
+        }
+      ]
+    },
+    {
+      "handle": 3,
+      "conditions_and_action": [
+        {
+          "match": {
+            "op": "==",
+            "left": {
+              "payload": {
+                "protocol": "tcp",
+                "field": "dport"
+              }
+            },
+            "right": 443
+          }
+        },
+        {
+          "match": {
+            "op": "==",
+            "left": {
+              "payload": {
+                "protocol": "ip",
+                "field": "saddr"
+              }
+            },
+            "right": "address_redacted"
+          }
+        },
+        {
+          "accept": null
+        }
+      ]
+    },
+    {
+      "handle": 4,
+      "conditions_and_action": [
+        {
+          "match": {
+            "op": "==",
+            "left": {
+              "payload": {
+                "protocol": "tcp",
+                "field": "dport"
+              }
+            },
+            "right": 443
+          }
+        },
+        {
+          "counter": {
+            "packets": 704,
+            "bytes": 36700
+          }
+        },
+        {
+          "drop": null
+        }
+      ]
+    }
+  ]
+}

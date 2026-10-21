@@ -1,0 +1,363 @@
+{
+  "reviewed_at_utc": "2026-10-21T08:52:49.076199+00:00",
+  "scope": "bounded_normal_traffic_path_comparison",
+  "historical_incidents": "incidents-0827-0828.md",
+  "hosts": {
+    "ali": {
+      "start": {
+        "type": "start",
+        "host": "ali",
+        "at": "2026-10-21T08:42:12.662185+00:00",
+        "cycles": 120,
+        "interval_seconds": 5,
+        "device": "eth0",
+        "gateway": "172.30.207.253",
+        "targets": [
+          {
+            "label": "gateway",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "peer",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "cloudflare",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "google_dns",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "local_proxy_listener",
+            "kind": "tcp",
+            "port": 8443
+          },
+          {
+            "label": "peer_ssh",
+            "kind": "tcp",
+            "port": 22
+          },
+          {
+            "label": "peer_proxy_listener",
+            "kind": "tcp",
+            "port": 443
+          }
+        ],
+        "limit": "TCP connect only, not authenticated proxy acceptance; ICMP may be filtered."
+      },
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T08:52:07.886831+00:00",
+        "reason": "cycles_complete",
+        "samples": 120,
+        "elapsed_seconds": 595.225
+      },
+      "samples": 120,
+      "metrics": {
+        "gateway": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 0.073,
+            "p95": 0.112,
+            "max": 0.187
+          },
+          "failures": []
+        },
+        "peer": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 38.6,
+            "p95": 47.2,
+            "max": 56.5
+          },
+          "failures": []
+        },
+        "cloudflare": {
+          "ok": 113,
+          "failed": 7,
+          "success_ms": {
+            "median": 217.0,
+            "p95": 234.0,
+            "max": 245.0
+          },
+          "failures": [
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:42:27.663992+00:00",
+              "finished_at": "2026-10-21T08:42:28.669060+00:00",
+              "duration_ms": 1005.089,
+              "exit": 1,
+              "rtt_ms": null
+            },
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:43:22.663881+00:00",
+              "finished_at": "2026-10-21T08:43:23.670514+00:00",
+              "duration_ms": 1006.643,
+              "exit": 1,
+              "rtt_ms": null
+            },
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:44:12.663889+00:00",
+              "finished_at": "2026-10-21T08:44:13.668595+00:00",
+              "duration_ms": 1004.718,
+              "exit": 1,
+              "rtt_ms": null
+            },
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:45:12.664364+00:00",
+              "finished_at": "2026-10-21T08:45:13.673638+00:00",
+              "duration_ms": 1009.286,
+              "exit": 1,
+              "rtt_ms": null
+            },
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:45:47.663861+00:00",
+              "finished_at": "2026-10-21T08:45:48.667434+00:00",
+              "duration_ms": 1003.586,
+              "exit": 1,
+              "rtt_ms": null
+            },
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:46:22.663863+00:00",
+              "finished_at": "2026-10-21T08:46:23.669752+00:00",
+              "duration_ms": 1005.903,
+              "exit": 1,
+              "rtt_ms": null
+            },
+            {
+              "label": "cloudflare",
+              "kind": "icmp",
+              "started_at": "2026-10-21T08:47:17.664237+00:00",
+              "finished_at": "2026-10-21T08:47:18.668961+00:00",
+              "duration_ms": 1004.763,
+              "exit": 1,
+              "rtt_ms": null
+            }
+          ]
+        },
+        "google_dns": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 38.0,
+            "p95": 38.1,
+            "max": 38.7
+          },
+          "failures": []
+        },
+        "local_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 0.2925,
+            "p95": 4.156,
+            "max": 5.558
+          },
+          "failures": []
+        },
+        "peer_ssh": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 41.848,
+            "p95": 48.515,
+            "max": 64.421
+          },
+          "failures": []
+        },
+        "peer_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 42.2545,
+            "p95": 50.809,
+            "max": 65.912
+          },
+          "failures": []
+        }
+      },
+      "nic_delta": {
+        "rx_bytes": 20601208,
+        "tx_bytes": 23416139,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0
+      },
+      "softnet_dropped_delta": 0,
+      "softnet_time_squeeze_delta": 0,
+      "min_mem_available_kib": 543492
+    },
+    "jp": {
+      "start": {
+        "type": "start",
+        "host": "jp",
+        "at": "2026-10-21T08:42:13.518172+00:00",
+        "cycles": 120,
+        "interval_seconds": 5,
+        "device": "ens17",
+        "gateway": "10.1.251.1",
+        "targets": [
+          {
+            "label": "gateway",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "peer",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "cloudflare",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "google_dns",
+            "kind": "icmp",
+            "port": null
+          },
+          {
+            "label": "local_proxy_listener",
+            "kind": "tcp",
+            "port": 443
+          },
+          {
+            "label": "peer_ssh",
+            "kind": "tcp",
+            "port": 22
+          },
+          {
+            "label": "peer_proxy_listener",
+            "kind": "tcp",
+            "port": 8443
+          }
+        ],
+        "limit": "TCP connect only, not authenticated proxy acceptance; ICMP may be filtered."
+      },
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T08:52:08.569086+00:00",
+        "reason": "cycles_complete",
+        "samples": 120,
+        "elapsed_seconds": 595.051
+      },
+      "samples": 120,
+      "metrics": {
+        "gateway": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 0.088,
+            "p95": 0.139,
+            "max": 0.201
+          },
+          "failures": []
+        },
+        "peer": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 38.6,
+            "p95": 45.2,
+            "max": 50.3
+          },
+          "failures": []
+        },
+        "cloudflare": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 3.04,
+            "p95": 10.1,
+            "max": 13.2
+          },
+          "failures": []
+        },
+        "google_dns": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 2.86,
+            "p95": 9.08,
+            "max": 14.1
+          },
+          "failures": []
+        },
+        "local_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 0.2845,
+            "p95": 3.17,
+            "max": 7.72
+          },
+          "failures": []
+        },
+        "peer_ssh": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 42.2735,
+            "p95": 56.83,
+            "max": 69.424
+          },
+          "failures": []
+        },
+        "peer_proxy_listener": {
+          "ok": 120,
+          "failed": 0,
+          "success_ms": {
+            "median": 43.4265,
+            "p95": 52.311,
+            "max": 62.887
+          },
+          "failures": []
+        }
+      },
+      "nic_delta": {
+        "rx_bytes": 20242615,
+        "tx_bytes": 20546075,
+        "rx_errors": 0,
+        "tx_errors": 0,
+        "rx_dropped": 0,
+        "tx_dropped": 0
+      },
+      "softnet_dropped_delta": 0,
+      "softnet_time_squeeze_delta": 1,
+      "min_mem_available_kib": 485276
+    }
+  },
+  "interpretation": {
+    "observed": "Both gateway/peer/local listener/peer SSH/peer proxy controls succeeded throughout this bounded window; Japan external ICMP controls also succeeded. Historical correlated outage not reproduced.",
+    "ali_cloudflare_icmp": "Separate path losses in this new comparison are not proxy failures and are not the same measurement as the pre-existing host HTTPS timeout baseline.",
+    "localization": "Historical Japan-direct external HTTP/DNS failure plus cross-border loss cannot be explained solely by an isolated China-Japan path failure. The common Japan-side guest/virtual network/gateway/upstream boundary warrants priority, but the precise component is not established.",
+    "limits": [
+      "No gateway or loopback samples were collected during the historical 08:27/08:28 incidents.",
+      "Current route and firewall snapshots are not historical per-packet evidence.",
+      "Healthy guest counters do not prove the hypervisor, NAT or upstream network was healthy.",
+      "TCP connect success is not authenticated proxy-path acceptance.",
+      "MTR intermediate-hop nonresponses do not identify a broken hop; the Japan-to-peer trace has no usable hop list."
+    ]
+  }
+}

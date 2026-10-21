@@ -1,0 +1,141 @@
+{
+  "at": "2026-10-21T08:40:04.779302+00:00",
+  "host": "jp",
+  "paths": {
+    "peer": [
+      {
+        "dst": "8.136.0.78",
+        "gateway": "10.1.251.1",
+        "dev": "ens17",
+        "prefsrc": "10.1.251.2",
+        "flags": []
+      }
+    ],
+    "cloudflare": [
+      {
+        "dst": "1.1.1.1",
+        "gateway": "10.1.251.1",
+        "dev": "ens17",
+        "prefsrc": "10.1.251.2",
+        "flags": []
+      }
+    ],
+    "google_dns": [
+      {
+        "dst": "8.8.8.8",
+        "gateway": "10.1.251.1",
+        "dev": "ens17",
+        "prefsrc": "10.1.251.2",
+        "flags": []
+      }
+    ]
+  },
+  "default_route": [
+    {
+      "dst": "default",
+      "gateway": "10.1.251.1",
+      "dev": "ens17",
+      "protocol": "static",
+      "flags": []
+    }
+  ],
+  "tools": {
+    "mtr": true,
+    "tracepath": true,
+    "traceroute": false,
+    "ethtool": true,
+    "tcpdump": false,
+    "tc": true,
+    "nft": true,
+    "ping": true,
+    "curl": true,
+    "dig": true
+  },
+  "virtualization": "kvm",
+  "kernel": "6.8.0-48-generic",
+  "ntp_synchronized": "yes",
+  "nic": [
+    {
+      "ifname": "ens17",
+      "mtu": 1450,
+      "operstate": "UP",
+      "stats64": {
+        "rx": {
+          "bytes": 1821197296,
+          "packets": 1859654,
+          "errors": 0,
+          "dropped": 0,
+          "over_errors": 0,
+          "multicast": 0
+        },
+        "tx": {
+          "bytes": 423575951,
+          "packets": 1584683,
+          "errors": 0,
+          "dropped": 0,
+          "carrier_errors": 0,
+          "collisions": 0
+        }
+      }
+    }
+  ],
+  "qdisc": [
+    {
+      "kind": "fq_codel",
+      "handle": "0:",
+      "root": true,
+      "refcnt": 2,
+      "options": {
+        "limit": 10240,
+        "flows": 1024,
+        "quantum": 1464,
+        "target": 4999,
+        "interval": 99999,
+        "memory_limit": 33554432,
+        "ecn": true,
+        "drop_batch": 64
+      },
+      "bytes": 428518697,
+      "packets": 1659568,
+      "drops": 0,
+      "overlimits": 0,
+      "requeues": 0,
+      "backlog": 0,
+      "qlen": 0,
+      "maxpacket": 0,
+      "drop_overlimit": 0,
+      "new_flow_count": 0,
+      "ecn_mark": 0,
+      "new_flows_len": 0,
+      "old_flows_len": 0
+    }
+  ],
+  "nic_driver": {
+    "driver": "virtio_net",
+    "version": "1.0.0",
+    "firmware-version": "",
+    "supports-statistics": "yes"
+  },
+  "neighbours": [
+    {
+      "dst": "10.1.251.1",
+      "state": [
+        "REACHABLE"
+      ]
+    }
+  ],
+  "conntrack": {
+    "nf_conntrack_count": 198,
+    "nf_conntrack_max": 8192
+  },
+  "softnet": {
+    "processed": 3552693,
+    "dropped": 0,
+    "time_squeeze": 9
+  },
+  "observer_unit": [
+    "MainPID=164702",
+    "ActiveState=active",
+    "SubState=running"
+  ]
+}

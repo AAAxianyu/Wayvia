@@ -1,0 +1,415 @@
+{
+  "at": "2026-10-21T08:43:57.703545+00:00",
+  "host": "ali",
+  "ip_rules": [
+    {
+      "priority": 0,
+      "src": "all",
+      "table": "local"
+    },
+    {
+      "priority": 32766,
+      "src": "all",
+      "table": "main"
+    },
+    {
+      "priority": 32767,
+      "src": "all",
+      "table": "default"
+    }
+  ],
+  "kernel": "6.8.0-79-generic",
+  "cpu_max": null,
+  "firewall_chains": [
+    {
+      "family": "ip",
+      "table": "nat",
+      "name": "DOCKER"
+    },
+    {
+      "family": "ip",
+      "table": "nat",
+      "name": "PREROUTING",
+      "hook": "prerouting",
+      "policy": "accept",
+      "prio": -100
+    },
+    {
+      "family": "ip",
+      "table": "nat",
+      "name": "OUTPUT",
+      "hook": "output",
+      "policy": "accept",
+      "prio": -100
+    },
+    {
+      "family": "ip",
+      "table": "nat",
+      "name": "POSTROUTING",
+      "hook": "postrouting",
+      "policy": "accept",
+      "prio": 100
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER"
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER-FORWARD"
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER-BRIDGE"
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER-CT"
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER-ISOLATION-STAGE-1"
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER-ISOLATION-STAGE-2"
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "FORWARD",
+      "hook": "forward",
+      "policy": "drop",
+      "prio": 0
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "name": "DOCKER-USER"
+    },
+    {
+      "family": "ip6",
+      "table": "nat",
+      "name": "DOCKER"
+    },
+    {
+      "family": "ip6",
+      "table": "nat",
+      "name": "PREROUTING",
+      "hook": "prerouting",
+      "policy": "accept",
+      "prio": -100
+    },
+    {
+      "family": "ip6",
+      "table": "nat",
+      "name": "OUTPUT",
+      "hook": "output",
+      "policy": "accept",
+      "prio": -100
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER"
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER-FORWARD"
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER-BRIDGE"
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER-CT"
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER-ISOLATION-STAGE-1"
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER-ISOLATION-STAGE-2"
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "FORWARD",
+      "hook": "forward",
+      "policy": "accept",
+      "prio": 0
+    },
+    {
+      "family": "ip6",
+      "table": "filter",
+      "name": "DOCKER-USER"
+    },
+    {
+      "family": "ip",
+      "table": "raw",
+      "name": "PREROUTING",
+      "hook": "prerouting",
+      "policy": "accept",
+      "prio": -300
+    },
+    {
+      "family": "inet",
+      "table": "wayvia_guard",
+      "name": "input",
+      "hook": "input",
+      "policy": "accept",
+      "prio": -10
+    }
+  ],
+  "drop_rule_counters": [
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 13,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 27,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 33,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 40,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 49,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 56,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER",
+      "handle": 68,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 72,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 60,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 53,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 44,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 37,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 31,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "filter",
+      "chain": "DOCKER-ISOLATION-STAGE-2",
+      "handle": 17,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "raw",
+      "chain": "PREROUTING",
+      "handle": 46,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "raw",
+      "chain": "PREROUTING",
+      "handle": 58,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "raw",
+      "chain": "PREROUTING",
+      "handle": 59,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "ip",
+      "table": "raw",
+      "chain": "PREROUTING",
+      "handle": 60,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "family": "inet",
+      "table": "wayvia_guard",
+      "chain": "input",
+      "handle": 3,
+      "counters": [
+        {
+          "packets": 0,
+          "bytes": 0
+        }
+      ]
+    }
+  ],
+  "firewall_parse_error": null,
+  "driver_error_counters": {
+    "rx_queue_0_drops": 0,
+    "rx_queue_0_xdp_drops": 0,
+    "tx_queue_0_xdp_tx_drops": 0,
+    "tx_queue_0_tx_timeouts": 0
+  },
+  "driver_stats_exit": 0
+}

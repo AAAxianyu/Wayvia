@@ -1,0 +1,10 @@
+{
+  "started_at_utc": "2026-10-21T08:42:12.431360+00:00",
+  "purpose": "distinguish_local_gateway_external_and_crossborder_paths",
+  "cycles_per_host": 120,
+  "interval_seconds": 5,
+  "bounded_seconds_about": 600,
+  "remote_persistence": false,
+  "existing_24h_observer_unchanged": true,
+  "script_sha256": "304f7f7acc8e1f8857e3a6da0420b3e8debe2e12128f29c982a7d2023ce3d582"
+}

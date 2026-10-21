@@ -1,0 +1,185 @@
+{
+  "at": "2026-10-21T08:40:56.846316+00:00",
+  "host": "ali",
+  "target_label": "peer",
+  "exit": 0,
+  "hops": [
+    {
+      "count": 1,
+      "host": "10.12.172.110",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 2.252,
+      "Avg": 2.342,
+      "Best": 2.252,
+      "Wrst": 2.451,
+      "StDev": 0.1
+    },
+    {
+      "count": 2,
+      "host": "11.73.92.86",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 4.076,
+      "Avg": 4.41,
+      "Best": 3.842,
+      "Wrst": 5.312,
+      "StDev": 0.789
+    },
+    {
+      "count": 3,
+      "host": "10.255.101.125",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 12.168,
+      "Avg": 5.456,
+      "Best": 1.714,
+      "Wrst": 12.168,
+      "StDev": 5.825
+    },
+    {
+      "count": 4,
+      "host": "???",
+      "Loss%": 100.0,
+      "Snt": 3,
+      "Last": 0.0,
+      "Avg": 0.0,
+      "Best": 0.0,
+      "Wrst": 0.0,
+      "StDev": 0.0
+    },
+    {
+      "count": 5,
+      "host": "10.216.239.66",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 3.908,
+      "Avg": 3.954,
+      "Best": 3.908,
+      "Wrst": 4.045,
+      "StDev": 0.077
+    },
+    {
+      "count": 6,
+      "host": "124.160.190.89",
+      "Loss%": 33.333,
+      "Snt": 3,
+      "Last": 4.183,
+      "Avg": 4.189,
+      "Best": 4.183,
+      "Wrst": 4.196,
+      "StDev": 0.008
+    },
+    {
+      "count": 7,
+      "host": "124.160.83.85",
+      "Loss%": 66.666,
+      "Snt": 3,
+      "Last": 4.503,
+      "Avg": 4.503,
+      "Best": 4.503,
+      "Wrst": 4.503,
+      "StDev": 0.0
+    },
+    {
+      "count": 8,
+      "host": "???",
+      "Loss%": 100.0,
+      "Snt": 3,
+      "Last": 0.0,
+      "Avg": 0.0,
+      "Best": 0.0,
+      "Wrst": 0.0,
+      "StDev": 0.0
+    },
+    {
+      "count": 9,
+      "host": "219.158.30.26",
+      "Loss%": 33.333,
+      "Snt": 3,
+      "Last": 7.666,
+      "Avg": 7.633,
+      "Best": 7.6,
+      "Wrst": 7.666,
+      "StDev": 0.046
+    },
+    {
+      "count": 10,
+      "host": "219.158.8.186",
+      "Loss%": 66.666,
+      "Snt": 3,
+      "Last": 7.262,
+      "Avg": 7.262,
+      "Best": 7.262,
+      "Wrst": 7.262,
+      "StDev": 0.0
+    },
+    {
+      "count": 11,
+      "host": "221.111.202.45",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 43.653,
+      "Avg": 44.722,
+      "Best": 43.653,
+      "Wrst": 45.714,
+      "StDev": 1.032
+    },
+    {
+      "count": 12,
+      "host": "???",
+      "Loss%": 100.0,
+      "Snt": 3,
+      "Last": 0.0,
+      "Avg": 0.0,
+      "Best": 0.0,
+      "Wrst": 0.0,
+      "StDev": 0.0
+    },
+    {
+      "count": 13,
+      "host": "101.203.106.26",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 108.11,
+      "Avg": 98.296,
+      "Best": 91.991,
+      "Wrst": 108.11,
+      "StDev": 8.614
+    },
+    {
+      "count": 14,
+      "host": "???",
+      "Loss%": 100.0,
+      "Snt": 3,
+      "Last": 0.0,
+      "Avg": 0.0,
+      "Best": 0.0,
+      "Wrst": 0.0,
+      "StDev": 0.0
+    },
+    {
+      "count": 15,
+      "host": "???",
+      "Loss%": 100.0,
+      "Snt": 3,
+      "Last": 0.0,
+      "Avg": 0.0,
+      "Best": 0.0,
+      "Wrst": 0.0,
+      "StDev": 0.0
+    },
+    {
+      "count": 16,
+      "host": "206.119.182.131",
+      "Loss%": 0.0,
+      "Snt": 3,
+      "Last": 40.429,
+      "Avg": 40.406,
+      "Best": 40.347,
+      "Wrst": 40.443,
+      "StDev": 0.051
+    }
+  ],
+  "limitation": "Three low-rate ICMP trace cycles; missing intermediate replies alone do not establish loss."
+}

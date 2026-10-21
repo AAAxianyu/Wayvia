@@ -1,0 +1,52 @@
+{
+  "commands": [
+    {
+      "target": "check",
+      "exit": 0,
+      "started_at": "2026-10-21T08:45:18.400413+00:00",
+      "ended_at": "2026-10-21T08:46:50.129804+00:00"
+    },
+    {
+      "target": "demo",
+      "exit": 0,
+      "started_at": "2026-10-21T08:46:50.130082+00:00",
+      "ended_at": "2026-10-21T08:46:52.287508+00:00"
+    },
+    {
+      "target": "test-configs",
+      "exit": 0,
+      "started_at": "2026-10-21T08:46:52.289803+00:00",
+      "ended_at": "2026-10-21T08:53:12.515918+00:00"
+    }
+  ],
+  "test_lab": "deferred_by_user_not_executed_not_passed",
+  "scope": "software_regression_checks_not_real_network_acceptance",
+  "check_tests_passed": 369,
+  "check_existing_warnings": 3,
+  "real_configs_validated": 10,
+  "evidence_json_jsonl_files_validated": 24,
+  "diagnostic_source_sha256_matches_executed": true,
+  "report_links_exist": true,
+  "sensitive_pattern_scan_passed": true,
+  "production_software_changed": false,
+  "log_normalization": {
+    "method": "split carriage-return progress output into lines; trim trailing whitespace only",
+    "files": [
+      {
+        "file": "path-localization-test-configs.log",
+        "original_sha256": "94160e8e4baf628508fab0ebe13d9b7319be63cd86808e0de6f98687c066949d",
+        "saved_sha256": "0ca939667c70a9e24cab99de886d3dd6c1ebe698ab8851a882ab762e7d5bfa97"
+      },
+      {
+        "file": "path-localization-check.log",
+        "original_sha256": "0d8becac39fc62cf87d4ba6b8f131d2b160790335d7165c334cb5dc88f016014",
+        "saved_sha256": "b47c4e6d96f6b14c733c75fcadfca1bfb6523fa275b4865e147a9baf29e796eb"
+      },
+      {
+        "file": "path-localization-demo.log",
+        "original_sha256": "f765435b06213c7cdcf3d5a2e111ccdf046c47a583097d5c69edc14bc512d739",
+        "saved_sha256": "f765435b06213c7cdcf3d5a2e111ccdf046c47a583097d5c69edc14bc512d739"
+      }
+    ]
+  }
+}
