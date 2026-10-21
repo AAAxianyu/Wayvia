@@ -1,0 +1,116 @@
+{
+  "service_events": {
+    "window_utc": [
+      "2026-10-21T20:53:00+00:00",
+      "2026-10-21T21:22:00+00:00"
+    ],
+    "events": [
+      {
+        "at": "2026-10-21T21:18:53.461084+00:00",
+        "unit": "wayvia-exit.service",
+        "event": "service_stopped"
+      },
+      {
+        "at": "2026-10-21T21:18:55.172076+00:00",
+        "unit": "wayvia-vpn-server.service",
+        "event": "service_stopped"
+      },
+      {
+        "at": "2026-10-21T21:18:55.189829+00:00",
+        "unit": "wayvia-vpn-server.service",
+        "event": "service_started"
+      },
+      {
+        "at": "2026-10-21T21:18:55.804307+00:00",
+        "unit": "wayvia-exit.service",
+        "event": "service_started"
+      }
+    ]
+  },
+  "kernel": {
+    "window_utc": [
+      "2026-10-21T20:53:00+00:00",
+      "2026-10-21T21:22:00+00:00"
+    ],
+    "journal_rows": 0,
+    "category_counts": {
+      "oom": 0,
+      "netdev_watchdog": 0,
+      "link_down": 0,
+      "conntrack_full": 0,
+      "blocked_task": 0,
+      "kernel_panic": 0
+    },
+    "events": [],
+    "limits": "Allowlisted kernel categories only; absence does not exclude host, virtual-network or upstream faults."
+  },
+  "new_observer_failures": {
+    "since": "2026-10-21T20:55:36.157982+00:00",
+    "nonbaseline_controls": [
+      {
+        "type": "control",
+        "label": "host_cf_alternative",
+        "started_at": "2026-10-21T21:18:27.261218+00:00",
+        "at": "2026-10-21T21:18:29.308122+00:00",
+        "duration_ms": 2047,
+        "result": {
+          "curl_exit": 28,
+          "valid_https_response": false,
+          "single_valid_trace_ip": false,
+          "expected_exit_match": false,
+          "http_code": 0,
+          "ssl_verify_result": 1,
+          "time_connect": 1.048403,
+          "time_appconnect": 0.0,
+          "time_starttransfer": 0.0,
+          "time_total": 2.000716,
+          "size_download": 0
+        }
+      }
+    ],
+    "peer_ping_misses": [
+      {
+        "at": "2026-10-21T21:18:01.240188+00:00",
+        "peer_ping": {
+          "exit": 1,
+          "rtt_ms": null
+        }
+      },
+      {
+        "at": "2026-10-21T21:18:06.240090+00:00",
+        "peer_ping": {
+          "exit": 1,
+          "rtt_ms": null
+        }
+      },
+      {
+        "at": "2026-10-21T21:18:26.240966+00:00",
+        "peer_ping": {
+          "exit": 1,
+          "rtt_ms": null
+        }
+      },
+      {
+        "at": "2026-10-21T21:18:31.241365+00:00",
+        "peer_ping": {
+          "exit": 1,
+          "rtt_ms": null
+        }
+      },
+      {
+        "at": "2026-10-21T21:18:36.241183+00:00",
+        "peer_ping": {
+          "exit": 1,
+          "rtt_ms": null
+        }
+      },
+      {
+        "at": "2026-10-21T21:18:41.242012+00:00",
+        "peer_ping": {
+          "exit": 1,
+          "rtt_ms": null
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,504 @@
+{
+  "windows": {
+    "fallback-2055": {
+      "requested_window_utc": [
+        "2026-10-21T20:53:00+00:00",
+        "2026-10-21T20:59:00+00:00"
+      ],
+      "coverage_anchors_utc": [
+        "2026-10-21T20:55:47.527271+00:00",
+        "2026-10-21T20:55:55.412271+00:00"
+      ],
+      "coverage_anchor_note": "Fallback completion derived from observed_at plus duration_ms; incident uses conservative 21:19:26 post-recovery anchor after both guards and subsequent VPN reset recovered.",
+      "hosts": {
+        "ali": {
+          "evidence": "fallback-2055-ali.jsonl",
+          "records": 168,
+          "samples": 72,
+          "first_record_at": "2026-10-21T20:53:01.381070+00:00",
+          "last_record_at": "2026-10-21T20:58:56.390424+00:00",
+          "control_counts": {
+            "host_cf_primary": {
+              "failed": 12
+            },
+            "host_cf_alternative": {
+              "failed": 12
+            },
+            "host_dns_cf": {
+              "ok": 12
+            },
+            "host_dns_google": {
+              "ok": 12
+            },
+            "vpn_cf_primary": {
+              "ok": 12
+            },
+            "vpn_cf_alternative": {
+              "ok": 12
+            },
+            "vpn_dns_cf": {
+              "ok": 12
+            },
+            "vpn_dns_google": {
+              "ok": 12
+            }
+          },
+          "failures_and_next_success": [],
+          "peer_ping_misses": [],
+          "peer_ping_rtt_ms": {
+            "count": 72,
+            "median": 38.6,
+            "p95": 38.7,
+            "max": 38.8
+          },
+          "carrier_rto_max_ms": 255.0,
+          "carrier_rtt_max_ms": 54.346,
+          "cpu_busy_percent_excluding_iowait": {
+            "count": 71,
+            "median": 7.497467071935157,
+            "p95": 56.848609680741504,
+            "max": 73.38129496402878
+          },
+          "memory_available_min_kib": 201028,
+          "memory_pressure_avg10_max": 22.62,
+          "io_pressure_avg10_max": 52.38,
+          "carrier_pre_incident_mbps_max": {
+            "bytes_sent": null,
+            "bytes_received": null
+          },
+          "rate_scope": "Same carrier connection 5s counter deltas from 21:17:00 to 21:18:00 UTC; not all host traffic or capacity testing."
+        },
+        "jp": {
+          "evidence": "fallback-2055-jp.jsonl",
+          "records": 120,
+          "samples": 72,
+          "first_record_at": "2026-10-21T20:53:01.151950+00:00",
+          "last_record_at": "2026-10-21T20:58:56.351318+00:00",
+          "control_counts": {
+            "host_cf_primary": {
+              "ok": 12
+            },
+            "host_cf_alternative": {
+              "ok": 12
+            },
+            "host_dns_cf": {
+              "ok": 12
+            },
+            "host_dns_google": {
+              "ok": 12
+            }
+          },
+          "failures_and_next_success": [],
+          "peer_ping_misses": [],
+          "peer_ping_rtt_ms": {
+            "count": 72,
+            "median": 38.6,
+            "p95": 38.8,
+            "max": 38.8
+          },
+          "carrier_rto_max_ms": 252.0,
+          "carrier_rtt_max_ms": 51.536,
+          "cpu_busy_percent_excluding_iowait": {
+            "count": 71,
+            "median": 4.609218436873747,
+            "p95": 56.13682092555332,
+            "max": 100.0
+          },
+          "memory_available_min_kib": 333016,
+          "memory_pressure_avg10_max": 0.8,
+          "io_pressure_avg10_max": 6.67,
+          "carrier_pre_incident_mbps_max": {
+            "bytes_sent": null,
+            "bytes_received": null
+          },
+          "rate_scope": "Same carrier connection 5s counter deltas from 21:17:00 to 21:18:00 UTC; not all host traffic or capacity testing."
+        }
+      }
+    },
+    "incident-2118": {
+      "requested_window_utc": [
+        "2026-10-21T21:15:00+00:00",
+        "2026-10-21T21:22:00+00:00"
+      ],
+      "coverage_anchors_utc": [
+        "2026-10-21T21:18:00.155556+00:00",
+        "2026-10-21T21:19:26.688665+00:00"
+      ],
+      "coverage_anchor_note": "Earliest failed production request and latest successful control completion in the first full post-second-reconnection batch; actual sample bounds exceed 120 seconds on each side.",
+      "hosts": {
+        "ali": {
+          "evidence": "incident-2118-ali.jsonl",
+          "records": 196,
+          "samples": 84,
+          "first_record_at": "2026-10-21T21:15:01.415739+00:00",
+          "last_record_at": "2026-10-21T21:21:56.425724+00:00",
+          "control_counts": {
+            "host_cf_primary": {
+              "failed": 14
+            },
+            "host_cf_alternative": {
+              "failed": 14
+            },
+            "host_dns_cf": {
+              "ok": 14
+            },
+            "host_dns_google": {
+              "ok": 14
+            },
+            "vpn_cf_primary": {
+              "ok": 13,
+              "failed": 1
+            },
+            "vpn_cf_alternative": {
+              "ok": 13,
+              "failed": 1
+            },
+            "vpn_dns_cf": {
+              "ok": 13,
+              "failed": 1
+            },
+            "vpn_dns_google": {
+              "ok": 13,
+              "failed": 1
+            }
+          },
+          "failures_and_next_success": [
+            {
+              "failure": {
+                "type": "control",
+                "label": "vpn_cf_primary",
+                "started_at": "2026-10-21T21:18:21.572104+00:00",
+                "at": "2026-10-21T21:18:23.595350+00:00",
+                "duration_ms": 2023,
+                "result": {
+                  "curl_exit": 28,
+                  "valid_https_response": false,
+                  "single_valid_trace_ip": false,
+                  "expected_exit_match": false,
+                  "http_code": 0,
+                  "ssl_verify_result": 1,
+                  "time_connect": 0.256389,
+                  "time_appconnect": 0.0,
+                  "time_starttransfer": 0.0,
+                  "time_total": 2.005013,
+                  "size_download": 0
+                }
+              },
+              "next_success": {
+                "type": "control",
+                "label": "vpn_cf_primary",
+                "started_at": "2026-10-21T21:18:51.553293+00:00",
+                "at": "2026-10-21T21:18:51.727932+00:00",
+                "duration_ms": 175,
+                "result": {
+                  "curl_exit": 0,
+                  "valid_https_response": true,
+                  "single_valid_trace_ip": true,
+                  "expected_exit_match": true,
+                  "http_code": 200,
+                  "ssl_verify_result": 0,
+                  "time_connect": 0.044765,
+                  "time_appconnect": 0.103627,
+                  "time_starttransfer": 0.158451,
+                  "time_total": 0.158512,
+                  "size_download": 197
+                }
+              }
+            },
+            {
+              "failure": {
+                "type": "control",
+                "label": "vpn_cf_alternative",
+                "started_at": "2026-10-21T21:18:21.606761+00:00",
+                "at": "2026-10-21T21:18:23.629414+00:00",
+                "duration_ms": 2023,
+                "result": {
+                  "curl_exit": 28,
+                  "valid_https_response": false,
+                  "single_valid_trace_ip": false,
+                  "expected_exit_match": false,
+                  "http_code": 0,
+                  "ssl_verify_result": 1,
+                  "time_connect": 0.220909,
+                  "time_appconnect": 0.0,
+                  "time_starttransfer": 0.0,
+                  "time_total": 2.005288,
+                  "size_download": 0
+                }
+              },
+              "next_success": {
+                "type": "control",
+                "label": "vpn_cf_alternative",
+                "started_at": "2026-10-21T21:18:51.577410+00:00",
+                "at": "2026-10-21T21:18:51.761164+00:00",
+                "duration_ms": 184,
+                "result": {
+                  "curl_exit": 0,
+                  "valid_https_response": true,
+                  "single_valid_trace_ip": true,
+                  "expected_exit_match": true,
+                  "http_code": 200,
+                  "ssl_verify_result": 0,
+                  "time_connect": 0.044806,
+                  "time_appconnect": 0.115121,
+                  "time_starttransfer": 0.167502,
+                  "time_total": 0.167556,
+                  "size_download": 197
+                }
+              }
+            },
+            {
+              "failure": {
+                "type": "control",
+                "label": "vpn_dns_cf",
+                "started_at": "2026-10-21T21:18:23.536277+00:00",
+                "at": "2026-10-21T21:18:25.622203+00:00",
+                "duration_ms": 2086,
+                "result": {
+                  "exit": 9,
+                  "rcode": null,
+                  "query_ms": null
+                }
+              },
+              "next_success": {
+                "type": "control",
+                "label": "vpn_dns_cf",
+                "started_at": "2026-10-21T21:18:51.727959+00:00",
+                "at": "2026-10-21T21:18:51.807178+00:00",
+                "duration_ms": 79,
+                "result": {
+                  "exit": 0,
+                  "rcode": "NOERROR",
+                  "query_ms": 45
+                }
+              }
+            },
+            {
+              "failure": {
+                "type": "control",
+                "label": "vpn_dns_google",
+                "started_at": "2026-10-21T21:18:23.536843+00:00",
+                "at": "2026-10-21T21:18:25.620563+00:00",
+                "duration_ms": 2084,
+                "result": {
+                  "exit": 9,
+                  "rcode": null,
+                  "query_ms": null
+                }
+              },
+              "next_success": {
+                "type": "control",
+                "label": "vpn_dns_google",
+                "started_at": "2026-10-21T21:18:51.761198+00:00",
+                "at": "2026-10-21T21:18:51.849642+00:00",
+                "duration_ms": 88,
+                "result": {
+                  "exit": 0,
+                  "rcode": "NOERROR",
+                  "query_ms": 56
+                }
+              }
+            }
+          ],
+          "peer_ping_misses": [
+            "2026-10-21T21:18:01.419522+00:00",
+            "2026-10-21T21:18:16.419791+00:00",
+            "2026-10-21T21:18:31.421230+00:00",
+            "2026-10-21T21:18:36.420362+00:00",
+            "2026-10-21T21:18:41.420455+00:00"
+          ],
+          "peer_ping_rtt_ms": {
+            "count": 79,
+            "median": 38.6,
+            "p95": 58.3,
+            "max": 160.0
+          },
+          "carrier_rto_max_ms": 5670.0,
+          "carrier_rtt_max_ms": 484.795,
+          "cpu_busy_percent_excluding_iowait": {
+            "count": 83,
+            "median": 4.7283702213279675,
+            "p95": 22.05438066465257,
+            "max": 54.56431535269709
+          },
+          "memory_available_min_kib": 502164,
+          "memory_pressure_avg10_max": 0.44,
+          "io_pressure_avg10_max": 5.32,
+          "carrier_pre_incident_mbps_max": {
+            "bytes_sent": 0.007225464938797714,
+            "bytes_received": 0.0155213098696361
+          },
+          "rate_scope": "Same carrier connection 5s counter deltas from 21:17:00 to 21:18:00 UTC; not all host traffic or capacity testing."
+        },
+        "jp": {
+          "evidence": "incident-2118-jp.jsonl",
+          "records": 140,
+          "samples": 84,
+          "first_record_at": "2026-10-21T21:15:01.231318+00:00",
+          "last_record_at": "2026-10-21T21:21:56.397477+00:00",
+          "control_counts": {
+            "host_cf_primary": {
+              "ok": 14
+            },
+            "host_cf_alternative": {
+              "ok": 13,
+              "failed": 1
+            },
+            "host_dns_cf": {
+              "ok": 14
+            },
+            "host_dns_google": {
+              "ok": 14
+            }
+          },
+          "failures_and_next_success": [
+            {
+              "failure": {
+                "type": "control",
+                "label": "host_cf_alternative",
+                "started_at": "2026-10-21T21:18:27.261218+00:00",
+                "at": "2026-10-21T21:18:29.308122+00:00",
+                "duration_ms": 2047,
+                "result": {
+                  "curl_exit": 28,
+                  "valid_https_response": false,
+                  "single_valid_trace_ip": false,
+                  "expected_exit_match": false,
+                  "http_code": 0,
+                  "ssl_verify_result": 1,
+                  "time_connect": 1.048403,
+                  "time_appconnect": 0.0,
+                  "time_starttransfer": 0.0,
+                  "time_total": 2.000716,
+                  "size_download": 0
+                }
+              },
+              "next_success": {
+                "type": "control",
+                "label": "host_cf_alternative",
+                "started_at": "2026-10-21T21:18:56.317173+00:00",
+                "at": "2026-10-21T21:18:56.691196+00:00",
+                "duration_ms": 374,
+                "result": {
+                  "curl_exit": 0,
+                  "valid_https_response": true,
+                  "single_valid_trace_ip": true,
+                  "expected_exit_match": true,
+                  "http_code": 200,
+                  "ssl_verify_result": 0,
+                  "time_connect": 0.007419,
+                  "time_appconnect": 0.266476,
+                  "time_starttransfer": 0.273435,
+                  "time_total": 0.27349,
+                  "size_download": 196
+                }
+              }
+            }
+          ],
+          "peer_ping_misses": [
+            "2026-10-21T21:18:01.240188+00:00",
+            "2026-10-21T21:18:06.240090+00:00",
+            "2026-10-21T21:18:26.240966+00:00",
+            "2026-10-21T21:18:31.241365+00:00",
+            "2026-10-21T21:18:36.241183+00:00",
+            "2026-10-21T21:18:41.242012+00:00"
+          ],
+          "peer_ping_rtt_ms": {
+            "count": 78,
+            "median": 38.6,
+            "p95": 40.0,
+            "max": 69.0
+          },
+          "carrier_rto_max_ms": 3020.0,
+          "carrier_rtt_max_ms": 523.663,
+          "cpu_busy_percent_excluding_iowait": {
+            "count": 83,
+            "median": 4.609218436873747,
+            "p95": 34.93975903614458,
+            "max": 47.16599190283401
+          },
+          "memory_available_min_kib": 501112,
+          "memory_pressure_avg10_max": 0.18,
+          "io_pressure_avg10_max": 6.66,
+          "carrier_pre_incident_mbps_max": {
+            "bytes_sent": 0.015521044210031764,
+            "bytes_received": 0.007225341269199406
+          },
+          "rate_scope": "Same carrier connection 5s counter deltas from 21:17:00 to 21:18:00 UTC; not all host traffic or capacity testing."
+        }
+      }
+    }
+  },
+  "protection_intervals": [
+    {
+      "host": "ali",
+      "degraded_at": "2026-10-21T21:18:20.030609+00:00",
+      "active_at": "2026-10-21T21:18:47.254299+00:00",
+      "seconds": 27.22369,
+      "limit": "Recorded state duration, not exact user outage duration; request impairment begins earlier."
+    },
+    {
+      "host": "jp",
+      "degraded_at": "2026-10-21T21:18:53.471398+00:00",
+      "active_at": "2026-10-21T21:18:57.400106+00:00",
+      "seconds": 3.928708,
+      "limit": "Recorded state duration, not exact user outage duration; request impairment begins earlier."
+    }
+  ],
+  "service_stop_start_intervals": {
+    "ali": [
+      {
+        "unit": "wayvia-ingress.service",
+        "stop_at": "2026-10-21T21:18:20.022609+00:00",
+        "start_at": "2026-10-21T21:18:27.691095+00:00",
+        "seconds": 7.668486
+      },
+      {
+        "unit": "wayvia-carrier.service",
+        "stop_at": "2026-10-21T21:18:22.024546+00:00",
+        "start_at": "2026-10-21T21:18:22.039399+00:00",
+        "seconds": 0.014853
+      },
+      {
+        "unit": "wayvia-vpn-client.service",
+        "stop_at": "2026-10-21T21:18:26.753061+00:00",
+        "start_at": "2026-10-21T21:18:26.760405+00:00",
+        "seconds": 0.007344
+      },
+      {
+        "unit": "wayvia-bridge.service",
+        "stop_at": "2026-10-21T21:18:27.226748+00:00",
+        "start_at": "2026-10-21T21:18:27.235035+00:00",
+        "seconds": 0.008287
+      }
+    ],
+    "jp": [
+      {
+        "unit": "wayvia-exit.service",
+        "stop_at": "2026-10-21T21:18:53.461084+00:00",
+        "start_at": "2026-10-21T21:18:55.804307+00:00",
+        "seconds": 2.343223
+      },
+      {
+        "unit": "wayvia-vpn-server.service",
+        "stop_at": "2026-10-21T21:18:55.172076+00:00",
+        "start_at": "2026-10-21T21:18:55.189829+00:00",
+        "seconds": 0.017753
+      }
+    ]
+  },
+  "root_cause": "unresolved",
+  "interpretation": "Cross-border ICMP loss and TCP retransmission precede automatic service restarts. Japan host HTTPS also times out before its own recovery. Ali VPN controls fail during its automatic recovery and cannot independently prove pre-recovery VPN failure. Japan later stops its exit after Ali has reported ACTIVE, followed by a new Ali VPN reset. Initial network fault and later recovery disruption must be separated. Earlier 20:55 access fallback success is a separate observed request impairment without protection.",
+  "collection_overlap": {
+    "classification": "possible_observation_effect_on_2055_fallback_unproven",
+    "source": "heartbeat-20261021T2052Z-monitor-ali.json",
+    "previous_journal_cutoff_utc": "2026-10-21T20:55:33.384881+00:00",
+    "previous_collector_observed_at_utc": "2026-10-21T20:55:47.950120+00:00",
+    "access_probe_started_at_utc": "2026-10-21T20:55:47.527271+00:00",
+    "ali_memory_available_min_kib": 201028,
+    "ali_memory_pressure_some_avg10_peak": 22.62,
+    "ali_io_pressure_some_avg10_peak": 52.38,
+    "pressure_peak_at_utc": "2026-10-21T20:55:56.386738+00:00",
+    "limits": "Temporal overlap only. No per-process resource attribution; collector observed_at is a result-field timestamp, not exact process exit time. Independent controls and peer pings in this window succeeded. Do not classify as proven line outage or proven collector-induced failure. No evidence of an active collection during 21:18 incident."
+  }
+}
