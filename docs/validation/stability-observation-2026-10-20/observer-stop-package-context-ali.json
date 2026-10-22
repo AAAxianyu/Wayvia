@@ -1,0 +1,51 @@
+{
+  "scope": "allowlisted package-maintenance log facts only; times server local unless labeled UTC",
+  "timezone": "Asia/Shanghai",
+  "logs": {
+    "/var/log/unattended-upgrades/unattended-upgrades.log": {
+      "exists": true,
+      "selected_events": [
+        {
+          "line": 244,
+          "block_start_local": null,
+          "at_server_local": "2026-10-22 06:22:04,352",
+          "category": "upgrade_start",
+          "wayvia_services": []
+        },
+        {
+          "line": 248,
+          "block_start_local": null,
+          "at_server_local": "2026-10-22 06:22:09,370",
+          "category": "upgrade_packages",
+          "wayvia_services": []
+        },
+        {
+          "line": 250,
+          "block_start_local": null,
+          "at_server_local": "2026-10-22 06:22:42,747",
+          "category": "upgrade_completed",
+          "wayvia_services": []
+        },
+        {
+          "line": 253,
+          "block_start_local": null,
+          "at_server_local": "2026-10-22 06:47:15,082",
+          "category": "upgrade_start",
+          "wayvia_services": []
+        }
+      ]
+    },
+    "/var/log/unattended-upgrades/unattended-upgrades-dpkg.log": {
+      "exists": true,
+      "selected_events": []
+    },
+    "/var/log/apt/term.log": {
+      "exists": true,
+      "selected_events": []
+    },
+    "/var/log/dpkg.log": {
+      "exists": true,
+      "selected_events": []
+    }
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "windows": {
+    "observer-stop": {
+      "ali": {
+        "records": 71,
+        "samples": 31,
+        "first_at": "2026-10-21T22:20:01.525570+00:00",
+        "last_at": "2026-10-21T22:22:31.530838+00:00",
+        "missing_reason": null,
+        "control_counts": {
+          "host_cf_primary": {
+            "failed": 5
+          },
+          "host_cf_alternative": {
+            "failed": 5
+          },
+          "host_dns_cf": {
+            "ok": 5
+          },
+          "host_dns_google": {
+            "ok": 5
+          },
+          "vpn_cf_primary": {
+            "ok": 5
+          },
+          "vpn_cf_alternative": {
+            "ok": 5
+          },
+          "vpn_dns_cf": {
+            "ok": 5
+          },
+          "vpn_dns_google": {
+            "ok": 5
+          }
+        },
+        "failures_and_next_success": [],
+        "ping_misses": [],
+        "peer_ping_rtt_ms": {
+          "count": 31,
+          "median": 38.6,
+          "p95": 38.7,
+          "max": 39.7
+        },
+        "carrier_rtt_max_ms": 50.232,
+        "carrier_rto_max_ms": 251.0,
+        "carrier_pre_incident_mbps_max": {
+          "bytes_sent": 0.007540628142346202,
+          "bytes_received": 0.016002175551438517
+        },
+        "rate_scope": "per connection counters, one minute before 2026-10-21T22:22:30+00:00; not all host traffic",
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 30,
+          "median": 5.348133198789101,
+          "p95": 54.82233502538071,
+          "max": 59.40996948118006
+        },
+        "memory_available_min_kib": 421360,
+        "memory_pressure_avg10_max": 7.02,
+        "io_pressure_avg10_max": 23.45
+      },
+      "jp": {
+        "records": 100,
+        "samples": 60,
+        "first_at": "2026-10-21T22:20:01.415958+00:00",
+        "last_at": "2026-10-21T22:24:56.552239+00:00",
+        "missing_reason": null,
+        "control_counts": {
+          "host_cf_primary": {
+            "ok": 10
+          },
+          "host_cf_alternative": {
+            "ok": 10
+          },
+          "host_dns_cf": {
+            "ok": 10
+          },
+          "host_dns_google": {
+            "ok": 10
+          }
+        },
+        "failures_and_next_success": [],
+        "ping_misses": [],
+        "peer_ping_rtt_ms": {
+          "count": 60,
+          "median": 38.6,
+          "p95": 38.9,
+          "max": 80.1
+        },
+        "carrier_rtt_max_ms": 90.351,
+        "carrier_rto_max_ms": 559.0,
+        "carrier_pre_incident_mbps_max": {
+          "bytes_sent": 0.015957701052693892,
+          "bytes_received": 0.007519670638426037
+        },
+        "rate_scope": "per connection counters, one minute before 2026-10-21T22:22:30+00:00; not all host traffic",
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 59,
+          "median": 3.2064128256513027,
+          "p95": 32.730923694779115,
+          "max": 34.00402414486921
+        },
+        "memory_available_min_kib": 502660,
+        "memory_pressure_avg10_max": 0.0,
+        "io_pressure_avg10_max": 1.19
+      }
+    },
+    "incident-0055": {
+      "ali": {
+        "records": 0,
+        "samples": 0,
+        "first_at": null,
+        "last_at": null,
+        "missing_reason": "ali_observer_stopped_2026-10-21T22:22:36Z_no_post_stop_samples",
+        "control_counts": {},
+        "failures_and_next_success": [],
+        "ping_misses": [],
+        "peer_ping_rtt_ms": {
+          "count": 0
+        },
+        "carrier_rtt_max_ms": null,
+        "carrier_rto_max_ms": null,
+        "carrier_pre_incident_mbps_max": {
+          "bytes_sent": null,
+          "bytes_received": null
+        },
+        "rate_scope": "per connection counters, one minute before 2026-10-22T00:55:20+00:00; not all host traffic",
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 0
+        },
+        "memory_available_min_kib": null,
+        "memory_pressure_avg10_max": null,
+        "io_pressure_avg10_max": null
+      },
+      "jp": {
+        "records": 119,
+        "samples": 71,
+        "first_at": "2026-10-22T00:52:51.871898+00:00",
+        "last_at": "2026-10-22T00:58:41.888415+00:00",
+        "missing_reason": null,
+        "control_counts": {
+          "host_cf_primary": {
+            "ok": 12
+          },
+          "host_cf_alternative": {
+            "ok": 11,
+            "failed": 1
+          },
+          "host_dns_cf": {
+            "ok": 12
+          },
+          "host_dns_google": {
+            "ok": 11,
+            "failed": 1
+          }
+        },
+        "failures_and_next_success": [
+          {
+            "failure": {
+              "type": "control",
+              "label": "host_cf_alternative",
+              "started_at": "2026-10-22T00:55:27.900719+00:00",
+              "at": "2026-10-22T00:55:29.953349+00:00",
+              "duration_ms": 2053,
+              "result": {
+                "curl_exit": 28,
+                "valid_https_response": false,
+                "single_valid_trace_ip": false,
+                "expected_exit_match": false,
+                "http_code": 0,
+                "ssl_verify_result": 0,
+                "time_connect": 0.0,
+                "time_appconnect": 0.0,
+                "time_starttransfer": 0.0,
+                "time_total": 2.006424,
+                "size_download": 0
+              }
+            },
+            "next_success": {
+              "type": "control",
+              "label": "host_cf_alternative",
+              "started_at": "2026-10-22T00:55:56.942071+00:00",
+              "at": "2026-10-22T00:56:00.388306+00:00",
+              "duration_ms": 3446,
+              "result": {
+                "curl_exit": 0,
+                "valid_https_response": true,
+                "single_valid_trace_ip": true,
+                "expected_exit_match": true,
+                "http_code": 200,
+                "ssl_verify_result": 0,
+                "time_connect": 0.012244,
+                "time_appconnect": 0.089748,
+                "time_starttransfer": 3.395073,
+                "time_total": 3.395144,
+                "size_download": 197
+              }
+            }
+          },
+          {
+            "failure": {
+              "type": "control",
+              "label": "host_dns_google",
+              "started_at": "2026-10-22T00:55:56.942894+00:00",
+              "at": "2026-10-22T00:55:59.023669+00:00",
+              "duration_ms": 2081,
+              "result": {
+                "exit": 9,
+                "rcode": null,
+                "query_ms": null
+              }
+            },
+            "next_success": {
+              "type": "control",
+              "label": "host_dns_google",
+              "started_at": "2026-10-22T00:56:26.945906+00:00",
+              "at": "2026-10-22T00:56:27.041494+00:00",
+              "duration_ms": 96,
+              "result": {
+                "exit": 0,
+                "rcode": "NOERROR",
+                "query_ms": 8
+              }
+            }
+          }
+        ],
+        "ping_misses": [
+          "2026-10-22T00:55:21.880768+00:00",
+          "2026-10-22T00:55:26.879612+00:00",
+          "2026-10-22T00:55:31.880225+00:00",
+          "2026-10-22T00:55:36.880215+00:00",
+          "2026-10-22T00:55:41.880747+00:00",
+          "2026-10-22T00:55:46.880968+00:00",
+          "2026-10-22T00:55:51.881401+00:00"
+        ],
+        "peer_ping_rtt_ms": {
+          "count": 64,
+          "median": 38.6,
+          "p95": 52.1,
+          "max": 66.2
+        },
+        "carrier_rtt_max_ms": 129.331,
+        "carrier_rto_max_ms": 581.0,
+        "carrier_pre_incident_mbps_max": {
+          "bytes_sent": 0.031812647299292965,
+          "bytes_received": 0.10455946746715918
+        },
+        "rate_scope": "per connection counters, one minute before 2026-10-22T00:55:20+00:00; not all host traffic",
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 70,
+          "median": 4.819277108433735,
+          "p95": 33.601609657947684,
+          "max": 71.14228456913828
+        },
+        "memory_available_min_kib": 499812,
+        "memory_pressure_avg10_max": 0.88,
+        "io_pressure_avg10_max": 3.27
+      }
+    },
+    "incident-0131": {
+      "ali": {
+        "records": 0,
+        "samples": 0,
+        "first_at": null,
+        "last_at": null,
+        "missing_reason": "ali_observer_stopped_2026-10-21T22:22:36Z_no_post_stop_samples",
+        "control_counts": {},
+        "failures_and_next_success": [],
+        "ping_misses": [],
+        "peer_ping_rtt_ms": {
+          "count": 0
+        },
+        "carrier_rtt_max_ms": null,
+        "carrier_rto_max_ms": null,
+        "carrier_pre_incident_mbps_max": {
+          "bytes_sent": null,
+          "bytes_received": null
+        },
+        "rate_scope": "per connection counters, one minute before 2026-10-22T01:31:15+00:00; not all host traffic",
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 0
+        },
+        "memory_available_min_kib": null,
+        "memory_pressure_avg10_max": null,
+        "io_pressure_avg10_max": null
+      },
+      "jp": {
+        "records": 110,
+        "samples": 66,
+        "first_at": "2026-10-22T01:28:52.049239+00:00",
+        "last_at": "2026-10-22T01:34:17.062632+00:00",
+        "missing_reason": null,
+        "control_counts": {
+          "host_cf_primary": {
+            "ok": 11
+          },
+          "host_cf_alternative": {
+            "ok": 11
+          },
+          "host_dns_cf": {
+            "ok": 11
+          },
+          "host_dns_google": {
+            "ok": 10,
+            "failed": 1
+          }
+        },
+        "failures_and_next_success": [
+          {
+            "failure": {
+              "type": "control",
+              "label": "host_dns_google",
+              "started_at": "2026-10-22T01:31:27.143913+00:00",
+              "at": "2026-10-22T01:31:29.289735+00:00",
+              "duration_ms": 2146,
+              "result": {
+                "exit": 9,
+                "rcode": null,
+                "query_ms": null
+              }
+            },
+            "next_success": {
+              "type": "control",
+              "label": "host_dns_google",
+              "started_at": "2026-10-22T01:31:57.118837+00:00",
+              "at": "2026-10-22T01:31:57.203428+00:00",
+              "duration_ms": 85,
+              "result": {
+                "exit": 0,
+                "rcode": "NOERROR",
+                "query_ms": 12
+              }
+            }
+          }
+        ],
+        "ping_misses": [
+          "2026-10-22T01:31:22.055971+00:00"
+        ],
+        "peer_ping_rtt_ms": {
+          "count": 65,
+          "median": 38.6,
+          "p95": 43.9,
+          "max": 46.4
+        },
+        "carrier_rtt_max_ms": 794.707,
+        "carrier_rto_max_ms": 3995.0,
+        "carrier_pre_incident_mbps_max": {
+          "bytes_sent": 0.05465980212719663,
+          "bytes_received": 0.15888566416711838
+        },
+        "rate_scope": "per connection counters, one minute before 2026-10-22T01:31:15+00:00; not all host traffic",
+        "cpu_busy_percent_excluding_iowait": {
+          "count": 65,
+          "median": 2.2222222222222223,
+          "p95": 31.927710843373493,
+          "max": 34.4
+        },
+        "memory_available_min_kib": 498640,
+        "memory_pressure_avg10_max": 0.0,
+        "io_pressure_avg10_max": 0.24
+      }
+    }
+  },
+  "coverage": {
+    "ali": {
+      "recorded_runtime_seconds": 69197.009829,
+      "planned_runtime_seconds": 86399.590458,
+      "runtime_coverage_percent": 80.08951137637347,
+      "missing_after_exit_seconds": 17202.580629,
+      "expected_5s_slots": 17280,
+      "samples": 13839,
+      "sample_slots_percent": 80.08680555555556,
+      "last_sample_to_deadline_seconds": 17207.58171,
+      "saved_file_integrity_passed": true
+    },
+    "jp": {
+      "recorded_runtime_seconds": 86398.662965,
+      "planned_runtime_seconds": 86398.662809,
+      "runtime_coverage_percent": 100,
+      "missing_after_exit_seconds": 0,
+      "expected_5s_slots": 17280,
+      "samples": 17279,
+      "sample_slots_percent": 99.99421296296296,
+      "last_sample_to_deadline_seconds": 4.377549,
+      "saved_file_integrity_passed": true
+    }
+  }
+}

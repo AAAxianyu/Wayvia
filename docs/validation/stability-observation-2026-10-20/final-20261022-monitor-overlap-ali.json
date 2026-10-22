@@ -1,0 +1,86 @@
+{
+  "observed_at_utc": "2026-10-22T06:40:20.752997+00:00",
+  "since_utc": "2026-10-21T22:56:20.139225+00:00",
+  "role": "ingress",
+  "generation": "6f80275960ed46238f51691722e918b5",
+  "current_state": "ACTIVE",
+  "first_monitor": "2026-10-21T22:56:20.772226+00:00",
+  "last_monitor": "2026-10-21T22:58:11.841698+00:00",
+  "monitor_count": 8,
+  "state_counts": {
+    "ACTIVE": 8
+  },
+  "hourly_counts": {
+    "2026-10-21T22:00:00Z": {
+      "ACTIVE": 8
+    }
+  },
+  "layer_timings": {
+    "access": {
+      "samples": 8,
+      "median_ms": 428.5,
+      "p95_ms": 472,
+      "max_ms": 472
+    },
+    "carrier": {
+      "samples": 8,
+      "median_ms": 449.5,
+      "p95_ms": 528,
+      "max_ms": 528
+    },
+    "vpn": {
+      "samples": 8,
+      "median_ms": 246.5,
+      "p95_ms": 276,
+      "max_ms": 276
+    },
+    "egress": {
+      "samples": 8,
+      "median_ms": 425.5,
+      "p95_ms": 538,
+      "max_ms": 538
+    },
+    "dns": {
+      "samples": 8,
+      "median_ms": 76.0,
+      "p95_ms": 78,
+      "max_ms": 78
+    },
+    "ipv6": {
+      "samples": 8,
+      "median_ms": 6.5,
+      "p95_ms": 8,
+      "max_ms": 8
+    },
+    "return": {
+      "samples": 8,
+      "median_ms": 2.0,
+      "p95_ms": 3,
+      "max_ms": 3
+    }
+  },
+  "failed_checks": [],
+  "fallbacks": [],
+  "state_transitions": [
+    {
+      "at": "2026-10-21T22:56:20.772226+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "units": {
+    "wayvia-agent": "active",
+    "wayvia-api": "active",
+    "wayvia-monitor.timer": "active",
+    "wayvia-ingress": "active",
+    "wayvia-bridge": "active",
+    "wayvia-carrier": "active",
+    "wayvia-vpn-client": "active"
+  },
+  "unit_events": [],
+  "kernel_oom_kill_count_since": 0,
+  "uptime_seconds": 9045986.87,
+  "completed_response_closes": [],
+  "requested_until_utc": "2026-10-21T22:58:20.139225+00:00",
+  "unit_event_counts": {},
+  "repetitive_vpn_server_event_examples": []
+}

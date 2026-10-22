@@ -1,0 +1,157 @@
+{
+  "inspected_at_utc": "2026-10-21T23:00:17.463524+00:00",
+  "unit": {
+    "Restart": "no",
+    "TimeoutStartUSec": "1min 30s",
+    "TimeoutStopUSec": "1min 30s",
+    "RuntimeMaxUSec": "1d 1min",
+    "MainPID": "0",
+    "Result": "exit-code",
+    "NRestarts": "0",
+    "ExecMainStartTimestamp": "Thu 2026-10-22 06:22:36 CST",
+    "ExecMainExitTimestamp": "Thu 2026-10-22 06:22:38 CST",
+    "ExecMainCode": "1",
+    "ExecMainStatus": "1",
+    "User": "",
+    "Group": "",
+    "ActiveState": "failed",
+    "SubState": "failed",
+    "FragmentPath": "/run/systemd/transient/wayvia-observe-stability-20261020.service",
+    "DropInPaths": "",
+    "StateChangeTimestamp": "Thu 2026-10-22 06:22:38 CST",
+    "ActiveEnterTimestamp": "Thu 2026-10-22 06:22:36 CST",
+    "InactiveEnterTimestamp": "Thu 2026-10-22 06:22:38 CST",
+    "InvocationID": "dd6ea92fb044408d9a3d5d3b243ce450"
+  },
+  "journal": [
+    {
+      "at": "2026-10-21T22:22:36.673872+00:00",
+      "priority": "5",
+      "category": "Main process exited",
+      "exit_fields": [
+        "exited",
+        "2/INVALIDARGUMENT"
+      ]
+    },
+    {
+      "at": "2026-10-21T22:22:36.675548+00:00",
+      "priority": "4",
+      "category": "Failed with result"
+    },
+    {
+      "at": "2026-10-21T22:22:36.675666+00:00",
+      "priority": "6",
+      "category": "Stopped"
+    },
+    {
+      "at": "2026-10-21T22:22:36.675749+00:00",
+      "priority": "5",
+      "category": "Consumed"
+    },
+    {
+      "at": "2026-10-21T22:22:36.686406+00:00",
+      "priority": "6",
+      "category": "Started"
+    },
+    {
+      "at": "2026-10-21T22:22:38.181814+00:00",
+      "priority": "6",
+      "category": "Traceback"
+    },
+    {
+      "at": "2026-10-21T22:22:38.181814+00:00",
+      "priority": "6",
+      "category": "other",
+      "traceback_location": {
+        "file": "observe_stability.py",
+        "line": 466
+      }
+    },
+    {
+      "at": "2026-10-21T22:22:38.182341+00:00",
+      "priority": "6",
+      "category": "other"
+    },
+    {
+      "at": "2026-10-21T22:22:38.182341+00:00",
+      "priority": "6",
+      "category": "other"
+    },
+    {
+      "at": "2026-10-21T22:22:38.182341+00:00",
+      "priority": "6",
+      "category": "other",
+      "traceback_location": {
+        "file": "observe_stability.py",
+        "line": 372
+      }
+    },
+    {
+      "at": "2026-10-21T22:22:38.182341+00:00",
+      "priority": "6",
+      "category": "other"
+    },
+    {
+      "at": "2026-10-21T22:22:38.182341+00:00",
+      "priority": "6",
+      "category": "other",
+      "traceback_location": {
+        "file": "pathlib.py",
+        "line": 1313
+      }
+    },
+    {
+      "at": "2026-10-21T22:22:38.188343+00:00",
+      "priority": "6",
+      "category": "other"
+    },
+    {
+      "at": "2026-10-21T22:22:38.188343+00:00",
+      "priority": "6",
+      "category": "other",
+      "exception_types": [
+        "FileExistsError"
+      ],
+      "errno": [
+        "17"
+      ]
+    },
+    {
+      "at": "2026-10-21T22:22:38.315213+00:00",
+      "priority": "5",
+      "category": "Main process exited",
+      "exit_fields": [
+        "exited",
+        "1/FAILURE"
+      ]
+    },
+    {
+      "at": "2026-10-21T22:22:38.315393+00:00",
+      "priority": "4",
+      "category": "Failed with result"
+    }
+  ],
+  "files": {
+    "samples.jsonl": {
+      "bytes": 34890883,
+      "mtime_utc": "2026-10-21T22:22:31.585673+00:00",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o600"
+    },
+    "result.json": {
+      "bytes": 123,
+      "mtime_utc": "2026-10-21T22:22:36.541893+00:00",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0o600"
+    }
+  },
+  "uptime_seconds": 9018383.45,
+  "result": {
+    "type": "end",
+    "at": "2026-10-21T22:22:36.531919+00:00",
+    "reason": "requested_stop",
+    "bytes_written": 34890883
+  }
+}

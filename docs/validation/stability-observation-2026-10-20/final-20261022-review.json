@@ -1,0 +1,537 @@
+{
+  "run_id": "stability-20261020",
+  "status": "finished_partial_coverage_root_cause_unresolved",
+  "reviewed_at_utc": "2026-10-22T06:48:29.729440+00:00",
+  "journal_until_utc": "2026-10-22T03:09:22+00:00",
+  "compared_to": "heartbeat-20261021T2257Z",
+  "last_committed_checkpoint": "heartbeat-20261021T2151Z-review.json",
+  "new_production_failure": true,
+  "real_timeout_root_cause": "unresolved",
+  "observer_stop_root_cause": "unattended_upgrades_needrestart_restarted_single_use_observer_then_existing_directory_FileExistsError",
+  "root_cause_scope": "observer interruption only; not initial business timeout",
+  "heartbeat_remote_mutations": false,
+  "observer_extended_or_manually_restarted": false,
+  "fault_and_reboot_tests": "deferred_by_user_not_run",
+  "phone": "not_operated",
+  "external_contact": "prohibited_not_sent",
+  "ssh_management": {
+    "ali": "existing_channel_succeeded",
+    "jp": "expired_multiplex_first_read_exit_255_reauthenticated_with_existing_credentials_and_pinned_host_key_then_reads_succeeded"
+  },
+  "local_storage": {
+    "previous_issue": "ENOSPC interrupted 2257 evidence documentation/commit",
+    "resolution": "user freed disk; 114 GiB available on resumption; earlier 8 JSON files parsed and preserved",
+    "missed_heartbeat_rule": "supplement retained server evidence; do not claim unseen runs were executed"
+  },
+  "report": "final-report.md",
+  "hosts": {
+    "ali": {
+      "summary_file": "final-20261022-ali.json",
+      "monitor_file": "final-20261022-monitor-ali.json",
+      "detail_file": "final-20261022-details-ali.json",
+      "samples": 13839,
+      "sample_delta": 0,
+      "integrity": {
+        "first_sample_utc": "2026-10-21T03:09:19.612959+00:00",
+        "last_sample_utc": "2026-10-21T22:22:31.530838+00:00",
+        "start": {
+          "type": "start",
+          "at": "2026-10-21T03:09:19.522090+00:00",
+          "role": "ingress",
+          "generation": "6f80275960ed46238f51691722e918b5",
+          "until": "2026-10-22T03:09:19.112548+00:00",
+          "sample_interval_seconds": 5,
+          "control_interval_seconds": 30,
+          "max_bytes": 100663296,
+          "scope": "diagnostics_only_no_health_decision_or_mutation",
+          "ntp": true
+        },
+        "end": {
+          "type": "end",
+          "at": "2026-10-21T22:22:36.531919+00:00",
+          "reason": "requested_stop",
+          "bytes_written": 34890883
+        },
+        "rows": {
+          "start": 1,
+          "sample": 13839,
+          "control": 18456
+        },
+        "partial_lines": 0,
+        "file_sha256": "ff36a8214eb1ab53a6c3b2922e9c02b1c675e7005698096f1b63201b8a96bb7c",
+        "file_bytes": 34890883,
+        "result_bytes_match": true,
+        "maximum_wall_sample_gap_seconds": 5.235878,
+        "observer_unit": {
+          "Restart": "no",
+          "RuntimeMaxUSec": "1d 1min",
+          "MainPID": "0",
+          "Result": "exit-code",
+          "NRestarts": "0",
+          "ExecMainStartTimestamp": "Thu 2026-10-22 06:22:36 CST",
+          "ExecMainExitTimestamp": "Thu 2026-10-22 06:22:38 CST",
+          "ExecMainStatus": "1",
+          "ActiveState": "failed",
+          "SubState": "failed",
+          "InvocationID": "dd6ea92fb044408d9a3d5d3b243ce450"
+        },
+        "uptime_seconds": 9046044.5
+      },
+      "coverage": {
+        "recorded_runtime_seconds": 69197.009829,
+        "planned_runtime_seconds": 86399.590458,
+        "runtime_coverage_percent": 80.08951137637347,
+        "missing_after_exit_seconds": 17202.580629,
+        "expected_5s_slots": 17280,
+        "samples": 13839,
+        "sample_slots_percent": 80.08680555555556,
+        "last_sample_to_deadline_seconds": 17207.58171,
+        "saved_file_integrity_passed": true
+      },
+      "monitor_count": 5433,
+      "state_counts": {
+        "DEGRADED": 10,
+        "ACTIVE": 5423
+      },
+      "monitor_delta": 947,
+      "new_failed_checks": [
+        {
+          "layer": "access",
+          "kind": "trojan_http",
+          "status": "failed",
+          "observed_at": "2026-10-22T00:55:25.118228+00:00",
+          "duration_ms": 5259,
+          "error": "HTTP_TLS_FAILED",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5024,
+              "curl_code": 35,
+              "http_status": 0,
+              "result": "HTTP_TLS_FAILED"
+            }
+          ]
+        },
+        {
+          "layer": "egress",
+          "kind": "http",
+          "status": "failed",
+          "observed_at": "2026-10-22T00:55:32.114951+00:00",
+          "duration_ms": 11772,
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5758,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5749,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ]
+        },
+        {
+          "layer": "dns",
+          "kind": "dns",
+          "status": "failed",
+          "observed_at": "2026-10-22T00:55:43.887457+00:00",
+          "duration_ms": 12014,
+          "error": "COMMAND_TIMEOUT"
+        },
+        {
+          "layer": "egress",
+          "kind": "http",
+          "status": "failed",
+          "observed_at": "2026-10-22T01:31:17.198226+00:00",
+          "duration_ms": 11732,
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5759,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5750,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ]
+        }
+      ],
+      "new_fallbacks": [
+        {
+          "layer": "egress",
+          "kind": "http",
+          "status": "failed",
+          "observed_at": "2026-10-22T00:55:32.114951+00:00",
+          "duration_ms": 11772,
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5758,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5749,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ]
+        },
+        {
+          "layer": "egress",
+          "kind": "http",
+          "status": "failed",
+          "observed_at": "2026-10-22T01:31:17.198226+00:00",
+          "duration_ms": 11732,
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5759,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5750,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ]
+        }
+      ],
+      "new_transitions": [
+        {
+          "at": "2026-10-22T00:55:55.954814+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-22T00:56:20.186622+00:00",
+          "state": "ACTIVE"
+        },
+        {
+          "at": "2026-10-22T01:31:36.016024+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-22T01:31:45.139598+00:00",
+          "state": "ACTIVE"
+        }
+      ],
+      "all_degraded_intervals": [
+        {
+          "start": "2026-10-21T03:52:01.291628+00:00",
+          "end": "2026-10-21T03:52:18.491120+00:00",
+          "seconds": 17.199492
+        },
+        {
+          "start": "2026-10-21T03:58:55.639478+00:00",
+          "end": "2026-10-21T03:59:08.587749+00:00",
+          "seconds": 12.948271
+        },
+        {
+          "start": "2026-10-21T08:27:11.639764+00:00",
+          "end": "2026-10-21T08:27:23.729662+00:00",
+          "seconds": 12.089898
+        },
+        {
+          "start": "2026-10-21T08:28:28.657882+00:00",
+          "end": "2026-10-21T08:28:42.820109+00:00",
+          "seconds": 14.162227
+        },
+        {
+          "start": "2026-10-21T09:09:44.031197+00:00",
+          "end": "2026-10-21T09:09:52.895989+00:00",
+          "seconds": 8.864792
+        },
+        {
+          "start": "2026-10-21T20:46:20.792899+00:00",
+          "end": "2026-10-21T20:46:30.109767+00:00",
+          "seconds": 9.316868
+        },
+        {
+          "start": "2026-10-21T20:48:01.121543+00:00",
+          "end": "2026-10-21T20:48:24.123871+00:00",
+          "seconds": 23.002328
+        },
+        {
+          "start": "2026-10-21T21:18:20.030609+00:00",
+          "end": "2026-10-21T21:18:47.254299+00:00",
+          "seconds": 27.22369
+        },
+        {
+          "start": "2026-10-22T00:55:55.954814+00:00",
+          "end": "2026-10-22T00:56:20.186622+00:00",
+          "seconds": 24.231808
+        },
+        {
+          "start": "2026-10-22T01:31:36.016024+00:00",
+          "end": "2026-10-22T01:31:45.139598+00:00",
+          "seconds": 9.123574
+        }
+      ],
+      "last_monitor": "2026-10-22T03:09:19.804010+00:00",
+      "current_state_at_collection": "ACTIVE",
+      "units_at_collection": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-ingress": "active",
+        "wayvia-bridge": "active",
+        "wayvia-carrier": "active",
+        "wayvia-vpn-client": "active"
+      },
+      "new_control_failures": [],
+      "new_peer_misses": [],
+      "kernel_oom_kill_count_since": 0
+    },
+    "jp": {
+      "summary_file": "final-20261022-jp.json",
+      "monitor_file": "final-20261022-monitor-jp.json",
+      "detail_file": "final-20261022-details-jp.json",
+      "samples": 17279,
+      "sample_delta": 3011,
+      "integrity": {
+        "first_sample_utc": "2026-10-21T03:09:23.113563+00:00",
+        "last_sample_utc": "2026-10-22T03:09:17.303180+00:00",
+        "start": {
+          "type": "start",
+          "at": "2026-10-21T03:09:23.017920+00:00",
+          "role": "exit",
+          "generation": "64fee7096d28466e9ab15d463e5a55e5",
+          "until": "2026-10-22T03:09:21.680729+00:00",
+          "sample_interval_seconds": 5,
+          "control_interval_seconds": 30,
+          "max_bytes": 100663296,
+          "scope": "diagnostics_only_no_health_decision_or_mutation",
+          "ntp": true
+        },
+        "end": {
+          "type": "end",
+          "at": "2026-10-22T03:09:21.680885+00:00",
+          "reason": "deadline",
+          "bytes_written": 39167419
+        },
+        "rows": {
+          "start": 1,
+          "sample": 17279,
+          "control": 11520
+        },
+        "partial_lines": 0,
+        "file_sha256": "a88b70f0f4f692b48769145f3de95c33b07ed52482ae64014bd0e15d55cf32d9",
+        "file_bytes": 39167419,
+        "result_bytes_match": true,
+        "maximum_wall_sample_gap_seconds": 5.065839,
+        "observer_unit": {
+          "Restart": "no",
+          "RuntimeMaxUSec": "infinity",
+          "MainPID": "0",
+          "Result": "success",
+          "NRestarts": "0",
+          "ExecMainStartTimestamp": "",
+          "ExecMainExitTimestamp": "",
+          "ExecMainStatus": "0",
+          "ActiveState": "inactive",
+          "SubState": "dead",
+          "InvocationID": ""
+        },
+        "uptime_seconds": 168164.34
+      },
+      "coverage": {
+        "recorded_runtime_seconds": 86398.662965,
+        "planned_runtime_seconds": 86398.662809,
+        "runtime_coverage_percent": 100,
+        "missing_after_exit_seconds": 0,
+        "expected_5s_slots": 17280,
+        "samples": 17279,
+        "sample_slots_percent": 99.99421296296296,
+        "last_sample_to_deadline_seconds": 4.377549,
+        "saved_file_integrity_passed": true
+      },
+      "monitor_count": 5457,
+      "state_counts": {
+        "DEGRADED": 3,
+        "ACTIVE": 5454
+      },
+      "monitor_delta": 950,
+      "new_failed_checks": [
+        {
+          "layer": "dns",
+          "kind": "dns",
+          "status": "failed",
+          "observed_at": "2026-10-22T00:55:49.883423+00:00",
+          "duration_ms": 12017,
+          "error": "COMMAND_TIMEOUT"
+        }
+      ],
+      "new_fallbacks": [],
+      "new_transitions": [
+        {
+          "at": "2026-10-22T00:56:01.996745+00:00",
+          "state": "DEGRADED"
+        },
+        {
+          "at": "2026-10-22T00:56:06.313568+00:00",
+          "state": "ACTIVE"
+        }
+      ],
+      "all_degraded_intervals": [
+        {
+          "start": "2026-10-21T20:46:14.717956+00:00",
+          "end": "2026-10-21T20:46:20.020465+00:00",
+          "seconds": 5.302509
+        },
+        {
+          "start": "2026-10-21T21:18:53.471398+00:00",
+          "end": "2026-10-21T21:18:57.400106+00:00",
+          "seconds": 3.928708
+        },
+        {
+          "start": "2026-10-22T00:56:01.996745+00:00",
+          "end": "2026-10-22T00:56:06.313568+00:00",
+          "seconds": 4.316823
+        }
+      ],
+      "last_monitor": "2026-10-22T03:09:08.878460+00:00",
+      "current_state_at_collection": "ACTIVE",
+      "units_at_collection": {
+        "wayvia-agent": "active",
+        "wayvia-api": "active",
+        "wayvia-monitor.timer": "active",
+        "wayvia-exit": "active",
+        "wayvia-vpn-server": "active"
+      },
+      "new_control_failures": [
+        {
+          "type": "control",
+          "label": "host_cf_alternative",
+          "started_at": "2026-10-22T00:55:27.900719+00:00",
+          "at": "2026-10-22T00:55:29.953349+00:00",
+          "duration_ms": 2053,
+          "result": {
+            "curl_exit": 28,
+            "valid_https_response": false,
+            "single_valid_trace_ip": false,
+            "expected_exit_match": false,
+            "http_code": 0,
+            "ssl_verify_result": 0,
+            "time_connect": 0.0,
+            "time_appconnect": 0.0,
+            "time_starttransfer": 0.0,
+            "time_total": 2.006424,
+            "size_download": 0
+          }
+        },
+        {
+          "type": "control",
+          "label": "host_dns_google",
+          "started_at": "2026-10-22T00:55:56.942894+00:00",
+          "at": "2026-10-22T00:55:59.023669+00:00",
+          "duration_ms": 2081,
+          "result": {
+            "exit": 9,
+            "rcode": null,
+            "query_ms": null
+          }
+        },
+        {
+          "type": "control",
+          "label": "host_dns_google",
+          "started_at": "2026-10-22T01:31:27.143913+00:00",
+          "at": "2026-10-22T01:31:29.289735+00:00",
+          "duration_ms": 2146,
+          "result": {
+            "exit": 9,
+            "rcode": null,
+            "query_ms": null
+          }
+        }
+      ],
+      "new_peer_misses": [
+        {
+          "at": "2026-10-22T00:55:21.880768+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T00:55:26.879612+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T00:55:31.880225+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T00:55:36.880215+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T00:55:41.880747+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T00:55:46.880968+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T00:55:51.881401+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        },
+        {
+          "at": "2026-10-22T01:31:22.055971+00:00",
+          "peer_ping": {
+            "exit": 1,
+            "rtt_ms": null
+          }
+        }
+      ],
+      "kernel_oom_kill_count_since": 0
+    }
+  },
+  "automation": {
+    "id": "wayvia-24",
+    "kind": "heartbeat",
+    "status": "PAUSED",
+    "verified_at_utc": "2026-10-22T06:50:45.640278+00:00",
+    "reason": "original finite observation ended and evidence review completed; business root cause remains unresolved"
+  }
+}

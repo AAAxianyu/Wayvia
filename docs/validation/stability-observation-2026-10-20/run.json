@@ -1,5 +1,5 @@
 {
-  "status": "running_not_accepted",
+  "status": "finished_partial_coverage_root_cause_unresolved",
   "base_commit": "2b46212fdba2286718da84634acdea06112487e1",
   "branch": "codex/stability-observation-20261020",
   "run_id": "stability-20261020",
@@ -10,7 +10,10 @@
     "id": "wayvia-24",
     "kind": "heartbeat",
     "interval": "hourly",
-    "completion": "pause after final evidence review"
+    "completion": "pause after final evidence review",
+    "status": "PAUSED",
+    "verified_at_utc": "2026-10-22T06:50:45.639404+00:00",
+    "reason": "original finite observation ended and evidence review completed; business root cause remains unresolved"
   },
   "observer_sha256": "220d551082c5ec006891860eae9e0399a4ed5b4b70059e45e0f364dde106972c",
   "summary_sha256": "3a08f5def1e3efe0294f7d78fba00a84f8cb124cdf770686020ccb6a8f0efad9",
@@ -51,5 +54,42 @@
       "observer_restarted_or_extended": false
     }
   ],
-  "latest_review": "heartbeat-20261021T2151Z-review.json"
+  "latest_review": "final-20261022-review.json",
+  "final_report": "final-report.md",
+  "completed_observation_utc": "2026-10-22T03:09:21.680885+00:00",
+  "coverage": {
+    "ali": {
+      "recorded_runtime_seconds": 69197.009829,
+      "planned_runtime_seconds": 86399.590458,
+      "runtime_coverage_percent": 80.08951137637347,
+      "missing_after_exit_seconds": 17202.580629,
+      "expected_5s_slots": 17280,
+      "samples": 13839,
+      "sample_slots_percent": 80.08680555555556,
+      "last_sample_to_deadline_seconds": 17207.58171,
+      "saved_file_integrity_passed": true
+    },
+    "jp": {
+      "recorded_runtime_seconds": 86398.662965,
+      "planned_runtime_seconds": 86398.662809,
+      "runtime_coverage_percent": 100,
+      "missing_after_exit_seconds": 0,
+      "expected_5s_slots": 17280,
+      "samples": 17279,
+      "sample_slots_percent": 99.99421296296296,
+      "last_sample_to_deadline_seconds": 4.377549,
+      "saved_file_integrity_passed": true
+    }
+  },
+  "automatic_system_maintenance": {
+    "host": "ali",
+    "window_utc": [
+      "2026-10-21T22:22:04Z",
+      "2026-10-21T22:22:43Z"
+    ],
+    "event": "unattended_upgrades_needrestart",
+    "observer_restarted_externally_then_failed": true,
+    "initiated_by_this_observer_review": false,
+    "evidence": "observer-stop-needrestart-ali.json"
+  }
 }

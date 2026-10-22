@@ -1,0 +1,293 @@
+{
+  "current_properties": {
+    "wayvia-agent": {
+      "MainPID": "3447145",
+      "ExecMainStartTimestamp": "Thu 2026-10-22 06:22:36 CST",
+      "ExecMainExitTimestamp": "",
+      "ActiveState": "active"
+    },
+    "wayvia-api": {
+      "MainPID": "3447146",
+      "ExecMainStartTimestamp": "Thu 2026-10-22 06:22:36 CST",
+      "ExecMainExitTimestamp": "",
+      "ActiveState": "active"
+    },
+    "wayvia-vpn-client": {
+      "MainPID": "3543098",
+      "ExecMainStartTimestamp": "Thu 2026-10-22 09:31:42 CST",
+      "ExecMainExitTimestamp": "",
+      "ActiveState": "active"
+    },
+    "wayvia-usage": {
+      "MainPID": "3447147",
+      "ExecMainStartTimestamp": "Thu 2026-10-22 06:22:36 CST",
+      "ExecMainExitTimestamp": "",
+      "ActiveState": "active"
+    },
+    "wayvia-observe-stability-20261020": {
+      "MainPID": "0",
+      "ExecMainStartTimestamp": "Thu 2026-10-22 06:22:36 CST",
+      "ExecMainExitTimestamp": "Thu 2026-10-22 06:22:38 CST",
+      "ActiveState": "failed"
+    }
+  },
+  "kernel_classifications": {
+    "incident-0055": [],
+    "incident-0131": []
+  },
+  "monitor_interval": {
+    "start": "2026-10-21T22:56:20.139225+00:00",
+    "until": "2026-10-22T03:09:22+00:00",
+    "count": 955,
+    "first": {
+      "at": "2026-10-21T22:56:20.772226+00:00",
+      "state": "ACTIVE"
+    },
+    "last": {
+      "at": "2026-10-22T03:09:19.804010+00:00",
+      "state": "ACTIVE"
+    },
+    "maximum_completion_gap": {
+      "before": {
+        "at": "2026-10-22T00:55:10.771028+00:00",
+        "state": "ACTIVE"
+      },
+      "after": {
+        "at": "2026-10-22T00:55:55.954814+00:00",
+        "state": "DEGRADED"
+      },
+      "seconds": 45.183786
+    },
+    "gaps_over_20s": [
+      {
+        "before": {
+          "at": "2026-10-22T00:55:10.771028+00:00",
+          "state": "ACTIVE"
+        },
+        "after": {
+          "at": "2026-10-22T00:55:55.954814+00:00",
+          "state": "DEGRADED"
+        },
+        "seconds": 45.183786
+      },
+      {
+        "before": {
+          "at": "2026-10-22T00:55:55.954814+00:00",
+          "state": "DEGRADED"
+        },
+        "after": {
+          "at": "2026-10-22T00:56:20.186622+00:00",
+          "state": "ACTIVE"
+        },
+        "seconds": 24.231808
+      },
+      {
+        "before": {
+          "at": "2026-10-22T01:17:47.873139+00:00",
+          "state": "ACTIVE"
+        },
+        "after": {
+          "at": "2026-10-22T01:18:09.092614+00:00",
+          "state": "ACTIVE"
+        },
+        "seconds": 21.219475
+      },
+      {
+        "before": {
+          "at": "2026-10-22T01:31:02.016850+00:00",
+          "state": "ACTIVE"
+        },
+        "after": {
+          "at": "2026-10-22T01:31:36.016024+00:00",
+          "state": "DEGRADED"
+        },
+        "seconds": 33.999174
+      },
+      {
+        "before": {
+          "at": "2026-10-22T01:57:30.770539+00:00",
+          "state": "ACTIVE"
+        },
+        "after": {
+          "at": "2026-10-22T01:57:50.984404+00:00",
+          "state": "ACTIVE"
+        },
+        "seconds": 20.213865
+      }
+    ]
+  },
+  "incident_monitor_records": {
+    "incident-0055": [
+      {
+        "at": "2026-10-22T00:53:03.692768+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:53:19.714405+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:53:35.678127+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:53:51.740899+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:54:07.717863+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:54:22.780535+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:54:38.784984+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:54:54.728695+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:55:10.771028+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:55:55.954814+00:00",
+        "state": "DEGRADED"
+      },
+      {
+        "at": "2026-10-22T00:56:20.186622+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:56:22.140450+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:56:37.722144+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:56:53.682714+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:57:09.803506+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:57:25.764381+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:57:41.664942+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:57:56.729405+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:58:12.735820+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:58:27.866312+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T00:58:43.833476+00:00",
+        "state": "ACTIVE"
+      }
+    ],
+    "incident-0131": [
+      {
+        "at": "2026-10-22T01:28:53.966074+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:29:09.902612+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:29:25.796592+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:29:41.705958+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:29:57.755917+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:30:13.719826+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:30:29.727628+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:30:45.747014+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:31:02.016850+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:31:36.016024+00:00",
+        "state": "DEGRADED"
+      },
+      {
+        "at": "2026-10-22T01:31:45.139598+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:31:53.934265+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:32:09.775494+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:32:25.721058+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:32:41.762638+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:32:58.473180+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:33:14.279913+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:33:29.766280+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:33:46.017855+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:34:01.973456+00:00",
+        "state": "ACTIVE"
+      },
+      {
+        "at": "2026-10-22T01:34:17.728983+00:00",
+        "state": "ACTIVE"
+      }
+    ]
+  }
+}

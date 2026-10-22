@@ -1,0 +1,21 @@
+{
+  "checked_new_json_files": 29,
+  "checked_new_jsonl_rows": 400,
+  "redaction_patterns_passed": true,
+  "two_incremental_boundaries_both_hosts_verified": true,
+  "counts_and_prefixes_verified": true,
+  "sample_integrity_verified": true,
+  "degraded_intervals": {
+    "ali": 10,
+    "jp": 3
+  },
+  "japan_incident_pre_post_120_seconds_verified": true,
+  "ali_incident_windows_explicitly_empty": true,
+  "source_hashes_match_existing_software_gates": true,
+  "prior_gates": "software-audit-gates.json",
+  "software_gates_not_repeated": "no application source changes; existing make check/demo/test-configs evidence matches source",
+  "test_lab": "deferred_by_user_not_run_not_passed",
+  "yaml_parsed_and_final_counts_matched": true,
+  "new_report_relative_links_resolve": true,
+  "automation_pause_verified": true
+}

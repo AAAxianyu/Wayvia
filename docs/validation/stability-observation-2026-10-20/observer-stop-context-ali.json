@@ -1,0 +1,63 @@
+{
+  "window_utc": [
+    "2026-10-21T22:20:00+00:00",
+    "2026-10-21T22:25:00+00:00"
+  ],
+  "category_counts": {
+    "apt_maintenance": 5,
+    "unattended_upgrade": 2,
+    "modemmanager_process_shutdown_match": 1
+  },
+  "events": [
+    {
+      "category": "apt_maintenance",
+      "at": "2026-10-21T22:22:02.926616+00:00",
+      "unit": "init.scope",
+      "uid": "0"
+    },
+    {
+      "category": "unattended_upgrade",
+      "at": "2026-10-21T22:22:09.908004+00:00",
+      "unit": "apt-daily-upgrade.service",
+      "uid": "0"
+    },
+    {
+      "category": "unattended_upgrade",
+      "at": "2026-10-21T22:22:27.868373+00:00",
+      "unit": "apt-daily-upgrade.service",
+      "uid": "0"
+    },
+    {
+      "category": "apt_maintenance",
+      "at": "2026-10-21T22:22:34.132385+00:00",
+      "unit": "init.scope",
+      "uid": "0"
+    },
+    {
+      "category": "modemmanager_process_shutdown_match",
+      "at": "2026-10-21T22:22:35.546753+00:00",
+      "unit": "ModemManager.service",
+      "uid": "0"
+    },
+    {
+      "category": "apt_maintenance",
+      "at": "2026-10-21T22:22:43.654039+00:00",
+      "unit": "init.scope",
+      "uid": "0"
+    },
+    {
+      "category": "apt_maintenance",
+      "at": "2026-10-21T22:22:43.669922+00:00",
+      "unit": "init.scope",
+      "uid": "0"
+    },
+    {
+      "category": "apt_maintenance",
+      "at": "2026-10-21T22:22:43.677116+00:00",
+      "unit": "init.scope",
+      "uid": "0"
+    }
+  ],
+  "limits": "Allowlisted journal classifications only; no command text, raw messages or credentials. Missing categories do not identify who requested the restart.",
+  "classification_caveat": "The broad reboot regex matched a ModemManager process shutdown; this is not evidence of a host reboot."
+}

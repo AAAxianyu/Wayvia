@@ -1,0 +1,78 @@
+{
+  "source": "/var/log/unattended-upgrades/unattended-upgrades-dpkg.log",
+  "server_timezone": "Asia/Shanghai",
+  "block_utc": [
+    "2026-10-21T22:22:27Z",
+    "2026-10-21T22:22:42Z"
+  ],
+  "events": [
+    {
+      "line": 1450,
+      "block_start_server_local": "2026-10-22 06:22:27",
+      "section": "restart_now",
+      "commented_out": false,
+      "systemctl_restart_command": false,
+      "needrestart_hook": false,
+      "wayvia_units": [],
+      "block_end_server_local": []
+    },
+    {
+      "line": 1451,
+      "block_start_server_local": "2026-10-22 06:22:27",
+      "section": "restart_now",
+      "commented_out": false,
+      "systemctl_restart_command": false,
+      "needrestart_hook": true,
+      "wayvia_units": [],
+      "block_end_server_local": []
+    },
+    {
+      "line": 1452,
+      "block_start_server_local": "2026-10-22 06:22:27",
+      "section": "restart_now",
+      "commented_out": false,
+      "systemctl_restart_command": true,
+      "needrestart_hook": false,
+      "wayvia_units": [
+        "wayvia-agent.service",
+        "wayvia-api.service",
+        "wayvia-observe-stability-20261020.service",
+        "wayvia-usage.service",
+        "wayvia-vpn-client.service"
+      ],
+      "block_end_server_local": []
+    },
+    {
+      "line": 1454,
+      "block_start_server_local": "2026-10-22 06:22:27",
+      "section": "deferred",
+      "commented_out": false,
+      "systemctl_restart_command": false,
+      "needrestart_hook": false,
+      "wayvia_units": [],
+      "block_end_server_local": []
+    },
+    {
+      "line": 1457,
+      "block_start_server_local": "2026-10-22 06:22:27",
+      "section": "deferred",
+      "commented_out": false,
+      "systemctl_restart_command": false,
+      "needrestart_hook": true,
+      "wayvia_units": [],
+      "block_end_server_local": []
+    },
+    {
+      "line": 1471,
+      "block_start_server_local": "2026-10-22 06:22:27",
+      "section": "deferred",
+      "commented_out": false,
+      "systemctl_restart_command": false,
+      "needrestart_hook": false,
+      "wayvia_units": [],
+      "block_end_server_local": [
+        "2026-10-22  06:22:42"
+      ]
+    }
+  ]
+}

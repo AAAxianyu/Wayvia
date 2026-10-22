@@ -1,0 +1,1626 @@
+{
+  "files": [
+    {
+      "file": "/var/log/unattended-upgrades/unattended-upgrades-dpkg.log",
+      "bytes": 50078,
+      "lines": 1472,
+      "hits": [
+        {
+          "line": 1213,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1214,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1215,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1216,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1217,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1218,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart",
+            "unattended-upgrade"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1220,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1225,
+          "timestamp": [
+            "2026-10-21  06:11:07"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1227,
+          "timestamp": [
+            "2026-10-21  06:11:08"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1260,
+          "timestamp": [],
+          "tokens": [
+            "Restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1262,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1263,
+          "timestamp": [],
+          "tokens": [
+            "needrestart",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1264,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1265,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1266,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1267,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1268,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1269,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart",
+            "unattended-upgrade"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1271,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1276,
+          "timestamp": [
+            "2026-10-21  06:11:18"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1278,
+          "timestamp": [
+            "2026-10-21  06:11:19"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1318,
+          "timestamp": [],
+          "tokens": [
+            "Restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1320,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1321,
+          "timestamp": [],
+          "tokens": [
+            "needrestart",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1322,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1323,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1324,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1325,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1326,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1327,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart",
+            "unattended-upgrade"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1329,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1334,
+          "timestamp": [
+            "2026-10-21  06:11:25"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1336,
+          "timestamp": [
+            "2026-10-22  06:22:09"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1376,
+          "timestamp": [],
+          "tokens": [
+            "Restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1378,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1379,
+          "timestamp": [],
+          "tokens": [
+            "needrestart",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1380,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1381,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1382,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1383,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1384,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1385,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart",
+            "unattended-upgrade"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1387,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1392,
+          "timestamp": [
+            "2026-10-22  06:22:26"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1394,
+          "timestamp": [
+            "2026-10-22  06:22:27"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1450,
+          "timestamp": [],
+          "tokens": [
+            "Restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1451,
+          "timestamp": [],
+          "tokens": [
+            "needrestart",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1452,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart",
+            "wayvia-agent.service",
+            "wayvia-api.service",
+            "wayvia-observe-stability-20261020.service",
+            "wayvia-usage.service",
+            "wayvia-vpn-client.service"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1454,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1455,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1456,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1457,
+          "timestamp": [],
+          "tokens": [
+            "needrestart",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1458,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1459,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1460,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1461,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1462,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1463,
+          "timestamp": [],
+          "tokens": [
+            "systemctl",
+            "restart",
+            "unattended-upgrade"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1465,
+          "timestamp": [],
+          "tokens": [
+            "restart"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1471,
+          "timestamp": [
+            "2026-10-22  06:22:42"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        }
+      ]
+    },
+    {
+      "file": "/var/log/apt/term.log",
+      "bytes": 37427,
+      "lines": 1035,
+      "hits": [
+        {
+          "line": 2,
+          "timestamp": [
+            "2026-10-01  06:31:51"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 29,
+          "timestamp": [
+            "2026-10-01  06:31:51"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 31,
+          "timestamp": [
+            "2026-10-01  06:31:57"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 84,
+          "timestamp": [
+            "2026-10-01  06:32:00"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 86,
+          "timestamp": [
+            "2026-10-01  06:32:06"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 122,
+          "timestamp": [
+            "2026-10-01  06:32:07"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 124,
+          "timestamp": [
+            "2026-10-03  06:26:42"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 151,
+          "timestamp": [
+            "2026-10-03  06:26:42"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 153,
+          "timestamp": [
+            "2026-10-07  06:07:49"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 190,
+          "timestamp": [
+            "2026-10-07  06:08:02"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 192,
+          "timestamp": [
+            "2026-10-07  06:08:08"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 219,
+          "timestamp": [
+            "2026-10-07  06:08:08"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 221,
+          "timestamp": [
+            "2026-10-08  06:46:42"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 249,
+          "timestamp": [
+            "2026-10-08  06:46:45"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 251,
+          "timestamp": [
+            "2026-10-09  10:37:18"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 294,
+          "timestamp": [
+            "2026-10-09  10:37:19"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 296,
+          "timestamp": [
+            "2026-10-10  06:31:44"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 326,
+          "timestamp": [
+            "2026-10-10  06:31:48"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 328,
+          "timestamp": [
+            "2026-10-10  06:31:55"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 355,
+          "timestamp": [
+            "2026-10-10  06:31:55"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 357,
+          "timestamp": [
+            "2026-10-10  06:32:01"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 384,
+          "timestamp": [
+            "2026-10-10  06:32:01"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 386,
+          "timestamp": [
+            "2026-10-10  06:32:07"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 413,
+          "timestamp": [
+            "2026-10-10  06:32:07"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 415,
+          "timestamp": [
+            "2026-10-10  06:32:12"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 442,
+          "timestamp": [
+            "2026-10-10  06:32:13"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 444,
+          "timestamp": [
+            "2026-10-13  06:28:43"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 475,
+          "timestamp": [
+            "2026-10-13  06:28:45"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 477,
+          "timestamp": [
+            "2026-10-15  06:23:52"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 582,
+          "timestamp": [
+            "2026-10-15  06:24:10"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 584,
+          "timestamp": [
+            "2026-10-15  06:24:16"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 618,
+          "timestamp": [
+            "2026-10-15  06:24:20"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 620,
+          "timestamp": [
+            "2026-10-15  06:24:25"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 646,
+          "timestamp": [
+            "2026-10-15  06:24:26"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 648,
+          "timestamp": [
+            "2026-10-15  06:24:31"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 678,
+          "timestamp": [
+            "2026-10-15  06:24:32"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 680,
+          "timestamp": [
+            "2026-10-15  06:24:37"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 706,
+          "timestamp": [
+            "2026-10-15  06:24:38"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 708,
+          "timestamp": [
+            "2026-10-15  06:24:43"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 742,
+          "timestamp": [
+            "2026-10-15  06:24:44"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 744,
+          "timestamp": [
+            "2026-10-17  06:07:40"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 778,
+          "timestamp": [
+            "2026-10-17  06:07:43"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 780,
+          "timestamp": [
+            "2026-10-20  15:57:37"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 815,
+          "timestamp": [
+            "2026-10-20  15:57:40"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 817,
+          "timestamp": [
+            "2026-10-21  06:10:42"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 843,
+          "timestamp": [
+            "2026-10-21  06:10:44"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 845,
+          "timestamp": [
+            "2026-10-21  06:10:50"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 874,
+          "timestamp": [
+            "2026-10-21  06:11:02"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 876,
+          "timestamp": [
+            "2026-10-21  06:11:09"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 906,
+          "timestamp": [
+            "2026-10-21  06:11:13"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 908,
+          "timestamp": [
+            "2026-10-21  06:11:20"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 943,
+          "timestamp": [
+            "2026-10-21  06:11:21"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 945,
+          "timestamp": [
+            "2026-10-22  06:22:12"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 980,
+          "timestamp": [
+            "2026-10-22  06:22:18"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 982,
+          "timestamp": [
+            "2026-10-22  06:22:28"
+          ],
+          "tokens": [
+            "Log started"
+          ],
+          "package_event": []
+        },
+        {
+          "line": 1035,
+          "timestamp": [
+            "2026-10-22  06:22:31"
+          ],
+          "tokens": [
+            "Log ended"
+          ],
+          "package_event": []
+        }
+      ]
+    },
+    {
+      "file": "/var/log/dpkg.log",
+      "bytes": 55623,
+      "lines": 752,
+      "hits": [
+        {
+          "line": 704,
+          "timestamp": [
+            "2026-10-22 06:22:12"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 705,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "ca-certificates:all",
+              "20260601~24.04.1"
+            ]
+          ]
+        },
+        {
+          "line": 706,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 707,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 708,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 709,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 710,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 711,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 712,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "ca-certificates:all",
+              "20260816ubuntu0.24.04.1"
+            ]
+          ]
+        },
+        {
+          "line": 713,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 714,
+          "timestamp": [
+            "2026-10-22 06:22:13"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 715,
+          "timestamp": [
+            "2026-10-22 06:22:16"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "ca-certificates:all",
+              "20260816ubuntu0.24.04.1"
+            ]
+          ]
+        },
+        {
+          "line": 716,
+          "timestamp": [
+            "2026-10-22 06:22:16"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 717,
+          "timestamp": [
+            "2026-10-22 06:22:16"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 718,
+          "timestamp": [
+            "2026-10-22 06:22:16"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 719,
+          "timestamp": [
+            "2026-10-22 06:22:18"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "man-db:amd64",
+              "2.12.0-4build2"
+            ]
+          ]
+        },
+        {
+          "line": 720,
+          "timestamp": [
+            "2026-10-22 06:22:18"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 721,
+          "timestamp": [
+            "2026-10-22 06:22:18"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 722,
+          "timestamp": [
+            "2026-10-22 06:22:18"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "ca-certificates:all",
+              "20260816ubuntu0.24.04.1"
+            ]
+          ]
+        },
+        {
+          "line": 723,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 724,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "liblzma5:amd64",
+              "5.6.1+really5.4.5-1ubuntu0.3"
+            ]
+          ]
+        },
+        {
+          "line": 725,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 726,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 727,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 728,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 729,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 730,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 731,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "liblzma5:amd64",
+              "5.6.1+really5.4.5-1ubuntu0.4"
+            ]
+          ]
+        },
+        {
+          "line": 732,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 733,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 734,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "liblzma5:amd64",
+              "5.6.1+really5.4.5-1ubuntu0.4"
+            ]
+          ]
+        },
+        {
+          "line": 735,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 736,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "xz-utils:amd64",
+              "5.6.1+really5.4.5-1ubuntu0.3"
+            ]
+          ]
+        },
+        {
+          "line": 737,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 738,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 739,
+          "timestamp": [
+            "2026-10-22 06:22:28"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 740,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 741,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 742,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 743,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "xz-utils:amd64",
+              "5.6.1+really5.4.5-1ubuntu0.4"
+            ]
+          ]
+        },
+        {
+          "line": 744,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 745,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 746,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "xz-utils:amd64",
+              "5.6.1+really5.4.5-1ubuntu0.4"
+            ]
+          ]
+        },
+        {
+          "line": 747,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 748,
+          "timestamp": [
+            "2026-10-22 06:22:29"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 749,
+          "timestamp": [
+            "2026-10-22 06:22:31"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "man-db:amd64",
+              "2.12.0-4build2"
+            ]
+          ]
+        },
+        {
+          "line": 750,
+          "timestamp": [
+            "2026-10-22 06:22:31"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 751,
+          "timestamp": [
+            "2026-10-22 06:22:31"
+          ],
+          "tokens": [],
+          "package_event": []
+        },
+        {
+          "line": 752,
+          "timestamp": [
+            "2026-10-22 06:22:31"
+          ],
+          "tokens": [],
+          "package_event": [
+            [
+              "libc-bin:amd64",
+              "2.39-0ubuntu8.9"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "apt_journal": [
+    {
+      "at": "2026-10-21T22:22:02.926616+00:00",
+      "tokens": []
+    },
+    {
+      "at": "2026-10-21T22:22:09.908004+00:00",
+      "tokens": [
+        "unattended-upgrade"
+      ]
+    },
+    {
+      "at": "2026-10-21T22:22:09.908004+00:00",
+      "tokens": []
+    },
+    {
+      "at": "2026-10-21T22:22:27.868373+00:00",
+      "tokens": [
+        "unattended-upgrade"
+      ]
+    },
+    {
+      "at": "2026-10-21T22:22:27.868373+00:00",
+      "tokens": []
+    },
+    {
+      "at": "2026-10-21T22:22:43.654039+00:00",
+      "tokens": []
+    },
+    {
+      "at": "2026-10-21T22:22:43.669922+00:00",
+      "tokens": []
+    },
+    {
+      "at": "2026-10-21T22:22:43.677116+00:00",
+      "tokens": []
+    }
+  ]
+}

@@ -1,16 +1,16 @@
 # Wayvia 双云部署后续待办
 
 Status: open
-Updated: 2026-10-20
+Updated: 2026-10-22 UTC
 
 本轮完成不依赖手机的订阅提速、安装权限修复，并取得稳定性续查和误判修复证据。本目录按仓库 issue tracker 约定逐项记录接续工作；本次按用户要求创建有限观察窗口的每小时跟进，不自动恢复手机测试，也不授权购买带宽或故障注入。
 
 ## 下次从这里继续
 
-2026-10-21 最新阶段交接：用户要求不联系平台，主动排查暂收尾。先读[软件侧审查](../../docs/validation/stability-observation-2026-10-20/software-audit.md)和[待办 12](issues/12-software-timeout-recovery.md)；候选未部署，原 24 小时只读观察继续至既定期限。不要恢复供应商联系或重放部署脚本。
+2026-10-22 UTC 收尾：原定正常观察已结束。入口样本覆盖约 80.09%，日本按期退出；生产累计入口 10 次、日本 3 次自然降级，业务根因未解。系统自动更新触发 needrestart 重启一次性观察器，导致入口尾部采样缺失；见[最终报告](../../docs/validation/stability-observation-2026-10-20/final-report.md)。本轮 heartbeat 已暂停，不延长或重新采样。后续先处理待办 12 的软件恢复范围和待办 13 的观察器维护协调；不联系平台，不重放部署脚本。
 
 1. 先读 [24 小时观察与接续流程](../../docs/validation/stability-observation-2026-10-20/README.md)、[最新实现状态](../../docs/implementation-status.md)和[最新续查报告](../../docs/validation/server-followup-2026-10-20/README.md)，再检查 Git 工作区。主工作区原有未提交的进度检查记录独立保留，不能覆盖或误算成本次提交。
-2. 优先处理 01 稳定性只读复核；手机就绪时处理 02/04，提供商账号资料可用时处理 03。08、09 已完成；01 的真实超时原因和修复后长周期观察仍未完成。
+2. 01 保留真实超时根因问题；从最终证据接续，新的观察窗口另行安排。优先处理 12/13；手机就绪时处理 02/04。08、09 已完成，禁止恢复供应商联系。
 3. 手机由用户手动停止并移除，临时 ADB 转发已清空；这不是断连。重新测试前确认设备和客户端状态，不自动改用旧私密缓存中的链接或凭据。
 4. 故障和重启测试继续暂缓，包括 05 的完整隔离目标及 06 的真实测试。开始这些项前先确认用户恢复授权和具体范围。
 5. SSH 密码、私钥、设备认证和订阅 token 不在仓库。按授权渠道取得当前凭据；忽略的部署缓存只是本机辅助材料，不能作为可迁移凭据来源或重放脚本直接执行。
@@ -30,7 +30,7 @@ Updated: 2026-10-20
 
 | 待办 | 优先级 | 状态 |
 | --- | --- | --- |
-| [01 持续观察探针与自然断连](issues/01-long-term-stability.md) | P1 | in_progress |
+| [01 持续观察探针与自然断连](issues/01-long-term-stability.md) | P1 | open |
 | [02 拆分手机首次建连延迟](issues/02-phone-cold-connection-latency.md) | P1 | blocked |
 | [03 核实日本公网出站额度与吞吐瓶颈](issues/03-egress-bandwidth.md) | P1 | blocked |
 | [04 补齐实体 Android 分流与协议矩阵](issues/04-mobile-routing-acceptance.md) | P1 | blocked |
@@ -42,6 +42,7 @@ Updated: 2026-10-20
 | [10 补充 NekoBox 与 iPhone 客户端适配](issues/10-client-compatibility.md) | P3 | blocked |
 | [11 Windows TUN 国外 IPv4 自动使用与回退](issues/11-windows-ipv4-fallback.md) | P1 | open |
 | [12 探针错误分类与恢复范围](issues/12-software-timeout-recovery.md) | P1 | open |
+| [13 一次性观察器与系统维护的协调](issues/13-observer-maintenance-resilience.md) | P1 | open |
 
 ## 工作边界
 

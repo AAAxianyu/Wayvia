@@ -1,0 +1,174 @@
+{
+  "integrity": {
+    "first_sample_utc": "2026-10-21T03:09:23.113563+00:00",
+    "last_sample_utc": "2026-10-22T03:09:17.303180+00:00",
+    "start": {
+      "type": "start",
+      "at": "2026-10-21T03:09:23.017920+00:00",
+      "role": "exit",
+      "generation": "64fee7096d28466e9ab15d463e5a55e5",
+      "until": "2026-10-22T03:09:21.680729+00:00",
+      "sample_interval_seconds": 5,
+      "control_interval_seconds": 30,
+      "max_bytes": 100663296,
+      "scope": "diagnostics_only_no_health_decision_or_mutation",
+      "ntp": true
+    },
+    "end": {
+      "type": "end",
+      "at": "2026-10-22T03:09:21.680885+00:00",
+      "reason": "deadline",
+      "bytes_written": 39167419
+    },
+    "rows": {
+      "start": 1,
+      "sample": 17279,
+      "control": 11520
+    },
+    "partial_lines": 0,
+    "file_sha256": "a88b70f0f4f692b48769145f3de95c33b07ed52482ae64014bd0e15d55cf32d9",
+    "file_bytes": 39167419,
+    "result_bytes_match": true,
+    "maximum_wall_sample_gap_seconds": 5.065839,
+    "observer_unit": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity",
+      "MainPID": "0",
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "",
+      "ExecMainExitTimestamp": "",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead",
+      "InvocationID": ""
+    },
+    "uptime_seconds": 168164.34
+  },
+  "new_control_failures": [
+    {
+      "type": "control",
+      "label": "host_cf_alternative",
+      "started_at": "2026-10-22T00:55:27.900719+00:00",
+      "at": "2026-10-22T00:55:29.953349+00:00",
+      "duration_ms": 2053,
+      "result": {
+        "curl_exit": 28,
+        "valid_https_response": false,
+        "single_valid_trace_ip": false,
+        "expected_exit_match": false,
+        "http_code": 0,
+        "ssl_verify_result": 0,
+        "time_connect": 0.0,
+        "time_appconnect": 0.0,
+        "time_starttransfer": 0.0,
+        "time_total": 2.006424,
+        "size_download": 0
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_dns_google",
+      "started_at": "2026-10-22T00:55:56.942894+00:00",
+      "at": "2026-10-22T00:55:59.023669+00:00",
+      "duration_ms": 2081,
+      "result": {
+        "exit": 9,
+        "rcode": null,
+        "query_ms": null
+      }
+    },
+    {
+      "type": "control",
+      "label": "host_dns_google",
+      "started_at": "2026-10-22T01:31:27.143913+00:00",
+      "at": "2026-10-22T01:31:29.289735+00:00",
+      "duration_ms": 2146,
+      "result": {
+        "exit": 9,
+        "rcode": null,
+        "query_ms": null
+      }
+    }
+  ],
+  "new_peer_misses": [
+    {
+      "at": "2026-10-22T00:55:21.880768+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T00:55:26.879612+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T00:55:31.880225+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T00:55:36.880215+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T00:55:41.880747+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T00:55:46.880968+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T00:55:51.881401+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    },
+    {
+      "at": "2026-10-22T01:31:22.055971+00:00",
+      "peer_ping": {
+        "exit": 1,
+        "rtt_ms": null
+      }
+    }
+  ],
+  "service_events": [
+    {
+      "at": "2026-10-22T00:56:01.987818+00:00",
+      "unit": "wayvia-exit.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-22T00:56:03.469991+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "service_stopped"
+    },
+    {
+      "at": "2026-10-22T00:56:03.487953+00:00",
+      "unit": "wayvia-vpn-server.service",
+      "event": "service_started"
+    },
+    {
+      "at": "2026-10-22T00:56:04.147958+00:00",
+      "unit": "wayvia-exit.service",
+      "event": "service_started"
+    }
+  ]
+}

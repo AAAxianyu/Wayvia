@@ -1,0 +1,57 @@
+{
+  "status": "ali_observer_stopped_jp_running_at_checkpoint",
+  "journal_until_utc": "2026-10-21T22:58:20.139225+00:00",
+  "compared_to": "heartbeat-20261021T2151Z-review.json",
+  "new_production_failure": false,
+  "new_actionable_event": "ali_observer_stopped_early",
+  "documentation_delay": "local ENOSPC; retained JSON checked and documentation completed at final review",
+  "hosts": {
+    "ali": {
+      "samples": 13839,
+      "monitor_count": 4486,
+      "state_counts": {
+        "ACTIVE": 4478,
+        "DEGRADED": 8
+      },
+      "new_monitor_count": 253,
+      "new_failed_checks": [],
+      "end": {
+        "type": "end",
+        "at": "2026-10-21T22:22:36.531919+00:00",
+        "reason": "requested_stop",
+        "bytes_written": 34890883
+      },
+      "observer_unit": {
+        "MainPID": "0",
+        "Result": "exit-code",
+        "ExecMainStatus": "1",
+        "MemoryCurrent": "[not set]",
+        "MemoryPeak": "[not set]",
+        "CPUUsageNSec": "242953000",
+        "ActiveState": "failed",
+        "SubState": "failed"
+      }
+    },
+    "jp": {
+      "samples": 14268,
+      "monitor_count": 4507,
+      "state_counts": {
+        "ACTIVE": 4505,
+        "DEGRADED": 2
+      },
+      "new_monitor_count": 252,
+      "new_failed_checks": [],
+      "end": null,
+      "observer_unit": {
+        "MainPID": "164702",
+        "Result": "success",
+        "ExecMainStatus": "0",
+        "MemoryCurrent": "28876800",
+        "MemoryPeak": "48869376",
+        "CPUUsageNSec": "644687414000",
+        "ActiveState": "active",
+        "SubState": "running"
+      }
+    }
+  }
+}

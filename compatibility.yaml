@@ -617,31 +617,38 @@ server_followup_2026_10_20:
 stability_observation_2026_10_20:
   base_commit: 2b46212fdba2286718da84634acdea06112487e1
   branch: codex/stability-observation-20261020
-  status: running_not_accepted
+  status: finished_partial_coverage_root_cause_unresolved
   window_utc: 2026-10-21T03:09Z_to_2026-10-22T03:09Z
   observer: independent_read_only_diagnostics_no_health_decision
   run_id: stability-20261020
   heartbeat_id: wayvia-24
+  heartbeat_status: PAUSED
   heartbeat_interval: hourly_until_final_review_then_pause
   python_server: 3.12.3
   production_wheel_sha256: 6289bb94661a4e008eac3f85488bce71e0d7e95811918ac3f9e83142f4f09b31
   production_wheel_field_scope: baseline_at_observer_launch
   production_services_and_default_route: unchanged_at_start
   latest_review:
-    journal_until_utc: '2026-10-21T21:51:29.827734+00:00'
-    samples: {ali: 13466, jp: 13466}
-    monitor_rounds: {ali: 4233, jp: 4255}
-    degraded_rounds: {ali: 8, jp: 2}
-    new_ingress_degradations: 1
-    new_japan_degradations: 1
-    new_japan_primary_HTTP_timeouts_with_successful_fallback: 0
-    new_ingress_primary_HTTP_timeouts_with_successful_fallback: 1
-    result: new_natural_network_and_recovery_incident_plus_separate_fallback_roots_unresolved
-    collection_resource_overlap: possible_observation_effect_on_2055_fallback_not_proven
-    production_changes: none_by_observer_natural_automatic_recovery_service_restarts_recorded
-    observer_pid_and_deadline: unchanged
-    evidence: docs/validation/stability-observation-2026-10-20/heartbeat-20261021T2151Z-review.json
-    incident_evidence: docs/validation/stability-observation-2026-10-20/incident-2118.md
+    journal_until_utc: '2026-10-22T03:09:22+00:00'
+    samples: {ali: 13839, jp: 17279}
+    monitor_rounds: {ali: 5433, jp: 5457}
+    degraded_rounds: {ali: 10, jp: 3}
+    new_ingress_degradations_since_2257: 2
+    new_japan_degradations_since_2257: 1
+    runtime_coverage_percent: {ali: 80.0895, jp: 100}
+    exits: {ali: requested_stop_then_FileExistsError_on_external_restart, jp: deadline_success}
+    result: completed_partial_diagnostic_coverage_business_root_cause_unresolved
+    observer_stop_root: unattended_upgrades_needrestart_restarted_single_use_observer
+    production_changes: none_by_review_automatic_maintenance_and_recovery_recorded
+    evidence: docs/validation/stability-observation-2026-10-20/final-20261022-review.json
+    report: docs/validation/stability-observation-2026-10-20/final-report.md
+  automatic_system_maintenance:
+    host: ali
+    at_utc: '2026-10-21T22:22:36Z'
+    trigger: unattended_upgrades_needrestart
+    original_observer: stopped_external_restart_failed_existing_directory
+    source_package_events: [ca-certificates, liblzma5, xz-utils]
+    evidence: docs/validation/stability-observation-2026-10-20/observer-stop-needrestart-ali.json
   authorized_mid_window_maintenance:
     source_commit: 08695f2
     host: ali
@@ -718,7 +725,7 @@ stability_observation_2026_10_20:
     final_redaction_tightening: passed_12_targeted_tests_format_lint
     test_lab: deferred_by_user_not_executed_not_passed
   acceptance:
-    long_term_stability: pending
+    long_term_stability: not_accepted_natural_failures_and_partial_ingress_coverage
     actual_timeout_root_cause: unresolved
     phone: not_tested
     fault_and_reboot: deferred_by_user

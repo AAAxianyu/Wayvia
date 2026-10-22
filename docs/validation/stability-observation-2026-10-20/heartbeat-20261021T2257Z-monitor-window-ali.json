@@ -1,0 +1,223 @@
+{
+  "observed_at_utc": "2026-10-21T22:58:22.622464+00:00",
+  "since_utc": "2026-10-21T21:49:29.827734+00:00",
+  "role": "ingress",
+  "generation": "6f80275960ed46238f51691722e918b5",
+  "current_state": "ACTIVE",
+  "first_monitor": "2026-10-21T21:49:29.828103+00:00",
+  "last_monitor": "2026-10-21T22:58:11.841698+00:00",
+  "monitor_count": 261,
+  "state_counts": {
+    "ACTIVE": 261
+  },
+  "hourly_counts": {
+    "2026-10-21T21:00:00Z": {
+      "ACTIVE": 40
+    },
+    "2026-10-21T22:00:00Z": {
+      "ACTIVE": 221
+    }
+  },
+  "layer_timings": {
+    "access": {
+      "samples": 261,
+      "median_ms": 420,
+      "p95_ms": 510,
+      "max_ms": 832
+    },
+    "carrier": {
+      "samples": 261,
+      "median_ms": 460,
+      "p95_ms": 517,
+      "max_ms": 1411
+    },
+    "vpn": {
+      "samples": 261,
+      "median_ms": 241,
+      "p95_ms": 288,
+      "max_ms": 1837
+    },
+    "egress": {
+      "samples": 261,
+      "median_ms": 412,
+      "p95_ms": 462,
+      "max_ms": 835
+    },
+    "dns": {
+      "samples": 261,
+      "median_ms": 74,
+      "p95_ms": 100,
+      "max_ms": 185
+    },
+    "ipv6": {
+      "samples": 261,
+      "median_ms": 7,
+      "p95_ms": 12,
+      "max_ms": 168
+    },
+    "return": {
+      "samples": 261,
+      "median_ms": 2,
+      "p95_ms": 4,
+      "max_ms": 7
+    }
+  },
+  "failed_checks": [],
+  "fallbacks": [],
+  "state_transitions": [
+    {
+      "at": "2026-10-21T21:49:29.828103+00:00",
+      "state": "ACTIVE"
+    }
+  ],
+  "units": {
+    "wayvia-agent": "active",
+    "wayvia-api": "active",
+    "wayvia-monitor.timer": "active",
+    "wayvia-ingress": "active",
+    "wayvia-bridge": "active",
+    "wayvia-carrier": "active",
+    "wayvia-vpn-client": "active"
+  },
+  "unit_events": [
+    {
+      "at": "2026-10-21T22:22:36.578354+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "remote_close"
+    },
+    {
+      "at": "2026-10-21T22:22:36.901625+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "event": "vpn_established"
+    }
+  ],
+  "kernel_oom_kill_count_since": 0,
+  "uptime_seconds": 9018268.62,
+  "completed_response_closes": [
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T21:55:52.153525+00:00",
+      "duration_ms": 420,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 168,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T21:56:39.129757+00:00",
+      "duration_ms": 388,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 165,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T21:57:27.122873+00:00",
+      "duration_ms": 386,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 159,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T22:06:13.132681+00:00",
+      "duration_ms": 414,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 164,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T22:07:00.130770+00:00",
+      "duration_ms": 407,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 175,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T22:13:37.118498+00:00",
+      "duration_ms": 392,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 167,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    },
+    {
+      "layer": "access",
+      "kind": "trojan_http",
+      "status": "healthy",
+      "observed_at": "2026-10-21T22:33:07.119196+00:00",
+      "duration_ms": 433,
+      "attempts": [
+        {
+          "endpoint": 0,
+          "duration_ms": 178,
+          "curl_code": 0,
+          "http_status": 200,
+          "result": "healthy",
+          "transport_closed_after_response": true
+        }
+      ]
+    }
+  ],
+  "requested_until_utc": "2026-10-21T22:58:20.139225+00:00",
+  "unit_event_counts": {
+    "remote_close": 1,
+    "vpn_established": 1
+  },
+  "repetitive_vpn_server_event_examples": []
+}
