@@ -2,6 +2,7 @@
 """Software-only schema-3 regression. Run with PYTHONPATH set to the built release."""
 
 import json
+import resource
 import tempfile
 from pathlib import Path
 
@@ -18,10 +19,26 @@ from wayvia.storage import MIGRATIONS
 
 def main():
     assert set(MIGRATIONS) == {1, 2, 3}, "This regression must use the real schema-3 baseline"
+    # A contract fixture does not need the full production domain catalogue. Keep
+    # this process bounded even when an operator runs it outside a development VM.
+    resource.setrlimit(resource.RLIMIT_CPU, (30, 30))
+    fixture = example_config()
+    fixture["rulesets"]["domestic-rules"] = {
+        "source": "Synthetic API contract fixture",
+        "version": "test-1",
+        "cidrs": ["223.5.5.0/24"],
+        "domains": [],
+    }
+    fixture["rulesets"]["domestic-domains"] = {
+        "source": "Synthetic API contract fixture",
+        "version": "test-1",
+        "cidrs": [],
+        "domains": ["cn.example"],
+    }
     with tempfile.TemporaryDirectory(prefix="wayvia-subscription-software-") as root:
         service = ControlService(
             Path(root),
-            WayviaConfig.model_validate(example_config()),
+            WayviaConfig.model_validate(fixture),
             mode="test",
             dataplane=SimulatedDataplane(),
         )

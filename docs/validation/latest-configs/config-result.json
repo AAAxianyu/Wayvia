@@ -59,7 +59,7 @@
         "<artifact>"
       ],
       "exit_code": 0,
-      "output": "\u001b[33mWARN\u001b[0m[0002] `independent_cache` DNS option is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, checkout documentation for migration: https://sing-box.sagernet.org/migration/#migrate-independent-dns-cache\n"
+      "output": "\u001b[33mWARN\u001b[0m[0001] `independent_cache` DNS option is deprecated in sing-box 1.14.0 and will be removed in sing-box 1.16.0, checkout documentation for migration: https://sing-box.sagernet.org/migration/#migrate-independent-dns-cache\n"
     },
     {
       "component": "mihomo",
@@ -71,7 +71,7 @@
         "<artifact>"
       ],
       "exit_code": 0,
-      "output": "time=\"2026-10-26T07:01:25.647118031Z\" level=info msg=\"Start initial configuration in progress\"\ntime=\"2026-10-26T07:01:25.654212502Z\" level=info msg=\"Geodata Loader mode: memconservative\"\ntime=\"2026-10-26T07:01:25.654243674Z\" level=info msg=\"Geosite Matcher implementation: succinct\"\ntime=\"2026-10-26T07:01:26.036126567Z\" level=info msg=\"Initial configuration complete, total time: 388ms\"\nconfiguration file /generated/profile-mihomo.yaml test is successful\n"
+      "output": "time=\"2026-10-26T08:00:34.244973732Z\" level=info msg=\"Start initial configuration in progress\"\ntime=\"2026-10-26T08:00:34.250125042Z\" level=info msg=\"Geodata Loader mode: memconservative\"\ntime=\"2026-10-26T08:00:34.250186929Z\" level=info msg=\"Geosite Matcher implementation: succinct\"\ntime=\"2026-10-26T08:00:34.608668894Z\" level=info msg=\"Initial configuration complete, total time: 362ms\"\nconfiguration file /generated/profile-mihomo.yaml test is successful\n"
     },
     {
       "component": "mihomo+sing-box",
@@ -94,7 +94,7 @@
       "exit_code": null,
       "scope": "real configuration load and isolated process startup",
       "tunnel_established": false,
-      "output": "2026-10-26 07:01:59 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-26 07:01:59 Note: --socks-proxy disables data channel offload.\n2026-10-26 07:01:59 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-26 07:01:59 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-26 07:01:59 DCO version: N/A\n2026-10-26 07:01:59 TCP/UDP: Preserving recently used remote address: [AF_INET]10.89.0.1:1080\n2026-10-26 07:01:59 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-26 07:01:59 Attempting to establish TCP connection with [AF_INET]10.89.0.1:1080\n2026-10-26 07:01:59 TCP: connect to [AF_INET]10.89.0.1:1080 failed: Network is unreachable\n2026-10-26 07:01:59 SIGUSR1[connection failed(soft),connection-failed] received, process restarting\n2026-10-26 07:01:59 Restart pause, 2 second(s)\n"
+      "output": "2026-10-26 08:01:00 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-26 08:01:00 Note: --socks-proxy disables data channel offload.\n2026-10-26 08:01:00 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-26 08:01:00 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-26 08:01:00 DCO version: N/A\n2026-10-26 08:01:00 TCP/UDP: Preserving recently used remote address: [AF_INET]10.89.0.1:1080\n2026-10-26 08:01:00 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-26 08:01:00 Attempting to establish TCP connection with [AF_INET]10.89.0.1:1080\n2026-10-26 08:01:00 TCP: connect to [AF_INET]10.89.0.1:1080 failed: Network is unreachable\n2026-10-26 08:01:00 SIGUSR1[connection failed(soft),connection-failed] received, process restarting\n2026-10-26 08:01:00 Restart pause, 2 second(s)\n"
     },
     {
       "component": "openvpn",
@@ -102,7 +102,7 @@
       "exit_code": null,
       "scope": "real configuration load and isolated process startup",
       "tunnel_established": false,
-      "output": "2026-10-26 07:02:01 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-26 07:02:01 Note: Kernel support for ovpn-dco missing, disabling data channel offload.\n2026-10-26 07:02:01 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-26 07:02:01 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-26 07:02:01 DCO version: N/A\n2026-10-26 07:02:01 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-26 07:02:01 net_route_v4_best_gw result: via 0.0.0.0 dev \n2026-10-26 07:02:01 TUN/TAP device tun0 opened\n2026-10-26 07:02:01 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-26 07:02:01 net_iface_up: set tun0 up\n2026-10-26 07:02:01 net_addr_v4_add: 10.77.0.1/24 dev tun0\n2026-10-26 07:02:01 Could not determine IPv4/IPv6 protocol. Using AF_INET\n2026-10-26 07:02:01 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-26 07:02:01 Listening for incoming TCP connection on [AF_INET]127.0.0.1:1194\n2026-10-26 07:02:01 Socket flags: TCP_NODELAY=1 succeeded\n2026-10-26 07:02:01 TCPv4_SERVER link local (bound): [AF_INET]127.0.0.1:1194\n2026-10-26 07:02:01 TCPv4_SERVER link remote: [AF_UNSPEC]\n2026-10-26 07:02:01 MULTI: multi_init called, r=256 v=256\n2026-10-26 07:02:01 IFCONFIG POOL IPv4: base=10.77.0.2 size=253\n2026-10-26 07:02:01 MULTI: TCP INIT maxclients=1024 maxevents=1029\n2026-10-26 07:02:01 Initialization Sequence Completed\n"
+      "output": "2026-10-26 08:01:01 Note: --cipher is not set. OpenVPN versions before 2.5 defaulted to BF-CBC as fallback when cipher negotiation failed in this case. If you need this fallback please add '--data-ciphers-fallback BF-CBC' to your configuration and/or add BF-CBC to --data-ciphers.\n2026-10-26 08:01:01 Note: Kernel support for ovpn-dco missing, disabling data channel offload.\n2026-10-26 08:01:01 OpenVPN 2.6.19 aarch64-unknown-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] [DCO]\n2026-10-26 08:01:01 library versions: OpenSSL 3.0.13 30 Jan 2024, LZO 2.10\n2026-10-26 08:01:01 DCO version: N/A\n2026-10-26 08:01:01 net_route_v4_best_gw query: dst 0.0.0.0\n2026-10-26 08:01:01 net_route_v4_best_gw result: via 0.0.0.0 dev \n2026-10-26 08:01:01 TUN/TAP device tun0 opened\n2026-10-26 08:01:01 net_iface_mtu_set: mtu 1400 for tun0\n2026-10-26 08:01:01 net_iface_up: set tun0 up\n2026-10-26 08:01:01 net_addr_v4_add: 10.77.0.1/24 dev tun0\n2026-10-26 08:01:01 Could not determine IPv4/IPv6 protocol. Using AF_INET\n2026-10-26 08:01:01 Socket Buffers: R=[131072->131072] S=[16384->16384]\n2026-10-26 08:01:01 Listening for incoming TCP connection on [AF_INET]127.0.0.1:1194\n2026-10-26 08:01:01 Socket flags: TCP_NODELAY=1 succeeded\n2026-10-26 08:01:01 TCPv4_SERVER link local (bound): [AF_INET]127.0.0.1:1194\n2026-10-26 08:01:01 TCPv4_SERVER link remote: [AF_UNSPEC]\n2026-10-26 08:01:01 MULTI: multi_init called, r=256 v=256\n2026-10-26 08:01:01 IFCONFIG POOL IPv4: base=10.77.0.2 size=253\n2026-10-26 08:01:01 MULTI: TCP INIT maxclients=1024 maxevents=1029\n2026-10-26 08:01:01 Initialization Sequence Completed\n"
     },
     {
       "component": "sing-box",
@@ -116,7 +116,7 @@
       "artifact": "deliberately invalid protocol",
       "expected_rejection": true,
       "exit_code": 1,
-      "output": "time=\"2026-10-26T07:02:03.387754936Z\" level=info msg=\"Start initial configuration in progress\"\ntime=\"2026-10-26T07:02:03.387813507Z\" level=error msg=\"proxy 0: unsupport proxy type: wayvia-not-a-protocol\"\nconfiguration file /tmp/invalid-mihomo.yaml test failed\n"
+      "output": "time=\"2026-10-26T08:01:03.822750363Z\" level=info msg=\"Start initial configuration in progress\"\ntime=\"2026-10-26T08:01:03.822804148Z\" level=error msg=\"proxy 0: unsupport proxy type: wayvia-not-a-protocol\"\nconfiguration file /tmp/invalid-mihomo.yaml test failed\n"
     }
   ],
   "environment": {

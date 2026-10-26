@@ -1,6 +1,6 @@
 # 原有订阅更新与 LTY 手机交付
 
-Status: claimed
+Status: blocked
 Date: 2026-10-26 America/Los_Angeles
 Branch: codex/probe-observer-evidence
 
@@ -14,3 +14,7 @@ Branch: codex/probe-observer-evidence
 4. 真实 HTTPS 下载、策略/凭据比较、禁外网真实核心 parser，交付私人链接并记录脱敏证据。
 
 完整 test-lab 继续按用户要求暂缓，退出码 null。URL/token、密码和配置正文不入 Git。手机实际导入、系统接管、实网性能及完整故障接受度另行验收。
+
+## 当前阻塞
+
+软件完成并通过检查。入口 SSH/HTTPS 失联，候选包已上传，服务器端软件检查结果与临时检查停止动作均未确认；未执行 `--apply`。需恢复入口管理访问后先检查临时进程、资源/既有日志与当前基线，再更新 API 和设置 LTY。不能将旧手机链接已找回当作新版订阅已交付。

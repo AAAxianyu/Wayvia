@@ -1,4 +1,26 @@
 schema_version: 1
+subscription_lty_update:
+  date: '2026-10-26'
+  branch: codex/probe-observer-evidence
+  base_commit: dcee617
+  status: software_verified_production_update_blocked_management_timeout
+  title: LTY
+  title_storage: existing_settings_table_independent_of_device_credentials
+  production_storage_migration: 3
+  development_storage_migration: 4
+  api_overlay_files: [client/__init__.py, client/names.py, client/legacy_api.py, render/__init__.py]
+  overlay_manifest_sha256: cfb2e2e3ecf7bacc9bc32aa9ed36de26aab8951f6085d9dd58086ab69be53bd8
+  original_phone_and_desktop_https: verified_200_with_TLS_verification_before_update
+  changed_production_units: []
+  real_speed_sampling_and_fault_tests: not_run_deferred_by_user
+  gates:
+    check: passed_527_tests_3_existing_warnings_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_11_real_cases
+    schema3_overlay_software: passed_with_original_installed_source_local_no_external_requests
+    test_lab: not_run_deferred_by_user_exit_code_null
+  mobile_GUI_acceptance: not_run
+  evidence: docs/validation/subscription-lty-2026-10-26/README.md
 unified_clash_verge_client:
   started_date: '2026-10-25'
   validation_date: '2026-10-26'

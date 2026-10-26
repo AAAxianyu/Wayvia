@@ -1,5 +1,11 @@
 # Wayvia 实现与验收状态
 
+## 2026-10-26 LTY 订阅名称与原订阅更新
+
+用户新授权更新原有订阅并提供 LTY 手机链接；范围限必要的订阅服务变更和下载验证。实现独立名称元数据及 CLI，不改设备别名、token、密码或网络 revision。线上 schema 3 与开发 schema 4 分离，新增 API 专用 release 构建器、兼容入口和可回退发布脚本，只覆盖客户端帮助模块与 ProfileRenderer，ServerRenderer 不变，原安装包保留。参见 [ADR 012](adr/012-subscription-title-and-api-overlay.md)。
+
+最终 make check 527 项通过（3 项既有警告），demo 通过，test-configs 11 项通过；当前线上安装代码的 schema 3 兼容包在本地软件回归通过。原手机/JXY 订阅 HTTPS 下载均为 200，正常验证证书。服务器端软件检查未返回结果后，入口的直连/经日本 SSH 管理与 HTTPS 均超时，原因未明；未执行 --apply，生产更新受访问阻塞，当前没有 API/网络服务切换或数据库迁移；完整 test-lab、实网测速/采样、故障/重启实验继续暂缓，旧观察/heartbeat 未恢复。过程与最终状态见[验证记录](validation/subscription-lty-2026-10-26/README.md)。
+
 ## 2026-10-26 America/Los_Angeles Clash Verge Rev 统一适配
 
 基于 `f5957a0` 按顺序完成[八项软件范围](../.scratch/clash-verge-adaptation/spec.md)：中文订阅名/标准响应头、一键 URI、单一真实路径的稳定节点名、手动延迟与有界显式测速工具、更新与选择保留、最终配置覆写/接管检查、真实流量与下载期限信息、只读脱敏诊断和兼容矩阵。用户不填写 OS/版本，UA 只记录声明；网络配置 schema 和旧发布 revision 计算未改。

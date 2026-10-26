@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "software": {
+    "check": {
+      "exit_code": 0,
+      "tests": 527,
+      "warnings": 3
+    },
+    "demo": {
+      "exit_code": 0,
+      "mode": "simulated"
+    },
+    "test_configs": {
+      "exit_code": 0,
+      "cases": 11,
+      "scope": "disposable_network_none"
+    },
+    "test_lab": {
+      "exit_code": null,
+      "status": "deferred_by_user"
+    },
+    "schema3_overlay": {
+      "result": "passed",
+      "schema": 3,
+      "external_requests": 0,
+      "dataplane_calls_after_setup": 0,
+      "name": "LTY",
+      "bounded_fixture": "passed_synthetic_rule_fixture_CPU_30_seconds_limit"
+    }
+  },
+  "deployment": {
+    "status": "not_applied_blocked_management_timeout",
+    "api_changed": false,
+    "production_database_migrated": false,
+    "known_before_https": {
+      "phone": {
+        "status": 200,
+        "tls_verification": true,
+        "content_type": "application/yaml",
+        "bytes": 9207514
+      },
+      "desktop": {
+        "status": 200,
+        "tls_verification": true,
+        "content_type": "application/yaml",
+        "bytes": 9207514
+      }
+    },
+    "remote_software_check": "outcome_unconfirmed_after_access_lost",
+    "api_apply_command_executed": false,
+    "management_access": {
+      "direct_ssh": "banner_timeout",
+      "via_existing_japan_ssh": "timeout",
+      "direct_https": "connect_timeout"
+    },
+    "temporary_software_check_stop": "requested_but_execution_unconfirmed",
+    "network_services_changed_by_this_update": false,
+    "outage_cause": "unresolved_not_attributed"
+  },
+  "artifacts": {
+    "overlay_manifest_sha256": "cfb2e2e3ecf7bacc9bc32aa9ed36de26aab8951f6085d9dd58086ab69be53bd8"
+  },
+  "remaining_acceptance": [
+    "mobile_GUI_import",
+    "TUN_permissions",
+    "real_path_and_performance",
+    "fault_reboot_tests"
+  ]
+}
