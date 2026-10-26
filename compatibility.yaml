@@ -3,18 +3,25 @@ subscription_lty_update:
   date: '2026-10-26'
   branch: codex/probe-observer-evidence
   base_commit: dcee617
-  status: software_verified_production_update_blocked_management_timeout
+  status: subscription_API_updated_HTTPS_and_native_core_verified_mobile_GUI_pending
   title: LTY
   title_storage: existing_settings_table_independent_of_device_credentials
   production_storage_migration: 3
   development_storage_migration: 4
   api_overlay_files: [client/__init__.py, client/names.py, client/legacy_api.py, render/__init__.py]
   overlay_manifest_sha256: cfb2e2e3ecf7bacc9bc32aa9ed36de26aab8951f6085d9dd58086ab69be53bd8
-  original_phone_and_desktop_https: verified_200_with_TLS_verification_before_update
-  changed_production_units: []
+  original_phone_and_desktop_https: verified_200_with_TLS_before_and_after_update_URLs_preserved
+  actual_delivered_profiles: both_passed_Mihomo_1.19.32_parser_in_network_none_container
+  API_memory_high_MiB: 384
+  API_memory_max_MiB: 512
+  API_memory_peak_bytes_after_downloads: 261865472
+  API_OOM_events_after_update: 0
+  host_reboot: manually_performed_by_user_to_restore_access_not_a_fault_test
+  server_side_regression: prior_global_OOM_in_root_session_now_local_isolated_only
+  changed_production_units: [wayvia-api.service]
   real_speed_sampling_and_fault_tests: not_run_deferred_by_user
   gates:
-    check: passed_527_tests_3_existing_warnings_format_lint_build_cli
+    check: passed_530_tests_3_existing_warnings_format_lint_build_cli
     demo: passed_simulated
     test_configs: passed_11_real_cases
     schema3_overlay_software: passed_with_original_installed_source_local_no_external_requests

@@ -1,6 +1,6 @@
 # 原有订阅更新与 LTY 手机交付
 
-Status: blocked
+Status: done
 Date: 2026-10-26 America/Los_Angeles
 Branch: codex/probe-observer-evidence
 
@@ -15,6 +15,6 @@ Branch: codex/probe-observer-evidence
 
 完整 test-lab 继续按用户要求暂缓，退出码 null。URL/token、密码和配置正文不入 Git。手机实际导入、系统接管、实网性能及完整故障接受度另行验收。
 
-## 当前阻塞
+## 完成结果
 
-软件完成并通过检查。入口 SSH/HTTPS 失联，候选包已上传，服务器端软件检查结果与临时检查停止动作均未确认；未执行 `--apply`。需恢复入口管理访问后先检查临时进程、资源/既有日志与当前基线，再更新 API 和设置 LTY。不能将旧手机链接已找回当作新版订阅已交付。
+用户手动重启后恢复 SSH，API 专用发布成功；原手机订阅显示 LTY，原 URL/凭据与 schema 3 不变。软件、实际下载与真实核心校验均通过。OOM 与发布回退过程见[验证记录](../../docs/validation/subscription-lty-2026-10-26/README.md)，手机 GUI/接管与完整故障接受度继续分开验收。

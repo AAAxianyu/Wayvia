@@ -2,12 +2,12 @@
 
 Wayvia 生成一份统一 Mihomo 订阅，供 Clash Verge Rev 的 Windows、macOS、Linux 客户端使用，不要求填写系统或版本。当前生成一个 `Wayvia · 主线路` 节点和 `Wayvia` 选择组，线路内部仍由服务器完成 VPN-over-proxy；国内/校内直连策略保留。
 
-本次交付是仓库软件与真实组件验证，尚未部署到生产。见[验证记录](validation/clash-verge-2026-10-25/README.md)和[ADR 011](adr/011-unified-clash-verge-client.md)。以下真实网络步骤供后续恢复授权后使用；本轮没有实际导入或接管任何桌面网络。
+统一软件适配见[验证记录](validation/clash-verge-2026-10-25/README.md)和[ADR 011](adr/011-unified-clash-verge-client.md)。订阅 API 已按用户要求限范围更新原手机和 JXY 订阅，手机名称为 LTY，见[交付记录](validation/subscription-lty-2026-10-26/README.md)。其余诊断/历史功能没有随本次部署；实际手机/桌面导入、系统接管与性能仍需独立验收。
 
 ## 导入与日常使用
 
 1. 获取该设备的私人 **Mihomo** 订阅，粘贴到 Verge 订阅页，或使用一键导入链接。
-2. 导入后名称为 `Wayvia · 设备别名`，中文由标准响应头编码。点击订阅激活，再确认选择组为 Wayvia；目前一条真实线路显示一个节点。
+2. 导入后默认名称为 `Wayvia · 设备别名`，指定名称的手机订阅为 `LTY`，中文由标准响应头编码。点击订阅激活，再确认选择组为 Wayvia；目前一条真实线路显示一个节点。
 3. 需要整个设备接管时，在 Verge 授予所需服务/TUN 权限；只使用系统代理时，终端、IDE、游戏等是否遵循代理需分别确认。订阅中的 TUN 请求不代表系统已经允许接管。
 4. 默认规则模式保留国内/本地直连，国外与未知流量进 Wayvia；受保护 IPv6 按既有策略拒绝。节点不可用时没有 DIRECT 回退。
 5. 点击节点延迟测试得到毫秒级 HTTPS 可用性/RTT。默认没有周期测试；延迟不代表 Mbps 下载能力，也不能证明任意业务可用。

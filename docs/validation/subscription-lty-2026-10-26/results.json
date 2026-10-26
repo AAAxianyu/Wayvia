@@ -3,7 +3,7 @@
   "software": {
     "check": {
       "exit_code": 0,
-      "tests": 527,
+      "tests": 530,
       "warnings": 3
     },
     "demo": {
@@ -29,8 +29,8 @@
     }
   },
   "deployment": {
-    "status": "not_applied_blocked_management_timeout",
-    "api_changed": false,
+    "status": "applied",
+    "api_changed": true,
     "production_database_migrated": false,
     "known_before_https": {
       "phone": {
@@ -46,24 +46,119 @@
         "bytes": 9207514
       }
     },
-    "remote_software_check": "outcome_unconfirmed_after_access_lost",
-    "api_apply_command_executed": false,
+    "remote_software_check": "failed_global_OOM_not_repeated_on_production",
+    "api_apply_command_executed": true,
     "management_access": {
-      "direct_ssh": "banner_timeout",
-      "via_existing_japan_ssh": "timeout",
-      "direct_https": "connect_timeout"
+      "direct_ssh": "restored_after_user_manual_reboot",
+      "direct_https": "verified_200_after_subscription_API_update"
     },
-    "temporary_software_check_stop": "requested_but_execution_unconfirmed",
+    "temporary_software_check_stop": "previous_root_Python_OOM_killed_no_process_after_user_manual_reboot",
     "network_services_changed_by_this_update": false,
-    "outage_cause": "unresolved_not_attributed"
+    "outage_cause": "global_OOM_in_this_root_SSH_session_points_to_unbounded_server_side_contract_regression",
+    "console_access": "read_only_cloud_assistant_command_delivery_failed_no_agent_initiated_host_reboot",
+    "schema": 3,
+    "protected_runtime_unchanged": true,
+    "only_restarted_unit": "wayvia-api.service",
+    "release": "/opt/wayvia/api-releases/subscription-client-cfb2e2e3ecf7bacc-r3",
+    "manifest_sha256": "cfb2e2e3ecf7bacc9bc32aa9ed36de26aab8951f6085d9dd58086ab69be53bd8",
+    "backup": "/root/wayvia-subscription-client-cfb2e2e3ecf7bacc-r3",
+    "original_phone_and_JXY_URLs_and_credentials": "preserved",
+    "attempts": [
+      {
+        "attempt": 1,
+        "result": "API_module_import_denied_by_release_parent_permissions_rolled_back_start_limit_reset_manually"
+      },
+      {
+        "attempt": 2,
+        "result": "state_comparison_guard_rejected_automatic_API_and_title_rollback_no_persistent_difference_found"
+      },
+      {
+        "attempt": 3,
+        "result": "applied_all_protected_state_checks_passed"
+      }
+    ]
   },
   "artifacts": {
-    "overlay_manifest_sha256": "cfb2e2e3ecf7bacc9bc32aa9ed36de26aab8951f6085d9dd58086ab69be53bd8"
+    "overlay_manifest_sha256": "cfb2e2e3ecf7bacc9bc32aa9ed36de26aab8951f6085d9dd58086ab69be53bd8",
+    "deployment_script_sha256": "ff5a079f399ce48b92f6b2be3910585e91b470c95e95a47fe222479041f74db9",
+    "wheel_sha256": "f1451d1323c51ab2dd955516d665ee4b838bea28ed515b6719e112d2ce095263"
   },
   "remaining_acceptance": [
     "mobile_GUI_import",
     "TUN_permissions",
     "real_path_and_performance",
     "fault_reboot_tests"
-  ]
+  ],
+  "delivery": {
+    "phone": {
+      "download_status": 200,
+      "info_status": 200,
+      "title": "LTY",
+      "tls_verified": true,
+      "bytes": 9207741,
+      "sha256": "0fc4e8e1efaf30790bc9ae97bdb396db8fb10e950e62e87d450145c7de2b8e8e",
+      "update_hours": 24,
+      "homepage_port_retained": true
+    },
+    "desktop": {
+      "download_status": 200,
+      "info_status": 200,
+      "title": "Wayvia \u00b7 JXY",
+      "tls_verified": true,
+      "bytes": 9207741,
+      "sha256": "624a8e2b427603c87eab638d74017f18292658e2ecba955d09f0748d35288074",
+      "update_hours": 24,
+      "homepage_port_retained": true
+    },
+    "public_admin_status": 404
+  },
+  "policy_comparison": {
+    "phone": {
+      "credentials_endpoint_TLS_unchanged": true,
+      "routing_DNS_TUN_IPv6_unchanged": true,
+      "single_path_node_and_group_verified": true,
+      "periodic_checks_seconds": 0
+    },
+    "desktop": {
+      "credentials_endpoint_TLS_unchanged": true,
+      "routing_DNS_TUN_IPv6_unchanged": true,
+      "single_path_node_and_group_verified": true,
+      "periodic_checks_seconds": 0
+    }
+  },
+  "native_delivered_profiles": {
+    "phone": {
+      "component": "mihomo",
+      "version": "1.19.32",
+      "exit_code": 0,
+      "network": "none",
+      "configuration_only": true
+    },
+    "desktop": {
+      "component": "mihomo",
+      "version": "1.19.32",
+      "exit_code": 0,
+      "network": "none",
+      "configuration_only": true
+    }
+  },
+  "final_runtime": {
+    "protected_runtime_still_matches_before_API_update": true,
+    "different_fields": {},
+    "api": "MainPID=10622\nNRestarts=0\nActiveState=active\n",
+    "api_memory": {
+      "memory.current": "125521920",
+      "memory.peak": "261865472",
+      "memory.high": "402653184",
+      "memory.max": "536870912",
+      "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"
+    },
+    "available_memory_kib": 680444,
+    "boot_id": "8a9899f2-1673-4365-8aea-86f4e18fd61a"
+  },
+  "manual_reboot": {
+    "performed_by": "user",
+    "boot_started_utc": "2026-10-26T09:37:10Z",
+    "full_fault_reboot_acceptance": false
+  }
 }

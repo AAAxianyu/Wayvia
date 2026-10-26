@@ -76,6 +76,46 @@ def atomic(path, data, mode=0o600):
     os.replace(temporary, path)
 
 
+def prepare_release(release, candidate, manifest_path):
+    release.parent.mkdir(mode=0o755, exist_ok=True)
+    # mkdir's mode is masked by this tool's private umask. The service user
+    # needs to traverse the code-only parent as well as the release itself.
+    release.parent.chmod(0o755)
+    release.mkdir()
+    shutil.copytree(
+        candidate / "wayvia",
+        release / "wayvia",
+        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
+    )
+    shutil.copyfile(manifest_path, release / "manifest.json")
+    for p in [release, *release.rglob("*")]:
+        p.chmod(0o755 if p.is_dir() else 0o644)
+
+
+def verify_service_import(release):
+    code = (
+        "import resource,pathlib; "
+        "resource.setrlimit(resource.RLIMIT_CPU,(10,10)); "
+        "resource.setrlimit(resource.RLIMIT_AS,(536870912,536870912)); "
+        "import wayvia.client.legacy_api as api; "
+        "assert pathlib.Path(api.__file__).resolve().is_relative_to(pathlib.Path("
+        + repr(str(release))
+        + "))"
+    )
+    subprocess.run(
+        ["/opt/wayvia/.venv/bin/python", "-c", code],
+        user="wayvia",
+        group="wayvia",
+        extra_groups=[],
+        cwd="/",
+        env={"PATH": "/usr/bin:/bin", "PYTHONPATH": str(release), "PYTHONDONTWRITEBYTECODE": "1"},
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=15,
+    )
+
+
 def snapshot():
     with sqlite3.connect(f"file:{CONTROL / 'metadata.db'}?mode=ro", uri=True) as connection:
         devices = connection.execute("SELECT * FROM devices ORDER BY id").fetchall()
@@ -167,7 +207,10 @@ def update(args):
         raise RuntimeError("Expected an existing active Mihomo subscription")
     if not args.apply:
         return {"status": "verified_not_applied", "schema": 3, "changed_files": sorted(ALLOWED)}
-    release_id = "subscription-client-" + args.manifest_sha256[:16]
+    if not 1 <= args.attempt <= 9:
+        raise RuntimeError("Expected attempt 1 through 9")
+    suffix = "" if args.attempt == 1 else f"-r{args.attempt}"
+    release_id = "subscription-client-" + args.manifest_sha256[:16] + suffix
     backup = Path("/root") / ("wayvia-" + release_id)
     backup.mkdir(mode=0o700)
     (backup / "before.json").write_text(json.dumps(before, indent=2))
@@ -181,16 +224,8 @@ def update(args):
         (backup / "previous-dropin.conf").write_bytes(old_dropin)
     shutil.copyfile("/var/lib/wayvia/install-manifest.json", backup / "install-manifest.json")
     release = Path("/opt/wayvia/api-releases") / release_id
-    release.parent.mkdir(mode=0o755, exist_ok=True)
-    release.mkdir()
-    shutil.copytree(
-        args.release / "wayvia",
-        release / "wayvia",
-        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
-    )
-    shutil.copyfile(manifest_path, release / "manifest.json")
-    for p in [release, *release.rglob("*")]:
-        p.chmod(0o755 if p.is_dir() else 0o644)
+    prepare_release(release, args.release, manifest_path)
+    verify_service_import(release)
     sys.path.insert(0, str(release))
     from wayvia.client import https_url
     from wayvia.client.names import set_display_name
@@ -223,10 +258,12 @@ def update(args):
     try:
         atomic(DROPIN, unit.encode(), 0o644)
         command("systemctl", "daemon-reload")
+        command("systemctl", "reset-failed", "wayvia-api.service")
         command("systemctl", "restart", "wayvia-api.service")
         healthy()
         set_display_name(db, args.subscription_id, args.name)
         after = snapshot()
+        (backup / "candidate-state.json").write_text(json.dumps(after, indent=2))
         if before != after:
             raise RuntimeError("Protected runtime state changed during the API update")
         installation = json.loads((backup / "install-manifest.json").read_text())
@@ -270,6 +307,7 @@ def update(args):
         else:
             atomic(DROPIN, old_dropin, 0o644)
         command("systemctl", "daemon-reload")
+        command("systemctl", "reset-failed", "wayvia-api.service")
         command("systemctl", "restart", "wayvia-api.service")
         healthy()
         raise
@@ -284,4 +322,7 @@ if __name__ == "__main__":
     parser.add_argument("--subscription-id", required=True)
     parser.add_argument("--name", required=True)
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument(
+        "--attempt", type=int, default=1, help="Use a fresh immutable release for a retry"
+    )
     print(json.dumps(update(parser.parse_args())))
