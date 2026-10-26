@@ -48,6 +48,7 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
         response.headers["Cache-Control"] = "no-store, private"
         response.headers["Pragma"] = "no-cache"
         response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["Referrer-Policy"] = "no-referrer"
         return response
 
     @app.exception_handler(WayviaError)
@@ -157,11 +158,23 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
     def health():
         return {"status": "alive", "dataplane": "unknown"}
 
+    @app.get("/subscriptions/{token}/info")
+    def subscription_info(token: str):
+        return service.subscription_info(token)
+
     @app.get("/subscriptions/{token}/{format}")
-    def fetch_subscription(token: str, format: str, user_agent: str | None = Header(default=None)):
-        text = service.fetch(token, format, client_claim=user_agent)
+    def fetch_subscription(
+        request: Request, token: str, format: str, user_agent: str | None = Header(default=None)
+    ):
+        document = service.fetch_document(token, format, client_claim=user_agent)
+        if format == "mihomo" and request.url.scheme == "https":
+            document["headers"]["profile-web-page-url"] = str(
+                request.url.replace(
+                    path=request.url.path.rsplit("/", 1)[0] + "/info", query="", fragment=""
+                )
+            )
         media = "application/json" if format == "sing-box" else "application/yaml"
-        return Response(text, media_type=media)
+        return Response(document["text"], media_type=media, headers=document["headers"])
 
     if subscriptions_only:
         return app

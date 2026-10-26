@@ -7,7 +7,7 @@ import sys
 import time
 from pathlib import Path
 
-from run import ca, command, environment
+from run import WORK, ca, command, environment
 
 
 def main():
@@ -53,6 +53,27 @@ def main():
     )
     if process.returncode:
         raise RuntimeError("mihomo rejected profile")
+    client_check = subprocess.run(
+        [
+            "/opt/wayvia-lab-python/bin/python",
+            "/opt/wayvia-lab/client_acceptance.py",
+            str(profile),
+            str(WORK),
+        ],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    if client_check.returncode:
+        result = json.loads(client_check.stdout) if client_check.stdout.strip() else {}
+        raise RuntimeError(
+            "unified client acceptance failed at "
+            + str(result.get("phase", "startup"))
+            + " ("
+            + str(result.get("error_type", "unknown"))
+            + ")"
+        )
+    results.append(json.loads(client_check.stdout))
     for role, name in [("ingress", "vpn-client.conf"), ("exit", "vpn-server.conf")]:
         namespace = "wayvia-check-" + role
         command(["ip", "netns", "add", namespace])

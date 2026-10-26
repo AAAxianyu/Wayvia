@@ -39,3 +39,5 @@ make test-lab
 `make demo` 在临时 SQLite 中运行明确标记为 simulated 的控制面闭环；`make demo-live` 启动可交互的本地演示 API。生产模式默认通过受限 Unix socket 请求真实入口变更，缺少 agent 时设备保持 pending，不签发可用订阅。
 
 真实组件校验与链路实验使用专属 Docker 容器，不接管开发机网络。安装、证书、代理与 VPN 运维见 [操作手册](docs/operations.md)，[实现状态](docs/implementation-status.md) 和 [兼容清单](docs/compatibility.md) 分别记录软件、隔离链路与实网验收。
+
+Clash Verge Rev 使用统一的 Mihomo 订阅，支持中文订阅名、稳定节点名、手动延迟检查、选择保留，以及私有流量/有效期信息和脱敏检查。操作方式与 Windows/macOS/Linux 验收范围见 [统一客户端说明](docs/clash-verge.md)。

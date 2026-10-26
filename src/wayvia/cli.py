@@ -11,6 +11,7 @@ import yaml
 from pydantic import ValidationError
 
 from wayvia import __version__
+from wayvia.client.commands import register as register_client
 from wayvia.errors import ExitCode, WayviaError
 from wayvia.telemetry.commands import register as register_diagnostics
 
@@ -74,6 +75,7 @@ def guarded(function):
 
 
 register_diagnostics(app, guarded, output)
+register_client(profile_app, guarded, output)
 
 
 @app.callback(invoke_without_command=True)
@@ -338,8 +340,49 @@ def export(
 
 @subscription_app.command("issue")
 @guarded
-def issue(ctx: typer.Context, device: str, format: str = "sing-box", lifetime: int = 2592000):
-    output(service(ctx).issue(device, format, lifetime))
+def issue(
+    ctx: typer.Context,
+    device: str,
+    format: str = "sing-box",
+    lifetime: int = 2592000,
+    base_url: str | None = None,
+):
+    from wayvia.client import import_link, subscription_url
+
+    if base_url:
+        # Validate before issuing a credential; bad input must not create orphan links.
+        subscription_url(base_url, "/subscriptions/" + "x" * 64 + "/mihomo")
+        if format != "mihomo":
+            raise WayviaError("CLIENT_FORMAT_REQUIRED", "One-click import requires Mihomo format")
+    result = service(ctx).issue(device, format, lifetime)
+    if base_url:
+        result["url"] = subscription_url(base_url, result["path"])
+        result["import_url"] = import_link(result["url"])
+    output(result)
+
+
+@subscription_app.command("import-link")
+@guarded
+def subscription_import_link(url: str):
+    """Encode an existing private HTTPS Mihomo link without contacting it."""
+    from wayvia.client import import_link
+
+    output({"import_url": import_link(url), "contains_device_credential": True})
+
+
+@subscription_app.command("info")
+@guarded
+def subscription_info(ctx: typer.Context, token_file: Path):
+    """Read local device usage/expiry using a private token file; no subscription download."""
+    from wayvia.observation_run import ObservationError, private
+
+    try:
+        private(token_file)
+    except ObservationError:
+        raise WayviaError("CLIENT_TOKEN_INVALID", "A private token file is required") from None
+    if token_file.stat().st_size > 256:
+        raise WayviaError("CLIENT_TOKEN_INVALID", "Invalid token file")
+    output(service(ctx).subscription_info(token_file.read_text().strip()))
 
 
 @subscription_app.command("revoke")

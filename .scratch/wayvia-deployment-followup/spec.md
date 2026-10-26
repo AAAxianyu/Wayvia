@@ -7,6 +7,8 @@ Updated: 2026-10-25 America/Los_Angeles (2026-10-26 UTC)
 
 ## 下次从这里继续
 
+2026-10-26 America/Los_Angeles：Clash Verge Rev 统一适配的八项软件范围已完成，524 项检查和 11 项真实配置/原生客户端接口检查通过，详见[独立适配任务](../clash-verge-adaptation/spec.md)与[验证](../../docs/validation/clash-verge-2026-10-25/README.md)。没有生产/实网/故障测试授权扩展，以下为此前接续记录。
+
 2026-10-25 America/Los_Angeles 后续软件交付：先确认既有统计分支并精确集成 `08695f2` 为 `633daf3`，17 的分钟/小时历史、18 的独立告警与完整性检查及显式通知队列已完成本次软件范围。492 项检查、演示和 10 项真实配置通过，见[验证](../../docs/validation/usage-alerts-2026-10-25/README.md)。未开启生产部署、实网采样、真实通知或故障/重启测试；12 的恢复动作仍未改。以下为历史接续记录。
 
 2026-10-25 America/Los_Angeles 后续软件交付：14 的有界被动滚动诊断及双端窗口、16 的时间线/脱敏导出已实现并完成软件验证。456 项检查、演示和 10 项真实配置通过；仅合成双端例子，没有启用生产采样。见[验证记录](../../docs/validation/rolling-incidents-2026-10-25/README.md)。12 的恢复动作仍未改，17/18 待后续范围。

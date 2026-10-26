@@ -24,8 +24,8 @@ REASONS = {
 def client_claim(value):
     # Header is untrusted. Never store the original string, OS, model, URL or user name.
     match = re.fullmatch(
-        r"(sing-box|mihomo|Clash|ClashMeta|ClashForAndroid|Stash|Shadowrocket)/"
-        r"([0-9]{1,3}(?:\.[0-9]{1,4}){0,3})",
+        r"(sing-box|mihomo|Clash|ClashMeta|ClashForAndroid|Stash|Shadowrocket|clash-verge)/v?"
+        r"([0-9]{1,3}(?:\.[0-9]{1,4}){0,3})(?:-(?:rc|alpha|beta)(?:[.-]?[0-9]{1,4})?)?",
         value or "",
     )
     return match.groups() if match else ("unknown", "unknown")

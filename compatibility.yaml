@@ -1,4 +1,42 @@
 schema_version: 1
+unified_clash_verge_client:
+  started_date: '2026-10-25'
+  validation_date: '2026-10-26'
+  timezone: America/Los_Angeles
+  base_commit: f5957a0
+  status: software_verified_GUI_production_and_fault_acceptance_deferred
+  profile_contract: 1
+  client_format: one_mihomo_profile_without_OS_or_UA_policy_forks
+  node_display: Wayvia · 主线路
+  group_identity: Wayvia
+  real_selectable_paths: 1
+  update_hours: 24
+  periodic_health_check_seconds: 0
+  empty_group_fallback: REJECT
+  traffic: authenticated_info_endpoint_best_effort_payload_unknown_quota_and_service_expiry
+  measurement: explicit_loopback_proxy_only_10_second_8_MiB_payload_subprocess_budget
+  runtime_network_measurements: 0
+  desktop_GUI_acceptance: not_run
+  gates:
+    check: passed_524_tests_3_existing_warnings_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_11_cases_including_real_client_protocol_and_selection_API
+    offline_client_example: passed_ASGI_and_MockTransport_no_external_requests
+    test_lab: not_run_deferred_by_user_fault_and_recovery_tests
+  versions:
+    ruff: 0.14.2
+    pytest: 8.4.2
+    httpx: 0.28.1
+    pydantic: 2.12.3
+    grpcio: 1.76.0
+    protobuf: 6.33.0
+    python: 3.12.12
+    sqlite: 3.50.4
+    uv: uv 0.9.7 (0adb44480 2025-10-30)
+  core_versions:
+    mihomo: 1.19.32
+    sing_box: 1.14.3
+  evidence: docs/validation/clash-verge-2026-10-25/README.md
 device_history_observation_alerts:
   date: '2026-10-25'
   timezone: America/Los_Angeles

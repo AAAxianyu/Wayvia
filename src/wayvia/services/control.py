@@ -450,6 +450,9 @@ class ControlService:
         }
 
     def fetch(self, token: str, format: str, *, client_claim: str | None = None) -> str:
+        return self.fetch_document(token, format, client_claim=client_claim)["text"]
+
+    def _subscription(self, token, format=None):
         with self.db.connect() as connection:
             row = connection.execute(
                 "SELECT * FROM subscriptions WHERE token_hash=?", (digest(token),)
@@ -458,12 +461,39 @@ class ControlService:
             row is None
             or row["revoked_at"] is not None
             or row["expires_at"] <= time.time()
-            or row["format"] != format
+            or (format is not None and row["format"] != format)
         ):
             raise WayviaError(
                 "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
             )
+        return row
+
+    def subscription_info(self, token):
+        from wayvia.client import contract, title
+
+        row = self._subscription(token)
+        device = self.device(row["device_id"])
+        if device["status"] != "active" or device["desired_action"]:
+            raise WayviaError(
+                "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
+            )
+        self._published_config()
+        return {
+            "schema_version": 1,
+            "title": title(device["name"]),
+            "format": row["format"],
+            "download_link_expires_at": row["expires_at"],
+            "device_status": device["status"],
+            "usage": device["usage"],
+            "client": contract(),
+        }
+
+    def fetch_document(self, token, format, *, client_claim=None):
+        from wayvia.client import headers
+
+        row = self._subscription(token, format)
         text = self.export(row["device_id"], format)
+        response_headers = headers(self.device(row["device_id"])["name"], format)
         with self.db.change_lock(), self.db.connect() as connection:
             from wayvia.services.usage_history import fetched
 
@@ -478,7 +508,7 @@ class ControlService:
                     "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
                 )
             fetched(connection, row["device_id"], now, client_claim)
-        return text
+        return {"text": text, "headers": response_headers}
 
     def subscriptions(self):
         with self.db.connect() as connection:

@@ -1,5 +1,17 @@
 # Wayvia 实现与验收状态
 
+## 2026-10-26 America/Los_Angeles Clash Verge Rev 统一适配
+
+基于 `f5957a0` 按顺序完成[八项软件范围](../.scratch/clash-verge-adaptation/spec.md)：中文订阅名/标准响应头、一键 URI、单一真实路径的稳定节点名、手动延迟与有界显式测速工具、更新与选择保留、最终配置覆写/接管检查、真实流量与下载期限信息、只读脱敏诊断和兼容矩阵。用户不填写 OS/版本，UA 只记录声明；网络配置 schema 和旧发布 revision 计算未改。
+
+节点为 `Wayvia · 主线路`，组保持 `Wayvia`，没有 DIRECT 候选，空组 REJECT；默认无周期测试。下载和 `/info` 复用原设备/订阅权限、发布快照与 no-store；HTTPS 主页入口是同 origin 的令牌保护 JSON，不提供管理能力。未知额度和设备资格到期为 null，下载期限不冒充套餐期限，原生套餐卡不伪造字段。测速工具默认拒绝网络动作，本轮只用 MockTransport；结果保持实际出口/服务器完整路径未核实。
+
+`profile inspect/stage/diagnose` 不控制客户端或连接服务器；保留可信参考对照、固定错误码、私有报告、原子离线 staging，以及状态/monitor 新鲜度和代次关联。正常选择缓存、凭据变动后的身份稳定、无效 YAML 保留选择由真实核心接口复验；临时第二节点和本地目标只是缓存/协议夹具。桌面实际导入、系统权限、IDE/终端、休眠/切网按三平台矩阵单独验收。
+
+最终 `make check` 524 项通过（3 项既有弃用警告），`make demo` 通过，`make test-configs` 11 项真实配置/接口检查通过，包括无外网 disposable 容器中的 TLS Trojan、payload/活动链和正常配置/缓存检查；关闭 TUN，不改宿主网络。离线 ASGI/MockTransport 例子通过。完整 `make test-lab` 按用户继续暂缓故障/恢复测试的要求未执行，退出码 null。见[验证](validation/clash-verge-2026-10-25/README.md)、[ADR 011](adr/011-unified-clash-verge-client.md)与[统一使用说明](clash-verge.md)。
+
+本次只完成仓库开发与软件验证，没有生产部署、实网测速/采样、桌面接管、故障/服务器重启验收或真实通知，旧观察/heartbeat 未恢复。国内直连、VPN-over-proxy、服务器秘密、fail-closed 和恢复决策保持既有约束，JXY 根因无新结论。以下为历史记录。
+
 ## 2026-10-25 America/Los_Angeles 设备历史统计与独立观测告警
 
 先确认并集成统计基线：`codex/device-usage-20261021` 的 `08695f2` 精确 cherry-pick 为 `633daf3`，共同基线 `20e33ab`，保留当前 13–16；仅合并实现状态文档冲突，没有重放随提交带入的历史部署。引入后先通过 37 项统计/探针/时间线回归，详见[基线记录](validation/usage-alerts-2026-10-25/baseline.json)。

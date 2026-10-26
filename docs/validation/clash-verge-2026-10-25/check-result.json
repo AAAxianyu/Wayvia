@@ -1,0 +1,6 @@
+{
+  "command": "make check UV=/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv",
+  "started_at": "2026-10-26T07:13:40.422944+00:00",
+  "finished_at": "2026-10-26T07:16:15.002302+00:00",
+  "exit_code": 0
+}

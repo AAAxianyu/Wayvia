@@ -8,6 +8,7 @@ from typing import Any
 
 import yaml
 
+from wayvia.client import GROUP, NODE, TEST_URL
 from wayvia.config import Resolver, WayviaConfig, split_endpoint
 from wayvia.errors import WayviaError
 from wayvia.policy import PolicyCompiler
@@ -284,6 +285,8 @@ class ProfileRenderer:
             "allow-lan": False,
             "mode": "rule",
             "log-level": "warning",
+            "profile": {"store-selected": True},
+            "unified-delay": True,
             "ipv6": True,
             "tun": {
                 "enable": True,
@@ -311,7 +314,7 @@ class ProfileRenderer:
             },
             "proxies": [
                 {
-                    "name": "Wayvia-entry",
+                    "name": NODE,
                     "type": "trojan",
                     "server": host,
                     "port": port,
@@ -321,7 +324,19 @@ class ProfileRenderer:
                     "udp": config.policy.udp == "allow",
                 }
             ],
-            "proxy-groups": [{"name": "Wayvia", "type": "select", "proxies": ["Wayvia-entry"]}],
+            "proxy-groups": [
+                {
+                    "name": GROUP,
+                    "type": "select",
+                    "proxies": [NODE],
+                    "url": TEST_URL,
+                    "interval": 0,
+                    "lazy": True,
+                    "timeout": 5000,
+                    "expected-status": 204,
+                    "empty-fallback": "REJECT",
+                }
+            ],
             "rules": rules,
         }
 
