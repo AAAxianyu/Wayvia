@@ -4,6 +4,7 @@ import fcntl
 import json
 import os
 import re
+import sys
 import time
 import uuid
 from contextlib import contextmanager
@@ -14,6 +15,7 @@ from wayvia.adapters.base import AdapterError, require_real
 from wayvia.adapters.linux import atomic_write
 from wayvia.agent.models import LAYERS, Action, Plan, State
 from wayvia.agent.probes import verify
+from wayvia.evidence import context
 
 
 class SystemdTimer:
@@ -58,6 +60,34 @@ class SystemdTimer:
 class TransactionManager:
     evidence_seconds = 90
     safety_blocks = {"EXPLICIT_INGRESS_BLOCK", "DEVICE_SYNC_FAILED"}
+
+    def _event(self, kind, tx, *, unit=None):
+        """Best-effort structured facts; diagnostic failure never changes control flow."""
+        try:
+            from wayvia.telemetry.records import project
+
+            row = project(
+                {
+                    **context(role=tx["role"], revision=tx.get("revision"), generation=tx["id"]),
+                    "type": "event",
+                    "kind": kind,
+                    "source": "agent",
+                    "unit": unit,
+                }
+            )
+            row["type"] = "agent_event"
+            sys.stderr.write(json.dumps(row, separators=(",", ":")) + "\n")
+        except Exception:
+            pass
+
+    def _protect(self, plan, tx):
+        self._event("protection_requested", tx)
+        try:
+            self.executor.protect(plan)
+        except Exception:
+            self._event("protection_failed", tx)
+            raise
+        self._event("protection_applied", tx)
 
     def __init__(self, executor, journal_dir, timer=None, *, mode="production", verifier=verify):
         require_real(executor, mode)
@@ -398,7 +428,7 @@ class TransactionManager:
             tx["error"] = "RECOVERY_REQUIRED"
             self._set_current(tx["role"], tx["id"])
             try:
-                self.executor.protect(Plan.model_validate(tx["plan"]))
+                self._protect(Plan.model_validate(tx["plan"]), tx)
             except Exception:
                 tx["protection"] = "unconfirmed"
         self._save(tx)
@@ -422,7 +452,7 @@ class TransactionManager:
         if blocked or not self._verify_ready(previous, plan):
             previous["state"] = State.DEGRADED
             previous["error"] = blocked or "RESTORED_PATH_FAILED"
-            self.executor.protect(plan)
+            self._protect(plan, previous)
         else:
             previous["state"] = State.ACTIVE
             previous.pop("error", None)
@@ -493,7 +523,7 @@ class TransactionManager:
                     current["evidence"] = []
                     self._save(current)
                     try:
-                        self.executor.protect(Plan.model_validate(current["plan"]))
+                        self._protect(Plan.model_validate(current["plan"]), current)
                     except Exception:
                         current["protection"] = "unconfirmed"
                         self._save(current)
@@ -520,12 +550,13 @@ class TransactionManager:
 
     def _rebuild(self, tx):
         plan = Plan.model_validate(tx["plan"])
+        self._event("recovery_started", tx)
         tx["state"] = State.DEGRADED
         tx["monitored_at"] = None
         tx["monitor_valid_until"] = None
         self._save(tx)
         try:
-            self.executor.protect(plan)
+            self._protect(plan, tx)
             # Keep the guard in place throughout reconnection and establish it first
             # after a reboot. Listeners only forward through this protected path.
             actions = sorted(
@@ -540,17 +571,23 @@ class TransactionManager:
                 }[a.kind],
             )
             for action in actions:
+                if action.kind == "service":
+                    self._event("service_starting", tx, unit=action.resource)
                 self.executor.apply(self._credential_action(action))
+                if action.kind == "service":
+                    self._event("service_started", tx, unit=action.resource)
             if not self._verify_ready(tx, plan):
                 raise AdapterError("PROBE_FAILED", "Recovery probes failed")
             tx["state"] = State.ACTIVE
             tx.pop("error", None)
             credentials = self._credentials() if tx["role"] == "ingress" else None
             tx["device_revision"] = credentials["revision"] if credentials else None
+            self._event("recovery_completed", tx)
         except Exception as exc:
+            self._event("recovery_failed", tx)
             tx["error"] = getattr(exc, "code", "RECOVERY_FAILED")
             try:
-                self.executor.protect(plan)
+                self._protect(plan, tx)
             except Exception:
                 tx["protection"] = "unconfirmed"
         self._save(tx)
@@ -698,7 +735,7 @@ class TransactionManager:
             if tx["state"] == State.DEGRADED:
                 self._save(tx)
                 try:
-                    self.executor.protect(plan)
+                    self._protect(plan, tx)
                 except Exception:
                     tx["protection"] = "unconfirmed"
             observed = datetime.now(UTC)

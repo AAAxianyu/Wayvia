@@ -12,6 +12,7 @@ from pydantic import ValidationError
 
 from wayvia import __version__
 from wayvia.errors import ExitCode, WayviaError
+from wayvia.telemetry.commands import register as register_diagnostics
 
 app = typer.Typer(no_args_is_help=True, help="Wayvia split-routing gateway control plane")
 device_app = typer.Typer(no_args_is_help=True)
@@ -70,6 +71,9 @@ def guarded(function):
             raise typer.Exit(int(ExitCode.RUNTIME)) from exc
 
     return wrapper
+
+
+register_diagnostics(app, guarded, output)
 
 
 @app.callback(invoke_without_command=True)

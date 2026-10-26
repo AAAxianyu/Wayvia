@@ -121,6 +121,12 @@ def producer_digest():
         "agent/probes.py",
         "agent/probe_runtime.py",
         "agent/transactions.py",
+        "telemetry/records.py",
+        "telemetry/store.py",
+        "telemetry/sources.py",
+        "telemetry/collector.py",
+        "telemetry/report.py",
+        "telemetry/commands.py",
     ]
     digest = hashlib.sha256()
     try:

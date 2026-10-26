@@ -7,6 +7,8 @@ Updated: 2026-10-25 America/Los_Angeles (2026-10-26 UTC)
 
 ## 下次从这里继续
 
+2026-10-25 America/Los_Angeles 后续软件交付：14 的有界被动滚动诊断及双端窗口、16 的时间线/脱敏导出已实现并完成软件验证。456 项检查、演示和 10 项真实配置通过；仅合成双端例子，没有启用生产采样。见[验证记录](../../docs/validation/rolling-incidents-2026-10-25/README.md)。12 的恢复动作仍未改，17/18 待后续范围。
+
 2026-10-25 America/Los_Angeles 首批软件交付：统一证据字段与 13/15 已实现并完成软件验证；12 的[恢复决策表](../../docs/recovery-decision-table.md)已整理，恢复动作仍未修改。生产部署、实网采样和故障/重启测试继续暂缓。见[本轮验证](../../docs/validation/probe-observer-evidence-2026-10-25/README.md)。下段为此前停止排查的历史决定。
 
 此前决定：用户要求停止根因排查，改为记录功能缺口。10 月 26 日 UTC 的双端临时诊断已停止，生产服务未停止；旧观察和 heartbeat 保持结束/暂停。先读[功能缺口 TODO](TODO.md)，新登记 14–18，已有 12/13 保留；本次仅登记，不自动开始实现或恢复排查。最初超时根因仍未确定。以下为历史观察接续背景。
@@ -47,9 +49,9 @@ Updated: 2026-10-25 America/Los_Angeles (2026-10-26 UTC)
 | [11 Windows TUN 国外 IPv4 自动使用与回退](issues/11-windows-ipv4-fallback.md) | P1 | open |
 | [12 探针错误分类与恢复范围](issues/12-software-timeout-recovery.md) | P1 | open |
 | [13 一次性观察器与系统维护的协调](issues/13-observer-maintenance-resilience.md) | P1 | done（软件） |
-| [14 持续低开销的双端路径诊断](issues/14-persistent-path-observability.md) | P1 | open |
+| [14 持续低开销的双端路径诊断](issues/14-persistent-path-observability.md) | P1 | done（软件） |
 | [15 请求分阶段诊断](issues/15-probe-phase-diagnostics.md) | P1 | done（软件） |
-| [16 统一故障时间线与脱敏证据导出](issues/16-incident-timeline-and-export.md) | P2 | open |
+| [16 统一故障时间线与脱敏证据导出](issues/16-incident-timeline-and-export.md) | P2 | done（软件） |
 | [17 每台设备历史使用统计](issues/17-device-usage-history.md) | P2 | open |
 | [18 可操作告警与观测完整性](issues/18-observability-alerts.md) | P2 | open |
 

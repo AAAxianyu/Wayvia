@@ -1,5 +1,39 @@
 schema_version: 1
 resolved_at: '2026-10-15'
+rolling_diagnostics_incidents:
+  date: '2026-10-25'
+  timezone: America/Los_Angeles
+  base_commit: a27fba6
+  status: software_verified_production_sampling_and_fault_acceptance_deferred
+  evidence_schema: 1
+  passive_sampling: explicit_lease_only_not_started
+  peer_coordination: explicitly_configured_private_file_channel_not_remote_authentication
+  storage: page_bounded_private_sqlite_rollback_journal_no_wal
+  default_sample_seconds: 5
+  default_buffer_seconds: 900
+  pre_post_window_seconds: 120
+  default_retention_seconds: 604800
+  default_logical_byte_budget: 134217728
+  clock_offset: unknown_not_measured
+  component_versions_scope: installed_binary_query_running_process_version_unknown
+  recovery_behavior: unchanged_best_effort_fact_emission_only
+  gates:
+    check: passed_456_tests_3_existing_warnings_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_10_real_artifacts_and_disposable_namespace_preflight
+    offline_incident_example: passed_synthetic_both_role_windows_readonly_export_checksums
+    test_lab: not_run_deferred_by_user_fault_and_recovery_tests
+  versions:
+    python: 3.12.12
+    uv: 0.9.7
+    ruff: 0.14.2
+    pytest: 8.4.2
+    sing_box: 1.14.3
+    mihomo: 1.19.32
+    v2raya: 2.5.10
+    v2raya_core: 2.5.10
+    openvpn: 2.6.19
+  evidence: docs/validation/rolling-incidents-2026-10-25/README.md
 probe_observer_evidence:
   date: '2026-10-25'
   timezone: America/Los_Angeles

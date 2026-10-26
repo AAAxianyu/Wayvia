@@ -1,0 +1,64 @@
+{
+  "mode": "simulated",
+  "network_requests": 0,
+  "health_or_route_mutations": 0,
+  "incident_id": "24c2e8626af759ddb3363da125d9f015",
+  "coverage": {
+    "ingress": {
+      "status": "complete",
+      "status_scope": "sampling_cadence; per_source_completeness_is_reported_separately",
+      "interval_seconds": 5,
+      "expected_slots": 52,
+      "observed_slots": 52,
+      "missing_slots": 0,
+      "fraction": 1.0,
+      "missing_ranges": [],
+      "source_ok_slots": {
+        "tcp": 52,
+        "interfaces": 52,
+        "host": 52,
+        "clock": 52,
+        "journal": 52,
+        "audit": 52,
+        "peer": 52
+      },
+      "clock_alignment": "unknown",
+      "collector_max_duration_ms": 1,
+      "collector_max_cpu_ms": 0.1,
+      "collector_max_rss_bytes": 4096,
+      "source_available": true,
+      "incident_pinned": true
+    },
+    "exit": {
+      "status": "complete",
+      "status_scope": "sampling_cadence; per_source_completeness_is_reported_separately",
+      "interval_seconds": 5,
+      "expected_slots": 52,
+      "observed_slots": 52,
+      "missing_slots": 0,
+      "fraction": 1.0,
+      "missing_ranges": [],
+      "source_ok_slots": {
+        "tcp": 52,
+        "interfaces": 52,
+        "host": 52,
+        "clock": 52,
+        "journal": 52,
+        "audit": 52,
+        "peer": 52
+      },
+      "clock_alignment": "unknown",
+      "collector_max_duration_ms": 1,
+      "collector_max_cpu_ms": 0.1,
+      "collector_max_rss_bytes": 4096,
+      "source_available": true,
+      "incident_pinned": true
+    }
+  },
+  "export": {
+    "status": "exported",
+    "sha256": "7975aadc615076e4447bb541e4033fcaca7042f3f8a21c137083855b95368a5c",
+    "expires_at": "2026-11-02T04:23:30.500955+00:00",
+    "bytes": 9953
+  }
+}
