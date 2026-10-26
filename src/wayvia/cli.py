@@ -385,6 +385,15 @@ def subscription_info(ctx: typer.Context, token_file: Path):
     output(service(ctx).subscription_info(token_file.read_text().strip()))
 
 
+@subscription_app.command("name")
+@guarded
+def name_subscription(ctx: typer.Context, subscription: str, name: str):
+    """Set the download display name without rotating credentials or reloading ingress."""
+    from wayvia.client.names import set_display_name
+
+    output(set_display_name(service(ctx).db, subscription, name))
+
+
 @subscription_app.command("revoke")
 @guarded
 def revoke_subscription(ctx: typer.Context, subscription: str):

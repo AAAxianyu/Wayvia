@@ -12,18 +12,26 @@ TEST_URL = "https://www.gstatic.com/generate_204"
 UPDATE_HOURS = 24
 
 
-def title(device_name):
-    value = "".join(c for c in device_name if not unicodedata.category(c).startswith("C"))
+def clean_name(value):
+    value = "".join(c for c in value if not unicodedata.category(c).startswith("C"))
     value = re.sub(r'[\\/<>:"|?*]', " ", value)
-    return "Wayvia · " + (" ".join(value.split())[:60] or "个人订阅")
+    return " ".join(value.split())[:60]
 
 
-def headers(device_name, format):
+def title(device_name, display_name=None):
+    if display_name is not None:
+        return clean_name(display_name) or "Wayvia"
+    return "Wayvia · " + (clean_name(device_name) or "个人订阅")
+
+
+def headers(device_name, format, display_name=None):
     suffix = "yaml" if format == "mihomo" else "json"
-    filename = quote(title(device_name) + "." + suffix, safe="")
+    name = title(device_name, display_name)
+    filename = quote(name + "." + suffix, safe="")
+    fallback = name if re.fullmatch(r"[A-Za-z0-9 _.-]+", name) else "Wayvia"
     return {
         "Content-Disposition": (
-            f"attachment; filename=\"Wayvia.{suffix}\"; filename*=UTF-8''{filename}"
+            f"attachment; filename=\"{fallback}.{suffix}\"; filename*=UTF-8''{filename}"
         ),
         "profile-update-interval": str(UPDATE_HOURS),
         "X-Wayvia-Profile-Contract": "1",

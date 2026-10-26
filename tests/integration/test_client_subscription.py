@@ -161,3 +161,97 @@ def test_bad_import_url_is_rejected_and_cli_has_no_network(tmp_path):
     assert result.exit_code == 0 and not json.loads(result.stdout)["platform_settings_required"]
     result = runner.invoke(app, ["profile", "measure"])
     assert result.exit_code != 0 and "CLIENT_NETWORK_NOT_AUTHORIZED" in result.stdout
+
+
+def test_exact_subscription_name_preserves_devices_credentials_and_other_links(
+    control, monkeypatch
+):
+    from wayvia.client.names import set_display_name
+
+    phone = control.add("phone-primary", "android")
+    desktop = control.add("JXY", "desktop")
+    phone_link = control.issue(phone["id"], "mihomo")
+    desktop_link = control.issue(desktop["id"], "mihomo")
+    before = control.export(phone["id"], "mihomo")
+    with control.db.connect() as conn:
+        devices = [tuple(r) for r in conn.execute("SELECT * FROM devices ORDER BY id")]
+        links = [tuple(r) for r in conn.execute("SELECT * FROM subscriptions ORDER BY id")]
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("Naming must not call the dataplane")
+
+    monkeypatch.setattr(control.dataplane, "sync", forbidden)
+    monkeypatch.setattr(control.dataplane, "block", forbidden)
+    result = set_display_name(control.db, phone_link["id"], "LTY")
+    assert result["display_name"] == "LTY"
+    with control.db.connect() as conn:
+        assert devices == [tuple(r) for r in conn.execute("SELECT * FROM devices ORDER BY id")]
+        assert links == [tuple(r) for r in conn.execute("SELECT * FROM subscriptions ORDER BY id")]
+    assert before == control.export(phone["id"], "mihomo")
+    client = TestClient(create_app(control, "a" * 48), base_url="https://sub.example")
+    response = client.get(phone_link["path"])
+    assert response.status_code == 200
+    assert response.headers["content-disposition"] == (
+        "attachment; filename=\"LTY.yaml\"; filename*=UTF-8''LTY.yaml"
+    )
+    assert client.get(phone_link["path"].rsplit("/", 1)[0] + "/info").json()["title"] == "LTY"
+    assert "JXY" in unquote(client.get(desktop_link["path"]).headers["content-disposition"])
+
+
+def test_subscription_name_validation_and_cli(control):
+    from wayvia.client.names import display_name, set_display_name
+    from wayvia.errors import WayviaError
+
+    issued = control.issue(control.add("phone", "android")["id"], "mihomo")
+    for name in ("", "\r\n", '/\\"<>|?*:'):
+        with pytest.raises(WayviaError, match="visible"):
+            set_display_name(control.db, issued["id"], name)
+    with pytest.raises(WayviaError, match="does not exist"):
+        set_display_name(control.db, "missing", "LTY")
+    (control.root / "config.yaml").write_text(
+        yaml.safe_dump(control.config.model_dump(mode="json"))
+    )
+    result = CliRunner().invoke(
+        app,
+        [
+            "--data-dir",
+            str(control.root),
+            "--config",
+            str(control.root / "config.yaml"),
+            "--mode",
+            "demo",
+            "subscription",
+            "name",
+            issued["id"],
+            "LTY",
+        ],
+    )
+    assert result.exit_code == 0, result.stdout
+    assert display_name(control.db, issued["id"]) == "LTY"
+
+
+def test_legacy_adapter_routes_do_not_bypass_auth_or_expose_administration(control):
+    from wayvia.client.legacy_api import create_legacy_app
+    from wayvia.client.names import set_display_name
+
+    issued = control.issue(control.add("phone", "android")["id"], "mihomo")
+    set_display_name(control.db, issued["id"], "LTY")
+    client = TestClient(
+        create_legacy_app(
+            control, "a" * 48, subscriptions_only=True, public_origin="https://sub.example:9443"
+        ),
+        base_url="https://sub.example",
+    )
+    info = issued["path"].rsplit("/", 1)[0] + "/info"
+    assert client.get(info).json()["title"] == "LTY"
+    assert control.subscriptions()[0]["fetch_count"] == 0
+    response = client.get(issued["path"])
+    assert response.status_code == 200
+    assert response.headers["profile-web-page-url"] == "https://sub.example:9443" + info
+    assert response.headers["referrer-policy"] == "no-referrer"
+    assert control.subscriptions()[0]["fetch_count"] == 1
+    assert client.get("/api/v1/devices").status_code == 404
+    assert client.get(issued["path"].replace("mihomo", "sing-box")).status_code == 401
+    control.revoke_subscription(issued["id"])
+    assert client.get(info).status_code == 401
+    assert client.get(issued["path"]).status_code == 401

@@ -26,9 +26,12 @@ Wayvia 生成一份统一 Mihomo 订阅，供 Clash Verge Rev 的 Windows、macO
 ```sh
 wayvia --system subscription issue DEVICE_ID --format mihomo --base-url https://SUBSCRIPTION_ORIGIN
 wayvia subscription import-link 'EXISTING_PRIVATE_HTTPS_MIHOMO_URL'
+wayvia --system subscription name SUBSCRIPTION_ID LTY
 ```
 
 base-url 是已经部署的订阅服务 HTTPS origin，不是平台选项。已有反向代理前缀的完整 URL 可以直接交给 import-link。不要将输出、完整 URL 或 token 放入日志、截图和公开工单。命令只编码或签发，不在本机导入、不请求该 URL。
+
+`subscription name` 只设置下载显示名称，不改设备别名、token、凭据或网络 revision，也不重载代理。未设置时仍使用设备别名生成名称；设置 `LTY` 后导入名为 `LTY`。已有手机账号沿用同一 Mihomo 格式；实际手机 GUI/接管另行验收。线上 schema 3 的 API 专用发布方法见 [ADR 012](adr/012-subscription-title-and-api-overlay.md)，不能直接用本分支完整升级旧运行时。
 
 私有 token 文件查询本地持久统计（不下载配置、无外部请求）：
 

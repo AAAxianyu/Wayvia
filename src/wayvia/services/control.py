@@ -470,6 +470,7 @@ class ControlService:
 
     def subscription_info(self, token):
         from wayvia.client import contract, title
+        from wayvia.client.names import display_name
 
         row = self._subscription(token)
         device = self.device(row["device_id"])
@@ -480,7 +481,7 @@ class ControlService:
         self._published_config()
         return {
             "schema_version": 1,
-            "title": title(device["name"]),
+            "title": title(device["name"], display_name(self.db, row["id"])),
             "format": row["format"],
             "download_link_expires_at": row["expires_at"],
             "device_status": device["status"],
@@ -490,10 +491,13 @@ class ControlService:
 
     def fetch_document(self, token, format, *, client_claim=None):
         from wayvia.client import headers
+        from wayvia.client.names import display_name
 
         row = self._subscription(token, format)
         text = self.export(row["device_id"], format)
-        response_headers = headers(self.device(row["device_id"])["name"], format)
+        response_headers = headers(
+            self.device(row["device_id"])["name"], format, display_name(self.db, row["id"])
+        )
         with self.db.change_lock(), self.db.connect() as connection:
             from wayvia.services.usage_history import fetched
 
