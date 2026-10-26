@@ -1,11 +1,13 @@
 # Wayvia 双云部署后续待办
 
 Status: open
-Updated: 2026-10-22 UTC
+Updated: 2026-10-25 America/Los_Angeles (2026-10-26 UTC)
 
 本轮完成不依赖手机的订阅提速、安装权限修复，并取得稳定性续查和误判修复证据。本目录按仓库 issue tracker 约定逐项记录接续工作；本次按用户要求创建有限观察窗口的每小时跟进，不自动恢复手机测试，也不授权购买带宽或故障注入。
 
 ## 下次从这里继续
+
+最新决定：用户要求停止根因排查，改为记录功能缺口。10 月 26 日 UTC 的双端临时诊断已停止，生产服务未停止；旧观察和 heartbeat 保持结束/暂停。先读[功能缺口 TODO](TODO.md)，新登记 14–18，已有 12/13 保留；本次仅登记，不自动开始实现或恢复排查。最初超时根因仍未确定。以下为历史观察接续背景。
 
 2026-10-22 UTC 收尾：原定正常观察已结束。入口样本覆盖约 80.09%，日本按期退出；生产累计入口 10 次、日本 3 次自然降级，业务根因未解。系统自动更新触发 needrestart 重启一次性观察器，导致入口尾部采样缺失；见[最终报告](../../docs/validation/stability-observation-2026-10-20/final-report.md)。本轮 heartbeat 已暂停，不延长或重新采样。后续先处理待办 12 的软件恢复范围和待办 13 的观察器维护协调；不联系平台，不重放部署脚本。
 
@@ -43,6 +45,11 @@ Updated: 2026-10-22 UTC
 | [11 Windows TUN 国外 IPv4 自动使用与回退](issues/11-windows-ipv4-fallback.md) | P1 | open |
 | [12 探针错误分类与恢复范围](issues/12-software-timeout-recovery.md) | P1 | open |
 | [13 一次性观察器与系统维护的协调](issues/13-observer-maintenance-resilience.md) | P1 | open |
+| [14 持续低开销的双端路径诊断](issues/14-persistent-path-observability.md) | P1 | open |
+| [15 请求分阶段诊断](issues/15-probe-phase-diagnostics.md) | P1 | open |
+| [16 统一故障时间线与脱敏证据导出](issues/16-incident-timeline-and-export.md) | P2 | open |
+| [17 每台设备历史使用统计](issues/17-device-usage-history.md) | P2 | open |
+| [18 可操作告警与观测完整性](issues/18-observability-alerts.md) | P2 | open |
 
 ## 工作边界
 

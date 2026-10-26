@@ -1,0 +1,41 @@
+{
+  "closed_at_utc": "2026-10-26T02:31:54.366194+00:00",
+  "reason": "user_requested_stop_investigation_and_record_feature_todo",
+  "diagnostics": "both identified temporary python collectors received SIGTERM; local launcher exited; SSH exit 255 after intentional termination is not a business failure",
+  "production_units_touched": false,
+  "network_configuration_changed": false,
+  "heartbeat": "existing wayvia-24 remains paused; no new automation",
+  "root_cause_status": "initial_timeout_unresolved",
+  "client_identity": "user confirms JXY is a different computer from the previously authorized Windows SSH host; that host was not contacted",
+  "samples": {
+    "ali": {
+      "evidence": "followup-stopped-samples-ali.jsonl",
+      "record_counts": {
+        "start": 1,
+        "sample": 67,
+        "monitor": 22,
+        "control": 33
+      },
+      "first_utc": "2026-10-26T02:22:17.287646+00:00",
+      "last_utc": "2026-10-26T02:27:47.355641+00:00",
+      "sha256": "02fe1b7b638722fbd1896d99bce10e09bd57b0f2d63fe37f71661f7e4c25f96c",
+      "deadline_completed": false,
+      "scope": "partial_normal_diagnostics_no_root_cause_claim"
+    },
+    "jp": {
+      "evidence": "followup-stopped-samples-jp.jsonl",
+      "record_counts": {
+        "start": 1,
+        "sample": 67,
+        "monitor": 22,
+        "control": 33
+      },
+      "first_utc": "2026-10-26T02:22:18.113975+00:00",
+      "last_utc": "2026-10-26T02:27:48.198675+00:00",
+      "sha256": "9c68b5e89d311e12dc24eeaaa62fcb02e48f7426f8b2a687fe2d171d32fefed4",
+      "deadline_completed": false,
+      "scope": "partial_normal_diagnostics_no_root_cause_claim"
+    }
+  },
+  "todo": ".scratch/wayvia-deployment-followup/TODO.md"
+}

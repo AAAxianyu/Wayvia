@@ -789,3 +789,14 @@ incident_2026_10_26_0830_cst:
   source_changes: none_existing_software_gates_not_rerun_for_evidence_only
   fault_and_reboot_tests: deferred_by_user
   evidence: docs/validation/incident-2026-10-26-0830-cst/README.md
+
+observability_todo_2026_10_25_los_angeles:
+  status: documented_only_not_implemented
+  root_cause_investigation: stopped_at_user_request_initial_timeout_unresolved
+  temporary_collectors: terminated_at_user_request_no_production_units_stopped
+  existing_heartbeat: remains_paused
+  software_and_production_changes: none
+  fault_and_reboot_tests: deferred_by_user
+  tracked_issues: [12, 13, 14, 15, 16, 17, 18]
+  todo: .scratch/wayvia-deployment-followup/TODO.md
+  evidence: docs/validation/incident-2026-10-26-0830-cst/followup-stopped.json
