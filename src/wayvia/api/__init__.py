@@ -158,8 +158,8 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
         return {"status": "alive", "dataplane": "unknown"}
 
     @app.get("/subscriptions/{token}/{format}")
-    def fetch_subscription(token: str, format: str):
-        text = service.fetch(token, format)
+    def fetch_subscription(token: str, format: str, user_agent: str | None = Header(default=None)):
+        text = service.fetch(token, format, client_claim=user_agent)
         media = "application/json" if format == "sing-box" else "application/yaml"
         return Response(text, media_type=media)
 
@@ -167,6 +167,23 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
         return app
 
     admin = [Depends(authenticated)]
+
+    @app.get("/api/v1/devices/{device_id}/history", dependencies=admin)
+    def usage_history(device_id: str, since: float, until: float, grain: str = "minute"):
+        from wayvia.services.usage_history import history
+
+        return history(service.db, device_id, start=since, end=until, grain=grain)
+
+    @app.get("/api/v1/devices/{device_id}/history/export", dependencies=admin)
+    def export_usage_history(device_id: str, since: float, until: float, grain: str = "minute"):
+        result = usage_history(device_id, since, until, grain)
+        return JSONResponse(
+            result,
+            headers={
+                "Content-Disposition": 'attachment; filename="usage.json"',
+                "Cache-Control": "no-store",
+            },
+        )
 
     @app.get("/api/v1/config/publication", dependencies=admin)
     def publication():

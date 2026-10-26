@@ -37,6 +37,9 @@ def register(app, guarded, output):
         return base_guard(bounded_errors)
 
     guarded = evidence_guard
+    from wayvia.telemetry.alert_commands import register as register_alerts
+
+    register_alerts(app, guarded, output)
     diagnostics = typer.Typer(
         no_args_is_help=True, help="Private passive diagnostics and incident evidence"
     )
@@ -58,6 +61,7 @@ def register(app, guarded, output):
         audit_db: Path | None = None,
         trigger_inbox: Path | None = None,
         trigger_outbox: Path | None = None,
+        measure_clock_offset: bool = False,
     ):
         """Explicit start only; no automatic installation, renewal or remote access."""
         from wayvia.telemetry.collector import run_collector
@@ -78,6 +82,7 @@ def register(app, guarded, output):
                 audit_db=audit_db,
                 inbox=trigger_inbox,
                 outbox=trigger_outbox,
+                measure_clock_offset=measure_clock_offset,
             )
         except ObservationError:
             raise EvidenceError("EVIDENCE_LIFECYCLE_REJECTED") from None

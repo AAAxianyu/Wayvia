@@ -1,0 +1,109 @@
+/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv run --locked ruff format --check src tests scripts deploy
+100 files already formatted
+/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv run --locked ruff check src tests scripts deploy
+All checks passed!
+/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv run --locked pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.12.12, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/dev2/.codex/worktrees/probe-observer-evidence/Wayvia
+configfile: pyproject.toml
+testpaths: tests/unit, tests/contract, tests/integration
+plugins: anyio-4.15.1, cov-7.0.0
+collected 492 items
+
+tests/unit/test_linux_baseline.py ..................                     [  3%]
+tests/unit/test_observation_lifecycle.py .....................           [  7%]
+tests/unit/test_policy_config.py ....................................... [ 15%]
+...                                                                      [ 16%]
+tests/unit/test_render_profiles.py ..................                    [ 20%]
+tests/unit/test_stability_observation.py ................                [ 23%]
+tests/unit/test_telemetry.py ...........................                 [ 28%]
+tests/unit/test_transaction_revisions.py ........................        [ 33%]
+tests/unit/test_transactions.py ..........................               [ 39%]
+tests/contract/test_adapters.py ...................                      [ 42%]
+tests/contract/test_carrier_readiness.py .........                       [ 44%]
+tests/contract/test_command_process_tree.py ...                          [ 45%]
+tests/contract/test_diagnostics.py ..................................    [ 52%]
+tests/contract/test_http_probe_resilience.py ........................... [ 57%]
+........                                                                 [ 59%]
+tests/contract/test_preflight_certificates.py ..                         [ 59%]
+tests/contract/test_probe_phase_diagnostics.py ....................      [ 63%]
+tests/contract/test_protocol_probe_security.py ............              [ 66%]
+tests/contract/test_protocol_probes.py ...............                   [ 69%]
+tests/contract/test_resource_conflicts.py .......................        [ 73%]
+tests/contract/test_topology.py ......                                   [ 75%]
+tests/contract/test_usage_api.py ...                                     [ 75%]
+tests/integration/test_cli.py ......                                     [ 77%]
+tests/integration/test_control.py ............                           [ 79%]
+tests/integration/test_device_usage.py .....                             [ 80%]
+tests/integration/test_diagnostic_evidence.py .........                  [ 82%]
+tests/integration/test_install.py ..........................             [ 87%]
+tests/integration/test_observability_alerts.py ..................        [ 91%]
+tests/integration/test_packaging.py .                                    [ 91%]
+tests/integration/test_publication_recovery.py ...............           [ 94%]
+tests/integration/test_transaction_lab.py ...................            [ 98%]
+tests/integration/test_usage_history.py ........                         [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/typer/__init__.py:24
+  /Users/dev2/.codex/worktrees/probe-observer-evidence/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:24: DeprecationWarning: 'click.utils.get_binary_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_binary_stream as get_binary_stream
+
+.venv/lib/python3.12/site-packages/typer/__init__.py:25
+  /Users/dev2/.codex/worktrees/probe-observer-evidence/Wayvia/.venv/lib/python3.12/site-packages/typer/__init__.py:25: DeprecationWarning: 'click.utils.get_text_stream' is deprecated and will be removed in Click 9.0.
+    from click.utils import get_text_stream as get_text_stream
+
+.venv/lib/python3.12/site-packages/starlette/testclient.py:51
+  /Users/dev2/.codex/worktrees/probe-observer-evidence/Wayvia/.venv/lib/python3.12/site-packages/starlette/testclient.py:51: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================== 492 passed, 3 warnings in 86.15s (0:01:26) ==================
+/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv build
+Building source distribution...
+Building wheel from source distribution...
+Successfully built dist/wayvia-0.1.0.tar.gz
+Successfully built dist/wayvia-0.1.0-py3-none-any.whl
+/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv run --locked wayvia --help
+
+ Usage: wayvia [OPTIONS] [COMMAND] [ARGS]...
+
+ Wayvia split-routing gateway control plane
+
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --data-dir                  PATH                                             │
+│ --config                    PATH                                             │
+│ --mode                      TEXT  [default: production]                      │
+│ --agent-socket              PATH                                             │
+│ --system                          Use the installed wayvia service identity  │
+│                                   and control directory                      │
+│ --version                                                                    │
+│ --install-completion              Install completion for the current shell.  │
+│ --show-completion                 Show completion for the current shell, to  │
+│                                   copy it or customize the installation.     │
+│ --help                            Show this message and exit.                │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────╮
+│ init                                                                         │
+│ validate                                                                     │
+│ usage-collect  Collect every five seconds; reads the fixed local agent       │
+│                operation only.                                               │
+│ render                                                                       │
+│ plan                                                                         │
+│ apply                                                                        │
+│ confirm                                                                      │
+│ rollback                                                                     │
+│ status                                                                       │
+│ doctor                                                                       │
+│ serve                                                                        │
+│ agent                                                                        │
+│ device                                                                       │
+│ subscription                                                                 │
+│ policy                                                                       │
+│ profile                                                                      │
+│ secret                                                                       │
+│ rules                                                                        │
+│ config                                                                       │
+│ alerts         Independent private evidence alerts                           │
+│ diagnostics    Private passive diagnostics and incident evidence             │
+╰──────────────────────────────────────────────────────────────────────────────╯

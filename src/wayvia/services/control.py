@@ -449,7 +449,7 @@ class ControlService:
             "path": f"/subscriptions/{token}/{format}",
         }
 
-    def fetch(self, token: str, format: str) -> str:
+    def fetch(self, token: str, format: str, *, client_claim: str | None = None) -> str:
         with self.db.connect() as connection:
             row = connection.execute(
                 "SELECT * FROM subscriptions WHERE token_hash=?", (digest(token),)
@@ -464,16 +464,20 @@ class ControlService:
                 "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
             )
         text = self.export(row["device_id"], format)
-        with self.db.connect() as connection:
+        with self.db.change_lock(), self.db.connect() as connection:
+            from wayvia.services.usage_history import fetched
+
+            now = time.time()
             cursor = connection.execute(
                 "UPDATE subscriptions SET last_fetched_at=?,fetch_count=fetch_count+1 "
                 "WHERE id=? AND revoked_at IS NULL AND expires_at>?",
-                (time.time(), row["id"], time.time()),
+                (now, row["id"], now),
             )
             if cursor.rowcount != 1:
                 raise WayviaError(
                     "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
                 )
+            fetched(connection, row["device_id"], now, client_claim)
         return text
 
     def subscriptions(self):

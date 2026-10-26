@@ -445,3 +445,44 @@ def test_nested_projection_does_not_trust_container_types(tmp_path, shape):
     target = store(tmp_path)
     result = project(sample(target, 0, interfaces=shape, host={"pressure": {"cpu": "SECRET"}}))
     assert "SECRET" not in json.dumps(result)
+
+
+def test_collector_health_snapshot_keeps_original_monitor_time(tmp_path, monkeypatch):
+    import wayvia.telemetry.collector as module
+
+    target = store(tmp_path)
+    root = tmp_path / "agent"
+    root.mkdir(mode=0o700)
+    generation = target.metadata["generation"]
+    transaction = {
+        "revision": REVISION,
+        "state": "DEGRADED",
+        "evidence": [],
+        "monitored_at": stamp(BASE - 1),
+        "monitor_valid_until": stamp(BASE + 90),
+    }
+    for name, value in [
+        ("ingress-runtime.json", {"transaction_id": generation}),
+        (generation + ".json", transaction),
+    ]:
+        path = root / name
+        path.write_bytes(canonical(value))
+        path.chmod(0o600)
+    run = SimpleNamespace(contract=target.metadata, run_id="ingress", remaining=lambda: 60)
+    monkeypatch.setattr(module, "collect_journal", lambda **k: ([], "timeout"))
+    sample_rows = iter([sample(target, 0), sample(target, 5)])
+    collector = RollingCollector(
+        run,
+        target,
+        peer="192.0.2.1",
+        port=443,
+        interface="eth0",
+        agent_root=root,
+        sampler=SimpleNamespace(sample=lambda *a, **k: next(sample_rows)),
+    )
+    assert collector.step() == "continue"
+    assert collector.step() == "continue"
+    result = timeline([target.path], start=BASE - 2, end=BASE + 5, now=BASE + 10)
+    health = [r for r in result["events"] if r["kind"] == "health_degraded"]
+    assert len(health) == 1 and health[0]["observed_at"] == stamp(BASE - 1)
+    assert health[0]["monotonic_ms"] is None

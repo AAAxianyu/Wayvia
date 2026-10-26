@@ -18,6 +18,28 @@ from wayvia.telemetry.store import read_database
 MAX_REPORT_BYTES = 16 * 1024 * 1024
 
 
+def export_json(report, output):
+    """Exclusive owner-private JSON export, also used by usage and alert reports."""
+    output = Path(output).absolute()
+    if any(p.is_symlink() for p in (output, *output.parents)):
+        raise EvidenceError("EVIDENCE_UNSAFE_PATH")
+    output.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    private(output.parent, directory=True)
+    data = canonical(report) + b"\n"
+    if len(data) > MAX_REPORT_BYTES:
+        raise EvidenceError("EVIDENCE_EXPORT_TOO_LARGE")
+    fd = os.open(output, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    try:
+        with os.fdopen(fd, "wb") as stream:
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+    except BaseException:
+        output.unlink(missing_ok=True)
+        raise
+    return {"status": "exported", "sha256": hashlib.sha256(data).hexdigest(), "bytes": len(data)}
+
+
 def coverage(samples, *, start, end, interval, now):
     slots = max(1, math.ceil((end - start) / interval))
     observed = {

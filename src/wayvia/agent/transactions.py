@@ -744,4 +744,7 @@ class TransactionManager:
                 observed + timedelta(seconds=self.evidence_seconds)
             ).isoformat()
             self._save(tx)
+            self._event(
+                "health_degraded" if tx["state"] == State.DEGRADED else "health_healthy", tx
+            )
             return self.public(tx)

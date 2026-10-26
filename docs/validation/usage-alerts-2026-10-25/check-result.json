@@ -1,0 +1,4 @@
+{
+  "command": "make check UV=/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv",
+  "exit_code": 0
+}

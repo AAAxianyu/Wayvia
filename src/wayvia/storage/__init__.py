@@ -51,6 +51,27 @@ MIGRATIONS = {
       closed_at REAL, observed_at REAL NOT NULL
     );
     """,
+    4: """
+    CREATE TABLE usage_history (
+      device_id TEXT NOT NULL REFERENCES devices(id),
+      grain INTEGER NOT NULL, bucket INTEGER NOT NULL,
+      upload_bytes INTEGER NOT NULL DEFAULT 0, download_bytes INTEGER NOT NULL DEFAULT 0,
+      unallocated_upload_bytes INTEGER NOT NULL DEFAULT 0,
+      unallocated_download_bytes INTEGER NOT NULL DEFAULT 0,
+      samples INTEGER NOT NULL DEFAULT 0, covered_seconds REAL NOT NULL DEFAULT 0,
+      connections_peak INTEGER, connections_last INTEGER, last_used_at REAL,
+      first_observed_at REAL, last_observed_at REAL,
+      subscription_fetches INTEGER NOT NULL DEFAULT 0,
+      uncertainty TEXT NOT NULL DEFAULT '[]', PRIMARY KEY(device_id,grain,bucket)
+    );
+    CREATE INDEX usage_history_age ON usage_history(grain,bucket);
+    CREATE TABLE usage_fetch_history (
+      device_id TEXT NOT NULL REFERENCES devices(id), bucket INTEGER NOT NULL,
+      client TEXT NOT NULL, version TEXT NOT NULL, fetches INTEGER NOT NULL, last_at REAL NOT NULL,
+      PRIMARY KEY(device_id,bucket,client)
+    );
+    CREATE INDEX usage_fetch_history_age ON usage_fetch_history(bucket);
+    """,
 }
 
 

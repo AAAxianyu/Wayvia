@@ -269,6 +269,38 @@ def usage_collect(ctx: typer.Context, once: bool = False):
         time.sleep(max(0.1, 5 - (time.monotonic() - started)))
 
 
+@device_app.command("history")
+@guarded
+def device_history(
+    ctx: typer.Context,
+    device_id: str,
+    since: float,
+    until: float,
+    grain: str = "minute",
+    destination: Path | None = typer.Option(None, "--output"),
+):
+    """Private account usage history. Times are Unix seconds; missing buckets stay unknown."""
+    from wayvia.services.usage_history import history
+    from wayvia.telemetry.report import export_json
+
+    result = history(service(ctx).db, device_id, start=since, end=until, grain=grain)
+    output(export_json(result, destination) if destination else result)
+
+
+@device_app.command("history-prune")
+@guarded
+def device_history_prune(ctx: typer.Context):
+    """Apply minute/hour retention without contacting the dataplane."""
+    import time
+
+    from wayvia.services.usage_history import prune
+
+    control = service(ctx)
+    with control.db.change_lock(), control.db.connect() as connection:
+        prune(connection, time.time())
+    output({"status": "pruned", "sampling_started": False})
+
+
 @device_app.command("rotate")
 @guarded
 def rotate(ctx: typer.Context, device: str):

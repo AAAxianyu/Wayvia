@@ -151,6 +151,31 @@ class RollingCollector:
             row["sources"]["audit"] = "unavailable"
         # The current journal snapshot provides an explicit fallback when the
         # system journal is absent. It cannot reconstruct intervening transitions.
+        monitored = transaction.get("monitored_at")
+        valid_until = transaction.get("monitor_valid_until")
+        if (
+            monitored
+            and valid_until
+            and transaction.get("state") in {"ACTIVE", "DEGRADED"}
+            and now - self.store.policy.buffer_seconds <= timestamp(monitored) <= now
+            and timestamp(valid_until) > now
+        ):
+            degraded = transaction["state"] == "DEGRADED"
+            self.store.append(
+                {
+                    **context(**self.metadata, observed_at=monitored),
+                    "monotonic_ms": None,
+                    "boot_id": None,
+                    "software_version": None,
+                    "producer_digest": None,
+                    "event_id": digest([generation, "health", monitored, transaction["state"]]),
+                    "type": "event",
+                    "kind": "health_degraded" if degraded else "health_healthy",
+                    "source": "snapshot",
+                    "status": "degraded" if degraded else "healthy",
+                },
+                now=now,
+            )
         for index, evidence in enumerate(transaction.get("evidence", [])[:7]):
             if not isinstance(evidence, dict):
                 continue
@@ -194,6 +219,12 @@ class RollingCollector:
                 started = time.monotonic()
                 try:
                     reason = self.step()
+                except EvidenceError as exc:
+                    reason = (
+                        "storage_unavailable"
+                        if exc.code == "EVIDENCE_STORAGE_UNAVAILABLE"
+                        else "collector_error"
+                    )
                 except Exception:
                     reason = "collector_error"
                 if reason != "continue":
@@ -233,6 +264,7 @@ def run_collector(
     audit_db=None,
     inbox=None,
     outbox=None,
+    measure_clock_offset=False,
 ):
     import platform
 
@@ -254,7 +286,14 @@ def run_collector(
     if token(revision, r"[a-f0-9]{64}") is None:
         raise EvidenceError("EVIDENCE_REVISION_INVALID")
     # Validate scope before creating a run. No sampler command is executed here.
-    sampler = Sampler(role=role, peer=peer, port=port, interface=interface, run_id=run_id)
+    sampler = Sampler(
+        role=role,
+        peer=peer,
+        port=port,
+        interface=interface,
+        run_id=run_id,
+        measure_clock_offset=measure_clock_offset,
+    )
     contract = {
         "mode": "rolling_passive",
         "role": role,
@@ -274,6 +313,7 @@ def run_collector(
                 str(audit_db) if audit_db else None,
                 str(inbox) if inbox else None,
                 str(outbox) if outbox else None,
+                measure_clock_offset,
             ]
         ),
     }

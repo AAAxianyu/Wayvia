@@ -268,3 +268,16 @@ def test_crash_between_new_active_and_superseding_old_replays_only_latest(tmp_pa
     assert len(result) == 1
     assert result[0]["id"] == second["id"]
     assert m._read(first["id"])["state"] == State.SUPERSEDED
+
+
+def test_monitor_emits_full_health_facts_without_changing_protection(tmp_path, capsys):
+    m = manager(tmp_path)
+    tx = m.confirm(m.apply(plan())["id"])
+    m.monitor(tx["id"])
+    healthy = [json.loads(line) for line in capsys.readouterr().err.splitlines()]
+    assert healthy[-1]["kind"] == "health_healthy"
+    m.verifier = lambda e, p: [{"status": "failed"}]
+    assert m.monitor(tx["id"])["state"] == State.DEGRADED
+    failed = [json.loads(line) for line in capsys.readouterr().err.splitlines()]
+    assert failed[-1]["kind"] == "health_degraded"
+    assert ("protect", "ingress") in m.executor.events

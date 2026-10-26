@@ -45,6 +45,7 @@ KINDS = {
     "probe_failed",
     "probe_healthy",
     "health_degraded",
+    "health_healthy",
     "recovery_started",
     "recovery_completed",
     "recovery_failed",

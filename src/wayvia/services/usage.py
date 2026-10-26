@@ -3,6 +3,8 @@
 import json
 import time
 
+from wayvia.services import usage_history
+
 FRESH_SECONDS = 20
 
 
@@ -38,6 +40,22 @@ class UsageStore:
                 return  # An older concurrent collector must not rewind watermarks.
             gaps = state.get("gaps", 0)
             reason = None
+            generation_changed = state.get("generation") != sample["generation"]
+            continuous = (
+                last is not None
+                and not generation_changed
+                and state.get("status") == "ok"
+                and 0 < observed - last <= 10
+            )
+            flags = set()
+            if last is None:
+                flags.add("baseline")
+            elif generation_changed:
+                flags.add("core_generation_changed")
+            elif not continuous:
+                flags.add("collection_gap")
+                gaps += 1
+                reason = "collection_gap"
             if state.get("generation") != sample["generation"]:
                 connection.execute("DELETE FROM usage_connections")
                 if last is not None:
@@ -46,6 +64,7 @@ class UsageStore:
             elif sample["closed_buffer_full"] and sample["oldest_closed_at"] > (last or 0):
                 gaps += 1
                 reason = "closed_history_overflow"
+                flags.add(reason)
             known = {
                 r["id"]: r["status"] for r in connection.execute("SELECT id,status FROM devices")
             }
@@ -58,6 +77,17 @@ class UsageStore:
                 r["id"]: dict(r) for r in connection.execute("SELECT * FROM usage_connections")
             }
             active = dict.fromkeys(known, 0)
+            history = {
+                device: {
+                    "up": 0,
+                    "down": 0,
+                    "unallocated_up": 0,
+                    "unallocated_down": 0,
+                    "used": None,
+                    "reasons": set(flags),
+                }
+                for device in known
+            }
             seen = set()
             for item in sample["connections"]:
                 device = item["device_id"]
@@ -68,10 +98,24 @@ class UsageStore:
                 old = previous.get(ident)
                 if old and old["device_id"] != device:
                     raise ValueError("usage identity changed")
-                upload = max(item["upload"], old["upload_bytes"] if old else 0)
-                download = max(item["download"], old["download_bytes"] if old else 0)
-                up_delta = upload - (old["upload_bytes"] if old else 0)
-                down_delta = download - (old["download_bytes"] if old else 0)
+                up_reset = bool(old and item["upload"] < old["upload_bytes"])
+                down_reset = bool(old and item["download"] < old["download_bytes"])
+                reset = up_reset or down_reset
+                upload, download = item["upload"], item["download"]
+                up_delta = upload - old["upload_bytes"] if old and not up_reset else upload
+                down_delta = (
+                    download - old["download_bytes"] if old and not down_reset else download
+                )
+                if reset:
+                    gaps += 1
+                    reason = "counter_reset"
+                    history[device]["reasons"].add(reason)
+                timed = continuous and not reset and (old is not None or item["created_at"] >= last)
+                prefix = "" if timed else "unallocated_"
+                if old is None and not timed:
+                    history[device]["reasons"].add("baseline")
+                history[device][prefix + "up"] += up_delta
+                history[device][prefix + "down"] += down_delta
                 if item["closed_at"] is None and known[device] == "active":
                     active[device] += 1
                 used_at = None
@@ -79,6 +123,10 @@ class UsageStore:
                     used_at = min(item["closed_at"] or observed, observed)
                 elif old is None:
                     used_at = min(item["created_at"], observed)
+                if timed and (up_delta or down_delta):
+                    history[device]["used"] = (
+                        max(history[device]["used"] or 0, used_at or 0) or None
+                    )
                 connection.execute(
                     "UPDATE device_usage SET upload_bytes=upload_bytes+?, "
                     "download_bytes=download_bytes+?,last_used_at=CASE "
@@ -99,8 +147,18 @@ class UsageStore:
                     if old["closed_at"] is None:
                         gaps += 1
                         reason = "connection_final_counter_missing"
+                        history[old["device_id"]]["reasons"].add(reason)
                     connection.execute("DELETE FROM usage_connections WHERE id=?", (ident,))
             for device, count in active.items():
+                usage_history.update(
+                    connection,
+                    device,
+                    observed,
+                    **history[device],
+                    count=count,
+                    sample=True,
+                    covered=observed - last if continuous else 0,
+                )
                 connection.execute(
                     "UPDATE device_usage SET active_connections=?,observed_at=? WHERE device_id=?",
                     (count, observed, device),
@@ -116,6 +174,7 @@ class UsageStore:
             if reason:
                 state.update(last_gap_reason=reason, last_gap_at=observed)
             self._save(connection, state)
+            usage_history.prune(connection, observed)
 
     def device(self, device_id, *, now=None):
         now = time.time() if now is None else now

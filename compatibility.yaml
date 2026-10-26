@@ -1,4 +1,40 @@
 schema_version: 1
+device_history_observation_alerts:
+  date: '2026-10-25'
+  timezone: America/Los_Angeles
+  branch: codex/probe-observer-evidence
+  integration_commit: 633daf3
+  statistics_source_commit: 08695f2
+  statistics_common_base: 20e33ab
+  status: software_verified_production_sampling_and_fault_acceptance_deferred
+  evidence_schema: 1
+  storage_migration: 4
+  default_usage_interval_seconds: 5
+  history_minute_retention_days: 30
+  history_hour_retention_days: 365
+  accounting: sample_end_deltas_with_separate_unallocated_bytes_not_billing
+  alert_evaluation: explicit_one_shot_readonly_sources_independent_of_collector
+  notifications: explicit_private_config_and_authorize_send_only_not_configured_or_started
+  real_notifications_sent: 0
+  clock_offset: optional_chrony_tracking_parser_mock_verified_runtime_unknown
+  recovery_and_routing_behavior: unchanged_best_effort_monitor_facts_only
+  gates:
+    check: passed_492_tests_3_existing_warnings_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_10_real_artifacts_and_disposable_namespace_preflight
+    offline_usage_alert_example: passed_synthetic_readonly_dedup_recovery_no_delivery
+    test_lab: not_run_deferred_by_user_fault_and_recovery_tests
+  versions:
+    ruff: 0.14.2
+    pytest: 8.4.2
+    httpx: 0.28.1
+    grpcio: 1.76.0
+    protobuf: 6.33.0
+    pydantic: 2.12.3
+    python: 3.12.12
+    sqlite: 3.50.4
+    uv: uv 0.9.7 (0adb44480 2025-10-30)
+  evidence: docs/validation/usage-alerts-2026-10-25/README.md
 device_usage_20261021:
   branch: codex/device-usage-20261021
   baseline_commit: 20e33ab

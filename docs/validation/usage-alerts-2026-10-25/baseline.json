@@ -1,0 +1,16 @@
+{
+  "statistics_branch": "codex/device-usage-20261021",
+  "statistics_commit": "08695f2110662437c9b28a64763eae5c7a4fc2cc",
+  "common_base": "20e33ab860c3a1ef7421093f7f785211355631c1",
+  "pre_integration_head": "a7a265db46ec2cd5134646ebe9323d46b70603d3",
+  "integrated_as": "633daf3174deffd25f6470551a10b962c333e4fa",
+  "method": "cherry-pick -x of exactly one statistics commit; no branch replacement",
+  "conflict_resolution": "docs/implementation-status.md retained both histories; no source conflict",
+  "pre_feature_regression": {
+    "command": "uv run --locked pytest -q tests/integration/test_device_usage.py tests/contract/test_usage_api.py tests/contract/test_probe_phase_diagnostics.py tests/integration/test_diagnostic_evidence.py",
+    "exit_code": 0,
+    "passed": 37,
+    "existing_deprecation_warnings": 3
+  },
+  "production_operations_replayed": false
+}

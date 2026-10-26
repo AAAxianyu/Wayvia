@@ -29,12 +29,12 @@ UNIT_IDS = {
 MAINTENANCE = {"unattended-upgrades.service", "apt-daily-upgrade.service"}
 
 
-def command(argv, *, timeout=2, max_bytes=1048576, budget=None):
+def command(argv, *, timeout=2, max_bytes=1048576, budget=None, env=None):
     timeout = min(timeout, budget.remaining()) if budget else timeout
     if timeout <= 0:
         return "timeout", ""
     try:
-        process = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        process = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, env=env)
     except OSError:
         return "unavailable", ""
     output = bytearray()
@@ -326,7 +326,10 @@ def audit_events(path, *, since, until, role):
 
 
 class Sampler:
-    def __init__(self, *, role, peer, port, interface, run_id, runner=command):
+    def __init__(
+        self, *, role, peer, port, interface, run_id, runner=command, measure_clock_offset=False
+    ):
+        self.measure_clock_offset = measure_clock_offset
         self.role, self.peer = role, str(ipaddress.IPv4Address(peer))
         if not 1 <= port <= 65535 or token(interface, r"[a-zA-Z0-9_][a-zA-Z0-9_.-]{0,31}") is None:
             raise ValueError("invalid diagnostic scope")
@@ -392,6 +395,18 @@ class Sampler:
             else ("unsynchronized" if state == "ok" and raw.strip() == "no" else "unknown")
         )
         row["sources"]["clock"] = state
+        if self.measure_clock_offset:
+            from wayvia.telemetry.clock import tracking
+
+            state, raw = self.runner(
+                ["chronyc", "-n", "tracking"],
+                budget=budget,
+                max_bytes=4096,
+                env={**os.environ, "LC_ALL": "C"},
+            )
+            measured = tracking(raw, time.time()) if state == "ok" else {}
+            row.update(measured)
+            row["sources"]["clock"] = "ok" if measured else "unavailable"
         if self.version_time is None or start - self.version_time >= 60:
             for key, argv, pattern in [
                 ("sing_box", ["sing-box", "version"], r"sing-box version ([0-9]+\.[0-9]+\.[0-9]+)"),

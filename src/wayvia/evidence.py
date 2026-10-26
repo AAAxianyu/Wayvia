@@ -127,6 +127,12 @@ def producer_digest():
         "telemetry/collector.py",
         "telemetry/report.py",
         "telemetry/commands.py",
+        "telemetry/clock.py",
+        "telemetry/alerts.py",
+        "telemetry/alert_commands.py",
+        "services/usage.py",
+        "services/usage_history.py",
+        "storage/__init__.py",
     ]
     digest = hashlib.sha256()
     try:
@@ -162,6 +168,20 @@ def context(
 
 def sanitize_context(row):
     """Project existing evidence without minting new timestamps or freshness."""
+    offset = row.get("clock_offset_ms")
+    measured = safe_time(row.get("clock_offset_observed_at"))
+    at = safe_time(row.get("observed_at"))
+    offset_known = (
+        type(offset) in {int, float}
+        and math.isfinite(offset)
+        and abs(offset) <= 86400000
+        and measured is not None
+        and at is not None
+        and abs((datetime.fromisoformat(at) - datetime.fromisoformat(measured)).total_seconds())
+        <= 5
+        and row.get("clock_offset_source") == "chrony_tracking"
+        and row.get("clock_sync") == "synchronized"
+    )
     return {
         "schema_version": SCHEMA_VERSION if row.get("schema_version") == SCHEMA_VERSION else None,
         "event_id": token(row.get("event_id"), r"[a-f0-9]{32}"),
@@ -175,7 +195,15 @@ def sanitize_context(row):
         "software_version": token(row.get("software_version"), r"[0-9]+\.[0-9]+\.[0-9]+"),
         "producer_digest": token(row.get("producer_digest"), r"[a-f0-9]{64}"),
         "clock_sync": choice(row.get("clock_sync"), {"synchronized", "unsynchronized"}),
-        "clock_offset_ms": None,  # No offset measurement is implemented yet.
+        "clock_offset_ms": offset if offset_known else None,
+        **(
+            {
+                "clock_offset_source": "chrony_tracking" if offset_known else "unknown",
+                "clock_offset_observed_at": measured if offset_known else None,
+            }
+            if "clock_offset_source" in row or "clock_offset_observed_at" in row
+            else {}
+        ),
     }
 
 
