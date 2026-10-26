@@ -30,9 +30,28 @@ def control_ok(row):
     return row.get("exit") == 0 and row.get("rcode") == "NOERROR"
 
 
+def segments(directory):
+    return sorted(
+        directory.glob("samples*.jsonl"), key=lambda p: (p.name != "samples.jsonl", p.name)
+    )
+
+
+def records(directory):
+    for path in segments(directory):
+        yield {"type": "segment_boundary", "name": path.name}
+        with path.open() as stream:
+            for line in stream:
+                if not line.endswith("\n"):
+                    yield {"type": "partial_tail"}
+                else:
+                    yield json.loads(line)
+
+
 def summarize(directory):
     result = {
         "samples": 0,
+        "segments": [],
+        "resumptions": [],
         "monitor_states": collections.Counter(),
         "transitions": [],
         "failed_monitor_checks": [],
@@ -52,73 +71,80 @@ def summarize(directory):
     last_monitor = None
     previous_at = None
     gaps = []
-    with (directory / "samples.jsonl").open() as f:
-        for line in f:
-            # A concurrent writer can leave only the final line incomplete at EOF.
-            if not line.endswith("\n"):
-                result["partial_lines_ignored"] += 1
+    for row in records(directory):
+        if row["type"] == "segment_boundary":
+            result["segments"].append(row["name"])
+            previous_at, previous_cpu = None, None
+            continue
+        if row["type"] == "partial_tail":
+            result["partial_lines_ignored"] += 1
+            continue
+        if row["type"] == "resume":
+            result["resumptions"].append(row)
+            continue
+        if row["type"] == "start":
+            result["start"] = row
+            continue
+        result["latest_record_at"] = row["at"]
+        if row["type"] == "control":
+            label, data = row["label"], row["result"]
+            counts = result["controls"].setdefault(label, collections.Counter())
+            if row.get("observation_ended"):
+                counts["unknown_observation_ended"] += 1
                 continue
-            row = json.loads(line)
-            if row["type"] == "start":
-                result["start"] = row
-                continue
-            result["latest_record_at"] = row["at"]
-            if row["type"] == "control":
-                label, data = row["label"], row["result"]
-                counts = result["controls"].setdefault(label, collections.Counter())
-                healthy = control_ok(data)
-                counts["ok" if healthy else "failed"] += 1
-                if not healthy and len(result["failed_control_examples"]) < 100:
-                    result["failed_control_examples"].append(row)
-                for key in ["time_connect", "time_appconnect", "time_starttransfer", "time_total"]:
-                    if healthy and isinstance(data.get(key), (float, int)):
-                        timings[label + "_" + key + "_ms"].append(1000 * data[key])
-                if healthy and isinstance(data.get("query_ms"), int):
-                    timings[label + "_query_ms"].append(data["query_ms"])
-                continue
-            if row["type"] != "sample":
-                continue
-            result["samples"] += 1
-            if previous_at is not None:
-                gaps.append(row["monotonic"] - previous_at)
-            previous_at = row["monotonic"]
-            current_cpu = row["host"]["cpu_jiffies"]
-            if previous_cpu:
-                deltas = [a - b for a, b in zip(current_cpu, previous_cpu, strict=True)]
-                total = sum(deltas)
-                if total > 0 and all(v >= 0 for v in deltas):
-                    cpu.append(100 * (total - deltas[3] - deltas[4]) / total)
-            previous_cpu = current_cpu
-            latest_tcp = row["host"]["host_global_tcp_counters"]
-            if first_tcp is None:
-                first_tcp = latest_tcp
-            peer = row["peer_ping"]
-            result["peer_ping"]["ok" if peer["exit"] == 0 else "miss"] += 1
-            if peer.get("rtt_ms") is not None:
-                ping.append(peer["rtt_ms"])
-            connections = row["carrier"].get("known_carrier_connections", [])
-            result["carrier_connection_count"][str(len(connections))] += 1
-            for connection in connections:
-                if "rtt" in connection:
-                    timings["carrier_tcp_rtt_ms"].append(float(connection["rtt"].split("/")[0]))
-            monitor = row.get("monitor")
-            if monitor is None or monitor["updated_at"] == last_monitor:
-                continue
-            last_monitor = monitor["updated_at"]
-            result["monitor_states"][monitor["state"]] += 1
-            transitions = result["transitions"]
-            if not transitions or transitions[-1]["state"] != monitor["state"]:
-                transitions.append({"at": monitor["updated_at"], "state": monitor["state"]})
-            for evidence in monitor["evidence"]:
-                result["completed_response_closes"] += sum(
-                    a["transport_closed_after_response"] for a in evidence["attempts"]
+            healthy = control_ok(data)
+            counts["ok" if healthy else "failed"] += 1
+            if not healthy and len(result["failed_control_examples"]) < 100:
+                result["failed_control_examples"].append(row)
+            for key in ["time_connect", "time_appconnect", "time_starttransfer", "time_total"]:
+                if healthy and isinstance(data.get(key), (float, int)):
+                    timings[label + "_" + key + "_ms"].append(1000 * data[key])
+            if healthy and isinstance(data.get("query_ms"), int):
+                timings[label + "_query_ms"].append(data["query_ms"])
+            continue
+        if row["type"] != "sample":
+            continue
+        result["samples"] += 1
+        if previous_at is not None:
+            gaps.append(row["monotonic"] - previous_at)
+        previous_at = row["monotonic"]
+        current_cpu = row["host"]["cpu_jiffies"]
+        if previous_cpu:
+            deltas = [a - b for a, b in zip(current_cpu, previous_cpu, strict=True)]
+            total = sum(deltas)
+            if total > 0 and all(v >= 0 for v in deltas):
+                cpu.append(100 * (total - deltas[3] - deltas[4]) / total)
+        previous_cpu = current_cpu
+        latest_tcp = row["host"]["host_global_tcp_counters"]
+        if first_tcp is None:
+            first_tcp = latest_tcp
+        peer = row["peer_ping"]
+        result["peer_ping"]["ok" if peer["exit"] == 0 else "miss"] += 1
+        if peer.get("rtt_ms") is not None:
+            ping.append(peer["rtt_ms"])
+        connections = row["carrier"].get("known_carrier_connections", [])
+        result["carrier_connection_count"][str(len(connections))] += 1
+        for connection in connections:
+            if "rtt" in connection:
+                timings["carrier_tcp_rtt_ms"].append(float(connection["rtt"].split("/")[0]))
+        monitor = row.get("monitor")
+        if monitor is None or monitor["updated_at"] == last_monitor:
+            continue
+        last_monitor = monitor["updated_at"]
+        result["monitor_states"][monitor["state"]] += 1
+        transitions = result["transitions"]
+        if not transitions or transitions[-1]["state"] != monitor["state"]:
+            transitions.append({"at": monitor["updated_at"], "state": monitor["state"]})
+        for evidence in monitor["evidence"]:
+            result["completed_response_closes"] += sum(
+                a["transport_closed_after_response"] for a in evidence["attempts"]
+            )
+            if evidence["status"] != "healthy":
+                if len(result["failed_monitor_checks"]) < 100:
+                    result["failed_monitor_checks"].append(evidence)
+                result["failed_monitor_check_count"] = (
+                    result.get("failed_monitor_check_count", 0) + 1
                 )
-                if evidence["status"] != "healthy":
-                    if len(result["failed_monitor_checks"]) < 100:
-                        result["failed_monitor_checks"].append(evidence)
-                    result["failed_monitor_check_count"] = (
-                        result.get("failed_monitor_check_count", 0) + 1
-                    )
     result["sample_gap_seconds"] = stats(gaps)
     result["cpu_busy_percent_excluding_iowait"] = stats(cpu)
     result["peer_ping_rtt_ms"] = stats(ping)
@@ -130,7 +156,16 @@ def summarize(directory):
     }
     end = directory / "result.json"
     result["end"] = json.loads(end.read_text()) if end.exists() else None
-    result["file_bytes"] = (directory / "samples.jsonl").stat().st_size
+    result["file_bytes"] = sum(path.stat().st_size for path in segments(directory))
+    result["segment_results"] = [
+        json.loads(path.read_text()) for path in sorted(directory.glob("result-*.json"))
+    ]
+    if len(result["segments"]) > 1:
+        # Aggregate counters cannot be subtracted across process/boot boundaries.
+        result["host_global_tcp_delta"] = None
+    result["sample_gap_scope"] = (
+        "within_segments_only; resumptions and missing tail must be inspected separately"
+    )
     result["limits"] = (
         "First 100 failed examples only; counts complete. Sampled monitor snapshots can miss "
         "intermediate states: reconcile with journal. Global TCP counters include other workloads. "

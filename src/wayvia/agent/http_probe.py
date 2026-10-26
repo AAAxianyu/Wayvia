@@ -11,6 +11,9 @@ import ssl
 import subprocess
 import time
 
+from wayvia.agent.http_diagnostics import WRITE_OUT, failure_stage, parse_output
+from wayvia.evidence import sanitize_attempt
+
 
 def handshake_transport_closed(result):
     """Recognize curl/OpenSSL transport loss, not certificate or protocol failures.
@@ -58,14 +61,26 @@ def observe_http(payload, *, connect=None):
             break
         # Reserve time for each configured alternative, within the same deadline.
         budget = remaining / (len(urls) - index)
+        attempt_deadline = started + budget
+        relay = {}
+        metrics = {}
+        metrics_source = "unknown"
+        termination = "unknown"
+        response_complete = None
         retry = False
         code = None
         status = None
         result = None
+        transport_finished = False
+        certificate_failed = False
         transport_closed_after_response = False
         try:
             try:
                 with connect(budget) as proxy:
+                    relay = getattr(proxy, "observation", relay)
+                    remaining = attempt_deadline - time.monotonic()
+                    if remaining <= 0:
+                        raise subprocess.TimeoutExpired("curl", budget)
                     result = subprocess.run(
                         [
                             "curl",
@@ -83,14 +98,14 @@ def observe_http(payload, *, connect=None):
                             "--max-filesize",
                             "16384",
                             "--max-time",
-                            str(budget),
+                            str(remaining),
                             "--write-out",
-                            "\n%{http_code}",
+                            WRITE_OUT,
                             "--",
                             url,
                         ],
                         capture_output=True,
-                        timeout=budget,
+                        timeout=remaining,
                         check=False,
                     )
             except ConnectionError:
@@ -100,9 +115,13 @@ def observe_http(payload, *, connect=None):
                 # replace its result; TLS, status, identity and deadline checks below
                 # still decide success. In particular, curl TLS failures stay fatal.
                 transport_closed_after_response = True
+                relay["cleanup"] = "connection_closed"
+            transport_finished = True
             code = result.returncode
-            body, status_text = result.stdout.decode("utf-8").rsplit("\n", 1)
-            status = int(status_text)
+            body, status, metrics = parse_output(result.stdout)
+            metrics_source = "curl_write_out"
+            termination = "curl_timeout" if code == 28 else "completed"
+            response_complete = code == 0
             if code == 0 and status == 200:
                 error = (
                     ""
@@ -120,32 +139,98 @@ def observe_http(payload, *, connect=None):
                     code == 22 and (status >= 500 or status == 429)
                 )
                 error = "HTTP_TIMEOUT" if code == 28 else "HTTP_REQUEST_FAILED"
-        except ssl.SSLError:
-            error = "HTTP_TLS_FAILED"
-        except subprocess.TimeoutExpired:
-            error, retry = "HTTP_TIMEOUT", True
-        except (ConnectionError, TimeoutError):
-            error, retry = "HTTP_TRANSPORT_FAILED", True
-        except (OSError, ValueError):
-            error = "HTTP_INVALID_RESPONSE"
+        except ssl.SSLError as exc:
+            certificate_failed = isinstance(exc, ssl.SSLCertVerificationError)
+            error, termination = "HTTP_TLS_FAILED", "tls_failed"
+            if result is not None:
+                relay["cleanup"] = "tls_error"
+        except subprocess.TimeoutExpired as exc:
+            error, retry, termination = "HTTP_TIMEOUT", True, "process_deadline"
+            response_complete = False
+            # subprocess may have received write-out before killing the process.
+            # Retain those timings, but never promote a killed request to success.
+            try:
+                _, status, metrics = parse_output(exc.output)
+                metrics_source = "partial_write_out"
+            except (ValueError, TypeError, KeyError):
+                pass
+        except TimeoutError:
+            error, retry, termination = "HTTP_TRANSPORT_FAILED", True, "transport_timeout"
+        except ConnectionError:
+            error, retry, termination = "HTTP_TRANSPORT_FAILED", True, "transport_closed"
+        except (OSError, ValueError, TypeError, KeyError):
+            error, termination = "HTTP_INVALID_RESPONSE", "invalid_response"
+            if result is not None and not transport_finished:
+                relay.setdefault("cleanup", "error")
+        if result is not None and metrics_source == "unknown":
+            # A teardown exception must not erase the completed request's evidence.
+            # The error above remains authoritative; this cannot authorize success.
+            try:
+                _, status, metrics = parse_output(result.stdout)
+                code = result.returncode
+                response_complete = code == 0
+                metrics_source = "curl_write_out"
+            except (ValueError, TypeError, KeyError):
+                pass
+        # Even a fully received valid identity is rejected after the original budget.
+        if not error and time.monotonic() >= deadline:
+            error = "HTTP_DEADLINE"
+            termination = "verification_deadline"
+        stage = (
+            "observer_deadline"
+            if termination in {"process_deadline", "verification_deadline"}
+            else failure_stage(
+                metrics,
+                tls=url.startswith("https:"),
+                proxy=payload["kind"] == "trojan_http",
+                code=code,
+                status=status,
+                error=error,
+                relay=relay,
+            )
+        )
+        failure_class = {
+            "": "none",
+            "HTTP_DEADLINE": "timeout",
+            "HTTP_TIMEOUT": "timeout",
+            "HTTP_IDENTITY_MISMATCH": "identity",
+            "HTTP_TLS_FAILED": "tls",
+            "HTTP_TLS_TRANSPORT_FAILED": "connection_closed",
+            "HTTP_TRANSPORT_FAILED": "connection_closed",
+            "HTTP_REQUEST_FAILED": "request",
+            "HTTP_INVALID_RESPONSE": "invalid_response",
+        }.get(error, "unknown")
+        if certificate_failed or code in {51, 58, 60, 77, 82, 83, 90, 91}:
+            failure_class = "certificate"
+        elif termination == "transport_timeout":
+            failure_class = "timeout"
         attempts.append(
-            {
-                "endpoint": index,
-                "duration_ms": round((time.monotonic() - started) * 1000),
-                "curl_code": code,
-                "http_status": status,
-                "result": error or "healthy",
-                **(
-                    {"transport_closed_after_response": True}
-                    if transport_closed_after_response
-                    else {}
-                ),
-            }
+            sanitize_attempt(
+                {
+                    **metrics,
+                    "metrics_source": metrics_source,
+                    "termination": termination,
+                    "failure_stage": stage,
+                    "failure_class": failure_class,
+                    "response_complete": response_complete,
+                    "connect_scope": "local_relay"
+                    if payload["kind"] == "trojan_http"
+                    else "target",
+                    "relay": relay.copy(),
+                    "endpoint": index,
+                    "duration_ms": round((time.monotonic() - started) * 1000),
+                    "curl_code": code,
+                    "http_status": status,
+                    "result": error or "healthy",
+                    **(
+                        {"transport_closed_after_response": True}
+                        if transport_closed_after_response
+                        else {}
+                    ),
+                }
+            )
         )
         if not error:
-            if time.monotonic() >= deadline:
-                error = "HTTP_DEADLINE"
-                break
             return {"healthy": True, "check": "exit_identity", "attempts": attempts}
         if not retry:
             break

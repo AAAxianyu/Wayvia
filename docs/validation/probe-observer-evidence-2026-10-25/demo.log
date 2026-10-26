@@ -1,0 +1,2 @@
+/Users/dev2/Documents/project/Wayvia/.cache/progress-check-tools/bin/uv run --locked python -m wayvia.demo
+{"mode": "simulated", "storage": "temporary SQLite", "device": "3a2418bb5cda44b8a643903001441dc7", "profile": "sing-box complete", "subscription_revoke": "verified", "device_permission": "active", "dataplane": "simulated, no network changes"}

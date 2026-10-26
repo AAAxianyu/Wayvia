@@ -1,5 +1,15 @@
 # Wayvia 实现与验收状态
 
+## 2026-10-25 America/Los_Angeles 证据字段、请求阶段与观察器生命周期
+
+已在 `codex/probe-observer-evidence` 完成待办 15/13 的本次软件范围：统一证据 v1，记录 UTC/单调时间、角色/配置代次、运行/启动标识和源码摘要；HTTP 请求记录连接、TLS、首字节、总耗时、完成状态及有限失败类别，区分 curl、自身进程、helper 和验证总期限。中继里程碑和清理结果独立，超时已取得的数据尽可能保留，缺项保持 unknown。身份、已有备用条件和 fail-closed 不放宽。
+
+有限观察器具有不可变 contract、排他锁、显式续接开关、持久用户停止标记和原截止时间；续接新建证据段并累计容量，保留半行与缺口，拒绝旧目录、终态、错代次、变更配置和不安全权限。未启动新任务、未迁移历史观察、未修改自动更新/needrestart/生产单元。运维使用方式与限制见 [ADR 008](adr/008-observation-evidence-and-lifecycle.md)。
+
+`make check` 421 项通过（3 项既有弃用警告），`make demo` simulated 通过，`make test-configs` 10 项真实配置通过；后者包含一次性无外部网络容器的 namespace/guard 预检，OpenVPN 配置启动不等于隧道已建立。真实 curl 8.5.0 的禁止协议 write-out 离线冒烟通过，无网络请求。完整 `make test-lab` 按用户要求未执行：它包含暂缓的故障/恢复场景，不记通过，也不伪造环境缺失退出。见[命令、版本与证据](validation/probe-observer-evidence-2026-10-25/README.md)。
+
+待办 12 仅交付[恢复决策表](recovery-decision-table.md)，保护/整链恢复策略未修改；15/13 的 done 仅表示软件范围完成。公共字段基础不等于 16 的完整事件关联和导出。下一项是 14 持续双端诊断与 16 时间线；恢复范围修改仍需专门安全验收。生产部署、实网采样、真实维护/故障/重启测试继续暂缓，JXY 最初超时根因未定。以下条目为历史记录。
+
 ## 2026-10-25 America/Los_Angeles 功能缺口登记与排查停止
 
 用户要求停止根因排查，记录 TODO。已终止两端本轮临时诊断进程，未停止生产服务，未修改网络或健康配置；旧观察和 heartbeat 保持结束/暂停。已采集的部分数据保留为[停止记录](validation/incident-2026-10-26-0830-cst/followup-stopped.json)，不作为完整窗口或根因定案证据。JXY 经用户确认不是此前提供 SSH 的 Windows 电脑，未访问旧终端。

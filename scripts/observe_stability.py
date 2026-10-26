@@ -14,50 +14,40 @@ import os
 import re
 import signal
 import subprocess
+import threading
 import time
 from pathlib import Path
+
+from wayvia.evidence import (
+    LAYERS,
+    PHASES,
+    TERMINATIONS,
+    choice,
+    number,
+    producer_digest,
+    safe_code,
+    safe_time,
+    sanitize_attempt,
+    sanitize_context,
+)
+from wayvia.observation_run import (
+    ObservationError,
+    ObservationRun,
+    SizeLimitError,
+    contract_digest,
+    request_stop,
+)
+from wayvia.observation_run import Writer as Writer
 
 UTC = dt.UTC
 ROOT = Path("/var/lib/wayvia/agent")
 OUT = Path("/var/lib/wayvia/observations")
 MAX_BYTES = 96 * 1024 * 1024
-LAYERS = {"access", "carrier", "vpn", "egress", "dns", "ipv6", "return"}
 STATES = {"ACTIVE", "DEGRADED", "SUPERSEDED", "ROLLED_BACK", "RECOVERY_REQUIRED"}
-CODES = {
-    "HTTP_DEADLINE",
-    "HTTP_IDENTITY_MISMATCH",
-    "HTTP_INVALID_RESPONSE",
-    "HTTP_REQUEST_FAILED",
-    "HTTP_TIMEOUT",
-    "HTTP_TLS_FAILED",
-    "HTTP_TLS_TRANSPORT_FAILED",
-    "HTTP_TRANSPORT_FAILED",
-    "PROTOCOL_PROBE_FAILED",
-    "PROBE_DEADLINE",
-    "PROBE_INVALID",
-    "PROBE_UNSUPPORTED",
-    "PROBE_UPGRADE_REQUIRED",
-}
 
 
 def stamp():
     return dt.datetime.now(UTC).isoformat()
-
-
-def safe_code(value):
-    return value if isinstance(value, str) and value in CODES else "REDACTED"
-
-
-def safe_time(value):
-    try:
-        parsed = dt.datetime.fromisoformat(value)
-        return parsed.astimezone(UTC).isoformat() if parsed.tzinfo else None
-    except (TypeError, ValueError):
-        return None
-
-
-def number(value):
-    return value if type(value) in {int, float} and 0 <= value < 10**20 else None
 
 
 def sanitize_monitor(row):
@@ -73,40 +63,36 @@ def sanitize_monitor(row):
         if item["layer"] not in LAYERS:
             continue
         evidence = {
+            **sanitize_context(item),
             "layer": item["layer"],
             "status": "healthy" if item.get("status") == "healthy" else "unhealthy",
             "duration_ms": number(item.get("duration_ms")),
-            "observed_at": safe_time(item.get("observed_at")),
+            "valid_until": safe_time(item.get("valid_until")),
+            "scope": choice(item.get("scope"), {"datapath", "component_readiness"}),
         }
         if item.get("error"):
             evidence["error"] = safe_code(item["error"])
-        evidence["attempts"] = []
-        for a in item.get("attempts", [])[:3]:
-            if not isinstance(a, dict):
-                continue
-            evidence["attempts"].append(
-                {
-                    "endpoint": number(a.get("endpoint")),
-                    "duration_ms": number(a.get("duration_ms")),
-                    "curl_code": number(a.get("curl_code")),
-                    "http_status": number(a.get("http_status")),
-                    "result": "healthy"
-                    if a.get("result") == "healthy"
-                    else safe_code(a.get("result")),
-                    "transport_closed_after_response": a.get("transport_closed_after_response")
-                    is True,
-                }
-            )
+        evidence["attempts"] = [
+            sanitize_attempt(a) for a in item.get("attempts", [])[:3] if isinstance(a, dict)
+        ]
+        evidence["termination"] = choice(item.get("termination"), TERMINATIONS)
+        evidence["failure_stage"] = choice(item.get("failure_stage"), PHASES)
         result["evidence"].append(evidence)
     return result
 
 
-def command(argv, timeout=3):
+def command(argv, timeout=3, *, budget=None):
+    if budget is not None:
+        timeout = min(timeout, budget.remaining())
+        if timeout <= 0:
+            return 124, ""
     try:
         p = subprocess.run(argv, capture_output=True, text=True, timeout=timeout, check=False)
         return p.returncode, p.stdout
-    except subprocess.TimeoutExpired:
-        return 124, ""
+    except subprocess.TimeoutExpired as exc:
+        # Partial output is parsed locally; raw text is never written to evidence.
+        output = exc.output or b""
+        return 124, output.decode(errors="replace") if isinstance(output, bytes) else output
     except OSError:
         return 125, ""
 
@@ -154,13 +140,13 @@ def host_metrics():
     }
 
 
-def interface_metrics(interface, namespace=None):
+def interface_metrics(interface, namespace=None, *, budget=None):
     args = (
         ["ip"]
         + (["-n", namespace] if namespace else [])
         + ["-s", "-j", "link", "show", "dev", interface]
     )
-    code, raw = command(args)
+    code, raw = command(args, budget=budget)
     if code:
         return {"exit": code}
     rows = json.loads(raw)
@@ -170,13 +156,13 @@ def interface_metrics(interface, namespace=None):
     ]
 
 
-def socket_metrics(role, peer):
+def socket_metrics(role, peer, *, budget=None):
     filt = (
         ["dst", peer, "dport", "=", ":443"]
         if role == "ingress"
         else ["dst", peer, "sport", "=", ":443"]
     )
-    code, raw = command(["ss", "-Htin", *filt])
+    code, raw = command(["ss", "-Htin", *filt], budget=budget)
     rows = []
     for line in raw.splitlines():
         if line and not line[0].isspace():
@@ -205,8 +191,8 @@ def socket_metrics(role, peer):
     return {"exit": code, "known_carrier_connections": rows}
 
 
-def peer_ping(peer):
-    code, raw = command(["ping", "-n", "-c", "1", "-W", "1", peer], timeout=2)
+def peer_ping(peer, *, budget=None):
+    code, raw = command(["ping", "-n", "-c", "1", "-W", "1", peer], timeout=2, budget=budget)
     match = re.search(r"time[=<]([0-9.]+) ms", raw)
     return {"exit": code, "rtt_ms": float(match[1]) if match else None}
 
@@ -244,7 +230,7 @@ def parse_http(code, output, expected_ip=None):
     return result
 
 
-def http_control(ip, namespace, expected):
+def http_control(ip, namespace, expected, *, budget=None):
     prefix = ["ip", "netns", "exec", namespace] if namespace else []
     code, output = command(
         [
@@ -271,11 +257,12 @@ def http_control(ip, namespace, expected):
             "https://" + ip + "/cdn-cgi/trace",
         ],
         timeout=5,
+        budget=budget,
     )
     return parse_http(code, output, expected)
 
 
-def dns_control(resolver, namespace):
+def dns_control(resolver, namespace, *, budget=None):
     prefix = ["ip", "netns", "exec", namespace] if namespace else []
     code, raw = command(
         [
@@ -291,6 +278,7 @@ def dns_control(resolver, namespace):
             "A",
         ],
         timeout=3,
+        budget=budget,
     )
     status = re.search(r"status: ([A-Z0-9]+)", raw)
     timing = re.search(r"Query time: ([0-9]+) msec", raw)
@@ -301,15 +289,17 @@ def dns_control(resolver, namespace):
     }
 
 
-def control_job(label, kind, target, namespace, expected):
+def control_job(label, kind, target, namespace, expected, *, budget=None):
     started = time.monotonic()
     result = (
-        http_control(target, namespace, expected)
+        http_control(target, namespace, expected, budget=budget)
         if kind == "http"
-        else dns_control(target, namespace)
+        else dns_control(target, namespace, budget=budget)
     )
     return {
         "type": "control",
+        "observation_ended": budget is not None and budget.remaining() <= 0,
+        "monotonic": started,
         "label": label,
         "started_at": dt.datetime.fromtimestamp(
             time.time() - (time.monotonic() - started), UTC
@@ -320,148 +310,162 @@ def control_job(label, kind, target, namespace, expected):
     }
 
 
-class SizeLimitError(RuntimeError):
-    pass
+def collect(args, run, journal, runtime, expected):
+    wake = threading.Event()
 
+    def interrupted(*unused):
+        run.interrupted = True
+        wake.set()
 
-class Writer:
-    def __init__(self, path, limit=MAX_BYTES):
-        self.file = path.open("x", encoding="utf-8")
-        path.chmod(0o600)
-        self.used = 0
-        self.limit = limit
-
-    def put(self, row):
-        text = json.dumps(row, separators=(",", ":"), allow_nan=False) + "\n"
-        size = len(text.encode())
-        if self.used + size > self.limit:
-            raise SizeLimitError("size_limit")
-        self.file.write(text)
-        self.file.flush()
-        self.used += size
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--role", choices=["ingress", "exit"], required=True)
-    parser.add_argument("--generation", required=True)
-    parser.add_argument("--peer-ip", required=True)
-    parser.add_argument("--interface", required=True)
-    parser.add_argument("--run-id", required=True)
-    parser.add_argument("--until", required=True)
-    args = parser.parse_args()
-    assert os.geteuid() == 0 and re.fullmatch(r"[a-f0-9]{32}", args.generation)
-    assert re.fullmatch(r"[a-zA-Z0-9-]{1,64}", args.run_id)
-    assert re.fullmatch(r"[a-zA-Z0-9_.-]{1,32}", args.interface) and not args.interface.startswith(
-        "-"
-    )
-    ipaddress.IPv4Address(args.peer_ip)
-    until = dt.datetime.fromisoformat(args.until)
-    assert until.tzinfo and 0 < (until - dt.datetime.now(UTC)).total_seconds() <= 86400
-    deadline = time.monotonic() + (until - dt.datetime.now(UTC)).total_seconds()
-    runtime = ROOT / (args.role + "-runtime.json")
-    journal = ROOT / (args.generation + ".json")
-    expected = next(
-        p["expected"]
-        for p in json.loads(journal.read_text())["plan"]["probes"]
-        if p["layer"] == "egress"
-    )
-    ipaddress.IPv4Address(expected)
-    assert json.loads(runtime.read_text()).get("transaction_id") == args.generation
-    os.umask(0o077)
-    directory = OUT / args.run_id
-    directory.mkdir(mode=0o700, parents=True, exist_ok=False)
-    writer = Writer(directory / "samples.jsonl")
-    stop = []
-    signal.signal(signal.SIGTERM, lambda *a: stop.append(True))
-    signal.signal(signal.SIGINT, lambda *a: stop.append(True))
-    writer.put(
-        {
-            "type": "start",
-            "at": stamp(),
-            "role": args.role,
-            "generation": args.generation,
-            "until": until.isoformat(),
-            "sample_interval_seconds": 5,
-            "control_interval_seconds": 30,
-            "max_bytes": MAX_BYTES,
-            "scope": "diagnostics_only_no_health_decision_or_mutation",
-            "ntp": command(["timedatectl", "show", "-p", "NTPSynchronized", "--value"])[1].strip()
-            == "yes",
-        }
-    )
+    previous_handlers = {
+        sig: signal.signal(sig, interrupted) for sig in (signal.SIGTERM, signal.SIGINT)
+    }
     next_controls = 0.0
     previous_monitor = None
     futures = []
     reason = "deadline"
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        try:
-            while not stop and time.monotonic() < deadline:
-                started = time.monotonic()
-                if json.loads(runtime.read_text()).get("transaction_id") != args.generation:
-                    reason = "generation_changed"
-                    break
-                for future in futures[:]:
-                    if future.done():
-                        writer.put(future.result())
-                        futures.remove(future)
-                row = {
-                    "type": "sample",
-                    "at": stamp(),
-                    "monotonic": started,
-                    "host": host_metrics(),
-                    "physical": interface_metrics(args.interface),
-                    "carrier": socket_metrics(args.role, args.peer_ip),
-                    "peer_ping": peer_ping(args.peer_ip),
-                }
-                if args.role == "ingress":
-                    row["tunnel"] = interface_metrics("tun0", "wayvia-egress")
-                else:
-                    row["tunnel"] = interface_metrics("tun0")
-                monitor = sanitize_monitor(json.loads(journal.read_text()))
-                if monitor != previous_monitor:
-                    row["monitor"] = monitor
-                    previous_monitor = monitor
-                writer.put(row)
-                if started >= next_controls and not futures:
-                    spaces = [("host", None, expected if args.role == "exit" else None)]
-                    if args.role == "ingress":
-                        spaces.append(("vpn", "wayvia-egress", expected))
-                    for label, namespace, identity in spaces:
-                        for kind, target, name in [
-                            ("http", "1.1.1.1", "cf_primary"),
-                            ("http", "1.0.0.1", "cf_alternative"),
-                            ("dns", "1.1.1.1", "dns_cf"),
-                            ("dns", "8.8.8.8", "dns_google"),
-                        ]:
-                            futures.append(
-                                pool.submit(
-                                    control_job,
-                                    label + "_" + name,
-                                    kind,
-                                    target,
-                                    namespace,
-                                    identity,
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            try:
+                while run.remaining() > 0:
+                    started = time.monotonic()
+                    if json.loads(runtime.read_text()).get("transaction_id") != args.generation:
+                        reason = "generation_changed"
+                        run.interrupted = True
+                        break
+                    current = json.loads(journal.read_text())
+                    if current["plan"]["revision"] != run.contract["revision"]:
+                        reason = "configuration_changed"
+                        run.interrupted = True
+                        break
+                    for future in futures[:]:
+                        if future.done():
+                            run.writer.put(future.result())
+                            futures.remove(future)
+                    row = {
+                        "type": "sample",
+                        "at": stamp(),
+                        "monotonic": started,
+                        "host": host_metrics(),
+                        "physical": interface_metrics(args.interface, budget=run),
+                        "carrier": socket_metrics(args.role, args.peer_ip, budget=run),
+                        "peer_ping": peer_ping(args.peer_ip, budget=run),
+                        "tunnel": interface_metrics(
+                            "tun0", "wayvia-egress" if args.role == "ingress" else None, budget=run
+                        ),
+                    }
+                    monitor = sanitize_monitor(current)
+                    if monitor != previous_monitor:
+                        row["monitor"] = monitor
+                        previous_monitor = monitor
+                    run.writer.put(row)
+                    if run.remaining() > 0 and started >= next_controls and not futures:
+                        spaces = [("host", None, expected if args.role == "exit" else None)]
+                        if args.role == "ingress":
+                            spaces.append(("vpn", "wayvia-egress", expected))
+                        for label, namespace, identity in spaces:
+                            for kind, target, name in [
+                                ("http", "1.1.1.1", "cf_primary"),
+                                ("http", "1.0.0.1", "cf_alternative"),
+                                ("dns", "1.1.1.1", "dns_cf"),
+                                ("dns", "8.8.8.8", "dns_google"),
+                            ]:
+                                futures.append(
+                                    pool.submit(
+                                        control_job,
+                                        label + "_" + name,
+                                        kind,
+                                        target,
+                                        namespace,
+                                        identity,
+                                        budget=run,
+                                    )
                                 )
-                            )
-                    next_controls = started + 30
-                time.sleep(
-                    max(0, min(5 - (time.monotonic() - started), deadline - time.monotonic()))
-                )
-            for future in futures:
-                writer.put(future.result())
-            if stop:
-                reason = "requested_stop"
-        except SizeLimitError:
-            reason = "size_limit"
-        except Exception as exc:
-            reason = "collector_error_" + type(exc).__name__
-        finally:
-            result = {"type": "end", "at": stamp(), "reason": reason, "bytes_written": writer.used}
-            (directory / "result.json").write_text(json.dumps(result, indent=2) + "\n")
-            writer.file.close()
-    return 0 if reason == "deadline" else 2
+                        next_controls = started + 30
+                    wake.wait(max(0, min(5 - (time.monotonic() - started), run.remaining())))
+                if run.interrupted and reason == "deadline":
+                    reason = "interrupted"
+                # Cancel jobs that have not begun; running commands use the same deadline.
+                for future in futures:
+                    if not future.cancel():
+                        run.writer.put(future.result())
+            except SizeLimitError:
+                reason = "size_limit"
+                run.interrupted = True
+            except Exception:
+                reason = "collector_error"
+                run.interrupted = True
+            finally:
+                for future in futures:
+                    future.cancel()
+        reason = run.finish(reason)
+    finally:
+        for sig, previous in previous_handlers.items():
+            signal.signal(sig, previous)
+    return 0 if reason in {"deadline", "user_stop"} else 2
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--role", choices=["ingress", "exit"])
+    parser.add_argument("--generation")
+    parser.add_argument("--peer-ip")
+    parser.add_argument("--interface")
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--until")
+    parser.add_argument(
+        "--resume-interrupted",
+        action="store_true",
+        help="Allow verified continuation within the original deadline",
+    )
+    parser.add_argument(
+        "--stop", action="store_true", help="Persist user stop; never resumes this run"
+    )
+    args = parser.parse_args()
+    if os.geteuid() != 0:
+        raise ObservationError("OBSERVER_REQUIRES_ROOT")
+    if args.stop:
+        print(json.dumps(request_stop(OUT, args.run_id)))
+        return 0
+    if (
+        args.role is None
+        or not re.fullmatch(r"[a-f0-9]{32}", args.generation or "")
+        or not re.fullmatch(r"[a-zA-Z0-9_][a-zA-Z0-9_.-]{0,31}", args.interface or "")
+        or safe_time(args.until) is None
+    ):
+        raise ObservationError("INVALID_OBSERVATION_ARGUMENTS")
+    ipaddress.IPv4Address(args.peer_ip)
+    runtime = ROOT / (args.role + "-runtime.json")
+    journal = ROOT / (args.generation + ".json")
+    current = json.loads(journal.read_text())
+    expected = next(p["expected"] for p in current["plan"]["probes"] if p["layer"] == "egress")
+    ipaddress.IPv4Address(expected)
+    if json.loads(runtime.read_text()).get("transaction_id") != args.generation:
+        raise ObservationError("OBSERVATION_GENERATION_CHANGED")
+    contract = {
+        "role": args.role,
+        "generation": args.generation,
+        "revision": current["plan"]["revision"],
+        "until": safe_time(args.until),
+        "max_bytes": MAX_BYTES,
+        "sample_interval_seconds": 5,
+        "control_interval_seconds": 30,
+        "inputs_digest": contract_digest([args.peer_ip, args.interface, expected]),
+        "observer_digest": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "producer_digest": producer_digest(),
+    }
+    os.umask(0o077)
+    with ObservationRun(OUT, args.run_id, contract, resume=args.resume_interrupted) as run:
+        return collect(args, run, journal, runtime, expected)
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except (ObservationError, OSError, ValueError, KeyError, StopIteration) as exc:
+        print(
+            json.dumps(
+                {"error": str(exc) if isinstance(exc, ObservationError) else "OBSERVER_UNAVAILABLE"}
+            )
+        )
+        raise SystemExit(2) from None

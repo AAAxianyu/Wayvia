@@ -30,7 +30,16 @@ def payload():
 
 
 def result(code=0, body="ip=203.0.113.8\ncolo=NRT\n", status=200):
-    return SimpleNamespace(returncode=code, stdout=f"{body}\n{status:03d}".encode())
+    metrics = {
+        "http_code": status,
+        "time_connect": 0.01,
+        "time_appconnect": 0.02,
+        "time_starttransfer": 0.03 if status else 0,
+        "time_total": 0.04,
+    }
+    return SimpleNamespace(
+        returncode=code, stdout=body.encode() + b"\nWAYVIA_METRICS:" + json.dumps(metrics).encode()
+    )
 
 
 def test_transient_timeout_uses_fresh_alternative_in_original_budget(monkeypatch):

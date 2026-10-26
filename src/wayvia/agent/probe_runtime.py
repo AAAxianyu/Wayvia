@@ -24,6 +24,12 @@ from wayvia.agent.http_probe import observe_http
 PROBE_USER = "wayvia-internal-probe"
 
 
+class RelayOptions(list):
+    def __init__(self, port, observation):
+        super().__init__(["--socks5-hostname", f"127.0.0.1:{port}"])
+        self.observation = observation
+
+
 def exact(sock, size):
     data = b""
     while len(data) < size:
@@ -35,8 +41,14 @@ def exact(sock, size):
 
 
 @contextlib.contextmanager
-def trojan_relay(payload, config, manifest):
+def trojan_relay(payload, config, manifest, observation=None):
     """A temporary loopback SOCKS endpoint whose sole transport is authenticated Trojan."""
+    observation = observation if observation is not None else {}
+    started = time.monotonic()
+
+    def milestone(name):
+        observation[name] = round((time.monotonic() - started) * 1000, 3)
+
     inbound = next(item for item in config["inbounds"] if item["type"] == "trojan")
     role = manifest["role"]
     user = (
@@ -78,13 +90,18 @@ def trojan_relay(payload, config, manifest):
             else:
                 raise OSError("SOCKS address rejected")
             port = exact(client, 2)
+            observation["stage"] = "relay_connect"
             raw = socket.create_connection(
                 (payload["target"], payload["port"]), max(0.01, deadline - time.monotonic())
             )
             sockets.append(raw)
+            milestone("connect_ms")
+            observation["stage"] = "relay_tls"
             raw.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             upstream = context.wrap_socket(raw, server_hostname=server_name)
             sockets.append(upstream)
+            milestone("tls_ms")
+            observation["stage"] = "relay_forward"
             upstream.sendall(
                 hashlib.sha224(user["password"].encode()).hexdigest().encode()
                 + b"\r\n\x01"
@@ -94,6 +111,7 @@ def trojan_relay(payload, config, manifest):
                 + b"\r\n"
             )
             client.sendall(b"\x05\x00\x00\x01\x7f\x00\x00\x01\x00\x00")
+            milestone("tunnel_ready_ms")
             client.setblocking(False)
             upstream.setblocking(False)
             while time.monotonic() < deadline:
@@ -128,7 +146,8 @@ def trojan_relay(payload, config, manifest):
         listener.close()
         for item in sockets:
             item.close()
-        thread.join(timeout=0.2)
+        thread.join(timeout=min(0.2, max(0, deadline - time.monotonic())))
+        observation.setdefault("cleanup", "ok" if not thread.is_alive() else "error")
 
 
 def vpn_identity(payload, root, manifest, socks=None):
@@ -274,8 +293,9 @@ def run(payload):
 
     @contextlib.contextmanager
     def connect(timeout):
-        with trojan_relay({**payload, "timeout": timeout}, config, manifest) as port:
-            yield ["--socks5-hostname", f"127.0.0.1:{port}"]
+        relay = {}  # A timed-out thread can never mutate another attempt's evidence.
+        with trojan_relay({**payload, "timeout": timeout}, config, manifest, relay) as port:
+            yield RelayOptions(port, relay)
 
     return {
         **observe_http(payload, connect=connect),

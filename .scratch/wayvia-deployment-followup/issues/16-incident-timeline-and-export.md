@@ -17,4 +17,6 @@ Priority: P2
 
 ## Comments
 
+2026-10-25 America/Los_Angeles：公共证据 v1 已随 15/13 落地，包含事件标识、时间/启动周期、角色/配置代次、源码摘要和显式未知的时钟信息。仅完成字段基础；事件关联、查询、导出和双端完整性仍待实现。见 [ADR 008](../../../docs/adr/008-observation-evidence-and-lifecycle.md)。
+
 2026-10-25 America/Los_Angeles：本次手工事件报告可作为输出范例，但不是已实现的产品能力。仅登记，未启动开发。

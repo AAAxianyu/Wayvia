@@ -198,6 +198,7 @@ class TransactionManager:
             item["valid_until"] = (observed + timedelta(seconds=self.evidence_seconds)).isoformat()
             item["revision"] = plan.revision
             item["generation"] = tx["id"]
+            item["role"] = plan.role
             item.setdefault("scope", self._scope(tx["role"]))
         tx["evidence"] = evidence
         return self._healthy(evidence, plan)

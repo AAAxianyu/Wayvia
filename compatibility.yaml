@@ -1,5 +1,41 @@
 schema_version: 1
 resolved_at: '2026-10-15'
+probe_observer_evidence:
+  date: '2026-10-25'
+  timezone: America/Los_Angeles
+  branch: codex/probe-observer-evidence
+  base_commit: 2926b34bcdd3e84e26147aaa5c67d3a5f555bd4f
+  status: software_verified_production_and_fault_acceptance_deferred
+  evidence_schema: 1
+  recovery_behavior: unchanged_decision_table_only
+  production_deployment: not_performed
+  real_sampling: not_started
+  versions:
+    development_python: 3.12.12
+    uv: 0.9.7
+    ruff: 0.14.2
+    pytest: 8.4.2
+    configuration_os: Ubuntu 24.04.5 LTS aarch64
+    configuration_kernel: 6.8.0-117-generic
+    configuration_python: 3.12.3
+    sing_box: 1.14.3
+    mihomo: 1.19.32
+    v2raya: 2.5.10
+    v2raya_core: 2.5.10
+    openvpn: 2.6.19
+    curl_offline_write_out: 8.5.0
+  gates:
+    check: passed_421_tests_3_existing_warnings_format_lint_build_cli
+    demo: passed_simulated
+    test_configs: passed_10_real_artifacts_and_disposable_namespace_preflight
+    curl_format_smoke: passed_forbidden_protocol_no_network_request
+    test_lab: not_run_deferred_by_user_fault_and_recovery_tests
+  limitations:
+    hard_deadline: unavailable_curl_milestones_remain_unknown
+    clock_offset: not_measured
+    observer_maintenance_restart: software_state_tests_only_real_acceptance_deferred
+    per_layer_recovery: design_only_no_runtime_change
+  evidence: docs/validation/probe-observer-evidence-2026-10-25/README.md
 latest_fix:
   date: '2026-10-20'
   timezone: UTC
