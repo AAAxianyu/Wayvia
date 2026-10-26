@@ -1,6 +1,6 @@
 # 保留数据的最新版滚动升级
 
-Status: claimed
+Status: done
 Date: 2026-10-26 America/Los_Angeles
 
 用户要求先推送当前本地 Wayvia 修改，再从远程取最新代码并部署，保留原有数据。目标为本项目既有日本出口与阿里云入口，顺序 exit → ingress。使用 codex/probe-observer-evidence 已推送分支，不改主机默认路由/全局防火墙/既有其他 VPN，不整机重启。故障实验、新实网采样/测速、旧观察/heartbeat 继续暂缓。
@@ -8,3 +8,7 @@ Date: 2026-10-26 America/Los_Angeles
 先验证远程 commit、锁定 wheel/组件与安装文件归属，停止本项目单元后保存一致的数据库、密钥、配置、agent journal、运行时与 systemd 配置。新版本迁移 schema 4，保留设备/订阅/密码、LTY 显示名、发布快照、累计统计和原始观测资料。安装后复用既有恢复/监控；不新建或启用独立观察/告警任务。失败恢复本次维护前快照与原运行时，绝不使用撤销旧凭据前的备份。
 
 验收：源代码来自已推送的精确 commit；软件门禁、真实配置校验；两端服务与既有状态；元数据/静态密钥/发布与累计统计保持；LTY/JXY 原链接 HTTPS 与 Mihomo parser；明确区分升级就绪检查与尚未执行的手机接管/性能/故障接受度。
+
+## 完成结果
+
+分支已推送，两端 pull 并部署 1fea59a，均 ACTIVE/schema 4；原始数据、凭据与 LTY/JXY 链接保留，原始备份可回退。537 项软件检查、demo、11 项真实组件检查和原链接 HTTPS 通过。独立采样/告警与故障验收未启用。

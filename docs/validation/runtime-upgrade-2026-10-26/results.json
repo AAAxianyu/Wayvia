@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "source_branch": "codex/probe-observer-evidence",
+  "runtime_code_commit": "1fea59a7978ac269abff2a3177432a8ee4a5cf2a",
+  "origin": "https://github.com/AAAxianyu/Wayvia.git",
+  "wheel_sha256": "f1451d1323c51ab2dd955516d665ee4b838bea28ed515b6719e112d2ce095263",
+  "gates": {
+    "make_check": {
+      "exit_code": 0,
+      "tests": 537,
+      "existing_warnings": 3
+    },
+    "make_demo": {
+      "exit_code": 0,
+      "mode": "simulated"
+    },
+    "make_test_configs": {
+      "exit_code": 0,
+      "cases": 11
+    },
+    "make_test_lab": {
+      "exit_code": null,
+      "reason": "deferred_by_user_fault_tests"
+    }
+  },
+  "roles": {
+    "exit": {
+      "deployment": {
+        "status": "deployed",
+        "role": "exit",
+        "source_commit": "1fea59a7978ac269abff2a3177432a8ee4a5cf2a",
+        "wheel_sha256": "f1451d1323c51ab2dd955516d665ee4b838bea28ed515b6719e112d2ce095263",
+        "storage_schema": 4,
+        "original_data_preserved": true,
+        "backup": "/var/backups/wayvia/upgrade-1fea59a7978a-exit",
+        "new_observers_or_notifications_enabled": false,
+        "global_routes_firewall_or_host_reboot": false,
+        "readiness": {
+          "role": "exit",
+          "state": "ACTIVE",
+          "generation": "64fee7096d28466e9ab15d463e5a55e5"
+        }
+      },
+      "postcheck": {
+        "role": "exit",
+        "installed_wheel_files_match": true,
+        "schema": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "database_check": "ok",
+        "device_count": 0,
+        "subscription_count": 0,
+        "services": {
+          "wayvia-agent.service": "active",
+          "wayvia-api.service": "active",
+          "wayvia-exit.service": "active",
+          "wayvia-vpn-server.service": "active",
+          "wayvia-monitor.timer": "active"
+        },
+        "source_commit": "1fea59a7978ac269abff2a3177432a8ee4a5cf2a",
+        "maintenance_start_utc": "2026-10-26T10:30:09.592146+00:00",
+        "maintenance_end_utc": "2026-10-26T10:31:04.555643+00:00"
+      },
+      "upgrade_job_memory_peak_MiB": 578.2,
+      "upgrade_job_memory_max_MiB": 768,
+      "backup_includes": [
+        "consistent_SQLite_after_stopping_Wayvia",
+        "control_and_server_secrets",
+        "logical_configuration_and_publication",
+        "agent_journals_and_existing_observations",
+        "old_venv_and_owned_software",
+        "systemd_units_and_API_overrides"
+      ]
+    },
+    "ingress": {
+      "deployment": {
+        "status": "deployed",
+        "role": "ingress",
+        "source_commit": "1fea59a7978ac269abff2a3177432a8ee4a5cf2a",
+        "wheel_sha256": "f1451d1323c51ab2dd955516d665ee4b838bea28ed515b6719e112d2ce095263",
+        "storage_schema": 4,
+        "original_data_preserved": true,
+        "backup": "/var/backups/wayvia/upgrade-1fea59a7978a-ingress",
+        "new_observers_or_notifications_enabled": false,
+        "global_routes_firewall_or_host_reboot": false,
+        "readiness": {
+          "role": "ingress",
+          "state": "ACTIVE",
+          "generation": "6f80275960ed46238f51691722e918b5"
+        }
+      },
+      "postcheck": {
+        "role": "ingress",
+        "installed_wheel_files_match": true,
+        "schema": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "database_check": "ok",
+        "device_count": 3,
+        "subscription_count": 5,
+        "services": {
+          "wayvia-agent.service": "active",
+          "wayvia-api.service": "active",
+          "wayvia-ingress.service": "active",
+          "wayvia-carrier.service": "active",
+          "wayvia-vpn-client.service": "active",
+          "wayvia-bridge.service": "active",
+          "wayvia-usage.service": "active",
+          "wayvia-monitor.timer": "active"
+        },
+        "source_commit": "1fea59a7978ac269abff2a3177432a8ee4a5cf2a",
+        "maintenance_start_utc": "2026-10-26T10:31:43.883305+00:00",
+        "maintenance_end_utc": "2026-10-26T10:35:09.202411+00:00"
+      },
+      "upgrade_job_memory_peak_MiB": 640.5,
+      "upgrade_job_memory_max_MiB": 768,
+      "backup_includes": [
+        "consistent_SQLite_after_stopping_Wayvia",
+        "control_and_server_secrets",
+        "logical_configuration_and_publication",
+        "agent_journals_and_existing_observations",
+        "old_venv_and_owned_software",
+        "systemd_units_and_API_overrides"
+      ]
+    }
+  },
+  "subscription_downloads": {
+    "phone": {
+      "download_status": 200,
+      "info_status": 200,
+      "title": "LTY",
+      "tls_verified": true,
+      "bytes": 9207741,
+      "sha256": "0fc4e8e1efaf30790bc9ae97bdb396db8fb10e950e62e87d450145c7de2b8e8e",
+      "update_hours": 24,
+      "homepage_port_retained": true
+    },
+    "desktop": {
+      "download_status": 200,
+      "info_status": 200,
+      "title": "Wayvia \u00b7 JXY",
+      "tls_verified": true,
+      "bytes": 9207741,
+      "sha256": "624a8e2b427603c87eab638d74017f18292658e2ecba955d09f0748d35288074",
+      "update_hours": 24,
+      "homepage_port_retained": true
+    },
+    "public_admin_status": 404
+  },
+  "delivered_profiles_byte_identical_to_native_verified_profiles": true,
+  "new_sampling_observers_alert_delivery_and_fault_tests": "not_enabled",
+  "bootstrap_uv_integrity": {
+    "wheel": "uv-0.9.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "wheel_sha256": "8cf6bc2482d1293cc630f66b862b494c09acda9b7faff7307ef52667a2b3ad49",
+    "native_uv_sha256": "6583a1d002bf6165be0a38366538268e028bbcbb8802880ca09cce80d5505447",
+    "source": "https://files.pythonhosted.org/packages/c7/59/61d8e9f1734069049abe9e593961de602397c7194712346906c075fec65f/uv-0.9.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+  },
+  "github_CI": {
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "1fea59a7978ac269abff2a3177432a8ee4a5cf2a",
+    "url": "https://github.com/AAAxianyu/Wayvia/actions/runs/40307314654",
+    "isolated_test_lab": {
+      "ubuntu-24.04": "success",
+      "ubuntu-24.04-arm": "success",
+      "trigger": "existing_push_workflow",
+      "production_fault_tests": false
+    }
+  }
+}

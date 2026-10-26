@@ -1,4 +1,28 @@
 schema_version: 1
+runtime_upgrade_2026_10_26:
+  status: pushed_pulled_deployed_both_roles_data_preserved
+  branch: codex/probe-observer-evidence
+  runtime_code_commit: 1fea59a7978ac269abff2a3177432a8ee4a5cf2a
+  wheel_sha256: f1451d1323c51ab2dd955516d665ee4b838bea28ed515b6719e112d2ce095263
+  roles: {exit: ACTIVE, ingress: ACTIVE}
+  database_schema: {exit: 4, ingress: 4}
+  ingress_device_records: 3
+  ingress_subscription_records: 5
+  original_URLs_credentials_revocations_publication_statistics_and_keys: preserved
+  API_memory_high_MiB: 384
+  API_memory_max_MiB: 512
+  upgrade_job_memory_max_MiB: 768
+  gates:
+    check: passed_537_tests_3_existing_warnings_format_lint_build_CLI
+    demo: passed_simulated
+    test_configs: passed_11_cases
+    test_lab_local: not_run_deferred_by_user_exit_code_null
+    existing_push_CI_test_lab: passed_ubuntu_24_04_amd64_and_arm64
+    CI_run: https://github.com/AAAxianyu/Wayvia/actions/runs/40307314654
+  delivered_profiles: HTTPS_200_TLS_verified_byte_identical_to_native_core_verified_files
+  new_observers_sampling_alert_notifications_or_fault_tests: not_started
+  full_M6_mobile_GUI_and_long_term_stability: not_claimed
+  evidence: docs/validation/runtime-upgrade-2026-10-26/README.md
 subscription_lty_update:
   date: '2026-10-26'
   branch: codex/probe-observer-evidence

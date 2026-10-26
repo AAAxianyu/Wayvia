@@ -1,5 +1,11 @@
 # Wayvia 实现与验收状态
 
+## 2026-10-26 保留原数据的最新版生产升级
+
+已按用户新授权推送当前开发分支，并在日本出口、阿里云入口先后从远程拉取代码并部署 `1fea59a`。两端 ACTIVE，安装 wheel 文件一致；数据库从 2/3 迁移到 4，原设备/订阅/撤销、URL/密码/期限、LTY 名称、发布配置、静态密钥和累计统计保留，两个角色各有维护前完整备份。中间 schema 3 API 专用覆盖已退出使用，现为完整新版运行时。
+
+make check 537 项、demo 和 11 项真实组件检查通过，既有 GitHub push CI 的 amd64/arm64 隔离 Linux 门禁也通过；原手机/JXY HTTPS 与信息页均 200，正文与已通过原生 parser 的文件相同。API 512 MiB、升级作业 768 MiB 上限生效。正常升级就绪不替代 M6、手机 GUI/接管或长期稳定性；故障实验、新实网采样/测速、独立观察/告警任务与旧 heartbeat 均保持暂缓。详见[完整部署记录](validation/runtime-upgrade-2026-10-26/README.md)。以下为各阶段历史记录。
+
 ## 2026-10-26 LTY 原订阅更新与重启后排障
 
 原手机订阅已更新为 LTY，JXY 电脑订阅随同获得新的稳定节点名和手动延迟配置；原 URL、账号和凭据保留。仅切换 API 专用 release，线上 schema 仍为 3，其他网络服务、配置和原安装代码的前后校验通过。HTTP 下载与信息页正常，HTTPS 证书校验开启、公开管理路由 404；两份实际下载配置通过禁外网 Mihomo 1.19.32 parser。名称独立于设备和网络 revision，参见 [ADR 012](adr/012-subscription-title-and-api-overlay.md)。

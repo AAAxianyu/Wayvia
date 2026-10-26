@@ -1,6 +1,6 @@
 # Wayvia 安装与运维
 
-本手册面向仓库软件和明确授权的独立 Linux 环境。真实云服务器的地址、地域、系统、域名、证书和主机授权属于 M6 输入；本轮没有连接或更改真实服务器。不要在 macOS 或现有 VPN 所在的开发机上执行 Linux 网络计划。
+本手册面向仓库软件和明确授权的独立 Linux 环境。真实云服务器的地址、地域、系统、域名、证书和主机授权属于 M6 输入；已授权部署与软件验证分别记录，最近一次保留数据升级见[记录](validation/runtime-upgrade-2026-10-26/README.md)。不要在 macOS 或现有 VPN 所在的开发机上执行 Linux 网络计划。
 
 ## 安装与本地控制面
 
@@ -172,3 +172,9 @@ make clean-lab
 ## 更新规则
 
 固定来源与 SHA256 后用 `wayvia rules import-apnic`、`import-domains` 或 `import-dnsmasq` 生成 RuleSet，显式替换配置中的相应 rulesets，再 validate、render、plan 与确认；不自动追随 mutable 在线源。`uv run python scripts/fetch_domestic_rules.py --source .cache/domestic-domains.conf` 可从锁定源重现内置域名快照。域名源中的 #disabled 行不会变成直连规则，源自带 DNS 地址不写入客户端。
+
+## 保留数据的滚动升级工具
+
+`deploy/upgrade.py` 只面向已授权的现有安装，默认预检，`--apply` 才停服；先推送并在目标主机 pull 精确 commit，再给出角色、commit、arch、uv、components 和 wheel 路径。要求干净的 tracked Git checkout、无安装文件漂移、组件与 wheel/source 一致。按 exit → ingress 运行，并把整个升级进程放进受限 systemd 临时作业（MemoryHigh 640M、MemoryMax 768M、CPUQuota 100%、RuntimeMaxSec 600）。不要在小内存生产机运行完整 ASGI/大规则软件回归。
+
+工具冻结现有服务并备份本次当前状态，迁移后比较身份、密钥和累计统计，复用原恢复/监控并检查角色 ACTIVE 与 API 就绪。失败先停止新版本、保留新状态，再恢复本次备份及旧运行时；不能用旧 wheel 直接打开已迁移的新 DB。不会启用独立观察或告警投递。全量升级后不保留 schema 3 的 API ExecStart/PYTHONPATH 覆盖；Wayvia 反向代理透传完整 Host（含非默认端口），API 仍只监听本机，公网仅公开私人订阅读取路径。
