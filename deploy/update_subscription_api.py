@@ -43,6 +43,29 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def unit_state(unit):
+    result = subprocess.run(
+        [
+            "systemctl",
+            "show",
+            unit,
+            "--property=LoadState,MainPID,ActiveState,SubState,ActiveEnterTimestampMonotonic",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode:
+        # The finished transient observer disappears at boot; never recreate it
+        # just to make a subscription update's snapshot succeed.
+        if (
+            unit == "wayvia-observe-stability-20261020.service"
+            and "LoadState=not-found" in result.stdout
+        ):
+            return "LoadState=not-found\n"
+        raise RuntimeError("Required service state unavailable")
+    return result.stdout
+
+
 def atomic(path, data, mode=0o600):
     temporary = path.with_name(path.name + ".new")
     with temporary.open("xb") as stream:
@@ -68,15 +91,7 @@ def snapshot():
             r[0]
             for r in connection.execute("SELECT version FROM schema_migrations ORDER BY version")
         ]
-    units = {
-        unit: command(
-            "systemctl",
-            "show",
-            unit,
-            "--property=MainPID,ActiveState,SubState,ActiveEnterTimestampMonotonic",
-        )
-        for unit in UNITS
-    }
+    units = {unit: unit_state(unit) for unit in UNITS}
     return {
         "units": units,
         "network_configs": {str(p): sha(p) for p in Path("/etc/wayvia").glob("*") if p.is_file()},
@@ -167,7 +182,13 @@ def update(args):
     shutil.copyfile("/var/lib/wayvia/install-manifest.json", backup / "install-manifest.json")
     release = Path("/opt/wayvia/api-releases") / release_id
     release.parent.mkdir(mode=0o755, exist_ok=True)
-    shutil.copytree(args.release, release, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
+    release.mkdir()
+    shutil.copytree(
+        args.release / "wayvia",
+        release / "wayvia",
+        ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
+    )
+    shutil.copyfile(manifest_path, release / "manifest.json")
     for p in [release, *release.rglob("*")]:
         p.chmod(0o755 if p.is_dir() else 0o644)
     sys.path.insert(0, str(release))
@@ -195,6 +216,7 @@ def update(args):
         "[Service]\nEnvironment=PYTHONPATH="
         + str(release)
         + "\nEnvironment=PYTHONDONTWRITEBYTECODE=1\n"
+        "MemoryHigh=384M\nMemoryMax=512M\n"
         "ExecStart=\nExecStart=/opt/wayvia/.venv/bin/python -m wayvia.client.legacy_api"
         " --host 127.0.0.1 --port 8787 --public-origin " + args.public_origin.rstrip("/") + "\n"
     )
