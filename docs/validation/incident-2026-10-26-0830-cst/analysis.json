@@ -1,0 +1,154 @@
+{
+  "incident_date_beijing": "2026-10-26",
+  "reported_device": "JXY desktop",
+  "user_report": "repeated disconnections then automatic recovery",
+  "read_only": true,
+  "window_utc": [
+    "2026-10-26T00:10:00Z",
+    "2026-10-26T00:50:00Z"
+  ],
+  "production_monitor_counts": {
+    "ali": {
+      "ACTIVE": 147,
+      "DEGRADED": 3
+    },
+    "jp": {
+      "ACTIVE": 150
+    }
+  },
+  "intervals": [
+    {
+      "guard_start_utc": "2026-10-26T00:27:32.249847+00:00",
+      "guard_end_utc": "2026-10-26T00:27:43.792824+00:00",
+      "guard_start_beijing": "2026-10-26T08:27:32.249847+08:00",
+      "guard_end_beijing": "2026-10-26T08:27:43.792824+08:00",
+      "guard_seconds": 11.542977,
+      "ingress_stop_utc": "2026-10-26T00:27:32.239312+00:00",
+      "ingress_start_utc": "2026-10-26T00:27:39.040855+00:00",
+      "ingress_stopped_seconds": 6.801543
+    },
+    {
+      "guard_start_utc": "2026-10-26T00:28:24.306783+00:00",
+      "guard_end_utc": "2026-10-26T00:28:37.916766+00:00",
+      "guard_start_beijing": "2026-10-26T08:28:24.306783+08:00",
+      "guard_end_beijing": "2026-10-26T08:28:37.916766+08:00",
+      "guard_seconds": 13.609983,
+      "ingress_stop_utc": "2026-10-26T00:28:24.296217+00:00",
+      "ingress_start_utc": "2026-10-26T00:28:30.158027+00:00",
+      "ingress_stopped_seconds": 5.86181
+    },
+    {
+      "guard_start_utc": "2026-10-26T00:29:19.757789+00:00",
+      "guard_end_utc": "2026-10-26T00:29:30.106382+00:00",
+      "guard_start_beijing": "2026-10-26T08:29:19.757789+08:00",
+      "guard_end_beijing": "2026-10-26T08:29:30.106382+08:00",
+      "guard_seconds": 10.348593,
+      "ingress_stop_utc": "2026-10-26T00:29:19.750275+00:00",
+      "ingress_start_utc": "2026-10-26T00:29:25.504080+00:00",
+      "ingress_stopped_seconds": 5.753805
+    }
+  ],
+  "guard_sum_seconds": 35.501553,
+  "ingress_stopped_sum_seconds": 18.417158,
+  "duration_warning": "Neither guard intervals nor service stop/start intervals equal precise client outage duration. User traffic may stall before detection and reconnect after readiness.",
+  "layer_durations_in_incident": {
+    "ali": {
+      "access": {
+        "count": 8,
+        "median_ms": 2070.5,
+        "min_ms": 641,
+        "max_ms": 10721
+      },
+      "carrier": {
+        "count": 8,
+        "median_ms": 506.0,
+        "min_ms": 484,
+        "max_ms": 574
+      },
+      "vpn": {
+        "count": 8,
+        "median_ms": 244.5,
+        "min_ms": 233,
+        "max_ms": 264
+      },
+      "egress": {
+        "count": 8,
+        "median_ms": 4388.0,
+        "min_ms": 398,
+        "max_ms": 11753
+      },
+      "dns": {
+        "count": 8,
+        "median_ms": 1079.0,
+        "min_ms": 79,
+        "max_ms": 4816
+      },
+      "ipv6": {
+        "count": 8,
+        "median_ms": 6.0,
+        "min_ms": 6,
+        "max_ms": 6
+      },
+      "return": {
+        "count": 8,
+        "median_ms": 2.0,
+        "min_ms": 2,
+        "max_ms": 3
+      }
+    },
+    "jp": {
+      "access": {
+        "count": 10,
+        "median_ms": 324.5,
+        "min_ms": 303,
+        "max_ms": 493
+      },
+      "carrier": {
+        "count": 10,
+        "median_ms": 338.0,
+        "min_ms": 285,
+        "max_ms": 372
+      },
+      "vpn": {
+        "count": 10,
+        "median_ms": 292.0,
+        "min_ms": 253,
+        "max_ms": 355
+      },
+      "egress": {
+        "count": 10,
+        "median_ms": 369.5,
+        "min_ms": 329,
+        "max_ms": 436
+      },
+      "dns": {
+        "count": 10,
+        "median_ms": 41.0,
+        "min_ms": 34,
+        "max_ms": 55
+      },
+      "ipv6": {
+        "count": 10,
+        "median_ms": 0.0,
+        "min_ms": 0,
+        "max_ms": 1
+      },
+      "return": {
+        "count": 10,
+        "median_ms": 4.0,
+        "min_ms": 3,
+        "max_ms": 5
+      }
+    }
+  },
+  "confirmed": "Repeated ingress VPN egress HTTPS timeouts triggered protective ingress stop and full-chain rebuild; service stops interrupt connections.",
+  "localization": "Ingress-to-egress established VPN data path; concurrent new carrier handshakes and Japan host egress probes succeed. Specific segment and transport root cause remain unproven.",
+  "missing_evidence": [
+    "5s bilateral carrier TCP/ICMP/resource traces were not running after finite observation ended on Oct22",
+    "Japan historical resource series unavailable",
+    "Ali sysstat averages span 600 seconds; cannot prove short-lived bandwidth saturation or lack of peaks",
+    "No JXY client log retained in this investigation"
+  ],
+  "automation": "wayvia-24 stays PAUSED; no restart or extension",
+  "mutations": "none on servers; no fault injection, no reboot, no phone or supplier contact"
+}

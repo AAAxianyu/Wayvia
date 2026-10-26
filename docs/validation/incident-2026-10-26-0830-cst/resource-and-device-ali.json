@@ -1,0 +1,474 @@
+{
+  "sysstat": {
+    "source": "/var/log/sysstat/sa26",
+    "rows": [
+      {
+        "timestamp": {
+          "date": "2026-10-26",
+          "time": "00:00:02",
+          "utc": 1,
+          "interval": 600
+        },
+        "cpu-load": [
+          {
+            "cpu": "all",
+            "user": 6.21,
+            "nice": 0.0,
+            "system": 1.51,
+            "iowait": 0.07,
+            "steal": 0.0,
+            "idle": 92.21
+          }
+        ],
+        "memory": {
+          "memfree": 134248,
+          "avail": 614360,
+          "memused": 744576,
+          "memused-percent": 45.08,
+          "buffers": 47984,
+          "cached": 583320,
+          "commit": 2344288,
+          "commit-percent": 141.92,
+          "active": 413220,
+          "inactive": 838984,
+          "dirty": 604
+        },
+        "queue": {
+          "runq-sz": 0,
+          "plist-sz": 332,
+          "ldavg-1": 0.22,
+          "ldavg-5": 0.18,
+          "ldavg-15": 0.17,
+          "blocked": 0
+        },
+        "network": {
+          "net-dev": [
+            {
+              "iface": "eth0",
+              "rxpck": 3.93,
+              "txpck": 3.91,
+              "rxkB": 1.47,
+              "txkB": 0.76,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            },
+            {
+              "iface": "wayvia-host",
+              "rxpck": 4.06,
+              "txpck": 4.6,
+              "rxkB": 0.76,
+              "txkB": 1.12,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "timestamp": {
+          "date": "2026-10-26",
+          "time": "00:10:02",
+          "utc": 1,
+          "interval": 600
+        },
+        "cpu-load": [
+          {
+            "cpu": "all",
+            "user": 6.31,
+            "nice": 0.0,
+            "system": 1.52,
+            "iowait": 0.1,
+            "steal": 0.0,
+            "idle": 92.07
+          }
+        ],
+        "memory": {
+          "memfree": 141708,
+          "avail": 629940,
+          "memused": 728920,
+          "memused-percent": 44.13,
+          "buffers": 49440,
+          "cached": 589972,
+          "commit": 2344288,
+          "commit-percent": 141.92,
+          "active": 439028,
+          "inactive": 821884,
+          "dirty": 588
+        },
+        "queue": {
+          "runq-sz": 0,
+          "plist-sz": 332,
+          "ldavg-1": 0.22,
+          "ldavg-5": 0.18,
+          "ldavg-15": 0.17,
+          "blocked": 0
+        },
+        "network": {
+          "net-dev": [
+            {
+              "iface": "eth0",
+              "rxpck": 4.07,
+              "txpck": 3.99,
+              "rxkB": 1.46,
+              "txkB": 0.8,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            },
+            {
+              "iface": "wayvia-host",
+              "rxpck": 4.05,
+              "txpck": 4.59,
+              "rxkB": 0.76,
+              "txkB": 1.12,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "timestamp": {
+          "date": "2026-10-26",
+          "time": "00:20:04",
+          "utc": 1,
+          "interval": 602
+        },
+        "cpu-load": [
+          {
+            "cpu": "all",
+            "user": 6.55,
+            "nice": 0.0,
+            "system": 1.6,
+            "iowait": 0.07,
+            "steal": 0.0,
+            "idle": 91.78
+          }
+        ],
+        "memory": {
+          "memfree": 128740,
+          "avail": 622388,
+          "memused": 736456,
+          "memused-percent": 44.58,
+          "buffers": 50888,
+          "cached": 593924,
+          "commit": 2344280,
+          "commit-percent": 141.92,
+          "active": 442828,
+          "inactive": 823624,
+          "dirty": 612
+        },
+        "queue": {
+          "runq-sz": 2,
+          "plist-sz": 332,
+          "ldavg-1": 0.11,
+          "ldavg-5": 0.19,
+          "ldavg-15": 0.18,
+          "blocked": 0
+        },
+        "network": {
+          "net-dev": [
+            {
+              "iface": "eth0",
+              "rxpck": 4.31,
+              "txpck": 4.22,
+              "rxkB": 1.49,
+              "txkB": 0.93,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            },
+            {
+              "iface": "wayvia-host",
+              "rxpck": 4.05,
+              "txpck": 4.57,
+              "rxkB": 0.76,
+              "txkB": 1.12,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "timestamp": {
+          "date": "2026-10-26",
+          "time": "00:30:04",
+          "utc": 1,
+          "interval": 600
+        },
+        "cpu-load": [
+          {
+            "cpu": "all",
+            "user": 8.2,
+            "nice": 0.39,
+            "system": 2.68,
+            "iowait": 0.44,
+            "steal": 0.0,
+            "idle": 88.3
+          }
+        ],
+        "memory": {
+          "memfree": 132456,
+          "avail": 618888,
+          "memused": 738772,
+          "memused-percent": 44.73,
+          "buffers": 10936,
+          "cached": 626644,
+          "commit": 2322748,
+          "commit-percent": 140.62,
+          "active": 807412,
+          "inactive": 448868,
+          "dirty": 464
+        },
+        "queue": {
+          "runq-sz": 0,
+          "plist-sz": 332,
+          "ldavg-1": 0.35,
+          "ldavg-5": 0.29,
+          "ldavg-15": 0.21,
+          "blocked": 0
+        },
+        "network": {
+          "net-dev": [
+            {
+              "iface": "eth0",
+              "rxpck": 105.14,
+              "txpck": 94.04,
+              "rxkB": 84.17,
+              "txkB": 73.84,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            },
+            {
+              "iface": "wayvia-host",
+              "rxpck": 93.46,
+              "txpck": 84.12,
+              "rxkB": 68.94,
+              "txkB": 73.12,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.01
+            }
+          ]
+        }
+      },
+      {
+        "timestamp": {
+          "date": "2026-10-26",
+          "time": "00:40:05",
+          "utc": 1,
+          "interval": 601
+        },
+        "cpu-load": [
+          {
+            "cpu": "all",
+            "user": 6.56,
+            "nice": 0.0,
+            "system": 1.89,
+            "iowait": 0.09,
+            "steal": 0.0,
+            "idle": 91.47
+          }
+        ],
+        "memory": {
+          "memfree": 119036,
+          "avail": 621896,
+          "memused": 736244,
+          "memused-percent": 44.57,
+          "buffers": 13448,
+          "cached": 640556,
+          "commit": 2335424,
+          "commit-percent": 141.39,
+          "active": 816736,
+          "inactive": 457284,
+          "dirty": 592
+        },
+        "queue": {
+          "runq-sz": 0,
+          "plist-sz": 331,
+          "ldavg-1": 0.34,
+          "ldavg-5": 0.26,
+          "ldavg-15": 0.21,
+          "blocked": 0
+        },
+        "network": {
+          "net-dev": [
+            {
+              "iface": "eth0",
+              "rxpck": 72.33,
+              "txpck": 52.85,
+              "rxkB": 39.39,
+              "txkB": 39.26,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            },
+            {
+              "iface": "wayvia-host",
+              "rxpck": 49.09,
+              "txpck": 43.79,
+              "rxkB": 37.48,
+              "txkB": 36.42,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            }
+          ]
+        }
+      },
+      {
+        "timestamp": {
+          "date": "2026-10-26",
+          "time": "00:50:05",
+          "utc": 1,
+          "interval": 600
+        },
+        "cpu-load": [
+          {
+            "cpu": "all",
+            "user": 6.53,
+            "nice": 0.0,
+            "system": 1.7,
+            "iowait": 0.07,
+            "steal": 0.0,
+            "idle": 91.69
+          }
+        ],
+        "memory": {
+          "memfree": 125372,
+          "avail": 625844,
+          "memused": 732288,
+          "memused-percent": 44.33,
+          "buffers": 15460,
+          "cached": 636152,
+          "commit": 2335424,
+          "commit-percent": 141.39,
+          "active": 743460,
+          "inactive": 528192,
+          "dirty": 568
+        },
+        "queue": {
+          "runq-sz": 0,
+          "plist-sz": 331,
+          "ldavg-1": 0.11,
+          "ldavg-5": 0.14,
+          "ldavg-15": 0.16,
+          "blocked": 0
+        },
+        "network": {
+          "net-dev": [
+            {
+              "iface": "eth0",
+              "rxpck": 26.18,
+              "txpck": 21.44,
+              "rxkB": 12.77,
+              "txkB": 12.13,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            },
+            {
+              "iface": "wayvia-host",
+              "rxpck": 20.37,
+              "txpck": 18.93,
+              "rxkB": 11.36,
+              "txkB": 11.62,
+              "rxcmp": 0.0,
+              "txcmp": 0.0,
+              "rxmcst": 0.0,
+              "ifutil-percent": 0.0
+            }
+          ]
+        }
+      }
+    ],
+    "record_count": 60,
+    "first_timestamp": {
+      "date": "2026-10-25",
+      "time": "16:10:06",
+      "utc": 1,
+      "interval": 601
+    },
+    "last_timestamp": {
+      "date": "2026-10-26",
+      "time": "02:00:08",
+      "utc": 1,
+      "interval": 599
+    },
+    "selection_scope": "00:00 through 01:00 in sadf timestamp timezone; inspect utc field",
+    "redaction": "Only physical eth0 and Wayvia interface retained; unrelated host interfaces omitted."
+  },
+  "JXY": [
+    {
+      "name": "JXY",
+      "platform": "desktop",
+      "status": "active",
+      "desired_action": null,
+      "updated_at_utc": "2026-10-21T10:55:06.806937+00:00",
+      "usage_now": {
+        "active_connections": 1,
+        "last_used_at": 1792980291.7963626,
+        "observed_at": 1792980336.7975695
+      },
+      "audit_in_window": [],
+      "subscription_counts": {
+        "total": 1,
+        "revoked": 0,
+        "earliest_expiry": 1824115028.0838969
+      }
+    }
+  ],
+  "maintenance": [
+    {
+      "source": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 298,
+      "timestamp_server_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "categories": [
+        "upgrade_start"
+      ]
+    },
+    {
+      "source": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 299,
+      "timestamp_server_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "categories": []
+    },
+    {
+      "source": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 300,
+      "timestamp_server_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "categories": []
+    },
+    {
+      "source": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 301,
+      "timestamp_server_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "categories": []
+    }
+  ]
+}

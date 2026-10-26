@@ -1,0 +1,43 @@
+{
+  "validated_at_utc": "2026-10-26T02:14:18.979048+00:00",
+  "checks": [
+    "six evidence JSON documents parse",
+    "ali monitor count and states agree",
+    "jp monitor count and states agree",
+    "three ingress failures, all dual endpoint HTTP_TIMEOUT",
+    "Japan no failed checks or fallback",
+    "interval 1 duration arithmetic",
+    "interval 1 timezone conversion",
+    "interval 1 monitor transitions present",
+    "interval 1 ingress service stop/start present",
+    "interval 1 request timeout precedes protection",
+    "interval 2 duration arithmetic",
+    "interval 2 timezone conversion",
+    "interval 2 monitor transitions present",
+    "interval 2 ingress service stop/start present",
+    "interval 2 request timeout precedes protection",
+    "interval 3 duration arithmetic",
+    "interval 3 timezone conversion",
+    "interval 3 monitor transitions present",
+    "interval 3 ingress service stop/start present",
+    "interval 3 request timeout precedes protection",
+    "aggregate durations agree",
+    "JXY active without window mutations or revoked subscriptions",
+    "evidence contains no raw secret/plan/response fields or subscription URLs",
+    "incident README evidence links resolve",
+    "compatibility entry agrees with evidence",
+    "tracked changes limited to evidence indexes and issue notes"
+  ],
+  "result": "passed",
+  "source_changes": false,
+  "software_gates": "Not rerun: this change only adds incident evidence and documentation; previous software results remain historical.",
+  "fault_and_reboot_tests": "deferred_by_user_not_run",
+  "evidence_sha256": {
+    "analysis.json": "073c1d8c071632502bd6b47178da4638c597408a0522b52064327f21dc89b656",
+    "details-ali.json": "6fd7d3a44835e2e41077af02e548583e6a1d47f8ceb9782b0e4a10c26d000258",
+    "details-jp.json": "234f49505d3833563753de50295f809fc2f1b2d8e4fa78cb1c1b2d1c310aed17",
+    "monitor-ali.json": "da3e7f6267e8d98e50434942109c4d8808c79f2a2daecc6acb80806aa373f9f2",
+    "monitor-jp.json": "bbcd12d18fdecbdf75042eb3bd3c2d76de06272aff43ec3cbda9e784b22063a5",
+    "resource-and-device-ali.json": "1d2abc20460864702638ca1decee98292727ee276d51e77dac1708c692e66cb3"
+  }
+}

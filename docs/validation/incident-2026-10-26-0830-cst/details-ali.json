@@ -1,0 +1,2791 @@
+{
+  "window_utc": [
+    "2026-10-26T00:10:00Z",
+    "2026-10-26T00:50:00Z"
+  ],
+  "service_events": [
+    {
+      "at": "2026-10-26T00:27:32.239312+00:00",
+      "unit": "wayvia-ingress.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:32.255864+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "timeout",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:32.295669+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "failed_unit",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:32.296192+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "failed_unit",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:33.965088+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "connection_reset",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:33.971607+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "process_restart",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:34.004816+00:00",
+      "unit": "wayvia-carrier.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:34.015274+00:00",
+      "unit": "wayvia-carrier.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:35.973926+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "connection_refused",
+      "phase_tokens": [
+        "connect"
+      ]
+    },
+    {
+      "at": "2026-10-26T00:27:35.973926+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "process_restart",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:38.047027+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:38.058958+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:38.551172+00:00",
+      "unit": "wayvia-bridge.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:38.554955+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_ready",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:38.566054+00:00",
+      "unit": "wayvia-bridge.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:27:39.040855+00:00",
+      "unit": "wayvia-ingress.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:24.296217+00:00",
+      "unit": "wayvia-ingress.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:24.312690+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "timeout",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:24.348636+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "failed_unit",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:24.349095+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "failed_unit",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:25.541002+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "connection_reset",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:25.548107+00:00",
+      "unit": "wayvia-carrier.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:25.549472+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "process_restart",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:25.557197+00:00",
+      "unit": "wayvia-carrier.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:27.570784+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "connection_reset",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:27.570784+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "process_restart",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:29.207878+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:29.223026+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:29.603183+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_ready",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:29.697485+00:00",
+      "unit": "wayvia-bridge.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:29.708365+00:00",
+      "unit": "wayvia-bridge.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:28:30.158027+00:00",
+      "unit": "wayvia-ingress.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:19.750275+00:00",
+      "unit": "wayvia-ingress.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:19.763253+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "timeout",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:19.805848+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "failed_unit",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:19.806388+00:00",
+      "unit": "wayvia-monitor.service",
+      "category": "failed_unit",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:20.992407+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "connection_reset",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:20.998833+00:00",
+      "unit": "wayvia-carrier.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:20.999529+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "process_restart",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:21.006742+00:00",
+      "unit": "wayvia-carrier.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:23.024673+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "connection_reset",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:23.024673+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "process_restart",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:24.643214+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:24.655243+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:25.009893+00:00",
+      "unit": "wayvia-vpn-client.service",
+      "category": "vpn_ready",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:25.069866+00:00",
+      "unit": "wayvia-bridge.service",
+      "category": "service_stopped",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:25.081464+00:00",
+      "unit": "wayvia-bridge.service",
+      "category": "service_started",
+      "phase_tokens": []
+    },
+    {
+      "at": "2026-10-26T00:29:25.504080+00:00",
+      "unit": "wayvia-ingress.service",
+      "category": "service_started",
+      "phase_tokens": []
+    }
+  ],
+  "journal_counts": {
+    "wayvia-monitor.service": 753,
+    "wayvia-vpn-client.service": 968,
+    "wayvia-ingress.service": 13,
+    "wayvia-carrier.service": 18,
+    "wayvia-usage.service": 3,
+    "wayvia-bridge.service": 13
+  },
+  "monitor_records": [
+    {
+      "at": "2026-10-26T00:24:11.640686+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 171,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:10.119089+00:00",
+          "duration_ms": 399
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:24:10.518238+00:00",
+          "duration_ms": 422
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:24:10.940378+00:00",
+          "duration_ms": 236
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 158,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:11.176263+00:00",
+          "duration_ms": 385
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:24:11.561359+00:00",
+          "duration_ms": 71
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:24:11.632023+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:24:11.637842+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:24:27.716831+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 170,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:26.125262+00:00",
+          "duration_ms": 416
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:24:26.541105+00:00",
+          "duration_ms": 443
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:24:26.983707+00:00",
+          "duration_ms": 242
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 163,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:27.226060+00:00",
+          "duration_ms": 399
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:24:27.625272+00:00",
+          "duration_ms": 82
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:24:27.707567+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:24:27.714010+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:24:43.817098+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 178,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:42.147679+00:00",
+          "duration_ms": 437
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:24:42.584743+00:00",
+          "duration_ms": 475
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:24:43.060116+00:00",
+          "duration_ms": 252
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 162,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:43.312100+00:00",
+          "duration_ms": 425
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:24:43.736736+00:00",
+          "duration_ms": 72
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:24:43.808362+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:24:43.814799+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:24:59.697227+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 169,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:58.124504+00:00",
+          "duration_ms": 400
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:24:58.524599+00:00",
+          "duration_ms": 447
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:24:58.971983+00:00",
+          "duration_ms": 236
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 164,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:24:59.207629+00:00",
+          "duration_ms": 406
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:24:59.613955+00:00",
+          "duration_ms": 73
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:24:59.687376+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:24:59.694475+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:25:15.698392+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 172,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:25:14.116553+00:00",
+          "duration_ms": 400
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:25:14.516500+00:00",
+          "duration_ms": 445
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:25:14.961842+00:00",
+          "duration_ms": 244
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 186,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:25:15.206195+00:00",
+          "duration_ms": 412
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:25:15.618277+00:00",
+          "duration_ms": 71
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:25:15.689177+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:25:15.696001+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:25:30.886890+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 175,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:25:29.217465+00:00",
+          "duration_ms": 421
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:25:29.638307+00:00",
+          "duration_ms": 455
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:25:30.093526+00:00",
+          "duration_ms": 253
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 171,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:25:30.346976+00:00",
+          "duration_ms": 459
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:25:30.806353+00:00",
+          "duration_ms": 71
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:25:30.877448+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:25:30.884222+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:25:46.801170+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 173,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:25:45.128976+00:00",
+          "duration_ms": 416
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:25:45.544781+00:00",
+          "duration_ms": 466
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:25:46.010803+00:00",
+          "duration_ms": 247
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 160,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:25:46.258215+00:00",
+          "duration_ms": 461
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:25:46.718738+00:00",
+          "duration_ms": 73
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:25:46.791314+00:00",
+          "duration_ms": 8
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:25:46.798974+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:26:01.811052+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 169,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:00.259291+00:00",
+          "duration_ms": 411
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:26:00.670793+00:00",
+          "duration_ms": 433
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:26:01.103608+00:00",
+          "duration_ms": 237
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 162,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:01.340934+00:00",
+          "duration_ms": 386
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:26:01.727405+00:00",
+          "duration_ms": 75
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:26:01.802403+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:26:01.808215+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:26:17.701202+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 168,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:16.120601+00:00",
+          "duration_ms": 397
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:26:16.518063+00:00",
+          "duration_ms": 457
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:26:16.975281+00:00",
+          "duration_ms": 237
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 174,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:17.212268+00:00",
+          "duration_ms": 406
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:26:17.618668+00:00",
+          "duration_ms": 74
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:26:17.692221+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:26:17.698144+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:26:33.675307+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 170,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:32.119768+00:00",
+          "duration_ms": 395
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:26:32.515073+00:00",
+          "duration_ms": 445
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:26:32.960538+00:00",
+          "duration_ms": 233
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 160,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:33.193791+00:00",
+          "duration_ms": 396
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:26:33.589388+00:00",
+          "duration_ms": 76
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:26:33.665030+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:26:33.671295+00:00",
+          "duration_ms": 4
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:26:49.659831+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 165,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:48.118876+00:00",
+          "duration_ms": 385
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:26:48.504146+00:00",
+          "duration_ms": 439
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:26:48.942897+00:00",
+          "duration_ms": 237
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 161,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:26:49.179624+00:00",
+          "duration_ms": 397
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:26:49.576567+00:00",
+          "duration_ms": 74
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:26:49.651080+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:26:49.657489+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:27:32.249847+00:00",
+      "state": "DEGRADED",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5759,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 4690,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:27:04.129882+00:00",
+          "duration_ms": 10721
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:27:14.851232+00:00",
+          "duration_ms": 493
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:27:15.344351+00:00",
+          "duration_ms": 264
+        },
+        {
+          "layer": "egress",
+          "status": "failed",
+          "kind": "http",
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5758,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5746,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ],
+          "observed_at": "2026-10-26T00:27:15.608192+00:00",
+          "duration_ms": 11753
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:27:27.361497+00:00",
+          "duration_ms": 4816
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:27:32.177411+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:27:32.183245+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:27:43.792824+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 1087,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:27:39.058046+00:00",
+          "duration_ms": 1453
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:27:40.510941+00:00",
+          "duration_ms": 508
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:27:41.018868+00:00",
+          "duration_ms": 250
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 1848,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:27:41.269432+00:00",
+          "duration_ms": 2101
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:27:43.370601+00:00",
+          "duration_ms": 408
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:27:43.778571+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:27:43.785018+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:27:51.247585+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 1619,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:27:48.141808+00:00",
+          "duration_ms": 1859
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:27:50.000867+00:00",
+          "duration_ms": 504
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:27:50.505260+00:00",
+          "duration_ms": 257
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 170,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:27:50.762362+00:00",
+          "duration_ms": 398
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:27:51.159960+00:00",
+          "duration_ms": 79
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:27:51.238961+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:27:51.244891+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:28:24.306783+00:00",
+      "state": "DEGRADED",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 4272,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:04.120580+00:00",
+          "duration_ms": 4503
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:28:08.624074+00:00",
+          "duration_ms": 551
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:28:09.174600+00:00",
+          "duration_ms": 239
+        },
+        {
+          "layer": "egress",
+          "status": "failed",
+          "kind": "http",
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5758,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5751,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:09.413527+00:00",
+          "duration_ms": 11750
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:28:21.164008+00:00",
+          "duration_ms": 3098
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:28:24.262304+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:28:24.268449+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:28:37.916766+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 399,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:30.169035+00:00",
+          "duration_ms": 641
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:28:30.810462+00:00",
+          "duration_ms": 574
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:28:31.384728+00:00",
+          "duration_ms": 257
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 4562,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:31.641818+00:00",
+          "duration_ms": 4805
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:28:36.447125+00:00",
+          "duration_ms": 1456
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:28:37.903202+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:28:37.909191+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:28:48.934140+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 2045,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:40.124053+00:00",
+          "duration_ms": 2282
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:28:42.406288+00:00",
+          "duration_ms": 484
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:28:42.890161+00:00",
+          "duration_ms": 237
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 3735,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:43.127622+00:00",
+          "duration_ms": 3971
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:28:47.098287+00:00",
+          "duration_ms": 1828
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:28:48.925975+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:28:48.931818+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:29:19.757789+00:00",
+      "state": "DEGRADED",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5761,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 4523,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:28:56.119798+00:00",
+          "duration_ms": 10521
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:29:06.641050+00:00",
+          "duration_ms": 558
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:29:07.198856+00:00",
+          "duration_ms": 233
+        },
+        {
+          "layer": "egress",
+          "status": "failed",
+          "kind": "http",
+          "error": "HTTP_TIMEOUT",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 5758,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            },
+            {
+              "endpoint": 1,
+              "duration_ms": 5745,
+              "curl_code": null,
+              "http_status": null,
+              "result": "HTTP_TIMEOUT"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:07.432118+00:00",
+          "duration_ms": 11737
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:29:19.169032+00:00",
+          "duration_ms": 549
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:29:19.718187+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:29:19.724111+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:29:30.106382+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 687,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:25.513560+00:00",
+          "duration_ms": 943
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:29:26.456990+00:00",
+          "duration_ms": 491
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:29:26.947899+00:00",
+          "duration_ms": 237
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 1964,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:27.185238+00:00",
+          "duration_ms": 2203
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:29:29.388127+00:00",
+          "duration_ms": 702
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:29:30.089828+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:29:30.096262+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:29:41.853000+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 3296,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:35.119143+00:00",
+          "duration_ms": 3522
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:29:38.641425+00:00",
+          "duration_ms": 535
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:29:39.176696+00:00",
+          "duration_ms": 238
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 1068,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:39.414283+00:00",
+          "duration_ms": 1304
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:29:40.718398+00:00",
+          "duration_ms": 1126
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:29:41.844258+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:29:41.850280+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:29:58.116653+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 3034,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:51.137423+00:00",
+          "duration_ms": 3261
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:29:54.398648+00:00",
+          "duration_ms": 530
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:29:54.928612+00:00",
+          "duration_ms": 234
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 2115,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:29:55.162213+00:00",
+          "duration_ms": 2337
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:29:57.499368+00:00",
+          "duration_ms": 609
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:29:58.108284+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:29:58.114238+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:30:12.413560+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 2720,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:07.123974+00:00",
+          "duration_ms": 2979
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:30:10.102711+00:00",
+          "duration_ms": 557
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:30:10.659364+00:00",
+          "duration_ms": 248
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 889,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:10.907611+00:00",
+          "duration_ms": 1129
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:30:12.036411+00:00",
+          "duration_ms": 368
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:30:12.404453+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:30:12.411266+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:30:25.641618+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 729,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:23.126532+00:00",
+          "duration_ms": 982
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:30:24.108053+00:00",
+          "duration_ms": 529
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:30:24.637147+00:00",
+          "duration_ms": 230
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 333,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:24.867235+00:00",
+          "duration_ms": 574
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:30:25.441744+00:00",
+          "duration_ms": 187
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:30:25.629123+00:00",
+          "duration_ms": 9
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:30:25.638552+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:30:41.394159+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 418,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:39.129511+00:00",
+          "duration_ms": 658
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:30:39.787603+00:00",
+          "duration_ms": 566
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:30:40.354034+00:00",
+          "duration_ms": 247
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 411,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:40.600890+00:00",
+          "duration_ms": 660
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:30:41.261237+00:00",
+          "duration_ms": 124
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:30:41.385205+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:30:41.391367+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:30:57.024143+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 397,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:55.124735+00:00",
+          "duration_ms": 631
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:30:55.756136+00:00",
+          "duration_ms": 496
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:30:56.252314+00:00",
+          "duration_ms": 260
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 188,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:30:56.512132+00:00",
+          "duration_ms": 424
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:30:56.935751+00:00",
+          "duration_ms": 79
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:30:57.014883+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:30:57.021534+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:31:13.312711+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 771,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:11.123897+00:00",
+          "duration_ms": 997
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:31:12.121295+00:00",
+          "duration_ms": 484
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:31:12.605259+00:00",
+          "duration_ms": 230
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 178,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:12.835101+00:00",
+          "duration_ms": 406
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:31:13.241522+00:00",
+          "duration_ms": 63
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:31:13.304598+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:31:13.310351+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:31:27.746457+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 190,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:26.207564+00:00",
+          "duration_ms": 413
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:31:26.620280+00:00",
+          "duration_ms": 424
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:31:27.043833+00:00",
+          "duration_ms": 239
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 166,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:27.282366+00:00",
+          "duration_ms": 384
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:31:27.666575+00:00",
+          "duration_ms": 72
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:31:27.738492+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:31:27.744086+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:31:43.671001+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 179,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:42.119292+00:00",
+          "duration_ms": 405
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:31:42.524269+00:00",
+          "duration_ms": 428
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:31:42.952368+00:00",
+          "duration_ms": 231
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 171,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:43.183045+00:00",
+          "duration_ms": 406
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:31:43.589525+00:00",
+          "duration_ms": 73
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:31:43.662458+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:31:43.668501+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:31:59.810627+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 189,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:58.135096+00:00",
+          "duration_ms": 448
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:31:58.583430+00:00",
+          "duration_ms": 461
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:31:59.044071+00:00",
+          "duration_ms": 241
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 176,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:31:59.285366+00:00",
+          "duration_ms": 438
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:31:59.723648+00:00",
+          "duration_ms": 78
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:31:59.801353+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:31:59.807989+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:32:15.770889+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 186,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:32:14.119233+00:00",
+          "duration_ms": 418
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:32:14.537309+00:00",
+          "duration_ms": 471
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:32:15.007900+00:00",
+          "duration_ms": 251
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 174,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:32:15.258802+00:00",
+          "duration_ms": 424
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:32:15.683179+00:00",
+          "duration_ms": 77
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:32:15.760385+00:00",
+          "duration_ms": 7
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:32:15.767473+00:00",
+          "duration_ms": 3
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:32:31.835476+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 186,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:32:30.180887+00:00",
+          "duration_ms": 449
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:32:30.630212+00:00",
+          "duration_ms": 476
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:32:31.106466+00:00",
+          "duration_ms": 235
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 174,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:32:31.341134+00:00",
+          "duration_ms": 412
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:32:31.753456+00:00",
+          "duration_ms": 74
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:32:31.827016+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:32:31.832880+00:00",
+          "duration_ms": 2
+        }
+      ]
+    },
+    {
+      "at": "2026-10-26T00:32:47.736065+00:00",
+      "state": "ACTIVE",
+      "generation": "6f80275960ed46238f51691722e918b5",
+      "evidence": [
+        {
+          "layer": "access",
+          "status": "healthy",
+          "kind": "trojan_http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 181,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:32:46.131603+00:00",
+          "duration_ms": 416
+        },
+        {
+          "layer": "carrier",
+          "status": "healthy",
+          "kind": "vpn_handshake",
+          "observed_at": "2026-10-26T00:32:46.547947+00:00",
+          "duration_ms": 446
+        },
+        {
+          "layer": "vpn",
+          "status": "healthy",
+          "kind": "vpn_session",
+          "observed_at": "2026-10-26T00:32:46.994172+00:00",
+          "duration_ms": 246
+        },
+        {
+          "layer": "egress",
+          "status": "healthy",
+          "kind": "http",
+          "attempts": [
+            {
+              "endpoint": 0,
+              "duration_ms": 174,
+              "curl_code": 0,
+              "http_status": 200,
+              "result": "healthy"
+            }
+          ],
+          "observed_at": "2026-10-26T00:32:47.240418+00:00",
+          "duration_ms": 423
+        },
+        {
+          "layer": "dns",
+          "status": "healthy",
+          "kind": "dns",
+          "observed_at": "2026-10-26T00:32:47.663565+00:00",
+          "duration_ms": 64
+        },
+        {
+          "layer": "ipv6",
+          "status": "healthy",
+          "kind": "ipv6_guard",
+          "observed_at": "2026-10-26T00:32:47.727343+00:00",
+          "duration_ms": 6
+        },
+        {
+          "layer": "return",
+          "status": "healthy",
+          "kind": "route",
+          "observed_at": "2026-10-26T00:32:47.733614+00:00",
+          "duration_ms": 2
+        }
+      ]
+    }
+  ],
+  "kernel_events": [],
+  "current_unit_properties": {
+    "wayvia-agent": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-24 06:06:13 CST",
+      "ActiveState": "active"
+    },
+    "wayvia-api": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Sat 2026-10-24 06:06:13 CST",
+      "ActiveState": "active"
+    },
+    "wayvia-ingress": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Mon 2026-10-26 08:29:25 CST",
+      "ActiveState": "active"
+    },
+    "wayvia-vpn-client": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "Mon 2026-10-26 08:29:24 CST",
+      "ActiveState": "active"
+    },
+    "wayvia-vpn-server": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "",
+      "ActiveState": "inactive"
+    },
+    "wayvia-exit": {
+      "Result": "success",
+      "NRestarts": "0",
+      "ExecMainStartTimestamp": "",
+      "ActiveState": "inactive"
+    }
+  },
+  "historical_resource_files": [
+    "/var/log/sysstat/sa26"
+  ],
+  "maintenance_events": [
+    {
+      "file": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 298,
+      "timestamp_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "category": "upgrade_start"
+    },
+    {
+      "file": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 299,
+      "timestamp_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "category": "maintenance_record"
+    },
+    {
+      "file": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 300,
+      "timestamp_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "category": "maintenance_record"
+    },
+    {
+      "file": "/var/log/unattended-upgrades/unattended-upgrades.log",
+      "line": 301,
+      "timestamp_local": [
+        "2026-10-26 08:20:55"
+      ],
+      "category": "maintenance_record"
+    }
+  ],
+  "uptime_seconds": 9375151.8
+}

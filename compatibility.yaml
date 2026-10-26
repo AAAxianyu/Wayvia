@@ -768,3 +768,24 @@ windows_campus_observation_2026_10_20:
   fault_reboot_tests: deferred_by_user
   software_gates: prior_369_check_demo_10_configs_unchanged_source_not_rerun_for_documentation
   evidence: docs/validation/windows-campus-2026-10-20/README.md
+
+incident_2026_10_26_0830_cst:
+  scope: read_only_production_journal_and_existing_resource_history
+  reported_client: JXY_desktop_repeated_disconnect_then_self_recovery
+  window_utc: 2026-10-26T00:10:00Z_to_00:50:00Z
+  monitor_counts:
+    ali: {ACTIVE: 147, DEGRADED: 3}
+    jp: {ACTIVE: 150}
+  confirmed_trigger: ingress_egress_HTTP_TIMEOUT_then_protect_and_full_chain_rebuild
+  guard_seconds: [11.542977, 13.609983, 10.348593]
+  ingress_stop_start_seconds: [6.801543, 5.861810, 5.753805]
+  client_outage_duration: not_exactly_measured
+  japan_external_HTTP_DNS: healthy_during_window
+  JXY_account: active_no_same_window_revoke_unexpired_subscription
+  initial_timeout_root_cause: unresolved_established_carrier_VPN_data_path
+  evidence_limits: no_concurrent_bilateral_TCP_ICMP_no_client_log_600_second_resource_averages
+  production_changes: none
+  observation_and_heartbeat: remain_finished_and_paused
+  source_changes: none_existing_software_gates_not_rerun_for_evidence_only
+  fault_and_reboot_tests: deferred_by_user
+  evidence: docs/validation/incident-2026-10-26-0830-cst/README.md
