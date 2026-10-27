@@ -1,0 +1,47 @@
+{
+  "scope": "planning_only_existing_software_baseline",
+  "recorded_at": "2026-10-27T08:12:25.717597+00:00",
+  "base_commit": "c98141f83668182733e0989a7b0d54a461adff39",
+  "checks": {
+    "make_check": {
+      "exit_code": 0,
+      "passed": 544,
+      "existing_warnings": 3
+    },
+    "make_demo": {
+      "exit_code": 0,
+      "mode": "simulated"
+    },
+    "make_test_configs": {
+      "exit_code": 0,
+      "artifacts": 11
+    },
+    "make_test_lab": {
+      "exit_code": null,
+      "status": "not_run_fault_testing_deferred"
+    }
+  },
+  "new_feature_implementation": "not_started",
+  "new_feature_acceptance": "not_run",
+  "production_actions": "none",
+  "document_checks": {
+    "markdown_files": 2,
+    "local_links": 31,
+    "missing_links": 0,
+    "balanced_fences": true,
+    "trailing_whitespace": false,
+    "yaml_parse_and_unique_keys": "passed",
+    "git_diff_check": "passed"
+  },
+  "source_preservation": {
+    "files_compared": 135,
+    "changed_or_added": 0,
+    "previous_latest_config_report_preserved": true
+  },
+  "evidence_sha256": {
+    "test-configs.log": "feb46794e6fac5ab13cc2e1f28f81fc1f0feefd8902585f3e7f9a26cbb89616a",
+    "demo.log": "12fdb1e0fa81f431d8232b89fab32f505bbb6425efa7fd3608e0d1dc462fe2b3",
+    "check.log": "60434346d7432ac2c26e641246b9676fe3f525f22afebba82692fed0898c164a",
+    "config-result.json": "dca9a0153991ba901c11d48f9fb814436aecc208bdd3dd19fe4f7292563584ff"
+  }
+}

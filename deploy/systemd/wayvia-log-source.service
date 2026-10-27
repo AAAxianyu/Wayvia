@@ -1,0 +1,25 @@
+[Unit]
+Description=Wayvia passive allowlisted system journal projection
+ConditionPathExists=/var/lib/wayvia-observer/policy.json
+ConditionPathExists=/etc/wayvia/log-source.env
+
+[Service]
+Type=simple
+User=wayvia-observer
+Group=wayvia-observer
+SupplementaryGroups=systemd-journal
+Slice=wayvia-observation.slice
+EnvironmentFile=/etc/wayvia/log-source.env
+ExecStart=/opt/wayvia/.venv/bin/wayvia logs source /var/lib/wayvia-observer ${WAYVIA_LOG_HOST} ${WAYVIA_LOG_ROLE}
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/wayvia-observer
+RestrictAddressFamilies=AF_UNIX
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

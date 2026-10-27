@@ -1,0 +1,8 @@
+[Unit]
+Description=Wayvia passive observation and private administrator resource budget
+
+[Slice]
+MemoryHigh=192M
+MemoryMax=256M
+CPUQuota=25%
+TasksMax=96

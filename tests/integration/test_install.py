@@ -123,6 +123,11 @@ def inputs(tmp_path):
     (source / "pyproject.toml").write_text('[project]\nname = "wayvia"\nversion = "0.1.0"\n')
     (source / "uv.lock").write_text("version = 1\n")
     for unit in (
+        "wayvia-observation.slice",
+        "wayvia-log.service",
+        "wayvia-log-source.service",
+        "wayvia-log-core.service",
+        "wayvia-admin.service",
         "wayvia-agent.service",
         "wayvia-recover.service",
         "wayvia-monitor.service",
@@ -201,6 +206,10 @@ def test_nonprivileged_stage_is_complete_inactive_and_has_restricted_permissions
     assert manifest["wheel"] == "/opt/wayvia/wayvia-0.1.0-py3-none-any.whl"
     assert (stage / "opt/wayvia/source/uv.lock").is_file()
     assert not (stage / "opt/wayvia/.venv").exists()
+    assert (stage / "etc/systemd/system/wayvia-admin.service").is_file()
+    assert (stage / "etc/systemd/system/wayvia-observation.slice").is_file()
+    assert not (stage / "var/lib/wayvia-observer/policy.json").exists()
+    assert not (stage / "var/lib/wayvia-admin/admin.db").exists()
 
 
 def test_strict_umask_keeps_public_runtime_parent_and_private_state_distinct(tmp_path, inputs):

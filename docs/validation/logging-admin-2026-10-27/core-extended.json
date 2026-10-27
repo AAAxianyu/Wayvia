@@ -1,0 +1,78 @@
+{
+  "scope": "isolated continuous native API metadata normal-path only",
+  "continuous_identity_and_destination": "passed",
+  "udp_identity_and_destination": "passed",
+  "long_connection_interval_updates": "passed",
+  "ip_only_remains_no_domain": "passed",
+  "old_usage_snapshot_still_works": "passed",
+  "events": 155,
+  "core": "sing-box 1.14.3",
+  "unauthenticated_rejected": true,
+  "devices": {
+    "phone": {
+      "attributed": true,
+      "online_observed": true,
+      "closed_observed": true,
+      "upload_bytes": 1308,
+      "download_bytes": 34539315
+    },
+    "desktop": {
+      "attributed": true,
+      "online_observed": true,
+      "closed_observed": true,
+      "upload_bytes": 78,
+      "download_bytes": 65651
+    }
+  },
+  "normal_path_comparison": {
+    "baseline": [
+      {
+        "requests": 20,
+        "p95_established_response_ms": 25.802,
+        "median_effective_bytes_per_second": 3776858.8799203094,
+        "bulk_bytes": 33554432,
+        "bulk_bytes_per_second": 217462294.23201555
+      },
+      {
+        "requests": 20,
+        "p95_established_response_ms": 15.697,
+        "median_effective_bytes_per_second": 16850334.57704352,
+        "bulk_bytes": 33554432,
+        "bulk_bytes_per_second": 1187473263.2622006
+      },
+      {
+        "requests": 20,
+        "p95_established_response_ms": 5.077,
+        "median_effective_bytes_per_second": 15971326.001394931,
+        "bulk_bytes": 33554432,
+        "bulk_bytes_per_second": 776938779.2905437
+      }
+    ],
+    "enabled": [
+      {
+        "requests": 20,
+        "p95_established_response_ms": 5.0169999999999995,
+        "median_effective_bytes_per_second": 15543509.557485707,
+        "bulk_bytes": 33554432,
+        "bulk_bytes_per_second": 732853536.0153759
+      },
+      {
+        "requests": 20,
+        "p95_established_response_ms": 5.339,
+        "median_effective_bytes_per_second": 13826830.52121444,
+        "bulk_bytes": 33554432,
+        "bulk_bytes_per_second": 959218775.9069209
+      },
+      {
+        "requests": 20,
+        "p95_established_response_ms": 8.693,
+        "median_effective_bytes_per_second": 15617446.31289995,
+        "bulk_bytes": 33554432,
+        "bulk_bytes_per_second": 1222339149.7577503
+      }
+    ],
+    "p95_delta_ms": -17.109,
+    "throughput_ratio": 1.2346130756696492,
+    "passed": true
+  }
+}

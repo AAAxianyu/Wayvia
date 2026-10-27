@@ -1,0 +1,8 @@
+{"normal_path_comparison": {"baseline": [{"requests": 20, "p95_established_response_ms": 8.529, "median_effective_bytes_per_second": 16646204.14112464}, {"requests": 20, "p95_established_response_ms": 5.0200000000000005, "median_effective_bytes_per_second": 15293324.22446372}, {"requests": 20, "p95_established_response_ms": 10.189, "median_effective_bytes_per_second": 13041957.771688342}], "enabled": [{"requests": 20, "p95_established_response_ms": 8.902999999999999, "median_effective_bytes_per_second": 12243348.402023308}, {"requests": 20, "p95_established_response_ms": 9.128, "median_effective_bytes_per_second": 13727721.177286131}, {"requests": 20, "p95_established_response_ms": 22.207, "median_effective_bytes_per_second": 10482422.793613497}], "p95_delta_ms": 12.018, "throughput_ratio": 0.8005681578657983, "passed": false}}
+Traceback (most recent call last):
+  File "/repo/tests/lab/logging_core_probe.py", line 374, in <module>
+    main()
+  File "/repo/tests/lab/logging_core_probe.py", line 238, in main
+    assert comparison["passed"]
+           ~~~~~~~~~~^^^^^^^^^^
+AssertionError

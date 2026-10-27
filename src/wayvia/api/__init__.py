@@ -33,7 +33,9 @@ class PublicationInput(BaseModel):
     exit_status: list[dict] | dict
 
 
-def create_app(service, admin_token: str, *, subscriptions_only=False):
+def create_app(
+    service, admin_token: str, *, subscriptions_only=False, log_sink=None, trusted_log_proxy=False
+):
     if len(admin_token) < 32:
         raise WayviaError(
             "admin_token_invalid", "Administrator token requires at least 32 characters"
@@ -42,7 +44,9 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
 
     @app.middleware("http")
     async def request_context(request: Request, call_next):
-        request.state.request_id = uuid.uuid4().hex
+        request.state.request_id = (
+            getattr(request.state, "edge_request_id", None) or uuid.uuid4().hex
+        )
         response = await call_next(request)
         response.headers["X-Request-ID"] = request.state.request_id
         response.headers["Cache-Control"] = "no-store, private"
@@ -159,14 +163,23 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
         return {"status": "alive", "dataplane": "unknown"}
 
     @app.get("/subscriptions/{token}/info")
-    def subscription_info(token: str):
+    def subscription_info(token: str, request: Request):
+        if log_sink:
+            from wayvia.observability.http import identify
+
+            return service.subscription_info(token, identity_sink=identify(request))
         return service.subscription_info(token)
 
     @app.get("/subscriptions/{token}/{format}")
     def fetch_subscription(
         request: Request, token: str, format: str, user_agent: str | None = Header(default=None)
     ):
-        document = service.fetch_document(token, format, client_claim=user_agent)
+        kwargs = {}
+        if log_sink:
+            from wayvia.observability.http import identify
+
+            kwargs["identity_sink"] = identify(request)
+        document = service.fetch_document(token, format, client_claim=user_agent, **kwargs)
         if format == "mihomo" and request.url.scheme == "https":
             document["headers"]["profile-web-page-url"] = str(
                 request.url.replace(
@@ -175,6 +188,11 @@ def create_app(service, admin_token: str, *, subscriptions_only=False):
             )
         media = "application/json" if format == "sing-box" else "application/yaml"
         return Response(document["text"], media_type=media, headers=document["headers"])
+
+    if log_sink:
+        from wayvia.observability.http import install_middleware
+
+        install_middleware(app, log_sink, trusted_log_proxy)
 
     if subscriptions_only:
         return app

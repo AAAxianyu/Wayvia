@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Wayvia 管理</title>
+    <link rel="stylesheet" href="/admin/assets/app.css" />
+    <script src="/admin/assets/app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">跳到主要内容</a>
+    <header>
+      <a href="/admin" class="brand">Wayvia <span>管理</span></a>
+      <div class="header-actions">
+        <span id="session-state">私有管理入口</span
+        ><button id="logout" hidden>退出登录</button>
+      </div>
+    </header>
+    <section id="login" aria-labelledby="login-title">
+      <h1 id="login-title">登录管理平台</h1>
+      <p>
+        在服务器的管理终端生成一次性登录码，有效期 60
+        秒。订阅链接不能用于管理登录。
+      </p>
+      <form id="login-form">
+        <label for="login-code">一次性登录码</label
+        ><input
+          id="login-code"
+          type="password"
+          autocomplete="one-time-code"
+          required
+          minlength="16"
+          maxlength="128"
+        /><button type="submit">登录</button>
+      </form>
+      <p class="muted">
+        通过 SSH 隧道访问本机管理端口。家人朋友继续使用原订阅链接。
+      </p>
+    </section>
+    <div id="workspace" hidden>
+      <nav aria-label="管理导航">
+        <button data-page="overview" aria-current="page">总览</button
+        ><button data-page="devices">设备与订阅</button
+        ><button data-page="requests">订阅请求</button
+        ><button data-page="events">服务器事件</button
+        ><button data-page="audit">操作记录</button
+        ><button data-page="settings">日志设置</button>
+      </nav>
+      <main id="main" tabindex="-1">
+        <div class="page-heading">
+          <div>
+            <h1 id="page-title">总览</h1>
+            <p id="page-intro"></p>
+          </div>
+          <button id="refresh">刷新</button>
+        </div>
+        <div id="view"></div>
+      </main>
+    </div>
+    <div id="notice" role="status" aria-live="polite" hidden></div>
+    <dialog id="confirm">
+      <form method="dialog">
+        <h2 id="confirm-title">确认操作</h2>
+        <p id="confirm-message"></p>
+        <div class="actions">
+          <button value="cancel">取消</button
+          ><button value="confirm" class="danger">确认执行</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

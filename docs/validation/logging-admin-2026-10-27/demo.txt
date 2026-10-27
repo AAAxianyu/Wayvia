@@ -1,0 +1,2 @@
+/private/tmp/wayvia-subscription-limit-tools/uv run --locked python -m wayvia.demo
+{"mode": "simulated", "storage": "temporary SQLite", "device": "18c022ec07f148e387595976606f55b3", "profile": "sing-box complete", "subscription_revoke": "verified", "device_permission": "active", "dataplane": "simulated, no network changes"}

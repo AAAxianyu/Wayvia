@@ -1,0 +1,27 @@
+[Unit]
+Description=Wayvia independent read-only native connection and control audit source
+ConditionPathExists=/var/lib/wayvia/agent/usage-api-secret
+ConditionPathExists=/etc/wayvia/log-source.env
+After=wayvia-log.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+Slice=wayvia-observation.slice
+EnvironmentFile=/etc/wayvia/log-source.env
+ExecStart=/opt/wayvia/.venv/bin/wayvia logs core ${WAYVIA_LOG_HOST} /run/wayvia-log/query.sock /run/wayvia-log/events.sock
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+RestrictAddressFamilies=AF_UNIX AF_INET
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

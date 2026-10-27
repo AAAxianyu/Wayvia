@@ -1,0 +1,90 @@
+{
+  "scope": "disposable_normal_paths_only_no_production",
+  "core": {
+    "scope": "isolated continuous native API metadata normal-path only",
+    "continuous_identity_and_destination": "passed",
+    "ip_only_remains_no_domain": "passed",
+    "old_usage_snapshot_still_works": "passed",
+    "events": 5,
+    "core": "sing-box 1.14.3",
+    "unauthenticated_rejected": true,
+    "devices": {
+      "phone": {
+        "attributed": true,
+        "online_observed": true,
+        "closed_observed": true,
+        "upload_bytes": 78,
+        "download_bytes": 65651
+      },
+      "desktop": {
+        "attributed": true,
+        "online_observed": true,
+        "closed_observed": true,
+        "upload_bytes": 78,
+        "download_bytes": 65651
+      }
+    }
+  },
+  "baseline": {
+    "mode": "baseline",
+    "nginx_log_events": 0,
+    "normal_trials": [
+      {
+        "requests": 10,
+        "p95_ms": 111.59672902431339,
+        "median_ms": 44.34716253308579,
+        "throughput_bytes_per_second": 207628638.99421844
+      },
+      {
+        "requests": 10,
+        "p95_ms": 73.68313905317336,
+        "median_ms": 43.48512750584632,
+        "throughput_bytes_per_second": 211744601.61723277
+      },
+      {
+        "requests": 10,
+        "p95_ms": 100.58135504368693,
+        "median_ms": 51.328627101611346,
+        "throughput_bytes_per_second": 179388024.18720728
+      }
+    ],
+    "profile_sha256": "aa9e9687ec8b333678019295614d287a73e636d297c8aa54724aa941182ba628",
+    "safe_fields_and_limit_reasons": "baseline"
+  },
+  "enabled": {
+    "mode": "enabled",
+    "nginx_log_events": 51,
+    "normal_trials": [
+      {
+        "requests": 10,
+        "p95_ms": 137.6820569857955,
+        "median_ms": 42.38265997264534,
+        "throughput_bytes_per_second": 217252551.06552702
+      },
+      {
+        "requests": 10,
+        "p95_ms": 52.8817200101912,
+        "median_ms": 42.86365048028529,
+        "throughput_bytes_per_second": 214814671.5650131
+      },
+      {
+        "requests": 10,
+        "p95_ms": 52.378010004758835,
+        "median_ms": 37.68072702223435,
+        "throughput_bytes_per_second": 244362084.48331603
+      }
+    ],
+    "profile_sha256": "aa9e9687ec8b333678019295614d287a73e636d297c8aa54724aa941182ba628",
+    "safe_fields_and_limit_reasons": "passed"
+  },
+  "subscription_p95_gate": {
+    "baseline_ms": 111.59672902431339,
+    "enabled_ms": 137.6820569857955,
+    "allowed_increment_ms": 100,
+    "passed": true
+  },
+  "images": {
+    "core": "wayvia-lab:locked",
+    "nginx": "nginx@sha256:f6daac2445b0ce70e64d77442ccf62839f3f1b4c24bf6746a857eff014e798c8"
+  }
+}

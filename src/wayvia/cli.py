@@ -13,6 +13,7 @@ from pydantic import ValidationError
 from wayvia import __version__
 from wayvia.client.commands import register as register_client
 from wayvia.errors import ExitCode, WayviaError
+from wayvia.observability.commands import register as register_logs
 from wayvia.telemetry.commands import register as register_diagnostics
 
 app = typer.Typer(no_args_is_help=True, help="Wayvia split-routing gateway control plane")
@@ -75,6 +76,7 @@ def guarded(function):
 
 
 register_diagnostics(app, guarded, output)
+register_logs(app, guarded, output)
 register_client(profile_app, guarded, output)
 
 
@@ -621,7 +623,13 @@ def doctor(ctx: typer.Context):
 @app.command()
 @guarded
 def serve(
-    ctx: typer.Context, host: str = "127.0.0.1", port: int = 8787, subscriptions_only: bool = False
+    ctx: typer.Context,
+    host: str = "127.0.0.1",
+    port: int = 8787,
+    subscriptions_only: bool = False,
+    log_socket: Path | None = None,
+    trusted_log_proxy: bool = False,
+    log_host_id: str = "ali",
 ):
     import ipaddress
 
@@ -636,8 +644,16 @@ def serve(
             "API must bind a loopback address; publish subscriptions via HTTPS proxy",
         )
     token = SecretStore(ctx.obj["root"] / "secrets").read("admin-token")
+    from wayvia.observability.http import Emitter
+
     uvicorn.run(
-        create_app(service(ctx), token, subscriptions_only=subscriptions_only),
+        create_app(
+            service(ctx),
+            token,
+            subscriptions_only=subscriptions_only,
+            log_sink=Emitter(log_socket, log_host_id) if log_socket else None,
+            trusted_log_proxy=trusted_log_proxy,
+        ),
         host=host,
         port=port,
         access_log=False,

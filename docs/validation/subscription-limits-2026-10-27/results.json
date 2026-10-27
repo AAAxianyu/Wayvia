@@ -1,0 +1,45 @@
+{
+  "isolated_nginx": {
+    "admin_and_method_protection": "passed",
+    "candidate_sha256": "ce9320f8bdecf2b7da18daeb268abf0acc0db78b4c4d6bb14513791604f23d04",
+    "client_image": "wayvia-lab:locked",
+    "invalid_token_rate_and_recovery": "passed",
+    "large_uncompressed_profile_bytes": 9207741,
+    "network": "isolated_container_loopback_only",
+    "nginx_image": "nginx@sha256:f6daac2445b0ce70e64d77442ccf62839f3f1b4c24bf6746a857eff014e798c8",
+    "nginx_version": "1.24.0",
+    "normal_two_devices_and_info": "passed",
+    "original_sha256": "856226fefad4be91e63586242314a245f8b8afa9061c52bfe60ec75be21dfb40",
+    "two_concurrent_global_limit_and_recovery": "passed"
+  },
+  "deployment": {
+    "status": "applied",
+    "backup": "/var/backups/wayvia/subscription-limits-dzdx2uyv",
+    "candidate_sha256": "ce9320f8bdecf2b7da18daeb268abf0acc0db78b4c4d6bb14513791604f23d04"
+  },
+  "live_subscription_check": {
+    "desktop": {
+      "download_status": 200,
+      "info_status": 200,
+      "bytes": 9207741,
+      "tls_verified": true,
+      "update_hours": 24,
+      "sha256_matches_before": true
+    },
+    "phone": {
+      "download_status": 200,
+      "info_status": 200,
+      "bytes": 9207741,
+      "tls_verified": true,
+      "update_hours": 24,
+      "sha256_matches_before": true
+    }
+  },
+  "software_validation": {
+    "make_check": "passed_544_tests_3_warnings",
+    "make_demo": "passed",
+    "make_test_configs": "passed_11",
+    "make_test_lab": "deferred_not_run"
+  },
+  "production_overlimit_and_fault_tests": "not_run"
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "disposable_linux_runtime",
+  "peer_auth": "passed",
+  "devices": 5,
+  "connections": 100,
+  "new_connections_per_second": 10,
+  "local_visibility_extra_seconds": 0.347,
+  "cpu_seconds": 0.772,
+  "elapsed_seconds": 10.362,
+  "peak_rss_bytes": 36032512,
+  "database_bytes": 184320,
+  "disabled_persisted": true
+}

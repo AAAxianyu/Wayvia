@@ -1,4 +1,74 @@
 schema_version: 1
+logging_admin_2026_10_27:
+  status: repository_implemented_software_verified_production_pending
+  base_commit: c98141f83668182733e0989a7b0d54a461adff39
+  original_subscription_and_control_contract: preserved_no_original_schema_change
+  observer_policy: opt_in_persistent_default_disabled
+  metadata_boundary: private_expiring_source_destination_and_credential_identity_no_content
+  core: {version: 1.14.3, native_api: 4, separate_stream_process: true}
+  nginx: {version: 1.24.0, input: fixed_json_unix_syslog, rate_per_minute: 5, burst: 5, global_concurrency: 2}
+  environment: {platform: Darwin_arm64, python: 3.12.12, uv: 0.9.7, sqlite: 3.50.4, grpcio: 1.76.0, protobuf: 6.33.0}
+  gates:
+    check: {exit_code: 0, tests: 593, existing_warnings: 3}
+    demo: {exit_code: 0, scope: simulated}
+    test_configs: {exit_code: 0, real_artifacts: 11}
+    test_lab: {exit_code: null, status: not_run_user_deferred_fault_tests}
+  isolated_normal_paths:
+    native_core: two_devices_TCP_UDP_long_updates_closed_IP_only_old_usage_preserved
+    nginx: identical_profile_rate_concurrency_reasons_three_round_comparison_passed
+    linux_peer_credentials_and_broker: passed
+    collector_load: {devices: 5, connections: 100, per_second: 10, extra_visibility_seconds: 0.347}
+    four_process_budget: {duration_seconds: 10.319, sum_peak_rss_bytes: 234373120, cpu_fraction_one_core: 0.0659}
+    memory_limit_bytes: 268435456
+    cpu_budget_fraction_one_core: 0.25
+  interface: {private_loopback: true, desktop_checked: true, mobile_width: 390, synthetic_only: true}
+  production_changes_sampling_notifications: none
+  real_SSH_permissions_phone_faults_long_term_acceptance: not_performed
+  implementation_decision: docs/adr/013-private-traffic-metadata-and-admin.md
+  guide: docs/logging-admin.md
+  evidence: docs/validation/logging-admin-2026-10-27/README.md
+logging_admin_plan_2026_10_27:
+  status: proposed_documentation_only_no_implementation
+  base_commit: c98141f83668182733e0989a7b0d54a461adff39
+  existing_worktree_changes: preserved
+  source_code_or_runtime_configuration_changed: false
+  local_environment: {platform: Darwin_arm64, python: 3.12.12, uv: 0.9.7, sqlite: 3.50.4}
+  existing_baseline_checks: {check: passed_544_tests_3_existing_warnings, demo: passed_simulated, test_configs: passed_11}
+  test_lab: {status: not_run_fault_testing_deferred, exit_code: null}
+  proposed_feature_validation: not_implemented_not_run
+  production_changes_or_sampling: none
+  spec: .scratch/logging-admin/spec.md
+  evidence: docs/validation/logging-admin-plan-2026-10-27/README.md
+subscription_limits_2026_10_27:
+  status: isolated_verified_and_authorized_ingress_deployed
+  nginx_production: 1.24.0_ubuntu
+  nginx_isolated_image: nginx_1.24.0_sha256_f6daac2445b0ce70e64d77442ccf62839f3f1b4c24bf6746a857eff014e798c8
+  paths: subscription_download_and_info
+  per_source: {rate_per_minute: 5, burst: 5, nodelay: true}
+  global_concurrent_requests: 2
+  excess_response_status: 429
+  actual_baseline_sha256: 856226fefad4be91e63586242314a245f8b8afa9061c52bfe60ec75be21dfb40
+  deployed_config_sha256: ce9320f8bdecf2b7da18daeb268abf0acc0db78b4c4d6bb14513791604f23d04
+  local_validation: {check: passed_544_tests, demo: passed, test_configs: passed_11, isolated_nginx: passed}
+  test_lab: {status: deferred_fault_testing, exit_code: null}
+  live_validation: both_existing_subscriptions_and_info_200_tls_verified_unchanged
+  production_overlimit_or_fault_test: not_run
+  additional_sampling_or_notifications: not_enabled
+  evidence: docs/validation/subscription-limits-2026-10-27/README.md
+product_scope_2026_10_26:
+  status: documentation_and_prioritization_only
+  base_commit: c98141f83668182733e0989a7b0d54a461adff39
+  runtime_or_component_versions_changed: false
+  local_environment: {platform: Darwin_arm64, python: 3.12.12, uv: unavailable}
+  checks:
+    markdown_local_links: passed
+    git_diff_check: passed
+    make_check: {exit_code: 2, result: uv_not_found}
+    make_demo: {exit_code: 2, result: uv_not_found}
+    make_test_configs: {exit_code: 2, result: uv_not_found}
+    make_test_lab: {exit_code: null, result: not_run_fault_testing_deferred}
+  production_changes_or_sampling: none
+  evidence: docs/validation/product-scope-2026-10-26/README.md
 runtime_upgrade_2026_10_26:
   status: pushed_pulled_deployed_both_roles_data_preserved
   branch: codex/probe-observer-evidence

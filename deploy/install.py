@@ -32,6 +32,11 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = "var/lib/wayvia/install-manifest.json"
 JOURNAL = "var/lib/wayvia/install-transaction.json"
 UNITS = (
+    "wayvia-observation.slice",
+    "wayvia-log.service",
+    "wayvia-log-source.service",
+    "wayvia-log-core.service",
+    "wayvia-admin.service",
     "wayvia-api.service",
     "wayvia-usage.service",
     "wayvia-agent.service",
@@ -396,6 +401,11 @@ def install_layout(
             relative = source.relative_to(source_root)
             payloads["opt/wayvia/source/" + str(relative)] = (source.read_bytes(), 0o644)
     for filename in (
+        "wayvia-observation.slice",
+        "wayvia-log.service",
+        "wayvia-log-source.service",
+        "wayvia-log-core.service",
+        "wayvia-admin.service",
         "wayvia-agent.service",
         "wayvia-recover.service",
         "wayvia-monitor.service",

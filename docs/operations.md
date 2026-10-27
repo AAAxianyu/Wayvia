@@ -178,3 +178,15 @@ make clean-lab
 `deploy/upgrade.py` 只面向已授权的现有安装，默认预检，`--apply` 才停服；先推送并在目标主机 pull 精确 commit，再给出角色、commit、arch、uv、components 和 wheel 路径。要求干净的 tracked Git checkout、无安装文件漂移、组件与 wheel/source 一致。按 exit → ingress 运行，并把整个升级进程放进受限 systemd 临时作业（MemoryHigh 640M、MemoryMax 768M、CPUQuota 100%、RuntimeMaxSec 600）。不要在小内存生产机运行完整 ASGI/大规则软件回归。
 
 工具冻结现有服务并备份本次当前状态，迁移后比较身份、密钥和累计统计，复用原恢复/监控并检查角色 ACTIVE 与 API 就绪。失败先停止新版本、保留新状态，再恢复本次备份及旧运行时；不能用旧 wheel 直接打开已迁移的新 DB。不会启用独立观察或告警投递。全量升级后不保留 schema 3 的 API ExecStart/PYTHONPATH 覆盖；Wayvia 反向代理透传完整 Host（含非默认端口），API 仍只监听本机，公网仅公开私人订阅读取路径。
+
+## 订阅入口限流
+
+用户确认的入口方案为每来源平均 5 次/分钟，允许突发 5 次且不排队；整个订阅路径同时最多 2 个请求，包括信息页，超限返回 429。首次空桶可立即通过 6 次请求，后续额度按约 12 秒一次恢复；设备共享 NAT 时也共享来源额度。限流不记录完整 URL 或令牌，不主动断开现有代理连接，也不能阻止带宽层面的分布式攻击。
+
+`deploy/subscription_limits.py` 对固定的 Wayvia Nginx 配置添加限流，`--apply` 要求原配置和已隔离验证候选的精确 SHA256；变更前保存 root-only 备份，执行 `nginx -t` 与服务重载。校验或重载失败时尝试恢复原配置；只有在实时配置仍为工具写入的候选版本时，`--restore BACKUP_DIRECTORY` 才恢复，避免覆盖其他人的改动。回退工具必须使用当前经审查的仓库副本；它不会自动部署到服务器。具体部署结果和备份位置见[验证记录](validation/subscription-limits-2026-10-27/README.md)。
+
+隔离测试使用 `scripts/test_subscription_limits.py --original PATH`：给定经过授权取得的 Wayvia Nginx 原配置，在一次性、禁止外网的 Linux 容器里替换为合成证书和合成订阅，检查正常下载、拒绝和恢复。不要把真实订阅、设备密码、证书私钥或完整 URL 传入实验容器或证据。生产环境只做已授权的正常订阅就绪检查，不执行超限/故障实验。
+
+## 私有日志与管理员平台
+
+新增日志采集、受限两端传输、一次性登录码、元数据查询、导出和安全回退见[独立运维说明](logging-admin.md)。仓库实现不自动安装或启动生产采集；未来切换必须先验证 Nginx 覆盖可信请求 ID，再启用信任该头的公开 API 路径。软件验收与生产验收分别记录。

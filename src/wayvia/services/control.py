@@ -468,7 +468,7 @@ class ControlService:
             )
         return row
 
-    def subscription_info(self, token):
+    def subscription_info(self, token, *, identity_sink=None):
         from wayvia.client import contract, title
         from wayvia.client.names import display_name
 
@@ -479,6 +479,8 @@ class ControlService:
                 "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
             )
         self._published_config()
+        if identity_sink:
+            identity_sink(row["device_id"], row["id"])
         return {
             "schema_version": 1,
             "title": title(device["name"], display_name(self.db, row["id"])),
@@ -489,7 +491,7 @@ class ControlService:
             "client": contract(),
         }
 
-    def fetch_document(self, token, format, *, client_claim=None):
+    def fetch_document(self, token, format, *, client_claim=None, identity_sink=None):
         from wayvia.client import headers
         from wayvia.client.names import display_name
 
@@ -512,6 +514,8 @@ class ControlService:
                     "subscription_denied", "Subscription is unavailable", exit_code=ExitCode.AUTH
                 )
             fetched(connection, row["device_id"], now, client_claim)
+        if identity_sink:
+            identity_sink(row["device_id"], row["id"])
         return {"text": text, "headers": response_headers}
 
     def subscriptions(self):

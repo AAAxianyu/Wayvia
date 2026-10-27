@@ -1,0 +1,9 @@
+{
+  "host_id": "ali",
+  "role": "ingress",
+  "admin_user": "wayvia-admin",
+  "api_user": "wayvia",
+  "nginx_user": "www-data",
+  "socket": "/run/wayvia-log/events.sock",
+  "broker": "/run/wayvia-log/query.sock"
+}

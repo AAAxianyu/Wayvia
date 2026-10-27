@@ -1,0 +1,215 @@
+{
+  "status": "repository_and_software_verified_production_pending",
+  "base_commit": "c98141f83668182733e0989a7b0d54a461adff39",
+  "branch": "codex/probe-observer-evidence",
+  "preexisting_worktree_preserved": true,
+  "source_commit_or_push": false,
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.12",
+    "sqlite": "3.50.4",
+    "uv": "0.9.7",
+    "packages": {
+      "pytest": "8.4.2",
+      "grpcio": "1.76.0",
+      "protobuf": "6.33.0",
+      "fastapi": "0.120.0",
+      "pydantic": "2.12.3",
+      "uvicorn": "0.38.0"
+    },
+    "core": "sing-box 1.14.3 / API 4",
+    "nginx_image": "nginx@sha256:f6daac2445b0ce70e64d77442ccf62839f3f1b4c24bf6746a857eff014e798c8"
+  },
+  "gates": {
+    "check": {
+      "exit_code": 0,
+      "tests": 593,
+      "existing_warnings": 3
+    },
+    "demo": {
+      "exit_code": 0,
+      "mode": "simulated"
+    },
+    "test_configs": {
+      "exit_code": 0,
+      "artifacts": 11
+    },
+    "test_lab": {
+      "exit_code": null,
+      "status": "not_run_user_deferred_fault_tests"
+    }
+  },
+  "specialized": {
+    "isolated_nginx": {
+      "exit_code": 0,
+      "requests_per_mode": 30,
+      "rounds": 3,
+      "safe_events": 51
+    },
+    "core_extended": {
+      "exit_code": 0,
+      "events": 155,
+      "normal_path_comparison": {
+        "baseline": [
+          {
+            "requests": 20,
+            "p95_established_response_ms": 25.802,
+            "median_effective_bytes_per_second": 3776858.8799203094,
+            "bulk_bytes": 33554432,
+            "bulk_bytes_per_second": 217462294.23201555
+          },
+          {
+            "requests": 20,
+            "p95_established_response_ms": 15.697,
+            "median_effective_bytes_per_second": 16850334.57704352,
+            "bulk_bytes": 33554432,
+            "bulk_bytes_per_second": 1187473263.2622006
+          },
+          {
+            "requests": 20,
+            "p95_established_response_ms": 5.077,
+            "median_effective_bytes_per_second": 15971326.001394931,
+            "bulk_bytes": 33554432,
+            "bulk_bytes_per_second": 776938779.2905437
+          }
+        ],
+        "enabled": [
+          {
+            "requests": 20,
+            "p95_established_response_ms": 5.0169999999999995,
+            "median_effective_bytes_per_second": 15543509.557485707,
+            "bulk_bytes": 33554432,
+            "bulk_bytes_per_second": 732853536.0153759
+          },
+          {
+            "requests": 20,
+            "p95_established_response_ms": 5.339,
+            "median_effective_bytes_per_second": 13826830.52121444,
+            "bulk_bytes": 33554432,
+            "bulk_bytes_per_second": 959218775.9069209
+          },
+          {
+            "requests": 20,
+            "p95_established_response_ms": 8.693,
+            "median_effective_bytes_per_second": 15617446.31289995,
+            "bulk_bytes": 33554432,
+            "bulk_bytes_per_second": 1222339149.7577503
+          }
+        ],
+        "p95_delta_ms": -17.109,
+        "throughput_ratio": 1.2346130756696492,
+        "passed": true
+      }
+    },
+    "linux_runtime": {
+      "scope": "disposable_linux_runtime",
+      "peer_auth": "passed",
+      "devices": 5,
+      "connections": 100,
+      "new_connections_per_second": 10,
+      "local_visibility_extra_seconds": 0.347,
+      "cpu_seconds": 0.772,
+      "elapsed_seconds": 10.362,
+      "peak_rss_bytes": 36032512,
+      "database_bytes": 184320,
+      "disabled_persisted": true
+    },
+    "four_process_budget": {
+      "scope": "four_real_cli_processes_synthetic_rpc_and_events",
+      "duration_seconds": 10.319,
+      "connections": 100,
+      "devices": 5,
+      "peaks": {
+        "collector": {
+          "rss": 49893376,
+          "pss": 37965824
+        },
+        "source": {
+          "rss": 47874048,
+          "pss": 36091904
+        },
+        "core": {
+          "rss": 68943872,
+          "pss": 53281792
+        },
+        "admin": {
+          "rss": 67661824,
+          "pss": 55504896
+        }
+      },
+      "sum_peak_rss_bytes": 234373120,
+      "sum_peak_pss_bytes": 182844416,
+      "cpu_seconds": 0.68,
+      "cpu_fraction_one_core": 0.0659,
+      "memory_budget_bytes": 268435456,
+      "cpu_budget_fraction": 0.25,
+      "passed": true
+    }
+  },
+  "ui": {
+    "data": "synthetic_only",
+    "desktop_width": 1280,
+    "mobile_width": 390,
+    "mobile_document_width": 390,
+    "tasks": [
+      "login",
+      "JXY_8_connections",
+      "rate_and_concurrency_reasons",
+      "unknown_identity",
+      "stale_Japan_source",
+      "connection_details_to_same_window_events",
+      "acknowledged_not_recovered",
+      "shared_export",
+      "unknown_history",
+      "keyboard_cancel_rotation_and_disable",
+      "logout_clears_view_and_returns_to_unsigned_state"
+    ],
+    "console_errors_final": 0,
+    "responsive_screenshots": [
+      "admin-desktop.jpg",
+      "admin-mobile.jpg",
+      "admin-logged-out.jpg"
+    ]
+  },
+  "not_performed": [
+    "production_connection_or_deployment",
+    "real_user_sampling",
+    "full_fault_injection_and_test_lab",
+    "actual_Japan_SSH_accounts_and_privileges",
+    "phone_or_Clash_GUI_acceptance",
+    "long_term_stability"
+  ],
+  "raw_evidence_sha256": {
+    "admin-desktop.jpg": "9659666b930b5b645769de3e3e6ce4beeee50acf5dabdfa9bf4babb8e62f9669",
+    "admin-logged-out.jpg": "9de4aa3bea6827544b41ab6da057ebef1a42b838a6ef7e9070c247fefd7ab0c9",
+    "admin-mobile.jpg": "5c62238e659f15c79da46eceee3d370e631fc6a5febe2afb41b8eaf8ba4e1084",
+    "check.txt": "6e37fa38980c2418d807699209d6a8bdfa24b40aa8f5d5d2bd10070e1d887801",
+    "config-result.json": "c43d1f80dff0cf2be0dce188da0c58a812e13691559e58aa28ae3fb7aa6696e1",
+    "core-extended.json": "7a6daee56fd0988a6d8e796cb24bedf8b21a0153284b5fe787b9a291ff81a92a",
+    "core-short-request-trial.txt": "002dd3f62ef5a1bfe9eee3a77f3cc4a2d0f51630dc529b66df1842753f5fa9d4",
+    "demo.txt": "f0e4f71324169e980ccea5d55d1e0a7a9932f717cb5bec1d425379a43a519522",
+    "isolated.json": "78944bb2d2330ba08e97a14227d4a0163ddbe2664e9027c95a74791836853cc4",
+    "process-budget.json": "bd6bfbe628312ace4404a0d6380b6d88346fc3495b4689b6a0410a547ebc431c",
+    "runtime.json": "5e97f3654c4bfccdb3b50b4b7a664bc63e5cee4f38836a4577598ba5cd692555",
+    "test-configs.txt": "f5d37177e5cf6384ba3795a1d923e3a15b4e90ac0d495c974f21c8d9bd778f85"
+  },
+  "final_static_followup": {
+    "changes": [
+      "unknown_identity_copy",
+      "logout_and_session_expiry_clear_view_and_state"
+    ],
+    "node_syntax_exit": 0,
+    "browser_logout_after_completion": {
+      "view_children": 0,
+      "workspace_hidden": true,
+      "login_visible": true
+    },
+    "uv_build_exit": 0,
+    "wheel_assets_identical_to_source": true,
+    "wheel": "wayvia-0.1.0-py3-none-any.whl",
+    "wheel_sha256": "8df4f6351e36d198925aa41f8d1c3ae49f5323bb298fc09c021d7cdde88dd928"
+  },
+  "transcript_formatting": {
+    "check.txt": "CLI output trailing whitespace and final blank lines normalized before Git commit; result unchanged"
+  }
+}

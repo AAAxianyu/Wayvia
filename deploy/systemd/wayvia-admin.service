@@ -1,0 +1,29 @@
+[Unit]
+Description=Wayvia private loopback administrator platform
+ConditionPathExists=/var/lib/wayvia-admin/admin.db
+ConditionPathExists=/var/lib/wayvia/control/secrets/admin-token
+After=wayvia-log.service
+
+[Service]
+Type=simple
+User=wayvia-admin
+Group=wayvia-admin
+Slice=wayvia-observation.slice
+StateDirectory=wayvia-admin
+StateDirectoryMode=0700
+LoadCredential=control-token:/var/lib/wayvia/control/secrets/admin-token
+ExecStart=/opt/wayvia/.venv/bin/wayvia admin serve /var/lib/wayvia-admin /run/wayvia-log/query.sock %d/control-token
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ReadWritePaths=/var/lib/wayvia-admin
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
