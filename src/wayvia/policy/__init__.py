@@ -57,6 +57,19 @@ class PolicyCompiler:
                 rules.append({"id": f"{name}-domain", "domains": ruleset.domains, **metadata})
             if ruleset.cidrs:
                 rules.append({"id": f"{name}-ip", "cidrs": ruleset.cidrs, **metadata})
+            if name == "local" and config.policy.proxy_domains:
+                # Pinned before domestic rules so a CN-resolving CDN answer cannot
+                # move these services off the protected path.
+                rules.append(
+                    {
+                        "id": "proxy-pinned",
+                        "action": "proxy",
+                        "source": "policy.proxy_domains",
+                        "version": revision,
+                        "dns": "proxy",
+                        "domains": config.policy.proxy_domains,
+                    }
+                )
         for rule in config.policy.explicit_rules:
             target = {"domains": [rule.domain]} if rule.domain else {"cidrs": [rule.cidr]}
             rules.append(

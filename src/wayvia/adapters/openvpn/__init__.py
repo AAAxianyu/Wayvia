@@ -15,7 +15,8 @@ SAFE_OPTIONS = set(
     "ifconfig-noexec redirect-gateway keepalive ping ping-restart explicit-exit-notify "
     "push disable-dco auth-nocache allow-compression tun-mtu mssfix reneg-sec "
     "tls-server tls-client server-ipv6 route-ipv6 script-security cipher "
-    "connect-retry connect-timeout verify-client-cert socket-flags".split()
+    "connect-retry connect-timeout verify-client-cert socket-flags "
+    "tcp-queue-limit sndbuf rcvbuf".split()
 )
 
 
@@ -42,6 +43,10 @@ def check_safe_config(text):
             )
         if words[0] == "socket-flags" and words[1:] != ["TCP_NODELAY"]:
             raise AdapterError("VPN_OPTION_FORBIDDEN", "Only TCP_NODELAY is permitted")
+        if words[0] in {"tcp-queue-limit", "sndbuf", "rcvbuf"} and (
+            len(words) != 2 or not words[1].isdigit()
+        ):
+            raise AdapterError("VPN_OPTION_FORBIDDEN", "Buffer limits must be one integer")
         if words[0] == "script-security" and words[1:] != ["1"]:
             raise AdapterError("VPN_OPTION_FORBIDDEN", "User scripts are forbidden")
         if words[0] in {"ca", "cert", "key", "tls-crypt", "tls-auth", "dh"}:

@@ -33,9 +33,11 @@ CREATE TABLE triggers(record TEXT PRIMARY KEY,
  incident TEXT REFERENCES incidents(id) ON DELETE CASCADE);
 CREATE TABLE progress(key TEXT PRIMARY KEY,value TEXT NOT NULL);
 """
+PROGRESS_KEYS = {"journal_since", "last_sample", "audit_since", "gaps"}
 TRIGGERS = {
     "probe_failed",
     "health_degraded",
+    "health_congested",
     "protection_requested",
     "protection_failed",
     "business_failure",
@@ -160,96 +162,127 @@ class DiagnosticStore:
         )
 
     def append(self, row, *, now=None, client_authorized=False):
-        clean = project(row, client_authorized=client_authorized)
-        if clean["role"] not in {self.metadata["role"], "unknown"}:
-            raise EvidenceError("EVIDENCE_ROLE_MISMATCH")
-        at = timestamp(clean["observed_at"])
-        now = at if now is None else now
-        if at > now + 5:
-            raise EvidenceError("EVIDENCE_FUTURE_TIME")
-        raw = canonical(clean)
-        if len(raw) > 65536:
-            raise EvidenceError("EVIDENCE_RECORD_TOO_LARGE")
+        return self.append_many([row], now=now, client_authorized=client_authorized)[0]
+
+    def append_many(self, rows, *, now=None, client_authorized=False, progress=None):
+        """One transaction, prune and pin pass for a batch, with optional checkpoints.
+
+        A collector iteration writes many small records; per-record transactions
+        would each force a synchronous commit and rescan the incident pins.
+        """
+        prepared = []
+        for row in rows:
+            clean = project(row, client_authorized=client_authorized)
+            if clean["role"] not in {self.metadata["role"], "unknown"}:
+                raise EvidenceError("EVIDENCE_ROLE_MISMATCH")
+            at = timestamp(clean["observed_at"])
+            if at > (at if now is None else now) + 5:
+                raise EvidenceError("EVIDENCE_FUTURE_TIME")
+            raw = canonical(clean)
+            if len(raw) > 65536:
+                raise EvidenceError("EVIDENCE_RECORD_TOO_LARGE")
+            prepared.append((clean, at, raw))
+        for key in progress or {}:
+            if key not in PROGRESS_KEYS:
+                raise EvidenceError()
+        if not prepared and not progress:
+            return []
+        results = []
         with self.write() as connection:
-            self._prune(connection, now)
-            inserted = connection.execute(
-                "INSERT OR IGNORE INTO records VALUES(?,?,?,?,?)",
-                (clean["event_id"], at, clean["role"], clean.get("kind", "sample"), raw.decode()),
-            ).rowcount
-            if not inserted:
-                previous = connection.execute(
-                    "SELECT data FROM records WHERE id=?", (clean["event_id"],)
-                ).fetchone()[0]
-                if previous != raw.decode():
-                    raise EvidenceError("EVIDENCE_ID_CONFLICT")
-                return None
-            connection.execute(
-                "INSERT OR IGNORE INTO pins SELECT id,? FROM incidents WHERE start<=? AND end>=?",
-                (clean["event_id"], at, at),
-            )
-            incident = None
+            if prepared:
+                self._prune(connection, max(at if now is None else now for _, at, _ in prepared))
+            for clean, at, raw in prepared:
+                results.append(self._insert(connection, clean, at, raw, now))
+            if any(result is not False for result in results):
+                # Pin records that arrived out of order before a trigger/extension.
+                connection.execute(
+                    "INSERT OR IGNORE INTO pins SELECT i.id,r.id FROM incidents i "
+                    "JOIN records r ON r.at BETWEEN i.start AND i.end"
+                )
+            for key, value in (progress or {}).items():
+                connection.execute(
+                    "INSERT INTO progress VALUES(?,?) "
+                    "ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+                    (key, canonical(value).decode()),
+                )
+        return [None if result is False else result for result in results]
+
+    def _insert(self, connection, clean, at, raw, now):
+        """Returns the incident id, None, or False for an identical duplicate."""
+        now = at if now is None else now
+        inserted = connection.execute(
+            "INSERT OR IGNORE INTO records VALUES(?,?,?,?,?)",
+            (clean["event_id"], at, clean["role"], clean.get("kind", "sample"), raw.decode()),
+        ).rowcount
+        if not inserted:
+            previous = connection.execute(
+                "SELECT data FROM records WHERE id=?", (clean["event_id"],)
+            ).fetchone()[0]
+            if previous != raw.decode():
+                raise EvidenceError("EVIDENCE_ID_CONFLICT")
+            return False
+        connection.execute(
+            "INSERT OR IGNORE INTO pins SELECT id,? FROM incidents WHERE start<=? AND end>=?",
+            (clean["event_id"], at, at),
+        )
+        incident = None
+        if (
+            clean.get("kind") in TRIGGERS
+            and clean["revision"] == self.metadata["revision"]
+            and clean["generation"] == self.metadata["generation"]
+            and clean["role"] == self.metadata["role"]
+        ):
+            existing = connection.execute(
+                "SELECT * FROM incidents WHERE end>=? AND start<=? "
+                "ORDER BY trigger_at DESC LIMIT 1",
+                (at, at),
+            ).fetchone()
             if (
-                clean.get("kind") in TRIGGERS
-                and clean["revision"] == self.metadata["revision"]
-                and clean["generation"] == self.metadata["generation"]
-                and clean["role"] == self.metadata["role"]
+                existing
+                and at - existing["trigger_at"] < 1200
+                and max(existing["end"], at + self.policy.post_seconds)
+                - min(existing["start"], at - self.policy.pre_seconds)
+                <= 1800
             ):
-                existing = connection.execute(
-                    "SELECT * FROM incidents WHERE end>=? AND start<=? "
-                    "ORDER BY trigger_at DESC LIMIT 1",
-                    (at, at),
-                ).fetchone()
-                if (
-                    existing
-                    and at - existing["trigger_at"] < 1200
-                    and max(existing["end"], at + self.policy.post_seconds)
-                    - min(existing["start"], at - self.policy.pre_seconds)
-                    <= 1800
-                ):
-                    incident = existing["id"]
-                    start = min(existing["start"], at - self.policy.pre_seconds)
-                    end = min(
-                        start + 1800,
-                        max(existing["end"], at + self.policy.post_seconds),
-                    )
-                    connection.execute(
-                        "UPDATE incidents SET trigger_at=min(trigger_at,?),start=?,end=?,"
-                        "expires=max(expires,?) WHERE id=?",
-                        (at, start, end, end + self.policy.retention_seconds, incident),
-                    )
-                else:
-                    incident = digest([self.metadata["path_id"], clean["event_id"]])[:32]
-                    self._trigger(
-                        connection,
-                        {
-                            "incident_id": incident,
-                            "at": at,
-                            "origin_role": clean["role"],
-                            "origin_generation": clean["generation"],
-                            "start": at - self.policy.pre_seconds,
-                            "end": at + self.policy.post_seconds,
-                        },
-                        now,
-                    )
-                connection.execute(
-                    "INSERT OR IGNORE INTO triggers VALUES(?,?)", (clean["event_id"], incident)
-                )
-            if clean.get("kind") == "recovery_completed":
-                connection.execute(
-                    "UPDATE incidents SET end=min(start+1800,max(end,?)) "
-                    "WHERE end>=? AND trigger_at<=?",
-                    (at + self.policy.post_seconds, at, at),
+                incident = existing["id"]
+                start = min(existing["start"], at - self.policy.pre_seconds)
+                end = min(
+                    start + 1800,
+                    max(existing["end"], at + self.policy.post_seconds),
                 )
                 connection.execute(
-                    "UPDATE incidents SET expires=max(expires,end+?)",
-                    (self.policy.retention_seconds,),
+                    "UPDATE incidents SET trigger_at=min(trigger_at,?),start=?,end=?,"
+                    "expires=max(expires,?) WHERE id=?",
+                    (at, start, end, end + self.policy.retention_seconds, incident),
                 )
-            # Pin records that arrived out of order before a trigger/extension.
+            else:
+                incident = digest([self.metadata["path_id"], clean["event_id"]])[:32]
+                self._trigger(
+                    connection,
+                    {
+                        "incident_id": incident,
+                        "at": at,
+                        "origin_role": clean["role"],
+                        "origin_generation": clean["generation"],
+                        "start": at - self.policy.pre_seconds,
+                        "end": at + self.policy.post_seconds,
+                    },
+                    now,
+                )
             connection.execute(
-                "INSERT OR IGNORE INTO pins SELECT i.id,r.id FROM incidents i "
-                "JOIN records r ON r.at BETWEEN i.start AND i.end"
+                "INSERT OR IGNORE INTO triggers VALUES(?,?)", (clean["event_id"], incident)
             )
-            return incident
+        if clean.get("kind") == "recovery_completed":
+            connection.execute(
+                "UPDATE incidents SET end=min(start+1800,max(end,?)) "
+                "WHERE end>=? AND trigger_at<=?",
+                (at + self.policy.post_seconds, at, at),
+            )
+            connection.execute(
+                "UPDATE incidents SET expires=max(expires,end+?)",
+                (self.policy.retention_seconds,),
+            )
+        return incident
 
     def _trigger(self, connection, trigger, now):
         count = connection.execute("SELECT count(*) FROM incidents").fetchone()[0]
@@ -340,7 +373,7 @@ class DiagnosticStore:
             self._trigger(connection, {**value, "at": at, "start": start, "end": end}, now)
 
     def checkpoint(self, key, value):
-        if key not in {"journal_since", "last_sample", "audit_since", "gaps"}:
+        if key not in PROGRESS_KEYS:
             raise EvidenceError()
         with self.write() as connection:
             connection.execute(

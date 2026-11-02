@@ -258,3 +258,57 @@ def test_import_dnsmasq_rejects_unsupported_records_without_partial_rules(tmp_pa
             version="1",
             expected_sha256=hashlib.sha256(raw).hexdigest(),
         )
+
+
+PINNED = ["chatgpt.com", "openai.com", "oaistatic.com", "oaiusercontent.com"]
+
+
+def pinned_config(domains=PINNED):
+    data = example_config()
+    data["policy"] = {**data["policy"], "proxy_domains": domains}
+    return WayviaConfig.model_validate(data)
+
+
+def test_pinned_proxy_domains_win_over_domestic_addresses(config):
+    pinned = pinned_config()
+    # A CN-allocated answer would otherwise route directly.
+    assert PolicyCompiler(config).explain(domain="cdn.chatgpt.com", ip="223.5.5.5")["action"] == (
+        "direct"
+    )
+    result = PolicyCompiler(pinned).explain(domain="cdn.chatgpt.com", ip="223.5.5.5")
+    assert result["action"] == "proxy" and result["rule"] == "proxy-pinned"
+    assert result["dns"] == "proxy"
+    assert PolicyCompiler(pinned).explain(domain="baidu.com")["action"] == "direct"
+
+
+def test_pinned_domains_render_to_both_client_formats():
+    from wayvia.render import ProfileRenderer
+
+    renderer = ProfileRenderer(pinned_config())
+    mihomo = renderer._mihomo("password")
+    rules = mihomo["rules"]
+    pinned = rules.index("DOMAIN-SUFFIX,chatgpt.com,Wayvia")
+    assert pinned < rules.index("DOMAIN-SUFFIX,baidu.com,DIRECT")
+    assert pinned < rules.index("IP-CIDR,1.0.1.0/24,DIRECT")
+    assert mihomo["dns"]["nameserver-policy"]["+.chatgpt.com"] == mihomo["dns"]["nameserver"]
+    singbox = renderer._sing_box("password")
+    route = next(
+        r for r in singbox["route"]["rules"] if "chatgpt.com" in r.get("domain_suffix", [])
+    )
+    assert route["outbound"] == "proxy"
+    dns = next(r for r in singbox["dns"]["rules"] if "chatgpt.com" in r.get("domain_suffix", []))
+    assert dns["server"] == "proxy"
+
+
+def test_empty_pinned_list_keeps_revision_and_conflicts_are_rejected(config):
+    assert pinned_config([]).revision == config.revision
+    with pytest.raises(ValidationError):
+        pinned_config(["chatgpt.com", "ChatGPT.com"])
+    data = example_config()
+    data["policy"] = {
+        **data["policy"],
+        "proxy_domains": ["chatgpt.com"],
+        "explicit_rules": [{"id": "x", "domain": "chatgpt.com", "action": "direct"}],
+    }
+    with pytest.raises(ValidationError):
+        WayviaConfig.model_validate(data)

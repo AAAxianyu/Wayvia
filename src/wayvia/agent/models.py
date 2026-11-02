@@ -35,14 +35,31 @@ class Frozen(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
 
+class ShapingSpec(Frozen):
+    """Exit outbound HTB: a guaranteed carrier class below a total under the provider cap."""
+
+    egress_kbit: int = Field(ge=256, le=10_000_000)
+    carrier_kbit: int = Field(ge=128, le=10_000_000)
+    carrier_port: int = Field(ge=1, le=65535)
+    notsent_lowat: int | None = Field(default=None, ge=16384, le=4194304)
+
+    @model_validator(mode="after")
+    def share(self):
+        if self.carrier_kbit >= self.egress_kbit:
+            raise ValueError("carrier share must leave exit bandwidth")
+        return self
+
+
 class Action(Frozen):
-    kind: Literal["install_config", "namespace", "veth", "guard", "service", "exit_nat"]
+    kind: Literal["install_config", "namespace", "veth", "guard", "service", "exit_nat", "shaping"]
     resource: str
     content: str | None = None
     operation: Literal["ensure", "restart", "stop"] = "ensure"
     namespace: Literal["wayvia-egress"] | None = None
     interface: str | None = None
     subnet: str | None = None
+    # None on a shaping action means "ensure no Wayvia shaping remains".
+    shaping: ShapingSpec | None = None
 
     @model_validator(mode="after")
     def restrict(self):
@@ -53,6 +70,7 @@ class Action(Frozen):
             "guard": {"wayvia_guard"},
             "service": UNITS,
             "exit_nat": {"wayvia_exit"},
+            "shaping": {"wayvia_shaping"},
         }
         if self.resource not in allowed[self.kind]:
             raise ValueError("resource is outside Wayvia ownership")
@@ -66,6 +84,10 @@ class Action(Frozen):
             raise ValueError("invalid network interface")
         if self.kind == "exit_nat" and not self.interface:
             raise ValueError("exit NAT needs the explicit physical egress interface")
+        if self.kind == "shaping" and (not self.interface or self.namespace):
+            raise ValueError("shaping needs the explicit host egress interface")
+        if self.kind != "shaping" and self.shaping is not None:
+            raise ValueError("shaping parameters belong to a shaping action")
         if self.kind == "exit_nat":
             network = ipaddress.ip_network(self.subnet or "", strict=True)
             if (
@@ -187,6 +209,9 @@ class Plan(Frozen):
 
     def computed_digest(self):
         value = self.model_dump(mode="json", exclude={"digest"})
+        for action in value["actions"]:
+            if action["shaping"] is None:
+                del action["shaping"]
         # Preserve sealed v1 plans when optional HTTP fields use their legacy defaults.
         for probe in value["probes"]:
             if probe["response_format"] == "text":

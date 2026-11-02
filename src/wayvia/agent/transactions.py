@@ -60,6 +60,25 @@ class SystemdTimer:
 class TransactionManager:
     evidence_seconds = 90
     safety_blocks = {"EXPLICIT_INGRESS_BLOCK", "DEVICE_SYNC_FAILED"}
+    # ADR 014: only these transport/deadline failures may be load. Every other
+    # failed layer (identity, certificate, inactive session, guard) protects at once.
+    soft_errors = {
+        "HTTP_TIMEOUT",
+        "HTTP_DEADLINE",
+        "HTTP_TRANSPORT_FAILED",
+        "HTTP_TLS_TRANSPORT_FAILED",
+        "COMMAND_TIMEOUT",
+        "PROBE_DEADLINE",
+        "VPN_IDENTITY_TIMEOUT",
+    }
+    # Consecutive soft rounds before protection: without carrier progress (or when
+    # progress is unknown) and while the carrier still moves bytes, respectively.
+    soft_confirm_rounds = 3
+    soft_progress_rounds = 20
+    # Delay before the n-th rebuild within the window, counted from the previous one.
+    rebuild_delays = (0, 30, 60, 120, 240, 300)
+    rebuild_window_seconds = 3600
+    health_heartbeat_seconds = 300
 
     def _event(self, kind, tx, *, unit=None):
         """Best-effort structured facts; diagnostic failure never changes control flow."""
@@ -145,6 +164,8 @@ class TransactionManager:
                 "device_revision",
                 "monitored_at",
                 "monitor_valid_until",
+                "soft_failures",
+                "rebuild_after",
                 "submitted_digest",
                 "effective_digest",
             )
@@ -567,7 +588,8 @@ class TransactionManager:
                     "install_config": 2,
                     "veth": 3,
                     "exit_nat": 4,
-                    "service": 5,
+                    "shaping": 5,
+                    "service": 6,
                 }[a.kind],
             )
             for action in actions:
@@ -580,6 +602,7 @@ class TransactionManager:
                 raise AdapterError("PROBE_FAILED", "Recovery probes failed")
             tx["state"] = State.ACTIVE
             tx.pop("error", None)
+            tx.pop("soft_failures", None)
             credentials = self._credentials() if tx["role"] == "ingress" else None
             tx["device_revision"] = credentials["revision"] if credentials else None
             self._event("recovery_completed", tx)
@@ -721,7 +744,10 @@ class TransactionManager:
                 tx["error"] = runtime["blocked_reason"]
                 tx["evidence"] = []
             elif tx["state"] == State.DEGRADED:
-                self._rebuild(tx)
+                if self._rebuild_due(tx):
+                    self._rebuild(tx)
+                else:
+                    self._event("recovery_deferred", tx)
             else:
                 try:
                     healthy = self._observe(tx, plan)
@@ -729,10 +755,22 @@ class TransactionManager:
                     healthy = False
                     tx["evidence"] = []
                     tx["error"] = getattr(exc, "code", "RUNTIME_PROBE_FAILED")
-                if not healthy:
+                progress = self._carrier_progress(tx)
+                if healthy:
+                    tx.pop("soft_failures", None)
+                elif self._soft_only(tx["evidence"]):
+                    # Load slows probes without breaking the protected path. Confirm
+                    # over consecutive rounds; a carrier still moving bytes is busy.
+                    tx["soft_failures"] = tx.get("soft_failures", 0) + 1
+                    limit = self.soft_progress_rounds if progress else self.soft_confirm_rounds
+                    if tx["soft_failures"] >= limit:
+                        tx["state"] = State.DEGRADED
+                        tx["error"] = "RUNTIME_PROBE_FAILED"
+                else:
                     tx["state"] = State.DEGRADED
                     tx.setdefault("error", "RUNTIME_PROBE_FAILED")
             if tx["state"] == State.DEGRADED:
+                tx.pop("soft_failures", None)
                 self._save(tx)
                 try:
                     self._protect(plan, tx)
@@ -743,8 +781,54 @@ class TransactionManager:
             tx["monitor_valid_until"] = (
                 observed + timedelta(seconds=self.evidence_seconds)
             ).isoformat()
-            self._save(tx)
-            self._event(
-                "health_degraded" if tx["state"] == State.DEGRADED else "health_healthy", tx
+            if tx["state"] == State.DEGRADED:
+                kind = "health_degraded"
+            else:
+                kind = "health_congested" if tx.get("soft_failures") else "health_healthy"
+            # Unchanged healthy rounds emit a periodic heartbeat, not one event each.
+            last = tx.get("health_event") or {}
+            now = time.time()
+            emit = (
+                kind != "health_healthy"
+                or last.get("kind") != kind
+                or now - last.get("at", 0) >= self.health_heartbeat_seconds
             )
+            if emit:
+                tx["health_event"] = {"kind": kind, "at": now}
+            self._save(tx)
+            if emit:
+                self._event(kind, tx)
             return self.public(tx)
+
+    def _soft_only(self, evidence):
+        failed = [item for item in evidence if item.get("status") != "healthy"]
+        return bool(failed) and all(item.get("error") in self.soft_errors for item in failed)
+
+    def _carrier_progress(self, tx):
+        """True/False when the same carrier socket was sampled twice; None if unknown."""
+        sample = getattr(self.executor, "carrier_counters", None)
+        try:
+            counters = sample() if sample else None
+        except Exception:
+            counters = None
+        previous = tx.get("carrier_counters")
+        tx["carrier_counters"] = counters
+        if not counters or not previous or counters.get("socket") != previous.get("socket"):
+            return None
+        # Bytes from the peer only keep arriving while our ACKs reach it, and the
+        # VPN keepalive guarantees traffic on an otherwise idle carrier.
+        return counters.get("received", 0) > previous.get("received", 0)
+
+    def _rebuild_due(self, tx):
+        now = time.time()
+        recent = [
+            at for at in tx.get("rebuild_attempts", []) if now - at < self.rebuild_window_seconds
+        ]
+        delay = self.rebuild_delays[min(len(recent), len(self.rebuild_delays) - 1)]
+        if recent and now - recent[-1] < delay:
+            tx["rebuild_attempts"] = recent
+            tx["rebuild_after"] = datetime.fromtimestamp(recent[-1] + delay, UTC).isoformat()
+            return False
+        tx["rebuild_attempts"] = recent + [now]
+        tx.pop("rebuild_after", None)
+        return True

@@ -190,3 +190,32 @@ make clean-lab
 ## 私有日志与管理员平台
 
 新增日志采集、受限两端传输、一次性登录码、元数据查询、导出和安全回退见[独立运维说明](logging-admin.md)。仓库实现不自动安装或启动生产采集；未来切换必须先验证 Nginx 覆盖可信请求 ID，再启用信任该头的公开 API 路径。软件验收与生产验收分别记录。
+
+## 拥塞感知监控、出口整形与日志上限
+
+设计见 [ADR 014](adr/014-congestion-aware-health-and-exit-shaping.md)。升级到含该功能的版本后，monitor 行为自动变化：传输/期限类检查失败先记为 `health_congested`，无承载进展连续 3 轮、承载仍在前进连续 20 轮才保护；身份、证书、会话、guard 与服务类失败仍立即保护。连续降级的整链重建按 0/30/60/120/240/300 秒退避，等待时状态中的 `rebuild_after` 给出下一次时间。健康的 monitor 轮只输出紧凑摘要。
+
+出口整形默认关闭。只在日本出口主机、取得授权并完成隔离实验后启用；入口主机与其他业务共用网卡，不配置整形。示例中 `shaping` 单位为 kbit/s，取供应商额度的约九成；`vpn` 两项的实际取值由隔离实验确定，示例仅示意：
+
+```yaml
+shaping:
+  egress_kbit: 1800
+  carrier_kbit: 1200
+  notsent_lowat: 131072
+vpn:
+  tcp_queue_limit: 64
+  socket_buffer: 262144
+```
+
+`shaping` 经正常 render → plan（带 `--exit-interface`）→ apply → confirm 生效，回退恢复原队列与原 `tcp_notsent_lowat`；接口已有非 Wayvia 的自定义根队列时 apply 拒绝。删除 `shaping` 后重新发布即移除 Wayvia 的整形。`vpn` 两项会改变两端 OpenVPN 配置，需按日本 → 阿里云顺序滚动发布。核对：`tc -s qdisc show dev <出口接口>` 应见 `htb` 根和两个 `fq_codel` 叶子，`sysctl net.ipv4.tcp_notsent_lowat` 为配置值。
+
+国内不可达、必须走代理的服务可固定：
+
+```yaml
+policy:
+  proxy_domains: [chatgpt.com, openai.com, oaistatic.com, oaiusercontent.com]
+```
+
+它排在国内规则之前并使用代理 DNS，修改会改变配置 revision，需要重新发布订阅。
+
+journald 上限是主机级设置，会影响同机所有服务。仅在主机所有者同意后安装 `deploy/journald/wayvia-limits.conf` 到 `/etc/systemd/journald.conf.d/` 并执行 `systemctl restart systemd-journald`；与其他业务共用的主机应先评估。

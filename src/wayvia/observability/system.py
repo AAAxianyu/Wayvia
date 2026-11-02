@@ -76,7 +76,9 @@ def journal_row(row, host_id, role):
             if item.get("kind") in {
                 "health_degraded",
                 "health_healthy",
+                "health_congested",
                 "recovery_started",
+                "recovery_deferred",
                 "recovery_completed",
                 "recovery_failed",
                 "protection_requested",

@@ -486,3 +486,22 @@ def test_collector_health_snapshot_keeps_original_monitor_time(tmp_path, monkeyp
     health = [r for r in result["events"] if r["kind"] == "health_degraded"]
     assert len(health) == 1 and health[0]["observed_at"] == stamp(BASE - 1)
     assert health[0]["monotonic_ms"] is None
+
+
+def test_batched_append_is_one_transaction_with_its_checkpoints(tmp_path, monkeypatch):
+    target = store(tmp_path)
+    opened = []
+    original = target.write
+
+    def counting():
+        opened.append(1)
+        return original()
+
+    monkeypatch.setattr(target, "write", counting)
+    rows = [sample(target, 1), event(target, 2), event(target, 3, kind="probe_healthy")]
+    results = target.append_many(rows, now=BASE + 3, progress={"journal_since": BASE + 3})
+    assert len(opened) == 1 and len(results) == 3
+    assert target.progress()["journal_since"] == BASE + 3
+    assert target.append_many(rows[:1], now=BASE + 3) == [None]  # Identical duplicate.
+    with pytest.raises(EvidenceError):
+        target.append_many(rows, now=BASE + 3, progress={"unknown": 1})

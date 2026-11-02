@@ -39,6 +39,10 @@ def atomic_write(path, content, mode=0o600):
             os.unlink(temporary)
 
 
+# Kernel/distribution default root disciplines; anything else is a deliberate choice.
+DEFAULT_ROOT_QDISCS = {"fq_codel", "fq", "mq", "noqueue", "pfifo_fast"}
+
+
 def guard_rules(namespace=False):
     if namespace:
         return """table inet wayvia_guard {
@@ -179,6 +183,22 @@ class LinuxExecutor:
             return {
                 "exists": result.returncode == 0,
                 "rules": result.stdout if result.returncode == 0 else None,
+            }
+        if action.kind == "shaping":
+            qdiscs = json.loads(
+                self._cmd(["tc", "-j", "qdisc", "show", "dev", action.interface]).stdout or "[]"
+            )
+            root = next((q for q in qdiscs if q.get("root")), {})
+            state = self._shaping_state()
+            return {
+                # Only a non-default root discipline occupies the interface.
+                "exists": bool(root) and root.get("kind") not in DEFAULT_ROOT_QDISCS,
+                "root": root.get("kind"),
+                "applied": state.get("spec"),
+                "original_notsent_lowat": state.get("original_notsent_lowat"),
+                "notsent_lowat": self._cmd(
+                    ["sysctl", "-n", "net.ipv4.tcp_notsent_lowat"]
+                ).stdout.strip(),
             }
         if action.kind == "service":
             result = self._cmd(["systemctl", "is-active", action.resource], check=False)
@@ -417,6 +437,8 @@ class LinuxExecutor:
                 and self.enforce_environment
             ):
                 continue
+            if action.kind == "shaping" and action.shaping is None:
+                continue  # Ensuring absence never touches a discipline Wayvia does not own.
             before = self.inspect_action(action)
             if before["exists"] and self._key(action) not in self._owners():
                 raise AdapterError(
@@ -664,6 +686,11 @@ class LinuxExecutor:
             batch = (f"delete table inet {action.resource}\n" if existing else "") + rules
             self._cmd(["nft", "--check", "-f", "-"], namespace=action.namespace, input_text=batch)
             self._cmd(["nft", "-f", "-"], namespace=action.namespace, input_text=batch)
+        elif action.kind == "shaping":
+            if action.shaping:
+                self._shape(action.interface, action.shaping.model_dump())
+            elif self._shaping_state():
+                self._unshape(action.interface, self._shaping_state().get("original_notsent_lowat"))
         elif action.kind == "service":
             atomic_write(
                 self.unit_dir / action.resource,
@@ -719,6 +746,11 @@ class LinuxExecutor:
         elif action.kind == "namespace" and not before["exists"]:
             if self.inspect_action(action)["exists"]:
                 self._cmd(["ip", "netns", "delete", "wayvia-egress"])
+        elif action.kind == "shaping":
+            if before.get("applied"):
+                self._shape(action.interface, before["applied"])
+            elif self._shaping_state():
+                self._unshape(action.interface, before.get("notsent_lowat"))
         elif action.kind in {"guard", "exit_nat"}:
             present = self.inspect_action(action)["exists"]
             batch = (f"delete table inet {action.resource}\n" if present else "") + (
@@ -741,6 +773,83 @@ class LinuxExecutor:
         # path so the data plane cannot acquire a physical fallback while reconnecting.
         unit = "wayvia-ingress.service" if plan.role == "ingress" else "wayvia-exit.service"
         self._cmd(["systemctl", "stop", unit])
+
+    def _shaping_state(self):
+        path = self.state_dir / "shaping.json"
+        return json.loads(path.read_text()) if path.exists() else {}
+
+    def _shape(self, interface, spec):
+        """Rebuild the exit HTB from scratch so repeated application cannot stack filters."""
+        state = self._shaping_state()
+        original = state.get("original_notsent_lowat")
+        if original is None:
+            original = self._cmd(["sysctl", "-n", "net.ipv4.tcp_notsent_lowat"]).stdout.strip()
+        total, carrier = spec["egress_kbit"], spec["carrier_kbit"]
+        ceil = ["ceil", f"{total}kbit"]
+        self._cmd(["tc", "qdisc", "del", "dev", interface, "root"], check=False)
+        for argv in (
+            ["qdisc", "add", "dev", interface, "root", "handle", "1:", "htb", "default", "20"],
+            ["class", "add", "dev", interface, "parent", "1:", "classid", "1:1", "htb"]
+            + ["rate", f"{total}kbit", *ceil],
+            ["class", "add", "dev", interface, "parent", "1:1", "classid", "1:10", "htb"]
+            + ["rate", f"{carrier}kbit", *ceil, "prio", "0"],
+            ["class", "add", "dev", interface, "parent", "1:1", "classid", "1:20", "htb"]
+            + ["rate", f"{total - carrier}kbit", *ceil, "prio", "1"],
+            ["qdisc", "add", "dev", interface, "parent", "1:10", "handle", "10:", "fq_codel"],
+            ["qdisc", "add", "dev", interface, "parent", "1:20", "handle", "20:", "fq_codel"],
+            ["filter", "add", "dev", interface, "parent", "1:", "protocol", "ip", "prio", "1"]
+            + ["u32", "match", "ip", "sport", str(spec["carrier_port"]), "0xffff"]
+            + ["flowid", "1:10"],
+            ["filter", "add", "dev", interface, "parent", "1:", "protocol", "ipv6", "prio", "2"]
+            + ["u32", "match", "ip6", "sport", str(spec["carrier_port"]), "0xffff"]
+            + ["flowid", "1:10"],
+        ):
+            self._cmd(["tc", *argv])
+        lowat = spec.get("notsent_lowat") or original
+        self._cmd(["sysctl", "-w", f"net.ipv4.tcp_notsent_lowat={int(lowat)}"])
+        atomic_write(
+            self.state_dir / "shaping.json",
+            json.dumps({"spec": spec, "original_notsent_lowat": original}),
+        )
+
+    def _unshape(self, interface, notsent_lowat):
+        qdiscs = json.loads(
+            self._cmd(["tc", "-j", "qdisc", "show", "dev", interface]).stdout or "[]"
+        )
+        if any(q.get("root") and q.get("kind") == "htb" for q in qdiscs):
+            self._cmd(["tc", "qdisc", "del", "dev", interface, "root"])
+        if notsent_lowat:
+            self._cmd(["sysctl", "-w", f"net.ipv4.tcp_notsent_lowat={int(notsent_lowat)}"])
+        (self.state_dir / "shaping.json").unlink(missing_ok=True)
+
+    def carrier_counters(self):
+        """Byte counters of the long-lived carrier socket, or None if not identifiable."""
+        manifest = json.loads((self.config_dir / "manifest.json").read_text())
+        if manifest["role"] == "ingress":
+            carrier = json.loads((self.config_dir / "carrier.json").read_text())
+            outbound = next(o for o in carrier["outbounds"] if o.get("tag") == "japan-carrier")
+            try:
+                ipaddress.ip_address(outbound["server"])
+            except ValueError:
+                return None  # A hostname cannot exclude unrelated HTTPS sockets on the host.
+            selector = ["dport", "=", f":{int(outbound['server_port'])}"]
+            selector += ["and", "dst", outbound["server"]]
+        else:
+            exit_config = json.loads((self.config_dir / "exit.json").read_text())
+            inbound = next(i for i in exit_config["inbounds"] if i.get("tag") == "carrier")
+            selector = ["sport", "=", f":{int(inbound['listen_port'])}"]
+        output = self._cmd(["ss", "-tinH", "state", "established", *selector], timeout=3).stdout
+        sockets = []
+        for line in output.splitlines():
+            if line and not line[0].isspace():
+                fields = line.split()
+                sockets.append({"socket": f"{fields[-2]}>{fields[-1]}", "received": 0, "acked": 0})
+            elif sockets:
+                for key, name in (("received", "bytes_received"), ("acked", "bytes_acked")):
+                    match = re.search(rf"\b{name}:(\d+)", line)
+                    if match:
+                        sockets[-1][key] = int(match.group(1))
+        return max(sockets, key=lambda row: row["received"] + row["acked"], default=None)
 
     def prepare_ingress(self, action):
         if action.kind != "install_config" or action.resource != "ingress.json":

@@ -119,6 +119,9 @@ class VPN(StrictModel):
     interface: Literal["tun0"] = "tun0"
     mtu: Annotated[int, Field(ge=1200, le=1500)] = 1400
     expected_exit_ip: str | None = None
+    # Optional carrier buffering limits (ADR 014); unset keeps OpenVPN defaults.
+    tcp_queue_limit: Annotated[int, Field(ge=16, le=4096)] | None = None
+    socket_buffer: Annotated[int, Field(ge=16384, le=4194304)] | None = None
 
     @field_validator("remote_on_exit")
     @classmethod
@@ -213,6 +216,16 @@ class Policy(StrictModel):
     proxy_ipv6: Literal["block_until_supported"] = "block_until_supported"
     udp: Literal["allow", "block"] = "allow"
     explicit_rules: list[ExplicitRule] = Field(default_factory=list)
+    # Suffixes that always use the protected path, ahead of domestic domain/IP rules.
+    proxy_domains: list[str] = Field(default_factory=list, max_length=256)
+
+    @field_validator("proxy_domains")
+    @classmethod
+    def proxy_domains_valid(cls, value: list[str]) -> list[str]:
+        domains = [normalize_domain(item) for item in value]
+        if len(set(domains)) != len(domains):
+            raise ValueError("duplicate_proxy_domain")
+        return domains
 
 
 class Resolver(StrictModel):
@@ -251,6 +264,20 @@ class DNS(StrictModel):
     resolvers: dict[SecretRef, Resolver]
 
 
+class Shaping(StrictModel):
+    """Exit outbound shaping just below the provider limit; see ADR 014."""
+
+    egress_kbit: Annotated[int, Field(ge=256, le=10_000_000)]
+    carrier_kbit: Annotated[int, Field(ge=128, le=10_000_000)]
+    notsent_lowat: Annotated[int, Field(ge=16384, le=4194304)] | None = 131072
+
+    @model_validator(mode="after")
+    def carrier_share(self) -> Shaping:
+        if self.carrier_kbit >= self.egress_kbit:
+            raise ValueError("carrier_share_must_leave_exit_bandwidth")
+        return self
+
+
 class WayviaConfig(StrictModel):
     schema_version: Literal[1]
     deployment: Deployment
@@ -260,6 +287,7 @@ class WayviaConfig(StrictModel):
     policy: Policy
     dns: DNS
     rulesets: dict[SecretRef, RuleSet]
+    shaping: Shaping | None = None
 
     @model_validator(mode="after")
     def references_and_conflicts(self) -> WayviaConfig:
@@ -297,6 +325,9 @@ class WayviaConfig(StrictModel):
             raise ValueError("credential_roles_must_use_distinct_references")
         if self.entry.endpoint == self.carrier.endpoint:
             raise ValueError("entry_and_carrier_endpoints_must_differ")
+        explicit = {rule.domain for rule in self.policy.explicit_rules if rule.domain}
+        if explicit & set(self.policy.proxy_domains):
+            raise ValueError("proxy_domain_conflicts_with_explicit_rule")
         direct_sets = [
             self.rulesets[self.policy.domestic_rules_ref],
             self.rulesets[self.policy.local_rules_ref],
@@ -350,7 +381,16 @@ class WayviaConfig(StrictModel):
 
     @property
     def revision(self) -> str:
-        body = json.dumps(self.model_dump(mode="json"), sort_keys=True, separators=(",", ":"))
+        value = self.model_dump(mode="json")
+        # Optional tuning added after deployment must not re-key existing revisions.
+        if value["shaping"] is None:
+            del value["shaping"]
+        for key in ("tcp_queue_limit", "socket_buffer"):
+            if value["vpn"][key] is None:
+                del value["vpn"][key]
+        if not value["policy"]["proxy_domains"]:
+            del value["policy"]["proxy_domains"]
+        body = json.dumps(value, sort_keys=True, separators=(",", ":"))
         return hashlib.sha256(body.encode()).hexdigest()
 
 

@@ -269,6 +269,8 @@ def test_legacy_sealed_plan_digest_survives_optional_fields():
     for item in legacy["probes"]:
         item.pop("response_format")
         item.pop("fallback_urls")
+    for item in legacy["actions"]:
+        item.pop("shaping")
     legacy["digest"] = hashlib.sha256(
         json.dumps(legacy, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()

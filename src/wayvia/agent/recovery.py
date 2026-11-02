@@ -6,6 +6,31 @@ import json
 from wayvia.adapters.linux import LinuxExecutor
 from wayvia.agent.transactions import TransactionManager
 
+SLOW_MS = 2000
+SUMMARY = ("id", "role", "revision", "state", "generation", "current")
+SUMMARY += ("monitored_at", "monitor_valid_until")
+EVIDENCE = ("layer", "status", "kind", "check", "error", "duration_ms", "observed_at", "event_id")
+
+
+def compact(row):
+    """Healthy, fast monitor rounds keep per-layer timing only; anything else stays full."""
+    evidence = row.get("evidence") or []
+    if (
+        row.get("state") != "ACTIVE"
+        or row.get("soft_failures")
+        or any(
+            item.get("status") != "healthy" or (item.get("duration_ms") or 0) > SLOW_MS
+            for item in evidence
+        )
+    ):
+        return row
+    return {
+        **{key: row[key] for key in SUMMARY if key in row},
+        "evidence": [
+            {key: item[key] for key in EVIDENCE if item.get(key) is not None} for item in evidence
+        ],
+    }
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -31,7 +56,10 @@ def main():
         ]
     else:
         result = manager.recover(rebuild_active=args.rebuild_active)
-    print(json.dumps(result))
+    if args.monitor:
+        print(json.dumps([compact(row) for row in result], separators=(",", ":")))
+    else:
+        print(json.dumps(result))
     rows = result if isinstance(result, list) else [result]
     return 5 if any(r["state"] in {"RECOVERY_REQUIRED", "DEGRADED"} for r in rows) else 0
 

@@ -203,7 +203,7 @@ def vpn_identity(payload, root, manifest, socks=None):
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         deadline = time.monotonic() + payload["timeout"]
         output = b""
-        verified = False
+        verified = timed_out = False
         try:
             while time.monotonic() < deadline:
                 ready, _, _ = select.select(
@@ -219,6 +219,8 @@ def vpn_identity(payload, root, manifest, socks=None):
                         break
                 if process.poll() is not None:
                     break
+            else:
+                timed_out = process.poll() is None
         finally:
             if process.poll() is None:
                 process.terminate()
@@ -227,7 +229,22 @@ def vpn_identity(payload, root, manifest, socks=None):
                 except subprocess.TimeoutExpired:
                     process.kill()
                     process.wait(timeout=0.3)
-        return {"healthy": verified, "check": "vpn_server_identity", "client_authenticated": False}
+        result = {
+            "healthy": verified,
+            "check": "vpn_server_identity",
+            "client_authenticated": False,
+        }
+        if not verified:
+            # Only an unfinished handshake may be load; any verification error is not.
+            rejected = b"VERIFY ERROR" in output or b"VERIFY X509NAME ERROR" in output
+            result["error"] = (
+                "VPN_IDENTITY_REJECTED"
+                if rejected
+                else "VPN_IDENTITY_TIMEOUT"
+                if timed_out
+                else "VPN_IDENTITY_FAILED"
+            )
+        return result
 
 
 def vpn_session(payload, manifest):

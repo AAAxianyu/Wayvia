@@ -1,5 +1,11 @@
 # Wayvia 实现与验收状态
 
+## 2026-11-02 拥塞感知健康判定与出口整形：仓库实现
+
+依据只读生产核查（[问题范围](validation/congestion-scope-2026-11-02/README.md)）与用户确认的[方案](../.scratch/congestion-resilience/spec.md)，在 `codex/congestion-resilience` 实现 [ADR 014](adr/014-congestion-aware-health-and-exit-shaping.md)：传输/期限类检查失败按承载字节进展连续确认（3/20 轮），身份/证书/会话/guard 失败仍立即保护；整链重建 1 小时内退避 0–300 秒；monitor 健康轮紧凑输出与 5 分钟心跳；诊断 collector 每轮批量写入，日志库分批清理。新增默认关闭的日本出口 HTB 整形事务动作、OpenVPN 缓冲选项和 `policy.proxy_domains`，以及手动安装的 journald 上限文件。ADR 002 与恢复决策表同步修订。
+
+`make check` 625 项通过（新增 32，3 项原有警告），`make demo` 与 11 项 `make test-configs` 通过；`make test-lab` 按故障测试暂缓约束未运行，退出码 null。整形效果与宽限期 fail-closed 需一次性 Linux 实验验证，未部署、未提交。详见[验证记录](validation/congestion-resilience-2026-11-02/README.md)。
+
 ## 2026-10-27 日志系统与私有管理员平台：仓库交付
 
 按用户后续授权完成[方案](../.scratch/logging-admin/spec.md)七项仓库任务。新增默认关闭的持久被动日志、Nginx/API 安全请求合并和限流归因、独立 sing-box API 4 连接事件流、两端系统/SSH/指标投影及受限批次传输；六页私有管理界面支持设备历史、连接目标、同时段事件、管理操作审计和共享脱敏导出。独立日志/会话库、Unix 凭据、回环登录与有界资源；原订阅 URL、凭据、正文、名称、规则、控制库和旧统计/有限诊断契约保持。元数据边界见 [ADR 013](adr/013-private-traffic-metadata-and-admin.md)。

@@ -1,4 +1,26 @@
 schema_version: 1
+congestion_resilience_2026_11_02:
+  status: repository_implemented_software_verified_lab_and_production_pending
+  base_commit: 0873d61862ba62445ea0b08af3d56e0f85644707
+  branch: codex/congestion-resilience
+  implementation_decision: docs/adr/014-congestion-aware-health-and-exit-shaping.md
+  amends: docs/adr/002-privileged-network-transactions.md
+  health_decision: {soft_confirm_rounds: 3, soft_progress_rounds: 20, rebuild_delays_seconds: [0, 30, 60, 120, 240, 300], rebuild_window_seconds: 3600, healthy_heartbeat_seconds: 300}
+  carrier_progress_source: ss_tcp_info_bytes_received
+  exit_shaping: {default: disabled, mechanism: htb_with_fq_codel_leaves, host_sysctl: net.ipv4.tcp_notsent_lowat, ingress_host: not_shaped_shared_with_other_service}
+  production_host_kernel_modules_observed: {sch_cake: available, sch_htb: available, ifb: available, tcp_bbr: available, kernels: [6.8.0-79-generic, 6.8.0-48-generic], iproute2: 6.1.0}
+  openvpn_buffer_options: {default: not_emitted, allowed: [tcp-queue-limit, sndbuf, rcvbuf]}
+  policy_proxy_domains: {default: empty, revision_unchanged_when_empty: true}
+  environment: {platform: Darwin_arm64, python: 3.12.12, uv: 0.9.7, sqlite: 3.50.4}
+  gates:
+    check: {exit_code: 0, tests: 625, new_tests: 32, existing_warnings: 3}
+    demo: {exit_code: 0, scope: simulated}
+    test_configs: {exit_code: 0, real_artifacts: 11}
+    test_lab: {exit_code: null, status: not_run_user_deferred_fault_tests}
+  isolated_shaping_and_grace_safety_experiment: not_run
+  production_changes: none
+  evidence: docs/validation/congestion-resilience-2026-11-02/README.md
+  scope_evidence: docs/validation/congestion-scope-2026-11-02/README.md
 logging_admin_2026_10_27:
   status: repository_implemented_software_verified_production_pending
   base_commit: c98141f83668182733e0989a7b0d54a461adff39

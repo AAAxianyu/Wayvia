@@ -33,6 +33,13 @@ def _secret_path(ref: str, suffix: str) -> str:
     return f"{SECRET_ROOT}/{ref}.{suffix}"
 
 
+def _vpn_buffers(vpn) -> list[str]:
+    lines = [f"tcp-queue-limit {vpn.tcp_queue_limit}"] if vpn.tcp_queue_limit else []
+    if vpn.socket_buffer:
+        lines += [f"sndbuf {vpn.socket_buffer}", f"rcvbuf {vpn.socket_buffer}"]
+    return lines
+
+
 def _dns_server(resolver: Resolver, tag: str, detour: str | None = None) -> dict:
     result = {
         "type": resolver.protocol,
@@ -245,7 +252,7 @@ class ProfileRenderer:
         # Looking up its label suffixes keeps this linear in the rule input.
         prior_suffixes = set()
         for rule in policy["rules"]:
-            if rule["action"] != "direct":
+            if rule["action"] not in {"direct", "proxy"} or rule["id"] == "default":
                 continue
             for domain in rule.get("domains", []):
                 labels = domain.split(".")
@@ -262,7 +269,7 @@ class ProfileRenderer:
         for rule in policy["rules"]:
             if rule["id"] == "default":
                 continue
-            outbound = "DIRECT" if rule["action"] == "direct" else "REJECT"
+            outbound = {"direct": "DIRECT", "proxy": "Wayvia"}.get(rule["action"], "REJECT")
             if rule.get("exact_domains"):
                 for domain in rule["exact_domains"]:
                     rules.append(f"AND,((DOMAIN,{domain}),(DST-PORT,{rule['port']})),{outbound}")
@@ -379,23 +386,26 @@ class ServerRenderer:
             ]
         if config.vpn.tls_crypt_ref:
             required.append(config.vpn.tls_crypt_ref + ".key")
-        files["manifest.json"] = _json(
-            {
-                "schema_version": 1,
-                "role": role,
-                "revision": config.revision,
-                "files": sorted(files),
-                "process_namespaces": processes,
-                "required_secret_files": required,
-                "vpn_interface": config.vpn.interface,
-                "vpn_subnet": config.vpn.subnet,
-                "namespace_link": "10.89.0.0/30",
-                "ipv6_proxy_supported": False,
-                "entry_server_name": config.entry.server_name,
-                "carrier_server_name": config.carrier.server_name,
-                "vpn_server_name": config.vpn.server_name,
-            }
-        )
+        manifest = {
+            "schema_version": 1,
+            "role": role,
+            "revision": config.revision,
+            "files": sorted(files),
+            "process_namespaces": processes,
+            "required_secret_files": required,
+            "vpn_interface": config.vpn.interface,
+            "vpn_subnet": config.vpn.subnet,
+            "namespace_link": "10.89.0.0/30",
+            "ipv6_proxy_supported": False,
+            "entry_server_name": config.entry.server_name,
+            "carrier_server_name": config.carrier.server_name,
+            "vpn_server_name": config.vpn.server_name,
+        }
+        if role == "exit" and config.shaping:
+            # The planner derives the shaping action from the sealed manifest.
+            _, carrier_port = split_endpoint(config.carrier.endpoint)
+            manifest["shaping"] = {**config.shaping.model_dump(), "carrier_port": carrier_port}
+        files["manifest.json"] = _json(manifest)
         return files
 
     def _ingress(self, devices: list[dict], secrets: dict[str, str], carrier_password: str) -> dict:
@@ -544,6 +554,7 @@ class ServerRenderer:
             "connect-timeout 10",
             "ping 10",
             "ping-restart 60",
+            *_vpn_buffers(config.vpn),
             "verb 3",
         ]
         if config.vpn.tls_crypt_ref:
@@ -614,6 +625,7 @@ class ServerRenderer:
             "persist-key",
             "persist-tun",
             f"tun-mtu {config.vpn.mtu}",
+            *_vpn_buffers(config.vpn),
             "verb 3",
         ]
         if config.vpn.tls_crypt_ref:

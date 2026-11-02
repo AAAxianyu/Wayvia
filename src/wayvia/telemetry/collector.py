@@ -109,9 +109,12 @@ class RollingCollector:
         progress = self.store.progress()
         row = self.sampler.sample(self.metadata, budget=self.run)
         now = timestamp(row["observed_at"])
+        # Events of one iteration commit together, with their read checkpoints, so a
+        # crash cannot advance a checkpoint past events that were never stored.
+        pending, checkpoints = [], {}
         previous_at = progress.get("last_sample")
         if previous_at and now - timestamp(previous_at) > self.store.policy.interval_seconds * 1.5:
-            self.store.append(
+            pending.append(
                 {
                     **context(**self.metadata),
                     "observed_at": row["observed_at"],
@@ -120,8 +123,7 @@ class RollingCollector:
                     "source": "collector",
                     "gap_start": previous_at,
                     "gap_end": row["observed_at"],
-                },
-                now=now,
+                }
             )
         since = progress.get("journal_since", now - self.store.policy.buffer_seconds)
         events, status = collect_journal(since=since - 5, until=now, role=role, budget=self.run)
@@ -129,9 +131,8 @@ class RollingCollector:
         # Failed/truncated reads keep the checkpoint, making the missing interval
         # visible and eligible for a later bounded reread.
         if status == "ok":
-            self.store.checkpoint("journal_since", now)
-        for event in events:
-            self.store.append(event, now=now)
+            checkpoints["journal_since"] = now
+        pending.extend(events)
         if self.audit_db:
             try:
                 events, status = audit_events(
@@ -140,10 +141,9 @@ class RollingCollector:
                     until=now,
                     role=role,
                 )
-                for event in events:
-                    self.store.append(event, now=now)
+                pending.extend(events)
                 if status == "ok":
-                    self.store.checkpoint("audit_since", now)
+                    checkpoints["audit_since"] = now
                 row["sources"]["audit"] = status
             except (OSError, sqlite3.Error, ValueError):
                 row["sources"]["audit"] = "unavailable"
@@ -161,7 +161,7 @@ class RollingCollector:
             and timestamp(valid_until) > now
         ):
             degraded = transaction["state"] == "DEGRADED"
-            self.store.append(
+            pending.append(
                 {
                     **context(**self.metadata, observed_at=monitored),
                     "monotonic_ms": None,
@@ -173,8 +173,7 @@ class RollingCollector:
                     "kind": "health_degraded" if degraded else "health_healthy",
                     "source": "snapshot",
                     "status": "degraded" if degraded else "healthy",
-                },
-                now=now,
+                }
             )
         for index, evidence in enumerate(transaction.get("evidence", [])[:7]):
             if not isinstance(evidence, dict):
@@ -191,7 +190,8 @@ class RollingCollector:
                 "source": "snapshot",
                 "event_id": digest([generation, index, at, evidence.get("status")]),
             }
-            self.store.append(event, now=now)
+            pending.append(event)
+        self.store.append_many(pending, now=now, progress=checkpoints)
         try:
             row["sources"]["peer"] = trigger_channel(self.store, self.inbox, self.outbox, now)
         except (ObservationError, OSError, EvidenceError):
@@ -201,8 +201,7 @@ class RollingCollector:
         row["collector"]["duration_ms"] = (time.monotonic() - started) * 1000
         row["collector"]["cpu_ms"] = (time.process_time() - cpu_started) * 1000
         row["collector"]["payload_bytes"] = len(canonical(row))
-        self.store.append(row, now=now)
-        self.store.checkpoint("last_sample", row["observed_at"])
+        self.store.append_many([row], now=now, progress={"last_sample": row["observed_at"]})
         return "continue"
 
     def run_loop(self):

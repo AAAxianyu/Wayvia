@@ -33,10 +33,20 @@ def build_plan(
             Action(kind="service", resource="wayvia-ingress.service", operation="restart"),
         ]
     elif role == "exit":
-        subnet = json.loads(artifacts["manifest.json"])["vpn_subnet"]
+        manifest = json.loads(artifacts["manifest.json"])
         actions += [
             Action(
-                kind="exit_nat", resource="wayvia_exit", interface=exit_interface, subnet=subnet
+                kind="exit_nat",
+                resource="wayvia_exit",
+                interface=exit_interface,
+                subnet=manifest["vpn_subnet"],
+            ),
+            # Always present on the exit so disabling shaping removes an earlier one.
+            Action(
+                kind="shaping",
+                resource="wayvia_shaping",
+                interface=exit_interface,
+                shaping=manifest.get("shaping"),
             ),
             Action(kind="service", resource="wayvia-vpn-server.service", operation="restart"),
             Action(kind="service", resource="wayvia-exit.service", operation="restart"),

@@ -22,6 +22,7 @@ from wayvia.observability.models import (
 )
 from wayvia.telemetry.store import secure_path
 
+PRUNE_BATCH = 1000
 SCHEMA = """
 CREATE TABLE metadata(version INTEGER NOT NULL);
 INSERT INTO metadata VALUES(1);
@@ -285,19 +286,40 @@ class LogStore:
             ),
         )
 
-    def _prune(self, con, now, config):
-        con.execute("DELETE FROM records WHERE expires<=?", (now,))
-        # A shortened policy also applies to existing records immediately.
+    def _prune(self, con, now, config, *, budget=None):
+        """Delete at most `budget` expired rows; queries already apply retention.
+
+        A bounded delete keeps each writer transaction short when a retention
+        boundary or a shortened policy suddenly expires many rows.
+        """
         from wayvia.observability.models import KINDS
 
+        budget = PRUNE_BATCH if budget is None else budget
+        removed = con.execute(
+            "DELETE FROM records WHERE rowid IN "
+            "(SELECT rowid FROM records WHERE expires<=? LIMIT ?)",
+            (now, budget),
+        ).rowcount
+        # A shortened policy also applies to existing records immediately.
         for kind in KINDS:
-            seconds = config.retention(kind)
-            con.execute("DELETE FROM records WHERE kind=? AND at<?", (kind, now - seconds))
+            if removed >= budget:
+                break
+            removed += con.execute(
+                "DELETE FROM records WHERE rowid IN "
+                "(SELECT rowid FROM records WHERE kind=? AND at<? LIMIT ?)",
+                (kind, now - config.retention(kind), budget - removed),
+            ).rowcount
         con.execute("DELETE FROM rollups WHERE day<?", (int(now // DAY) - 90,))
+        return removed
 
     def prune(self, *, now=None):
-        with self.connect(write=True) as con:
-            self._prune(con, time.time() if now is None else now, policy(self.root))
+        now = time.time() if now is None else now
+        # Each batch commits separately so readers and ingest are never held long.
+        while True:
+            with self.connect(write=True) as con:
+                removed = self._prune(con, now, policy(self.root))
+            if removed < PRUNE_BATCH:
+                return
 
     def sources(self, *, now=None):
         now = time.time() if now is None else now

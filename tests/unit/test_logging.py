@@ -362,3 +362,19 @@ def test_forced_ssh_relay_rejects_other_commands(monkeypatch):
     result = CliRunner().invoke(app, ["logs", "relay-ssh"])
     assert result.exit_code != 0 and "LOG_RELAY_COMMAND" in result.stdout
     assert "passwd" not in result.stdout
+
+
+def test_cleanup_deletes_in_bounded_batches(logs, monkeypatch):
+    from wayvia.observability import store as module
+
+    monkeypatch.setattr(module, "PRUNE_BATCH", 2)
+    at = time.time() - 2 * 86400
+    logs.ingest(
+        [request(observed_at=at).model_copy(update={"request_id": f"{i:032x}"}) for i in range(5)]
+    )
+    update_policy(logs.root, {"request_days": 1}, 2)
+    with logs.connect(write=True) as con:
+        assert logs._prune(con, time.time(), module.policy(logs.root)) == 2
+    logs.prune()
+    with logs.connect() as con:
+        assert con.execute("SELECT COUNT(*) FROM records").fetchone()[0] == 0
