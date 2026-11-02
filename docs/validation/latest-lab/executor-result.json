@@ -62,7 +62,7 @@
         "group": "default",
         "txqlen": 1000,
         "link_type": "ether",
-        "address": "ae:66:ca:80:a4:cf",
+        "address": "62:20:9c:3b:50:23",
         "broadcast": "ff:ff:ff:ff:ff:ff",
         "link_netnsid": 0,
         "addr_info": [
@@ -77,7 +77,7 @@
           },
           {
             "family": "inet6",
-            "local": "fe80::ac66:caff:fe80:a4cf",
+            "local": "fe80::6020:9cff:fe3b:5023",
             "prefixlen": 64,
             "scope": "link",
             "tentative": true,

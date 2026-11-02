@@ -13,7 +13,7 @@
 | 失败分类 | 传输/期限类为软失败，身份/证书/会话/guard/服务/无错误码为立即保护；VPN 身份探针新增 `VPN_IDENTITY_TIMEOUT`/`REJECTED`/`FAILED` | 生效 |
 | 承载进展 | `LinuxExecutor.carrier_counters()` 用 `ss -tin` 读取承载套接字 `bytes_received`/`bytes_acked`；域名 carrier 不猜测 | 生效 |
 | 连续确认 | 无进展/未知 3 轮、仍前进 20 轮才保护；期间证据记失败，发布仍被阻止 | 生效 |
-| 重建退避 | 1 小时窗口内 0/30/60/120/240/300 秒，`recovery_deferred` 事件，状态 `rebuild_after` | 生效 |
+| 重建退避 | 首次提交为 1 小时窗口内 0/30/60/120/240/300 秒；同日收窄为同一次降级中前两次立即、此后连续失败才退避，见 ADR 014；`recovery_deferred` 事件，状态 `rebuild_after` | 生效 |
 | 日志降噪 | monitor 健康快速轮紧凑输出；`health_healthy` 5 分钟心跳；新事件 `health_congested`（触发诊断事件包） | 生效 |
 | 诊断写入 | `DiagnosticStore.append_many`：一轮一个事务、一次清理与 pin，检查点同事务提交；collector 每轮 2 个写事务 | 生效 |
 | 日志库清理 | 每批最多 1000 行，显式清理循环分批提交 | 生效 |

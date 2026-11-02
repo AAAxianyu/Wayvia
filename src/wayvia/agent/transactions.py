@@ -75,9 +75,12 @@ class TransactionManager:
     # progress is unknown) and while the carrier still moves bytes, respectively.
     soft_confirm_rounds = 3
     soft_progress_rounds = 20
-    # Delay before the n-th rebuild within the window, counted from the previous one.
-    rebuild_delays = (0, 30, 60, 120, 240, 300)
-    rebuild_window_seconds = 3600
+    # Delay before the n-th rebuild of one degradation, counted from the previous
+    # failed attempt. Ingress is already stopped while degraded, so waiting only
+    # lengthens the outage: the first two attempts run back to back (a dependency
+    # often reconnects just after the first verification window), and only a
+    # rebuild that keeps failing is retried more slowly.
+    rebuild_delays = (0, 0, 30, 60, 120, 240, 300)
     health_heartbeat_seconds = 300
 
     def _event(self, kind, tx, *, unit=None):
@@ -603,6 +606,7 @@ class TransactionManager:
             tx["state"] = State.ACTIVE
             tx.pop("error", None)
             tx.pop("soft_failures", None)
+            tx.pop("rebuild_attempts", None)
             credentials = self._credentials() if tx["role"] == "ingress" else None
             tx["device_revision"] = credentials["revision"] if credentials else None
             self._event("recovery_completed", tx)
@@ -828,14 +832,11 @@ class TransactionManager:
 
     def _rebuild_due(self, tx):
         now = time.time()
-        recent = [
-            at for at in tx.get("rebuild_attempts", []) if now - at < self.rebuild_window_seconds
-        ]
-        delay = self.rebuild_delays[min(len(recent), len(self.rebuild_delays) - 1)]
-        if recent and now - recent[-1] < delay:
-            tx["rebuild_attempts"] = recent
-            tx["rebuild_after"] = datetime.fromtimestamp(recent[-1] + delay, UTC).isoformat()
+        attempts = tx.get("rebuild_attempts", [])
+        delay = self.rebuild_delays[min(len(attempts), len(self.rebuild_delays) - 1)]
+        if attempts and now - attempts[-1] < delay:
+            tx["rebuild_after"] = datetime.fromtimestamp(attempts[-1] + delay, UTC).isoformat()
             return False
-        tx["rebuild_attempts"] = recent + [now]
+        tx["rebuild_attempts"] = attempts + [now]
         tx.pop("rebuild_after", None)
         return True

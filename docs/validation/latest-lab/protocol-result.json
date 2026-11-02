@@ -34,9 +34,7 @@
       "status": "passed",
       "observed": {
         "healthy": false,
-        "check": "vpn_server_identity",
-        "client_authenticated": false,
-        "error": "VPN_IDENTITY_FAILED"
+        "error": "PROTOCOL_REJECTED"
       }
     },
     {

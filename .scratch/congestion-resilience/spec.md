@@ -6,7 +6,7 @@
 
 已实现（[ADR 014](../../docs/adr/014-congestion-aware-health-and-exit-shaping.md)）：
 
-- 阶段 2：失败分类、承载字节进展、连续确认（3/20 轮）、重建退避（0/30/60/120/240/300 秒）；VPN 身份探针区分超时与拒绝。
+- 阶段 2：失败分类、承载字节进展、连续确认（3/20 轮）、重建退避（同一次降级中前两次立即，此后失败的重建 30–300 秒）；VPN 身份探针区分超时与拒绝。
 - 阶段 1：日本出口可选 HTB 整形与 `tcp_notsent_lowat` 作为固定事务动作；OpenVPN `tcp-queue-limit`/`sndbuf`/`rcvbuf` 可选输出。默认全部关闭。
 - 阶段 4：`policy.proxy_domains` 固定走代理（默认空）。
 - 阶段 L1：monitor 健康轮紧凑输出、健康事件 5 分钟心跳；诊断 collector 每轮批量 2 个事务；日志库清理每批 ≤1000 行；可选 journald 上限文件。

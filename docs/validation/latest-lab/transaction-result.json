@@ -1,5 +1,5 @@
 {
-  "status": "failed",
+  "status": "passed",
   "simulated": false,
   "isolation": "owned_internal_docker_network_private_cgroups",
   "cases": [
@@ -22,72 +22,197 @@
     {
       "name": "api_pending_device",
       "result": {
-        "id": "97dce2329c8a460fb01f67ec63a1b2e5",
+        "id": "38f90dc7a2964a9694fdc88947ad097d",
         "status": "pending",
         "api_cli_same_store": true
       }
+    },
+    {
+      "name": "exit_apply_confirm",
+      "result": {
+        "id": "c973283bb305428f98306e252a1aaf34",
+        "state": "ACTIVE",
+        "role": "exit",
+        "revision": "6afb5778ae9368e75dac4d1ece6aeaf8cfaea838450fe18bc74e7d9ee19c8fff"
+      }
+    },
+    {
+      "name": "ingress_apply_confirm",
+      "result": {
+        "id": "bcbd96f8ca8c460899c72356c01b761f",
+        "state": "ACTIVE",
+        "role": "ingress",
+        "revision": "6afb5778ae9368e75dac4d1ece6aeaf8cfaea838450fe18bc74e7d9ee19c8fff"
+      }
+    },
+    {
+      "name": "confirmed_publication",
+      "result": {
+        "status": "published_and_fetched",
+        "revision": "6afb5778ae9368e75dac4d1ece6aeaf8cfaea838450fe18bc74e7d9ee19c8fff",
+        "no_store": true
+      }
+    },
+    {
+      "name": "subscribed_entry_to_exit",
+      "result": {
+        "target": "foreign",
+        "peer": "172.30.0.3"
+      }
+    },
+    {
+      "name": "exit_successive_generation_rollback",
+      "result": {
+        "predecessor": "c973283bb305428f98306e252a1aaf34",
+        "successor": "c9b1c29a68ad4bfa8d9de525be2414b3",
+        "third": "5e74a25e8b5841a3878f91f8faa6aba0",
+        "both_predecessors_restored_active": true
+      }
+    },
+    {
+      "name": "ingress_successive_generation_rollback",
+      "result": {
+        "predecessor": "bcbd96f8ca8c460899c72356c01b761f",
+        "successor": "95b67a4a622649d681e991f6771eefbe",
+        "third": "6337f8d6297847719dbdee4bc807f493",
+        "listener_sequence": [
+          443,
+          8443,
+          9443,
+          8443,
+          443
+        ],
+        "observed_start_delays_seconds": [
+          4.000952,
+          4.001408,
+          4.001908,
+          4.001777
+        ],
+        "carrier_api_start_delay_seconds": 4,
+        "delayed_apply_and_both_rollbacks_passed": true,
+        "stale_monitor_preserved_unconfirmed_listener": true,
+        "both_predecessors_restored_authenticated_path": true,
+        "replaced_listeners_closed": true
+      }
+    },
+    {
+      "name": "restored_generation_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.30.0.3"
+      }
+    },
+    {
+      "name": "vpn_failure_closed",
+      "result": {
+        "status": "DEGRADED",
+        "protected_request_blocked": true
+      }
+    },
+    {
+      "name": "vpn_authenticated_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "target": {
+          "target": "foreign",
+          "peer": "172.30.0.3"
+        }
+      }
+    },
+    {
+      "name": "carrier_failure_closed",
+      "result": {
+        "status": "DEGRADED",
+        "protected_request_blocked": true
+      }
+    },
+    {
+      "name": "carrier_authenticated_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "target": {
+          "target": "foreign",
+          "peer": "172.30.0.3"
+        }
+      }
+    },
+    {
+      "name": "exit_independent_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "same_generation": true,
+        "independent_systemd_recovery": true
+      }
+    },
+    {
+      "name": "ingress_independent_recovery",
+      "result": {
+        "status": "ACTIVE",
+        "same_generation": true,
+        "independent_systemd_recovery": true
+      }
+    },
+    {
+      "name": "recovered_generation_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.30.0.3"
+      }
+    },
+    {
+      "name": "exit_system_software_reinstall",
+      "result": {
+        "same_generation": true,
+        "control_data_preserved": true,
+        "locked_runtime_reinstalled": true
+      }
+    },
+    {
+      "name": "ingress_system_software_reinstall",
+      "result": {
+        "same_generation": true,
+        "control_data_preserved": true,
+        "locked_runtime_reinstalled": true
+      }
+    },
+    {
+      "name": "reinstalled_software_entry",
+      "result": {
+        "target": "foreign",
+        "peer": "172.30.0.3"
+      }
+    },
+    {
+      "name": "device_subscription_revocation",
+      "result": {
+        "rotation_rejected_old_password": true,
+        "new_password_accepted": true,
+        "link_revoke_preserved_device": true,
+        "device_revoke_rejected_access": true,
+        "pre_revocation_plan_cannot_restore_access": true,
+        "rollback_cannot_restore_revoked_access": true
+      }
+    },
+    {
+      "name": "ingress_uninstall",
+      "result": {
+        "status": "uninstalled",
+        "control_data_retained": true,
+        "default_route_preserved": true,
+        "unrelated_network_resources_preserved": true,
+        "owned_network_resources_removed": true
+      }
+    },
+    {
+      "name": "exit_uninstall",
+      "result": {
+        "status": "uninstalled",
+        "control_data_retained": true,
+        "default_route_preserved": true,
+        "unrelated_network_resources_preserved": true,
+        "owned_network_resources_removed": true
+      }
     }
   ],
-  "address_allocation": "docker_assigned_and_inspected_owned_network",
-  "error": "docker failed (1): {\"status\": \"failed\", \"error\": \"runuser failed: exit=5, code=operation_failed, {\\\"code\\\": \\\"operation_failed\\\", \\\"message\\\": \\\"OSError\\\", \\\"details\\\": {}}\"}\n",
-  "diagnostics": {
-    "exit": {
-      "status": {
-        "version": "0.1.0",
-        "mode": "production",
-        "devices": [],
-        "agent": []
-      },
-      "actions": [],
-      "service_log": "Nov 02 10:43:40 dfc6c8660021 systemd[1]: Starting wayvia-recover.service - Restore Wayvia transaction state and fail-closed protection after boot...\nNov 02 10:43:40 dfc6c8660021 python[1087]: []\nNov 02 10:43:40 dfc6c8660021 systemd[1]: Finished wayvia-recover.service - Restore Wayvia transaction state and fail-closed protection after boot.\nNov 02 10:43:40 dfc6c8660021 systemd[1]: Started wayvia-agent.service - Wayvia privileged local action agent.\n"
-    },
-    "ingress": {
-      "status": {
-        "version": "0.1.0",
-        "mode": "production",
-        "devices": [
-          {
-            "id": "97dce2329c8a460fb01f67ec63a1b2e5",
-            "name": "lab-phone",
-            "platform": "android",
-            "status": "pending",
-            "credential_version": 1,
-            "revision": 1,
-            "created_at": 1793616231.3025744,
-            "updated_at": 1793616231.316395,
-            "desired_action": "add",
-            "evidence": {
-              "status": "unconfirmed",
-              "code": "INGRESS_NOT_DEPLOYED",
-              "protection": {
-                "status": "not_deployed",
-                "code": "INGRESS_NOT_DEPLOYED"
-              }
-            },
-            "simulated": false,
-            "usage": {
-              "online": null,
-              "status": "unknown",
-              "active_connections": null,
-              "last_used_at": null,
-              "upload_bytes": 0,
-              "download_bytes": 0,
-              "total_bytes": 0,
-              "observed_at": null,
-              "counting_since": null,
-              "last_subscription_fetch_at": null,
-              "subscription_fetches": 0,
-              "accounting": "best_effort_proxy_payload",
-              "gaps": 0,
-              "last_gap_reason": null,
-              "collection_error": null
-            }
-          }
-        ],
-        "agent": []
-      },
-      "actions": [],
-      "service_log": "Nov 02 10:43:50 d8a3999a1a25 systemd[1]: Starting wayvia-recover.service - Restore Wayvia transaction state and fail-closed protection after boot...\nNov 02 10:43:50 d8a3999a1a25 python[1093]: []\nNov 02 10:43:50 d8a3999a1a25 systemd[1]: Finished wayvia-recover.service - Restore Wayvia transaction state and fail-closed protection after boot.\nNov 02 10:43:50 d8a3999a1a25 systemd[1]: Started wayvia-agent.service - Wayvia privileged local action agent.\n"
-    }
-  }
+  "address_allocation": "docker_assigned_and_inspected_owned_network"
 }

@@ -5,7 +5,7 @@ congestion_resilience_2026_11_02:
   branch: codex/congestion-resilience
   implementation_decision: docs/adr/014-congestion-aware-health-and-exit-shaping.md
   amends: docs/adr/002-privileged-network-transactions.md
-  health_decision: {soft_confirm_rounds: 3, soft_progress_rounds: 20, rebuild_delays_seconds: [0, 30, 60, 120, 240, 300], rebuild_window_seconds: 3600, healthy_heartbeat_seconds: 300}
+  health_decision: {soft_confirm_rounds: 3, soft_progress_rounds: 20, rebuild_delays_seconds: [0, 0, 30, 60, 120, 240, 300], rebuild_backoff_scope: consecutive_failed_rebuilds_of_one_degradation, healthy_heartbeat_seconds: 300}
   carrier_progress_source: ss_tcp_info_bytes_received
   exit_shaping: {default: disabled, mechanism: htb_with_fq_codel_leaves, host_sysctl: net.ipv4.tcp_notsent_lowat, ingress_host: not_shaped_shared_with_other_service}
   production_host_kernel_modules_observed: {sch_cake: available, sch_htb: available, ifb: available, tcp_bbr: available, kernels: [6.8.0-79-generic, 6.8.0-48-generic], iproute2: 6.1.0}
@@ -32,7 +32,9 @@ congestion_resilience_2026_11_02:
   monitor_output_mb_per_day_recomputed_from_production: {before: 44.9, after: 10.9}
   gates_after_tunnel_fair_queue:
     check: {exit_code: 0, tests: 629}
-    test_lab: {exit_code: 2, passed_stages: [path_23, protocol_7, preflight_conflicts_12, mihomo_dns_6, recovery], transaction: blocked_docker_vm_disk_full_ENOSPC}
+    test_lab: {exit_code: 0, path: 23, preflight_conflicts: 12, protocol: 7, mihomo_dns: 6, recovery: 2, transaction: 23}
+    lab_environment_fixes: [removed_2026_10_12_labeled_network, pruned_docker_build_cache_4_2_GB_user_approved, lab_container_journald_keep_free_256M]
+    design_fix_from_transaction_lab: rebuild_backoff_only_after_two_failed_attempts_in_one_degradation
   production_changes: none
   report: docs/congestion-resilience-report.md
   evidence: docs/validation/congestion-resilience-2026-11-02/README.md

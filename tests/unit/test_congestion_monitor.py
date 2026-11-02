@@ -125,25 +125,25 @@ def test_a_healthy_round_resets_the_soft_streak(tmp_path, clock):
     assert m.monitor(tx["id"])["state"] == State.ACTIVE
 
 
-def test_rebuilds_back_off_within_the_window(tmp_path, clock):
+def test_only_repeatedly_failing_rebuilds_back_off(tmp_path, clock):
     m, tx = active(tmp_path)
     m.verifier = failing(None)
     assert m.monitor(tx["id"])["state"] == State.DEGRADED
-    m.verifier = healthy
-    assert m.monitor(tx["id"])["state"] == State.ACTIVE  # First rebuild is immediate.
-    m.verifier = failing(None)
-    assert m.monitor(tx["id"])["state"] == State.DEGRADED
-    m.verifier = healthy
+    assert m.monitor(tx["id"])["state"] == State.DEGRADED  # First rebuild ran and failed.
+    retried = m.monitor(tx["id"])  # The second attempt is immediate as well.
+    assert retried["state"] == State.DEGRADED and retried["rebuild_after"] is None
     clock.value += 10
     deferred = m.monitor(tx["id"])
     assert deferred["state"] == State.DEGRADED and deferred["rebuild_after"]
-    clock.value += 25
-    assert m.monitor(tx["id"])["state"] == State.ACTIVE
-    clock.value += m.rebuild_window_seconds
-    m.verifier = failing(None)
-    m.monitor(tx["id"])
     m.verifier = healthy
-    assert m.monitor(tx["id"])["state"] == State.ACTIVE  # The window has expired.
+    clock.value += 25  # 35 s after the failed attempt: the second attempt is due.
+    assert m.monitor(tx["id"])["state"] == State.ACTIVE
+    # A new degradation after a successful rebuild recovers immediately again.
+    m.verifier = failing(None)
+    assert m.monitor(tx["id"])["state"] == State.DEGRADED
+    m.verifier = healthy
+    recovered = m.monitor(tx["id"])
+    assert recovered["state"] == State.ACTIVE and recovered["rebuild_after"] is None
 
 
 def test_healthy_rounds_emit_a_heartbeat_but_congestion_every_round(tmp_path, clock, capsys):

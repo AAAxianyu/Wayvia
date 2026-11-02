@@ -193,7 +193,7 @@ make clean-lab
 
 ## 拥塞感知监控、出口整形与日志上限
 
-设计见 [ADR 014](adr/014-congestion-aware-health-and-exit-shaping.md)。升级到含该功能的版本后，monitor 行为自动变化：传输/期限类检查失败先记为 `health_congested`，无承载进展连续 3 轮、承载仍在前进连续 20 轮才保护；身份、证书、会话、guard 与服务类失败仍立即保护。连续降级的整链重建按 0/30/60/120/240/300 秒退避，等待时状态中的 `rebuild_after` 给出下一次时间。健康的 monitor 轮只输出紧凑摘要。
+设计见 [ADR 014](adr/014-congestion-aware-health-and-exit-shaping.md)。升级到含该功能的版本后，monitor 行为自动变化：传输/期限类检查失败先记为 `health_congested`，无承载进展连续 3 轮、承载仍在前进连续 20 轮才保护；身份、证书、会话、guard 与服务类失败仍立即保护。同一次降级中前两次重建立即执行，第 3 次起距上一次失败至少 30/60/120/240/300 秒（之后保持 300 秒），重建成功即清零，等待时状态中的 `rebuild_after` 给出下一次时间。健康的 monitor 轮只输出紧凑摘要。
 
 出口整形默认关闭。只在日本出口主机、取得授权并完成隔离实验后启用；入口主机与其他业务共用网卡，不配置整形。示例为 2 Mbps 出站额度下经[隔离实验](validation/congestion-lab-2026-11-02/README.md)验证的参数，单位 kbit/s：总速率约为额度九成；`tunnel_kbit` 必须低于 `carrier_kbit`，并留约 8% 封装开销。该参数使满载时检查 P95 < 0.2 秒，代价是上传约 −14%、下载约 −19% 吞吐。`vpn.tcp_queue_limit`/`vpn.socket_buffer` 在实验中无改善，不建议设置。
 

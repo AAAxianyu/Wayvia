@@ -159,6 +159,13 @@ def software_install():
 def install(role):
     if not Path("/proc/1/comm").read_text().strip() == "systemd":
         raise RuntimeError("real systemd PID 1 is required")
+    # journald's default keeps 15% of the filesystem free; on a crowded developer
+    # Docker disk it then vacuums almost everything, hiding the evidence these
+    # tests read back. Bound it for this disposable container only.
+    dropin = Path("/etc/systemd/journald.conf.d/90-wayvia-lab.conf")
+    dropin.parent.mkdir(parents=True, exist_ok=True)
+    dropin.write_text("[Journal]\nSystemKeepFree=256M\nSystemMaxUse=512M\n")
+    command(["systemctl", "restart", "systemd-journald"])
     software_install()
     owned_write(CONTROL / "config.yaml", (INPUTS / "config.yaml").read_text())
     for source in (INPUTS / "certificates").iterdir():
@@ -408,7 +415,10 @@ def ingress_upgrade_cycle():
             elif event.get("MESSAGE") == "WAYVIA_LAB_CARRIER_DELAY_END" and began is not None:
                 delays.append((int(event["__MONOTONIC_TIMESTAMP"]) - began) / 1_000_000)
                 began = None
-        assert len(delays) >= 4 and all(delay >= delay_seconds - 0.1 for delay in delays)
+        begins = events.count("WAYVIA_LAB_CARRIER_DELAY_BEGIN")
+        assert len(delays) >= 4 and all(delay >= delay_seconds - 0.1 for delay in delays), (
+            f"carrier delays={delays} begins={begins}"
+        )
         return {
             "predecessor": predecessor,
             "successor": successor["id"],
@@ -739,5 +749,18 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as error:
-        print(json.dumps({"status": "failed", "error": str(error)}), file=sys.stderr)
+        import traceback
+
+        frame = traceback.extract_tb(error.__traceback__)[-1]
+        print(
+            json.dumps(
+                {
+                    "status": "failed",
+                    # A bare assert has no message; keep the failing line visible.
+                    "error": str(error) or type(error).__name__,
+                    "at": f"{Path(frame.filename).name}:{frame.lineno}: {frame.line}",
+                }
+            ),
+            file=sys.stderr,
+        )
         sys.exit(1)
