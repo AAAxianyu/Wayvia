@@ -248,3 +248,20 @@ def test_hostname_carrier_is_not_guessed(tmp_path):
     executor = LinuxExecutor(runner=runner, config_dir=tmp_path, enforce_environment=False)
     assert executor.carrier_counters() is None
     assert runner.argv is None
+
+
+def test_monitor_restores_owned_tunnel_shaping_each_round(tmp_path, clock, capsys):
+    m, tx = active(tmp_path)
+    calls = []
+    m.executor.ensure_shaping = lambda: calls.append(1) or len(calls) == 2
+    m.monitor(tx["id"])
+    m.monitor(tx["id"])
+    assert len(calls) == 2
+    kinds = [json.loads(line)["kind"] for line in capsys.readouterr().err.splitlines()]
+    assert kinds.count("shaping_restored") == 1
+
+    def broken():
+        raise RuntimeError("tc unavailable")
+
+    m.executor.ensure_shaping = broken
+    assert m.monitor(tx["id"])["state"] == State.ACTIVE  # Never affects health.

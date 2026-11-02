@@ -739,6 +739,13 @@ class TransactionManager:
             ):
                 return self.public(tx)
             plan = Plan.model_validate(tx["plan"])
+            try:
+                # A restarted OpenVPN recreates tun0 without the owned fair queue.
+                ensure = getattr(self.executor, "ensure_shaping", None)
+                if ensure and ensure():
+                    self._event("shaping_restored", tx)
+            except Exception:
+                pass
             if runtime.get("blocked_reason"):
                 tx["state"] = State.DEGRADED
                 tx["error"] = runtime["blocked_reason"]

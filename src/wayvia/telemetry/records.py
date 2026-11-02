@@ -49,6 +49,7 @@ KINDS = {
     "health_congested",
     "recovery_started",
     "recovery_deferred",
+    "shaping_restored",
     "recovery_completed",
     "recovery_failed",
     "protection_requested",

@@ -1,5 +1,7 @@
 # 拥塞感知健康判定与出口整形：仓库实现验证 2026-11-02
 
+> 后续：同日完成[隔离实验](../congestion-lab-2026-11-02/README.md)，据此新增隧道公平队列（`shaping.tunnel_kbit`）与 monitor 自愈，`make check` 增至 629 项；汇总见[报告](../../congestion-resilience-report.md)。下文为首次提交时的记录。
+
 范围：按[方案](../../../.scratch/congestion-resilience/spec.md)与 [ADR 014](../../adr/014-congestion-aware-health-and-exit-shaping.md) 在 `codex/congestion-resilience`（基于 `0873d61`）实现的软件部分。只运行本地非特权门禁；没有隔离网络实验、没有连接或改动生产服务器。问题范围的生产只读证据见 [congestion-scope-2026-11-02](../congestion-scope-2026-11-02/README.md)。
 
 环境：Darwin arm64，Python 3.12.12，uv 0.9.7（仓库 `.tools`），SQLite 3.50.4；锁定组件 sing-box 1.14.3、OpenVPN 2.6.19（由 `make test-configs` 在容器中使用）。

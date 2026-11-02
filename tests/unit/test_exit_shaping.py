@@ -55,7 +55,7 @@ def test_invalid_shaping_is_rejected(shaping):
 def test_exit_manifest_carries_shaping_and_plan_derives_it():
     _, files = render_exit(shaping=SHAPING)
     manifest = json.loads(files["manifest.json"])
-    assert manifest["shaping"] == {**SHAPING, "carrier_port": 443}
+    assert manifest["shaping"] == {**SHAPING, "tunnel_kbit": None, "carrier_port": 443}
     probes = [
         Probe.model_validate(item)
         for item in json.loads(Path("examples/exit-probes.json").read_text())
@@ -108,23 +108,34 @@ def test_vpn_buffer_limits_render_and_pass_the_safety_contract():
 
 
 class Runner:
-    def __init__(self, root="fq_codel", lowat="4294967295"):
-        self.root, self.lowat, self.calls = root, lowat, []
+    """Fake tc/sysctl with one root discipline per device; tun0 may be absent."""
+
+    def __init__(self, root="fq_codel", lowat="4294967295", tunnel="fq_codel"):
+        self.roots = {"ens17": root, "tun0": tunnel}
+        self.lowat, self.calls = lowat, []
+
+    @property
+    def root(self):
+        return self.roots["ens17"]
 
     def run(self, argv, **kwargs):
         self.calls.append(argv)
-        stdout = ""
+        stdout, code = "", 0
+        device = argv[argv.index("dev") + 1] if "dev" in argv else None
         if argv[:3] == ["tc", "-j", "qdisc"]:
-            stdout = json.dumps([{"kind": self.root, "handle": "1:", "root": True}])
+            if self.roots.get(device) is None:
+                code = 1
+            else:
+                stdout = json.dumps([{"kind": self.roots[device], "handle": "1:", "root": True}])
         elif argv[:3] == ["tc", "qdisc", "add"] and "root" in argv:
-            self.root = "htb"
+            self.roots[device] = "htb"
         elif argv[:3] == ["tc", "qdisc", "del"]:
-            self.root = "fq_codel"
+            self.roots[device] = "fq_codel"
         elif argv[:2] == ["sysctl", "-n"]:
             stdout = self.lowat
         elif argv[:2] == ["sysctl", "-w"]:
             self.lowat = argv[2].split("=")[1]
-        return SimpleNamespace(stdout=stdout, returncode=0)
+        return SimpleNamespace(stdout=stdout, returncode=code)
 
 
 def executor(tmp_path, runner):
@@ -173,6 +184,7 @@ def test_apply_builds_a_fresh_htb_and_rollback_restores_the_host(tmp_path):
     assert runner.root == "fq_codel"
     assert runner.lowat == "4294967295"
     assert host.inspect_action(action)["applied"] is None
+    assert runner.roots["tun0"] == "fq_codel"  # No tunnel rate: tun0 untouched.
 
 
 def test_disabling_removes_only_wayvia_shaping(tmp_path):
@@ -212,3 +224,50 @@ def test_foreign_root_discipline_blocks_enabling(tmp_path):
     host = executor(tmp_path, runner)
     assert host.inspect_action(shaping_action())["exists"] is True
     assert host.inspect_action(shaping_action())["root"] == "cake"
+
+
+def tunnel_action(tunnel_kbit=1100):
+    return Action(
+        kind="shaping",
+        resource="wayvia_shaping",
+        interface="ens17",
+        shaping=ShapingSpec(**SHAPING, carrier_port=443, tunnel_kbit=tunnel_kbit),
+    )
+
+
+def test_tunnel_fair_queue_is_applied_restored_and_removed(tmp_path):
+    runner = Runner()
+    host = executor(tmp_path, runner)
+    before = host.capture(tunnel_action())
+    host.apply(tunnel_action())
+    commands = [" ".join(argv) for argv in runner.calls]
+    assert "tc class add dev tun0 parent 1: classid 1:1 htb rate 1100kbit ceil 1100kbit" in commands
+    assert "tc qdisc add dev tun0 parent 1:1 handle 10: fq_codel" in commands
+    assert runner.roots["tun0"] == "htb"
+    assert host.ensure_shaping() is False  # Present: nothing to do.
+    runner.roots["tun0"] = "fq_codel"  # OpenVPN restarted and recreated tun0.
+    assert host.ensure_shaping() is True and runner.roots["tun0"] == "htb"
+    runner.roots["tun0"] = None  # OpenVPN down: tun0 does not exist yet.
+    assert host.ensure_shaping() is False
+    runner.roots["tun0"] = "htb"
+    host.rollback(tunnel_action(), before)
+    assert runner.roots == {"ens17": "fq_codel", "tun0": "fq_codel"}
+    assert host.ensure_shaping() is False
+
+
+def test_tunnel_is_skipped_until_openvpn_creates_it(tmp_path):
+    runner = Runner(tunnel=None)
+    host = executor(tmp_path, runner)
+    host.apply(tunnel_action())
+    assert runner.root == "htb" and runner.roots["tun0"] is None
+    runner.roots["tun0"] = "fq_codel"
+    assert host.ensure_shaping() is True
+
+
+def test_tunnel_rate_must_stay_below_the_carrier_share():
+    with pytest.raises(ValidationError):
+        ShapingSpec(**SHAPING, carrier_port=443, tunnel_kbit=1200)
+    with pytest.raises(ValidationError):
+        WayviaConfig.model_validate(
+            {**example_config(), "shaping": {**SHAPING, "tunnel_kbit": 1300}}
+        )

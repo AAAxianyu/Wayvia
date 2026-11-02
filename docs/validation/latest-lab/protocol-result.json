@@ -35,7 +35,8 @@
       "observed": {
         "healthy": false,
         "check": "vpn_server_identity",
-        "client_authenticated": false
+        "client_authenticated": false,
+        "error": "VPN_IDENTITY_FAILED"
       }
     },
     {
@@ -52,7 +53,8 @@
       "observed": {
         "healthy": false,
         "check": "vpn_server_identity",
-        "client_authenticated": false
+        "client_authenticated": false,
+        "error": "VPN_IDENTITY_REJECTED"
       }
     },
     {

@@ -195,19 +195,17 @@ make clean-lab
 
 设计见 [ADR 014](adr/014-congestion-aware-health-and-exit-shaping.md)。升级到含该功能的版本后，monitor 行为自动变化：传输/期限类检查失败先记为 `health_congested`，无承载进展连续 3 轮、承载仍在前进连续 20 轮才保护；身份、证书、会话、guard 与服务类失败仍立即保护。连续降级的整链重建按 0/30/60/120/240/300 秒退避，等待时状态中的 `rebuild_after` 给出下一次时间。健康的 monitor 轮只输出紧凑摘要。
 
-出口整形默认关闭。只在日本出口主机、取得授权并完成隔离实验后启用；入口主机与其他业务共用网卡，不配置整形。示例中 `shaping` 单位为 kbit/s，取供应商额度的约九成；`vpn` 两项的实际取值由隔离实验确定，示例仅示意：
+出口整形默认关闭。只在日本出口主机、取得授权并完成隔离实验后启用；入口主机与其他业务共用网卡，不配置整形。示例为 2 Mbps 出站额度下经[隔离实验](validation/congestion-lab-2026-11-02/README.md)验证的参数，单位 kbit/s：总速率约为额度九成；`tunnel_kbit` 必须低于 `carrier_kbit`，并留约 8% 封装开销。该参数使满载时检查 P95 < 0.2 秒，代价是上传约 −14%、下载约 −19% 吞吐。`vpn.tcp_queue_limit`/`vpn.socket_buffer` 在实验中无改善，不建议设置。
 
 ```yaml
 shaping:
   egress_kbit: 1800
-  carrier_kbit: 1200
+  carrier_kbit: 1600
+  tunnel_kbit: 1450
   notsent_lowat: 131072
-vpn:
-  tcp_queue_limit: 64
-  socket_buffer: 262144
 ```
 
-`shaping` 经正常 render → plan（带 `--exit-interface`）→ apply → confirm 生效，回退恢复原队列与原 `tcp_notsent_lowat`；接口已有非 Wayvia 的自定义根队列时 apply 拒绝。删除 `shaping` 后重新发布即移除 Wayvia 的整形。`vpn` 两项会改变两端 OpenVPN 配置，需按日本 → 阿里云顺序滚动发布。核对：`tc -s qdisc show dev <出口接口>` 应见 `htb` 根和两个 `fq_codel` 叶子，`sysctl net.ipv4.tcp_notsent_lowat` 为配置值。
+`shaping` 经正常 render → plan（带 `--exit-interface`）→ apply → confirm 生效，回退恢复原队列与原 `tcp_notsent_lowat`；接口已有非 Wayvia 的自定义根队列时 apply 拒绝。删除 `shaping` 后重新发布即移除 Wayvia 的整形。核对：`tc -s qdisc show dev <出口接口>` 应见 `htb` 根和两个 `fq_codel` 叶子，`tc qdisc show dev tun0` 应见 `htb` 根和 `fq_codel` 叶子，`sysctl net.ipv4.tcp_notsent_lowat` 为配置值。OpenVPN 重启后 tun0 的队列由下一轮 monitor（≤15 秒）恢复。
 
 国内不可达、必须走代理的服务可固定：
 

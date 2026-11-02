@@ -1,5 +1,11 @@
 # Wayvia 实现与验收状态
 
+## 2026-11-02 共享出站拥塞隔离实验与隧道公平队列
+
+用户授权运行实验。一次性 Linux 容器中以 provider 桥 + 2 Mbit FIFO 模拟日本出站额度，复用正式渲染产物与锁定组件（[记录](validation/congestion-lab-2026-11-02/README.md)）。原规则下下载与双向满载各 5/6 探针超时；仅网卡整形只修复上传。下载积压位于日本承载套接字，唯一有效的是在出口 tun0 上限速并 `fq_codel`，据此实现 `shaping.tunnel_kbit`（须低于承载份额）及 monitor 对 OpenVPN 重启后队列的自愈。推荐参数（总 1800、承载 1600、隧道 1450 kbit）下上传/下载/双向满载 egress 探针 P95 0.055/0.055/0.183 秒、零失败；吞吐上传 −14%、下载 −19%，未达方案 ≤10% 目标，待用户取舍。宽限期内分别终止 VPN 与代理层无物理直出；OpenVPN 重启后 tun0 队列由 `ensure_shaping` 恢复。OpenVPN 缓冲与低 `notsent_lowat` 无改善，降为不推荐。
+
+`make check` 629 项通过。`make test-lab` 的路径、协议、内核冲突、DNS、恢复阶段通过；正式事务阶段因开发机 Docker 虚拟机磁盘已满（ENOSPC）未完成，改动前提交在同一环境同样失败，需释放磁盘后重跑，通过前不部署。monitor 输出按生产真实数据重算 44.9 → 10.9 MB/天。完整说明见[报告](congestion-resilience-report.md)。
+
 ## 2026-11-02 拥塞感知健康判定与出口整形：仓库实现
 
 依据只读生产核查（[问题范围](validation/congestion-scope-2026-11-02/README.md)）与用户确认的[方案](../.scratch/congestion-resilience/spec.md)，在 `codex/congestion-resilience` 实现 [ADR 014](adr/014-congestion-aware-health-and-exit-shaping.md)：传输/期限类检查失败按承载字节进展连续确认（3/20 轮），身份/证书/会话/guard 失败仍立即保护；整链重建 1 小时内退避 0–300 秒；monitor 健康轮紧凑输出与 5 分钟心跳；诊断 collector 每轮批量写入，日志库分批清理。新增默认关闭的日本出口 HTB 整形事务动作、OpenVPN 缓冲选项和 `policy.proxy_domains`，以及手动安装的 journald 上限文件。ADR 002 与恢复决策表同步修订。

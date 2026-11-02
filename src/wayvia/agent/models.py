@@ -42,11 +42,18 @@ class ShapingSpec(Frozen):
     carrier_kbit: int = Field(ge=128, le=10_000_000)
     carrier_port: int = Field(ge=1, le=65535)
     notsent_lowat: int | None = Field(default=None, ge=16384, le=4194304)
+    # Fair queue on the VPN tun just below the carrier rate, so inner flows are
+    # scheduled there instead of waiting behind one another inside the carrier.
+    tunnel_kbit: int | None = Field(default=None, ge=128, le=10_000_000)
 
     @model_validator(mode="after")
     def share(self):
         if self.carrier_kbit >= self.egress_kbit:
             raise ValueError("carrier share must leave exit bandwidth")
+        # Inner traffic leaves through the carrier class; a tun rate at or above its
+        # guarantee lets the backlog move back into the carrier socket under uploads.
+        if self.tunnel_kbit is not None and self.tunnel_kbit >= self.carrier_kbit:
+            raise ValueError("tunnel rate must stay below the carrier share")
         return self
 
 

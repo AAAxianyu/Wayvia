@@ -17,8 +17,24 @@ congestion_resilience_2026_11_02:
     demo: {exit_code: 0, scope: simulated}
     test_configs: {exit_code: 0, real_artifacts: 11}
     test_lab: {exit_code: null, status: not_run_user_deferred_fault_tests}
-  isolated_shaping_and_grace_safety_experiment: not_run
+  isolated_shaping_and_grace_safety_experiment:
+    status: passed
+    evidence: docs/validation/congestion-lab-2026-11-02/README.md
+    environment: {kernel: 6.8.0-117-generic, arch: arm64, provider_model: tbf_2mbit_fifo_256kb_shared_japan_transmit, network: none}
+    recommended_shaping_kbit: {egress: 1800, carrier: 1600, tunnel: 1450, notsent_lowat: 131072}
+    egress_probe_p95_seconds: {upload: {before: 3.847, after: 0.055}, download: {before: 5.947, after: 0.055}, both: {before: 5.946, after: 0.183}}
+    probe_failures: {download_before: 5_of_6, both_before: 5_of_6, after_all_loads: 0}
+    goodput_mbit: {upload: {before: 1.773, after: 1.517}, download: {before: 1.699, after: 1.380}}
+    throughput_target_le_10_percent: not_met
+    tunnel_fair_queue_restored_after_openvpn_restart: passed
+    grace_period_no_physical_fallback: passed
+    rejected_options: [low_notsent_lowat_16k, openvpn_sndbuf_rcvbuf_64k, openvpn_tcp_queue_limit_16]
+  monitor_output_mb_per_day_recomputed_from_production: {before: 44.9, after: 10.9}
+  gates_after_tunnel_fair_queue:
+    check: {exit_code: 0, tests: 629}
+    test_lab: {exit_code: 2, passed_stages: [path_23, protocol_7, preflight_conflicts_12, mihomo_dns_6, recovery], transaction: blocked_docker_vm_disk_full_ENOSPC}
   production_changes: none
+  report: docs/congestion-resilience-report.md
   evidence: docs/validation/congestion-resilience-2026-11-02/README.md
   scope_evidence: docs/validation/congestion-scope-2026-11-02/README.md
 logging_admin_2026_10_27:

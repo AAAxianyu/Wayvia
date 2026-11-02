@@ -270,11 +270,14 @@ class Shaping(StrictModel):
     egress_kbit: Annotated[int, Field(ge=256, le=10_000_000)]
     carrier_kbit: Annotated[int, Field(ge=128, le=10_000_000)]
     notsent_lowat: Annotated[int, Field(ge=16384, le=4194304)] | None = 131072
+    tunnel_kbit: Annotated[int, Field(ge=128, le=10_000_000)] | None = None
 
     @model_validator(mode="after")
     def carrier_share(self) -> Shaping:
         if self.carrier_kbit >= self.egress_kbit:
             raise ValueError("carrier_share_must_leave_exit_bandwidth")
+        if self.tunnel_kbit is not None and self.tunnel_kbit >= self.carrier_kbit:
+            raise ValueError("tunnel_rate_must_stay_below_carrier_share")
         return self
 
 

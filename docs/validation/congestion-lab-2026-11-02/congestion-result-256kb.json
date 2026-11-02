@@ -1,0 +1,1786 @@
+{
+  "started": 1793614379.9599183,
+  "tests": [
+    {
+      "name": "isolated_topology",
+      "status": "passed",
+      "elapsed_ms": 1668,
+      "evidence": {
+        "namespaces": [
+          "terminal",
+          "domestic",
+          "ali",
+          "wayvia-egress",
+          "jp",
+          "foreign",
+          "provider"
+        ],
+        "development_host_routes_modified": false,
+        "egress_default_physical_route": true,
+        "unprotected_physical_baseline": {
+          "target": "foreign",
+          "peer": "10.73.0.1"
+        },
+        "production_guard_blocks_same_path": true
+      }
+    },
+    {
+      "name": "provider_shared_fifo",
+      "status": "passed",
+      "elapsed_ms": 14,
+      "evidence": {
+        "rate": "2mbit",
+        "fifo_limit": "256kb",
+        "scope": "all_japan_transmit"
+      }
+    },
+    {
+      "name": "temporary_ca_and_identity",
+      "status": "passed",
+      "elapsed_ms": 1068,
+      "evidence": {
+        "temporary_ca": true,
+        "server_identity_checked": true,
+        "keys_exported": false
+      }
+    },
+    {
+      "name": "v2raya_manages_matching_core",
+      "status": "passed",
+      "elapsed_ms": 523,
+      "evidence": {
+        "version": {
+          "version": "2.5.10",
+          "coreVersion": "2.5.10",
+          "coreVersionValid": true,
+          "serviceValid": true,
+          "variant": "V2rayaCore"
+        },
+        "configured": true,
+        "production_adapter": true,
+        "explicit_bootstrap_resolver": "10.73.0.1",
+        "resolved_carrier": "10.73.0.2",
+        "tls_server_name": "carrier.lab",
+        "imported_server": true,
+        "core_managed_by_v2raya": true
+      }
+    },
+    {
+      "name": "foreign_tcp_dual_layer_japan_nat",
+      "status": "passed",
+      "elapsed_ms": 576,
+      "evidence": {
+        "target": "foreign",
+        "peer": "10.74.0.1"
+      }
+    },
+    {
+      "name": "terminal_tun_kernel_ready",
+      "status": "passed",
+      "elapsed_ms": 513,
+      "evidence": {
+        "ready": true,
+        "interface": [
+          {
+            "ifindex": 2,
+            "ifname": "wayvia-tun",
+            "flags": [
+              "POINTOPOINT",
+              "MULTICAST",
+              "NOARP",
+              "UP",
+              "LOWER_UP"
+            ],
+            "mtu": 1400,
+            "qdisc": "fq_codel",
+            "operstate": "UNKNOWN",
+            "group": "default",
+            "txqlen": 500,
+            "link_type": "none",
+            "addr_info": [
+              {
+                "family": "inet",
+                "local": "172.28.0.1",
+                "prefixlen": 30,
+                "broadcast": "172.28.0.3",
+                "scope": "global",
+                "label": "wayvia-tun",
+                "valid_life_time": 4294967295,
+                "preferred_life_time": 4294967295
+              },
+              {
+                "family": "inet6",
+                "local": "fd77:7761:7976::1",
+                "prefixlen": 126,
+                "scope": "global",
+                "valid_life_time": 4294967295,
+                "preferred_life_time": 4294967295
+              },
+              {
+                "family": "inet6",
+                "local": "fe80::c4ac:98d8:1a12:c1e8",
+                "prefixlen": 64,
+                "scope": "link",
+                "stable-privacy": true,
+                "valid_life_time": 4294967295,
+                "preferred_life_time": 4294967295
+              }
+            ]
+          }
+        ],
+        "route": [
+          {
+            "dst": "10.74.0.2",
+            "gateway": "172.28.0.2",
+            "dev": "wayvia-tun",
+            "table": "2022",
+            "prefsrc": "172.28.0.1",
+            "flags": [],
+            "uid": 0,
+            "cache": []
+          }
+        ],
+        "bound_route": [
+          {
+            "dst": "10.74.0.2",
+            "from": "172.28.0.1",
+            "gateway": "172.28.0.2",
+            "dev": "wayvia-tun",
+            "table": "2022",
+            "flags": [],
+            "uid": 0,
+            "cache": []
+          }
+        ],
+        "selected_source": "172.28.0.1",
+        "elapsed_ms": 513,
+        "observations": 13
+      }
+    },
+    {
+      "name": "tunnel_fair_queue_restored_after_openvpn_restart",
+      "status": "passed",
+      "elapsed_ms": 4876,
+      "evidence": {
+        "applied_root": "htb",
+        "root_after_openvpn_restart": "fq_codel",
+        "ensure_restored": true,
+        "root_after_ensure": "htb",
+        "second_ensure_noop": true
+      }
+    },
+    {
+      "name": "grace_period_layer_failure_no_physical_fallback",
+      "status": "passed",
+      "elapsed_ms": 41785,
+      "evidence": {
+        "vpn_layer_dead": {
+          "protected": {
+            "error": "protected connection closed without an HTTP response",
+            "connections": []
+          },
+          "native_protected": {
+            "error": "protected connection closed without an HTTP response",
+            "connections": [
+              {
+                "peer": [
+                  "10.74.0.2",
+                  8080
+                ],
+                "started_at": 1793615323.093041,
+                "local": [
+                  "172.28.0.1",
+                  38236
+                ],
+                "finished_at": 1793615323.093668
+              }
+            ]
+          },
+          "domestic": {
+            "target": "domestic",
+            "peer": "10.71.0.2"
+          },
+          "management": {
+            "target": "management",
+            "peer": "10.73.0.2"
+          }
+        },
+        "vpn_reconnect": {
+          "target": "foreign",
+          "peer": "10.74.0.1"
+        },
+        "proxy_layer_dead": {
+          "protected": {
+            "error": "protected connection closed without an HTTP response",
+            "connections": []
+          },
+          "native_protected": {
+            "error": "protected connection closed without an HTTP response",
+            "connections": [
+              {
+                "peer": [
+                  "10.74.0.2",
+                  8080
+                ],
+                "started_at": 1793615325.1344671,
+                "local": [
+                  "172.28.0.1",
+                  38242
+                ],
+                "finished_at": 1793615325.1347704
+              }
+            ]
+          },
+          "domestic": {
+            "target": "domestic",
+            "peer": "10.71.0.2"
+          },
+          "management": {
+            "target": "management",
+            "peer": "10.73.0.2"
+          }
+        },
+        "proxy_reconnect": {
+          "target": "foreign",
+          "peer": "10.74.0.1"
+        },
+        "foreign_sources_during_test": [
+          "10.74.0.1"
+        ]
+      }
+    }
+  ],
+  "provider": {
+    "rate": "2mbit",
+    "fifo_limit": "256kb",
+    "scope": "all_japan_transmit"
+  },
+  "matrix": [
+    {
+      "scenario": "idle_baseline",
+      "load": "idle",
+      "streams": 0,
+      "seconds": 60,
+      "goodput_mbit": null,
+      "egress_probe": {
+        "samples": 59,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.008,
+        "p95_s": 0.019,
+        "max_s": 0.036
+      },
+      "device_probe": {
+        "samples": 59,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.012,
+        "p95_s": 0.03,
+        "max_s": 0.055
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 10
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": false,
+          "root": "noqueue",
+          "applied": null,
+          "original_notsent_lowat": null,
+          "notsent_lowat": "4294967295"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "noqueue"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": null,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "upload_unshaped",
+      "load": "upload",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 105742336,
+          "seconds": 61.92405097302981,
+          "per_stream": [
+            22183936,
+            24346624,
+            29704192,
+            29507584
+          ],
+          "errors": []
+        },
+        "upload": 1.773
+      },
+      "egress_probe": {
+        "samples": 8,
+        "failed": 0,
+        "over_3s": 6,
+        "p50_s": 3.219,
+        "p95_s": 3.847,
+        "max_s": 3.847
+      },
+      "device_probe": {
+        "samples": 8,
+        "failed": 1,
+        "over_3s": 8,
+        "p50_s": 3.405,
+        "p95_s": 5.904,
+        "max_s": 5.904
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 13102,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "notsent": 2358,
+            "unacked": 9,
+            "cwnd": 36
+          },
+          {
+            "recv_q": 0,
+            "send_q": 90,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "unacked": 2,
+            "cwnd": 24
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 18
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 153075b 112p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": false,
+          "root": "noqueue",
+          "applied": null,
+          "original_notsent_lowat": null,
+          "notsent_lowat": "4294967295"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "noqueue"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": null,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "download_unshaped",
+      "load": "download",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "download_raw": {
+          "bytes": 13094472,
+          "seconds": 61.65835054201307,
+          "per_stream": [
+            3279684,
+            3276988,
+            3105792,
+            3432008
+          ],
+          "errors": []
+        },
+        "download": 1.699
+      },
+      "egress_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 5,
+        "p50_s": 5.896,
+        "p95_s": 5.947,
+        "max_s": 5.947
+      },
+      "device_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 5,
+        "p50_s": 5.027,
+        "p95_s": 5.042,
+        "max_s": 5.042
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 529968,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "notsent": 472048,
+            "unacked": 40,
+            "cwnd": 79
+          },
+          {
+            "recv_q": 1691226,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 16
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 33
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 54112b 51p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": false,
+          "root": "noqueue",
+          "applied": null,
+          "original_notsent_lowat": null,
+          "notsent_lowat": "4294967295"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "noqueue"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": null,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "both_unshaped",
+      "load": "both",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 87146496,
+          "seconds": 61.12583278497914,
+          "per_stream": [
+            20561920,
+            19824640,
+            25395200,
+            21364736
+          ],
+          "errors": []
+        },
+        "upload": 0.277,
+        "download_raw": {
+          "bytes": 10455088,
+          "seconds": 61.77080477698473,
+          "per_stream": [
+            2296992,
+            3229808,
+            2395396,
+            2532892
+          ],
+          "errors": []
+        },
+        "download": 1.354
+      },
+      "egress_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 5,
+        "p50_s": 5.881,
+        "p95_s": 5.946,
+        "max_s": 5.946
+      },
+      "device_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 6,
+        "p50_s": 5.018,
+        "p95_s": 5.049,
+        "max_s": 5.049
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 1584272,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "notsent": 1532144,
+            "unacked": 36,
+            "cwnd": 52
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 25
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 53332b 60p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 22.1,
+      "shaping": {
+        "state": {
+          "exists": false,
+          "root": "noqueue",
+          "applied": null,
+          "original_notsent_lowat": null,
+          "notsent_lowat": "4294967295"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "noqueue"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": null,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "upload_nic",
+      "load": "upload",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 100597760,
+          "seconds": 61.3822616940015,
+          "per_stream": [
+            25985024,
+            24002560,
+            26525696,
+            24084480
+          ],
+          "errors": []
+        },
+        "upload": 1.52
+      },
+      "egress_probe": {
+        "samples": 53,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.028,
+        "p95_s": 0.128,
+        "max_s": 1.062
+      },
+      "device_probe": {
+        "samples": 53,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.024,
+        "p95_s": 0.097,
+        "max_s": 0.13
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 1426,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "unacked": 1,
+            "cwnd": 16
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "cwnd": 7
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 16
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 9898b 7p requeues 0",
+            "backlog 0b 0p requeues 0",
+            "backlog 9898b 7p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 17.2,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1200,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": null
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "download_nic",
+      "load": "download",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "download_raw": {
+          "bytes": 11791788,
+          "seconds": 60.58276163501432,
+          "per_stream": [
+            2574680,
+            3100400,
+            2419660,
+            3697048
+          ],
+          "errors": []
+        },
+        "download": 1.557
+      },
+      "egress_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 5,
+        "p50_s": 5.882,
+        "p95_s": 5.942,
+        "max_s": 5.942
+      },
+      "device_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 6,
+        "p50_s": 5.017,
+        "p95_s": 5.021,
+        "max_s": 5.021
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 81088,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "notsent": 75296,
+            "unacked": 4,
+            "cwnd": 4
+          },
+          {
+            "recv_q": 1975826,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 20
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 70
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 7570b 3p requeues 0",
+            "backlog 7570b 3p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1200,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": null
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "both_nic",
+      "load": "both",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 84213760,
+          "seconds": 61.863130631973036,
+          "per_stream": [
+            21610496,
+            19644416,
+            20217856,
+            22740992
+          ],
+          "errors": []
+        },
+        "upload": 0.107,
+        "download_raw": {
+          "bytes": 10943064,
+          "seconds": 61.55399664002471,
+          "per_stream": [
+            2824060,
+            2662300,
+            2222852,
+            3233852
+          ],
+          "errors": []
+        },
+        "download": 1.422
+      },
+      "egress_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 5,
+        "p50_s": 5.877,
+        "p95_s": 5.921,
+        "max_s": 5.921
+      },
+      "device_probe": {
+        "samples": 6,
+        "failed": 5,
+        "over_3s": 6,
+        "p50_s": 5.017,
+        "p95_s": 5.019,
+        "max_s": 5.019
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 169416,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "notsent": 163624,
+            "unacked": 4,
+            "cwnd": 4
+          },
+          {
+            "recv_q": 0,
+            "send_q": 27094,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "unacked": 19,
+            "cwnd": 23
+          },
+          {
+            "recv_q": 1754806,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 18
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 4542b 2p requeues 0",
+            "backlog 4542b 2p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 19.8,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1200,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": null
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": null
+    },
+    {
+      "scenario": "upload_tuned",
+      "load": "upload",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 77758464,
+          "seconds": 61.85015962400939,
+          "per_stream": [
+            22052864,
+            19726336,
+            17760256,
+            18219008
+          ],
+          "errors": []
+        },
+        "upload": 1.517
+      },
+      "egress_probe": {
+        "samples": 55,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.015,
+        "p95_s": 0.055,
+        "max_s": 1.093
+      },
+      "device_probe": {
+        "samples": 55,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.021,
+        "p95_s": 0.05,
+        "max_s": 1.051
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 2938,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "unacked": 1,
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "cwnd": 6
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 7
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 11521b 10p requeues 0",
+            "backlog 0b 0p requeues 0",
+            "backlog 11521b 10p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 19.9,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1600,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": 1450
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel",
+            "htb"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": 1450
+    },
+    {
+      "scenario": "download_tuned",
+      "load": "download",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "download_raw": {
+          "bytes": 10372860,
+          "seconds": 60.14703139703488,
+          "per_stream": [
+            2530196,
+            2555808,
+            2643428,
+            2643428
+          ],
+          "errors": []
+        },
+        "download": 1.38
+      },
+      "egress_probe": {
+        "samples": 54,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.03,
+        "p95_s": 0.055,
+        "max_s": 0.113
+      },
+      "device_probe": {
+        "samples": 54,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.035,
+        "p95_s": 0.051,
+        "max_s": 0.07
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 90,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "unacked": 1,
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 11
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 7000b 5p requeues 0",
+            "backlog 7000b 5p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1600,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": 1450
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel",
+            "htb"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": 1450
+    },
+    {
+      "scenario": "both_tuned",
+      "load": "both",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 85835776,
+          "seconds": 60.64204341499135,
+          "per_stream": [
+            25903104,
+            19136512,
+            17268736,
+            23527424
+          ],
+          "errors": []
+        },
+        "upload": 0.169,
+        "download_raw": {
+          "bytes": 10209752,
+          "seconds": 60.265445063996594,
+          "per_stream": [
+            2662300,
+            2311820,
+            3042436,
+            2193196
+          ],
+          "errors": []
+        },
+        "download": 1.355
+      },
+      "egress_probe": {
+        "samples": 44,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.115,
+        "p95_s": 0.183,
+        "max_s": 1.135
+      },
+      "device_probe": {
+        "samples": 44,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.103,
+        "p95_s": 0.212,
+        "max_s": 1.295
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 1426,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "unacked": 1,
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 10
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 8972b 6p requeues 0",
+            "backlog 6012b 2p requeues 0",
+            "backlog 2960b 4p requeues 0"
+          ],
+          "tun0": [
+            "backlog 5600b 2p requeues 0",
+            "backlog 5600b 2p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1600,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": 1450
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel",
+            "htb"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": 1450
+    },
+    {
+      "scenario": "idle_tuned",
+      "load": "idle",
+      "streams": 0,
+      "seconds": 60,
+      "goodput_mbit": null,
+      "egress_probe": {
+        "samples": 59,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.008,
+        "p95_s": 0.019,
+        "max_s": 0.03
+      },
+      "device_probe": {
+        "samples": 59,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 0.013,
+        "p95_s": 0.02,
+        "max_s": 0.055
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 10
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.3,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1600,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": 1450
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel",
+            "htb"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": 1450
+    },
+    {
+      "scenario": "both_mismatch_1600_over_1200",
+      "load": "both",
+      "streams": 4,
+      "seconds": 60,
+      "goodput_mbit": {
+        "upload_raw": {
+          "bytes": 91275264,
+          "seconds": 61.77177427295828,
+          "per_stream": [
+            25477120,
+            20692992,
+            25722880,
+            19382272
+          ],
+          "errors": []
+        },
+        "upload": 0.435,
+        "download_raw": {
+          "bytes": 8489704,
+          "seconds": 60.270602810021956,
+          "per_stream": [
+            1352044,
+            841152,
+            3370000,
+            2926508
+          ],
+          "errors": []
+        },
+        "download": 1.127
+      },
+      "egress_probe": {
+        "samples": 15,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 1.694,
+        "p95_s": 1.959,
+        "max_s": 1.972
+      },
+      "device_probe": {
+        "samples": 15,
+        "failed": 0,
+        "over_3s": 0,
+        "p50_s": 1.645,
+        "p95_s": 2.043,
+        "max_s": 2.108
+      },
+      "queues_mid_load": {
+        "jp_sockets": [
+          {
+            "recv_q": 0,
+            "send_q": 110048,
+            "local": "10.73.0.2:443",
+            "peer": "10.73.0.1:45866",
+            "process": "sing-box",
+            "notsent": 101360,
+            "unacked": 6,
+            "cwnd": 7
+          },
+          {
+            "recv_q": 24554,
+            "send_q": 3086,
+            "local": "127.0.0.1:36118",
+            "peer": "127.0.0.1:1194",
+            "process": "sing-box",
+            "unacked": 1,
+            "cwnd": 10
+          },
+          {
+            "recv_q": 0,
+            "send_q": 0,
+            "local": "127.0.0.1:1194",
+            "peer": "127.0.0.1:36118",
+            "process": "openvpn",
+            "cwnd": 15
+          }
+        ],
+        "jp_qdisc_backlog": {
+          "jfa": [
+            "backlog 13788b 12p requeues 0",
+            "backlog 9Kb 4p requeues 0",
+            "backlog 4572b 8p requeues 0"
+          ],
+          "tun0": [
+            "backlog 0b 0p requeues 0",
+            "backlog 0b 0p requeues 0"
+          ]
+        },
+        "provider_backlog": [
+          "backlog 0b 0p requeues 0"
+        ]
+      },
+      "carrier_progress_15s": {
+        "ingress": [
+          true,
+          true,
+          true
+        ],
+        "exit": [
+          true,
+          true,
+          true
+        ]
+      },
+      "settled_before_s": 5.2,
+      "shaping": {
+        "state": {
+          "exists": true,
+          "root": "htb",
+          "applied": {
+            "egress_kbit": 1800,
+            "carrier_kbit": 1200,
+            "carrier_port": 443,
+            "notsent_lowat": 131072,
+            "tunnel_kbit": 1600
+          },
+          "original_notsent_lowat": "4294967295",
+          "notsent_lowat": "131072"
+        },
+        "qdisc_kinds": {
+          "jfa": [
+            "fq_codel",
+            "htb"
+          ],
+          "tun0": [
+            "fq_codel",
+            "htb"
+          ]
+        }
+      },
+      "notsent_lowat": 131072,
+      "vpn_server_extra": "",
+      "tun_kbit": 1600
+    }
+  ],
+  "tunnel_restore": {
+    "applied_root": "htb",
+    "root_after_openvpn_restart": "fq_codel",
+    "ensure_restored": true,
+    "root_after_ensure": "htb",
+    "second_ensure_noop": true
+  },
+  "grace_safety": {
+    "vpn_layer_dead": {
+      "protected": {
+        "error": "protected connection closed without an HTTP response",
+        "connections": []
+      },
+      "native_protected": {
+        "error": "protected connection closed without an HTTP response",
+        "connections": [
+          {
+            "peer": [
+              "10.74.0.2",
+              8080
+            ],
+            "started_at": 1793615323.093041,
+            "local": [
+              "172.28.0.1",
+              38236
+            ],
+            "finished_at": 1793615323.093668
+          }
+        ]
+      },
+      "domestic": {
+        "target": "domestic",
+        "peer": "10.71.0.2"
+      },
+      "management": {
+        "target": "management",
+        "peer": "10.73.0.2"
+      }
+    },
+    "vpn_reconnect": {
+      "target": "foreign",
+      "peer": "10.74.0.1"
+    },
+    "proxy_layer_dead": {
+      "protected": {
+        "error": "protected connection closed without an HTTP response",
+        "connections": []
+      },
+      "native_protected": {
+        "error": "protected connection closed without an HTTP response",
+        "connections": [
+          {
+            "peer": [
+              "10.74.0.2",
+              8080
+            ],
+            "started_at": 1793615325.1344671,
+            "local": [
+              "172.28.0.1",
+              38242
+            ],
+            "finished_at": 1793615325.1347704
+          }
+        ]
+      },
+      "domestic": {
+        "target": "domestic",
+        "peer": "10.71.0.2"
+      },
+      "management": {
+        "target": "management",
+        "peer": "10.73.0.2"
+      }
+    },
+    "proxy_reconnect": {
+      "target": "foreign",
+      "peer": "10.74.0.1"
+    },
+    "foreign_sources_during_test": [
+      "10.74.0.1"
+    ]
+  },
+  "shaping_removed": {
+    "state": {
+      "exists": false,
+      "root": "noqueue",
+      "applied": null,
+      "original_notsent_lowat": null,
+      "notsent_lowat": "4294967295"
+    },
+    "qdisc_kinds": {
+      "jfa": [
+        "noqueue"
+      ],
+      "tun0": [
+        "fq_codel"
+      ]
+    }
+  },
+  "environment": {
+    "kernel": "6.8.0-117-generic",
+    "provider_limit": "256kb",
+    "probe_timeout_s": 5.75,
+    "streams": 4,
+    "seconds_per_scenario": 60
+  },
+  "status": "passed"
+}

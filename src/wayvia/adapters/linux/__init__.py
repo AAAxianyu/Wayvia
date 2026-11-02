@@ -41,6 +41,7 @@ def atomic_write(path, content, mode=0o600):
 
 # Kernel/distribution default root disciplines; anything else is a deliberate choice.
 DEFAULT_ROOT_QDISCS = {"fq_codel", "fq", "mq", "noqueue", "pfifo_fast"}
+TUNNEL = "tun0"  # Fixed by the manifest's vpn_interface.
 
 
 def guard_rules(namespace=False):
@@ -811,6 +812,40 @@ class LinuxExecutor:
             self.state_dir / "shaping.json",
             json.dumps({"spec": spec, "original_notsent_lowat": original}),
         )
+        self._shape_tunnel(spec)
+
+    def _tunnel_root(self):
+        """Root qdisc kind of the VPN tun, or None while OpenVPN has not created it."""
+        result = self._cmd(["tc", "-j", "qdisc", "show", "dev", TUNNEL], check=False)
+        if result.returncode:
+            return None
+        rows = json.loads(result.stdout or "[]")
+        return next((q.get("kind") for q in rows if q.get("root")), "")
+
+    def _shape_tunnel(self, spec):
+        root = self._tunnel_root()
+        if root is None:
+            return False
+        if root == "htb":
+            self._cmd(["tc", "qdisc", "del", "dev", TUNNEL, "root"])
+        if not spec.get("tunnel_kbit"):
+            return False
+        rate = f"{spec['tunnel_kbit']}kbit"
+        for argv in (
+            ["qdisc", "add", "dev", TUNNEL, "root", "handle", "1:", "htb", "default", "1"],
+            ["class", "add", "dev", TUNNEL, "parent", "1:", "classid", "1:1", "htb"]
+            + ["rate", rate, "ceil", rate],
+            ["qdisc", "add", "dev", TUNNEL, "parent", "1:1", "handle", "10:", "fq_codel"],
+        ):
+            self._cmd(["tc", *argv])
+        return True
+
+    def ensure_shaping(self):
+        """OpenVPN recreates its tun on restart, dropping the qdisc; restore it."""
+        spec = self._shaping_state().get("spec")
+        if not spec or not spec.get("tunnel_kbit") or self._tunnel_root() in {None, "htb"}:
+            return False
+        return self._shape_tunnel(spec)
 
     def _unshape(self, interface, notsent_lowat):
         qdiscs = json.loads(
@@ -818,6 +853,8 @@ class LinuxExecutor:
         )
         if any(q.get("root") and q.get("kind") == "htb" for q in qdiscs):
             self._cmd(["tc", "qdisc", "del", "dev", interface, "root"])
+        if self._tunnel_root() == "htb":
+            self._cmd(["tc", "qdisc", "del", "dev", TUNNEL, "root"])
         if notsent_lowat:
             self._cmd(["sysctl", "-w", f"net.ipv4.tcp_notsent_lowat={int(notsent_lowat)}"])
         (self.state_dir / "shaping.json").unlink(missing_ok=True)

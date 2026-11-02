@@ -9,7 +9,8 @@
       "operation": "ensure",
       "namespace": null,
       "interface": null,
-      "subnet": null
+      "subnet": null,
+      "shaping": null
     },
     {
       "kind": "guard",
@@ -18,7 +19,8 @@
       "operation": "ensure",
       "namespace": "wayvia-egress",
       "interface": null,
-      "subnet": null
+      "subnet": null,
+      "shaping": null
     },
     {
       "kind": "veth",
@@ -27,7 +29,8 @@
       "operation": "ensure",
       "namespace": null,
       "interface": null,
-      "subnet": null
+      "subnet": null,
+      "shaping": null
     },
     {
       "kind": "guard",
@@ -36,7 +39,8 @@
       "operation": "ensure",
       "namespace": null,
       "interface": null,
-      "subnet": null
+      "subnet": null,
+      "shaping": null
     }
   ],
   "observed": {
@@ -58,7 +62,7 @@
         "group": "default",
         "txqlen": 1000,
         "link_type": "ether",
-        "address": "b6:c0:c0:e8:6b:a2",
+        "address": "ae:66:ca:80:a4:cf",
         "broadcast": "ff:ff:ff:ff:ff:ff",
         "link_netnsid": 0,
         "addr_info": [
@@ -73,7 +77,7 @@
           },
           {
             "family": "inet6",
-            "local": "fe80::b4c0:c0ff:fee8:6ba2",
+            "local": "fe80::ac66:caff:fe80:a4cf",
             "prefixlen": 64,
             "scope": "link",
             "tentative": true,
@@ -85,6 +89,24 @@
     ],
     "guard": "table inet wayvia_guard {\n\tchain output {\n\t\ttype filter hook output priority filter - 10; policy drop;\n\t\toifname \"lo\" accept\n\t\tct state established,related accept\n\t\toifname \"tun0\" meta nfproto ipv4 accept\n\t\tip daddr 10.89.0.1 tcp dport 1080 accept\n\t\tcounter packets 1 bytes 76 drop\n\t}\n\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy drop;\n\t\tiifname \"lo\" accept\n\t\tct state established,related accept\n\t\tip saddr 10.89.0.1 tcp dport 1081 accept\n\t\tiifname \"wayvia-ns\" ip saddr 10.89.0.1 udp dport 1024-65535 accept\n\t}\n}\n",
     "host_guard": "table inet wayvia_guard {\n\tchain input {\n\t\ttype filter hook input priority filter - 10; policy accept;\n\t\tiifname \"wayvia-host\" ip saddr 10.89.0.2 tcp dport 1080 accept\n\t\ttcp dport 1080 counter packets 0 bytes 0 drop\n\t}\n}\n"
+  },
+  "baseline_regression": {
+    "status": "passed",
+    "counter_before": [
+      [
+        1,
+        76
+      ]
+    ],
+    "counter_after": [
+      [
+        8,
+        552
+      ]
+    ],
+    "counter_only_baseline_unchanged": true,
+    "structural_rule_change_detected": true,
+    "stale_plan_rejected": true
   },
   "rollback": {
     "namespace_removed": true,

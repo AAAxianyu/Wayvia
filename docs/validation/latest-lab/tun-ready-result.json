@@ -88,7 +88,7 @@
             },
             {
               "family": "inet6",
-              "local": "fe80::82fe:bf59:2666:ebf8",
+              "local": "fe80::5571:90af:74ef:fc2b",
               "prefixlen": 64,
               "scope": "link",
               "stable-privacy": true,
@@ -154,7 +154,7 @@
             },
             {
               "family": "inet6",
-              "local": "fe80::82fe:bf59:2666:ebf8",
+              "local": "fe80::5571:90af:74ef:fc2b",
               "prefixlen": 64,
               "scope": "link",
               "stable-privacy": true,
@@ -220,7 +220,7 @@
             },
             {
               "family": "inet6",
-              "local": "fe80::82fe:bf59:2666:ebf8",
+              "local": "fe80::5571:90af:74ef:fc2b",
               "prefixlen": 64,
               "scope": "link",
               "stable-privacy": true,
@@ -254,7 +254,7 @@
       ],
       "selected_source": "172.28.0.1",
       "stage": "complete_policy",
-      "elapsed_ms": 160,
+      "elapsed_ms": 168,
       "observations": 4
     }
   ],
