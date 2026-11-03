@@ -1,5 +1,9 @@
 # Wayvia 实现与验收状态
 
+## 2026-11-03 合并到 main 并部署 8047ffd
+
+按用户要求，`main` 快进到 `8047ffd` 并推送，本地与远端只保留 `main`。两台服务器按 exit → ingress 用 `deploy/upgrade.py` 保留数据升级：日本 02:14:48–02:15:42 UTC、阿里云 02:16:34–02:17:21 UTC，均 deployed/ACTIVE、schema 4、原数据保留并有备份。阿里云 monitor 七层健康，设备与订阅记录与 10-26 一致，同机 miaoban 业务未受影响。ADR 014 的判定、退避和日志降噪随软件生效；出口整形、固定代理域名、journald 上限、日志平台均未启用。详见[部署记录](validation/deployment-8047ffd-2026-11-03/README.md)。
+
 ## 2026-11-02 共享出站拥塞隔离实验与隧道公平队列
 
 用户授权运行实验。一次性 Linux 容器中以 provider 桥 + 2 Mbit FIFO 模拟日本出站额度，复用正式渲染产物与锁定组件（[记录](validation/congestion-lab-2026-11-02/README.md)）。原规则下下载与双向满载各 5/6 探针超时；仅网卡整形只修复上传。下载积压位于日本承载套接字，唯一有效的是在出口 tun0 上限速并 `fq_codel`，据此实现 `shaping.tunnel_kbit`（须低于承载份额）及 monitor 对 OpenVPN 重启后队列的自愈。推荐参数（总 1800、承载 1600、隧道 1450 kbit）下上传/下载/双向满载 egress 探针 P95 0.055/0.055/0.183 秒、零失败；吞吐上传 −14%、下载 −19%，未达方案 ≤10% 目标，待用户取舍。宽限期内分别终止 VPN 与代理层无物理直出；OpenVPN 重启后 tun0 队列由 `ensure_shaping` 恢复。OpenVPN 缓冲与低 `notsent_lowat` 无改善，降为不推荐。

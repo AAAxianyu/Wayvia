@@ -1,4 +1,17 @@
 schema_version: 1
+production_deployment_2026_11_03:
+  status: deployed_both_roles_active
+  branch: main
+  commit: 8047ffd37a65820a31e0fd859b280c180f671a5c
+  wheel_sha256: d3e8f8d7723e0361b29e77ae07a733aaa7b08e36b7383c4087edfcf67778bd05
+  branches_after: {local: [main], remote: [main]}
+  order: [exit, ingress]
+  exit: {window_utc: "02:14:48-02:15:42", state: ACTIVE, storage_schema: 4, original_data_preserved: true, backup: /var/backups/wayvia/upgrade-8047ffd37a65-exit}
+  ingress: {window_utc: "02:16:34-02:17:21", state: ACTIVE, storage_schema: 4, original_data_preserved: true, backup: /var/backups/wayvia/upgrade-8047ffd37a65-ingress, monitor_layers_healthy: 7, devices: 3, active_devices: 2, subscriptions: 5}
+  co_hosted_service_unaffected: true
+  enabled_by_software: [congestion_aware_health, rebuild_backoff_after_two_failures, compact_monitor_output, batched_diagnostic_writes]
+  not_enabled: [exit_shaping, tunnel_fair_queue, policy_proxy_domains, journald_limits, logging_admin_platform, rolling_diagnostics_collector]
+  evidence: docs/validation/deployment-8047ffd-2026-11-03/README.md
 congestion_resilience_2026_11_02:
   status: repository_implemented_software_verified_lab_and_production_pending
   base_commit: 0873d61862ba62445ea0b08af3d56e0f85644707
