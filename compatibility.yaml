@@ -10,7 +10,16 @@ production_deployment_2026_11_03:
   ingress: {window_utc: "02:16:34-02:17:21", state: ACTIVE, storage_schema: 4, original_data_preserved: true, backup: /var/backups/wayvia/upgrade-8047ffd37a65-ingress, monitor_layers_healthy: 7, devices: 3, active_devices: 2, subscriptions: 5}
   co_hosted_service_unaffected: true
   enabled_by_software: [congestion_aware_health, rebuild_backoff_after_two_failures, compact_monitor_output, batched_diagnostic_writes]
-  not_enabled: [exit_shaping, tunnel_fair_queue, policy_proxy_domains, journald_limits, logging_admin_platform, rolling_diagnostics_collector]
+  exit_shaping_enabled:
+    at_utc: "2026-11-03T02:23:12Z"
+    generation: c310db1c826e476da2294562d6b2b950
+    kbit: {egress: 1800, carrier: 1600, tunnel: 1450}
+    notsent_lowat: 131072
+    tun0_restored_by_monitor: true
+    ingress_during_exit_restart: {health_congested: 1, degraded: 0, rebuilds: 0}
+    config_backup_suffix: pre-shaping-20261103T022211Z
+    revision_note: exit_config_revision_differs_from_ingress_until_ingress_gets_same_shaping_block
+  not_enabled: [policy_proxy_domains, journald_limits, logging_admin_platform, rolling_diagnostics_collector]
   evidence: docs/validation/deployment-8047ffd-2026-11-03/README.md
 congestion_resilience_2026_11_02:
   status: repository_implemented_software_verified_lab_and_production_pending

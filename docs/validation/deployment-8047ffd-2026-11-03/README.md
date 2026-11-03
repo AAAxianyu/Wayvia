@@ -34,3 +34,22 @@
 - 未生效（需配置与用户决定）：日本出口整形与隧道公平队列（`shaping`）、`policy.proxy_domains`、journald 上限、日志/管理平台与持续诊断采集器。
 
 门禁见[报告](../../congestion-resilience-report.md)：`make check` 629 项、`make demo`、`make test-configs` 11 项、`make test-lab` 整体退出 0（事务 23/23）。没有在生产机运行软件回归。
+
+## 2026-11-03 02:22 UTC 日本出口启用整形
+
+用户确认接受吞吐下降 14–19%，按推荐参数启用 [ADR 014](../../adr/014-congestion-aware-health-and-exit-shaping.md) 的出口整形。
+
+步骤：备份 `/var/lib/wayvia/control/config.yaml` 与 `exit-plan.json`（后缀 `.pre-shaping-20261103T022211Z`）→ 在出口配置追加 `shaping: {egress_kbit: 1800, carrier_kbit: 1600, tunnel_kbit: 1450, notsent_lowat: 131072}` → 以 `wayvia` 身份 `plan --role exit --exit-interface ens17` → `apply`（02:22:33，进入 AWAITING_CONFIRM，120 秒自动回退定时器）→ 核对 → `confirm`（02:23:12，ACTIVE，新代次 `c310db1c826e476da2294562d6b2b950`）。
+
+核对：
+
+- `ens17`：HTB 根、`1:10` 承载类 1600 kbit（可借到 1800）、`1:20` 其他出站 200 kbit（可借到 1800），两个 `fq_codel` 叶子；启用后数分钟内 `1:10` 已发送 153,688 字节、`1:20` 91,557 字节，无丢弃，即真实承载流量按端口 443 正确分类。
+- `tcp_notsent_lowat` 131072，Wayvia 状态文件记录原值 4294967295 供回退。
+- `tun0`：计划先整形后重启 OpenVPN，重启重建 tun0 使其回到默认 `fq_codel`；确认后下一轮 monitor 记录 `shaping_restored` 并恢复为 HTB 1450 kbit + `fq_codel`。等待确认期间 monitor 不处理该代次，因此 tun0 公平队列在 02:22:33–约 02:23:30 之间缺失。
+- 出口七层检查 healthy；阿里云入口 monitor 七层 healthy。出口重启期间入口只记录 1 次 `health_congested`，**没有降级、保护或整链重建**——在原规则下这次出口重启会再触发一次全体断线。
+
+配置 revision：出口配置加入 `shaping` 后 revision 变化，入口配置未改。已发布的订阅与设备管理不受影响；但下次需要 `config publish` 时，两端 revision 必须一致，应先在入口配置加入同样的 `shaping` 段（入口渲染会忽略它）并重新 plan/apply 入口。
+
+回退：恢复备份的 `config.yaml`（或删除 `shaping` 段）后重新 plan/apply/confirm 出口；`shaping` 动作会删除 Wayvia 的 HTB 并恢复原 `tcp_notsent_lowat`。
+
+吞吐与稳定性效果需要在生产负载下观察：建议对比启用前后同时段的降级次数、`health_congested` 次数与设备分钟流量。
